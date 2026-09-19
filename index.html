@@ -11,7 +11,12 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <!-- Font Awesome للشعارات -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
   <style>
+
     /* ================= النسخة التجريبية ================= */
 
     .demo-badge {
@@ -25,19 +30,6 @@
       border-radius: 20px;
       font-size: 12px;
       box-shadow: 0 3px 10px rgba(0,0,0,.18);
-    }
-
-    .contact-list a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .contact-buttons,
-    .register-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 20px;
     }
 
 
@@ -248,15 +240,20 @@
 
     /* ================= أزرار التسجيل ================= */
 
+    .register-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
     .register-buttons .btn-gold {
       min-width: 190px;
       text-align: center;
     }
 
 
-    /* =========================================================
-       التواصل - دوائر التواصل
-       ========================================================= */
+    /* ================= التواصل ================= */
 
     .contact {
       align-items: center;
@@ -277,6 +274,7 @@
       border: none !important;
       background: transparent !important;
       box-shadow: none !important;
+      font-size: 0;
     }
 
     .contact-list a {
@@ -292,7 +290,7 @@
       box-shadow: 0 8px 22px rgba(0,0,0,.08);
       transition: .25s ease;
       position: relative;
-      font-size: 0;
+      color: #222;
     }
 
     .contact-list a:hover {
@@ -300,28 +298,9 @@
       box-shadow: 0 12px 28px rgba(0,0,0,.14);
     }
 
-    .contact-list > div {
-      font-size: 0;
-    }
-
-    .contact-list > div::first-letter {
-      font-size: 0;
-    }
-
-    .contact-list a::before {
+    .contact-list a i {
       font-size: 27px;
-    }
-
-    .contact-list > div:nth-child(1) a::before {
-      content: "📞";
-    }
-
-    .contact-list > div:nth-child(2) a::before {
-      content: "💬";
-    }
-
-    .contact-list > div:nth-child(3) a::before {
-      content: "📍";
+      line-height: 1;
     }
 
     .contact-list a span {
@@ -372,10 +351,11 @@
         height: 58px;
       }
 
-      .contact-list a::before {
+      .contact-list a i {
         font-size: 24px;
       }
     }
+
   </style>
 </head>
 
@@ -896,43 +876,6 @@
           يمكنكم التواصل معنا.
         </p>
 
-
-        <div class="contact-buttons">
-
-          <a
-            class="btn btn-gold"
-            href="https://wa.me/962780791622"
-            target="_blank"
-            rel="noopener">
-
-            واتساب 💬
-
-          </a>
-
-
-          <a
-            class="btn btn-outline"
-            href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
-            target="_blank"
-            rel="noopener">
-
-            موقع المركز 📍
-
-          </a>
-
-
-          <a
-            class="btn btn-outline"
-            href="https://web.facebook.com/profile.php?id=61552970752227&locale=ar_AR"
-            target="_blank"
-            rel="noopener">
-
-            فيسبوك
-
-          </a>
-
-        </div>
-
       </div>
 
 
@@ -950,9 +893,7 @@
             aria-label="الاتصال بالمركز"
             title="الاتصال بالمركز">
 
-            <span>
-              +962 7 8079 1622
-            </span>
+            <i class="fa-solid fa-phone"></i>
 
           </a>
 
@@ -970,9 +911,7 @@
             aria-label="واتساب المركز"
             title="واتساب المركز">
 
-            <span>
-              واتساب المركز
-            </span>
+            <i class="fa-brands fa-whatsapp"></i>
 
           </a>
 
@@ -990,9 +929,7 @@
             aria-label="موقع المركز"
             title="موقع المركز">
 
-            <span>
-              موقع المركز على الخريطة
-            </span>
+            <i class="fa-solid fa-location-dot"></i>
 
           </a>
 
@@ -1010,9 +947,7 @@
             aria-label="فيسبوك المركز"
             title="فيسبوك المركز">
 
-            <span>
-              فيسبوك المركز
-            </span>
+            <i class="fa-brands fa-facebook-f"></i>
 
           </a>
 
