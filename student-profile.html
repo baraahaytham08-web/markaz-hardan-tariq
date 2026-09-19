@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -5,12 +6,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ملف الطالب | مركز حردان طارق القرآني</title>
+  <title>لوحة المعلم | مركز حردان طارق القرآني</title>
 
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="shortcut icon" type="image/png" href="logo.png">
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
     * {
@@ -21,38 +24,69 @@
 
     :root {
       --green: #174d3a;
-      --green-dark: #103b2c;
-      --green-light: #edf5f1;
+      --green-dark: #0c3023;
+      --green-mid: #21664b;
+      --green-soft: #eaf4ef;
+
       --gold: #b28b18;
-      --gold-light: #d4b44c;
+      --gold-light: #d9bc5c;
+      --gold-soft: #fff8df;
+
       --cream: #faf8f0;
       --white: #fff;
-      --text: #1f2933;
-      --muted: #74808a;
+
+      --text: #1d2924;
+      --muted: #78837e;
       --border: #e5ebe7;
+
       --success: #237a31;
-      --success-light: #eaf7ec;
+      --success-soft: #eaf7ec;
+
       --danger: #b3261e;
-      --danger-light: #fff0ef;
-      --blue: #2563eb;
-      --blue-light: #eff6ff;
-      --purple: #7c3aed;
-      --purple-light: #f5f3ff;
-      --shadow: 0 12px 35px rgba(23, 77, 58, .08);
+      --danger-soft: #fff0ef;
+
+      --purple: #6653a6;
+      --purple-soft: #f1edff;
+
+      --gray: #68736e;
+      --gray-soft: #f1f3f2;
+
+      --shadow: 0 12px 35px rgba(23,77,58,.07);
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, "Tahoma", sans-serif;
-      background:
-        linear-gradient(135deg, #faf8f0 0%, #fff 45%, #edf5f1 100%);
+      font-family: Arial, Tahoma, sans-serif;
       color: var(--text);
       min-height: 100vh;
+
+      background:
+        radial-gradient(
+          circle at 8% 8%,
+          rgba(178,139,24,.10),
+          transparent 23%
+        ),
+        radial-gradient(
+          circle at 90% 80%,
+          rgba(23,77,58,.10),
+          transparent 28%
+        ),
+        linear-gradient(
+          135deg,
+          #faf8f0,
+          #ffffff 48%,
+          #edf5f1
+        );
+
+      overflow-x: hidden;
     }
 
     button,
     input,
-    select,
-    textarea {
+    select {
       font-family: inherit;
     }
 
@@ -60,938 +94,1945 @@
       cursor: pointer;
     }
 
-    .topbar {
-      position: sticky;
+    .sidebar {
+      position: fixed;
       top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 5px 20px rgba(0,0,0,.04);
-    }
+      right: 0;
+      bottom: 0;
+      width: 275px;
 
-    .topbar-inner {
-      max-width: 1250px;
-      margin: auto;
-      padding: 13px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
+      z-index: 50;
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      color: var(--green);
-      font-weight: 900;
-    }
+      padding: 22px 17px;
 
-    .brand img {
-      width: 45px;
-      height: 45px;
-      object-fit: contain;
-      border-radius: 12px;
-    }
+      color: white;
 
-    .brand small {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 3px;
-      font-weight: 700;
-    }
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(212,180,76,.12),
+          transparent 25%
+        ),
+        linear-gradient(
+          160deg,
+          #174d3a,
+          #0c3023
+        );
 
-    .back-btn {
-      border: none;
-      background: var(--green);
-      color: #fff;
-      padding: 11px 16px;
-      border-radius: 12px;
-      font-weight: 900;
-      transition: .2s;
-    }
+      box-shadow:
+        -12px 0 40px rgba(0,0,0,.10);
 
-    .back-btn:hover {
-      transform: translateY(-2px);
-      background: var(--green-dark);
-    }
-
-    .page {
-      max-width: 1250px;
-      margin: auto;
-      padding: 25px 18px 50px;
-    }
-
-    .loading {
-      text-align: center;
-      padding: 80px 20px;
-      font-weight: 900;
-      color: var(--green);
-      font-size: 18px;
-    }
-
-    .error-box {
-      max-width: 700px;
-      margin: 50px auto;
-      padding: 25px;
-      background: var(--danger-light);
-      border: 1px solid #f3c2bf;
-      border-radius: 18px;
-      color: var(--danger);
-      text-align: center;
-      font-weight: 800;
-    }
-
-    /* ================= PROFILE HEADER ================= */
-
-    .profile-header {
-      background: rgba(255,255,255,.96);
-      border: 1px solid var(--border);
-      border-radius: 25px;
-      padding: 25px;
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      margin-bottom: 20px;
-    }
-
-    .photo-wrap {
-      position: relative;
-      flex: 0 0 auto;
-    }
-
-    .student-photo {
-      width: 115px;
-      height: 115px;
-      border-radius: 50%;
-      object-fit: cover;
-      background: var(--green-light);
-      border: 5px solid #fff;
-      box-shadow: 0 7px 25px rgba(0,0,0,.12);
-    }
-
-    .photo-upload {
-      position: absolute;
-      bottom: -4px;
-      left: -4px;
-      width: 39px;
-      height: 39px;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      background: var(--gold);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,.15);
-    }
-
-    .photo-upload input {
-      display: none;
-    }
-
-    .profile-info {
-      flex: 1;
-    }
-
-    .profile-info h1 {
-      font-size: 28px;
-      color: var(--green-dark);
-      margin-bottom: 9px;
-    }
-
-    .profile-meta {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .meta-badge {
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: var(--green-light);
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .meta-badge.gold {
-      background: #fbf6df;
-      color: #876b0d;
-    }
-
-    /* ================= SMART OVERVIEW ================= */
-
-    .smart-overview {
-      margin-bottom: 20px;
-    }
-
-    .overview-title {
-      margin-bottom: 13px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .overview-title h2 {
-      font-size: 20px;
-      color: var(--green-dark);
-    }
-
-    .week-label {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .smart-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 13px;
-    }
-
-    .smart-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 17px;
-      box-shadow: 0 7px 25px rgba(0,0,0,.04);
-      min-width: 0;
-    }
-
-    .smart-card-label {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .smart-card-value {
-      font-size: 25px;
-      font-weight: 900;
-      color: var(--green-dark);
-    }
-
-    .smart-card-sub {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 5px;
-      font-weight: 700;
-    }
-
-    .weekly-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 14px;
-      margin-top: 14px;
-    }
-
-    .weekly-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 7px 25px rgba(0,0,0,.04);
-    }
-
-    .weekly-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      gap: 10px;
-    }
-
-    .weekly-head strong {
-      color: var(--green-dark);
-    }
-
-    .weekly-head span {
-      color: var(--gold);
-      font-weight: 900;
-      font-size: 13px;
-    }
-
-    .progress-track {
-      height: 12px;
-      background: #edf1ef;
-      border-radius: 999px;
       overflow: hidden;
     }
 
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--green), #36a274);
-      transition: width .4s ease;
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      left: -130px;
+      bottom: -100px;
+      background: rgba(255,255,255,.035);
+      pointer-events: none;
     }
 
-    .progress-fill.gold {
-      background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    }
+    .sidebar-brand {
+      position: relative;
 
-    .weekly-details {
       display: flex;
-      justify-content: space-between;
-      margin-top: 9px;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .evaluation-box {
-      margin-top: 14px;
-      background:
-        linear-gradient(135deg, #103b2c, #174d3a);
-      color: #fff;
-      border-radius: 20px;
-      padding: 21px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
       align-items: center;
-      gap: 17px;
-      box-shadow: 0 13px 30px rgba(16,59,44,.16);
+      gap: 12px;
+
+      padding: 7px 8px 23px;
+      margin-bottom: 24px;
+
+      text-decoration: none;
+      color: white;
+
+      border-bottom:
+        1px solid rgba(255,255,255,.12);
+
+      transition: .25s;
     }
 
-    .evaluation-icon {
+    .sidebar-brand:hover {
+      transform: translateX(-3px);
+    }
+
+    .sidebar-logo {
       width: 55px;
       height: 55px;
-      border-radius: 16px;
+      min-width: 55px;
+
+      border-radius: 50%;
+      overflow: hidden;
+
+      background: white;
+
+      border:
+        3px solid rgba(217,188,92,.75);
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.20);
+    }
+
+    .sidebar-logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 3px;
+    }
+
+    .brand-text span {
+      color: rgba(255,255,255,.58);
+      font-size: 10px;
+    }
+
+    .sidebar-heading {
+      color: rgba(255,255,255,.40);
+      font-size: 10px;
+      font-weight: bold;
+      margin: 0 10px 10px;
+      letter-spacing: .4px;
+    }
+
+    .side-link {
+      width: 100%;
+      min-height: 48px;
+
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      border: none;
+      border-right: 3px solid transparent;
+      border-radius: 12px;
+
+      margin-bottom: 5px;
+      padding: 11px 13px;
+
+      background: transparent;
+      color: rgba(255,255,255,.70);
+
+      font-size: 13px;
+      text-align: right;
+      text-decoration: none;
+
+      transition: .25s;
+    }
+
+    .side-link i {
+      width: 21px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .side-link:hover {
+      background: rgba(255,255,255,.08);
+      color: white;
+      transform: translateX(-2px);
+    }
+
+    .side-link.active {
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.13),
+          rgba(255,255,255,.05)
+        );
+
+      color: white;
+      border-right-color: var(--gold-light);
+    }
+
+    .side-link.active i {
+      color: var(--gold-light);
+    }
+
+    .sidebar-bottom {
+      position: absolute;
+      right: 17px;
+      left: 17px;
+      bottom: 18px;
+    }
+
+    .sidebar-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 10px;
+      padding: 10px 12px;
+
+      border-radius: 11px;
+
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.62);
+
+      font-size: 10px;
+    }
+
+    .online-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+
+      background: #6ee27d;
+
+      box-shadow:
+        0 0 0 4px rgba(110,226,125,.10);
+    }
+
+    .logout-side {
+      width: 100%;
+      padding: 12px;
+
+      border:
+        1px solid rgba(255,255,255,.13);
+
+      border-radius: 11px;
+
+      background:
+        rgba(255,255,255,.06);
+
+      color: white;
+
+      font-weight: bold;
+      font-size: 12px;
+
+      transition: .25s;
+    }
+
+    .logout-side:hover {
+      background: rgba(179,38,30,.20);
+      border-color: rgba(255,130,130,.30);
+      transform: translateY(-2px);
+    }
+
+    .close-sidebar {
+      display: none;
+
+      position: absolute;
+
+      top: 14px;
+      left: 14px;
+
+      width: 38px;
+      height: 38px;
+
+      border:
+        1px solid rgba(255,255,255,.16);
+
+      border-radius: 10px;
+
+      background:
+        rgba(255,255,255,.08);
+
+      color: white;
+
+      font-size: 22px;
+
+      z-index: 5;
+    }
+
+    .main {
+      margin-right: 275px;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+
+      min-height: 78px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 12px 38px;
+
+      background:
+        rgba(255,255,255,.84);
+
+      backdrop-filter: blur(18px);
+
+      border-bottom:
+        1px solid rgba(229,235,231,.85);
+
+      box-shadow:
+        0 5px 25px rgba(23,77,58,.035);
+    }
+
+    .page-heading {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .page-heading-icon {
+      width: 44px;
+      height: 44px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,.12);
-      font-size: 25px;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--green-mid)
+        );
+
+      color: white;
+
+      box-shadow:
+        0 7px 18px rgba(23,77,58,.15);
     }
 
-    .evaluation-title {
+    .page-title h1 {
+      color: var(--green);
+      font-size: 20px;
+      margin-bottom: 3px;
+    }
+
+    .page-title p {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .teacher-info {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .teacher-details {
+      text-align: left;
+    }
+
+    .teacher-name {
+      display: block;
+
+      color: var(--green);
+
       font-size: 12px;
-      opacity: .78;
+      font-weight: bold;
+
+      margin-bottom: 3px;
+    }
+
+    .teacher-email {
+      color: var(--muted);
+      font-size: 10px;
+      direction: ltr;
+    }
+
+    .teacher-avatar {
+      width: 44px;
+      height: 44px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background:
+        var(--green-soft);
+
+      color: var(--green);
+
+      border:
+        1px solid #dcebe4;
+    }
+
+    .mobile-menu {
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border: none;
+      border-radius: 11px;
+
+      background:
+        var(--green-soft);
+
+      color: var(--green);
+
+      font-size: 17px;
+    }
+
+    .content {
+      width: min(1320px, 94%);
+      margin: 28px auto 55px;
+    }
+
+    .welcome-card {
+      position: relative;
+      overflow: hidden;
+
+      min-height: 190px;
+
+      display: flex;
+      align-items: center;
+
+      margin-bottom: 22px;
+      padding: 31px 35px;
+
+      border-radius: 24px;
+
+      color: white;
+
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(217,188,92,.18),
+          transparent 24%
+        ),
+        linear-gradient(
+          120deg,
+          #123f2f,
+          #1d6549 58%,
+          #174d3a
+        );
+
+      box-shadow:
+        0 20px 45px rgba(23,77,58,.16);
+    }
+
+    .welcome-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 260px;
+      height: 260px;
+
+      border:
+        1px solid rgba(255,255,255,.07);
+
+      border-radius: 50%;
+
+      left: -100px;
+      top: -135px;
+    }
+
+    .welcome-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 310px;
+      height: 310px;
+
+      border:
+        1px solid rgba(217,188,92,.10);
+
+      border-radius: 50%;
+
+      left: 42%;
+      bottom: -240px;
+    }
+
+    .welcome-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .welcome-small {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      margin-bottom: 9px;
+
+      color:
+        rgba(255,255,255,.66);
+
+      font-size: 11px;
+    }
+
+    .welcome-small::before {
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--gold-light);
+
+      box-shadow:
+        0 0 0 5px rgba(217,188,92,.10);
+    }
+
+    .welcome-card h2 {
+      font-size: 29px;
+      line-height: 1.4;
+      margin-bottom: 7px;
+    }
+
+    .welcome-card p {
+      max-width: 620px;
+
+      color:
+        rgba(255,255,255,.72);
+
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .hero-decoration {
+      position: absolute;
+
+      left: 50px;
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      width: 110px;
+      height: 110px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border:
+        1px solid rgba(255,255,255,.10);
+
+      border-radius: 50%;
+
+      color:
+        rgba(255,255,255,.13);
+
+      font-size: 55px;
+    }
+
+    .hero-decoration::before {
+      content: "";
+
+      position: absolute;
+
+      inset: -14px;
+
+      border:
+        1px solid rgba(217,188,92,.08);
+
+      border-radius: 50%;
+    }
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 17px;
+
+      margin-bottom: 23px;
+    }
+
+    .stat-card {
+      position: relative;
+      overflow: hidden;
+
+      display: flex;
+      align-items: center;
+
+      gap: 15px;
+
+      min-height: 110px;
+
+      padding:
+        20px 21px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 18px;
+
+      background:
+        rgba(255,255,255,.94);
+
+      box-shadow:
+        var(--shadow);
+
+      transition: .25s;
+    }
+
+    .stat-card:hover {
+      transform:
+        translateY(-4px);
+
+      box-shadow:
+        0 17px 40px
+        rgba(23,77,58,.11);
+    }
+
+    .stat-icon {
+      width: 57px;
+      height: 57px;
+      min-width: 57px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 16px;
+
+      background:
+        var(--green-soft);
+
+      color: var(--green);
+
+      font-size: 21px;
+    }
+
+    .stat-card:nth-child(2) .stat-icon {
+      background:
+        var(--gold-soft);
+
+      color:
+        var(--gold);
+    }
+
+    .stat-card:nth-child(3) .stat-icon {
+      background:
+        var(--purple-soft);
+
+      color:
+        var(--purple);
+    }
+
+    .stat-number {
+      display: block;
+
+      color: var(--green);
+
+      font-size: 28px;
+      font-weight: 800;
+
       margin-bottom: 4px;
     }
 
-    .evaluation-value {
-      font-size: 23px;
-      font-weight: 900;
-    }
-
-    .evaluation-score {
-      text-align: center;
-    }
-
-    .evaluation-score strong {
-      display: block;
-      font-size: 28px;
-    }
-
-    .evaluation-score span {
-      font-size: 11px;
-      opacity: .75;
-    }
-
-    /* ================= OLD STATS ================= */
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0,1fr));
-      gap: 13px;
-      margin-bottom: 20px;
-    }
-
-    .stat {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 17px;
-      padding: 17px;
-      text-align: center;
-      box-shadow: 0 6px 20px rgba(0,0,0,.035);
-    }
-
-    .stat-value {
-      font-size: 23px;
-      font-weight: 900;
-      color: var(--green);
-    }
-
     .stat-label {
-      margin-top: 5px;
       color: var(--muted);
       font-size: 11px;
-      font-weight: 800;
     }
 
-    /* ================= SECTIONS ================= */
+    .panel {
+      overflow: hidden;
 
-    .section {
-      background: #fff;
-      border: 1px solid var(--border);
+      margin-bottom: 23px;
+
+      border:
+        1px solid var(--border);
+
       border-radius: 20px;
-      padding: 21px;
-      margin-bottom: 15px;
-      box-shadow: 0 7px 25px rgba(0,0,0,.035);
+
+      background:
+        rgba(255,255,255,.96);
+
+      box-shadow:
+        var(--shadow);
     }
 
-    .section-head {
+    .panel-top {
       display: flex;
+
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
+
       gap: 15px;
-      cursor: pointer;
-    }
 
-    .section-title {
-      font-size: 17px;
-      color: var(--green-dark);
-      font-weight: 900;
-    }
+      padding:
+        21px 24px;
 
-    .section-arrow {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: var(--green-light);
-      color: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      font-weight: 900;
-      transition: .2s;
-    }
+      border-bottom:
+        1px solid var(--border);
 
-    .section.open .section-arrow {
-      transform: rotate(180deg);
-    }
-
-    .section-body {
-      display: none;
-      margin-top: 20px;
-    }
-
-    .section.open .section-body {
-      display: block;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 14px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    label {
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--green-dark);
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border: 1px solid #dfe7e2;
-      background: #fbfcfb;
-      border-radius: 12px;
-      padding: 11px 12px;
-      outline: none;
-      color: var(--text);
-      transition: .2s;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #77a997;
-      box-shadow: 0 0 0 3px rgba(23,77,58,.08);
-      background: #fff;
-    }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .section-save {
-      margin-top: 17px;
-      padding-top: 15px;
-      border-top: 1px solid #e6ebe8;
-      display: flex;
-      align-items: center;
-      gap: 10px;
       flex-wrap: wrap;
     }
 
-    .save-btn {
-      border: none;
-      border-radius: 12px;
-      padding: 11px 18px;
-      color: #fff;
-      background: linear-gradient(135deg, var(--green), #248866);
-      font-weight: 900;
-      box-shadow: 0 7px 18px rgba(23,77,58,.15);
-    }
-
-    .save-btn:disabled {
-      opacity: .6;
-      cursor: wait;
-    }
-
-    .save-message {
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .save-message.success {
-      color: var(--success);
-    }
-
-    .save-message.error {
-      color: var(--danger);
-    }
-
-    /* ================= PHOTO ================= */
-
-    .photo-field {
+    .panel-title {
       display: flex;
       align-items: center;
-      gap: 14px;
-      padding: 14px;
-      background: var(--green-light);
-      border-radius: 15px;
-      margin-bottom: 16px;
+      gap: 11px;
     }
 
-    .photo-field img {
-      width: 70px;
-      height: 70px;
-      object-fit: cover;
-      border-radius: 15px;
-      background: #fff;
-      border: 3px solid #fff;
+    .panel-title-icon {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 12px;
+
+      background:
+        var(--green-soft);
+
+      color:
+        var(--green);
     }
 
-    .photo-field-info {
-      flex: 1;
+    .panel-title h2 {
+      color: var(--green);
+      font-size: 17px;
+      margin-bottom: 3px;
     }
 
-    .photo-field-info strong {
+    .panel-title span {
       display: block;
-      color: var(--green-dark);
-      margin-bottom: 5px;
-    }
-
-    .photo-field-info span {
       color: var(--muted);
+      font-size: 10px;
+    }
+
+    .pending-count {
+      padding: 7px 12px;
+
+      border-radius: 20px;
+
+      background:
+        var(--gold-soft);
+
+      color:
+        #806711;
+
       font-size: 11px;
-      font-weight: 700;
+      font-weight: bold;
     }
 
-    .choose-photo {
+    .requests-list {
+      padding: 17px;
+    }
+
+    .request-card {
+      padding: 17px;
+      margin-bottom: 10px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 14px;
+
+      background: #fff;
+
+      transition: .25s;
+    }
+
+    .request-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .request-card:hover {
+      border-color: #d2e0d8;
+
+      box-shadow:
+        0 8px 22px
+        rgba(23,77,58,.055);
+
+      transform:
+        translateY(-1px);
+    }
+
+    .request-content {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 18px;
+
+      flex-wrap: wrap;
+    }
+
+    .request-name {
+      color: var(--green);
+
+      font-size: 15px;
+      font-weight: bold;
+
+      margin-bottom: 6px;
+    }
+
+    .request-details {
+      color: var(--muted);
+
+      font-size: 11px;
+      line-height: 2;
+    }
+
+    .request-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .approve-btn,
+    .reject-btn {
+      padding:
+        10px 15px;
+
       border: none;
-      background: var(--green);
-      color: #fff;
-      padding: 10px 13px;
-      border-radius: 11px;
-      font-weight: 900;
+      border-radius: 9px;
+
+      font-size: 11px;
+      font-weight: bold;
+
+      transition: .2s;
     }
 
-    /* ================= TABLES ================= */
+    .approve-btn {
+      background:
+        var(--green);
 
-    .table-wrap {
+      color: white;
+    }
+
+    .approve-btn:hover {
+      background:
+        var(--green-dark);
+
+      transform:
+        translateY(-2px);
+    }
+
+    .reject-btn {
+      background:
+        var(--danger-soft);
+
+      color:
+        var(--danger);
+    }
+
+    .reject-btn:hover {
+      background:
+        var(--danger);
+
+      color: white;
+
+      transform:
+        translateY(-2px);
+    }
+
+    .requests-empty {
+      padding:
+        35px 15px;
+
+      text-align: center;
+
+      color: var(--muted);
+    }
+
+    .requests-empty i {
+      display: block;
+
+      margin-bottom: 11px;
+
+      color:
+        var(--green);
+
+      font-size: 32px;
+    }
+
+    .requests-empty strong {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color:
+        var(--green);
+
+      font-size: 13px;
+    }
+
+    .requests-empty span {
+      font-size: 11px;
+    }
+
+    .filters {
+      display: grid;
+
+      grid-template-columns:
+        minmax(180px, 1fr)
+        145px
+        150px
+        165px;
+
+      gap: 8px;
+
+      padding:
+        14px 24px;
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box i {
+      position: absolute;
+
+      right: 12px;
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      color:
+        #9aa49f;
+
+      font-size: 12px;
+
+      pointer-events: none;
+    }
+
+    .search-input,
+    .filter-select {
+      width: 100%;
+
+      height: 38px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 9px;
+
+      outline: none;
+
+      background:
+        #fafcfb;
+
+      color:
+        var(--text);
+
+      font-size: 11px;
+
+      transition: .2s;
+    }
+
+    .search-input {
+      padding:
+        0 36px 0 12px;
+    }
+
+    .filter-select {
+      padding:
+        0 10px;
+    }
+
+    .search-input:focus,
+    .filter-select:focus {
+      background: white;
+
+      border-color:
+        var(--gold);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(178,139,24,.08);
+    }
+
+    .table-wrapper {
       overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 15px;
     }
 
     table {
       width: 100%;
-      border-collapse: collapse;
-      min-width: 720px;
+
+      min-width: 980px;
+
+      border-collapse:
+        collapse;
     }
 
     th {
-      background: var(--green-light);
-      color: var(--green-dark);
-      font-size: 11px;
-      padding: 12px 9px;
-      white-space: nowrap;
+      padding:
+        13px 18px;
+
+      background:
+        #f8faf9;
+
+      color:
+        #68736e;
+
+      font-size: 10px;
+
+      text-align:
+        right;
+
+      border-bottom:
+        1px solid var(--border);
     }
 
     td {
-      padding: 9px;
-      border-top: 1px solid #edf0ee;
-      vertical-align: middle;
+      padding:
+        14px 18px;
+
+      border-bottom:
+        1px solid #f0f3f1;
+
+      font-size: 12px;
+
+      vertical-align:
+        middle;
     }
 
-    td input,
-    td select {
-      padding: 8px 9px;
+    tbody tr {
+      transition: .2s;
+    }
+
+    tbody tr:hover {
+      background:
+        #fbfdfc;
+    }
+
+    tbody tr:last-child td {
+      border-bottom:
+        none;
+    }
+
+    .student-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      min-width: 230px;
+    }
+
+    .student-avatar {
+      width: 37px;
+      height: 37px;
+      min-width: 37px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 11px;
+
+      background:
+        var(--green-soft);
+
+      color:
+        var(--green);
+
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .student-name-link {
+      color:
+        var(--green);
+
+      text-decoration:
+        none;
+
+      font-weight:
+        bold;
+
+      transition: .2s;
+    }
+
+    .student-name-link:hover {
+      color:
+        var(--gold);
+
+      text-decoration:
+        underline;
+    }
+
+    .student-subinfo {
+      margin-top: 5px;
+
+      color:
+        var(--muted);
+
+      font-size: 9px;
+
+      line-height: 1.7;
+    }
+
+    .student-subinfo strong {
+      color:
+        var(--green);
+    }
+
+    .section-badge {
+      display: inline-block;
+
+      padding:
+        6px 9px;
+
+      border-radius: 8px;
+
+      background:
+        #f7f4e8;
+
+      color:
+        #806711;
+
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .memorization {
+      color:
+        #5c6762;
+    }
+
+    .no-data {
+      color:
+        #a3aba7;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      padding:
+        6px 10px;
+
+      border-radius: 20px;
+
+      font-size: 10px;
+      font-weight: bold;
+
+      white-space:
+        nowrap;
+    }
+
+    .status::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+    }
+
+    .status.active {
+      background:
+        var(--success-soft);
+
+      color:
+        var(--success);
+    }
+
+    .status.active::before {
+      background:
+        var(--success);
+    }
+
+    .status.inactive {
+      background:
+        var(--danger-soft);
+
+      color:
+        var(--danger);
+    }
+
+    .status.inactive::before {
+      background:
+        var(--danger);
+    }
+
+    .status.rejected {
+      background:
+        var(--purple-soft);
+
+      color:
+        var(--purple);
+    }
+
+    .status.rejected::before {
+      background:
+        var(--purple);
+    }
+
+    .status.expelled {
+      background:
+        var(--gray-soft);
+
+      color:
+        #66716c;
+    }
+
+    .status.expelled::before {
+      background:
+        #7b8580;
+    }
+
+    .score-badge,
+    .points-badge {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-width: 75px;
+
+      padding:
+        7px 10px;
+
       border-radius: 9px;
-      min-width: 95px;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      white-space:
+        nowrap;
     }
 
-    .row-actions {
+    .score-badge {
+      background:
+        var(--green-soft);
+
+      color:
+        var(--green);
+
+      border:
+        1px solid #dcebe4;
+    }
+
+    .points-badge {
+      background:
+        var(--gold-soft);
+
+      color:
+        #806711;
+
+      border:
+        1px solid #f0e4b7;
+    }
+
+    .actions {
       display: flex;
       gap: 6px;
     }
 
-    .icon-btn {
+    .action-btn {
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       border: none;
-      width: 32px;
-      height: 32px;
+
       border-radius: 9px;
-      font-weight: 900;
+
+      transition: .2s;
     }
 
-    .add-btn {
-      background: var(--green-light);
-      color: var(--green);
-      padding: 9px 14px;
-      border: none;
-      border-radius: 11px;
-      font-weight: 900;
-      margin-bottom: 12px;
+    .edit-btn {
+      background:
+        var(--gold-soft);
+
+      color:
+        var(--gold);
+    }
+
+    .edit-btn:hover {
+      background:
+        var(--gold);
+
+      color:
+        white;
+
+      transform:
+        translateY(-2px);
+    }
+
+    .expel-btn {
+      background:
+        var(--danger-soft);
+
+      color:
+        var(--danger);
+    }
+
+    .expel-btn:hover {
+      background:
+        var(--danger);
+
+      color:
+        white;
+
+      transform:
+        translateY(-2px);
     }
 
     .delete-btn {
-      background: var(--danger-light);
-      color: var(--danger);
+      background:
+        #ecefee;
+
+      color:
+        #56615c;
     }
 
-    /* ================= RECITATION ================= */
+    .delete-btn:hover {
+      background:
+        #4f5a55;
 
-    .grade-badge {
+      color:
+        white;
+
+      transform:
+        translateY(-2px);
+    }
+
+    .add-btn {
       display: inline-flex;
-      flex-direction: column;
+
       align-items: center;
-      justify-content: center;
-      min-width: 105px;
-      padding: 7px 8px;
+      gap: 7px;
+
+      padding:
+        11px 16px;
+
+      border: none;
+
       border-radius: 10px;
-      font-weight: 900;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--green-mid)
+        );
+
+      color:
+        white;
+
       font-size: 11px;
+      font-weight: bold;
+
+      box-shadow:
+        0 7px 16px
+        rgba(23,77,58,.14);
+
+      transition: .25s;
     }
 
-    .grade-badge strong {
-      font-size: 15px;
-      margin-bottom: 2px;
+    .add-btn:hover {
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 11px 23px
+        rgba(23,77,58,.20);
     }
 
-    .grade-excellent {
-      background: #e8f7eb;
-      color: #176526;
+    .empty {
+      display: none;
+
+      padding:
+        55px 20px;
+
+      text-align: center;
+
+      color:
+        var(--muted);
     }
 
-    .grade-verygood {
-      background: #edf5ff;
-      color: #2459a6;
-    }
+    .empty-icon {
+      width: 65px;
+      height: 65px;
 
-    .grade-good {
-      background: #fff8df;
-      color: #8a6a08;
-    }
-
-    .grade-acceptable {
-      background: #fff0df;
-      color: #a55a00;
-    }
-
-    .grade-review {
-      background: #fff0ef;
-      color: #a5221d;
-    }
-
-    .recitation-info {
-      margin-bottom: 13px;
-      padding: 13px 15px;
-      border-radius: 13px;
-      background: #f8faf9;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-      font-weight: 700;
-    }
-
-    .recitation-info b {
-      color: var(--green-dark);
-    }
-
-    /* ================= QURAN MAP ================= */
-
-    .map-intro {
-      background: linear-gradient(135deg, #f7faf8, #fff);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 17px;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .legend {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 17px;
-    }
-
-    .legend-item {
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+
+      margin:
+        0 auto 13px;
+
+      border-radius: 50%;
+
+      background:
+        var(--green-soft);
+
+      color:
+        var(--green);
+
+      font-size: 24px;
+    }
+
+    .empty strong {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color:
+        var(--green);
+
+      font-size: 13px;
+    }
+
+    .empty p {
       font-size: 11px;
-      font-weight: 900;
-      color: var(--muted);
     }
 
-    .legend-dot {
-      width: 18px;
-      height: 18px;
-      border-radius: 6px;
-      border: 1px solid rgba(0,0,0,.06);
+    .modal {
+      position: fixed;
+      inset: 0;
+
+      z-index: 100;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background:
+        rgba(12,48,35,.70);
+
+      backdrop-filter:
+        blur(7px);
     }
 
-    .dot-empty {
-      background: #f4f6f5;
-    }
-
-    .dot-hifz {
-      background: #cfeedd;
-    }
-
-    .dot-review {
-      background: #fff0bd;
-    }
-
-    .dot-both {
-      background: #d9d1f8;
-    }
-
-    .juz-grid {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0,1fr));
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .juz-card {
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      padding: 12px;
-      background: #fff;
-    }
-
-    .juz-head {
+    .modal.show {
       display: flex;
+    }
+
+    .modal-box {
+      width:
+        min(520px,100%);
+
+      max-height:
+        90vh;
+
+      overflow-y:
+        auto;
+
+      background:
+        white;
+
+      border-radius:
+        21px;
+
+      box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.25);
+    }
+
+    .modal-header {
+      display: flex;
+
+      align-items: center;
       justify-content: space-between;
-      gap: 5px;
-      font-size: 12px;
-      font-weight: 900;
-      margin-bottom: 8px;
+
+      padding:
+        21px 24px;
+
+      border-bottom:
+        1px solid var(--border);
     }
 
-    .juz-head span:last-child {
-      color: var(--green);
+    .modal-header h2 {
+      color:
+        var(--green);
+
+      font-size: 18px;
+
+      margin-bottom:
+        4px;
     }
 
-    .juz-track {
-      height: 7px;
-      background: #edf1ef;
-      border-radius: 99px;
-      overflow: hidden;
+    .modal-header p {
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
     }
 
-    .juz-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--green), #45a77e);
-      border-radius: inherit;
+    .close-modal {
+      width: 35px;
+      height: 35px;
+
+      border: none;
+
+      border-radius:
+        9px;
+
+      background:
+        #f3f5f4;
+
+      color:
+        #68736e;
     }
 
-    .quran-map {
+    .form {
+      padding:
+        24px;
+    }
+
+    .form-group {
+      margin-bottom:
+        16px;
+    }
+
+    .form-group label {
+      display: block;
+
+      margin-bottom:
+        7px;
+
+      color:
+        var(--green);
+
+      font-size:
+        11px;
+
+      font-weight:
+        bold;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+
+      height: 44px;
+
+      padding:
+        0 13px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        10px;
+
+      outline:
+        none;
+
+      background:
+        #fafcfb;
+
+      color:
+        var(--text);
+
+      font-size:
+        12px;
+    }
+
+    .modal-buttons {
       display: grid;
-      grid-template-columns: repeat(16, minmax(0,1fr));
-      gap: 5px;
-      direction: rtl;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        9px;
+
+      margin-top:
+        21px;
     }
 
-    .page-cell {
-      aspect-ratio: 1;
-      min-width: 0;
-      border-radius: 7px;
-      background: #f4f6f5;
-      border: 1px solid #e4e9e6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-      font-weight: 900;
-      color: #7d8984;
-      transition: .15s;
-      user-select: none;
+    .modal-buttons button {
+      height:
+        44px;
+
+      border:
+        none;
+
+      border-radius:
+        10px;
+
+      font-weight:
+        bold;
     }
 
-    .page-cell:hover {
-      transform: scale(1.12);
-      z-index: 2;
-      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+    .save-btn {
+      background:
+        var(--green);
+
+      color:
+        white;
     }
 
-    .page-cell.hifz {
-      background: #cfeedd;
-      color: #176526;
-      border-color: #a9ddbd;
+    .cancel-btn {
+      background:
+        #eef1ef;
+
+      color:
+        #4d5853;
     }
 
-    .page-cell.review {
-      background: #fff0bd;
-      color: #856500;
-      border-color: #f0d97b;
+    #message {
+      min-height:
+        20px;
+
+      margin-top:
+        11px;
+
+      text-align:
+        center;
+
+      font-size:
+        11px;
+
+      font-weight:
+        bold;
     }
 
-    .page-cell.both {
-      background: #d9d1f8;
-      color: #5431a0;
-      border-color: #bfb1ec;
+    .toast {
+      position: fixed;
+
+      left:
+        24px;
+
+      bottom:
+        24px;
+
+      z-index:
+        200;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        9px;
+
+      min-width:
+        250px;
+
+      max-width:
+        370px;
+
+      padding:
+        13px 16px;
+
+      border-radius:
+        12px;
+
+      background:
+        var(--green-dark);
+
+      color:
+        white;
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.18);
+
+      font-size:
+        11px;
+
+      opacity:
+        0;
+
+      pointer-events:
+        none;
+
+      transform:
+        translateY(18px);
+
+      transition:
+        .3s;
     }
 
-    /* ================= PLAN STATUS ================= */
+    .toast.show {
+      opacity:
+        1;
 
-    .plan-status {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px 9px;
-      border-radius: 999px;
-      font-size: 10px;
-      font-weight: 900;
-      white-space: nowrap;
+      transform:
+        translateY(0);
     }
 
-    .plan-complete {
-      background: var(--success-light);
-      color: var(--success);
+    .toast.success i {
+      color:
+        #72d883;
     }
 
-    .plan-partial {
-      background: #fff7df;
-      color: #8b6905;
+    .toast.error i {
+      color:
+        #ff8585;
     }
 
-    .plan-pending {
-      background: #f3f5f4;
-      color: var(--muted);
-    }
+    @media (max-width: 1050px) {
 
-    /* ================= RESPONSIVE ================= */
-
-    @media (max-width: 1000px) {
-      .smart-grid,
-      .stats-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
+      .sidebar {
+        width: 235px;
       }
 
-      .juz-grid {
-        grid-template-columns: repeat(4, minmax(0,1fr));
+      .main {
+        margin-right: 235px;
       }
 
-      .quran-map {
-        grid-template-columns: repeat(12, minmax(0,1fr));
-      }
-    }
-
-    @media (max-width: 700px) {
-      .page {
-        padding: 15px 10px 35px;
-      }
-
-      .topbar-inner {
-        padding: 10px 12px;
-      }
-
-      .brand span {
-        font-size: 13px;
-      }
-
-      .profile-header {
-        padding: 18px;
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .profile-meta {
-        justify-content: center;
-      }
-
-      .profile-info h1 {
-        font-size: 23px;
-      }
-
-      .smart-grid,
-      .stats-grid,
-      .weekly-grid,
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .evaluation-box {
-        grid-template-columns: auto 1fr;
-      }
-
-      .evaluation-score {
-        grid-column: 1 / -1;
-        text-align: right;
-      }
-
-      .juz-grid {
-        grid-template-columns: repeat(3, minmax(0,1fr));
-      }
-
-      .quran-map {
-        grid-template-columns: repeat(8, minmax(0,1fr));
-        gap: 4px;
-      }
-
-      .page-cell {
-        font-size: 9px;
-      }
-
-      .section {
-        padding: 16px;
+      .filters {
+        grid-template-columns:
+          minmax(160px,1fr)
+          135px
+          140px
+          145px;
       }
     }
 
-    @media (max-width: 430px) {
-      .quran-map {
-        grid-template-columns: repeat(6, minmax(0,1fr));
+    @media (max-width: 850px) {
+
+      .sidebar {
+        transform:
+          translateX(100%);
+
+        transition:
+          transform .3s ease;
+
+        width:
+          285px;
+
+        padding-top:
+          65px;
       }
 
-      .juz-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
+      .sidebar.open {
+        transform:
+          translateX(0);
       }
 
-      .back-btn {
-        padding: 9px 11px;
-        font-size: 11px;
+      .close-sidebar {
+        display:
+          flex;
+
+        align-items:
+          center;
+
+        justify-content:
+          center;
+      }
+
+      .main {
+        margin-right:
+          0;
+      }
+
+      .mobile-menu {
+        display:
+          block;
+      }
+
+      .teacher-email {
+        display:
+          none;
+      }
+
+      .topbar {
+        padding:
+          12px 18px;
+      }
+
+      .content {
+        width:
+          94%;
+      }
+    }
+
+    @media (max-width: 680px) {
+
+      .stats {
+        grid-template-columns:
+          1fr;
+      }
+
+      .filters {
+        grid-template-columns:
+          1fr;
+      }
+
+      .welcome-card {
+        min-height:
+          175px;
+
+        padding:
+          25px 22px;
+      }
+
+      .welcome-card h2 {
+        font-size:
+          24px;
+      }
+
+      .hero-decoration {
+        width:
+          80px;
+
+        height:
+          80px;
+
+        font-size:
+          38px;
+
+        left:
+          12px;
+
+        opacity:
+          .35;
+      }
+
+      .request-content {
+        align-items:
+          stretch;
+      }
+
+      .request-actions {
+        width:
+          100%;
+      }
+
+      .approve-btn,
+      .reject-btn {
+        flex:
+          1;
+      }
+
+      .panel-top {
+        align-items:
+          stretch;
+      }
+
+      .add-btn {
+        width:
+          100%;
+
+        justify-content:
+          center;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .topbar {
+        min-height:
+          68px;
+      }
+
+      .page-heading-icon {
+        width:
+          39px;
+
+        height:
+          39px;
+
+        min-width:
+          39px;
+      }
+
+      .page-title h1 {
+        font-size:
+          16px;
+      }
+
+      .page-title p {
+        display:
+          none;
+      }
+
+      .teacher-avatar {
+        width:
+          38px;
+
+        height:
+          38px;
+      }
+
+      .teacher-name {
+        font-size:
+          10px;
+      }
+
+      .content {
+        width:
+          92%;
+
+        margin-top:
+          19px;
+      }
+
+      .welcome-card {
+        border-radius:
+          18px;
+      }
+
+      .panel {
+        border-radius:
+          17px;
+      }
+
+      .panel-top {
+        padding:
+          18px 17px;
+      }
+
+      .filters {
+        padding:
+          14px 17px;
+      }
+
+      .requests-list {
+        padding:
+          13px;
+      }
+
+      .request-card {
+        padding:
+          14px;
+      }
+
+      .stat-card {
+        min-height:
+          96px;
+
+        padding:
+          17px;
+      }
+
+      .stat-number {
+        font-size:
+          25px;
+      }
+
+      .toast {
+        left:
+          12px;
+
+        right:
+          12px;
+
+        bottom:
+          12px;
+
+        min-width:
+          0;
       }
     }
   </style>
@@ -999,736 +2040,907 @@
 
 <body>
 
-  <div class="topbar">
-    <div class="topbar-inner">
+  <aside
+    class="sidebar"
+    id="sidebar">
 
-      <div class="brand">
-        <img src="logo.png" alt="شعار المركز">
-        <div>
-          مركز حردان طارق القرآني
-          <small>ملف متابعة الطالب</small>
-        </div>
+    <button
+      class="close-sidebar"
+      id="closeSidebar"
+      type="button"
+      aria-label="إغلاق القائمة">
+
+      ×
+
+    </button>
+
+    <a
+      href="index.html"
+      class="sidebar-brand"
+      title="العودة إلى الصفحة الرئيسية">
+
+      <div class="sidebar-logo">
+
+        <img
+          src="logo.png"
+          alt="شعار مركز حردان طارق القرآني">
+
       </div>
 
-      <button class="back-btn" type="button" onclick="goBack()">
-        ← العودة للطلاب
+      <div class="brand-text">
+
+        <strong>
+          مركز حردان طارق القرآني
+        </strong>
+
+        <span>
+          البوابة الإدارية
+        </span>
+
+      </div>
+
+    </a>
+
+    <div class="sidebar-heading">
+      إدارة المركز
+    </div>
+
+    <button
+      class="side-link active"
+      type="button">
+
+      <i class="fa-solid fa-chart-pie"></i>
+
+      لوحة المتابعة
+
+    </button>
+
+    <button
+      class="side-link"
+      id="studentsNav"
+      type="button">
+
+      <i class="fa-solid fa-users"></i>
+
+      الطلاب
+
+    </button>
+
+    <button
+      class="side-link"
+      id="requestsNav"
+      type="button">
+
+      <i class="fa-solid fa-user-clock"></i>
+
+      طلبات الانضمام
+
+    </button>
+
+    <button
+      class="side-link"
+      id="memorizationNav"
+      type="button">
+
+      <i class="fa-solid fa-book-quran"></i>
+
+      متابعة الحفظ
+
+    </button>
+
+    <div class="sidebar-bottom">
+
+      <div class="sidebar-status">
+
+        <span class="online-dot"></span>
+
+        النظام يعمل بشكل طبيعي
+
+      </div>
+
+      <button
+        class="logout-side"
+        id="logoutButton"
+        type="button">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        &nbsp;
+
+        تسجيل الخروج
+
       </button>
 
     </div>
-  </div>
 
-  <main class="page">
+  </aside>
 
-    <div id="loading" class="loading">
-      ⏳ جاري تحميل ملف الطالب...
-    </div>
+  <div class="main">
 
-    <div id="errorBox" class="error-box" style="display:none;"></div>
+    <header class="topbar">
 
-    <div id="app" style="display:none;">
+      <div class="page-heading">
 
-      <!-- ================= PROFILE HEADER ================= -->
+        <button
+          class="mobile-menu"
+          id="mobileMenu"
+          type="button"
+          aria-label="فتح القائمة">
 
-      <section class="profile-header">
+          <i class="fa-solid fa-bars"></i>
 
-        <div class="photo-wrap">
+        </button>
 
-          <img
-            id="profilePhoto"
-            class="student-photo"
-            src="logo.png"
-            alt="صورة الطالب">
+        <div class="page-heading-icon">
 
-          <label class="photo-upload" title="اختيار صورة الطالب">
-            📷
-            <input
-              id="photoInput"
-              type="file"
-              accept="image/*">
-          </label>
+          <i class="fa-solid fa-chart-line"></i>
 
         </div>
 
-        <div class="profile-info">
+        <div class="page-title">
 
-          <h1 id="profileName">-</h1>
+          <h1>
+            لوحة متابعة الطلاب
+          </h1>
 
-          <div class="profile-meta">
-            <span class="meta-badge" id="profileSection">-</span>
-            <span class="meta-badge" id="profileAge">-</span>
-            <span class="meta-badge" id="profileStatus">-</span>
-            <span class="meta-badge gold" id="profileHifz">0 صفحة محفوظة</span>
-          </div>
+          <p>
+            إدارة ومتابعة طلاب المركز بسهولة
+          </p>
 
-        </div>
-
-      </section>
-
-      <!-- ================= SMART OVERVIEW ================= -->
-
-      <section class="smart-overview">
-
-        <div class="overview-title">
-          <h2>📊 الملخص الذكي</h2>
-          <span class="week-label" id="weekRange">الأسبوع الحالي</span>
-        </div>
-
-        <div class="smart-grid">
-
-          <div class="smart-card">
-            <div class="smart-card-label">نسبة إنجاز القرآن</div>
-            <div class="smart-card-value" id="quranPercent">0%</div>
-            <div class="smart-card-sub" id="quranPagesText">0 من 604 صفحة</div>
-          </div>
-
-          <div class="smart-card">
-            <div class="smart-card-label">الصفحات المحفوظة</div>
-            <div class="smart-card-value" id="hifzPages">0</div>
-            <div class="smart-card-sub" id="equivalentPages">المعادلة: 0 صفحة</div>
-          </div>
-
-          <div class="smart-card">
-            <div class="smart-card-label">الأجزاء المكتملة</div>
-            <div class="smart-card-value" id="completedJuz">0 / 30</div>
-            <div class="smart-card-sub">اعتمادًا على الصفحات المحفوظة</div>
-          </div>
-
-          <div class="smart-card">
-            <div class="smart-card-label">صفحات المراجعة</div>
-            <div class="smart-card-value" id="reviewPages">0</div>
-            <div class="smart-card-sub">كل 3 مراجعة = صفحة حفظ</div>
-          </div>
-
-          <div class="smart-card">
-            <div class="smart-card-label">متوسط التسميع</div>
-            <div class="smart-card-value" id="recAverage">0%</div>
-            <div class="smart-card-sub" id="recCount">0 تسميع</div>
-          </div>
-
-          <div class="smart-card">
-            <div class="smart-card-label">أعلى درجة تسميع</div>
-            <div class="smart-card-value" id="highestScore">0%</div>
-            <div class="smart-card-sub">أفضل أداء مسجل</div>
-          </div>
-
-          <div class="smart-card">
-            <div class="smart-card-label">متوسط الاختبارات</div>
-            <div class="smart-card-value" id="testAverage">0%</div>
-            <div class="smart-card-sub" id="testCount">0 اختبار</div>
-          </div>
-
-          <div class="smart-card">
-            <div class="smart-card-label">النقاط الكلية</div>
-            <div class="smart-card-value" id="totalPoints">0</div>
-            <div class="smart-card-sub">حفظ + مراجعة + حضور + اختبارات</div>
-          </div>
-
-        </div>
-
-        <div class="weekly-grid">
-
-          <div class="weekly-card">
-
-            <div class="weekly-head">
-              <strong>📗 إنجاز الحفظ هذا الأسبوع</strong>
-              <span id="weeklyHifzPercent">0%</span>
-            </div>
-
-            <div class="progress-track">
-              <div class="progress-fill" id="weeklyHifzBar"></div>
-            </div>
-
-            <div class="weekly-details">
-              <span id="weeklyHifzValue">0 صفحة</span>
-              <span id="weeklyHifzGoal">المطلوب: 0</span>
-            </div>
-
-          </div>
-
-          <div class="weekly-card">
-
-            <div class="weekly-head">
-              <strong>🔄 إنجاز المراجعة هذا الأسبوع</strong>
-              <span id="weeklyReviewPercent">0%</span>
-            </div>
-
-            <div class="progress-track">
-              <div class="progress-fill gold" id="weeklyReviewBar"></div>
-            </div>
-
-            <div class="weekly-details">
-              <span id="weeklyReviewValue">0 صفحة</span>
-              <span id="weeklyReviewGoal">المطلوب: 0</span>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="evaluation-box">
-
-          <div class="evaluation-icon">🎯</div>
-
-          <div>
-            <div class="evaluation-title">تقييم التزام الطالب هذا الأسبوع</div>
-            <div class="evaluation-value" id="generalEvaluation">
-              بانتظار البيانات
-            </div>
-          </div>
-
-          <div class="evaluation-score">
-            <strong id="weeklyEvaluationScore">0</strong>
-            <span>من 100</span>
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ================= QUICK STATS ================= -->
-
-      <div class="stats-grid">
-
-        <div class="stat">
-          <div class="stat-value" id="attendanceCount">0</div>
-          <div class="stat-label">سجلات الحضور</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-value" id="recitationCount">0</div>
-          <div class="stat-label">التسميعات</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-value" id="testCountStat">0</div>
-          <div class="stat-label">الاختبارات</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-value" id="weeklyPoints">0</div>
-          <div class="stat-label">نقاط هذا الأسبوع</div>
         </div>
 
       </div>
 
-      <!-- ================= BASIC DATA ================= -->
+      <div class="teacher-info">
 
-      <section class="section" data-section="basic">
+        <div class="teacher-details">
 
-        <div class="section-head" onclick="toggleSection(this.parentElement)">
-          <div class="section-title">👤 البيانات الأساسية</div>
-          <div class="section-arrow">⌄</div>
+          <span
+            class="teacher-name"
+            id="teacherName">
+
+            المعلم
+
+          </span>
+
+          <span
+            class="teacher-email"
+            id="teacherEmail">
+
+            بوابة المعلمين
+
+          </span>
+
         </div>
 
-        <div class="section-body">
+        <div class="teacher-avatar">
 
-          <div class="photo-field">
+          <i class="fa-solid fa-user-tie"></i>
 
-            <img id="basicPhotoPreview" src="logo.png" alt="صورة الطالب">
+        </div>
 
-            <div class="photo-field-info">
-              <strong>صورة الطالب</strong>
-              <span>اضغط على اختيار صورة لفتح ملفات جهازك وإدراج الصورة مباشرة.</span>
-            </div>
+      </div>
 
-            <button
-              type="button"
-              class="choose-photo"
-              onclick="document.getElementById('photoInput').click()">
-              اختيار صورة
-            </button>
+    </header>
 
-          </div>
+    <main class="content">
 
-          <div class="form-grid">
+      <section class="welcome-card">
 
-            <div class="field">
-              <label>اسم الطالب</label>
-              <input id="name" type="text">
-            </div>
+        <div class="welcome-content">
 
-            <div class="field">
-              <label>العمر</label>
-              <input id="age" type="number">
-            </div>
+          <div class="welcome-small">
 
-            <div class="field">
-              <label>الشعبة</label>
-              <input id="section" type="text">
-            </div>
-
-            <div class="field">
-              <label>حالة الطالب</label>
-              <select id="status">
-                <option value="active">مستمر</option>
-                <option value="inactive">متوقف</option>
-                <option value="rejected">غير مقبول</option>
-                <option value="expelled">مفصول</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label>الحفظ الحالي - وصف اختياري</label>
-              <input id="memorization" type="text" placeholder="مثال: سورة البقرة">
-            </div>
-
-            <div class="field">
-              <label>رقم ولي الأمر</label>
-              <input id="guardianPhone" type="tel">
-            </div>
-
-            <div class="field">
-              <label>تاريخ الالتحاق</label>
-              <input id="joiningDate" type="date">
-            </div>
-
-            <div class="field">
-              <label>السكن</label>
-              <input id="residence" type="text">
-            </div>
-
-            <div class="field">
-              <label>الحافلة</label>
-              <input id="bus" type="text">
-            </div>
-
-            <div class="field">
-              <label>موقع المنزل</label>
-              <input id="homeLocation" type="text">
-            </div>
+            مركز حردان طارق القرآني
 
           </div>
 
-          <div class="section-save">
-            <button class="save-btn" type="button" onclick="saveStudentSection('basic', this)">
-              💾 حفظ البيانات الأساسية
-            </button>
-            <span class="save-message" id="saveMessageBasic"></span>
+          <h2>
+            أهلاً وسهلاً بك 👋
+          </h2>
+
+          <p>
+            من هنا تقدر تتابع طلاب المركز،
+            تشوف طلبات الانضمام، وتدير بيانات الطلاب
+            بكل سهولة ومن مكان واحد.
+          </p>
+
+        </div>
+
+        <div class="hero-decoration">
+
+          <i class="fa-solid fa-book-quran"></i>
+
+        </div>
+
+      </section>
+
+      <section class="stats">
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+
+            <i class="fa-solid fa-users"></i>
+
+          </div>
+
+          <div>
+
+            <span
+              class="stat-number"
+              id="totalStudents">
+
+              0
+
+            </span>
+
+            <span class="stat-label">
+              إجمالي الطلاب
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+
+            <i class="fa-solid fa-user-check"></i>
+
+          </div>
+
+          <div>
+
+            <span
+              class="stat-number"
+              id="activeStudents">
+
+              0
+
+            </span>
+
+            <span class="stat-label">
+              الطلاب المستمرون
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="stat-card">
+
+          <div class="stat-icon">
+
+            <i class="fa-solid fa-book-quran"></i>
+
+          </div>
+
+          <div>
+
+            <span
+              class="stat-number"
+              id="memorizedStudents">
+
+              0
+
+            </span>
+
+            <span class="stat-label">
+              لديهم متابعة حفظ
+            </span>
+
           </div>
 
         </div>
 
       </section>
 
-      <!-- ================= WEEKLY GOAL ================= -->
+      <section
+        class="panel requests-panel"
+        id="requestsPanel">
 
-      <section class="section" data-section="weeklyGoal">
+        <div class="panel-top">
 
-        <div class="section-head" onclick="toggleSection(this.parentElement)">
-          <div class="section-title">🎯 الهدف الأسبوعي</div>
-          <div class="section-arrow">⌄</div>
-        </div>
+          <div class="panel-title">
 
-        <div class="section-body">
+            <div class="panel-title-icon">
 
-          <div class="form-grid">
+              <i class="fa-solid fa-user-clock"></i>
 
-            <div class="field">
-              <label>هدف الحفظ الجديد - صفحات</label>
-              <input id="goalHifz" type="number" min="0" step="1">
             </div>
 
-            <div class="field">
-              <label>هدف المراجعة - صفحات</label>
-              <input id="goalReview" type="number" min="0" step="1">
+            <div>
+
+              <h2>
+                طلبات الانضمام
+              </h2>
+
+              <span>
+                الطلاب الذين ينتظرون موافقتك
+              </span>
+
             </div>
 
           </div>
 
-          <div class="recitation-info">
-            <b>نظام المعادلة:</b>
-            كل 3 صفحات مراجعة مسجلة = صفحة حفظ جديدة مكافئة.
-          </div>
+          <span
+            class="pending-count"
+            id="pendingCount">
 
-          <div class="section-save">
-            <button class="save-btn" type="button" onclick="saveStudentSection('weeklyGoal', this)">
-              💾 حفظ الهدف
-            </button>
-            <span class="save-message" id="saveMessageWeeklyGoal"></span>
-          </div>
+            0 طلب
+
+          </span>
+
+        </div>
+
+        <div
+          class="requests-list"
+          id="requestsList">
 
         </div>
 
       </section>
 
-      <!-- ================= ATTENDANCE ================= -->
+      <section
+        class="panel"
+        id="studentsPanel">
 
-      <section class="section" data-section="attendance">
+        <div class="panel-top">
 
-        <div class="section-head" onclick="toggleSection(this.parentElement)">
-          <div class="section-title">📅 الحضور والغياب</div>
-          <div class="section-arrow">⌄</div>
-        </div>
+          <div class="panel-title">
 
-        <div class="section-body">
+            <div class="panel-title-icon">
 
-          <button
-            type="button"
-            class="add-btn"
-            onclick="addAttendanceRow()">
-            ＋ إضافة حضور
-          </button>
+              <i class="fa-solid fa-users"></i>
 
-          <div class="table-wrap">
+            </div>
 
-            <table>
+            <div>
 
-              <thead>
-                <tr>
-                  <th>التاريخ</th>
-                  <th>الحالة</th>
-                  <th>ملاحظة</th>
-                  <th>حذف</th>
-                </tr>
-              </thead>
+              <h2>
+                قائمة الطلاب
+              </h2>
 
-              <tbody id="attendanceBody"></tbody>
+              <span>
+                عرض وإدارة جميع الطلاب
+              </span>
 
-            </table>
-
-          </div>
-
-          <div class="section-save">
-            <button class="save-btn" type="button" onclick="saveStudentSection('attendance', this)">
-              💾 حفظ الحضور
-            </button>
-            <span class="save-message" id="saveMessageAttendance"></span>
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ================= WEEKLY PLAN ================= -->
-
-      <section class="section" data-section="weeklyPlan">
-
-        <div class="section-head" onclick="toggleSection(this.parentElement)">
-          <div class="section-title">🗓️ الخطة الأسبوعية</div>
-          <div class="section-arrow">⌄</div>
-        </div>
-
-        <div class="section-body">
-
-          <div class="recitation-info">
-            حالة الخطة تتعبّى تلقائيًا من سجلات التسميع والحفظ والمراجعة.
-            إذا وصل الطالب للمطلوب تظهر <b>مكتملة</b>، وإذا أنجز جزءًا منه تظهر <b>قيد الإنجاز</b>.
-          </div>
-
-          <button
-            type="button"
-            class="add-btn"
-            onclick="addPlanRow()">
-            ＋ إضافة يوم للخطة
-          </button>
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>اليوم</th>
-                  <th>التاريخ</th>
-                  <th>حفظ جديد</th>
-                  <th>مراجعة</th>
-                  <th>ملاحظة</th>
-                  <th>الحالة</th>
-                  <th>حذف</th>
-                </tr>
-              </thead>
-
-              <tbody id="planBody"></tbody>
-
-            </table>
-
-          </div>
-
-          <div class="section-save">
-            <button class="save-btn" type="button" onclick="saveStudentSection('weeklyPlan', this)">
-              💾 حفظ الخطة
-            </button>
-            <span class="save-message" id="saveMessageWeeklyPlan"></span>
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ================= TESTS ================= -->
-
-      <section class="section" data-section="tests">
-
-        <div class="section-head" onclick="toggleSection(this.parentElement)">
-          <div class="section-title">📝 الاختبارات والنقاط</div>
-          <div class="section-arrow">⌄</div>
-        </div>
-
-        <div class="section-body">
-
-          <div class="recitation-info">
-            <b>نقاط الاختبارات:</b>
-            97–100 = 12 نقطة، 90–96 = 8 نقاط، 80–89 = 4 نقاط، وما دون ذلك = 0.
-          </div>
-
-          <button
-            type="button"
-            class="add-btn"
-            onclick="addTestRow()">
-            ＋ إضافة اختبار
-          </button>
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>التاريخ</th>
-                  <th>اسم الاختبار</th>
-                  <th>العلامة</th>
-                  <th>من</th>
-                  <th>النسبة</th>
-                  <th>النقاط</th>
-                  <th>ملاحظة</th>
-                  <th>حذف</th>
-                </tr>
-              </thead>
-
-              <tbody id="testsBody"></tbody>
-
-            </table>
-
-          </div>
-
-          <div class="section-save">
-            <button class="save-btn" type="button" onclick="saveStudentSection('tests', this)">
-              💾 حفظ الاختبارات
-            </button>
-            <span class="save-message" id="saveMessageTests"></span>
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ================= RECITATIONS ================= -->
-
-      <section class="section" data-section="recitations">
-
-        <div class="section-head" onclick="toggleSection(this.parentElement)">
-          <div class="section-title">📖 نظام التسميع</div>
-          <div class="section-arrow">⌄</div>
-        </div>
-
-        <div class="section-body">
-
-          <div class="recitation-info">
-
-            <b>تقدير التسميع تلقائيًا:</b><br>
-
-            100–97 → ممتاز (متقن)<br>
-            96–95 → جيد جدًا (أخطاء قليلة)<br>
-            94–92 → جيد (أخطاء متعددة)<br>
-            91–90 → مقبول (يحتاج تمكين)<br>
-            أقل من 90 → مراجعة الصفحة
-
-            <br><br>
-
-            <b>النقاط:</b>
-            الحفظ الجديد أقوى من المراجعة لأن الهدف هو التقدم مع المحافظة على المحفوظ.
+            </div>
 
           </div>
 
           <button
-            type="button"
             class="add-btn"
-            onclick="addRecitationRow()">
-            ＋ إضافة تسميع
+            id="openModal"
+            type="button">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            إضافة طالب جديد
+
           </button>
 
-          <div class="table-wrap">
+        </div>
 
-            <table>
+        <div class="filters">
 
-              <thead>
-                <tr>
-                  <th>التاريخ</th>
-                  <th>النوع</th>
-                  <th>من صفحة</th>
-                  <th>إلى صفحة</th>
-                  <th>العلامة</th>
-                  <th>التقدير</th>
-                  <th>النقاط</th>
-                  <th>ملاحظة</th>
-                  <th>حذف</th>
-                </tr>
-              </thead>
+          <div class="search-box">
 
-              <tbody id="recitationsBody"></tbody>
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-            </table>
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="ابحث باسم الطالب...">
 
           </div>
 
-          <div class="section-save">
-            <button class="save-btn" type="button" onclick="saveStudentSection('recitations', this)">
-              💾 حفظ التسميع
-            </button>
-            <span class="save-message" id="saveMessageRecitations"></span>
+          <select
+            id="sectionFilter"
+            class="filter-select">
+
+            <option value="">
+              جميع الشعب
+            </option>
+
+            <option value="شعبة الحفاظ">
+              شعبة الحفاظ
+            </option>
+
+            <option value="شعبة تجويد">
+              شعبة تجويد
+            </option>
+
+            <option value="شعبة إجازة">
+              شعبة إجازة
+            </option>
+
+            <option value="شعبة فرسان">
+              شعبة فرسان
+            </option>
+
+          </select>
+
+          <select
+            id="statusFilter"
+            class="filter-select">
+
+            <option value="accepted">
+              الطلاب المقبولون
+            </option>
+
+            <option value="active">
+              الطلاب المستمرون
+            </option>
+
+            <option value="inactive">
+              الطلاب المتوقفون
+            </option>
+
+            <option value="rejected">
+              الطلاب غير المقبولين
+            </option>
+
+            <option value="expelled">
+              الطلاب المفصولون
+            </option>
+
+            <option value="all">
+              جميع الطلاب
+            </option>
+
+          </select>
+
+          <select
+            id="sortFilter"
+            class="filter-select">
+
+            <option value="alphabetical">
+              ترتيب: أبجدي
+            </option>
+
+            <option value="points">
+              ترتيب: الأكثر نقاطًا
+            </option>
+
+            <option value="section">
+              ترتيب: حسب الصف / الشعبة
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  الطالب
+                </th>
+
+                <th>
+                  الشعبة
+                </th>
+
+                <th>
+                  مستوى الحفظ
+                </th>
+
+                <th>
+                  الحالة
+                </th>
+
+                <th>
+                  التقييم
+                </th>
+
+                <th>
+                  النقاط الكلية
+                </th>
+
+                <th>
+                  الإجراءات
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody id="studentsTable">
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <div
+          id="emptyMessage"
+          class="empty">
+
+          <div class="empty-icon">
+
+            <i class="fa-solid fa-users-slash"></i>
+
           </div>
+
+          <strong>
+            لا يوجد طلاب
+          </strong>
+
+          <p>
+            لم يتم العثور على طلاب مطابقين للفلاتر الحالية.
+          </p>
 
         </div>
 
       </section>
 
-      <!-- ================= QURAN MAP ================= -->
+    </main>
 
-      <section class="section" data-section="quranMap">
+  </div>
 
-        <div class="section-head" onclick="toggleSection(this.parentElement)">
-          <div class="section-title">🕌 خريطة القرآن — 604 صفحة</div>
-          <div class="section-arrow">⌄</div>
-        </div>
+  <div
+    class="modal"
+    id="studentModal">
 
-        <div class="section-body">
+    <div class="modal-box">
 
-          <div class="map-intro">
-            هذه الخريطة مرتبطة مباشرة بسجلات التسميع.
-            عندما تسجل صفحة في <b>الحفظ الجديد</b> تتلون الصفحة تلقائيًا،
-            وعندما تسجلها في <b>المراجعة</b> يظهر لون المراجعة.
-            إذا كانت الصفحة محفوظة ومراجعة معًا يظهر لون ثالث.
-          </div>
+      <div class="modal-header">
 
-          <div class="legend">
+        <div>
 
-            <div class="legend-item">
-              <span class="legend-dot dot-empty"></span>
-              غير مسجلة
-            </div>
+          <h2 id="modalTitle">
+            إضافة طالب جديد
+          </h2>
 
-            <div class="legend-item">
-              <span class="legend-dot dot-hifz"></span>
-              محفوظة
-            </div>
-
-            <div class="legend-item">
-              <span class="legend-dot dot-review"></span>
-              مراجعة
-            </div>
-
-            <div class="legend-item">
-              <span class="legend-dot dot-both"></span>
-              محفوظة + مراجعة
-            </div>
-
-          </div>
-
-          <h3 style="margin-bottom:12px;color:var(--green-dark);">
-            📚 تقدم الأجزاء
-          </h3>
-
-          <div class="juz-grid" id="juzGrid"></div>
-
-          <h3 style="margin-bottom:12px;color:var(--green-dark);">
-            📄 صفحات القرآن
-          </h3>
-
-          <div class="quran-map" id="quranMap"></div>
+          <p>
+            أدخل بيانات الطالب بشكل صحيح
+          </p>
 
         </div>
 
-      </section>
+        <button
+          class="close-modal"
+          id="closeModal"
+          type="button">
 
-      <!-- ================= NOTES ================= -->
+          <i class="fa-solid fa-xmark"></i>
 
-      <section class="section" data-section="notes">
+        </button>
 
-        <div class="section-head" onclick="toggleSection(this.parentElement)">
-          <div class="section-title">🗒️ الملاحظات</div>
-          <div class="section-arrow">⌄</div>
+      </div>
+
+      <form
+        id="studentForm"
+        class="form">
+
+        <div class="form-group">
+
+          <label for="studentName">
+            اسم الطالب
+          </label>
+
+          <input
+            type="text"
+            id="studentName"
+            required
+            placeholder="مثال: أحمد محمد">
+
         </div>
 
-        <div class="section-body">
+        <div class="form-group">
 
-          <div class="field">
-            <label>ملاحظات المعلم</label>
-            <textarea
-              id="notes"
-              placeholder="اكتب هنا أي ملاحظات مهمة عن الطالب..."></textarea>
-          </div>
+          <label for="studentSection">
+            الشعبة
+          </label>
 
-          <div class="section-save">
-            <button class="save-btn" type="button" onclick="saveStudentSection('notes', this)">
-              💾 حفظ الملاحظات
-            </button>
-            <span class="save-message" id="saveMessageNotes"></span>
-          </div>
+          <select
+            id="studentSection"
+            required>
+
+            <option value="">
+              اختر الشعبة
+            </option>
+
+            <option value="شعبة الحفاظ">
+              شعبة الحفاظ
+            </option>
+
+            <option value="شعبة تجويد">
+              شعبة تجويد
+            </option>
+
+            <option value="شعبة إجازة">
+              شعبة إجازة
+            </option>
+
+            <option value="شعبة فرسان">
+              شعبة فرسان
+            </option>
+
+          </select>
 
         </div>
 
-      </section>
+        <div class="form-group">
+
+          <label for="memorization">
+            مستوى الحفظ
+          </label>
+
+          <input
+            type="text"
+            id="memorization"
+            placeholder="مثال: سورة البقرة">
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="studentStatus">
+            الحالة
+          </label>
+
+          <select
+            id="studentStatus">
+
+            <option value="active">
+              مستمر
+            </option>
+
+            <option value="inactive">
+              متوقف
+            </option>
+
+            <option value="rejected">
+              غير مقبول
+            </option>
+
+            <option value="expelled">
+              مفصول
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="modal-buttons">
+
+          <button
+            type="submit"
+            class="save-btn"
+            id="saveButton">
+
+            <i class="fa-solid fa-check"></i>
+
+            حفظ الطالب
+
+          </button>
+
+          <button
+            type="button"
+            class="cancel-btn"
+            id="cancelButton">
+
+            إلغاء
+
+          </button>
+
+        </div>
+
+        <div id="message"></div>
+
+      </form>
 
     </div>
 
-  </main>
+  </div>
+
+  <div
+    class="toast"
+    id="toast">
+
+    <i id="toastIcon"></i>
+
+    <span id="toastText"></span>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
-    /* =========================================================
-       SUPABASE
-    ========================================================= */
 
     const SUPABASE_URL =
       'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-    const SUPABASE_KEY =
+    const SUPABASE_PUBLISHABLE_KEY =
       'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
     const supabaseClient =
       window.supabase.createClient(
         SUPABASE_URL,
-        SUPABASE_KEY
+        SUPABASE_PUBLISHABLE_KEY
       );
 
+    const tableBody =
+      document.getElementById(
+        'studentsTable'
+      );
 
-    /* =========================================================
-       VARIABLES
-    ========================================================= */
+    const emptyMessage =
+      document.getElementById(
+        'emptyMessage'
+      );
 
-    const params =
-      new URLSearchParams(window.location.search);
+    const totalStudents =
+      document.getElementById(
+        'totalStudents'
+      );
 
-    const studentId =
-      params.get('id');
+    const activeStudents =
+      document.getElementById(
+        'activeStudents'
+      );
 
-    let student = null;
-    let profile = null;
+    const memorizedStudents =
+      document.getElementById(
+        'memorizedStudents'
+      );
 
+    const searchInput =
+      document.getElementById(
+        'searchInput'
+      );
 
-    const DEFAULT_PROFILE = {
-      photoUrl: '',
-      guardianPhone: '',
-      joiningDate: '',
-      residence: '',
-      bus: '',
-      homeLocation: '',
-      weeklyGoal: {
-        hifz: 0,
-        review: 0
-      },
-      attendance: [],
-      weeklyPlan: [],
-      tests: [],
-      recitations: [],
-      notes: ''
-    };
+    const sectionFilter =
+      document.getElementById(
+        'sectionFilter'
+      );
 
+    const statusFilter =
+      document.getElementById(
+        'statusFilter'
+      );
 
-    /* =========================================================
-       HELPERS
-    ========================================================= */
+    const sortFilter =
+      document.getElementById(
+        'sortFilter'
+      );
 
-    function number(value) {
+    const modal =
+      document.getElementById(
+        'studentModal'
+      );
+
+    const openModal =
+      document.getElementById(
+        'openModal'
+      );
+
+    const closeModal =
+      document.getElementById(
+        'closeModal'
+      );
+
+    const cancelButton =
+      document.getElementById(
+        'cancelButton'
+      );
+
+    const studentForm =
+      document.getElementById(
+        'studentForm'
+      );
+
+    const message =
+      document.getElementById(
+        'message'
+      );
+
+    const modalTitle =
+      document.getElementById(
+        'modalTitle'
+      );
+
+    const saveButton =
+      document.getElementById(
+        'saveButton'
+      );
+
+    const toast =
+      document.getElementById(
+        'toast'
+      );
+
+    const toastText =
+      document.getElementById(
+        'toastText'
+      );
+
+    const toastIcon =
+      document.getElementById(
+        'toastIcon'
+      );
+
+    const requestsList =
+      document.getElementById(
+        'requestsList'
+      );
+
+    const pendingCount =
+      document.getElementById(
+        'pendingCount'
+      );
+
+    let students = [];
+
+    let editingStudentId = null;
+
+    let profileMap = {};
+
+    function showToast(
+      text,
+      type = 'success'
+    ) {
+
+      toastText.textContent =
+        text;
+
+      toast.className =
+        'toast show ' + type;
+
+      toastIcon.className =
+        type === 'success'
+          ? 'fa-solid fa-circle-check'
+          : 'fa-solid fa-circle-exclamation';
+
+      setTimeout(() => {
+
+        toast.classList.remove(
+          'show'
+        );
+
+      }, 3000);
+    }
+
+    function checkUser() {
+
+      const accessGranted =
+        localStorage.getItem(
+          'teacherAccess'
+        ) === 'granted';
+
+      if (!accessGranted) {
+
+        window.location.href =
+          'teacher-login.html';
+
+        return false;
+      }
+
+      document.getElementById(
+        'teacherName'
+      ).textContent =
+        'المعلم';
+
+      document.getElementById(
+        'teacherEmail'
+      ).textContent =
+        'بوابة المعلمين';
+
+      return true;
+    }
+
+    function toNumber(value) {
 
       const n =
         Number(
@@ -1742,330 +2954,7 @@
         : 0;
     }
 
-
-    function escapeHtml(value) {
-
-      return String(value ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-
-    }
-
-
-    function localDateString(date = new Date()) {
-
-      const y =
-        date.getFullYear();
-
-      const m =
-        String(date.getMonth() + 1)
-          .padStart(2, '0');
-
-      const d =
-        String(date.getDate())
-          .padStart(2, '0');
-
-      return `${y}-${m}-${d}`;
-
-    }
-
-
-    function formatDateArabic(value) {
-
-      if (!value) return '-';
-
-      const date =
-        new Date(`${value}T00:00:00`);
-
-      if (Number.isNaN(date.getTime())) {
-        return value;
-      }
-
-      return date.toLocaleDateString(
-        'ar-JO',
-        {
-          day: 'numeric',
-          month: 'short',
-          year: 'numeric'
-        }
-      );
-
-    }
-
-
-    function mergeProfile(data) {
-
-      const source =
-        data || {};
-
-      return {
-        ...DEFAULT_PROFILE,
-        ...source,
-
-        weeklyGoal: {
-          ...DEFAULT_PROFILE.weeklyGoal,
-          ...(source.weeklyGoal || {})
-        },
-
-        attendance:
-          Array.isArray(source.attendance)
-            ? source.attendance
-            : [],
-
-        weeklyPlan:
-          Array.isArray(source.weeklyPlan)
-            ? source.weeklyPlan
-            : [],
-
-        tests:
-          Array.isArray(source.tests)
-            ? source.tests
-            : [],
-
-        recitations:
-          Array.isArray(source.recitations)
-            ? source.recitations
-            : [],
-
-        notes:
-          source.notes || ''
-      };
-
-    }
-
-
-    /* =========================================================
-       WEEK
-       السبت → الجمعة
-    ========================================================= */
-
-    function getCurrentWeek() {
-
-      const today =
-        new Date();
-
-      today.setHours(0,0,0,0);
-
-      const day =
-        today.getDay();
-
-      const daysFromSaturday =
-        (day + 1) % 7;
-
-      const start =
-        new Date(today);
-
-      start.setDate(
-        today.getDate() -
-        daysFromSaturday
-      );
-
-      const end =
-        new Date(start);
-
-      end.setDate(
-        start.getDate() + 6
-      );
-
-      return {
-        start,
-        end,
-        startString:
-          localDateString(start),
-        endString:
-          localDateString(end)
-      };
-
-    }
-
-
-    function isDateInCurrentWeek(value) {
-
-      if (!value) return false;
-
-      const week =
-        getCurrentWeek();
-
-      return (
-        value >= week.startString &&
-        value <= week.endString
-      );
-
-    }
-
-
-    /* =========================================================
-       PAGE RANGE
-    ========================================================= */
-
-    function getRangePages(item) {
-
-      let from =
-        Math.floor(
-          number(item?.from)
-        );
-
-      let to =
-        Math.floor(
-          number(item?.to)
-        );
-
-      if (!from || !to) {
-        return [];
-      }
-
-      from =
-        Math.max(1, Math.min(604, from));
-
-      to =
-        Math.max(1, Math.min(604, to));
-
-      if (from > to) {
-        [from, to] =
-          [to, from];
-      }
-
-      const pages = [];
-
-      for (
-        let page = from;
-        page <= to;
-        page++
-      ) {
-        pages.push(page);
-      }
-
-      return pages;
-
-    }
-
-
-    /* =========================================================
-       RECITATION GRADE
-    ========================================================= */
-
-    function getRecitationGrade(score) {
-
-      const value =
-        number(score);
-
-      if (value >= 97) {
-        return {
-          title: 'ممتاز',
-          description: 'متقن',
-          className: 'grade-excellent',
-          pointsHifz: 6,
-          pointsReview: 3
-        };
-      }
-
-      if (value >= 95) {
-        return {
-          title: 'جيد جدًا',
-          description: 'أخطاء قليلة',
-          className: 'grade-verygood',
-          pointsHifz: 5,
-          pointsReview: 2.5
-        };
-      }
-
-      if (value >= 92) {
-        return {
-          title: 'جيد',
-          description: 'أخطاء متعددة',
-          className: 'grade-good',
-          pointsHifz: 4,
-          pointsReview: 2
-        };
-      }
-
-      if (value >= 90) {
-        return {
-          title: 'مقبول',
-          description: 'يحتاج تمكين',
-          className: 'grade-acceptable',
-          pointsHifz: 2,
-          pointsReview: 1
-        };
-      }
-
-      return {
-        title: 'مراجعة الصفحة',
-        description: 'يحتاج إعادة مراجعة',
-        className: 'grade-review',
-        pointsHifz: 0,
-        pointsReview: 0
-      };
-
-    }
-
-
-    function recitationPoints(item) {
-
-      const grade =
-        getRecitationGrade(
-          item?.score
-        );
-
-      const type =
-        String(item?.type || '')
-          .toLowerCase();
-
-      const isReview =
-        type === 'review' ||
-        type === 'مراجعة';
-
-      return isReview
-        ? grade.pointsReview
-        : grade.pointsHifz;
-
-    }
-
-
-    /* =========================================================
-       TEST POINTS
-    ========================================================= */
-
-    function testPoints(item) {
-
-      const score =
-        number(item?.score);
-
-      const outOf =
-        number(item?.outOf);
-
-      if (!score || !outOf) {
-        return 0;
-      }
-
-      const percentage =
-        (score / outOf) * 100;
-
-      if (percentage >= 97) {
-        return 12;
-      }
-
-      if (percentage >= 90) {
-        return 8;
-      }
-
-      if (percentage >= 80) {
-        return 4;
-      }
-
-      return 0;
-
-    }
-
-
-    /* =========================================================
-       ATTENDANCE POINTS
-    ========================================================= */
-
-    function attendancePoints(status) {
+    function attendancePoint(status) {
 
       const value =
         String(status || '')
@@ -2073,2330 +2962,410 @@
           .toLowerCase();
 
       if (
-        value === 'present' ||
-        value === 'حاضر'
+        value === 'حاضر' ||
+        value === 'present'
       ) {
         return 2;
       }
 
       if (
-        value === 'late' ||
-        value === 'متأخر'
+        value === 'متأخر' ||
+        value === 'late'
       ) {
         return 1;
       }
 
       if (
-        value === 'excused' ||
-        value === 'معتذر'
+        value === 'معتذر' ||
+        value === 'excused'
       ) {
         return .5;
       }
 
       return 0;
-
     }
 
+    function recitationPoint(item) {
 
-    /* =========================================================
-       CURRENT DATA
-    ========================================================= */
+      const raw =
+        item?.grade ??
+        item?.score ??
+        item?.mark ??
+        item?.rating ??
+        item?.status ??
+        item?.result ??
+        '';
 
-    function getLiveRecitations() {
+      const type =
+        String(
+          item?.type || ''
+        )
+          .trim()
+          .toLowerCase();
 
-      const body =
-        document.getElementById(
-          'recitationsBody'
-        );
+      const isReview =
+        type === 'review' ||
+        type === 'مراجعة';
 
-      if (!body) {
-        return profile?.recitations || [];
-      }
+      const numeric =
+        toNumber(raw);
 
-      return collectRecitations();
+      if (numeric > 0) {
 
-    }
-
-
-    function getLiveAttendance() {
-
-      const body =
-        document.getElementById(
-          'attendanceBody'
-        );
-
-      if (!body) {
-        return profile?.attendance || [];
-      }
-
-      return collectAttendance();
-
-    }
-
-
-    function getLiveTests() {
-
-      const body =
-        document.getElementById(
-          'testsBody'
-        );
-
-      if (!body) {
-        return profile?.tests || [];
-      }
-
-      return collectTests();
-
-    }
-
-
-    /* =========================================================
-       ANALYTICS
-    ========================================================= */
-
-    function calculateAnalytics() {
-
-      const recitations =
-        getLiveRecitations();
-
-      const attendance =
-        getLiveAttendance();
-
-      const tests =
-        getLiveTests();
-
-      const hifzPages =
-        new Set();
-
-      const reviewPages =
-        new Set();
-
-      const weeklyHifzPages =
-        new Set();
-
-      const weeklyReviewPages =
-        new Set();
-
-      const recitationScores =
-        [];
-
-      const weeklyRecitationScores =
-        [];
-
-      recitations.forEach(item => {
-
-        const pages =
-          getRangePages(item);
-
-        const type =
-          String(item?.type || '')
-            .toLowerCase();
-
-        const isReview =
-          type === 'review' ||
-          type === 'مراجعة';
-
-        pages.forEach(page => {
-
-          if (isReview) {
-            reviewPages.add(page);
-          } else {
-            hifzPages.add(page);
-          }
-
-        });
-
-        if (
-          item?.date &&
-          isDateInCurrentWeek(item.date)
-        ) {
-
-          pages.forEach(page => {
-
-            if (isReview) {
-              weeklyReviewPages.add(page);
-            } else {
-              weeklyHifzPages.add(page);
-            }
-
-          });
-
+        if (numeric >= 97) {
+          return isReview ? 3 : 6;
         }
 
-        const score =
-          number(item?.score);
-
-        if (score > 0) {
-
-          recitationScores.push(score);
-
-          if (
-            item?.date &&
-            isDateInCurrentWeek(item.date)
-          ) {
-            weeklyRecitationScores.push(score);
-          }
-
+        if (numeric >= 95) {
+          return isReview ? 2.5 : 5;
         }
 
-      });
-
-
-      const testScores =
-        [];
-
-      tests.forEach(item => {
-
-        const score =
-          number(item?.score);
-
-        const outOf =
-          number(item?.outOf);
-
-        if (
-          score >= 0 &&
-          outOf > 0
-        ) {
-
-          testScores.push(
-            Math.max(
-              0,
-              Math.min(
-                100,
-                (score / outOf) * 100
-              )
-            )
-          );
-
+        if (numeric >= 92) {
+          return isReview ? 2 : 4;
         }
 
-      });
-
-
-      /* ===== الأجزاء ===== */
-
-      const juzRanges = [
-
-        [1,21],
-        [22,41],
-        [42,61],
-        [62,81],
-        [82,101],
-        [102,121],
-        [122,141],
-        [142,161],
-        [162,181],
-        [182,201],
-        [202,221],
-        [222,241],
-        [242,261],
-        [262,281],
-        [282,301],
-        [302,321],
-        [322,341],
-        [342,361],
-        [362,381],
-        [382,401],
-        [402,421],
-        [422,441],
-        [442,461],
-        [462,481],
-        [482,501],
-        [502,521],
-        [522,541],
-        [542,561],
-        [562,581],
-        [582,604]
-
-      ];
-
-
-      let completedJuz = 0;
-
-      const juzProgress =
-        juzRanges.map(
-          ([from, to]) => {
-
-            const total =
-              to - from + 1;
-
-            let completed = 0;
-
-            for (
-              let page = from;
-              page <= to;
-              page++
-            ) {
-
-              if (
-                hifzPages.has(page)
-              ) {
-                completed++;
-              }
-
-            }
-
-            if (
-              completed === total
-            ) {
-              completedJuz++;
-            }
-
-            return {
-              from,
-              to,
-              total,
-              completed,
-              percent:
-                total
-                  ? (completed / total) * 100
-                  : 0
-            };
-
-          }
-        );
-
-
-      /* ===== المتوسطات ===== */
-
-      const average =
-        valuesAverage(
-          recitationScores
-        );
-
-      const highest =
-        recitationScores.length
-          ? Math.max(
-              ...recitationScores
-            )
-          : 0;
-
-      const testAverage =
-        valuesAverage(
-          testScores
-        );
-
-
-      /* ===== الحضور ===== */
-
-      const attendanceRelevant =
-        attendance.filter(item => {
-
-          const status =
-            String(
-              item?.status ||
-              ''
-            ).toLowerCase();
-
-          return (
-            status !== 'excused' &&
-            status !== 'معتذر'
-          );
-
-        });
-
-      const attendancePresent =
-        attendanceRelevant.filter(
-          item => {
-
-            const status =
-              String(
-                item?.status ||
-                ''
-              ).toLowerCase();
-
-            return (
-              status === 'present' ||
-              status === 'حاضر' ||
-              status === 'late' ||
-              status === 'متأخر'
-            );
-
-          }
-        ).length;
-
-      const attendanceRate =
-        attendanceRelevant.length
-          ? (
-              attendancePresent /
-              attendanceRelevant.length
-            ) * 100
-          : 0;
-
-
-      /* ===== نقاط ===== */
-
-      const allRecitationPoints =
-        recitations.reduce(
-          (
-            total,
-            item
-          ) =>
-            total +
-            recitationPoints(item),
-          0
-        );
-
-      const allTestPoints =
-        tests.reduce(
-          (
-            total,
-            item
-          ) =>
-            total +
-            testPoints(item),
-          0
-        );
-
-      const allAttendancePoints =
-        attendance.reduce(
-          (
-            total,
-            item
-          ) =>
-            total +
-            attendancePoints(
-              item?.status
-            ),
-          0
-        );
-
-
-      const weekRecitations =
-        recitations.filter(
-          item =>
-            item?.date &&
-            isDateInCurrentWeek(
-              item.date
-            )
-        );
-
-      const weekAttendance =
-        attendance.filter(
-          item =>
-            item?.date &&
-            isDateInCurrentWeek(
-              item.date
-            )
-        );
-
-      const weekTests =
-        tests.filter(
-          item =>
-            item?.date &&
-            isDateInCurrentWeek(
-              item.date
-            )
-        );
-
-
-      const weeklyPoints =
-        weekRecitations.reduce(
-          (total,item) =>
-            total +
-            recitationPoints(item),
-          0
-        ) +
-
-        weekAttendance.reduce(
-          (total,item) =>
-            total +
-            attendancePoints(
-              item?.status
-            ),
-          0
-        ) +
-
-        weekTests.reduce(
-          (total,item) =>
-            total +
-            testPoints(item),
-          0
-        );
-
-
-      const totalPoints =
-        allRecitationPoints +
-        allAttendancePoints +
-        allTestPoints;
-
-
-      /* ===== الأهداف ===== */
-
-      const goalHifz =
-        Math.max(
-          0,
-          number(
-            profile?.weeklyGoal?.hifz
-          )
-        );
-
-      const goalReview =
-        Math.max(
-          0,
-          number(
-            profile?.weeklyGoal?.review
-          )
-        );
-
-
-      const weeklyHifz =
-        weeklyHifzPages.size;
-
-      const weeklyReview =
-        weeklyReviewPages.size;
-
-
-      const weeklyHifzPercent =
-        goalHifz > 0
-          ? Math.min(
-              100,
-              (weeklyHifz / goalHifz) * 100
-            )
-          : 0;
-
-      const weeklyReviewPercent =
-        goalReview > 0
-          ? Math.min(
-              100,
-              (weeklyReview / goalReview) * 100
-            )
-          : 0;
-
-
-      /* ===== المعادلة ===== */
-
-      const equivalentPages =
-        hifzPages.size +
-        (reviewPages.size / 3);
-
-
-      /* ===== التقييم الأسبوعي ===== */
-
-      const weekAttendanceRelevant =
-        weekAttendance.filter(
-          item => {
-
-            const status =
-              String(
-                item?.status || ''
-              ).toLowerCase();
-
-            return (
-              status !== 'excused' &&
-              status !== 'معتذر'
-            );
-
-          }
-        );
-
-      const weekPresent =
-        weekAttendanceRelevant.filter(
-          item => {
-
-            const status =
-              String(
-                item?.status || ''
-              ).toLowerCase();
-
-            return (
-              status === 'present' ||
-              status === 'حاضر' ||
-              status === 'late' ||
-              status === 'متأخر'
-            );
-
-          }
-        ).length;
-
-      const weeklyAttendanceRate =
-        weekAttendanceRelevant.length
-          ? (
-              weekPresent /
-              weekAttendanceRelevant.length
-            ) * 100
-          : 0;
-
-
-      const weeklyTestScores =
-        weekTests
-          .map(item => {
-
-            const score =
-              number(item?.score);
-
-            const outOf =
-              number(item?.outOf);
-
-            return outOf > 0
-              ? (
-                  score /
-                  outOf
-                ) * 100
-              : null;
-
-          })
-          .filter(
-            value =>
-              value !== null
-          );
-
-
-      const weeklyTestRate =
-        valuesAverage(
-          weeklyTestScores
-        );
-
-
-      const weeklyRecitationRate =
-        valuesAverage(
-          weeklyRecitationScores
-        );
-
-
-      /*
-        التقييم الأسبوعي يعتمد على:
-        25% الحضور
-        30% الحفظ الجديد مقابل المطلوب
-        25% المراجعة مقابل المطلوب
-        20% الاختبارات والتسميع
-      */
-
-      const performanceParts = [];
-
-      if (
-        weekAttendanceRelevant.length
-      ) {
-        performanceParts.push({
-          value:
-            weeklyAttendanceRate,
-          weight: .25
-        });
-      }
-
-      if (goalHifz > 0) {
-        performanceParts.push({
-          value:
-            weeklyHifzPercent,
-          weight: .30
-        });
-      }
-
-      if (goalReview > 0) {
-        performanceParts.push({
-          value:
-            weeklyReviewPercent,
-          weight: .25
-        });
-      }
-
-      const learningScoreParts = [];
-
-      if (
-        weeklyRecitationRate > 0
-      ) {
-        learningScoreParts.push(
-          weeklyRecitationRate
-        );
-      }
-
-      if (
-        weeklyTestRate > 0
-      ) {
-        learningScoreParts.push(
-          weeklyTestRate
-        );
-      }
-
-      if (
-        learningScoreParts.length
-      ) {
-
-        performanceParts.push({
-          value:
-            valuesAverage(
-              learningScoreParts
-            ),
-          weight: .20
-        });
-
-      }
-
-
-      let weeklyEvaluation =
-        0;
-
-      if (
-        performanceParts.length
-      ) {
-
-        const totalWeight =
-          performanceParts.reduce(
-            (sum, item) =>
-              sum + item.weight,
-            0
-          );
-
-        const weighted =
-          performanceParts.reduce(
-            (sum, item) =>
-              sum +
-              (
-                item.value *
-                item.weight
-              ),
-            0
-          );
-
-        weeklyEvaluation =
-          weighted /
-          totalWeight;
-
-      }
-
-
-      let evaluationText =
-        'بانتظار البيانات';
-
-      if (
-        performanceParts.length
-      ) {
-
-        if (
-          weeklyEvaluation >= 90
-        ) {
-          evaluationText =
-            'ممتاز — التزام قوي';
+        if (numeric >= 90) {
+          return isReview ? 1 : 2;
         }
 
-        else if (
-          weeklyEvaluation >= 80
-        ) {
-          evaluationText =
-            'جيد جدًا — التزام جيد';
-        }
-
-        else if (
-          weeklyEvaluation >= 70
-        ) {
-          evaluationText =
-            'جيد — يحتاج متابعة بسيطة';
-        }
-
-        else if (
-          weeklyEvaluation >= 60
-        ) {
-          evaluationText =
-            'مقبول — يحتاج دعم';
-        }
-
-        else {
-          evaluationText =
-            'يحتاج متابعة وتمكين';
-        }
-
-      }
-
-
-      return {
-
-        hifzPages,
-        reviewPages,
-
-        weeklyHifzPages,
-        weeklyReviewPages,
-
-        hifzCount:
-          hifzPages.size,
-
-        reviewCount:
-          reviewPages.size,
-
-        equivalentPages,
-
-        quranPercent:
-          (
-            hifzPages.size /
-            604
-          ) * 100,
-
-        completedJuz,
-
-        juzProgress,
-
-        recitationScores,
-
-        recitationAverage:
-          average,
-
-        highestScore:
-          highest,
-
-        testScores,
-
-        testAverage,
-
-        attendanceRate,
-
-        totalPoints,
-
-        weeklyPoints,
-
-        weeklyHifz,
-        weeklyReview,
-
-        goalHifz,
-        goalReview,
-
-        weeklyHifzPercent,
-        weeklyReviewPercent,
-
-        weeklyAttendanceRate,
-        weeklyRecitationRate,
-        weeklyTestRate,
-
-        weeklyEvaluation,
-        evaluationText,
-
-        weekRecitations,
-        weekAttendance,
-        weekTests
-
-      };
-
-    }
-
-
-    function valuesAverage(values) {
-
-      if (
-        !Array.isArray(values) ||
-        !values.length
-      ) {
         return 0;
       }
 
-      return (
-        values.reduce(
-          (sum,value) =>
-            sum + number(value),
-          0
-        ) /
-        values.length
-      );
-
-    }
-
-
-    /* =========================================================
-       SMART OVERVIEW
-    ========================================================= */
-
-    function updateSmartOverview() {
-
-      if (!profile) return;
-
-      const stats =
-        calculateAnalytics();
-
-      const set =
-        (id, value) => {
-
-          const element =
-            document.getElementById(id);
-
-          if (element) {
-            element.textContent =
-              value;
-          }
-
-        };
-
-
-      set(
-        'quranPercent',
-        `${stats.quranPercent.toFixed(1)}%`
-      );
-
-      set(
-        'quranPagesText',
-        `${stats.hifzCount} من 604 صفحة`
-      );
-
-      set(
-        'hifzPages',
-        stats.hifzCount
-      );
-
-      set(
-        'equivalentPages',
-        `المعادلة: ${stats.equivalentPages.toFixed(1)} صفحة`
-      );
-
-      set(
-        'completedJuz',
-        `${stats.completedJuz} / 30`
-      );
-
-      set(
-        'reviewPages',
-        stats.reviewCount
-      );
-
-      set(
-        'recAverage',
-        stats.recitationScores.length
-          ? `${stats.recitationAverage.toFixed(1)}%`
-          : '0%'
-      );
-
-      set(
-        'recCount',
-        `${stats.recitationScores.length} تسميع`
-      );
-
-      set(
-        'highestScore',
-        stats.highestScore
-          ? `${stats.highestScore}%`
-          : '0%'
-      );
-
-      set(
-        'testAverage',
-        stats.testScores.length
-          ? `${stats.testAverage.toFixed(1)}%`
-          : '0%'
-      );
-
-      set(
-        'testCount',
-        `${stats.testScores.length} اختبار`
-      );
-
-      set(
-        'totalPoints',
-        formatNumber(
-          stats.totalPoints
-        )
-      );
-
-      set(
-        'weeklyPoints',
-        formatNumber(
-          stats.weeklyPoints
-        )
-      );
-
-
-      /* ===== WEEK ===== */
-
-      const week =
-        getCurrentWeek();
-
-      set(
-        'weekRange',
-        `الأسبوع: ${formatDateArabic(week.startString)} — ${formatDateArabic(week.endString)}`
-      );
-
-
-      /* ===== HIFZ ===== */
-
-      set(
-        'weeklyHifzPercent',
-        `${stats.weeklyHifzPercent.toFixed(0)}%`
-      );
-
-      set(
-        'weeklyHifzValue',
-        `${stats.weeklyHifz} صفحة`
-      );
-
-      set(
-        'weeklyHifzGoal',
-        `المطلوب: ${stats.goalHifz}`
-      );
-
-      const hifzBar =
-        document.getElementById(
-          'weeklyHifzBar'
-        );
-
-      if (hifzBar) {
-        hifzBar.style.width =
-          `${stats.weeklyHifzPercent}%`;
-      }
-
-
-      /* ===== REVIEW ===== */
-
-      set(
-        'weeklyReviewPercent',
-        `${stats.weeklyReviewPercent.toFixed(0)}%`
-      );
-
-      set(
-        'weeklyReviewValue',
-        `${stats.weeklyReview} صفحة`
-      );
-
-      set(
-        'weeklyReviewGoal',
-        `المطلوب: ${stats.goalReview}`
-      );
-
-      const reviewBar =
-        document.getElementById(
-          'weeklyReviewBar'
-        );
-
-      if (reviewBar) {
-        reviewBar.style.width =
-          `${stats.weeklyReviewPercent}%`;
-      }
-
-
-      /* ===== EVALUATION ===== */
-
-      set(
-        'generalEvaluation',
-        stats.evaluationText
-      );
-
-      set(
-        'weeklyEvaluationScore',
-        Math.round(
-          stats.weeklyEvaluation
-        )
-      );
-
-
-      /* ===== HEADER ===== */
-
-      set(
-        'profileHifz',
-        `${stats.hifzCount} صفحة محفوظة`
-      );
-
-      set(
-        'attendanceCount',
-        getLiveAttendance().length
-      );
-
-      set(
-        'recitationCount',
-        getLiveRecitations().length
-      );
-
-      set(
-        'testCountStat',
-        getLiveTests().length
-      );
-
-    }
-
-
-    function formatNumber(value) {
-
-      const n =
-        number(value);
-
-      return Number.isInteger(n)
-        ? String(n)
-        : n.toFixed(1);
-
-    }
-
-
-    /* =========================================================
-       QURAN MAP
-    ========================================================= */
-
-    function renderQuranMap() {
-
-      const map =
-        document.getElementById(
-          'quranMap'
-        );
-
-      const juzGrid =
-        document.getElementById(
-          'juzGrid'
-        );
-
-      if (!map || !juzGrid) {
-        return;
-      }
-
-      const stats =
-        calculateAnalytics();
-
-
-      /* ===== 604 PAGE ===== */
-
-      map.innerHTML = '';
-
-      for (
-        let page = 1;
-        page <= 604;
-        page++
+      const label =
+        String(raw)
+          .trim()
+          .toLowerCase();
+
+      if (
+        label.includes('ممتاز')
       ) {
+        return isReview ? 3 : 6;
+      }
 
-        const cell =
-          document.createElement(
-            'div'
-          );
+      if (
+        label.includes('جيد جداً') ||
+        label.includes('جيد جدا')
+      ) {
+        return isReview ? 2.5 : 5;
+      }
 
-        cell.className =
-          'page-cell';
+      if (
+        label === 'جيد'
+      ) {
+        return isReview ? 2 : 4;
+      }
 
-        const hasHifz =
-          stats.hifzPages.has(
-            page
-          );
+      if (
+        label.includes('مقبول')
+      ) {
+        return isReview ? 1 : 2;
+      }
 
-        const hasReview =
-          stats.reviewPages.has(
-            page
-          );
+      return 0;
+    }
+
+    function testPoint(item) {
+
+      const raw =
+        item?.grade ??
+        item?.result ??
+        item?.status ??
+        item?.rating ??
+        item?.score ??
+        '';
+
+      const numeric =
+        toNumber(raw);
+
+      if (numeric > 0) {
+
+        const percentage =
+          numeric <= 12
+            ? (
+                numeric /
+                12
+              ) * 100
+            : numeric;
 
         if (
-          hasHifz &&
-          hasReview
+          percentage >= 97
         ) {
-          cell.classList.add(
-            'both'
-          );
+          return 12;
         }
-
-        else if (hasHifz) {
-          cell.classList.add(
-            'hifz'
-          );
-        }
-
-        else if (hasReview) {
-          cell.classList.add(
-            'review'
-          );
-        }
-
-        let status =
-          'غير مسجلة';
 
         if (
-          hasHifz &&
-          hasReview
+          percentage >= 90
         ) {
-          status =
-            'محفوظة + مراجعة';
+          return 8;
         }
 
-        else if (hasHifz) {
-          status =
-            'محفوظة';
+        if (
+          percentage >= 80
+        ) {
+          return 4;
         }
 
-        else if (hasReview) {
-          status =
-            'مراجعة';
-        }
-
-        cell.textContent =
-          page;
-
-        cell.title =
-          `صفحة ${page} — ${status}`;
-
-        map.appendChild(
-          cell
-        );
-
+        return 0;
       }
 
+      const label =
+        String(raw)
+          .trim()
+          .toLowerCase();
 
-      /* ===== JUZ ===== */
-
-      juzGrid.innerHTML = '';
-
-      stats.juzProgress.forEach(
-        (juz,index) => {
-
-          const card =
-            document.createElement(
-              'div'
-            );
-
-          card.className =
-            'juz-card';
-
-          card.innerHTML = `
-
-            <div class="juz-head">
-              <span>الجزء ${index + 1}</span>
-              <span>${juz.percent.toFixed(0)}%</span>
-            </div>
-
-            <div class="juz-track">
-              <div
-                class="juz-fill"
-                style="width:${juz.percent}%">
-              </div>
-            </div>
-
-            <div style="
-              margin-top:6px;
-              color:#74808a;
-              font-size:10px;
-              font-weight:800;
-            ">
-              ${juz.completed} / ${juz.total} صفحة
-            </div>
-
-          `;
-
-          juzGrid.appendChild(
-            card
-          );
-
-        }
-      );
-
-    }
-
-
-    /* =========================================================
-       RENDER PROFILE
-    ========================================================= */
-
-    function render() {
-
-      if (!student || !profile) {
-        return;
+      if (
+        label.includes('ممتاز')
+      ) {
+        return 12;
       }
 
-
-      document.getElementById(
-        'profileName'
-      ).textContent =
-        student.name || 'بدون اسم';
-
-
-      document.getElementById(
-        'profileSection'
-      ).textContent =
-        student.section || 'بدون شعبة';
-
-
-      document.getElementById(
-        'profileAge'
-      ).textContent =
-        student.age
-          ? `${student.age} سنة`
-          : 'العمر غير محدد';
-
-
-      const statusMap = {
-
-        active: 'مستمر',
-        inactive: 'متوقف',
-        rejected: 'غير مقبول',
-        expelled: 'مفصول'
-
-      };
-
-      document.getElementById(
-        'profileStatus'
-      ).textContent =
-        statusMap[
-          student.status
-        ] ||
-        'غير محدد';
-
-
-      document.getElementById(
-        'name'
-      ).value =
-        student.name || '';
-
-
-      document.getElementById(
-        'age'
-      ).value =
-        student.age || '';
-
-
-      document.getElementById(
-        'section'
-      ).value =
-        student.section || '';
-
-
-      document.getElementById(
-        'status'
-      ).value =
-        student.status || 'active';
-
-
-      document.getElementById(
-        'memorization'
-      ).value =
-        student.memorization || '';
-
-
-      document.getElementById(
-        'guardianPhone'
-      ).value =
-        profile.guardianPhone || '';
-
-
-      document.getElementById(
-        'joiningDate'
-      ).value =
-        profile.joiningDate || '';
-
-
-      document.getElementById(
-        'residence'
-      ).value =
-        profile.residence || '';
-
-
-      document.getElementById(
-        'bus'
-      ).value =
-        profile.bus || '';
-
-
-      document.getElementById(
-        'homeLocation'
-      ).value =
-        profile.homeLocation || '';
-
-
-      document.getElementById(
-        'goalHifz'
-      ).value =
-        profile.weeklyGoal.hifz || '';
-
-
-      document.getElementById(
-        'goalReview'
-      ).value =
-        profile.weeklyGoal.review || '';
-
-
-      document.getElementById(
-        'notes'
-      ).value =
-        profile.notes || '';
-
-
-      const photo =
-        profile.photoUrl ||
-        localStorage.getItem(
-          `studentPhoto_${studentId}`
-        ) ||
-        'logo.png';
-
-
-      document.getElementById(
-        'profilePhoto'
-      ).src =
-        photo;
-
-
-      document.getElementById(
-        'basicPhotoPreview'
-      ).src =
-        photo;
-
-
-      renderAttendance();
-      renderPlan();
-      renderTests();
-      renderRecitations();
-
-      updateSmartOverview();
-      renderQuranMap();
-
-    }
-
-
-    /* =========================================================
-       ATTENDANCE
-    ========================================================= */
-
-    function renderAttendance() {
-
-      const body =
-        document.getElementById(
-          'attendanceBody'
-        );
-
-      body.innerHTML = '';
-
-      const rows =
-        profile.attendance || [];
-
-      if (!rows.length) {
-        addAttendanceRow();
-        return;
+      if (
+        label.includes('جيد جداً') ||
+        label.includes('جيد جدا')
+      ) {
+        return 8;
       }
 
-      rows.forEach(
-        row =>
-          addAttendanceRow(row)
-      );
+      if (
+        label === 'جيد'
+      ) {
+        return 4;
+      }
 
+      return 0;
     }
 
+    function calculateStudentPerformance(
+      profileData
+    ) {
 
-    function addAttendanceRow(row = {}) {
+      const profile =
+        profileData || {};
 
-      const body =
-        document.getElementById(
-          'attendanceBody'
-        );
-
-      const tr =
-        document.createElement(
-          'tr'
-        );
-
-      tr.innerHTML = `
-
-        <td>
-          <input
-            class="attendance-date"
-            type="date"
-            value="${escapeHtml(row.date || localDateString())}">
-        </td>
-
-        <td>
-          <select class="attendance-status">
-            <option value="present"
-              ${row.status === 'present' ? 'selected' : ''}>
-              حاضر
-            </option>
-
-            <option value="late"
-              ${row.status === 'late' ? 'selected' : ''}>
-              متأخر
-            </option>
-
-            <option value="excused"
-              ${row.status === 'excused' ? 'selected' : ''}>
-              معتذر
-            </option>
-
-            <option value="absent"
-              ${row.status === 'absent' ? 'selected' : ''}>
-              غائب
-            </option>
-          </select>
-        </td>
-
-        <td>
-          <input
-            class="attendance-note"
-            type="text"
-            value="${escapeHtml(row.note || '')}"
-            placeholder="ملاحظة">
-        </td>
-
-        <td>
-          <button
-            type="button"
-            class="icon-btn delete-btn"
-            onclick="
-              this.closest('tr').remove();
-              updateSmartOverview();
-            ">
-            ×
-          </button>
-        </td>
-
-      `;
-
-      body.appendChild(tr);
-
-      updateSmartOverview();
-
-    }
-
-
-    function collectAttendance() {
-
-      return [
-        ...document.querySelectorAll(
-          '#attendanceBody tr'
+      const attendance =
+        Array.isArray(
+          profile.attendance
         )
-      ]
-      .map(row => ({
-
-        date:
-          row.querySelector(
-            '.attendance-date'
-          )?.value || '',
-
-        status:
-          row.querySelector(
-            '.attendance-status'
-          )?.value || 'present',
-
-        note:
-          row.querySelector(
-            '.attendance-note'
-          )?.value.trim() || ''
-
-      }))
-      .filter(item =>
-        item.date ||
-        item.note
-      );
-
-    }
-
-
-    /* =========================================================
-       WEEKLY PLAN
-    ========================================================= */
-
-    function renderPlan() {
-
-      const body =
-        document.getElementById(
-          'planBody'
-        );
-
-      body.innerHTML = '';
-
-      const rows =
-        profile.weeklyPlan || [];
-
-      if (!rows.length) {
-        addPlanRow();
-        return;
-      }
-
-      rows.forEach(
-        row =>
-          addPlanRow(row)
-      );
-
-      updatePlanStatuses();
-
-    }
-
-
-    function addPlanRow(row = {}) {
-
-      const body =
-        document.getElementById(
-          'planBody'
-        );
-
-      const tr =
-        document.createElement(
-          'tr'
-        );
-
-      tr.innerHTML = `
-
-        <td>
-          <input
-            class="plan-day"
-            type="text"
-            value="${escapeHtml(row.day || '')}"
-            placeholder="السبت">
-        </td>
-
-        <td>
-          <input
-            class="plan-date"
-            type="date"
-            value="${escapeHtml(row.date || '')}">
-        </td>
-
-        <td>
-          <input
-            class="plan-hifz"
-            type="number"
-            min="0"
-            value="${number(row.hifz) || ''}">
-        </td>
-
-        <td>
-          <input
-            class="plan-review"
-            type="number"
-            min="0"
-            value="${number(row.review) || ''}">
-        </td>
-
-        <td>
-          <input
-            class="plan-note"
-            type="text"
-            value="${escapeHtml(row.note || '')}">
-        </td>
-
-        <td>
-          <span class="plan-status plan-pending">
-            بانتظار التسميع
-          </span>
-        </td>
-
-        <td>
-          <button
-            type="button"
-            class="icon-btn delete-btn"
-            onclick="
-              this.closest('tr').remove();
-              updatePlanStatuses();
-            ">
-            ×
-          </button>
-        </td>
-
-      `;
-
-      body.appendChild(tr);
-
-      tr.querySelectorAll(
-        'input'
-      ).forEach(
-        input =>
-          input.addEventListener(
-            'input',
-            updatePlanStatuses
-          )
-      );
-
-      updatePlanStatuses();
-
-    }
-
-
-    function collectPlan() {
-
-      return [
-        ...document.querySelectorAll(
-          '#planBody tr'
-        )
-      ]
-      .map(row => ({
-
-        day:
-          row.querySelector(
-            '.plan-day'
-          )?.value.trim() || '',
-
-        date:
-          row.querySelector(
-            '.plan-date'
-          )?.value || '',
-
-        hifz:
-          number(
-            row.querySelector(
-              '.plan-hifz'
-            )?.value
-          ),
-
-        review:
-          number(
-            row.querySelector(
-              '.plan-review'
-            )?.value
-          ),
-
-        note:
-          row.querySelector(
-            '.plan-note'
-          )?.value.trim() || ''
-
-      }))
-      .filter(item =>
-        item.day ||
-        item.date ||
-        item.hifz ||
-        item.review ||
-        item.note
-      );
-
-    }
-
-
-    function updatePlanStatuses() {
-
-      const rows =
-        document.querySelectorAll(
-          '#planBody tr'
-        );
+          ? profile.attendance
+          : [];
 
       const recitations =
-        getLiveRecitations();
+        Array.isArray(
+          profile.recitations
+        )
+          ? profile.recitations
+          : [];
 
-      rows.forEach(row => {
+      const tests =
+        Array.isArray(
+          profile.tests
+        )
+          ? profile.tests
+          : [];
 
-        const date =
-          row.querySelector(
-            '.plan-date'
-          )?.value || '';
+      const attendancePoints =
+        attendance.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            attendancePoint(
+              item?.status ??
+              item?.state ??
+              item?.attendance
+            ),
+          0
+        );
 
-        const goalHifz =
-          number(
-            row.querySelector(
-              '.plan-hifz'
-            )?.value
-          );
+      const attendanceScore =
+        attendance.length
+          ? Math.min(
+              100,
+              (
+                attendancePoints /
+                (
+                  attendance.length *
+                  2
+                )
+              ) * 100
+            )
+          : 0;
 
-        const goalReview =
-          number(
-            row.querySelector(
-              '.plan-review'
-            )?.value
-          );
-
-        const status =
-          row.querySelector(
-            '.plan-status'
-          );
-
-        if (!status) return;
-
-        if (
-          !date &&
-          !goalHifz &&
-          !goalReview
-        ) {
-
-          status.textContent =
-            'بلا هدف';
-
-          status.className =
-            'plan-status plan-pending';
-
-          return;
-
-        }
-
-
-        let actualHifz = 0;
-        let actualReview = 0;
-
-        recitations
-          .filter(
-            item =>
-              !date ||
-              item.date === date
-          )
-          .forEach(item => {
-
-            const pages =
-              getRangePages(item)
-                .length;
+      const hifz =
+        recitations.filter(
+          item => {
 
             const type =
               String(
                 item?.type || ''
-              ).toLowerCase();
+              )
+                .trim()
+                .toLowerCase();
 
-            if (
+            return (
+              type !== 'review' &&
+              type !== 'مراجعة'
+            );
+          }
+        );
+
+      const review =
+        recitations.filter(
+          item => {
+
+            const type =
+              String(
+                item?.type || ''
+              )
+                .trim()
+                .toLowerCase();
+
+            return (
               type === 'review' ||
               type === 'مراجعة'
-            ) {
-              actualReview += pages;
-            } else {
-              actualHifz += pages;
-            }
-
-          });
-
-
-        const hifzDone =
-          goalHifz <= 0 ||
-          actualHifz >= goalHifz;
-
-        const reviewDone =
-          goalReview <= 0 ||
-          actualReview >= goalReview;
-
-
-        if (
-          hifzDone &&
-          reviewDone
-        ) {
-
-          status.textContent =
-            '✓ مكتملة';
-
-          status.className =
-            'plan-status plan-complete';
-
-        }
-
-        else if (
-          actualHifz > 0 ||
-          actualReview > 0
-        ) {
-
-          status.textContent =
-            'قيد الإنجاز';
-
-          status.className =
-            'plan-status plan-partial';
-
-        }
-
-        else {
-
-          status.textContent =
-            'بانتظار التسميع';
-
-          status.className =
-            'plan-status plan-pending';
-
-        }
-
-      });
-
-    }
-
-
-    /* =========================================================
-       TESTS
-    ========================================================= */
-
-    function renderTests() {
-
-      const body =
-        document.getElementById(
-          'testsBody'
-        );
-
-      body.innerHTML = '';
-
-      const rows =
-        profile.tests || [];
-
-      if (!rows.length) {
-        addTestRow();
-        return;
-      }
-
-      rows.forEach(
-        row =>
-          addTestRow(row)
-      );
-
-      updateTestRows();
-
-    }
-
-
-    function addTestRow(row = {}) {
-
-      const body =
-        document.getElementById(
-          'testsBody'
-        );
-
-      const tr =
-        document.createElement(
-          'tr'
-        );
-
-      tr.innerHTML = `
-
-        <td>
-          <input
-            class="test-date"
-            type="date"
-            value="${escapeHtml(row.date || '')}">
-        </td>
-
-        <td>
-          <input
-            class="test-name"
-            type="text"
-            value="${escapeHtml(row.name || '')}"
-            placeholder="اسم الاختبار">
-        </td>
-
-        <td>
-          <input
-            class="test-score"
-            type="number"
-            min="0"
-            value="${number(row.score) || ''}">
-        </td>
-
-        <td>
-          <input
-            class="test-outof"
-            type="number"
-            min="1"
-            value="${number(row.outOf) || ''}">
-        </td>
-
-        <td>
-          <span class="test-percent">-</span>
-        </td>
-
-        <td>
-          <span class="test-points">0</span>
-        </td>
-
-        <td>
-          <input
-            class="test-note"
-            type="text"
-            value="${escapeHtml(row.note || '')}">
-        </td>
-
-        <td>
-          <button
-            type="button"
-            class="icon-btn delete-btn"
-            onclick="
-              this.closest('tr').remove();
-              updateSmartOverview();
-            ">
-            ×
-          </button>
-        </td>
-
-      `;
-
-      body.appendChild(tr);
-
-      tr.querySelectorAll(
-        'input'
-      ).forEach(
-        input =>
-          input.addEventListener(
-            'input',
-            updateTestRows
-          )
-      );
-
-      updateTestRows();
-
-    }
-
-
-    function updateTestRows() {
-
-      document
-        .querySelectorAll(
-          '#testsBody tr'
-        )
-        .forEach(row => {
-
-          const score =
-            number(
-              row.querySelector(
-                '.test-score'
-              )?.value
             );
-
-          const outOf =
-            number(
-              row.querySelector(
-                '.test-outof'
-              )?.value
-            );
-
-          const percent =
-            outOf > 0
-              ? (
-                  score /
-                  outOf
-                ) * 100
-              : 0;
-
-          const item = {
-            score,
-            outOf
-          };
-
-          const points =
-            testPoints(item);
-
-          const percentElement =
-            row.querySelector(
-              '.test-percent'
-            );
-
-          const pointsElement =
-            row.querySelector(
-              '.test-points'
-            );
-
-          if (percentElement) {
-            percentElement.textContent =
-              outOf > 0
-                ? `${percent.toFixed(1)}%`
-                : '-';
           }
+        );
 
-          if (pointsElement) {
-            pointsElement.textContent =
-              points;
-          }
+      const hifzPoints =
+        hifz.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            recitationPoint(
+              item
+            ),
+          0
+        );
 
-        });
+      const reviewPoints =
+        review.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            recitationPoint(
+              item
+            ),
+          0
+        );
 
-      updateSmartOverview();
+      const hifzScore =
+        hifz.length
+          ? Math.min(
+              100,
+              (
+                hifzPoints /
+                (
+                  hifz.length *
+                  6
+                )
+              ) * 100
+            )
+          : 0;
 
-    }
+      const reviewScore =
+        review.length
+          ? Math.min(
+              100,
+              (
+                reviewPoints /
+                (
+                  review.length *
+                  3
+                )
+              ) * 100
+            )
+          : 0;
 
+      const testPoints =
+        tests.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            testPoint(item),
+          0
+        );
 
-    function collectTests() {
+      const testsScore =
+        tests.length
+          ? Math.min(
+              100,
+              (
+                testPoints /
+                (
+                  tests.length *
+                  12
+                )
+              ) * 100
+            )
+          : 0;
 
-      return [
-        ...document.querySelectorAll(
-          '#testsBody tr'
-        )
-      ]
-      .map(row => ({
+      const score =
+        (
+          attendanceScore *
+          .20
+        ) +
+        (
+          hifzScore *
+          .35
+        ) +
+        (
+          reviewScore *
+          .25
+        ) +
+        (
+          testsScore *
+          .20
+        );
 
-        date:
-          row.querySelector(
-            '.test-date'
-          )?.value || '',
+      const recitationPointsTotal =
+        recitations.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            recitationPoint(
+              item
+            ),
+          0
+        );
 
-        name:
-          row.querySelector(
-            '.test-name'
-          )?.value.trim() || '',
+      const totalPoints =
+        attendancePoints +
+        recitationPointsTotal +
+        testPoints;
+
+      return {
 
         score:
-          number(
-            row.querySelector(
-              '.test-score'
-            )?.value
+          Math.round(
+            Math.max(
+              0,
+              Math.min(
+                100,
+                score
+              )
+            )
           ),
 
-        outOf:
-          number(
-            row.querySelector(
-              '.test-outof'
-            )?.value
-          ),
+        totalPoints:
+          Math.round(
+            totalPoints *
+            10
+          ) / 10
 
-        note:
-          row.querySelector(
-            '.test-note'
-          )?.value.trim() || ''
-
-      }))
-      .filter(item =>
-        item.date ||
-        item.name ||
-        item.score ||
-        item.outOf ||
-        item.note
-      );
-
+      };
     }
 
-
-    /* =========================================================
-       RECITATIONS
-    ========================================================= */
-
-    function renderRecitations() {
-
-      const body =
-        document.getElementById(
-          'recitationsBody'
-        );
-
-      body.innerHTML = '';
-
-      const rows =
-        profile.recitations || [];
-
-      if (!rows.length) {
-        addRecitationRow();
-        return;
-      }
-
-      rows.forEach(
-        row =>
-          addRecitationRow(row)
-      );
-
-      updateRecitationRows();
-
-    }
-
-
-    function addRecitationRow(row = {}) {
-
-      const body =
-        document.getElementById(
-          'recitationsBody'
-        );
-
-      const tr =
-        document.createElement(
-          'tr'
-        );
-
-      tr.innerHTML = `
-
-        <td>
-          <input
-            class="rec-date"
-            type="date"
-            value="${escapeHtml(row.date || '')}">
-        </td>
-
-        <td>
-          <select class="rec-type">
-            <option value="hifz"
-              ${row.type === 'hifz' ? 'selected' : ''}>
-              حفظ جديد
-            </option>
-
-            <option value="review"
-              ${row.type === 'review' ? 'selected' : ''}>
-              مراجعة
-            </option>
-          </select>
-        </td>
-
-        <td>
-          <input
-            class="rec-from"
-            type="number"
-            min="1"
-            max="604"
-            value="${number(row.from) || ''}"
-            placeholder="1">
-        </td>
-
-        <td>
-          <input
-            class="rec-to"
-            type="number"
-            min="1"
-            max="604"
-            value="${number(row.to) || ''}"
-            placeholder="1">
-        </td>
-
-        <td>
-          <input
-            class="rec-score"
-            type="number"
-            min="0"
-            max="100"
-            value="${number(row.score) || ''}"
-            placeholder="100">
-        </td>
-
-        <td>
-          <span class="rec-grade">
-            -
-          </span>
-        </td>
-
-        <td>
-          <span class="rec-points">
-            0
-          </span>
-        </td>
-
-        <td>
-          <input
-            class="rec-note"
-            type="text"
-            value="${escapeHtml(row.note || '')}">
-        </td>
-
-        <td>
-          <button
-            type="button"
-            class="icon-btn delete-btn"
-            onclick="
-              this.closest('tr').remove();
-              updateRecitationRows();
-              updatePlanStatuses();
-            ">
-            ×
-          </button>
-        </td>
-
-      `;
-
-      body.appendChild(tr);
-
-      tr.querySelectorAll(
-        'input,select'
-      ).forEach(
-        input =>
-          input.addEventListener(
-            'input',
-            updateRecitationRows
-          )
-      );
-
-      tr.querySelectorAll(
-        'input,select'
-      ).forEach(
-        input =>
-          input.addEventListener(
-            'change',
-            updateRecitationRows
-          )
-      );
-
-      updateRecitationRows();
-
-    }
-
-
-    function updateRecitationRows() {
-
-      document
-        .querySelectorAll(
-          '#recitationsBody tr'
-        )
-        .forEach(row => {
-
-          const score =
-            number(
-              row.querySelector(
-                '.rec-score'
-              )?.value
-            );
-
-          const type =
-            row.querySelector(
-              '.rec-type'
-            )?.value ||
-            'hifz';
-
-          const grade =
-            getRecitationGrade(
-              score
-            );
-
-          const points =
-            type === 'review'
-              ? grade.pointsReview
-              : grade.pointsHifz;
-
-          const gradeElement =
-            row.querySelector(
-              '.rec-grade'
-            );
-
-          const pointsElement =
-            row.querySelector(
-              '.rec-points'
-            );
-
-          if (gradeElement) {
-
-            gradeElement.className =
-              `grade-badge ${grade.className}`;
-
-            gradeElement.innerHTML = `
-
-              <strong>
-                ${escapeHtml(grade.title)}
-              </strong>
-
-              <span>
-                ${escapeHtml(grade.description)}
-              </span>
-
-            `;
-
-          }
-
-          if (pointsElement) {
-            pointsElement.textContent =
-              points;
-          }
-
-        });
-
-      updateSmartOverview();
-      updatePlanStatuses();
-
-    }
-
-
-    function collectRecitations() {
-
-      return [
-        ...document.querySelectorAll(
-          '#recitationsBody tr'
-        )
-      ]
-      .map(row => ({
-
-        date:
-          row.querySelector(
-            '.rec-date'
-          )?.value || '',
-
-        type:
-          row.querySelector(
-            '.rec-type'
-          )?.value || 'hifz',
-
-        from:
-          number(
-            row.querySelector(
-              '.rec-from'
-            )?.value
-          ),
-
-        to:
-          number(
-            row.querySelector(
-              '.rec-to'
-            )?.value
-          ),
-
-        score:
-          number(
-            row.querySelector(
-              '.rec-score'
-            )?.value
-          ),
-
-        note:
-          row.querySelector(
-            '.rec-note'
-          )?.value.trim() || ''
-
-      }))
-      .filter(item =>
-        item.date ||
-        item.from ||
-        item.to ||
-        item.score ||
-        item.note
-      );
-
-    }
-
-
-    /* =========================================================
-       SAVE PROFILE PATCH
-    ========================================================= */
-
-    async function readFreshProfile() {
+    async function loadProfiles() {
 
       const {
         data,
@@ -4404,746 +3373,151 @@
       } =
         await supabaseClient
           .from('student_profiles')
-          .select('data')
-          .eq(
-            'student_id',
-            String(studentId)
-          )
-          .maybeSingle();
+          .select(
+            'student_id, data'
+          );
 
       if (error) {
-        throw error;
-      }
 
-      return mergeProfile(
-        data?.data || {}
-      );
-
-    }
-
-
-    async function saveProfilePatch(changes) {
-
-      const fresh =
-        await readFreshProfile();
-
-      const merged = {
-
-        ...fresh,
-        ...changes
-
-      };
-
-      const {
-        error
-      } =
-        await supabaseClient
-          .from('student_profiles')
-          .upsert({
-
-            student_id:
-              String(studentId),
-
-            data:
-              merged,
-
-            updated_at:
-              new Date().toISOString()
-
-          });
-
-      if (error) {
-        throw error;
-      }
-
-      return merged;
-
-    }
-
-
-    /* =========================================================
-       SAVE BASIC
-    ========================================================= */
-
-    async function saveBasicSection() {
-
-      const studentUpdate = {
-
-        name:
-          document.getElementById(
-            'name'
-          )?.value.trim() || '',
-
-        age:
-          number(
-            document.getElementById(
-              'age'
-            )?.value
-          ),
-
-        section:
-          document.getElementById(
-            'section'
-          )?.value.trim() || '',
-
-        memorization:
-          document.getElementById(
-            'memorization'
-          )?.value.trim() || '',
-
-        status:
-          document.getElementById(
-            'status'
-          )?.value || 'active'
-
-      };
-
-
-      if (
-        !studentUpdate.name
-      ) {
-        throw new Error(
-          'اسم الطالب مطلوب.'
+        console.warn(
+          'تعذر تحميل ملفات الطلاب:',
+          error
         );
+
+        profileMap = {};
+
+        return;
       }
 
+      profileMap = {};
+
+      (
+        data || []
+      ).forEach(
+        row => {
+
+          profileMap[
+            String(
+              row.student_id
+            )
+          ] =
+            row.data || {};
+        }
+      );
+    }
+
+    function getStudentPerformance(
+      student
+    ) {
+
+      return calculateStudentPerformance(
+        profileMap[
+          String(student.id)
+        ] || {}
+      );
+    }
+
+    function formatPoints(
+      points
+    ) {
+
+      const value =
+        Number(
+          points || 0
+        );
+
+      return Number.isInteger(
+        value
+      )
+        ? `${value} نقطة`
+        : `${value.toFixed(1)} نقطة`;
+    }
+
+    function getStatusInfo(
+      status
+    ) {
+
+      const map = {
+
+        active: {
+          text: 'مستمر',
+          className: 'active'
+        },
+
+        inactive: {
+          text: 'متوقف',
+          className: 'inactive'
+        },
+
+        rejected: {
+          text: 'غير مقبول',
+          className: 'rejected'
+        },
+
+        expelled: {
+          text: 'مفصول',
+          className: 'expelled'
+        }
+
+      };
+
+      return (
+        map[status] || {
+          text: 'غير محدد',
+          className: 'inactive'
+        }
+      );
+    }
+
+    async function loadStudents() {
 
       const {
+        data,
         error
       } =
         await supabaseClient
           .from('students')
-          .update(
-            studentUpdate
-          )
-          .eq(
-            'id',
-            studentId
+          .select('*')
+          .order(
+            'created_at',
+            {
+              ascending: false
+            }
           );
 
       if (error) {
-        throw error;
-      }
-
-
-      const profilePatch = {
-
-        photoUrl:
-          profile.photoUrl || '',
-
-        guardianPhone:
-          document.getElementById(
-            'guardianPhone'
-          )?.value.trim() || '',
-
-        joiningDate:
-          document.getElementById(
-            'joiningDate'
-          )?.value || '',
-
-        residence:
-          document.getElementById(
-            'residence'
-          )?.value.trim() || '',
-
-        bus:
-          document.getElementById(
-            'bus'
-          )?.value.trim() || '',
-
-        homeLocation:
-          document.getElementById(
-            'homeLocation'
-          )?.value.trim() || ''
-
-      };
-
-
-      profile =
-        await saveProfilePatch(
-          profilePatch
-        );
-
-      student = {
-        ...student,
-        ...studentUpdate
-      };
-
-    }
-
-
-    /* =========================================================
-       SAVE SECTION
-    ========================================================= */
-
-    async function saveStudentSection(
-      key,
-      button
-    ) {
-
-      if (
-        !studentId ||
-        !profile
-      ) {
-
-        showError(
-          'لم يتم تحميل بيانات الطالب.'
-        );
-
-        return;
-
-      }
-
-
-      button.disabled = true;
-
-      const oldText =
-        button.textContent;
-
-      button.textContent =
-        '⏳ جاري الحفظ...';
-
-
-      const message =
-        document.getElementById(
-          saveMessageId(key)
-        );
-
-
-      if (message) {
-        message.textContent = '';
-        message.className =
-          'save-message';
-      }
-
-
-      try {
-
-        switch (key) {
-
-          case 'basic':
-
-            await saveBasicSection();
-
-            break;
-
-
-          case 'weeklyGoal': {
-
-            const weeklyGoal = {
-
-              hifz:
-                number(
-                  document.getElementById(
-                    'goalHifz'
-                  )?.value
-                ),
-
-              review:
-                number(
-                  document.getElementById(
-                    'goalReview'
-                  )?.value
-                )
-
-            };
-
-            profile =
-              await saveProfilePatch({
-                weeklyGoal
-              });
-
-            break;
-
-          }
-
-
-          case 'attendance': {
-
-            const attendance =
-              collectAttendance();
-
-            profile =
-              await saveProfilePatch({
-                attendance
-              });
-
-            break;
-
-          }
-
-
-          case 'weeklyPlan': {
-
-            const weeklyPlan =
-              collectPlan();
-
-            profile =
-              await saveProfilePatch({
-                weeklyPlan
-              });
-
-            break;
-
-          }
-
-
-          case 'tests': {
-
-            const tests =
-              collectTests();
-
-            profile =
-              await saveProfilePatch({
-                tests
-              });
-
-            break;
-
-          }
-
-
-          case 'recitations': {
-
-            const recitations =
-              collectRecitations();
-
-            profile =
-              await saveProfilePatch({
-                recitations
-              });
-
-            break;
-
-          }
-
-
-          case 'notes': {
-
-            const notes =
-              document.getElementById(
-                'notes'
-              )?.value.trim() || '';
-
-            profile =
-              await saveProfilePatch({
-                notes
-              });
-
-            break;
-
-          }
-
-
-          default:
-
-            throw new Error(
-              'القسم غير معروف.'
-            );
-
-        }
-
-
-        render();
-
-
-        const section =
-          document.querySelector(
-            `[data-section="${key}"]`
-          );
-
-        if (section) {
-          openSection(section);
-        }
-
-
-        if (message) {
-
-          message.textContent =
-            '✅ تم الحفظ بنجاح';
-
-          message.className =
-            'save-message success';
-
-        }
-
-
-        if (key === 'basic') {
-
-          document.getElementById(
-            'profileName'
-          ).textContent =
-            student.name;
-
-        }
-
-      }
-
-      catch (error) {
 
         console.error(
-          'SAVE ERROR:',
           error
         );
 
-        if (message) {
+        emptyMessage.style.display =
+          'block';
 
-          message.textContent =
-            error?.message ||
-            'حدث خطأ أثناء الحفظ.';
+        emptyMessage.querySelector(
+          'strong'
+        ).textContent =
+          'تعذر تحميل البيانات';
 
-          message.className =
-            'save-message error';
+        emptyMessage.querySelector(
+          'p'
+        ).textContent =
+          'تأكد من إعداد قاعدة البيانات والصلاحيات.';
 
-        }
-
+        return;
       }
 
-      finally {
+      students =
+        data || [];
 
-        if (
-          document.body.contains(
-            button
-          )
-        ) {
+      await loadProfiles();
 
-          button.disabled =
-            false;
+      renderStudents();
 
-          button.textContent =
-            oldText;
-
-        }
-
-      }
-
+      updateStats();
     }
 
-
-    function saveMessageId(key) {
-
-      const map = {
-
-        basic:
-          'saveMessageBasic',
-
-        weeklyGoal:
-          'saveMessageWeeklyGoal',
-
-        attendance:
-          'saveMessageAttendance',
-
-        weeklyPlan:
-          'saveMessageWeeklyPlan',
-
-        tests:
-          'saveMessageTests',
-
-        recitations:
-          'saveMessageRecitations',
-
-        notes:
-          'saveMessageNotes'
-
-      };
-
-      return map[key];
-
-    }
-
-
-    /* =========================================================
-       ACCORDION
-    ========================================================= */
-
-    function openSection(section) {
-
-      document
-        .querySelectorAll(
-          '.section.open'
-        )
-        .forEach(
-          other => {
-
-            if (
-              other !== section
-            ) {
-              other.classList.remove(
-                'open'
-              );
-            }
-
-          }
-        );
-
-      section.classList.add(
-        'open'
-      );
-
-    }
-
-
-    function toggleSection(section) {
-
-      if (
-        section.classList.contains(
-          'open'
-        )
-      ) {
-
-        section.classList.remove(
-          'open'
-        );
-
-      } else {
-
-        openSection(section);
-
-      }
-
-    }
-
-
-    /* =========================================================
-       IMAGE UPLOAD
-    ========================================================= */
-
-    document
-      .getElementById(
-        'photoInput'
-      )
-      .addEventListener(
-        'change',
-        async function(event) {
-
-          const file =
-            event.target.files?.[0];
-
-          if (!file) {
-            return;
-          }
-
-
-          if (
-            !file.type.startsWith(
-              'image/'
-            )
-          ) {
-
-            alert(
-              'الملف المختار ليس صورة.'
-            );
-
-            return;
-
-          }
-
-
-          /*
-            نضغط الصورة حتى لا نخزن
-            ملفات ضخمة داخل JSON.
-          */
-
-          try {
-
-            const compressed =
-              await compressImage(
-                file,
-                900,
-                .82
-              );
-
-
-            profile =
-              await saveProfilePatch({
-                photoUrl:
-                  compressed
-              });
-
-
-            localStorage.setItem(
-              `studentPhoto_${studentId}`,
-              compressed
-            );
-
-
-            document.getElementById(
-              'profilePhoto'
-            ).src =
-              compressed;
-
-            document.getElementById(
-              'basicPhotoPreview'
-            ).src =
-              compressed;
-
-
-            const message =
-              document.getElementById(
-                'saveMessageBasic'
-              );
-
-            message.textContent =
-              '✅ تم تغيير صورة الطالب وحفظها.';
-
-            message.className =
-              'save-message success';
-
-
-          }
-
-          catch (error) {
-
-            console.error(
-              error
-            );
-
-            const message =
-              document.getElementById(
-                'saveMessageBasic'
-              );
-
-            message.textContent =
-              'تعذر حفظ الصورة.';
-
-            message.className =
-              'save-message error';
-
-          }
-
-        }
-      );
-
-
-    function compressImage(
-      file,
-      maxSize,
-      quality
-    ) {
-
-      return new Promise(
-        (
-          resolve,
-          reject
-        ) => {
-
-          const reader =
-            new FileReader();
-
-          reader.onload =
-            function(event) {
-
-              const img =
-                new Image();
-
-              img.onload =
-                function() {
-
-                  let width =
-                    img.width;
-
-                  let height =
-                    img.height;
-
-
-                  if (
-                    width >
-                      maxSize ||
-                    height >
-                      maxSize
-                  ) {
-
-                    const ratio =
-                      Math.min(
-                        maxSize / width,
-                        maxSize / height
-                      );
-
-                    width =
-                      Math.round(
-                        width * ratio
-                      );
-
-                    height =
-                      Math.round(
-                        height * ratio
-                      );
-
-                  }
-
-
-                  const canvas =
-                    document.createElement(
-                      'canvas'
-                    );
-
-                  canvas.width =
-                    width;
-
-                  canvas.height =
-                    height;
-
-
-                  const ctx =
-                    canvas.getContext(
-                      '2d'
-                    );
-
-                  ctx.drawImage(
-                    img,
-                    0,
-                    0,
-                    width,
-                    height
-                  );
-
-
-                  resolve(
-                    canvas.toDataURL(
-                      'image/jpeg',
-                      quality
-                    )
-                  );
-
-                };
-
-
-              img.onerror =
-                reject;
-
-              img.src =
-                event.target.result;
-
-            };
-
-
-          reader.onerror =
-            reject;
-
-          reader.readAsDataURL(
-            file
-          );
-
-        }
-      );
-
-    }
-
-
-    /* =========================================================
-       LOAD
-    ========================================================= */
-
-    async function loadStudent() {
-
-      if (!studentId) {
-
-        throw new Error(
-          'لم يتم تحديد رقم الطالب.'
-        );
-
-      }
-
+    async function loadPendingRequests() {
 
       const {
         data,
@@ -5153,211 +3527,1368 @@
           .from('students')
           .select('*')
           .eq(
-            'id',
-            studentId
+            'status',
+            'pending'
           )
-          .single();
-
+          .order(
+            'created_at',
+            {
+              ascending: false
+            }
+          );
 
       if (error) {
-        throw error;
-      }
 
-
-      student =
-        data;
-
-
-      const {
-        data: profileRow,
-        error: profileError
-      } =
-        await supabaseClient
-          .from('student_profiles')
-          .select('data')
-          .eq(
-            'student_id',
-            String(studentId)
-          )
-          .maybeSingle();
-
-
-      if (
-        profileError
-      ) {
-        throw profileError;
-      }
-
-
-      profile =
-        mergeProfile(
-          profileRow?.data ||
-          {}
+        console.error(
+          'خطأ في تحميل طلبات الانضمام:',
+          error
         );
-
-
-      render();
-
-
-      document.getElementById(
-        'loading'
-      ).style.display =
-        'none';
-
-      document.getElementById(
-        'app'
-      ).style.display =
-        'block';
-
-    }
-
-
-    /* =========================================================
-       ERROR
-    ========================================================= */
-
-    function showError(message) {
-
-      document.getElementById(
-        'loading'
-      ).style.display =
-        'none';
-
-      const box =
-        document.getElementById(
-          'errorBox'
-        );
-
-      box.textContent =
-        message;
-
-      box.style.display =
-        'block';
-
-    }
-
-
-    /* =========================================================
-       BACK
-    ========================================================= */
-
-    function goBack() {
-
-      if (
-        document.referrer &&
-        document.referrer.includes(
-          'teacher-dashboard'
-        )
-      ) {
-
-        history.back();
 
         return;
-
       }
 
-      window.location.href =
-        'teacher-dashboard.html';
+      const requests =
+        data || [];
 
+      pendingCount.textContent =
+        `${requests.length} طلب`;
+
+      if (
+        requests.length === 0
+      ) {
+
+        requestsList.innerHTML = `
+
+          <div class="requests-empty">
+
+            <i class="fa-solid fa-inbox"></i>
+
+            <strong>
+              لا توجد طلبات جديدة
+            </strong>
+
+            <span>
+              ستظهر هنا طلبات الطلاب الجدد بعد التسجيل.
+            </span>
+
+          </div>
+
+        `;
+
+        return;
+      }
+
+      requestsList.innerHTML =
+        requests.map(
+          student => {
+
+            return `
+
+              <div class="request-card">
+
+                <div class="request-content">
+
+                  <div>
+
+                    <div class="request-name">
+
+                      ${escapeHtml(
+                        student.name || ''
+                      )}
+
+                    </div>
+
+                    <div class="request-details">
+
+                      العمر:
+                      ${
+                        student.age ||
+                        'غير محدد'
+                      }
+
+                      <br>
+
+                      الشعبة:
+                      ${escapeHtml(
+                        student.section || '-'
+                      )}
+
+                      <br>
+
+                      هاتف ولي الأمر:
+                      ${escapeHtml(
+                        student.guardian_phone || '-'
+                      )}
+
+                      ${
+                        student.notes
+                          ? `
+                            <br>
+                            الملاحظات:
+                            ${escapeHtml(
+                              student.notes
+                            )}
+                          `
+                          : ''
+                      }
+
+                    </div>
+
+                  </div>
+
+                  <div class="request-actions">
+
+                    <button
+                      type="button"
+                      class="approve-btn"
+                      onclick="approveStudent('${student.id}')">
+
+                      <i class="fa-solid fa-check"></i>
+
+                      قبول
+
+                    </button>
+
+                    <button
+                      type="button"
+                      class="reject-btn"
+                      onclick="rejectStudent('${student.id}')">
+
+                      <i class="fa-solid fa-xmark"></i>
+
+                      رفض
+
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            `;
+          }
+        ).join('');
     }
 
+    window.approveStudent =
+      async function(
+        id
+      ) {
 
-    /* =========================================================
-       LIVE UPDATES
-    ========================================================= */
+        const confirmed =
+          confirm(
+            'هل تريد قبول هذا الطالب وإضافته إلى قائمة الطلاب؟'
+          );
 
-    document.addEventListener(
-      'input',
-      function(event) {
+        if (!confirmed) return;
 
-        if (
-          event.target.closest(
-            '#attendanceBody'
-          ) ||
-          event.target.closest(
-            '#planBody'
-          ) ||
-          event.target.closest(
-            '#testsBody'
-          ) ||
-          event.target.closest(
-            '#recitationsBody'
-          )
-        ) {
-
-          updateSmartOverview();
-
-        }
-
-      }
-    );
-
-
-    document.addEventListener(
-      'change',
-      function(event) {
-
-        if (
-          event.target.closest(
-            '#attendanceBody'
-          ) ||
-          event.target.closest(
-            '#planBody'
-          ) ||
-          event.target.closest(
-            '#testsBody'
-          ) ||
-          event.target.closest(
-            '#recitationsBody'
-          )
-        ) {
-
-          updateSmartOverview();
-
-        }
-
-      }
-    );
-
-
-    /* =========================================================
-       START
-    ========================================================= */
-
-    if (
-      localStorage.getItem(
-        'teacherAccess'
-      ) !== 'granted'
-    ) {
-
-      window.location.href =
-        'teacher-login.html';
-
-    }
-
-    else {
-
-      loadStudent()
-        .catch(
-          error => {
-
-            console.error(
-              'LOAD STUDENT ERROR:',
-              error
+        const {
+          error
+        } =
+          await supabaseClient
+            .from('students')
+            .update({
+              status:
+                'active'
+            })
+            .eq(
+              'id',
+              id
+            )
+            .eq(
+              'status',
+              'pending'
             );
 
-            showError(
-              error?.message ||
-              'تعذر تحميل ملف الطالب.'
+        if (error) {
+
+          console.error(
+            error
+          );
+
+          showToast(
+            'حدث خطأ أثناء قبول الطلب.',
+            'error'
+          );
+
+          return;
+        }
+
+        showToast(
+          'تم قبول الطالب وإضافته إلى النظام.'
+        );
+
+        await loadStudents();
+
+        await loadPendingRequests();
+      };
+
+    window.rejectStudent =
+      async function(
+        id
+      ) {
+
+        const confirmed =
+          confirm(
+            'هل أنت متأكد من رفض طلب الانضمام؟'
+          );
+
+        if (!confirmed) return;
+
+        const {
+          error
+        } =
+          await supabaseClient
+            .from('students')
+            .update({
+              status:
+                'rejected'
+            })
+            .eq(
+              'id',
+              id
+            )
+            .eq(
+              'status',
+              'pending'
+            );
+
+        if (error) {
+
+          console.error(
+            error
+          );
+
+          showToast(
+            'حدث خطأ أثناء رفض الطلب.',
+            'error'
+          );
+
+          return;
+        }
+
+        showToast(
+          'تم رفض طلب الانضمام.'
+        );
+
+        await loadStudents();
+
+        await loadPendingRequests();
+
+        statusFilter.value =
+          'rejected';
+
+        renderStudents();
+      };
+
+    function getFilteredStudents() {
+
+      const search =
+        searchInput.value
+          .trim()
+          .toLowerCase();
+
+      const selectedSection =
+        sectionFilter.value;
+
+      const selectedStatus =
+        statusFilter.value;
+
+      const selectedSort =
+        sortFilter.value;
+
+      let filtered =
+        students
+          .map(
+            student => {
+
+              const performance =
+                getStudentPerformance(
+                  student
+                );
+
+              return {
+
+                ...student,
+
+                _score:
+                  performance.score,
+
+                _points:
+                  performance.totalPoints
+
+              };
+            }
+          )
+          .filter(
+            student => {
+
+              const matchesSearch =
+                String(
+                  student.name ||
+                  ''
+                )
+                  .toLowerCase()
+                  .includes(
+                    search
+                  );
+
+              const matchesSection =
+                !selectedSection ||
+                student.section ===
+                selectedSection;
+
+              let matchesStatus =
+                true;
+
+              if (
+                selectedStatus ===
+                'accepted'
+              ) {
+
+                matchesStatus =
+                  student.status ===
+                    'active' ||
+                  student.status ===
+                    'inactive';
+
+              }
+
+              else if (
+                selectedStatus ===
+                'all'
+              ) {
+
+                matchesStatus =
+                  true;
+
+              }
+
+              else {
+
+                matchesStatus =
+                  student.status ===
+                  selectedStatus;
+              }
+
+              return (
+                matchesSearch &&
+                matchesSection &&
+                matchesStatus
+              );
+            }
+          );
+
+      filtered.sort(
+        (
+          a,
+          b
+        ) => {
+
+          if (
+            selectedSort ===
+            'points'
+          ) {
+
+            const pointsDiff =
+              (
+                b._points || 0
+              ) -
+              (
+                a._points || 0
+              );
+
+            if (
+              pointsDiff !== 0
+            ) {
+
+              return pointsDiff;
+            }
+          }
+
+          if (
+            selectedSort ===
+            'section'
+          ) {
+
+            const sectionCompare =
+              String(
+                a.section || ''
+              ).localeCompare(
+                String(
+                  b.section || ''
+                ),
+                'ar'
+              );
+
+            if (
+              sectionCompare !== 0
+            ) {
+
+              return sectionCompare;
+            }
+          }
+
+          return String(
+            a.name || ''
+          ).localeCompare(
+            String(
+              b.name || ''
+            ),
+            'ar'
+          );
+        }
+      );
+
+      return filtered;
+    }
+
+    function renderStudents() {
+
+      const filtered =
+        getFilteredStudents();
+
+      tableBody.innerHTML =
+        '';
+
+      if (
+        filtered.length ===
+        0
+      ) {
+
+        emptyMessage.style.display =
+          'block';
+
+        const title =
+          emptyMessage.querySelector(
+            'strong'
+          );
+
+        if (
+          statusFilter.value ===
+          'rejected'
+        ) {
+
+          title.textContent =
+            'لا يوجد طلاب غير مقبولين';
+
+        }
+
+        else if (
+          statusFilter.value ===
+          'expelled'
+        ) {
+
+          title.textContent =
+            'لا يوجد طلاب مفصولون';
+
+        }
+
+        else {
+
+          title.textContent =
+            'لا يوجد طلاب';
+        }
+
+        return;
+      }
+
+      emptyMessage.style.display =
+        'none';
+
+      filtered.forEach(
+        student => {
+
+          const row =
+            document.createElement(
+              'tr'
+            );
+
+          const statusInfo =
+            getStatusInfo(
+              student.status
+            );
+
+          const firstLetter =
+            (
+              student.name ||
+              '?'
+            )
+              .trim()
+              .charAt(0);
+
+          const pointsText =
+            formatPoints(
+              student._points
+            );
+
+          const permanentDelete =
+            student.status ===
+              'rejected' ||
+            student.status ===
+              'expelled';
+
+          row.innerHTML = `
+
+            <td>
+
+              <div class="student-name">
+
+                <div class="student-avatar">
+
+                  ${escapeHtml(
+                    firstLetter
+                  )}
+
+                </div>
+
+                <div>
+
+                  <a
+                    class="student-name-link"
+                    href="student-details.html?id=${encodeURIComponent(
+                      student.id
+                    )}"
+                    title="فتح ملف الطالب">
+
+                    ${escapeHtml(
+                      student.name || ''
+                    )}
+
+                  </a>
+
+                  <div class="student-subinfo">
+
+                    التقييم:
+                    <strong>
+                      ${student._score}
+                      / 100
+                    </strong>
+
+                    ·
+
+                    النقاط:
+                    <strong>
+                      ${escapeHtml(
+                        pointsText
+                      )}
+                    </strong>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </td>
+
+            <td>
+
+              <span class="section-badge">
+
+                ${escapeHtml(
+                  student.section ||
+                  '-'
+                )}
+
+              </span>
+
+            </td>
+
+            <td>
+
+              ${
+                student.memorization
+                  ? `
+
+                    <span class="memorization">
+
+                      ${escapeHtml(
+                        student.memorization
+                      )}
+
+                    </span>
+
+                  `
+                  : `
+
+                    <span class="no-data">
+
+                      لم يحدد
+
+                    </span>
+
+                  `
+              }
+
+            </td>
+
+            <td>
+
+              <span class="status ${statusInfo.className}">
+
+                ${statusInfo.text}
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <span class="score-badge">
+
+                ${student._score}
+                / 100
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <span class="points-badge">
+
+                ${escapeHtml(
+                  pointsText
+                )}
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <div class="actions">
+
+                <button
+                  class="action-btn edit-btn"
+                  title="تعديل"
+                  type="button"
+                  onclick="editStudent('${student.id}')">
+
+                  <i class="fa-solid fa-pen"></i>
+
+                </button>
+
+                ${
+                  permanentDelete
+                    ? `
+
+                      <button
+                        class="action-btn delete-btn"
+                        title="حذف نهائي"
+                        type="button"
+                        onclick="deleteStudent('${student.id}')">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                      </button>
+
+                    `
+                    : `
+
+                      <button
+                        class="action-btn expel-btn"
+                        title="فصل الطالب"
+                        type="button"
+                        onclick="deleteStudent('${student.id}')">
+
+                        <i class="fa-solid fa-user-slash"></i>
+
+                      </button>
+
+                    `
+                }
+
+              </div>
+
+            </td>
+
+          `;
+
+          tableBody.appendChild(
+            row
+          );
+        }
+      );
+    }
+
+    function updateStats() {
+
+      totalStudents.textContent =
+        students.length;
+
+      activeStudents.textContent =
+        students.filter(
+          student =>
+            student.status ===
+            'active'
+        ).length;
+
+      memorizedStudents.textContent =
+        students.filter(
+          student =>
+            student.memorization &&
+            String(
+              student.memorization
+            ).trim() !== ''
+        ).length;
+    }
+
+    function openAddModal() {
+
+      editingStudentId =
+        null;
+
+      modalTitle.textContent =
+        'إضافة طالب جديد';
+
+      saveButton.innerHTML =
+        '<i class="fa-solid fa-check"></i> حفظ الطالب';
+
+      studentForm.reset();
+
+      document.getElementById(
+        'studentStatus'
+      ).value =
+        'active';
+
+      message.textContent =
+        '';
+
+      modal.classList.add(
+        'show'
+      );
+    }
+
+    openModal.addEventListener(
+      'click',
+      openAddModal
+    );
+
+    window.editStudent =
+      function(
+        id
+      ) {
+
+        const student =
+          students.find(
+            item =>
+              String(
+                item.id
+              ) ===
+              String(id)
+          );
+
+        if (!student) return;
+
+        editingStudentId =
+          id;
+
+        modalTitle.textContent =
+          'تعديل بيانات الطالب';
+
+        saveButton.innerHTML =
+          '<i class="fa-solid fa-check"></i> حفظ التعديلات';
+
+        document.getElementById(
+          'studentName'
+        ).value =
+          student.name ||
+          '';
+
+        document.getElementById(
+          'studentSection'
+        ).value =
+          student.section ||
+          '';
+
+        document.getElementById(
+          'memorization'
+        ).value =
+          student.memorization ||
+          '';
+
+        document.getElementById(
+          'studentStatus'
+        ).value =
+          student.status ||
+          'active';
+
+        message.textContent =
+          '';
+
+        modal.classList.add(
+          'show'
+        );
+      };
+
+    studentForm.addEventListener(
+      'submit',
+      async function(
+        event
+      ) {
+
+        event.preventDefault();
+
+        const name =
+          document.getElementById(
+            'studentName'
+          ).value.trim();
+
+        const section =
+          document.getElementById(
+            'studentSection'
+          ).value;
+
+        const memorization =
+          document.getElementById(
+            'memorization'
+          ).value.trim();
+
+        const status =
+          document.getElementById(
+            'studentStatus'
+          ).value;
+
+        if (
+          !name ||
+          !section
+        ) {
+
+          message.style.color =
+            'var(--danger)';
+
+          message.textContent =
+            'يرجى تعبئة البيانات المطلوبة.';
+
+          return;
+        }
+
+        saveButton.disabled =
+          true;
+
+        saveButton.innerHTML =
+          '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الحفظ...';
+
+        try {
+
+          if (
+            editingStudentId
+          ) {
+
+            const {
+              data,
+              error
+            } =
+              await supabaseClient
+                .from(
+                  'students'
+                )
+                .update({
+                  name,
+                  section,
+                  memorization,
+                  status
+                })
+                .eq(
+                  'id',
+                  editingStudentId
+                )
+                .select()
+                .single();
+
+            if (error) {
+              throw error;
+            }
+
+            students =
+              students.map(
+                student =>
+                  String(
+                    student.id
+                  ) ===
+                  String(
+                    editingStudentId
+                  )
+                    ? data
+                    : student
+              );
+
+            showToast(
+              'تم تعديل بيانات الطالب بنجاح.'
             );
 
           }
-        );
 
+          else {
+
+            const {
+              data,
+              error
+            } =
+              await supabaseClient
+                .from(
+                  'students'
+                )
+                .insert([
+                  {
+                    name,
+                    section,
+                    memorization,
+                    status
+                  }
+                ])
+                .select()
+                .single();
+
+            if (error) {
+              throw error;
+            }
+
+            students.unshift(
+              data
+            );
+
+            showToast(
+              'تمت إضافة الطالب بنجاح.'
+            );
+          }
+
+          await loadProfiles();
+
+          renderStudents();
+
+          updateStats();
+
+          closeStudentModal();
+
+        }
+
+        catch (error) {
+
+          console.error(
+            error
+          );
+
+          message.style.color =
+            'var(--danger)';
+
+          message.textContent =
+            'حدث خطأ أثناء حفظ الطالب.';
+
+        }
+
+        finally {
+
+          saveButton.disabled =
+            false;
+
+          saveButton.innerHTML =
+            '<i class="fa-solid fa-check"></i> حفظ الطالب';
+
+        }
+
+      }
+    );
+
+    window.deleteStudent =
+      async function(
+        id
+      ) {
+
+        const student =
+          students.find(
+            item =>
+              String(
+                item.id
+              ) ===
+              String(id)
+          );
+
+        if (!student) return;
+
+        const isPermanentDelete =
+          student.status ===
+            'rejected' ||
+          student.status ===
+            'expelled';
+
+        if (
+          isPermanentDelete
+        ) {
+
+          const confirmed =
+            confirm(
+              `سيتم حذف الطالب "${student.name}" نهائيًا من قاعدة البيانات. لا يمكن التراجع عن هذه العملية. هل تريد المتابعة؟`
+            );
+
+          if (!confirmed) return;
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .from(
+                'students'
+              )
+              .delete()
+              .eq(
+                'id',
+                id
+              );
+
+          if (error) {
+
+            console.error(
+              error
+            );
+
+            showToast(
+              'حدث خطأ أثناء الحذف النهائي للطالب.',
+              'error'
+            );
+
+            return;
+          }
+
+          students =
+            students.filter(
+              item =>
+                String(
+                  item.id
+                ) !==
+                String(id)
+            );
+
+          delete profileMap[
+            String(id)
+          ];
+
+          renderStudents();
+
+          updateStats();
+
+          showToast(
+            'تم حذف الطالب نهائيًا.'
+          );
+
+          return;
+        }
+
+        const confirmed =
+          confirm(
+            `سيتم فصل الطالب "${student.name}" ونقله إلى قائمة المفصولين. لن تُحذف بياناته. هل تريد المتابعة؟`
+          );
+
+        if (!confirmed) return;
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from(
+              'students'
+            )
+            .update({
+              status:
+                'expelled'
+            })
+            .eq(
+              'id',
+              id
+            )
+            .select()
+            .single();
+
+        if (error) {
+
+          console.error(
+            error
+          );
+
+          showToast(
+            'حدث خطأ أثناء فصل الطالب.',
+            'error'
+          );
+
+          return;
+        }
+
+        students =
+          students.map(
+            item =>
+              String(
+                item.id
+              ) ===
+              String(id)
+                ? data
+                : item
+          );
+
+        renderStudents();
+
+        updateStats();
+
+        showToast(
+          'تم فصل الطالب ونقله إلى قائمة المفصولين.'
+        );
+      };
+
+    function closeStudentModal() {
+
+      modal.classList.remove(
+        'show'
+      );
+
+      studentForm.reset();
+
+      message.textContent =
+        '';
+
+      editingStudentId =
+        null;
+
+      saveButton.disabled =
+        false;
+
+      saveButton.innerHTML =
+        '<i class="fa-solid fa-check"></i> حفظ الطالب';
     }
+
+    closeModal.addEventListener(
+      'click',
+      closeStudentModal
+    );
+
+    cancelButton.addEventListener(
+      'click',
+      closeStudentModal
+    );
+
+    modal.addEventListener(
+      'click',
+      function(
+        event
+      ) {
+
+        if (
+          event.target ===
+          modal
+        ) {
+
+          closeStudentModal();
+
+        }
+      }
+    );
+
+    searchInput.addEventListener(
+      'input',
+      renderStudents
+    );
+
+    sectionFilter.addEventListener(
+      'change',
+      renderStudents
+    );
+
+    statusFilter.addEventListener(
+      'change',
+      renderStudents
+    );
+
+    sortFilter.addEventListener(
+      'change',
+      renderStudents
+    );
+
+    document
+      .getElementById(
+        'logoutButton'
+      )
+      .addEventListener(
+        'click',
+        logout
+      );
+
+    function logout() {
+
+      localStorage.removeItem(
+        'teacherAccess'
+      );
+
+      window.location.href =
+        'teacher-login.html';
+    }
+
+    const sidebar =
+      document.getElementById(
+        'sidebar'
+      );
+
+    document
+      .getElementById(
+        'mobileMenu'
+      )
+      .addEventListener(
+        'click',
+        function() {
+
+          sidebar.classList.add(
+            'open'
+          );
+
+        }
+      );
+
+    document
+      .getElementById(
+        'closeSidebar'
+      )
+      .addEventListener(
+        'click',
+        function() {
+
+          sidebar.classList.remove(
+            'open'
+          );
+
+        }
+      );
+
+    document
+      .querySelector(
+        '.sidebar-brand'
+      )
+      .addEventListener(
+        'click',
+        function() {
+
+          sidebar.classList.remove(
+            'open'
+          );
+
+        }
+      );
+
+    document
+      .getElementById(
+        'studentsNav'
+      )
+      .addEventListener(
+        'click',
+        function() {
+
+          document
+            .getElementById(
+              'studentsPanel'
+            )
+            .scrollIntoView({
+              behavior:
+                'smooth'
+            });
+
+          sidebar.classList.remove(
+            'open'
+          );
+        }
+      );
+
+    document
+      .getElementById(
+        'requestsNav'
+      )
+      .addEventListener(
+        'click',
+        function() {
+
+          document
+            .getElementById(
+              'requestsPanel'
+            )
+            .scrollIntoView({
+              behavior:
+                'smooth'
+            });
+
+          sidebar.classList.remove(
+            'open'
+          );
+        }
+      );
+
+    document
+      .getElementById(
+        'memorizationNav'
+      )
+      .addEventListener(
+        'click',
+        function() {
+
+          document
+            .getElementById(
+              'studentsPanel'
+            )
+            .scrollIntoView({
+              behavior:
+                'smooth'
+            });
+
+          sidebar.classList.remove(
+            'open'
+          );
+        }
+      );
+
+    function escapeHtml(
+      text
+    ) {
+
+      return String(
+        text
+      )
+        .replaceAll(
+          '&',
+          '&amp;'
+        )
+        .replaceAll(
+          '<',
+          '&lt;'
+        )
+        .replaceAll(
+          '>',
+          '&gt;'
+        )
+        .replaceAll(
+          '"',
+          '&quot;'
+        )
+        .replaceAll(
+          "'",
+          '&#039;'
+        );
+    }
+
+    (async function() {
+
+      const loggedIn =
+        checkUser();
+
+      if (!loggedIn) {
+        return;
+      }
+
+      await loadStudents();
+
+      await loadPendingRequests();
+
+    })();
 
   </script>
 
 </body>
-
 </html>
+```
