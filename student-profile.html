@@ -5,9 +5,15 @@
 <head>
 
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#092f25"
   >
 
   <title>
@@ -26,11 +32,13 @@
     href="logo.png"
   >
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
+
+    /* =========================================================
+       ROOT
+    ========================================================= */
 
     * {
       box-sizing: border-box;
@@ -39,51 +47,83 @@
     }
 
     :root {
-      --green: #0d4d3a;
-      --green-2: #176b50;
-      --green-3: #218866;
-      --dark: #092f25;
 
+      --green-950: #06251d;
+      --green-900: #092f25;
+      --green-800: #0d4d3a;
+      --green-700: #176b50;
+      --green-600: #218866;
+      --green-500: #2da77b;
+
+      --gold-700: #98792d;
+      --gold-600: #b58f36;
       --gold: #c5a04a;
-      --gold-2: #e0c36c;
+      --gold-400: #d8b65e;
+      --gold-300: #e0c36c;
+      --gold-200: #f0df9d;
 
-      --cream: #f8f5eb;
+      --cream: #fbf7ea;
+      --cream-2: #fffaf0;
 
-      --bg: #f2f6f3;
+      --bg: #f1f5f3;
+      --bg-2: #eaf1ed;
+
       --white: #ffffff;
 
       --text: #17362c;
+      --text-2: #355148;
       --muted: #718078;
+      --muted-2: #87938e;
 
-      --border: #e2e9e5;
+      --border: #dfe8e3;
+      --border-2: #edf2ef;
 
       --success: #16834b;
+      --success-bg: #e9f8ef;
+
       --danger: #b42318;
+      --danger-bg: #fff0ef;
 
       --blue: #2869a8;
-      --orange: #b76a18;
+      --blue-bg: #eaf2fb;
+
+      --orange: #a96116;
+      --orange-bg: #fff3df;
+
+      --shadow-xs:
+        0 4px 14px rgba(10, 55, 42, .04);
+
+      --shadow-sm:
+        0 8px 24px rgba(10, 55, 42, .06);
 
       --shadow:
-        0 12px 35px rgba(13, 77, 58, .08);
+        0 16px 42px rgba(10, 55, 42, .09);
+
+      --shadow-lg:
+        0 25px 70px rgba(10, 55, 42, .14);
+
+      --radius-sm: 12px;
+      --radius: 18px;
+      --radius-lg: 26px;
+      --radius-xl: 32px;
+
+      --transition:
+        .25s cubic-bezier(.22, .61, .36, 1);
+
     }
+
+
+    /* =========================================================
+       BASE
+    ========================================================= */
 
     html {
       scroll-behavior: smooth;
     }
 
     body {
-      background:
-        radial-gradient(
-          circle at 10% 5%,
-          rgba(197,160,74,.10),
-          transparent 25%
-        ),
-        radial-gradient(
-          circle at 90% 15%,
-          rgba(23,107,80,.08),
-          transparent 25%
-        ),
-        var(--bg);
+
+      min-height: 100vh;
 
       color: var(--text);
 
@@ -92,7 +132,99 @@
         Arial,
         sans-serif;
 
-      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 7% 2%,
+          rgba(197,160,74,.13),
+          transparent 22%
+        ),
+
+        radial-gradient(
+          circle at 95% 7%,
+          rgba(33,136,102,.09),
+          transparent 24%
+        ),
+
+        radial-gradient(
+          circle at 50% 100%,
+          rgba(13,77,58,.05),
+          transparent 30%
+        ),
+
+        linear-gradient(
+          180deg,
+          #f6f9f7 0%,
+          #eef4f1 48%,
+          #edf3f0 100%
+        );
+
+      overflow-x: hidden;
+    }
+
+    body::before {
+
+      content: "";
+
+      position: fixed;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      z-index: -1;
+
+      opacity: .42;
+
+      background-image:
+        radial-gradient(
+          rgba(13,77,58,.06) 1px,
+          transparent 1px
+        );
+
+      background-size: 28px 28px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 80%
+        );
+    }
+
+    body::after {
+
+      content: "";
+
+      position: fixed;
+
+      width: 300px;
+      height: 300px;
+
+      border-radius: 50%;
+
+      left: -180px;
+      bottom: -150px;
+
+      border:
+        1px solid
+        rgba(197,160,74,.11);
+
+      box-shadow:
+        0 0 0 55px rgba(197,160,74,.025),
+        0 0 0 110px rgba(197,160,74,.018);
+
+      pointer-events: none;
+
+      z-index: -1;
+
+      animation:
+        floatOrb 8s ease-in-out infinite;
+    }
+
+    body.ready #app {
+
+      animation:
+        pageEnter .55s ease both;
     }
 
     button,
@@ -103,37 +235,115 @@
     }
 
     button,
-    a {
+    a,
+    input,
+    select,
+    textarea {
       -webkit-tap-highlight-color: transparent;
     }
 
+    ::selection {
+      background: rgba(197,160,74,.24);
+      color: var(--green-900);
+    }
 
-    /* =========================
-       HEADER
-    ========================= */
+    a {
+      color: inherit;
+    }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+
+    /* =========================================================
+       SCROLLBAR
+    ========================================================= */
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #e8eeeb;
+    }
+
+    ::-webkit-scrollbar-thumb {
 
       background:
-        rgba(9,47,37,.96);
+        linear-gradient(
+          var(--green-700),
+          var(--green-500)
+        );
 
-      backdrop-filter:
-        blur(16px);
+      border-radius: 999px;
+
+      border: 2px solid #e8eeeb;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    header {
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
 
       color: white;
 
+      background:
+        linear-gradient(
+          135deg,
+          rgba(6,37,29,.98),
+          rgba(9,47,37,.97) 52%,
+          rgba(13,77,58,.95)
+        );
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,.07);
+
       box-shadow:
-        0 8px 25px rgba(0,0,0,.10);
+        0 10px 35px rgba(0,0,0,.14);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+    }
+
+    header::after {
+
+      content: "";
+
+      position: absolute;
+
+      inset-inline: 0;
+
+      bottom: 0;
+
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(224,195,108,.65),
+          transparent
+        );
+
+      opacity: .55;
     }
 
     .header-inner {
+
       width:
         min(
-          1250px,
-          calc(100% - 30px)
+          1320px,
+          calc(100% - 28px)
         );
 
       min-height: 78px;
@@ -141,258 +351,647 @@
       margin: auto;
 
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
+
+      justify-content: space-between;
 
       gap: 18px;
     }
 
     .brand-link {
+
       color: white;
+
       text-decoration: none;
 
       display: flex;
+
       align-items: center;
 
       gap: 13px;
+
+      min-width: 0;
     }
 
-    .brand-logo {
-      width: 48px;
-      height: 48px;
+    .brand-logo-wrap {
+
+      position: relative;
+
+      width: 50px;
+      height: 50px;
+
+      flex-shrink: 0;
+    }
+
+    .brand-logo-glow {
+
+      position: absolute;
+
+      inset: -5px;
 
       border-radius: 50%;
 
-      object-fit: cover;
+      background:
+        radial-gradient(
+          circle,
+          rgba(224,195,108,.24),
+          transparent 68%
+        );
 
-      overflow: hidden;
+      animation:
+        breathe 3s ease-in-out infinite;
+    }
+
+    .brand-logo {
+
+      position: relative;
+
+      width: 50px;
+      height: 50px;
+
+      border-radius: 50%;
+
+      display: block;
+
+      object-fit: cover;
 
       border:
         2px solid
-        rgba(224,195,108,.8);
+        rgba(224,195,108,.88);
 
       box-shadow:
-        0 5px 18px rgba(0,0,0,.2);
+        0 7px 20px rgba(0,0,0,.24);
+    }
+
+    .brand {
+
+      min-width: 0;
     }
 
     .brand h1 {
+
       font-size: 18px;
-      margin-bottom: 4px;
+
+      line-height: 1.35;
+
+      margin-bottom: 3px;
+
+      white-space: nowrap;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
     }
 
     .brand p {
+
       color:
-        rgba(255,255,255,.68);
+        rgba(255,255,255,.65);
 
-      font-size: 12px;
-    }
-
-    .back {
-      color: white;
-
-      text-decoration: none;
-
-      border:
-        1px solid
-        rgba(255,255,255,.20);
-
-      background:
-        rgba(255,255,255,.07);
-
-      padding:
-        11px 16px;
-
-      border-radius: 12px;
-
-      transition: .2s;
+      font-size: 11px;
 
       white-space: nowrap;
     }
 
-    .back:hover {
-      background:
-        rgba(255,255,255,.14);
-
-      transform:
-        translateY(-2px);
-    }
-
-
-    /* =========================
-       PAGE
-    ========================= */
-
-    .container {
-      width:
-        min(
-          1250px,
-          calc(100% - 30px)
-        );
-
-      margin:
-        28px auto 80px;
-    }
-
-
-    /* =========================
-       MESSAGE
-    ========================= */
-
-    .message {
-      display: none;
-
-      padding: 15px 18px;
-
-      border-radius: 15px;
-
-      margin-bottom: 18px;
-
-      font-weight: bold;
-
-      box-shadow: var(--shadow);
-    }
-
-    .success {
-      background: #eaf8ef;
-      color: #13743f;
-      border: 1px solid #cbead6;
-    }
-
-    .error {
-      background: #fff0ef;
-      color: #a31d16;
-      border: 1px solid #f2cdca;
-    }
-
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .student-hero {
-      position: relative;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 10% 10%,
-          rgba(224,195,108,.18),
-          transparent 28%
-        ),
-        linear-gradient(
-          135deg,
-          #0a382c,
-          #14654b
-        );
-
-      border-radius: 28px;
-
-      padding: 28px;
-
-      color: white;
-
-      margin-bottom: 20px;
-
-      box-shadow:
-        0 18px 45px
-        rgba(13,77,58,.18);
-    }
-
-    .student-hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 230px;
-      height: 230px;
-
-      border:
-        1px solid
-        rgba(255,255,255,.08);
-
-      border-radius: 50%;
-
-      left: -90px;
-      top: -120px;
-    }
-
-    .student-hero::after {
-      content: "";
-
-      position: absolute;
-
-      width: 280px;
-      height: 280px;
-
-      border:
-        1px solid
-        rgba(224,195,108,.12);
-
-      border-radius: 50%;
-
-      right: -130px;
-      bottom: -170px;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
+    .header-actions {
 
       display: flex;
 
       align-items: center;
 
-      gap: 22px;
+      gap: 9px;
+    }
+
+    .header-chip {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      min-height: 38px;
+
+      padding: 0 12px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.12);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.06);
+
+      color:
+        rgba(255,255,255,.83);
+
+      font-size: 11px;
+
+      white-space: nowrap;
+    }
+
+    .header-dot {
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        #69d69d;
+
+      box-shadow:
+        0 0 0 5px rgba(105,214,157,.10);
+
+      animation:
+        statusPulse 2s infinite;
+    }
+
+    .back {
+
+      min-height: 42px;
+
+      padding:
+        0 14px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      text-decoration: none;
+
+      border:
+        1px solid
+        rgba(255,255,255,.15);
+
+      background:
+        rgba(255,255,255,.06);
+
+      border-radius: 12px;
+
+      transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+    }
+
+    .back:hover {
+
+      transform:
+        translateY(-2px);
+
+      background:
+        rgba(255,255,255,.12);
+
+      border-color:
+        rgba(224,195,108,.35);
+    }
+
+
+    /* =========================================================
+       PAGE
+    ========================================================= */
+
+    .container {
+
+      width:
+        min(
+          1320px,
+          calc(100% - 28px)
+        );
+
+      margin:
+        24px auto 95px;
+    }
+
+    #app {
+      min-height: 300px;
+    }
+
+
+    /* =========================================================
+       MESSAGE
+    ========================================================= */
+
+    .message {
+
+      display: none;
+
+      position: relative;
+
+      padding:
+        14px 18px;
+
+      margin-bottom: 16px;
+
+      border-radius: 16px;
+
+      font-size: 13px;
+
+      font-weight: bold;
+
+      box-shadow:
+        var(--shadow-sm);
+
+      animation:
+        messageIn .35s ease both;
+    }
+
+    .message::before {
+
+      content: "";
+
+      position: absolute;
+
+      right: 0;
+
+      top: 12px;
+      bottom: 12px;
+
+      width: 4px;
+
+      border-radius: 10px;
+
+      background: currentColor;
+
+      opacity: .7;
+    }
+
+    .success {
+
+      background:
+        linear-gradient(
+          135deg,
+          #eefaf2,
+          #e5f7ec
+        );
+
+      color: #13743f;
+
+      border:
+        1px solid
+        #ccebd7;
+    }
+
+    .error {
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff4f2,
+          #ffeded
+        );
+
+      color: #a31d16;
+
+      border:
+        1px solid
+        #f0cfcb;
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .student-hero {
+
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: var(--radius-xl);
+
+      margin-bottom: 16px;
+
+      color: white;
+
+      background:
+
+        radial-gradient(
+          circle at 15% 15%,
+          rgba(224,195,108,.20),
+          transparent 23%
+        ),
+
+        radial-gradient(
+          circle at 86% 85%,
+          rgba(45,167,123,.16),
+          transparent 22%
+        ),
+
+        linear-gradient(
+          135deg,
+          #07271f 0%,
+          #0a382c 42%,
+          #14654b 100%
+        );
+
+      border:
+        1px solid
+        rgba(255,255,255,.07);
+
+      box-shadow:
+        0 24px 65px
+        rgba(13,77,58,.20);
+
+      isolation: isolate;
+    }
+
+    .student-hero::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 360px;
+      height: 360px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.07);
+
+      border-radius: 50%;
+
+      left: -175px;
+      top: -220px;
+
+      box-shadow:
+        0 0 0 36px rgba(255,255,255,.018),
+        0 0 0 72px rgba(255,255,255,.012);
+
+      animation:
+        rotateSlow 22s linear infinite;
+    }
+
+    .student-hero::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 430px;
+      height: 430px;
+
+      border:
+        1px solid
+        rgba(224,195,108,.10);
+
+      border-radius: 50%;
+
+      right: -220px;
+      bottom: -275px;
+
+      box-shadow:
+        0 0 0 48px rgba(224,195,108,.018),
+        0 0 0 96px rgba(224,195,108,.010);
+
+      animation:
+        rotateSlow 30s linear infinite reverse;
+    }
+
+    .hero-grid-lines {
+
+      position: absolute;
+
+      inset: 0;
+
+      opacity: .055;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent 49%,
+          rgba(255,255,255,.12) 50%,
+          transparent 51%
+        ),
+        linear-gradient(
+          0deg,
+          transparent 49%,
+          rgba(255,255,255,.12) 50%,
+          transparent 51%
+        );
+
+      background-size:
+        36px 36px;
+
+      mask-image:
+        radial-gradient(
+          circle at center,
+          black,
+          transparent 73%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-content {
+
+      position: relative;
+
+      z-index: 3;
+
+      min-height: 265px;
+
+      padding: 29px;
+
+      display: grid;
+
+      grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        minmax(300px, 390px);
+
+      align-items: center;
+
+      gap: 24px;
+    }
+
+    .hero-photo-wrap {
+
+      position: relative;
+
+      width: 126px;
+      height: 126px;
+
+      display: grid;
+
+      place-items: center;
+
+      flex-shrink: 0;
+    }
+
+    .hero-photo-ring {
+
+      position: absolute;
+
+      inset: 0;
+
+      border-radius: 50%;
+
+      border:
+        2px solid
+        rgba(224,195,108,.94);
+
+      box-shadow:
+        0 0 0 7px rgba(224,195,108,.08),
+        0 0 0 15px rgba(255,255,255,.025);
+
+      animation:
+        ringGlow 3.5s ease-in-out infinite;
+    }
+
+    .hero-photo-ring::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 13px;
+      height: 13px;
+
+      border-radius: 50%;
+
+      top: 7px;
+      right: 12px;
+
+      background:
+        var(--gold-300);
+
+      box-shadow:
+        0 0 0 5px rgba(224,195,108,.13),
+        0 0 20px rgba(224,195,108,.38);
     }
 
     .hero-photo {
-      width: 105px;
-      height: 105px;
+
+      width: 108px;
+      height: 108px;
 
       border-radius: 50%;
 
       object-fit: cover;
 
-      overflow: hidden;
+      display: block;
+
+      position: relative;
+
+      z-index: 2;
 
       border:
         4px solid
-        rgba(224,195,108,.95);
+        rgba(255,255,255,.96);
 
       background:
         rgba(255,255,255,.10);
 
-      flex-shrink: 0;
-
       box-shadow:
-        0 8px 28px
-        rgba(0,0,0,.20);
+        0 12px 35px
+        rgba(0,0,0,.28);
     }
 
     .hero-info {
-      flex: 1;
+
+      min-width: 0;
+    }
+
+    .hero-kicker {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        6px 10px;
+
+      border-radius: 999px;
+
+      margin-bottom: 10px;
+
+      font-size: 11px;
+
+      color:
+        rgba(255,255,255,.84);
+
+      background:
+        rgba(255,255,255,.07);
+
+      border:
+        1px solid
+        rgba(255,255,255,.11);
+    }
+
+    .hero-kicker-dot {
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background:
+        var(--gold-300);
+
+      box-shadow:
+        0 0 10px rgba(224,195,108,.55);
     }
 
     .hero-info h2 {
+
       font-size:
         clamp(
-          24px,
+          26px,
           4vw,
-          34px
+          40px
         );
 
+      line-height: 1.2;
+
+      letter-spacing: -.4px;
+
       margin-bottom: 7px;
+
+      text-wrap: balance;
     }
 
-    .hero-info p {
-      color:
-        rgba(255,255,255,.75);
+    .hero-subline {
 
-      margin-bottom: 14px;
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      color:
+        rgba(255,255,255,.70);
+
+      font-size: 13px;
+
+      margin-bottom: 15px;
+    }
+
+    .hero-sub-item {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 5px;
+    }
+
+    .hero-separator {
+      opacity: .36;
     }
 
     .hero-pills {
+
       display: flex;
 
       flex-wrap: wrap;
@@ -401,100 +1000,381 @@
     }
 
     .hero-pill {
-      background:
-        rgba(255,255,255,.10);
 
-      border:
-        1px solid
-        rgba(255,255,255,.13);
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      min-height: 33px;
 
       padding:
-        8px 12px;
+        0 11px;
 
       border-radius: 999px;
 
-      font-size: 12px;
-    }
+      font-size: 11px;
 
-    .hero-side {
-      min-width: 240px;
+      color:
+        rgba(255,255,255,.87);
 
-      display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
-      gap: 9px;
-    }
-
-    .hero-stat {
       background:
-        rgba(255,255,255,.08);
+        rgba(255,255,255,.075);
 
       border:
         1px solid
+        rgba(255,255,255,.10);
+
+      backdrop-filter:
+        blur(7px);
+
+      transition:
+        transform var(--transition),
+        background var(--transition);
+    }
+
+    .hero-pill:hover {
+
+      transform:
+        translateY(-2px);
+
+      background:
         rgba(255,255,255,.12);
+    }
+
+    .hero-side {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 10px;
+    }
+
+    .hero-stat {
+
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 96px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      text-align: center;
+
+      padding:
+        12px;
 
       border-radius: 18px;
 
-      padding: 15px 12px;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.10),
+          rgba(255,255,255,.045)
+        );
 
-      text-align: center;
+      border:
+        1px solid
+        rgba(255,255,255,.10);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.035);
+
+      backdrop-filter:
+        blur(10px);
+
+      transition:
+        transform var(--transition),
+        background var(--transition);
+    }
+
+    .hero-stat:hover {
+
+      transform:
+        translateY(-4px);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,.14),
+          rgba(255,255,255,.06)
+        );
+    }
+
+    .hero-stat::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 75px;
+      height: 75px;
+
+      border-radius: 50%;
+
+      right: -28px;
+      bottom: -38px;
+
+      background:
+        rgba(224,195,108,.07);
     }
 
     .hero-stat small {
-      display: block;
 
       color:
-        rgba(255,255,255,.65);
+        rgba(255,255,255,.58);
+
+      font-size: 10px;
 
       margin-bottom: 5px;
+    }
+
+    .hero-stat strong {
+
+      position: relative;
+
+      color:
+        var(--gold-300);
+
+      font-size: 25px;
+
+      line-height: 1;
+
+      font-weight: 900;
+    }
+
+    .hero-stat-wide {
+
+      grid-column:
+        1 / -1;
+
+      min-height: 73px;
+
+      flex-direction: row;
+
+      gap: 12px;
+
+      justify-content: space-between;
+
+      padding:
+        12px 15px;
+    }
+
+    .hero-wide-label {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      color:
+        rgba(255,255,255,.77);
 
       font-size: 11px;
     }
 
-    .hero-stat strong {
-      font-size: 24px;
+    .hero-wide-label-icon {
 
-      color:
-        var(--gold-2);
-    }
+      width: 35px;
+      height: 35px;
 
+      border-radius: 11px;
 
-    /* =========================
-       SECTION
-    ========================= */
+      display: grid;
 
-    .section {
-      margin-top: 20px;
+      place-items: center;
 
       background:
-        rgba(255,255,255,.94);
+        rgba(224,195,108,.10);
 
       border:
         1px solid
-        rgba(226,233,229,.9);
+        rgba(224,195,108,.12);
 
-      border-radius: 22px;
+      font-size: 16px;
+    }
+
+
+    /* =========================================================
+       QUICK NAV
+    ========================================================= */
+
+    .quick-nav {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      overflow-x: auto;
+
+      padding:
+        4px 2px 9px;
+
+      margin-bottom: 7px;
+
+      scrollbar-width: none;
+    }
+
+    .quick-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .quick-link {
+
+      flex-shrink: 0;
+
+      text-decoration: none;
+
+      min-height: 40px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        0 13px;
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,.78);
+
+      border:
+        1px solid
+        var(--border);
+
+      color:
+        var(--text-2);
+
+      font-size: 11px;
+
+      box-shadow:
+        var(--shadow-xs);
+
+      transition:
+        var(--transition);
+
+      backdrop-filter:
+        blur(10px);
+    }
+
+    .quick-link:hover {
+
+      transform:
+        translateY(-2px);
+
+      color:
+        var(--green);
+
+      border-color:
+        rgba(23,107,80,.22);
+
+      background:
+        white;
+
+      box-shadow:
+        var(--shadow-sm);
+    }
+
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    .section {
+
+      position: relative;
+
+      overflow: hidden;
+
+      scroll-margin-top: 95px;
+
+      margin-top: 16px;
 
       padding: 23px;
 
+      border-radius:
+        var(--radius-lg);
+
+      border:
+        1px solid
+        rgba(219,229,223,.92);
+
+      background:
+        rgba(255,255,255,.88);
+
       box-shadow:
-        var(--shadow);
+        var(--shadow-sm);
+
+      backdrop-filter:
+        blur(14px);
+
+      animation:
+        sectionEnter .55s ease both;
+    }
+
+    .section::after {
+
+      content: "";
+
+      position: absolute;
+
+      width: 130px;
+      height: 130px;
+
+      border-radius: 50%;
+
+      left: -70px;
+      bottom: -75px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(197,160,74,.075),
+          transparent 68%
+        );
+
+      pointer-events: none;
     }
 
     .section-head {
+
+      position: relative;
+
+      z-index: 1;
+
       display: flex;
 
-      justify-content: space-between;
+      align-items: flex-start;
 
-      align-items: center;
+      justify-content: space-between;
 
       gap: 15px;
 
       margin-bottom: 20px;
     }
 
+    .section-title-wrap {
+      min-width: 0;
+    }
+
     .section-title {
+
       display: flex;
 
       align-items: center;
@@ -502,206 +1382,371 @@
       gap: 10px;
 
       color:
-        var(--green);
+        var(--green-800);
 
       font-size: 20px;
+
+      line-height: 1.3;
     }
 
     .section-title::before {
+
       content: "";
 
       width: 5px;
       height: 25px;
 
-      border-radius: 20px;
+      flex-shrink: 0;
+
+      border-radius: 99px;
 
       background:
         linear-gradient(
-          var(--gold),
-          var(--gold-2)
+          180deg,
+          var(--gold-400),
+          var(--gold)
         );
+
+      box-shadow:
+        0 4px 14px rgba(197,160,74,.18);
     }
 
     .section-subtitle {
-      color:
-        var(--muted);
 
-      font-size: 12px;
-
-      margin-top: 4px;
-    }
-
-
-    /* =========================
-       STATS
-    ========================= */
-
-    .stats {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 14px;
-    }
-
-    .stat {
-      position: relative;
-
-      overflow: hidden;
-
-      border:
-        1px solid
-        var(--border);
-
-      background:
-        linear-gradient(
-          145deg,
-          #fff,
-          #f8fbf9
-        );
-
-      border-radius: 18px;
-
-      padding: 18px;
-
-      transition: .25s;
-    }
-
-    .stat:hover {
-      transform:
-        translateY(-4px);
-
-      box-shadow:
-        0 14px 30px
-        rgba(13,77,58,.10);
-    }
-
-    .stat::after {
-      content: "";
-
-      position: absolute;
-
-      width: 70px;
-      height: 70px;
-
-      border-radius: 50%;
-
-      left: -25px;
-      bottom: -35px;
-
-      background:
-        rgba(197,160,74,.08);
-    }
-
-    .stat-icon {
-      width: 42px;
-      height: 42px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 13px;
-
-      background:
-        var(--cream);
-
-      margin-bottom: 12px;
-
-      font-size: 20px;
-    }
-
-    .stat-label {
-      color:
-        var(--muted);
-
-      font-size: 12px;
-
-      margin-bottom: 5px;
-    }
-
-    .stat-value {
-      color:
-        var(--green);
-
-      font-size: 26px;
-
-      font-weight: 900;
-    }
-
-    .stat-note {
       color:
         var(--muted);
 
       font-size: 11px;
 
       margin-top: 5px;
+
+      line-height: 1.8;
+    }
+
+    .section-badge {
+
+      flex-shrink: 0;
+
+      min-height: 33px;
+
+      padding:
+        0 10px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 999px;
+
+      background:
+        var(--cream);
+
+      border:
+        1px solid
+        #efe3bd;
+
+      color:
+        #7b6634;
+
+      font-size: 10px;
+
+      font-weight: bold;
     }
 
 
-    /* =========================
+    /* =========================================================
+       STATS
+    ========================================================= */
+
+    .stats {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 13px;
+    }
+
+    .stat {
+
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 150px;
+
+      padding: 18px;
+
+      border-radius: 19px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #f7faf8
+        );
+
+      border:
+        1px solid
+        var(--border);
+
+      box-shadow:
+        var(--shadow-xs);
+
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+    }
+
+    .stat::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 125px;
+      height: 125px;
+
+      border-radius: 50%;
+
+      left: -62px;
+      bottom: -73px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(197,160,74,.10),
+          transparent 68%
+        );
+    }
+
+    .stat:hover {
+
+      transform:
+        translateY(-5px);
+
+      box-shadow:
+        var(--shadow);
+
+      border-color:
+        #d6e3dc;
+    }
+
+    .stat-top {
+
+      display: flex;
+
+      align-items: flex-start;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin-bottom: 15px;
+    }
+
+    .stat-icon {
+
+      width: 44px;
+      height: 44px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f8f1db,
+          #fffaf0
+        );
+
+      border:
+        1px solid
+        #efe5c9;
+
+      font-size: 20px;
+
+      box-shadow:
+        0 6px 15px rgba(197,160,74,.08);
+    }
+
+    .stat-trend {
+
+      font-size: 10px;
+
+      color:
+        var(--muted);
+
+      background:
+        #f3f7f4;
+
+      border-radius: 999px;
+
+      padding:
+        5px 8px;
+    }
+
+    .stat-label {
+
+      color:
+        var(--muted);
+
+      font-size: 11px;
+
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+
+      color:
+        var(--green-800);
+
+      font-size: 28px;
+
+      font-weight: 900;
+
+      line-height: 1;
+    }
+
+    .stat-note {
+
+      color:
+        var(--muted);
+
+      font-size: 10px;
+
+      margin-top: 7px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
        PROGRESS
-    ========================= */
+    ========================================================= */
 
     .progress-grid {
+
       display: grid;
 
       grid-template-columns:
         repeat(2, 1fr);
 
-      gap: 16px;
+      gap: 13px;
     }
 
     .progress-card {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 18px;
+
+      border-radius: 19px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fbfdfc,
+          #ffffff
+        );
+
       border:
         1px solid
         var(--border);
 
-      border-radius: 18px;
+      box-shadow:
+        var(--shadow-xs);
+    }
 
-      padding: 18px;
+    .progress-card::after {
 
-      background: #fcfdfc;
+      content: "";
+
+      position: absolute;
+
+      width: 100px;
+      height: 100px;
+
+      border-radius: 50%;
+
+      left: -52px;
+      top: -52px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(33,136,102,.06),
+          transparent 65%
+        );
     }
 
     .progress-top {
+
+      position: relative;
+
+      z-index: 1;
+
       display: flex;
+
+      align-items: center;
 
       justify-content: space-between;
 
-      gap: 12px;
+      gap: 10px;
 
       margin-bottom: 12px;
     }
 
     .progress-top strong {
+
       color:
-        var(--green);
+        var(--green-800);
+
+      font-size: 13px;
     }
 
     .percent {
-      font-weight: 900;
 
       color:
-        var(--gold);
+        var(--gold-600);
 
-      font-size: 21px;
+      font-size: 23px;
+
+      font-weight: 900;
+
+      white-space: nowrap;
     }
 
     .bar {
+
       height: 11px;
 
+      position: relative;
+
+      overflow: hidden;
+
       background:
-        #e8eee9;
+        #e8efeb;
 
       border-radius: 999px;
 
-      overflow: hidden;
+      box-shadow:
+        inset 0 1px 3px rgba(0,0,0,.035);
     }
 
     .bar-fill {
+
+      position: relative;
+
       height: 100%;
 
       width: 0;
@@ -711,772 +1756,374 @@
       background:
         linear-gradient(
           90deg,
-          var(--green),
-          var(--green-3)
+          var(--green-800),
+          var(--green-600),
+          #43b48a
         );
 
+      box-shadow:
+        0 2px 8px rgba(23,107,80,.19);
+
       transition:
-        width .5s ease;
+        width 1s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .bar-fill::after {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.28),
+          transparent
+        );
+
+      transform:
+        translateX(120%);
+
+      animation:
+        barShine 2.6s ease-in-out infinite;
     }
 
     .progress-note {
+
       margin-top: 10px;
 
       color:
         var(--muted);
 
-      font-size: 12px;
-    }
-
-
-    /* =========================
-       FORM
-    ========================= */
-
-    .form-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 15px;
-    }
-
-    .field.full-field {
-      grid-column:
-        1 / -1;
-    }
-
-    label {
-      display: block;
-
-      color:
-        #345248;
-
-      font-weight: bold;
-
-      font-size: 13px;
-
-      margin-bottom: 7px;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-
-      border:
-        1px solid
-        #dce5df;
-
-      border-radius: 12px;
-
-      padding:
-        12px 13px;
-
-      background: white;
-
-      color:
-        var(--text);
-
-      font-size: 14px;
-
-      outline: none;
-
-      transition: .2s;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color:
-        var(--green-2);
-
-      box-shadow:
-        0 0 0 4px
-        rgba(23,107,80,.08);
-    }
-
-    textarea {
-      min-height: 130px;
-
-      resize: vertical;
-    }
-
-    input[readonly] {
-      background:
-        #f7faf8;
-
-      cursor: default;
-    }
-
-
-    /* =========================
-       IMAGE PICKER
-    ========================= */
-
-    .image-upload {
-      border:
-        1px dashed
-        #bdcdc4;
-
-      background:
-        #f8fbf9;
-
-      border-radius: 15px;
-
-      padding: 15px;
-    }
-
-    .image-upload-row {
-      display: flex;
-
-      align-items: center;
-
-      gap: 14px;
-    }
-
-    .image-preview {
-      width: 75px;
-      height: 75px;
-
-      border-radius: 50%;
-
-      object-fit: cover;
-
-      border:
-        2px solid
-        var(--gold);
-
-      background:
-        #eef3ef;
-    }
-
-    .file-button {
-      position: relative;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 7px;
-
-      padding:
-        11px 15px;
-
-      border-radius: 11px;
-
-      background:
-        var(--green);
-
-      color: white;
-
-      cursor: pointer;
-
-      font-weight: bold;
-
-      transition: .2s;
-    }
-
-    .file-button:hover {
-      transform:
-        translateY(-2px);
-
-      background:
-        var(--green-2);
-    }
-
-    .file-button input {
-      position: absolute;
-
-      opacity: 0;
-
-      inset: 0;
-
-      cursor: pointer;
-    }
-
-    .image-help {
-      margin-top: 8px;
-
       font-size: 11px;
 
+      line-height: 1.8;
+    }
+
+    .progress-note b {
       color:
-        var(--muted);
+        var(--green-800);
     }
 
 
-    /* =========================
-       TABLE
-    ========================= */
+    /* =========================================================
+       QUOTE / INFO
+    ========================================================= */
 
-    .table-wrap {
-      overflow-x: auto;
+    .soft-note {
 
-      border:
-        1px solid
-        var(--border);
+      margin-top: 13px;
 
-      border-radius: 15px;
-    }
-
-    table {
-      width: 100%;
-
-      border-collapse:
-        collapse;
-
-      min-width: 720px;
-    }
-
-    th {
-      background:
-        #f3f7f4;
-
-      color:
-        var(--green);
-
-      padding: 13px;
-
-      text-align: right;
-
-      font-size: 12px;
-
-      white-space: nowrap;
-    }
-
-    td {
-      padding: 12px;
-
-      border-top:
-        1px solid
-        var(--border);
-
-      font-size: 13px;
-
-      vertical-align:
-        middle;
-    }
-
-
-    /* =========================
-       EDITOR
-    ========================= */
-
-    .editor-list {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 12px;
-    }
-
-    .editor-row {
-      border:
-        1px solid
-        var(--border);
+      padding:
+        14px 16px;
 
       border-radius: 16px;
 
       background:
-        #fbfdfc;
+        linear-gradient(
+          135deg,
+          #f6faf7,
+          #fffdf7
+        );
 
-      padding: 15px;
-    }
-
-    .editor-row-head {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      margin-bottom: 12px;
-
-      gap: 10px;
-    }
-
-    .editor-row-title {
-      font-weight: 900;
+      border:
+        1px solid
+        var(--border);
 
       color:
-        var(--green);
+        var(--text-2);
+
+      font-size: 11px;
+
+      line-height: 1.9;
     }
 
-    .editor-grid {
+    .soft-note strong {
+      color:
+        var(--green-800);
+    }
+
+    .gold-note {
+
+      margin-top: 13px;
+
+      padding:
+        15px 17px;
+
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fffdf6,
+          #fcf7e8
+        );
+
+      border:
+        1px solid
+        #eee4c5;
+
+      color:
+        #675a37;
+
+      font-size: 11px;
+
+      line-height: 1.9;
+    }
+
+
+    /* =========================================================
+       COMMITMENT
+    ========================================================= */
+
+    .commitment-grid {
+
       display: grid;
 
       grid-template-columns:
+        1.3fr
         repeat(4, 1fr);
 
-      gap: 10px;
+      gap: 12px;
+
+      align-items: stretch;
     }
 
-    .remove {
-      border: none;
+    .commitment-main {
+
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 20px;
+
+      padding: 19px;
+
+      min-height: 180px;
 
       background:
-        #fff0ef;
-
-      color:
-        var(--danger);
-
-      border-radius: 9px;
-
-      padding:
-        8px 11px;
-
-      cursor: pointer;
-
-      font-weight: bold;
-    }
-
-    .remove:hover {
-      background:
-        #ffe1df;
-    }
-
-    .add {
-      width: 100%;
-
-      margin-top: 12px;
+        linear-gradient(
+          140deg,
+          #edf8f2,
+          #fbfaf2
+        );
 
       border:
-        1px dashed
-        #b9c9c0;
+        1px solid
+        #dce8df;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+    }
+
+    .commitment-ring {
+
+      --value: 0%;
+
+      width: 116px;
+      height: 116px;
+
+      border-radius: 50%;
+
+      display: grid;
+
+      place-items: center;
+
+      flex-shrink: 0;
+
+      position: relative;
 
       background:
-        #f8fbf9;
+        conic-gradient(
+          var(--green-700)
+          var(--value),
+          #dce8e1 0
+        );
+
+      box-shadow:
+        0 13px 25px rgba(23,107,80,.10);
+    }
+
+    .commitment-ring::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 8px;
+
+      border-radius: 50%;
+
+      background:
+        linear-gradient(
+          145deg,
+          white,
+          #f6faf8
+        );
+
+      box-shadow:
+        inset 0 0 0 1px #e8efea;
+    }
+
+    .commitment-ring-inner {
+
+      position: relative;
+
+      z-index: 2;
+
+      text-align: center;
+    }
+
+    .commitment-ring-inner strong {
+
+      display: block;
 
       color:
-        var(--green);
+        var(--green-800);
 
-      padding: 12px;
+      font-size: 28px;
 
-      border-radius: 12px;
+      font-weight: 900;
 
-      cursor: pointer;
-
-      font-weight: bold;
-
-      transition: .2s;
+      line-height: 1;
     }
 
-    .add:hover {
+    .commitment-ring-inner small {
+
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 9px;
+
+      margin-top: 4px;
+    }
+
+    .commitment-text {
+
+      min-width: 0;
+    }
+
+    .commitment-text small {
+
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 10px;
+
+      margin-bottom: 6px;
+    }
+
+    .commitment-text h3 {
+
+      color:
+        var(--green-800);
+
+      font-size: 19px;
+
+      margin-bottom: 5px;
+    }
+
+    .commitment-text p {
+
+      color:
+        var(--text-2);
+
+      font-size: 10px;
+
+      line-height: 1.8;
+    }
+
+    .commitment-mini {
+
+      padding: 15px;
+
+      border-radius: 17px;
+
       background:
-        #edf5f1;
+        #ffffff;
 
-      border-color:
-        var(--green-2);
+      border:
+        1px solid
+        var(--border);
+
+      box-shadow:
+        var(--shadow-xs);
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+    }
+
+    .commitment-mini small {
+
+      color:
+        var(--muted);
+
+      font-size: 10px;
+
+      margin-bottom: 6px;
+    }
+
+    .commitment-mini strong {
+
+      color:
+        var(--green-800);
+
+      font-size: 24px;
+
+      line-height: 1;
+    }
+
+    .commitment-mini span {
+
+      margin-top: 6px;
+
+      color:
+        var(--muted);
+
+      font-size: 9px;
+
+      line-height: 1.5;
     }
 
 
-    /* =========================
-       RECITATION
-    ========================= */
+    /* =========================================================
+       POINTS
+    ========================================================= */
 
-    .recitation-summary {
+    .points-breakdown {
+
       display: grid;
 
       grid-template-columns:
         repeat(4, 1fr);
 
       gap: 12px;
-
-      margin-bottom: 16px;
-    }
-
-    .mini-stat {
-      padding: 14px;
-
-      background:
-        #f7faf8;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 14px;
-    }
-
-    .mini-stat small {
-      display: block;
-
-      color:
-        var(--muted);
-
-      margin-bottom: 5px;
-    }
-
-    .mini-stat strong {
-      color:
-        var(--green);
-
-      font-size: 20px;
-    }
-
-
-    /* =========================
-       GRADE
-    ========================= */
-
-    .grade-preview {
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      width: 100%;
-
-      min-height: 45px;
-
-      padding: 8px 10px;
-
-      border-radius: 11px;
-
-      font-size: 12px;
-
-      font-weight: 900;
-
-      text-align: center;
-    }
-
-    .grade-excellent {
-      background: #e7f7ed;
-      color: #13743f;
-    }
-
-    .grade-very-good {
-      background: #e8f1fb;
-      color: #2869a8;
-    }
-
-    .grade-good {
-      background: #fff3df;
-      color: #9b5c0d;
-    }
-
-    .grade-acceptable {
-      background: #f6f0dd;
-      color: #7b6634;
-    }
-
-    .grade-review {
-      background: #fff0ef;
-      color: #b42318;
-    }
-
-    .grade-empty {
-      background: #f1f3f2;
-      color: #63716b;
-    }
-
-
-    /* =========================
-       STATUS
-    ========================= */
-
-    .status-badge {
-      display: inline-flex;
-
-      align-items: center;
-      justify-content: center;
-
-      padding:
-        7px 11px;
-
-      border-radius: 999px;
-
-      font-size: 11px;
-
-      font-weight: bold;
-
-      white-space: nowrap;
-    }
-
-    .status-complete {
-      background: #e7f7ed;
-      color: #13743f;
-    }
-
-    .status-partial {
-      background: #fff3df;
-      color: #9b5c0d;
-    }
-
-    .status-running {
-      background: #e8f1fb;
-      color: #2869a8;
-    }
-
-    .status-pending {
-      background: #f1f3f2;
-      color: #63716b;
-    }
-
-
-    /* =========================
-       QURAN MAP
-    ========================= */
-
-    .quran-progress {
-      margin-bottom: 20px;
-
-      padding: 18px;
-
-      border-radius: 17px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #f4f8f5,
-          #fbfaf3
-        );
-
-      border:
-        1px solid
-        var(--border);
-    }
-
-    .quran-progress-head {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      margin-bottom: 10px;
-    }
-
-    .quran-progress-head strong {
-      color:
-        var(--green);
-
-      font-size: 22px;
-    }
-
-    .juz-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 13px;
-    }
-
-    .juz-card {
-      border:
-        1px solid
-        var(--border);
-
-      border-radius: 15px;
-
-      padding: 13px;
-
-      background: white;
-    }
-
-    .juz-head {
-      display: flex;
-
-      justify-content:
-        space-between;
-
-      gap: 8px;
-
-      margin-bottom: 10px;
-    }
-
-    .juz-title {
-      font-weight: 900;
-
-      color:
-        var(--green);
-
-      font-size: 13px;
-    }
-
-    .juz-count {
-      color:
-        var(--muted);
-
-      font-size: 11px;
-    }
-
-    .juz-range {
-      color:
-        #8a968f;
-
-      font-size: 10px;
-
-      margin-bottom: 8px;
-    }
-
-    .page-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(10, 1fr);
-
-      gap: 4px;
-    }
-
-    .page-dot {
-      min-height: 26px;
-
-      border-radius: 6px;
-
-      border:
-        1px solid
-        #e2e8e4;
-
-      background:
-        #f1f4f2;
-
-      cursor: pointer;
-
-      transition: .15s;
-
-      position: relative;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      color:
-        #68756f;
-
-      font-size: 8px;
-
-      font-weight: 900;
-
-      user-select: none;
-    }
-
-    .page-dot:hover {
-      transform:
-        scale(1.12);
-
-      z-index: 2;
-
-      box-shadow:
-        0 5px 12px
-        rgba(0,0,0,.10);
-    }
-
-    .page-dot.hifz {
-      background:
-        #19764f;
-
-      border-color:
-        #19764f;
-
-      color: white;
-    }
-
-    .page-dot.review {
-      background:
-        #d5b24e;
-
-      border-color:
-        #d5b24e;
-
-      color:
-        #3f3210;
-    }
-
-    .page-dot.both {
-      background:
-        linear-gradient(
-          135deg,
-          #19764f 50%,
-          #d5b24e 50%
-        );
-
-      border-color:
-        #19764f;
-
-      color: white;
-    }
-
-    .map-legend {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 15px;
-
-      margin-top: 15px;
-
-      color:
-        var(--muted);
-
-      font-size: 12px;
-    }
-
-    .legend-item {
-      display: flex;
-
-      align-items: center;
-
-      gap: 6px;
-    }
-
-    .legend-dot {
-      width: 13px;
-      height: 13px;
-
-      border-radius: 4px;
-
-      background:
-        #f1f4f2;
-
-      border:
-        1px solid
-        #ddd;
-    }
-
-    .legend-dot.hifz {
-      background:
-        #19764f;
-
-      border-color:
-        #19764f;
-    }
-
-    .legend-dot.review {
-      background:
-        #d5b24e;
-
-      border-color:
-        #d5b24e;
-    }
-
-
-    /* =========================
-       POINTS
-    ========================= */
-
-    .points-breakdown {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 10px;
-
-      margin-bottom: 16px;
     }
 
     .points-card {
-      padding: 14px;
 
-      border-radius: 14px;
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 16px;
+
+      min-height: 105px;
+
+      border-radius: 17px;
 
       background:
         linear-gradient(
@@ -1488,101 +2135,1375 @@
       border:
         1px solid
         var(--border);
+
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .points-card:hover {
+
+      transform:
+        translateY(-3px);
+
+      box-shadow:
+        var(--shadow-sm);
+    }
+
+    .points-card::after {
+
+      content: "★";
+
+      position: absolute;
+
+      left: -3px;
+      bottom: -12px;
+
+      font-size: 58px;
+
+      color:
+        rgba(197,160,74,.055);
     }
 
     .points-card small {
+
       display: block;
 
       color:
         var(--muted);
 
-      margin-bottom: 5px;
+      font-size: 10px;
+
+      margin-bottom: 7px;
     }
 
     .points-card strong {
-      color:
-        var(--green);
 
-      font-size: 20px;
+      color:
+        var(--green-800);
+
+      font-size: 23px;
+
+      line-height: 1;
+
+      font-weight: 900;
     }
 
 
-    /* =========================
-       ACTIONS
-    ========================= */
+    /* =========================================================
+       FORM
+    ========================================================= */
 
-    .actions {
-      position: sticky;
+    .form-grid {
 
-      bottom: 15px;
+      display: grid;
 
-      z-index: 20;
+      grid-template-columns:
+        repeat(2, 1fr);
 
-      margin-top: 22px;
+      gap: 14px;
+    }
 
-      background:
-        rgba(255,255,255,.90);
+    .field.full-field {
+      grid-column:
+        1 / -1;
+    }
 
-      backdrop-filter:
-        blur(15px);
+    .field {
+      min-width: 0;
+    }
+
+    label {
+
+      display: block;
+
+      margin-bottom: 7px;
+
+      color:
+        var(--text-2);
+
+      font-weight: bold;
+
+      font-size: 11px;
+    }
+
+    input,
+    textarea,
+    select {
+
+      width: 100%;
+
+      min-height: 46px;
+
+      outline: none;
 
       border:
         1px solid
-        rgba(226,233,229,.9);
+        #dbe5df;
 
-      border-radius: 18px;
+      border-radius: 13px;
 
-      padding: 13px;
+      padding:
+        0 13px;
 
-      box-shadow:
-        0 12px 35px
-        rgba(0,0,0,.12);
+      background:
+        rgba(255,255,255,.96);
 
-      display: flex;
+      color:
+        var(--text);
 
-      justify-content:
-        flex-start;
+      font-size: 13px;
 
-      gap: 10px;
+      transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
     }
 
-    .save {
-      border: none;
+    textarea {
+
+      min-height: 145px;
+
+      padding:
+        13px;
+
+      resize: vertical;
+
+      line-height: 1.8;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color:
+        #a4afaa;
+    }
+
+    input:hover,
+    textarea:hover,
+    select:hover {
+      border-color:
+        #cedbd4;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+
+      border-color:
+        var(--green-600);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(33,136,102,.075);
+
+      transform:
+        translateY(-1px);
+    }
+
+    input[readonly] {
+
+      background:
+        #f6faf8;
+
+      color:
+        #4f645a;
+
+      cursor: default;
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+
+    /* =========================================================
+       IMAGE UPLOAD
+    ========================================================= */
+
+    .image-upload {
+
+      position: relative;
+
+      padding: 15px;
+
+      border-radius: 17px;
 
       background:
         linear-gradient(
           135deg,
-          var(--green),
-          var(--green-3)
+          #f6faf7,
+          #fffdf7
+        );
+
+      border:
+        1px dashed
+        #bfcfc6;
+    }
+
+    .image-upload-row {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+    }
+
+    .image-preview-wrap {
+
+      position: relative;
+
+      width: 88px;
+      height: 88px;
+
+      flex-shrink: 0;
+    }
+
+    .image-preview-ring {
+
+      position: absolute;
+
+      inset: -4px;
+
+      border-radius: 50%;
+
+      border:
+        2px solid
+        var(--gold);
+
+      opacity: .75;
+    }
+
+    .image-preview {
+
+      position: relative;
+
+      z-index: 2;
+
+      width: 88px;
+      height: 88px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      background:
+        #eef3ef;
+
+      border:
+        4px solid white;
+
+      box-shadow:
+        0 9px 24px rgba(13,77,58,.10);
+    }
+
+    .file-button {
+
+      position: relative;
+
+      min-height: 44px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      padding:
+        0 15px;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green-800),
+          var(--green-600)
         );
 
       color: white;
 
-      padding:
-        14px 24px;
+      cursor: pointer;
 
-      border-radius: 12px;
+      font-size: 12px;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 8px 18px
+        rgba(13,77,58,.14);
+
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .file-button:hover {
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 12px 22px
+        rgba(13,77,58,.20);
+    }
+
+    .file-button input {
+
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      opacity: 0;
+
+      padding: 0;
+
+      min-height: 0;
+
+      cursor: pointer;
+    }
+
+    .image-help {
+
+      margin-top: 8px;
+
+      color:
+        var(--muted);
+
+      font-size: 9px;
+
+      line-height: 1.8;
+    }
+
+
+    /* =========================================================
+       EDITOR
+    ========================================================= */
+
+    .editor-list {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 11px;
+    }
+
+    .editor-row {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 15px;
+
+      border-radius: 18px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fbfdfc,
+          #ffffff
+        );
+
+      border:
+        1px solid
+        var(--border);
+
+      box-shadow:
+        var(--shadow-xs);
+
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .editor-row::before {
+
+      content: "";
+
+      position: absolute;
+
+      right: 0;
+
+      top: 0;
+      bottom: 0;
+
+      width: 4px;
+
+      background:
+        linear-gradient(
+          180deg,
+          var(--gold-400),
+          var(--green-600)
+        );
+
+      opacity: .65;
+    }
+
+    .editor-row:hover {
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        var(--shadow-sm);
+    }
+
+    .editor-row-head {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin-bottom: 12px;
+    }
+
+    .editor-row-title {
+
+      color:
+        var(--green-800);
+
+      font-size: 13px;
+
+      font-weight: 900;
+    }
+
+    .editor-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+    }
+
+    .remove {
+
+      min-height: 35px;
+
+      padding:
+        0 10px;
+
+      border:
+        1px solid
+        #f1d4d0;
+
+      background:
+        var(--danger-bg);
+
+      color:
+        var(--danger);
+
+      border-radius: 10px;
 
       cursor: pointer;
 
+      font-size: 10px;
+
+      font-weight: bold;
+
+      transition:
+        var(--transition);
+    }
+
+    .remove:hover {
+
+      transform:
+        translateY(-2px);
+
+      background:
+        #ffe3e0;
+
+      border-color:
+        #ebc1bc;
+    }
+
+    .add {
+
+      width: 100%;
+
+      margin-top: 12px;
+
+      min-height: 45px;
+
+      border:
+        1px dashed
+        #b8c9c0;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f8fbf9,
+          #fffef9
+        );
+
+      color:
+        var(--green-800);
+
+      border-radius: 13px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+      font-size: 12px;
+
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+    }
+
+    .add:hover {
+
+      transform:
+        translateY(-2px);
+
+      border-color:
+        var(--green-600);
+
+      background:
+        #eef7f2;
+    }
+
+
+    /* =========================================================
+       EMPTY
+    ========================================================= */
+
+    .empty-state {
+
+      padding:
+        22px;
+
+      text-align: center;
+
+      color:
+        var(--muted);
+
+      background:
+        linear-gradient(
+          135deg,
+          #f7faf8,
+          #fffdf8
+        );
+
+      border:
+        1px dashed
+        #d4dfd9;
+
+      border-radius: 15px;
+
+      font-size: 11px;
+    }
+
+
+    /* =========================================================
+       SUMMARY MINI
+    ========================================================= */
+
+    .recitation-summary {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 11px;
+
+      margin-bottom: 14px;
+    }
+
+    .mini-stat {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding: 14px;
+
+      min-height: 83px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f7faf8,
+          #fffdf7
+        );
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 15px;
+    }
+
+    .mini-stat small {
+
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 9px;
+
+      margin-bottom: 6px;
+    }
+
+    .mini-stat strong {
+
+      color:
+        var(--green-800);
+
+      font-size: 20px;
+
+      line-height: 1.15;
+    }
+
+
+    /* =========================================================
+       GRADE
+    ========================================================= */
+
+    .grade-preview {
+
+      width: 100%;
+
+      min-height: 46px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 8px 9px;
+
+      border-radius: 11px;
+
+      font-size: 10px;
+
+      line-height: 1.4;
+
       font-weight: 900;
 
-      font-size: 14px;
+      text-align: center;
+
+      transition:
+        var(--transition);
+    }
+
+    .grade-excellent {
+
+      background:
+        linear-gradient(
+          135deg,
+          #e6f8ed,
+          #f0fcf5
+        );
+
+      color:
+        #13743f;
+
+      border:
+        1px solid
+        #caead5;
+    }
+
+    .grade-very-good {
+
+      background:
+        linear-gradient(
+          135deg,
+          #e8f1fb,
+          #f3f8fe
+        );
+
+      color:
+        #2869a8;
+
+      border:
+        1px solid
+        #d4e2f1;
+    }
+
+    .grade-good {
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff2dd,
+          #fff8ec
+        );
+
+      color:
+        #9b5c0d;
+
+      border:
+        1px solid
+        #f2dfbf;
+    }
+
+    .grade-acceptable {
+
+      background:
+        linear-gradient(
+          135deg,
+          #f8f2df,
+          #fcf8eb
+        );
+
+      color:
+        #7b6634;
+
+      border:
+        1px solid
+        #ece2c0;
+    }
+
+    .grade-review {
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff0ef,
+          #fff5f4
+        );
+
+      color:
+        #b42318;
+
+      border:
+        1px solid
+        #f0ceca;
+    }
+
+    .grade-empty {
+
+      background:
+        #f2f4f3;
+
+      color:
+        #68756f;
+
+      border:
+        1px solid
+        #e2e7e4;
+    }
+
+
+    /* =========================================================
+       STATUS
+    ========================================================= */
+
+    .status-badge {
+
+      width: 100%;
+
+      min-height: 45px;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        8px 11px;
+
+      border-radius: 11px;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      text-align: center;
+    }
+
+    .status-complete {
+
+      background:
+        #e7f7ed;
+
+      color:
+        #13743f;
+
+      border:
+        1px solid
+        #ccebd7;
+    }
+
+    .status-partial {
+
+      background:
+        #fff3df;
+
+      color:
+        #9b5c0d;
+
+      border:
+        1px solid
+        #f0dfbf;
+    }
+
+    .status-running {
+
+      background:
+        #e8f1fb;
+
+      color:
+        #2869a8;
+
+      border:
+        1px solid
+        #d4e2f0;
+    }
+
+    .status-pending {
+
+      background:
+        #f1f3f2;
+
+      color:
+        #63716b;
+
+      border:
+        1px solid
+        #e1e6e3;
+    }
+
+
+    /* =========================================================
+       QURAN
+    ========================================================= */
+
+    .quran-progress {
+
+      position: relative;
+
+      overflow: hidden;
+
+      margin-bottom: 16px;
+
+      padding: 18px;
+
+      border-radius: 19px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f3f8f5,
+          #fffaf0
+        );
+
+      border:
+        1px solid
+        var(--border);
+    }
+
+    .quran-progress::after {
+
+      content: "﷽";
+
+      position: absolute;
+
+      left: 12px;
+      bottom: -9px;
+
+      color:
+        rgba(197,160,74,.065);
+
+      font-size: 55px;
+
+      pointer-events: none;
+    }
+
+    .quran-progress-top {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 12px;
+    }
+
+    .quran-progress-copy small {
+
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 10px;
+
+      margin-bottom: 4px;
+    }
+
+    .quran-progress-copy strong {
+
+      color:
+        var(--green-800);
+
+      font-size: 15px;
+    }
+
+    .quran-percent {
+
+      color:
+        var(--gold-600);
+
+      font-size: 25px;
+
+      font-weight: 900;
+    }
+
+    .quran-progress-foot {
+
+      margin-top: 9px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      color:
+        var(--muted);
+
+      font-size: 10px;
+    }
+
+    .quran-progress-foot b {
+
+      color:
+        var(--green-800);
+    }
+
+    .juz-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+    }
+
+    .juz-card {
+
+      position: relative;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 17px;
+
+      padding: 13px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #ffffff,
+          #f8fbf9
+        );
 
       box-shadow:
-        0 8px 20px
-        rgba(13,77,58,.18);
+        var(--shadow-xs);
 
-      transition: .2s;
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .juz-card:hover {
+
+      transform:
+        translateY(-3px);
+
+      box-shadow:
+        var(--shadow-sm);
+    }
+
+    .juz-card::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 70px;
+      height: 70px;
+
+      border-radius: 50%;
+
+      left: -35px;
+      bottom: -38px;
+
+      background:
+        rgba(197,160,74,.055);
+    }
+
+    .juz-head {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin-bottom: 8px;
+    }
+
+    .juz-title {
+
+      color:
+        var(--green-800);
+
+      font-size: 12px;
+
+      font-weight: 900;
+    }
+
+    .juz-count {
+
+      min-width: 39px;
+
+      text-align: center;
+
+      padding:
+        5px 7px;
+
+      border-radius: 999px;
+
+      background:
+        #f3f7f4;
+
+      color:
+        var(--muted);
+
+      font-size: 9px;
+    }
+
+    .juz-range {
+
+      color:
+        #8a968f;
+
+      font-size: 9px;
+
+      margin-bottom: 9px;
+    }
+
+    .page-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(10, 1fr);
+
+      gap: 4px;
+    }
+
+    .page-dot {
+
+      position: relative;
+
+      min-height: 27px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 7px;
+
+      border:
+        1px solid
+        #e2e8e4;
+
+      background:
+        #f1f4f2;
+
+      color:
+        #68756f;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      user-select: none;
+
+      cursor: pointer;
+
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        filter .18s ease;
+    }
+
+    .page-dot:hover {
+
+      transform:
+        translateY(-2px) scale(1.06);
+
+      z-index: 2;
+
+      box-shadow:
+        0 6px 13px
+        rgba(0,0,0,.11);
+
+      filter:
+        brightness(1.03);
+    }
+
+    .page-dot.hifz {
+
+      color: white;
+
+      background:
+        linear-gradient(
+          145deg,
+          #166b49,
+          #218866
+        );
+
+      border-color:
+        #19764f;
+    }
+
+    .page-dot.review {
+
+      color:
+        #3f3210;
+
+      background:
+        linear-gradient(
+          145deg,
+          #d4af48,
+          #e5c667
+        );
+
+      border-color:
+        #d5b24e;
+    }
+
+    .page-dot.both {
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #19764f 0 49%,
+          #d5b24e 50% 100%
+        );
+
+      border-color:
+        #19764f;
+    }
+
+    .map-legend {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      margin-top: 15px;
+
+      color:
+        var(--muted);
+
+      font-size: 10px;
+    }
+
+    .legend-item {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+    }
+
+    .legend-dot {
+
+      width: 13px;
+      height: 13px;
+
+      flex-shrink: 0;
+
+      border-radius: 4px;
+
+      background:
+        #f1f4f2;
+
+      border:
+        1px solid
+        #d8e0db;
+    }
+
+    .legend-dot.hifz {
+
+      background:
+        #19764f;
+
+      border-color:
+        #19764f;
+    }
+
+    .legend-dot.review {
+
+      background:
+        #d5b24e;
+
+      border-color:
+        #d5b24e;
+    }
+
+
+    /* =========================================================
+       NOTES
+    ========================================================= */
+
+    .notes-wrap {
+      position: relative;
+    }
+
+    .notes-count {
+
+      position: absolute;
+
+      left: 11px;
+      bottom: 9px;
+
+      color:
+        #9aa59f;
+
+      font-size: 9px;
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================================
+       ACTIONS
+    ========================================================= */
+
+    .actions {
+
+      position: sticky;
+
+      bottom: 13px;
+
+      z-index: 100;
+
+      margin-top: 17px;
+
+      padding: 10px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      border:
+        1px solid
+        rgba(219,229,223,.92);
+
+      border-radius: 18px;
+
+      background:
+        rgba(255,255,255,.88);
+
+      box-shadow:
+        0 18px 42px
+        rgba(0,0,0,.13);
+
+      backdrop-filter:
+        blur(18px);
+
+      -webkit-backdrop-filter:
+        blur(18px);
+    }
+
+    .save,
+    .secondary {
+
+      min-height: 46px;
+
+      border-radius: 13px;
+
+      cursor: pointer;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+    }
+
+    .save {
+
+      padding:
+        0 20px;
+
+      border: none;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green-800),
+          var(--green-600)
+        );
+
+      box-shadow:
+        0 9px 22px
+        rgba(13,77,58,.18);
     }
 
     .save:hover {
+
       transform:
         translateY(-2px);
+
+      box-shadow:
+        0 14px 28px
+        rgba(13,77,58,.24);
     }
 
     .save:disabled {
-      opacity: .65;
+
+      opacity: .66;
 
       cursor: wait;
 
@@ -1590,93 +3511,717 @@
     }
 
     .secondary {
+
+      padding:
+        0 15px;
+
       border:
         1px solid
         var(--border);
 
-      background: white;
+      background:
+        white;
 
       color:
-        var(--green);
+        var(--green-800);
+    }
 
-      padding:
-        14px 18px;
+    .secondary:hover {
 
-      border-radius: 12px;
+      transform:
+        translateY(-2px);
 
-      cursor: pointer;
+      background:
+        #f7faf8;
+    }
 
-      font-weight: bold;
+    .action-status {
+
+      margin-right: auto;
+
+      color:
+        var(--muted);
+
+      font-size: 9px;
     }
 
 
-    /* =========================
+    /* =========================================================
        LOADING
-    ========================= */
+    ========================================================= */
 
     .loading {
-      background: white;
 
-      border-radius: 22px;
+      min-height: 350px;
 
       padding:
-        90px 20px;
+        70px 20px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      justify-content: center;
 
       text-align: center;
 
       color:
         var(--muted);
 
+      background:
+        rgba(255,255,255,.90);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        var(--radius-lg);
+
       box-shadow:
-        var(--shadow);
+        var(--shadow-sm);
+
+      backdrop-filter:
+        blur(12px);
     }
 
     .loading-icon {
-      font-size: 40px;
 
-      margin-bottom: 12px;
+      width: 72px;
+      height: 72px;
+
+      display: grid;
+
+      place-items: center;
+
+      margin-bottom: 15px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #edf8f2,
+          #fff9eb
+        );
+
+      border:
+        1px solid
+        #e4e9dd;
+
+      font-size: 34px;
 
       animation:
-        pulse 1.2s infinite;
+        loadingFloat 1.5s ease-in-out infinite;
     }
 
-    @keyframes pulse {
+    .loading-title {
+
+      color:
+        var(--green-800);
+
+      font-size: 17px;
+
+      font-weight: 900;
+
+      margin-bottom: 5px;
+    }
+
+    .loading-sub {
+
+      font-size: 10px;
+
+      color:
+        var(--muted);
+    }
+
+
+    /* =========================================================
+       PAGE MODAL
+    ========================================================= */
+
+    .modal-overlay {
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 5000;
+
+      padding: 18px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      background:
+        rgba(4,25,19,.58);
+
+      backdrop-filter:
+        blur(10px);
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      pointer-events: none;
+
+      transition:
+        opacity .25s ease,
+        visibility .25s ease;
+    }
+
+    .modal-overlay.show {
+
+      opacity: 1;
+
+      visibility: visible;
+
+      pointer-events: auto;
+    }
+
+    .page-modal {
+
+      width:
+        min(
+          560px,
+          100%
+        );
+
+      max-height:
+        min(
+          78vh,
+          700px
+        );
+
+      overflow: hidden;
+
+      border-radius: 24px;
+
+      background:
+        #ffffff;
+
+      border:
+        1px solid
+        rgba(255,255,255,.42);
+
+      box-shadow:
+        0 35px 100px
+        rgba(0,0,0,.25);
+
+      transform:
+        translateY(20px)
+        scale(.97);
+
+      transition:
+        transform .32s cubic-bezier(.22,.61,.36,1);
+    }
+
+    .modal-overlay.show .page-modal {
+
+      transform:
+        translateY(0)
+        scale(1);
+    }
+
+    .page-modal-head {
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding:
+        20px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #092f25,
+          #176b50
+        );
+    }
+
+    .page-modal-head::after {
+
+      content: "﷽";
+
+      position: absolute;
+
+      left: 15px;
+      bottom: -18px;
+
+      color:
+        rgba(255,255,255,.06);
+
+      font-size: 75px;
+    }
+
+    .page-modal-title {
+
+      position: relative;
+
+      z-index: 2;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 12px;
+    }
+
+    .page-modal-title h3 {
+
+      font-size: 19px;
+    }
+
+    .page-modal-close {
+
+      width: 36px;
+      height: 36px;
+
+      display: grid;
+
+      place-items: center;
+
+      border:
+        1px solid
+        rgba(255,255,255,.15);
+
+      border-radius: 10px;
+
+      background:
+        rgba(255,255,255,.08);
+
+      color: white;
+
+      cursor: pointer;
+
+      font-size: 18px;
+
+      transition:
+        var(--transition);
+    }
+
+    .page-modal-close:hover {
+
+      transform:
+        rotate(6deg)
+        scale(1.05);
+
+      background:
+        rgba(255,255,255,.14);
+    }
+
+    .page-modal-body {
+
+      max-height:
+        calc(78vh - 100px);
+
+      overflow-y: auto;
+
+      padding:
+        18px;
+    }
+
+    .page-record {
+
+      padding:
+        14px;
+
+      border-radius: 16px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f8fbf9,
+          #fffdf7
+        );
+
+      border:
+        1px solid
+        var(--border);
+
+      margin-bottom: 10px;
+    }
+
+    .page-record:last-child {
+      margin-bottom: 0;
+    }
+
+    .page-record-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 8px;
+    }
+
+    .detail-item {
+
+      padding:
+        9px;
+
+      border-radius: 11px;
+
+      background:
+        rgba(255,255,255,.78);
+
+      border:
+        1px solid
+        var(--border-2);
+    }
+
+    .detail-item small {
+
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 8px;
+
+      margin-bottom: 4px;
+    }
+
+    .detail-item strong {
+
+      color:
+        var(--green-800);
+
+      font-size: 11px;
+
+      line-height: 1.5;
+    }
+
+    .detail-note {
+
+      margin-top: 8px;
+
+      padding:
+        10px;
+
+      border-radius: 11px;
+
+      color:
+        var(--text-2);
+
+      background:
+        #ffffff;
+
+      border:
+        1px solid
+        var(--border);
+
+      font-size: 10px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       TOAST
+    ========================================================= */
+
+    .toast {
+
+      position: fixed;
+
+      left: 18px;
+      bottom: 18px;
+
+      z-index: 6000;
+
+      min-width:
+        min(
+          280px,
+          calc(100% - 36px)
+        );
+
+      max-width: 420px;
+
+      padding:
+        13px 15px;
+
+      border-radius: 15px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0b3b2d,
+          #176b50
+        );
+
+      box-shadow:
+        0 16px 38px
+        rgba(0,0,0,.20);
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      font-size: 11px;
+
+      transform:
+        translateY(20px);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transition:
+        .3s ease;
+    }
+
+    .toast.show {
+
+      transform:
+        translateY(0);
+
+      opacity: 1;
+    }
+
+    .toast-icon {
+
+      width: 30px;
+      height: 30px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 10px;
+
+      background:
+        rgba(255,255,255,.10);
+
+      flex-shrink: 0;
+    }
+
+
+    /* =========================================================
+       ANIMATIONS
+    ========================================================= */
+
+    @keyframes pageEnter {
+
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    @keyframes sectionEnter {
+
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    @keyframes messageIn {
+
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    @keyframes breathe {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: .75;
+      }
 
       50% {
-        opacity: .45;
+        transform: scale(1.08);
+        opacity: 1;
+      }
 
-        transform:
-          scale(.94);
+    }
+
+    @keyframes statusPulse {
+
+      0% {
+        box-shadow: 0 0 0 0 rgba(105,214,157,.26);
+      }
+
+      70% {
+        box-shadow: 0 0 0 7px rgba(105,214,157,0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(105,214,157,0);
+      }
+
+    }
+
+    @keyframes ringGlow {
+
+      0%,
+      100% {
+        box-shadow:
+          0 0 0 7px rgba(224,195,108,.08),
+          0 0 0 15px rgba(255,255,255,.025);
+      }
+
+      50% {
+        box-shadow:
+          0 0 0 9px rgba(224,195,108,.11),
+          0 0 0 18px rgba(255,255,255,.035);
+      }
+
+    }
+
+    @keyframes rotateSlow {
+
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+    @keyframes floatOrb {
+
+      0%,
+      100% {
+        transform: translate(0,0);
+      }
+
+      50% {
+        transform: translate(10px,-12px);
+      }
+
+    }
+
+    @keyframes loadingFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-8px) rotate(-2deg);
+      }
+
+    }
+
+    @keyframes barShine {
+
+      0%,
+      35% {
+        transform: translateX(120%);
+      }
+
+      65%,
+      100% {
+        transform: translateX(-120%);
       }
 
     }
 
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
 
-    @media(max-width: 1050px) {
+    @media(max-width: 1180px) {
 
-      .stats,
-      .recitation-summary,
-      .points-breakdown {
+      .hero-content {
+
+        grid-template-columns:
+          auto
+          minmax(0,1fr);
+
+      }
+
+      .hero-side {
+
+        grid-column:
+          1 / -1;
+
+      }
+
+      .commitment-grid {
+
         grid-template-columns:
           repeat(2, 1fr);
+
+      }
+
+      .commitment-main {
+
+        grid-column:
+          1 / -1;
+
+      }
+
+      .stats,
+      .points-breakdown {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
       }
 
       .juz-grid {
+
         grid-template-columns:
           repeat(2, 1fr);
+
       }
 
     }
 
 
-    @media(max-width: 750px) {
+    @media(max-width: 820px) {
 
       .header-inner {
+
         min-height: 70px;
+
+      }
+
+      .header-chip {
+        display: none;
       }
 
       .brand h1 {
@@ -1684,125 +4229,374 @@
       }
 
       .brand p {
-        font-size: 10px;
+        font-size: 9px;
       }
 
-      .brand-logo {
-        width: 42px;
-        height: 42px;
+      .brand-logo,
+      .brand-logo-wrap {
+
+        width: 43px;
+        height: 43px;
+
       }
 
       .back {
-        padding:
-          9px 11px;
 
-        font-size: 12px;
+        min-height: 39px;
+
+        padding:
+          0 10px;
+
+        font-size: 11px;
+
       }
 
       .container {
+
         width:
           calc(100% - 18px);
 
-        margin-top: 14px;
+        margin-top: 12px;
+
       }
 
       .student-hero {
-        padding: 20px;
 
-        border-radius: 22px;
+        border-radius: 23px;
+
       }
 
       .hero-content {
-        align-items:
-          flex-start;
 
-        flex-wrap: wrap;
+        min-height: auto;
+
+        padding: 20px;
+
+        grid-template-columns:
+          auto
+          minmax(0,1fr);
+
+        gap: 18px;
+
+      }
+
+      .hero-photo-wrap {
+
+        width: 96px;
+        height: 96px;
+
       }
 
       .hero-photo {
-        width: 82px;
-        height: 82px;
+
+        width: 83px;
+        height: 83px;
+
+      }
+
+      .hero-info h2 {
+
+        font-size: 24px;
+
       }
 
       .hero-side {
-        width: 100%;
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
       }
 
       .section {
-        padding: 16px;
 
-        border-radius: 18px;
+        padding: 17px;
+
+        border-radius: 20px;
+
       }
 
-      .stats,
-      .progress-grid,
       .form-grid,
-      .juz-grid,
-      .recitation-summary,
-      .points-breakdown {
+      .progress-grid {
+
         grid-template-columns:
           1fr;
+
       }
 
       .editor-grid {
+
         grid-template-columns:
-          1fr 1fr;
+          repeat(2,1fr);
+
       }
 
-      .page-grid {
+      .recitation-summary {
+
         grid-template-columns:
-          repeat(10, 1fr);
+          repeat(2,1fr);
+
       }
 
-      .section-head {
-        align-items:
-          flex-start;
+      .commitment-grid {
 
-        flex-direction:
-          column;
+        grid-template-columns:
+          repeat(2,1fr);
+
       }
 
-      .actions {
-        bottom: 8px;
-      }
+      .commitment-main {
 
-      .save,
-      .secondary {
-        flex: 1;
+        grid-column:
+          1 / -1;
+
       }
 
     }
 
 
-    @media(max-width: 480px) {
+    @media(max-width: 560px) {
 
-      .editor-grid {
+      .header-inner {
+
+        width:
+          calc(100% - 16px);
+
+      }
+
+      .brand p {
+        display: none;
+      }
+
+      .back {
+        padding:
+          0 9px;
+      }
+
+      .container {
+
+        width:
+          calc(100% - 12px);
+
+        margin-top: 8px;
+
+      }
+
+      .quick-nav {
+
+        margin-inline:
+          1px;
+
+      }
+
+      .quick-link {
+
+        min-height: 36px;
+
+        padding:
+          0 10px;
+
+        font-size: 9px;
+
+      }
+
+      .hero-content {
+
         grid-template-columns:
           1fr;
+
+        justify-items: center;
+
+        text-align: center;
+
       }
 
-      .hero-info h2 {
-        font-size: 22px;
+      .hero-photo-wrap {
+
+        margin-bottom: 1px;
+
       }
 
-      .page-grid {
-        gap: 3px;
+      .hero-info {
+
+        width: 100%;
+
       }
 
-      .page-dot {
-        min-height: 23px;
+      .hero-subline {
 
-        border-radius: 4px;
+        justify-content: center;
 
-        font-size: 7px;
+      }
+
+      .hero-pills {
+
+        justify-content: center;
+
+      }
+
+      .hero-side {
+
+        width: 100%;
+
+      }
+
+      .section-head {
+
+        flex-direction:
+          column;
+
+      }
+
+      .section-badge {
+
+        align-self:
+          flex-start;
+
+      }
+
+      .stats,
+      .points-breakdown {
+
+        grid-template-columns:
+          repeat(2,1fr);
+
+      }
+
+      .juz-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .editor-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .commitment-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .commitment-main {
+
+        grid-column:
+          auto;
+
+        flex-direction:
+          column;
+
+        text-align: center;
+
+      }
+
+      .commitment-text {
+
+        width: 100%;
+
+      }
+
+      .page-record-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .actions {
+
+        bottom: 7px;
+
+      }
+
+      .action-status {
+
+        display: none;
+
+      }
+
+      .save,
+      .secondary {
+
+        flex: 1;
+
       }
 
       .image-upload-row {
+
         align-items:
           flex-start;
 
         flex-direction:
           column;
+
+      }
+
+    }
+
+
+    @media(max-width: 390px) {
+
+      .stats,
+      .points-breakdown,
+      .recitation-summary {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+      .hero-info h2 {
+
+        font-size: 22px;
+
+      }
+
+      .hero-stat strong {
+
+        font-size: 22px;
+
+      }
+
+      .page-grid {
+
+        gap: 3px;
+
+      }
+
+      .page-dot {
+
+        min-height: 24px;
+
+        border-radius: 5px;
+
+        font-size: 7px;
+
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media(prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+
       }
 
     }
@@ -1824,11 +4618,17 @@
       class="brand-link"
     >
 
-      <img
-        src="logo.png"
-        class="brand-logo"
-        alt="شعار مركز حردان طارق القرآني"
-      >
+      <div class="brand-logo-wrap">
+
+        <div class="brand-logo-glow"></div>
+
+        <img
+          src="logo.png"
+          class="brand-logo"
+          alt="شعار مركز حردان طارق القرآني"
+        >
+
+      </div>
 
       <div class="brand">
 
@@ -1845,17 +4645,29 @@
     </a>
 
 
-    <a
-      class="back"
-      href="teacher-dashboard.html"
-    >
-      ← لوحة المعلم
-    </a>
+    <div class="header-actions">
+
+      <div class="header-chip">
+
+        <span class="header-dot"></span>
+
+        لوحة المعلم
+
+      </div>
+
+
+      <a
+        class="back"
+        href="teacher-dashboard.html"
+      >
+        ← لوحة المعلم
+      </a>
+
+    </div>
 
   </div>
 
 </header>
-
 
 
 <main class="container">
@@ -1874,7 +4686,13 @@
         📖
       </div>
 
-      جاري تحميل ملف الطالب...
+      <div class="loading-title">
+        جاري تحميل ملف الطالب
+      </div>
+
+      <div class="loading-sub">
+        يتم تجهيز البيانات والإحصائيات...
+      </div>
 
     </div>
 
@@ -1882,6 +4700,62 @@
 
 </main>
 
+
+<!-- =========================================================
+     PAGE MODAL
+========================================================= -->
+
+<div
+  id="pageModalOverlay"
+  class="modal-overlay"
+  onclick="handleModalOverlay(event)"
+>
+
+  <div class="page-modal">
+
+    <div class="page-modal-head">
+
+      <div class="page-modal-title">
+
+        <h3 id="pageModalTitle">
+          تفاصيل الصفحة
+        </h3>
+
+        <button
+          class="page-modal-close"
+          onclick="closePageModal()"
+          aria-label="إغلاق"
+        >
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="pageModalBody"
+      class="page-modal-body"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<div
+  id="toast"
+  class="toast"
+>
+  <div class="toast-icon">
+    ✓
+  </div>
+
+  <div id="toastText">
+    تم التنفيذ
+  </div>
+</div>
 
 
 <script>
@@ -1900,14 +4774,11 @@ const SUPABASE_KEY =
 const TEACHER_EMAIL =
   'baraahaytham08@gmail.com';
 
-const TOTAL_QURAN_PAGES = 604;
+const TOTAL_QURAN_PAGES =
+  604;
 
-
-/*
-  كل 3 صفحات مراجعة
-  = صفحة حفظ واحدة
-*/
-const REVIEW_TO_HIFZ_RATIO = 3;
+const REVIEW_TO_HIFZ_RATIO =
+  3;
 
 
 const supabaseClient =
@@ -1917,11 +4788,18 @@ const supabaseClient =
   );
 
 
-let studentId = null;
+let studentId =
+  null;
 
-let student = null;
+let student =
+  null;
 
-let profile = {};
+let profile =
+  {};
+
+
+let toastTimer =
+  null;
 
 
 /* =========================================================
@@ -1963,7 +4841,9 @@ function formatNumber(
   if (
     Number.isInteger(n)
   ) {
+
     return String(n);
+
   }
 
   return n
@@ -2032,9 +4912,11 @@ function formatDate(
       d.getTime()
     )
   ) {
+
     return escapeHtml(
       dateValue
     );
+
   }
 
   return d.toLocaleDateString(
@@ -2045,6 +4927,52 @@ function formatDate(
       day: '2-digit'
     }
   );
+
+}
+
+
+function showToast(
+  text,
+  icon = '✓'
+) {
+
+  const toast =
+    document.getElementById(
+      'toast'
+    );
+
+  const toastText =
+    document.getElementById(
+      'toastText'
+    );
+
+  const toastIcon =
+    toast?.querySelector(
+      '.toast-icon'
+    );
+
+  if (!toast)
+    return;
+
+  if (toastText)
+    toastText.textContent = text;
+
+  if (toastIcon)
+    toastIcon.textContent = icon;
+
+  toast.classList.add('show');
+
+  clearTimeout(
+    toastTimer
+  );
+
+  toastTimer =
+    setTimeout(
+      () => {
+        toast.classList.remove('show');
+      },
+      3200
+    );
 
 }
 
@@ -2068,24 +4996,16 @@ function getWeekRangeForDate(
       d.getTime()
     )
   ) {
+
     return null;
+
   }
 
   const day =
     d.getDay();
 
-  /*
-    JavaScript:
-    الأحد 0
-    الاثنين 1
-    ...
-    الجمعة 5
-    السبت 6
-  */
-
   const daysSinceFriday =
     (day + 2) % 7;
-
 
   const start =
     new Date(d);
@@ -2096,9 +5016,11 @@ function getWeekRangeForDate(
   );
 
   start.setHours(
-    0, 0, 0, 0
+    0,
+    0,
+    0,
+    0
   );
-
 
   const end =
     new Date(start);
@@ -2108,9 +5030,11 @@ function getWeekRangeForDate(
   );
 
   end.setHours(
-    23, 59, 59, 999
+    23,
+    59,
+    59,
+    999
   );
-
 
   return {
     start,
@@ -2162,6 +5086,9 @@ function showMessage(
       'message'
     );
 
+  if (!box)
+    return;
+
   box.textContent =
     text;
 
@@ -2185,6 +5112,9 @@ function hideMessage() {
     document.getElementById(
       'message'
     );
+
+  if (!box)
+    return;
 
   box.style.display =
     'none';
@@ -2239,7 +5169,6 @@ function mergeProfile(
   const base =
     defaultProfile();
 
-
   const merged = {
 
     ...base,
@@ -2270,7 +5199,9 @@ function mergeProfile(
       merged.attendance
     )
   ) {
+
     merged.attendance = [];
+
   }
 
 
@@ -2279,7 +5210,9 @@ function mergeProfile(
       merged.weeklyPlan
     )
   ) {
+
     merged.weeklyPlan = [];
+
   }
 
 
@@ -2288,7 +5221,9 @@ function mergeProfile(
       merged.tests
     )
   ) {
+
     merged.tests = [];
+
   }
 
 
@@ -2297,7 +5232,9 @@ function mergeProfile(
       merged.recitations
     )
   ) {
+
     merged.recitations = [];
+
   }
 
 
@@ -2317,13 +5254,20 @@ function getRecitationGrade(
   const s =
     number(score);
 
-
-  if (!score &&
-      score !== 0) {
+  if (
+    score === '' ||
+    score === null ||
+    score === undefined
+  ) {
 
     return {
-      label: 'لم يتم التقييم',
-      className: 'grade-empty'
+
+      label:
+        'لم يتم التقييم',
+
+      className:
+        'grade-empty'
+
     };
 
   }
@@ -2332,10 +5276,13 @@ function getRecitationGrade(
   if (s >= 97) {
 
     return {
+
       label:
         'ممتاز (متقن)',
+
       className:
         'grade-excellent'
+
     };
 
   }
@@ -2344,10 +5291,13 @@ function getRecitationGrade(
   if (s >= 95) {
 
     return {
+
       label:
         'جيد جداً (أخطاء قليلة)',
+
       className:
         'grade-very-good'
+
     };
 
   }
@@ -2356,10 +5306,13 @@ function getRecitationGrade(
   if (s >= 92) {
 
     return {
+
       label:
         'جيد (أخطاء متعددة)',
+
       className:
         'grade-good'
+
     };
 
   }
@@ -2368,10 +5321,13 @@ function getRecitationGrade(
   if (s >= 90) {
 
     return {
+
       label:
         'مقبول (يحتاج تمكين)',
+
       className:
         'grade-acceptable'
+
     };
 
   }
@@ -2391,7 +5347,7 @@ function getRecitationGrade(
 
 
 /* =========================================================
-   نظام نقاط التسميع
+   نظام النقاط
 ========================================================= */
 
 function getRecitationPoints(
@@ -2404,18 +5360,11 @@ function getRecitationPoints(
   if (
     score <= 0
   ) {
+
     return 0;
+
   }
 
-
-  /*
-    حفظ جديد:
-    ممتاز = 6
-    جيد جداً = 5
-    جيد = 4
-    مقبول = 2
-    مراجعة = 0
-  */
 
   if (
     item.type === 'hifz'
@@ -2437,15 +5386,6 @@ function getRecitationPoints(
 
   }
 
-
-  /*
-    مراجعة:
-    ممتاز = 3
-    جيد جداً = 2.5
-    جيد = 2
-    مقبول = 1
-    مراجعة = 0
-  */
 
   if (
     item.type === 'review'
@@ -2489,26 +5429,34 @@ function getTestPointsByResult(
   if (
     r.includes('ممتاز+')
   ) {
+
     return 12;
+
   }
 
   if (
     r.includes('ممتاز')
   ) {
+
     return 12;
+
   }
 
   if (
     r.includes('جيد جداً') ||
     r.includes('جيد جدًا')
   ) {
+
     return 8;
+
   }
 
   if (
     r.includes('جيد')
   ) {
+
     return 4;
+
   }
 
   return 0;
@@ -2535,7 +5483,7 @@ function getAttendancePoints(
       return 1;
 
     case 'معتذر':
-      return 0.5;
+      return .5;
 
     case 'غائب':
       return 0;
@@ -2576,10 +5524,8 @@ function getCurrentWeekStats() {
       profile.weeklyGoal?.review
     );
 
-
   const records =
     getWeeklyRecitations();
-
 
   const hifzPages =
     records.filter(
@@ -2587,13 +5533,11 @@ function getCurrentWeekStats() {
         item.type === 'hifz'
     ).length;
 
-
   const reviewPages =
     records.filter(
       item =>
         item.type === 'review'
     ).length;
-
 
   const hifzProgress =
     goalHifz > 0
@@ -2603,7 +5547,6 @@ function getCurrentWeekStats() {
         ) * 100
       : 0;
 
-
   const reviewProgress =
     goalReview > 0
       ? (
@@ -2612,18 +5555,12 @@ function getCurrentWeekStats() {
         ) * 100
       : 0;
 
-
-  /*
-    3 مراجعة = 1 حفظ
-  */
-
   const equivalent =
     hifzPages +
     (
       reviewPages /
       REVIEW_TO_HIFZ_RATIO
     );
-
 
   const requiredEquivalent =
     goalHifz +
@@ -2632,7 +5569,6 @@ function getCurrentWeekStats() {
       REVIEW_TO_HIFZ_RATIO
     );
 
-
   const weeklyProgress =
     requiredEquivalent > 0
       ? (
@@ -2640,7 +5576,6 @@ function getCurrentWeekStats() {
           requiredEquivalent
         ) * 100
       : 0;
-
 
   return {
 
@@ -2748,7 +5683,6 @@ function getQuranProgress() {
   const pages =
     getUniqueRecitedPages();
 
-
   return {
 
     completed:
@@ -2773,16 +5707,8 @@ function getJuzInfo(
   juz
 ) {
 
-  /*
-    1 = 1 - 21
-    2 = 22 - 41
-    ...
-    29 = 562 - 581
-    30 = 582 - 604
-  */
-
-  let start = 1;
-
+  let start =
+    1;
 
   for (
     let i = 1;
@@ -2805,17 +5731,14 @@ function getJuzInfo(
 
   }
 
-
-  let length = 20;
-
+  let length =
+    20;
 
   if (juz === 1)
     length = 21;
 
-
   if (juz === 30)
     length = 23;
-
 
   return {
 
@@ -2836,9 +5759,8 @@ function getCompletedJuz() {
   const hifz =
     getHifzPageSet();
 
-
-  let completed = 0;
-
+  let completed =
+    0;
 
   for (
     let juz = 1;
@@ -2847,15 +5769,16 @@ function getCompletedJuz() {
   ) {
 
     const info =
-      getJuzInfo(juz);
-
+      getJuzInfo(
+        juz
+      );
 
     let all =
       true;
 
-
     for (
-      let page = info.start;
+      let page =
+        info.start;
       page <= info.end;
       page++
     ) {
@@ -2872,12 +5795,10 @@ function getCompletedJuz() {
 
     }
 
-
     if (all)
       completed++;
 
   }
-
 
   return completed;
 
@@ -3039,7 +5960,7 @@ function getWeeklyPoints() {
 
 
 /* =========================================================
-   تقييم الالتزام
+   الالتزام
 ========================================================= */
 
 function getAttendanceCommitment() {
@@ -3052,18 +5973,11 @@ function getAttendanceCommitment() {
         )
     );
 
-
-  /*
-    لا يوجد سجل حضور:
-    لا نعاقب الطالب تلقائياً.
-  */
-
   if (!records.length)
     return 100;
 
-
-  let score = 0;
-
+  let score =
+    0;
 
   records.forEach(
     item => {
@@ -3091,7 +6005,6 @@ function getAttendanceCommitment() {
     }
   );
 
-
   return (
     score /
     records.length
@@ -3110,15 +6023,8 @@ function getTestCommitment() {
         )
     );
 
-
-  /*
-    لا يوجد اختبار خلال الأسبوع:
-    لا يعتبر تقصيراً.
-  */
-
   if (!tests.length)
     return 100;
-
 
   const passed =
     tests.filter(
@@ -3127,7 +6033,6 @@ function getTestCommitment() {
           item.result
         ) > 0
     ).length;
-
 
   return (
     passed /
@@ -3142,14 +6047,12 @@ function getCommitment() {
   const weekly =
     getCurrentWeekStats();
 
-
   const attendance =
     clamp(
       getAttendanceCommitment(),
       0,
       100
     );
-
 
   const hifz =
     clamp(
@@ -3158,7 +6061,6 @@ function getCommitment() {
       100
     );
 
-
   const review =
     clamp(
       weekly.reviewProgress,
@@ -3166,23 +6068,12 @@ function getCommitment() {
       100
     );
 
-
   const tests =
     clamp(
       getTestCommitment(),
       0,
       100
     );
-
-
-  /*
-    التوزيع:
-
-    الحضور     20%
-    الحفظ      35%
-    المراجعة   25%
-    الاختبارات 20%
-  */
 
   const total =
     (
@@ -3198,10 +6089,8 @@ function getCommitment() {
       tests * .20
     );
 
-
   let label =
     'بحاجة للمتابعة';
-
 
   if (total >= 90)
     label = 'ممتاز الالتزام';
@@ -3214,7 +6103,6 @@ function getCommitment() {
 
   else if (total >= 60)
     label = 'مقبول';
-
 
   return {
 
@@ -3236,7 +6124,7 @@ function getCommitment() {
 
 
 /* =========================================================
-   الاختبارات
+   التسميع
 ========================================================= */
 
 function getHighestGrade() {
@@ -3255,10 +6143,8 @@ function getHighestGrade() {
           'لم يتم التقييم'
       );
 
-
   if (!grades.length)
     return '—';
-
 
   const order = [
 
@@ -3273,7 +6159,6 @@ function getHighestGrade() {
     'مراجعة الصفحة'
 
   ];
-
 
   for (
     const wanted of order
@@ -3292,7 +6177,6 @@ function getHighestGrade() {
 
   }
 
-
   return '—';
 
 }
@@ -3302,7 +6186,6 @@ function getRecitationStats() {
 
   const records =
     profile.recitations;
-
 
   const scores =
     records
@@ -3316,7 +6199,6 @@ function getRecitationStats() {
           score <= 100
       );
 
-
   const average =
     scores.length
       ? (
@@ -3328,7 +6210,6 @@ function getRecitationStats() {
           scores.length
         )
       : 0;
-
 
   return {
 
@@ -3349,8 +6230,29 @@ function getRecitationStats() {
 
 
 /* =========================================================
-   حالة الخطة الأسبوعية
+   الخطة
 ========================================================= */
+
+function isDateInsideRange(
+  dateValue,
+  range
+) {
+
+  if (!dateValue)
+    return false;
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+  return (
+    d >= range.start &&
+    d <= range.end
+  );
+
+}
+
 
 function getPlanStatus(
   item
@@ -3363,7 +6265,6 @@ function getPlanStatus(
       0
     );
 
-
   const targetReview =
     number(
       item.reviewTarget ??
@@ -3371,40 +6272,38 @@ function getPlanStatus(
       0
     );
 
-
-  if (
-    !item.date
-  ) {
+  if (!item.date) {
 
     return {
+
       label:
         'قيد الإدخال',
 
       className:
         'status-pending'
+
     };
 
   }
-
 
   const range =
     getWeekRangeForDate(
       item.date
     );
 
-
   if (!range) {
 
     return {
+
       label:
         'قيد الإدخال',
 
       className:
         'status-pending'
+
     };
 
   }
-
 
   const hifz =
     profile.recitations.filter(
@@ -3416,7 +6315,6 @@ function getPlanStatus(
         )
     ).length;
 
-
   const review =
     profile.recitations.filter(
       rec =>
@@ -3427,18 +6325,15 @@ function getPlanStatus(
         )
     ).length;
 
-
   const hifzDone =
     targetHifz <= 0
       ? true
       : hifz >= targetHifz;
 
-
   const reviewDone =
     targetReview <= 0
       ? true
       : review >= targetReview;
-
 
   if (
     hifzDone &&
@@ -3457,7 +6352,6 @@ function getPlanStatus(
 
   }
 
-
   if (
     hifz > 0 ||
     review > 0
@@ -3475,7 +6369,6 @@ function getPlanStatus(
 
   }
 
-
   return {
 
     label:
@@ -3485,29 +6378,6 @@ function getPlanStatus(
       'status-running'
 
   };
-
-}
-
-
-function isDateInsideRange(
-  dateValue,
-  range
-) {
-
-  if (!dateValue)
-    return false;
-
-
-  const d =
-    new Date(
-      `${dateValue}T12:00:00`
-    );
-
-
-  return (
-    d >= range.start &&
-    d <= range.end
-  );
 
 }
 
@@ -3528,7 +6398,6 @@ async function checkTeacher() {
     } =
       await supabaseClient.auth.getUser();
 
-
     if (
       error ||
       !user
@@ -3541,7 +6410,6 @@ async function checkTeacher() {
 
     }
 
-
     if (
       String(
         user.email || ''
@@ -3553,11 +6421,9 @@ async function checkTeacher() {
         'هذا القسم مخصص للمعلم فقط.'
       );
 
-
       await supabaseClient
         .auth
         .signOut();
-
 
       window.location.href =
         'teacher-login.html';
@@ -3565,7 +6431,6 @@ async function checkTeacher() {
       return false;
 
     }
-
 
     return true;
 
@@ -3598,19 +6463,18 @@ async function loadStudent() {
     if (
       !(await checkTeacher())
     ) {
-      return;
-    }
 
+      return;
+
+    }
 
     const params =
       new URLSearchParams(
         window.location.search
       );
 
-
     studentId =
       params.get('id');
-
 
     if (!studentId) {
 
@@ -3620,7 +6484,17 @@ async function loadStudent() {
 
         <div class="loading">
 
-          لم يتم تحديد الطالب.
+          <div class="loading-icon">
+            ⚠️
+          </div>
+
+          <div class="loading-title">
+            لم يتم تحديد الطالب
+          </div>
+
+          <div class="loading-sub">
+            افتح ملف الطالب من لوحة المعلم.
+          </div>
 
         </div>
 
@@ -3630,28 +6504,21 @@ async function loadStudent() {
 
     }
 
-
     const {
       data,
       error
     } =
       await supabaseClient
-
         .from('students')
-
         .select('*')
-
         .eq(
           'id',
           studentId
         )
-
         .maybeSingle();
-
 
     if (error)
       throw error;
-
 
     if (!data) {
 
@@ -3661,7 +6528,17 @@ async function loadStudent() {
 
         <div class="loading">
 
-          تعذر العثور على الطالب.
+          <div class="loading-icon">
+            🔎
+          </div>
+
+          <div class="loading-title">
+            تعذر العثور على الطالب
+          </div>
+
+          <div class="loading-sub">
+            تأكد من فتح الملف من لوحة المعلم.
+          </div>
 
         </div>
 
@@ -3671,28 +6548,21 @@ async function loadStudent() {
 
     }
 
-
     student =
       data;
-
 
     const {
       data: profileRow,
       error: profileError
     } =
       await supabaseClient
-
         .from('student_profiles')
-
         .select('data')
-
         .eq(
           'student_id',
           String(studentId)
         )
-
         .maybeSingle();
-
 
     if (profileError) {
 
@@ -3712,8 +6582,11 @@ async function loadStudent() {
 
     }
 
-
     render();
+
+    document.body.classList.add(
+      'ready'
+    );
 
   } catch (
     error
@@ -3724,31 +6597,55 @@ async function loadStudent() {
       error
     );
 
-
     document.getElementById(
       'app'
     ).innerHTML = `
 
       <div class="loading">
 
-        <h2
-          style="
-            color:#b42318;
-            margin-bottom:10px;
-          "
-        >
-          تعذر تحميل ملف الطالب
-        </h2>
+        <div class="loading-icon">
+          ⚠️
+        </div>
 
-        <p>
+        <div class="loading-title">
+          تعذر تحميل ملف الطالب
+        </div>
+
+        <div class="loading-sub">
           حدث خطأ أثناء تحميل البيانات.
-        </p>
+        </div>
 
       </div>
 
     `;
 
   }
+
+}
+
+
+/* =========================================================
+   الحصول على آخر تسميع
+========================================================= */
+
+function getLastRecitation() {
+
+  const records =
+    profile.recitations
+      .filter(
+        item =>
+          item.date
+      )
+      .slice()
+      .sort(
+        (a,b) =>
+          String(b.date)
+            .localeCompare(
+              String(a.date)
+            )
+      );
+
+  return records[0] || null;
 
 }
 
@@ -3764,98 +6661,182 @@ function render() {
       'app'
     );
 
-
   const weekly =
     getCurrentWeekStats();
-
 
   const quran =
     getQuranProgress();
 
-
   const recitation =
     getRecitationStats();
-
 
   const completedJuz =
     getCompletedJuz();
 
-
   const totalPoints =
     getTotalPoints();
-
 
   const weeklyPoints =
     getWeeklyPoints();
 
-
   const commitment =
     getCommitment();
 
+  const lastRecitation =
+    getLastRecitation();
 
   const photo =
     profile.photoUrl
       ? profile.photoUrl
       : '';
 
+  const statusLabel =
+    student.status === 'inactive'
+      ? 'غير فعال'
+      : 'فعال';
+
+  const statusIcon =
+    student.status === 'inactive'
+      ? '⏸️'
+      : '●';
+
+  const quranClamped =
+    clamp(
+      quran.percent,
+      0,
+      100
+    );
+
+  const weeklyClamped =
+    clamp(
+      weekly.weeklyProgress,
+      0,
+      100
+    );
+
+  const commitmentValue =
+    clamp(
+      commitment.total,
+      0,
+      100
+    );
 
   app.innerHTML = `
 
-    <!-- =====================
-         بطاقة الطالب
-    ====================== -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
     <section class="student-hero">
 
+      <div class="hero-grid-lines"></div>
+
       <div class="hero-content">
 
-        <img
-          id="heroPhoto"
-          class="hero-photo"
-          src="${
-            photo ||
-            'data:image/svg+xml;charset=UTF-8,' +
-            encodeURIComponent(`
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="200"
-                height="200"
-              >
-                <rect
+
+        <div class="hero-photo-wrap">
+
+          <div class="hero-photo-ring"></div>
+
+          <img
+            id="heroPhoto"
+            class="hero-photo"
+            src="${
+              photo ||
+              'data:image/svg+xml;charset=UTF-8,' +
+              encodeURIComponent(`
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
                   width="200"
                   height="200"
-                  fill="#e8eee9"
-                />
-                <text
-                  x="100"
-                  y="112"
-                  text-anchor="middle"
-                  font-size="80"
                 >
-                  👤
-                </text>
-              </svg>
-            `)
-          }"
-          alt="صورة الطالب"
-        >
+                  <defs>
+                    <linearGradient
+                      id="g"
+                      x1="0"
+                      x2="1"
+                      y1="0"
+                      y2="1"
+                    >
+                      <stop
+                        offset="0%"
+                        stop-color="#e9f0ec"
+                      />
+                      <stop
+                        offset="100%"
+                        stop-color="#f6f2df"
+                      />
+                    </linearGradient>
+                  </defs>
+
+                  <rect
+                    width="200"
+                    height="200"
+                    fill="url(#g)"
+                  />
+
+                  <text
+                    x="100"
+                    y="118"
+                    text-anchor="middle"
+                    font-size="82"
+                  >
+                    👤
+                  </text>
+                </svg>
+              `)
+            }"
+            alt="صورة الطالب"
+          >
+
+        </div>
 
 
         <div class="hero-info">
 
+          <div class="hero-kicker">
+
+            <span class="hero-kicker-dot"></span>
+
+            ملف متابعة الطالب
+
+          </div>
+
+
           <h2>
             ${escapeHtml(
-              student.name
+              student.name || 'طالب'
             )}
           </h2>
 
-          <p>
-            شعبة
-            ${escapeHtml(
-              student.section ||
-              'غير محددة'
-            )}
-          </p>
+
+          <div class="hero-subline">
+
+            <span class="hero-sub-item">
+              🏫
+              الشعبة:
+              <b>
+                ${escapeHtml(
+                  student.section ||
+                  'غير محددة'
+                )}
+              </b>
+            </span>
+
+            <span class="hero-separator">
+              •
+            </span>
+
+            <span class="hero-sub-item">
+              ${statusIcon}
+              الحالة:
+              <b>
+                ${statusLabel}
+              </b>
+            </span>
+
+          </div>
+
 
           <div class="hero-pills">
 
@@ -3865,11 +6846,13 @@ function render() {
               جزء مكتمل
             </span>
 
+
             <span class="hero-pill">
               📚
               ${quran.completed}
               صفحة مسجلة
             </span>
+
 
             <span class="hero-pill">
               🏆
@@ -3879,6 +6862,7 @@ function render() {
               )}
               نقطة
             </span>
+
 
             <span class="hero-pill">
               ⭐
@@ -3894,6 +6878,7 @@ function render() {
 
         <div class="hero-side">
 
+
           <div class="hero-stat">
 
             <small>
@@ -3904,6 +6889,22 @@ function render() {
               ${formatNumber(
                 weekly.weeklyProgress,
                 0
+              )}%
+            </strong>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <small>
+              إنجاز القرآن
+            </small>
+
+            <strong>
+              ${formatNumber(
+                quran.percent,
+                1
               )}%
             </strong>
 
@@ -3929,22 +6930,6 @@ function render() {
           <div class="hero-stat">
 
             <small>
-              نقاط هذا الأسبوع
-            </small>
-
-            <strong>
-              ${formatNumber(
-                weeklyPoints,
-                1
-              )}
-            </strong>
-
-          </div>
-
-
-          <div class="hero-stat">
-
-            <small>
               الالتزام
             </small>
 
@@ -3957,6 +6942,51 @@ function render() {
 
           </div>
 
+
+          <div class="hero-stat hero-stat-wide">
+
+            <div class="hero-wide-label">
+
+              <div class="hero-wide-label-icon">
+                📅
+              </div>
+
+              <div>
+                <div>
+                  آخر تسميع مسجل
+                </div>
+
+                <small>
+                  ${
+                    lastRecitation
+                      ? `صفحة ${escapeHtml(
+                          lastRecitation.page
+                        )}`
+                      : 'لا يوجد بعد'
+                  }
+                </small>
+              </div>
+
+            </div>
+
+
+            <strong
+              style="
+                font-size:14px;
+                color:#ffffff;
+              "
+            >
+              ${
+                lastRecitation
+                  ? formatDate(
+                      lastRecitation.date
+                    )
+                  : '—'
+              }
+            </strong>
+
+          </div>
+
         </div>
 
       </div>
@@ -3964,24 +6994,96 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         الإحصائيات
-    ====================== -->
+    <!-- =====================================================
+         QUICK NAV
+    ====================================================== -->
 
-    <section class="section">
+    <nav class="quick-nav">
+
+      <a
+        class="quick-link"
+        href="#overview"
+      >
+        📊 الإنجاز
+      </a>
+
+      <a
+        class="quick-link"
+        href="#weekly"
+      >
+        🎯 الأسبوع
+      </a>
+
+      <a
+        class="quick-link"
+        href="#points"
+      >
+        🏆 النقاط
+      </a>
+
+      <a
+        class="quick-link"
+        href="#studentData"
+      >
+        👤 البيانات
+      </a>
+
+      <a
+        class="quick-link"
+        href="#attendance"
+      >
+        📅 الحضور
+      </a>
+
+      <a
+        class="quick-link"
+        href="#tests"
+      >
+        🧪 الاختبارات
+      </a>
+
+      <a
+        class="quick-link"
+        href="#recitations"
+      >
+        📖 التسميع
+      </a>
+
+      <a
+        class="quick-link"
+        href="#quranMapSection"
+      >
+        🗺️ القرآن
+      </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         OVERVIEW
+    ====================================================== -->
+
+    <section
+      class="section"
+      id="overview"
+    >
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             لوحة الإنجاز
           </h2>
 
           <p class="section-subtitle">
-            الإحصائيات التالية محسوبة تلقائياً من السجلات الفعلية.
+            نظرة سريعة على مستوى الطالب وإحصائياته الحالية.
           </p>
 
+        </div>
+
+        <div class="section-badge">
+          تحديث تلقائي
         </div>
 
       </div>
@@ -3989,14 +7091,23 @@ function render() {
 
       <div class="stats">
 
+
         <div class="stat">
 
-          <div class="stat-icon">
-            📖
+          <div class="stat-top">
+
+            <div class="stat-icon">
+              📖
+            </div>
+
+            <div class="stat-trend">
+              هذا الأسبوع
+            </div>
+
           </div>
 
           <div class="stat-label">
-            حفظ هذا الأسبوع
+            حفظ جديد
           </div>
 
           <div class="stat-value">
@@ -4017,12 +7128,20 @@ function render() {
 
         <div class="stat">
 
-          <div class="stat-icon">
-            🔄
+          <div class="stat-top">
+
+            <div class="stat-icon">
+              🔄
+            </div>
+
+            <div class="stat-trend">
+              هذا الأسبوع
+            </div>
+
           </div>
 
           <div class="stat-label">
-            مراجعة هذا الأسبوع
+            مراجعة
           </div>
 
           <div class="stat-value">
@@ -4043,8 +7162,16 @@ function render() {
 
         <div class="stat">
 
-          <div class="stat-icon">
-            📚
+          <div class="stat-top">
+
+            <div class="stat-icon">
+              📚
+            </div>
+
+            <div class="stat-trend">
+              من 604
+            </div>
+
           </div>
 
           <div class="stat-label">
@@ -4060,7 +7187,7 @@ function render() {
 
           <div class="stat-note">
             ${quran.completed}
-            من 604 صفحة
+            صفحة مسجلة
           </div>
 
         </div>
@@ -4068,8 +7195,16 @@ function render() {
 
         <div class="stat">
 
-          <div class="stat-icon">
-            ⭐
+          <div class="stat-top">
+
+            <div class="stat-icon">
+              ⭐
+            </div>
+
+            <div class="stat-trend">
+              الأسبوع الحالي
+            </div>
+
           </div>
 
           <div class="stat-label">
@@ -4096,30 +7231,38 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         نسب الأسبوع
-    ====================== -->
+    <!-- =====================================================
+         WEEKLY
+    ====================================================== -->
 
-    <section class="section">
+    <section
+      class="section"
+      id="weekly"
+    >
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             التقدم الأسبوعي
           </h2>
 
           <p class="section-subtitle">
-            الأسبوع الحالي من الجمعة إلى الخميس.
+            الأسبوع الحالي يُحتسب من الجمعة إلى الخميس.
           </p>
 
+        </div>
+
+        <div class="section-badge">
+          🎯 الأهداف
         </div>
 
       </div>
 
 
       <div class="progress-grid">
+
 
         <div class="progress-card">
 
@@ -4148,7 +7291,7 @@ function render() {
                   weekly.hifzProgress,
                   0,
                   100
-                )}%
+                )}%;
               "
             ></div>
 
@@ -4170,7 +7313,7 @@ function render() {
 
             صفحة.
 
-            النسبة لا تتوقف عند 100%؛ إذا أنجز 8 من 4 تظهر 200%.
+            يمكن أن تتجاوز النسبة 100% عند تجاوز الهدف.
 
           </div>
 
@@ -4204,7 +7347,7 @@ function render() {
                   weekly.reviewProgress,
                   0,
                   100
-                )}%
+                )}%;
               "
             ></div>
 
@@ -4233,24 +7376,11 @@ function render() {
       </div>
 
 
-      <div
-        style="
-          margin-top:15px;
-          padding:15px;
-          border-radius:14px;
-          background:#f7faf8;
-          color:#52645c;
-          font-size:13px;
-        "
-      >
+      <div class="soft-note">
 
-        <b
-          style="
-            color:#0d4d3a;
-          "
-        >
+        <strong>
           🧮 التسميع المكافئ:
-        </b>
+        </strong>
 
         ${formatNumber(
           weekly.equivalent,
@@ -4279,24 +7409,196 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         نقاط الطالب
-    ====================== -->
+    <!-- =====================================================
+         COMMITMENT
+    ====================================================== -->
 
     <section class="section">
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
+
+          <h2 class="section-title">
+            تقييم التزام الطالب
+          </h2>
+
+          <p class="section-subtitle">
+            يعتمد التقييم على الحضور والحفظ والمراجعة والاختبارات.
+          </p>
+
+        </div>
+
+        <div class="section-badge">
+          ⭐ التقييم الأسبوعي
+        </div>
+
+      </div>
+
+
+      <div class="commitment-grid">
+
+
+        <div class="commitment-main">
+
+          <div
+            class="commitment-ring"
+            style="
+              --value:${commitmentValue}%;
+            "
+          >
+
+            <div class="commitment-ring-inner">
+
+              <strong>
+                ${formatNumber(
+                  commitment.total,
+                  0
+                )}%
+              </strong>
+
+              <small>
+                التزام
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="commitment-text">
+
+            <small>
+              النتيجة الأسبوعية النهائية
+            </small>
+
+            <h3>
+              ${escapeHtml(
+                commitment.label
+              )}
+            </h3>
+
+            <p>
+              يتم احتساب النتيجة وفق الأوزان المحددة في النظام.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="commitment-mini">
+
+          <small>
+            الحضور
+          </small>
+
+          <strong>
+            ${formatNumber(
+              commitment.attendance,
+              0
+            )}%
+          </strong>
+
+          <span>
+            الوزن 20%
+          </span>
+
+        </div>
+
+
+        <div class="commitment-mini">
+
+          <small>
+            الحفظ الجديد
+          </small>
+
+          <strong>
+            ${formatNumber(
+              commitment.hifz,
+              0
+            )}%
+          </strong>
+
+          <span>
+            الوزن 35%
+          </span>
+
+        </div>
+
+
+        <div class="commitment-mini">
+
+          <small>
+            المراجعة
+          </small>
+
+          <strong>
+            ${formatNumber(
+              commitment.review,
+              0
+            )}%
+          </strong>
+
+          <span>
+            الوزن 25%
+          </span>
+
+        </div>
+
+
+        <div class="commitment-mini">
+
+          <small>
+            الاختبارات
+          </small>
+
+          <strong>
+            ${formatNumber(
+              commitment.tests,
+              0
+            )}%
+          </strong>
+
+          <span>
+            الوزن 20%
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         POINTS
+    ====================================================== -->
+
+    <section
+      class="section"
+      id="points"
+    >
+
+      <div class="section-head">
+
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             🏆 نظام النقاط
           </h2>
 
           <p class="section-subtitle">
-            النقاط تُحتسب تلقائياً حسب جودة التسميع والحضور والاختبارات.
+            تُحتسب النقاط تلقائياً من التسميع والحضور والاختبارات.
           </p>
 
+        </div>
+
+        <div class="section-badge">
+          ${formatNumber(
+            totalPoints,
+            1
+          )} نقطة
         </div>
 
       </div>
@@ -4304,10 +7606,11 @@ function render() {
 
       <div class="points-breakdown">
 
+
         <div class="points-card">
 
           <small>
-            نقاط الحفظ الجديد
+            نقاط التسميع
           </small>
 
           <strong>
@@ -4370,21 +7673,11 @@ function render() {
       </div>
 
 
-      <div
-        style="
-          padding:15px;
-          border-radius:14px;
-          background:#fffdf6;
-          border:1px solid #eee4c5;
-          color:#675a37;
-          font-size:12px;
-          line-height:1.8;
-        "
-      >
+      <div class="gold-note">
 
-        <b>
+        <strong>
           توزيع النقاط:
-        </b>
+        </strong>
 
         الحفظ الجديد:
         6 / 5 / 4 / 2 / 0
@@ -4392,9 +7685,7 @@ function render() {
         حسب جودة التسميع.
 
         المراجعة:
-        3 / 2.5 / 2 / 1 / 0
-
-        حسب الجودة.
+        3 / 2.5 / 2 / 1 / 0.
 
         الحضور:
         حاضر 2،
@@ -4413,197 +7704,18 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         تقييم الالتزام
-    ====================== -->
+    <!-- =====================================================
+         STUDENT DATA
+    ====================================================== -->
 
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            ⭐ تقييم التزام الطالب
-          </h2>
-
-          <p class="section-subtitle">
-            يعتمد على الحضور والحفظ والمراجعة ونجاح الاختبارات خلال الأسبوع.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="stats">
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            📅
-          </div>
-
-          <div class="stat-label">
-            الحضور
-          </div>
-
-          <div class="stat-value">
-            ${formatNumber(
-              commitment.attendance,
-              0
-            )}%
-          </div>
-
-          <div class="stat-note">
-            وزن التقييم: 20%
-          </div>
-
-        </div>
-
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            📖
-          </div>
-
-          <div class="stat-label">
-            الحفظ الجديد
-          </div>
-
-          <div class="stat-value">
-            ${formatNumber(
-              clamp(
-                commitment.hifz,
-                0,
-                100
-              ),
-              0
-            )}%
-          </div>
-
-          <div class="stat-note">
-            وزن التقييم: 35%
-          </div>
-
-        </div>
-
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            🔄
-          </div>
-
-          <div class="stat-label">
-            المراجعة
-          </div>
-
-          <div class="stat-value">
-            ${formatNumber(
-              clamp(
-                commitment.review,
-                0,
-                100
-              ),
-              0
-            )}%
-          </div>
-
-          <div class="stat-note">
-            وزن التقييم: 25%
-          </div>
-
-        </div>
-
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            🧪
-          </div>
-
-          <div class="stat-label">
-            الاختبارات
-          </div>
-
-          <div class="stat-value">
-            ${formatNumber(
-              commitment.tests,
-              0
-            )}%
-          </div>
-
-          <div class="stat-note">
-            وزن التقييم: 20%
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div
-        style="
-          margin-top:15px;
-          padding:18px;
-          border-radius:16px;
-          background:linear-gradient(135deg,#edf7f1,#fffaf0);
-          border:1px solid #dfe9e1;
-          text-align:center;
-        "
-      >
-
-        <div
-          style="
-            color:#718078;
-            font-size:12px;
-            margin-bottom:4px;
-          "
-        >
-          التقييم الأسبوعي النهائي
-        </div>
-
-        <div
-          style="
-            color:#0d4d3a;
-            font-size:30px;
-            font-weight:900;
-          "
-        >
-          ${formatNumber(
-            commitment.total,
-            0
-          )}%
-        </div>
-
-        <div
-          style="
-            margin-top:4px;
-            color:#8a7650;
-            font-weight:bold;
-          "
-        >
-          ${escapeHtml(
-            commitment.label
-          )}
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================
-         البيانات الأساسية
-    ====================== -->
-
-    <section class="section">
+    <section
+      class="section"
+      id="studentData"
+    >
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             👤 البيانات الأساسية
@@ -4615,10 +7727,15 @@ function render() {
 
         </div>
 
+        <div class="section-badge">
+          ملف الطالب
+        </div>
+
       </div>
 
 
       <div class="form-grid">
+
 
         <div class="field">
 
@@ -4715,43 +7832,48 @@ function render() {
 
             <div class="image-upload-row">
 
-              <img
-                id="photoPreview"
-                class="image-preview"
-                src="${
-                  photo ||
-                  'data:image/svg+xml;charset=UTF-8,' +
-                  encodeURIComponent(`
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="200"
-                      height="200"
-                    >
-                      <rect
+
+              <div class="image-preview-wrap">
+
+                <div class="image-preview-ring"></div>
+
+                <img
+                  id="photoPreview"
+                  class="image-preview"
+                  src="${
+                    photo ||
+                    'data:image/svg+xml;charset=UTF-8,' +
+                    encodeURIComponent(`
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
                         width="200"
                         height="200"
-                        fill="#e8eee9"
-                      />
-                      <text
-                        x="100"
-                        y="112"
-                        text-anchor="middle"
-                        font-size="80"
                       >
-                        👤
-                      </text>
-                    </svg>
-                  `)
-                }"
-                alt="معاينة صورة الطالب"
-              >
+                        <rect
+                          width="200"
+                          height="200"
+                          fill="#e8eee9"
+                        />
+                        <text
+                          x="100"
+                          y="112"
+                          text-anchor="middle"
+                          font-size="80"
+                        >
+                          👤
+                        </text>
+                      </svg>
+                    `)
+                  }"
+                  alt="معاينة صورة الطالب"
+                >
+
+              </div>
 
 
               <div>
 
-                <label
-                  class="file-button"
-                >
+                <label class="file-button">
 
                   📷 اختيار صورة من الجهاز
 
@@ -4766,7 +7888,7 @@ function render() {
 
 
                 <div class="image-help">
-                  اختر صورة من ملفات الكمبيوتر، وسيتم تصغيرها تلقائياً للحفاظ على سرعة الموقع.
+                  اختر الصورة من ملفات الكمبيوتر، وسيتم تصغيرها تلقائياً للحفاظ على سرعة الموقع.
                 </div>
 
               </div>
@@ -4867,22 +7989,22 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         الهدف الأسبوعي
-    ====================== -->
+    <!-- =====================================================
+         WEEKLY GOAL
+    ====================================================== -->
 
     <section class="section">
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             🎯 الهدف الأسبوعي
           </h2>
 
           <p class="section-subtitle">
-            هذه الأرقام هي المطلوب من الطالب خلال الأسبوع الحالي.
+            هذه الأرقام تمثل الهدف المطلوب من الطالب خلال الأسبوع.
           </p>
 
         </div>
@@ -4891,6 +8013,7 @@ function render() {
 
 
       <div class="form-grid">
+
 
         <div class="field">
 
@@ -4934,24 +8057,31 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         الحضور
-    ====================== -->
+    <!-- =====================================================
+         ATTENDANCE
+    ====================================================== -->
 
-    <section class="section">
+    <section
+      class="section"
+      id="attendance"
+    >
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             📅 سجل الحضور
           </h2>
 
           <p class="section-subtitle">
-            نقاط الحضور تحسب تلقائياً.
+            نقاط الحضور تُحتسب تلقائياً.
           </p>
 
+        </div>
+
+        <div class="section-badge">
+          ${profile.attendance.length} سجل
         </div>
 
       </div>
@@ -4967,28 +8097,28 @@ function render() {
         class="add"
         onclick="addAttendance()"
       >
-        + إضافة سجل حضور
+        + إضافة سجل حضور جديد
       </button>
 
     </section>
 
 
-    <!-- =====================
-         الخطة الأسبوعية
-    ====================== -->
+    <!-- =====================================================
+         PLAN
+    ====================================================== -->
 
     <section class="section">
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             📋 الخطة الأسبوعية
           </h2>
 
           <p class="section-subtitle">
-            الحالة تتحدد تلقائياً من التسميع المسجل في نفس الأسبوع.
+            الحالة تتحدد تلقائياً من التسميع المسجل في الأسبوع.
           </p>
 
         </div>
@@ -5012,15 +8142,18 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         الاختبارات
-    ====================== -->
+    <!-- =====================================================
+         TESTS
+    ====================================================== -->
 
-    <section class="section">
+    <section
+      class="section"
+      id="tests"
+    >
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             🧪 الاختبارات
@@ -5032,10 +8165,15 @@ function render() {
 
         </div>
 
+        <div class="section-badge">
+          ${profile.tests.length} اختبار
+        </div>
+
       </div>
 
 
       <div class="recitation-summary">
+
 
         <div class="mini-stat">
 
@@ -5120,15 +8258,18 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         سجل التسميع
-    ====================== -->
+    <!-- =====================================================
+         RECITATIONS
+    ====================================================== -->
 
-    <section class="section">
+    <section
+      class="section"
+      id="recitations"
+    >
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             📖 سجل التسميع
@@ -5140,10 +8281,15 @@ function render() {
 
         </div>
 
+        <div class="section-badge">
+          ${recitation.records} جلسة
+        </div>
+
       </div>
 
 
       <div class="recitation-summary">
+
 
         <div class="mini-stat">
 
@@ -5161,7 +8307,7 @@ function render() {
         <div class="mini-stat">
 
           <small>
-            متوسط درجة التسميع
+            متوسط الدرجة
           </small>
 
           <strong>
@@ -5182,7 +8328,7 @@ function render() {
 
           <strong
             style="
-              font-size:13px;
+              font-size:11px;
             "
           >
             ${escapeHtml(
@@ -5227,24 +8373,31 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         خريطة القرآن
-    ====================== -->
+    <!-- =====================================================
+         QURAN MAP
+    ====================================================== -->
 
-    <section class="section">
+    <section
+      class="section"
+      id="quranMapSection"
+    >
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             🗺️ خريطة القرآن
           </h2>
 
           <p class="section-subtitle">
-            كل مربع يمثل صفحة حقيقية من 1 إلى 604.
+            كل مربع يمثل صفحة حقيقية من 1 إلى 604، واضغط على أي صفحة لعرض تفاصيلها.
           </p>
 
+        </div>
+
+        <div class="section-badge">
+          604 صفحة
         </div>
 
       </div>
@@ -5252,18 +8405,31 @@ function render() {
 
       <div class="quran-progress">
 
-        <div class="quran-progress-head">
 
-          <span>
-            الإنجاز الكلي
-          </span>
+        <div class="quran-progress-top">
 
-          <strong>
+          <div class="quran-progress-copy">
+
+            <small>
+              الإنجاز الكلي
+            </small>
+
+            <strong>
+              ${quran.completed}
+              من
+              ${TOTAL_QURAN_PAGES}
+              صفحة
+            </strong>
+
+          </div>
+
+
+          <div class="quran-percent">
             ${formatNumber(
               quran.percent,
               1
             )}%
-          </strong>
+          </div>
 
         </div>
 
@@ -5273,32 +8439,29 @@ function render() {
           <div
             class="bar-fill"
             style="
-              width:${clamp(
-                quran.percent,
-                0,
-                100
-              )}%
+              width:${quranClamped}%;
             "
           ></div>
 
         </div>
 
 
-        <div
-          style="
-            margin-top:9px;
-            color:#718078;
-            font-size:12px;
-          "
-        >
+        <div class="quran-progress-foot">
 
-          ${quran.completed}
+          <span>
+            صفحات مسجلة:
+            <b>
+              ${quran.completed}
+            </b>
+          </span>
 
-          صفحة مسجلة من أصل
-
-          ${TOTAL_QURAN_PAGES}
-
-          صفحة
+          <span>
+            أجزاء مكتملة:
+            <b>
+              ${completedJuz}
+              / 30
+            </b>
+          </span>
 
         </div>
 
@@ -5344,15 +8507,15 @@ function render() {
     </section>
 
 
-    <!-- =====================
-         ملاحظات
-    ====================== -->
+    <!-- =====================================================
+         NOTES
+    ====================================================== -->
 
     <section class="section">
 
       <div class="section-head">
 
-        <div>
+        <div class="section-title-wrap">
 
           <h2 class="section-title">
             📝 ملاحظات المعلم
@@ -5367,18 +8530,31 @@ function render() {
       </div>
 
 
-      <textarea
-        id="notes"
-      >${escapeHtml(
-        profile.notes || ''
-      )}</textarea>
+      <div class="notes-wrap">
+
+        <textarea
+          id="notes"
+          maxlength="3000"
+          oninput="updateNotesCounter()"
+        >${escapeHtml(
+          profile.notes || ''
+        )}</textarea>
+
+        <div
+          id="notesCount"
+          class="notes-count"
+        >
+          ${(profile.notes || '').length} / 3000
+        </div>
+
+      </div>
 
     </section>
 
 
-    <!-- =====================
-         أزرار الحفظ
-    ====================== -->
+    <!-- =====================================================
+         ACTIONS
+    ====================================================== -->
 
     <div class="actions">
 
@@ -5403,6 +8579,13 @@ function render() {
         ↑ للأعلى
       </button>
 
+
+      <span
+        class="action-status"
+      >
+        آخر عرض للبيانات: الآن
+      </span>
+
     </div>
 
   `;
@@ -5418,11 +8601,93 @@ function render() {
 
   renderQuranMap();
 
+  updateNotesCounter();
+
+  setupRevealAnimations();
+
 }
 
 
 /* =========================================================
-   رفع الصورة من الجهاز
+   حركات الواجهة
+========================================================= */
+
+function setupRevealAnimations() {
+
+  const items =
+    document.querySelectorAll(
+      '.section'
+    );
+
+  items.forEach(
+    (item,index) => {
+
+      item.style.animationDelay =
+        `${Math.min(index * 45, 350)}ms`;
+
+    }
+  );
+
+
+  requestAnimationFrame(
+    () => {
+
+      document
+        .querySelectorAll('.bar-fill')
+        .forEach(
+          bar => {
+
+            const width =
+              bar.style.width;
+
+            bar.style.width =
+              '0%';
+
+            requestAnimationFrame(
+              () => {
+
+                bar.style.width =
+                  width;
+
+              }
+            );
+
+          }
+        );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   عداد الملاحظات
+========================================================= */
+
+function updateNotesCounter() {
+
+  const notes =
+    document.getElementById(
+      'notes'
+    );
+
+  const counter =
+    document.getElementById(
+      'notesCount'
+    );
+
+  if (!notes || !counter)
+    return;
+
+  counter.textContent =
+    `${notes.value.length} / 3000`;
+
+}
+
+
+/* =========================================================
+   رفع الصورة
 ========================================================= */
 
 async function handlePhotoFile(
@@ -5432,10 +8697,8 @@ async function handlePhotoFile(
   const file =
     input.files?.[0];
 
-
   if (!file)
     return;
-
 
   if (
     !file.type.startsWith(
@@ -5447,12 +8710,12 @@ async function handlePhotoFile(
       'الملف المحدد ليس صورة.'
     );
 
-    input.value = '';
+    input.value =
+      '';
 
     return;
 
   }
-
 
   try {
 
@@ -5461,36 +8724,35 @@ async function handlePhotoFile(
         file
       );
 
-
     profile.photoUrl =
       compressed;
-
 
     const preview =
       document.getElementById(
         'photoPreview'
       );
 
-
     const hero =
       document.getElementById(
         'heroPhoto'
       );
 
-
     if (preview)
       preview.src =
         compressed;
-
 
     if (hero)
       hero.src =
         compressed;
 
-
     showMessage(
       'تم إدراج صورة الطالب بنجاح. اضغط حفظ لتثبيتها ✅',
       'success'
+    );
+
+    showToast(
+      'تم إدراج الصورة بنجاح',
+      '📷'
     );
 
   } catch (
@@ -5523,116 +8785,102 @@ function compressImage(
       const reader =
         new FileReader();
 
+      reader.onload =
+        () => {
 
-      reader.onload = () => {
+          const img =
+            new Image();
 
-        const img =
-          new Image();
+          img.onload =
+            () => {
 
+              const maxSize =
+                700;
 
-        img.onload = () => {
+              let width =
+                img.width;
 
-          const maxSize =
-            700;
+              let height =
+                img.height;
 
+              if (
+                width > height &&
+                width > maxSize
+              ) {
 
-          let width =
-            img.width;
+                height =
+                  Math.round(
+                    height *
+                    maxSize /
+                    width
+                  );
 
-          let height =
-            img.height;
+                width =
+                  maxSize;
 
+              } else if (
+                height >= width &&
+                height > maxSize
+              ) {
 
-          if (
-            width > height &&
-            width > maxSize
-          ) {
+                width =
+                  Math.round(
+                    width *
+                    maxSize /
+                    height
+                  );
 
-            height =
-              Math.round(
-                height *
-                maxSize /
-                width
-              );
+                height =
+                  maxSize;
 
-            width =
-              maxSize;
+              }
 
-          }
+              const canvas =
+                document.createElement(
+                  'canvas'
+                );
 
-          else if (
-            height >= width &&
-            height > maxSize
-          ) {
+              canvas.width =
+                width;
 
-            width =
-              Math.round(
-                width *
-                maxSize /
+              canvas.height =
+                height;
+
+              const ctx =
+                canvas.getContext(
+                  '2d'
+                );
+
+              ctx.drawImage(
+                img,
+                0,
+                0,
+                width,
                 height
               );
 
-            height =
-              maxSize;
+              const result =
+                canvas.toDataURL(
+                  'image/jpeg',
+                  0.82
+                );
 
-          }
+              resolve(
+                result
+              );
 
+            };
 
-          const canvas =
-            document.createElement(
-              'canvas'
-            );
+          img.onerror =
+            reject;
 
-
-          canvas.width =
-            width;
-
-          canvas.height =
-            height;
-
-
-          const ctx =
-            canvas.getContext(
-              '2d'
-            );
-
-
-          ctx.drawImage(
-            img,
-            0,
-            0,
-            width,
-            height
-          );
-
-
-          const result =
-            canvas.toDataURL(
-              'image/jpeg',
-              0.82
-            );
-
-
-          resolve(
-            result
-          );
+          img.src =
+            reader.result;
 
         };
 
-
-        img.onerror =
-          reject;
-
-
-        img.src =
-          reader.result;
-
-      };
-
-
       reader.onerror =
         reject;
-
 
       reader.readAsDataURL(
         file
@@ -5655,25 +8903,18 @@ function renderAttendance() {
       'attendanceEditor'
     );
 
+  if (!box)
+    return;
 
   const items =
     profile.attendance ||
     [];
 
-
   if (!items.length) {
 
     box.innerHTML = `
 
-      <div
-        style="
-          padding:18px;
-          text-align:center;
-          color:#718078;
-          background:#f7faf8;
-          border-radius:14px;
-        "
-      >
+      <div class="empty-state">
         لا يوجد سجل حضور بعد.
       </div>
 
@@ -5683,7 +8924,6 @@ function renderAttendance() {
 
   }
 
-
   box.innerHTML =
     items.map(
       (
@@ -5691,28 +8931,18 @@ function renderAttendance() {
         index
       ) => `
 
-        <div
-          class="editor-row"
-        >
+        <div class="editor-row">
 
-          <div
-            class="editor-row-head"
-          >
+          <div class="editor-row-head">
 
-            <span
-              class="editor-row-title"
-            >
+            <span class="editor-row-title">
               حضور #${index + 1}
             </span>
 
 
             <button
               class="remove"
-              onclick="
-                removeAttendance(
-                  ${index}
-                )
-              "
+              onclick="removeAttendance(${index})"
             >
               حذف
             </button>
@@ -5720,13 +8950,10 @@ function renderAttendance() {
           </div>
 
 
-          <div
-            class="editor-grid"
-          >
+          <div class="editor-grid">
 
-            <div
-              class="field"
-            >
+
+            <div class="field">
 
               <label>
                 التاريخ
@@ -5743,9 +8970,7 @@ function renderAttendance() {
             </div>
 
 
-            <div
-              class="field"
-            >
+            <div class="field">
 
               <label>
                 الحالة
@@ -5800,9 +9025,7 @@ function renderAttendance() {
             </div>
 
 
-            <div
-              class="field"
-            >
+            <div class="field">
 
               <label>
                 النقاط
@@ -5817,6 +9040,37 @@ function renderAttendance() {
                   1
                 )}"
               >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                ملخص
+              </label>
+
+              <div
+                class="status-badge
+                  ${
+                    item.status === 'حاضر'
+                      ? 'status-complete'
+                      : item.status === 'متأخر'
+                        ? 'status-partial'
+                        : item.status === 'معتذر'
+                          ? 'status-running'
+                          : 'status-pending'
+                  }
+              "
+                style="
+                  width:100%;
+                  min-height:46px;
+                "
+              >
+                ${escapeHtml(
+                  item.status || 'غير محدد'
+                )}
+              </div>
 
             </div>
 
@@ -5843,8 +9097,12 @@ function addAttendance() {
 
   });
 
-
   renderAttendance();
+
+  showToast(
+    'تمت إضافة سجل حضور',
+    '📅'
+  );
 
 }
 
@@ -5857,7 +9115,6 @@ function removeAttendance(
     index,
     1
   );
-
 
   renderAttendance();
 
@@ -5899,25 +9156,18 @@ function renderPlan() {
       'planEditor'
     );
 
+  if (!box)
+    return;
 
   const items =
     profile.weeklyPlan ||
     [];
 
-
   if (!items.length) {
 
     box.innerHTML = `
 
-      <div
-        style="
-          padding:18px;
-          text-align:center;
-          color:#718078;
-          background:#f7faf8;
-          border-radius:14px;
-        "
-      >
+      <div class="empty-state">
         لم تتم إضافة خطة أسبوعية بعد.
       </div>
 
@@ -5926,7 +9176,6 @@ function renderPlan() {
     return;
 
   }
-
 
   box.innerHTML =
     items.map(
@@ -5940,31 +9189,20 @@ function renderPlan() {
             item
           );
 
-
         return `
 
-          <div
-            class="editor-row"
-          >
+          <div class="editor-row">
 
-            <div
-              class="editor-row-head"
-            >
+            <div class="editor-row-head">
 
-              <span
-                class="editor-row-title"
-              >
+              <span class="editor-row-title">
                 خطة أسبوع #${index + 1}
               </span>
 
 
               <button
                 class="remove"
-                onclick="
-                  removePlan(
-                    ${index}
-                  )
-                "
+                onclick="removePlan(${index})"
               >
                 حذف
               </button>
@@ -5972,13 +9210,10 @@ function renderPlan() {
             </div>
 
 
-            <div
-              class="editor-grid"
-            >
+            <div class="editor-grid">
 
-              <div
-                class="field"
-              >
+
+              <div class="field">
 
                 <label>
                   تاريخ بداية الأسبوع
@@ -6000,9 +9235,7 @@ function renderPlan() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   الجزء
@@ -6019,12 +9252,10 @@ function renderPlan() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
-                  عدد صفحات الحفظ
+                  صفحات الحفظ
                 </label>
 
                 <input
@@ -6033,7 +9264,7 @@ function renderPlan() {
                   value="${number(
                     item.hifzTarget ??
                     (
-                      /^\d+$/.test(
+                      /^\\d+$/.test(
                         String(
                           item.hifz || ''
                         ).trim()
@@ -6048,12 +9279,10 @@ function renderPlan() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
-                  عدد صفحات المراجعة
+                  صفحات المراجعة
                 </label>
 
                 <input
@@ -6062,7 +9291,7 @@ function renderPlan() {
                   value="${number(
                     item.reviewTarget ??
                     (
-                      /^\d+$/.test(
+                      /^\\d+$/.test(
                         String(
                           item.review || ''
                         ).trim()
@@ -6077,9 +9306,7 @@ function renderPlan() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   حالة الخطة
@@ -6087,14 +9314,7 @@ function renderPlan() {
 
                 <div
                   id="plan-status-${index}"
-                  class="
-                    status-badge
-                    ${status.className}
-                  "
-                  style="
-                    width:100%;
-                    min-height:45px;
-                  "
+                  class="status-badge ${status.className}"
                 >
                   ${status.label}
                 </div>
@@ -6123,16 +9343,13 @@ function refreshPlanStatus(
       index
     ];
 
-
   if (!item)
     return;
-
 
   const date =
     document.querySelector(
       `[data-plan-date="${index}"]`
     )?.value || '';
-
 
   const hifz =
     number(
@@ -6141,14 +9358,12 @@ function refreshPlanStatus(
       )?.value
     );
 
-
   const review =
     number(
       document.querySelector(
         `[data-plan-review="${index}"]`
       )?.value
     );
-
 
   const temporary = {
 
@@ -6164,18 +9379,15 @@ function refreshPlanStatus(
 
   };
 
-
   const status =
     getPlanStatus(
       temporary
     );
 
-
   const element =
     document.getElementById(
       `plan-status-${index}`
     );
-
 
   if (element) {
 
@@ -6211,8 +9423,12 @@ function addPlan() {
 
   });
 
-
   renderPlan();
+
+  showToast(
+    'تمت إضافة خطة أسبوعية',
+    '📋'
+  );
 
 }
 
@@ -6225,7 +9441,6 @@ function removePlan(
     index,
     1
   );
-
 
   renderPlan();
 
@@ -6285,25 +9500,18 @@ function renderTests() {
       'testsEditor'
     );
 
+  if (!box)
+    return;
 
   const items =
     profile.tests ||
     [];
 
-
   if (!items.length) {
 
     box.innerHTML = `
 
-      <div
-        style="
-          padding:18px;
-          text-align:center;
-          color:#718078;
-          background:#f7faf8;
-          border-radius:14px;
-        "
-      >
+      <div class="empty-state">
         لا يوجد اختبارات مسجلة بعد.
       </div>
 
@@ -6312,7 +9520,6 @@ function renderTests() {
     return;
 
   }
-
 
   box.innerHTML =
     items.map(
@@ -6326,36 +9533,27 @@ function renderTests() {
             item.result
           );
 
-
         return `
 
-          <div
-            class="editor-row"
-          >
+          <div class="editor-row">
 
-            <div
-              class="editor-row-head"
-            >
+            <div class="editor-row-head">
 
-              <span
-                class="editor-row-title"
-              >
+              <span class="editor-row-title">
+
                 ${
                   escapeHtml(
                     item.name ||
                     `اختبار #${index + 1}`
                   )
                 }
+
               </span>
 
 
               <button
                 class="remove"
-                onclick="
-                  removeTest(
-                    ${index}
-                  )
-                "
+                onclick="removeTest(${index})"
               >
                 حذف
               </button>
@@ -6363,13 +9561,10 @@ function renderTests() {
             </div>
 
 
-            <div
-              class="editor-grid"
-            >
+            <div class="editor-grid">
 
-              <div
-                class="field"
-              >
+
+              <div class="field">
 
                 <label>
                   اسم الاختبار
@@ -6386,9 +9581,7 @@ function renderTests() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   التاريخ
@@ -6405,9 +9598,7 @@ function renderTests() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   النتيجة
@@ -6470,9 +9661,7 @@ function renderTests() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   النقاط
@@ -6514,8 +9703,12 @@ function addTest() {
 
   });
 
-
   renderTests();
+
+  showToast(
+    'تمت إضافة اختبار',
+    '🧪'
+  );
 
 }
 
@@ -6528,7 +9721,6 @@ function removeTest(
     index,
     1
   );
-
 
   renderTests();
 
@@ -6547,7 +9739,6 @@ function collectTests() {
         document.querySelector(
           `[data-test-result="${index}"]`
         )?.value || '';
-
 
       return {
 
@@ -6587,25 +9778,18 @@ function renderRecitations() {
       'recitationsEditor'
     );
 
+  if (!box)
+    return;
 
   const items =
     profile.recitations ||
     [];
 
-
   if (!items.length) {
 
     box.innerHTML = `
 
-      <div
-        style="
-          padding:18px;
-          text-align:center;
-          color:#718078;
-          background:#f7faf8;
-          border-radius:14px;
-        "
-      >
+      <div class="empty-state">
         لم يتم تسجيل أي تسميع بعد.
       </div>
 
@@ -6614,7 +9798,6 @@ function renderRecitations() {
     return;
 
   }
-
 
   box.innerHTML =
     items.map(
@@ -6628,12 +9811,10 @@ function renderRecitations() {
             item.score
           );
 
-
         const points =
           getRecitationPoints(
             item
           );
-
 
         return `
 
@@ -6642,29 +9823,23 @@ function renderRecitations() {
             id="recitation-row-${index}"
           >
 
-            <div
-              class="editor-row-head"
-            >
+            <div class="editor-row-head">
 
-              <span
-                class="editor-row-title"
-              >
+              <span class="editor-row-title">
+
                 📖 صفحة
                 ${
                   escapeHtml(
                     item.page || '—'
                   )
                 }
+
               </span>
 
 
               <button
                 class="remove"
-                onclick="
-                  removeRecitation(
-                    ${index}
-                  )
-                "
+                onclick="removeRecitation(${index})"
               >
                 حذف
               </button>
@@ -6672,13 +9847,10 @@ function renderRecitations() {
             </div>
 
 
-            <div
-              class="editor-grid"
-            >
+            <div class="editor-grid">
 
-              <div
-                class="field"
-              >
+
+              <div class="field">
 
                 <label>
                   التاريخ
@@ -6695,9 +9867,7 @@ function renderRecitations() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   رقم الصفحة
@@ -6717,9 +9887,7 @@ function renderRecitations() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   النوع
@@ -6761,9 +9929,7 @@ function renderRecitations() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   الدرجة من 100
@@ -6789,9 +9955,7 @@ function renderRecitations() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   التقدير التلقائي
@@ -6812,9 +9976,7 @@ function renderRecitations() {
               </div>
 
 
-              <div
-                class="field"
-              >
+              <div class="field">
 
                 <label>
                   نقاط التسميع
@@ -6875,19 +10037,16 @@ function refreshRecitationPreview(
       `[data-rec-score="${index}"]`
     )?.value;
 
-
   const type =
     document.querySelector(
       `[data-rec-type="${index}"]`
     )?.value ||
     'hifz';
 
-
   const grade =
     getRecitationGrade(
       score
     );
-
 
   const points =
     getRecitationPoints({
@@ -6898,18 +10057,15 @@ function refreshRecitationPreview(
 
     });
 
-
   const gradeElement =
     document.getElementById(
       `grade-preview-${index}`
     );
 
-
   const pointsElement =
     document.getElementById(
       `points-preview-${index}`
     );
-
 
   if (gradeElement) {
 
@@ -6920,7 +10076,6 @@ function refreshRecitationPreview(
       grade.label;
 
   }
-
 
   if (pointsElement) {
 
@@ -6958,21 +10113,23 @@ function addRecitation() {
 
   });
 
-
   renderRecitations();
-
 
   const firstPage =
     document.querySelector(
       '[data-rec-page="0"]'
     );
 
-
   if (firstPage) {
 
     firstPage.focus();
 
   }
+
+  showToast(
+    'تمت إضافة جلسة تسميع جديدة',
+    '📖'
+  );
 
 }
 
@@ -6985,7 +10142,6 @@ function removeRecitation(
     index,
     1
   );
-
 
   renderRecitations();
 
@@ -7006,12 +10162,10 @@ function collectRecitations() {
         )?.value ||
         'hifz';
 
-
       const scoreRaw =
         document.querySelector(
           `[data-rec-score="${index}"]`
         )?.value;
-
 
       const score =
         scoreRaw === ''
@@ -7022,14 +10176,12 @@ function collectRecitations() {
               100
             );
 
-
       const grade =
         score === ''
           ? ''
           : getRecitationGrade(
               score
             ).label;
-
 
       return {
 
@@ -7079,34 +10231,29 @@ function getPageState(
   const hifz =
     getHifzPageSet();
 
-
   const review =
     getReviewPageSet();
-
 
   const hasHifz =
     hifz.has(page);
 
-
   const hasReview =
     review.has(page);
-
 
   if (
     hasHifz &&
     hasReview
   ) {
-    return 'both';
-  }
 
+    return 'both';
+
+  }
 
   if (hasHifz)
     return 'hifz';
 
-
   if (hasReview)
     return 'review';
-
 
   return '';
 
@@ -7120,14 +10267,11 @@ function renderQuranMap() {
       'quranMap'
     );
 
-
   if (!box)
     return;
 
-
   let html =
     '';
-
 
   for (
     let juz = 1;
@@ -7136,16 +10280,15 @@ function renderQuranMap() {
   ) {
 
     const info =
-      getJuzInfo(juz);
-
+      getJuzInfo(
+        juz
+      );
 
     let completed =
       0;
 
-
     let pagesHtml =
       '';
-
 
     for (
       let page =
@@ -7159,14 +10302,11 @@ function renderQuranMap() {
           page
         );
 
-
       if (state)
         completed++;
 
-
       let stateText =
         'غير مسجلة';
-
 
       if (
         state === 'hifz'
@@ -7175,18 +10315,14 @@ function renderQuranMap() {
         stateText =
           'حفظ جديد';
 
-      }
-
-      else if (
+      } else if (
         state === 'review'
       ) {
 
         stateText =
           'مراجعة';
 
-      }
-
-      else if (
+      } else if (
         state === 'both'
       ) {
 
@@ -7194,7 +10330,6 @@ function renderQuranMap() {
           'حفظ + مراجعة';
 
       }
-
 
       pagesHtml += `
 
@@ -7204,14 +10339,10 @@ function renderQuranMap() {
             ${state}
           "
           title="
-            صفحة ${page} —
-            ${stateText}
+            صفحة ${page}
+            — ${stateText}
           "
-          onclick="
-            showPageInfo(
-              ${page}
-            )
-          "
+          onclick="showPageInfo(${page})"
         >
           ${page}
         </div>
@@ -7220,36 +10351,25 @@ function renderQuranMap() {
 
     }
 
-
     html += `
 
-      <div
-        class="juz-card"
-      >
+      <div class="juz-card">
 
-        <div
-          class="juz-head"
-        >
+        <div class="juz-head">
 
-          <span
-            class="juz-title"
-          >
+          <span class="juz-title">
             الجزء ${juz}
           </span>
 
 
-          <span
-            class="juz-count"
-          >
+          <span class="juz-count">
             ${completed}/${info.length}
           </span>
 
         </div>
 
 
-        <div
-          class="juz-range"
-        >
+        <div class="juz-range">
           الصفحات
           ${info.start}
           -
@@ -7257,9 +10377,7 @@ function renderQuranMap() {
         </div>
 
 
-        <div
-          class="page-grid"
-        >
+        <div class="page-grid">
           ${pagesHtml}
         </div>
 
@@ -7269,12 +10387,15 @@ function renderQuranMap() {
 
   }
 
-
   box.innerHTML =
     html;
 
 }
 
+
+/* =========================================================
+   Modal الصفحة
+========================================================= */
 
 function showPageInfo(
   page
@@ -7286,84 +10407,235 @@ function showPageInfo(
         number(item.page) === page
     );
 
-
-  if (!records.length) {
-
-    alert(
-      `📖 صفحة ${page}\n\nلا يوجد سجل لهذه الصفحة حتى الآن.`
+  const overlay =
+    document.getElementById(
+      'pageModalOverlay'
     );
+
+  const title =
+    document.getElementById(
+      'pageModalTitle'
+    );
+
+  const body =
+    document.getElementById(
+      'pageModalBody'
+    );
+
+  if (
+    !overlay ||
+    !title ||
+    !body
+  ) {
 
     return;
 
   }
 
+  title.textContent =
+    `📖 تفاصيل الصفحة ${page}`;
 
-  const details =
-    records.map(
-      item => {
+  if (!records.length) {
 
-        const grade =
-          getRecitationGrade(
-            item.score
-          );
+    body.innerHTML = `
 
+      <div class="empty-state">
 
-        const points =
-          getRecitationPoints(
-            item
-          );
+        لا يوجد سجل لهذه الصفحة حتى الآن.
 
+      </div>
 
-        const type =
-          item.type === 'review'
-            ? 'مراجعة'
-            : 'حفظ جديد';
+    `;
 
+  } else {
 
-        return [
+    body.innerHTML =
+      records.map(
+        item => {
 
-          `النوع: ${type}`,
+          const grade =
+            getRecitationGrade(
+              item.score
+            );
 
-          `التاريخ: ${formatDate(
-            item.date
-          )}`,
+          const points =
+            getRecitationPoints(
+              item
+            );
 
-          `الدرجة: ${
-            item.score === ''
-              ? 'غير مسجلة'
-              : item.score + '%'
-          }`,
+          const type =
+            item.type === 'review'
+              ? 'مراجعة'
+              : 'حفظ جديد';
 
-          `التقدير: ${
-            grade.label
-          }`,
+          return `
 
-          `النقاط: ${
-            formatNumber(
-              points,
-              1
-            )
-          }`,
+            <div class="page-record">
 
-          `الملاحظة: ${
-            item.note ||
-            'لا توجد'
-          }`
-
-        ].join('\n');
-
-      }
-    )
-    .join(
-      '\n\n----------------\n\n'
-    );
+              <div class="page-record-grid">
 
 
-  alert(
-    `📖 تفاصيل الصفحة ${page}\n\n${details}`
+                <div class="detail-item">
+
+                  <small>
+                    النوع
+                  </small>
+
+                  <strong>
+                    ${type}
+                  </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                  <small>
+                    التاريخ
+                  </small>
+
+                  <strong>
+                    ${formatDate(
+                      item.date
+                    )}
+                  </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                  <small>
+                    الدرجة
+                  </small>
+
+                  <strong>
+                    ${
+                      item.score === ''
+                        ? 'غير مسجلة'
+                        : `${item.score}%`
+                    }
+                  </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                  <small>
+                    التقدير
+                  </small>
+
+                  <strong>
+                    ${escapeHtml(
+                      grade.label
+                    )}
+                  </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                  <small>
+                    النقاط
+                  </small>
+
+                  <strong>
+                    ${formatNumber(
+                      points,
+                      1
+                    )}
+                  </strong>
+
+                </div>
+
+              </div>
+
+
+              <div class="detail-note">
+
+                <b>
+                  الملاحظة:
+                </b>
+
+                ${escapeHtml(
+                  item.note ||
+                  'لا توجد ملاحظة.'
+                )}
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      )
+      .join('');
+
+  }
+
+  overlay.classList.add(
+    'show'
   );
 
+  document.body.style.overflow =
+    'hidden';
+
 }
+
+
+function closePageModal() {
+
+  const overlay =
+    document.getElementById(
+      'pageModalOverlay'
+    );
+
+  if (!overlay)
+    return;
+
+  overlay.classList.remove(
+    'show'
+  );
+
+  document.body.style.overflow =
+    '';
+
+}
+
+
+function handleModalOverlay(
+  event
+) {
+
+  if (
+    event.target?.id ===
+    'pageModalOverlay'
+  ) {
+
+    closePageModal();
+
+  }
+
+}
+
+
+document.addEventListener(
+  'keydown',
+  event => {
+
+    if (
+      event.key === 'Escape'
+    ) {
+
+      closePageModal();
+
+    }
+
+  }
+);
 
 
 /* =========================================================
@@ -7374,20 +10646,19 @@ async function saveProfile() {
 
   hideMessage();
 
-
   const button =
     document.getElementById(
       'saveButton'
     );
 
+  if (!button)
+    return;
 
   button.disabled =
     true;
 
-
   button.textContent =
-    'جاري الحفظ...';
-
+    '⏳ جاري حفظ البيانات...';
 
   try {
 
@@ -7438,35 +10709,23 @@ async function saveProfile() {
     }
 
 
-    /*
-      أولاً تحديث جدول الطلاب
-    */
-
     const {
       error:
         studentError
     } =
       await supabaseClient
-
         .from('students')
-
         .update(
           studentUpdate
         )
-
         .eq(
           'id',
           studentId
         );
 
-
     if (studentError)
       throw studentError;
 
-
-    /*
-      جمع البيانات
-    */
 
     const newProfile = {
 
@@ -7513,7 +10772,6 @@ async function saveProfile() {
           .value
           .trim(),
 
-
       weeklyGoal: {
 
         hifz:
@@ -7536,22 +10794,17 @@ async function saveProfile() {
 
       },
 
-
       attendance:
         collectAttendance(),
-
 
       weeklyPlan:
         collectPlan(),
 
-
       tests:
         collectTests(),
 
-
       recitations:
         collectRecitations(),
-
 
       notes:
         document
@@ -7564,21 +10817,14 @@ async function saveProfile() {
     };
 
 
-    /*
-      حفظ profile داخل
-      student_profiles
-    */
-
     const {
       error:
         profileError
     } =
       await supabaseClient
-
         .from(
           'student_profiles'
         )
-
         .upsert({
 
           student_id:
@@ -7595,20 +10841,14 @@ async function saveProfile() {
 
         });
 
-
     if (profileError)
       throw profileError;
 
-
-    /*
-      تحديث البيانات الحالية
-    */
 
     profile =
       mergeProfile(
         newProfile
       );
-
 
     student = {
 
@@ -7625,7 +10865,19 @@ async function saveProfile() {
     );
 
 
+    showToast(
+      'تم حفظ جميع التعديلات بنجاح',
+      '✓'
+    );
+
+
     render();
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
 
 
   } catch (
@@ -7637,28 +10889,25 @@ async function saveProfile() {
       error
     );
 
-
     showMessage(
       error.message ||
       'حدث خطأ أثناء حفظ البيانات.',
       'error'
     );
 
-
   } finally {
 
-    button =
+    const currentButton =
       document.getElementById(
         'saveButton'
       );
 
+    if (currentButton) {
 
-    if (button) {
-
-      button.disabled =
+      currentButton.disabled =
         false;
 
-      button.textContent =
+      currentButton.textContent =
         '💾 حفظ جميع التعديلات';
 
     }
