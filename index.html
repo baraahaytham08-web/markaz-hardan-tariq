@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -6,176 +7,185 @@
   <title>مركز حردان طارق القرآني</title>
   <meta name="description" content="مركز حردان طارق القرآني - منارة للقرآن وبناء للأجيال">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .demo-badge {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      background: #222;
+      color: #fff;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      z-index: 9999;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+    }
+
+    .contact-list a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .social-links {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
+
 <body>
+
+  <div class="demo-badge">النسخة التجريبية</div>
+
   <header class="header">
     <div class="container nav">
+
       <a class="brand" href="#home">
         <img src="logo.png" alt="شعار مركز حردان طارق القرآني">
         <span>مركز حردان طارق القرآني</span>
       </a>
+
       <nav>
         <a class="active" href="#home">الرئيسية</a>
         <a href="#about">عن المركز</a>
-        <a href="#programs">الحلقات والدورات</a>
-        <a href="#teachers">المعلمون</a>
-        <a href="#schedule">الجدول</a>
+        <a href="#programs">الشعب والحلقات</a>
+        <a href="#schedule">الدوام</a>
         <a href="#contact">تواصل معنا</a>
       </nav>
+
       <div class="actions">
         <a class="btn btn-outline" href="#register">التسجيل</a>
-        <a class="btn btn-gold" href="#login">تسجيل الدخول</a>
+        <a class="btn btn-gold" href="#contact">تواصل معنا</a>
       </div>
+
       <button class="menu-btn" aria-label="فتح القائمة">☰</button>
     </div>
   </header>
 
   <main>
+
+    <!-- الرئيسية -->
     <section id="home" class="hero">
       <div class="container hero-inner">
+
         <div class="hero-content">
           <p class="eyebrow">أهلاً وسهلاً بكم في</p>
+
           <h1>مركز حردان طارق القرآني</h1>
+
           <h2>منارةٌ للقرآن .. وبناءٌ للأجيال</h2>
+
           <p class="hero-text">
             نسعى في مركزنا إلى تحفيظ القرآن الكريم وتعليم أحكامه وتجويده،
             وتربية النشء على قيمه وأخلاقه في بيئة تعليمية مميزة.
           </p>
-          <a class="btn btn-gold big" href="#about">اكتشف المزيد ←</a>
+
+          <a class="btn btn-gold big" href="#programs">
+            تعرّف على الشعب ←
+          </a>
         </div>
+
         <div class="hero-art" aria-label="مساحة بصرية">
           <div class="arch">
             <div class="quran">القرآن الكريم</div>
           </div>
         </div>
+
       </div>
     </section>
 
+
+    <!-- المميزات -->
     <section class="features container">
+
       <article class="feature">
         <div class="icon">📖</div>
         <h3>تحفيظ القرآن الكريم</h3>
-        <p>تحفيظ وتجويد على أيدي معلمين متخصصين.</p>
+        <p>العناية بحفظ كتاب الله ومراجعته.</p>
       </article>
+
       <article class="feature">
         <div class="icon">✨</div>
-        <h3>دورات متنوعة</h3>
-        <p>في التلاوة والتجويد والفقه القرآني.</p>
+        <h3>تعليم التجويد</h3>
+        <p>تعلم أحكام التجويد وتحسين التلاوة.</p>
       </article>
+
       <article class="feature">
-        <div class="icon">👥</div>
-        <h3>بيئة تربوية متميزة</h3>
-        <p>تجمع بين التعليم والأخلاق والقيم.</p>
+        <div class="icon">🌱</div>
+        <h3>بناء الأجيال</h3>
+        <p>بيئة تربوية تعين على تعلم القرآن والعمل به.</p>
       </article>
+
       <article class="feature">
         <div class="icon">📅</div>
-        <h3>جدول الحلقات</h3>
-        <p>مواعيد منظمة ومتابعة مستمرة للطلاب.</p>
+        <h3>دوام منظم</h3>
+        <p>السبت والأربعاء من 4:30 إلى 6:30 مساءً.</p>
       </article>
-      <article class="feature" id="teachers">
-        <div class="icon">🏅</div>
-        <h3>معلمون أكفاء</h3>
-        <p>خبرة وكفاءة في تعليم القرآن الكريم.</p>
-      </article>
+
     </section>
 
+
+    <!-- عن المركز -->
     <section id="about" class="about container">
+
       <div class="quote-card">
         <div class="quote-mark">قال ﷺ:</div>
-        <blockquote>«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»</blockquote>
+
+        <blockquote>
+          «خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»
+        </blockquote>
+
         <small>رواه البخاري</small>
       </div>
+
       <div class="about-text">
+
         <span class="section-kicker">تعرف علينا</span>
+
         <h2>عن المركز</h2>
+
         <p>
-          مركز حردان طارق القرآني هو مركز متخصص في تحفيظ القرآن الكريم
-          وتعليم أحكامه وتجويده، يهدف إلى بناء جيل متمسك بكتاب الله،
-          معتز بدينه وقيمه، من خلال بيئة تعليمية مميزة ومعلمين أكفاء.
+          مركز حردان طارق القرآني هو مركز يُعنى بتعليم القرآن الكريم
+          وتحفيظه، وتعليم أحكام التجويد، وتوفير بيئة تربوية تساعد
+          الطلاب على الارتباط بكتاب الله.
         </p>
-        <a class="btn btn-outline" href="#programs">المزيد عن المركز ←</a>
+
+        <a class="btn btn-outline" href="#programs">
+          الشعب والحلقات ←
+        </a>
+
       </div>
+
     </section>
 
+
+    <!-- الشعب -->
     <section id="programs" class="programs">
+
       <div class="container">
+
         <div class="section-title">
           <span></span>
-          <h2>أقسام المركز</h2>
+          <h2>شعب المركز</h2>
           <span></span>
         </div>
+
         <div class="cards">
-          <article class="program"><div class="program-icon">📗</div><h3>حلقات التحفيظ</h3><p>برامج للحفظ والمراجعة حسب مستوى الطالب.</p></article>
-          <article class="program"><div class="program-icon">🎓</div><h3>التجويد والتلاوة</h3><p>تعلم القراءة الصحيحة وأحكام التجويد.</p></article>
-          <article class="program"><div class="program-icon">🌙</div><h3>البرامج القرآنية</h3><p>أنشطة ودورات موسمية وفعاليات تربوية.</p></article>
-          <article class="program"><div class="program-icon">🧒</div><h3>برنامج الناشئة</h3><p>بيئة مناسبة للأطفال والناشئة في تعليم القرآن.</p></article>
-        </div>
-      </div>
-    </section>
 
-    <section id="schedule" class="schedule container">
-      <div>
-        <span class="section-kicker">تنظيم الحلقات</span>
-        <h2>الجدول والمواعيد</h2>
-        <p>يمكن إضافة جدول الحلقات وأوقات الدوام هنا لاحقاً، مع إمكانية ربطه بنظام تسجيل للطلاب.</p>
-      </div>
-      <div class="schedule-box">
-        <div><strong>الأحد – الخميس</strong><span>حسب جدول المركز</span></div>
-        <div><strong>التسجيل</strong><span>متاح للطلاب الجدد</span></div>
-      </div>
-    </section>
+          <article class="program">
+            <div class="program-icon">📗</div>
+            <h3>شعبة الحفاظ</h3>
+            <p>
+              عناية بالحفظ والمراجعة ومتابعة مسيرة الطالب في حفظ القرآن الكريم.
+            </p>
+          </article>
 
-    <section id="register" class="register">
-      <div class="container register-inner">
-        <div>
-          <span class="section-kicker">انضم إلينا</span>
-          <h2>سجّل في حلقات المركز</h2>
-          <p>في النسخة القادمة يمكن تحويل هذا النموذج إلى تسجيل حقيقي وحفظ بيانات الطلاب.</p>
-        </div>
-        <form class="form" onsubmit="return registerDemo(event)">
-          <input required type="text" placeholder="اسم الطالب">
-          <input required type="tel" placeholder="رقم ولي الأمر">
-          <select required>
-            <option value="">اختر البرنامج</option>
-            <option>حلقات التحفيظ</option>
-            <option>التجويد والتلاوة</option>
-            <option>برنامج الناشئة</option>
-          </select>
-          <button class="btn btn-gold" type="submit">إرسال طلب التسجيل</button>
-        </form>
-      </div>
-    </section>
-
-    <section id="contact" class="contact container">
-      <div>
-        <span class="section-kicker">تواصل معنا</span>
-        <h2>يسعدنا تواصلكم</h2>
-        <p>أضف هنا رقم الهاتف، واتساب، العنوان، وروابط صفحات المركز.</p>
-      </div>
-      <div class="contact-list">
-        <div>📞 <span>رقم الهاتف</span></div>
-        <div>📍 <span>عنوان المركز</span></div>
-        <div>💬 <span>واتساب المركز</span></div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <span>© 2026 مركز حردان طارق القرآني</span>
-      <span>منارةٌ للقرآن .. وبناءٌ للأجيال</span>
-    </div>
-  </footer>
-
-  <script>
-    function registerDemo(event) {
-      event.preventDefault();
-      alert("تم استلام طلب التسجيل تجريبياً. عند ربط الموقع بقاعدة بيانات سيتم حفظ الطلب فعلياً.");
-      return false;
-    }
-    document.querySelector('.menu-btn').addEventListener('click', () => {
-      document.querySelector('nav').classList.toggle('open');
-    });
-  </script>
-</body>
-</html>
+          <article class="program">
+            <div class="program-icon">📖</div>
+            <h3>شعبة تجويد</h3>
+            <p>
+              تعليم أحكام التجويد وتص
+```
