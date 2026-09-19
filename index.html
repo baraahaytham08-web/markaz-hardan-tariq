@@ -1,24 +1,45 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>مركز حردان طارق القرآني</title>
-<link rel="icon" type="image/png" href="logo.png">
-  
-  <meta name="description"
-        content="مركز حردان طارق القرآني - منارة للقرآن وبناء للأجيال">
 
-  <link rel="stylesheet" href="style.css">
+  <link
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
 
-  <!-- Font Awesome للشعارات -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <meta
+    name="description"
+    content="مركز حردان طارق القرآني - منارة للقرآن وبناء للأجيال"
+  >
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
 
   <style>
 
-    /* ================= النسخة التجريبية ================= */
+    /* =====================================================
+       النسخة التجريبية
+    ===================================================== */
 
     .demo-badge {
       position: fixed;
@@ -34,7 +55,9 @@
     }
 
 
-    /* ================= ترتيب المعلومات العامة ================= */
+    /* =====================================================
+       ترتيب المعلومات العامة
+    ===================================================== */
 
     .features {
       display: grid !important;
@@ -56,20 +79,10 @@
       margin: 0 !important;
     }
 
-    @media (max-width: 900px) {
-      .features {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
 
-    @media (max-width: 600px) {
-      .features {
-        grid-template-columns: 1fr;
-      }
-    }
-
-
-    /* ================= أزرار التسجيل ================= */
+    /* =====================================================
+       أزرار التسجيل
+    ===================================================== */
 
     .register-buttons {
       display: flex;
@@ -84,7 +97,9 @@
     }
 
 
-    /* ================= التواصل ================= */
+    /* =====================================================
+       التواصل
+    ===================================================== */
 
     .contact {
       align-items: center;
@@ -139,48 +154,457 @@
     }
 
 
-    /* ================= الجوال ================= */
+    /* =====================================================
+       تحسينات عامة للموبايل
+    ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
 
     @media (max-width: 600px) {
 
-      .register-buttons {
-        flex-direction: column;
+      /* منع أي خروج أفقي */
+
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
       }
 
-      .register-buttons .btn {
+
+      /* النسخة التجريبية */
+
+      .demo-badge {
+        top: 8px;
+        left: 8px;
+        padding: 5px 10px;
+        font-size: 10px;
+      }
+
+
+      /* =================================================
+         HEADER
+      ================================================= */
+
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+      }
+
+      .header .container {
+        min-height: 70px;
+      }
+
+      .brand {
+        max-width: calc(100% - 55px);
+      }
+
+      .brand img {
+        width: 42px !important;
+        height: 42px !important;
+      }
+
+      .brand span {
+        font-size: 13px !important;
+        line-height: 1.4;
+      }
+
+
+      /* إخفاء أزرار الهيدر على الهاتف */
+
+      .header .actions {
+        display: none !important;
+      }
+
+
+      /* زر القائمة */
+
+      .menu-btn {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        border-radius: 12px;
+        font-size: 23px;
+        cursor: pointer;
+      }
+
+
+      /* =================================================
+         القائمة الجانبية/المنسدلة
+      ================================================= */
+
+      .header nav {
+        position: absolute !important;
+        top: calc(100% + 8px);
+        right: 12px;
+        left: 12px;
+
+        display: none !important;
+
+        flex-direction: column;
+        gap: 4px;
+
+        padding: 10px;
+
+        background: rgba(255,255,255,.98);
+        border-radius: 18px;
+
+        box-shadow:
+          0 15px 40px rgba(0,0,0,.14);
+
+        border: 1px solid #eee;
+      }
+
+      .header nav.open {
+        display: flex !important;
+      }
+
+      .header nav a {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 13px 15px;
+        border-radius: 12px;
+        font-size: 15px;
+        text-align: right;
+      }
+
+      .header nav a:hover,
+      .header nav a.active {
+        background: #f4f1e7;
+      }
+
+
+      /* =================================================
+         HERO
+      ================================================= */
+
+      .hero {
+        padding-top: 55px !important;
+        padding-bottom: 45px !important;
+      }
+
+      .hero-inner {
+        display: flex !important;
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .hero-content {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .hero-content .eyebrow {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .hero-content h1 {
+        font-size: 31px !important;
+        line-height: 1.35;
+        margin-bottom: 12px;
+      }
+
+      .hero-content h2 {
+        font-size: 19px !important;
+        line-height: 1.6;
+      }
+
+      .hero-text {
+        font-size: 15px !important;
+        line-height: 1.9;
+        margin-top: 15px;
+      }
+
+
+      /* الرسم في الهيرو */
+
+      .hero-art {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .arch {
+        max-width: 250px;
+        width: 75%;
+      }
+
+
+      /* =================================================
+         FEATURES
+      ================================================= */
+
+      .features {
+        grid-template-columns: 1fr !important;
+        gap: 14px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .feature {
+        padding: 24px 18px !important;
+        border-radius: 18px;
+      }
+
+      .feature .icon {
+        font-size: 30px;
+      }
+
+      .feature h3 {
+        font-size: 18px;
+      }
+
+      .feature p {
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+
+      /* =================================================
+         ABOUT
+      ================================================= */
+
+      .about {
+        display: flex !important;
+        flex-direction: column;
+        gap: 25px;
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .quote-card {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 25px 18px !important;
+        text-align: center;
+      }
+
+      .quote-card blockquote {
+        font-size: 19px !important;
+        line-height: 1.9;
+      }
+
+      .about-text {
+        text-align: center;
+      }
+
+      .about-text h2 {
+        font-size: 27px !important;
+      }
+
+      .about-text p {
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .about-text .btn {
         width: 100%;
         box-sizing: border-box;
       }
 
+
+      /* =================================================
+         SCHEDULE
+      ================================================= */
+
+      .schedule {
+        display: flex !important;
+        flex-direction: column;
+        gap: 25px;
+        padding-left: 18px;
+        padding-right: 18px;
+        text-align: center;
+      }
+
+      .schedule h2 {
+        font-size: 27px !important;
+      }
+
+      .schedule p {
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .schedule-box {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .schedule-box > div {
+        padding: 18px 15px !important;
+      }
+
+      .schedule-box strong {
+        font-size: 17px;
+      }
+
+      .schedule-box span {
+        font-size: 14px;
+      }
+
+
+      /* =================================================
+         REGISTER
+      ================================================= */
+
+      .register {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .register-inner {
+        display: flex !important;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .register-inner h2 {
+        font-size: 26px !important;
+        line-height: 1.5;
+      }
+
+      .register-inner p {
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .register-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .register-buttons .btn {
+        width: 100%;
+        min-width: 0 !important;
+        box-sizing: border-box;
+        padding: 14px 15px;
+      }
+
+
+      /* =================================================
+         CONTACT
+      ================================================= */
+
+      .contact {
+        display: flex !important;
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 18px;
+        padding-right: 18px;
+        text-align: center;
+      }
+
+      .contact h2 {
+        font-size: 27px !important;
+      }
+
+      .contact p {
+        font-size: 14px;
+        line-height: 1.9;
+      }
+
       .contact-list {
-        gap: 14px;
+        gap: 13px;
+        padding: 5px;
       }
 
       .contact-list a {
-        width: 58px;
-        height: 58px;
+        width: 56px;
+        height: 56px;
       }
 
       .contact-list a i {
-        font-size: 24px;
+        font-size: 22px;
       }
+
+
+      /* =================================================
+         FOOTER
+      ================================================= */
+
+      footer {
+        padding: 25px 15px !important;
+      }
+
+      .footer-inner {
+        display: flex !important;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+    }
+
+
+    /* =====================================================
+       شاشات صغيرة جدًا
+    ===================================================== */
+
+    @media (max-width: 380px) {
+
+      .hero-content h1 {
+        font-size: 27px !important;
+      }
+
+      .hero-content h2 {
+        font-size: 17px !important;
+      }
+
+      .brand span {
+        font-size: 12px !important;
+      }
+
+      .contact-list a {
+        width: 52px;
+        height: 52px;
+      }
+
     }
 
   </style>
+
 </head>
+
 
 <body>
 
-  <div class="demo-badge">النسخة التجريبية</div>
+
+  <!-- النسخة التجريبية -->
+
+  <div class="demo-badge">
+    النسخة التجريبية
+  </div>
 
 
-  <!-- ================= HEADER ================= -->
+  <!-- =====================================================
+       HEADER
+  ===================================================== -->
 
   <header class="header">
 
     <div class="container nav">
 
-      <a class="brand" href="#home">
+      <a
+        class="brand"
+        href="#home"
+      >
 
         <img
           src="logo.png"
@@ -196,7 +620,10 @@
 
       <nav>
 
-        <a class="active" href="#home">
+        <a
+          class="active"
+          href="#home"
+        >
           الرئيسية
         </a>
 
@@ -221,7 +648,10 @@
 
       <div class="actions">
 
-        <a class="btn btn-outline" href="#register">
+        <a
+          class="btn btn-outline"
+          href="#register"
+        >
           التسجيل
         </a>
 
@@ -229,16 +659,20 @@
           class="btn btn-gold"
           href="https://wa.me/962780791622"
           target="_blank"
-          rel="noopener">
-
+          rel="noopener"
+        >
           واتساب
-
         </a>
 
       </div>
 
 
-      <button class="menu-btn" aria-label="فتح القائمة">
+      <button
+        class="menu-btn"
+        aria-label="فتح القائمة"
+        aria-expanded="false"
+        type="button"
+      >
         ☰
       </button>
 
@@ -247,14 +681,19 @@
   </header>
 
 
-  <!-- ================= MAIN ================= -->
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
 
   <main>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
 
-    <section id="home" class="hero">
+    <section
+      id="home"
+      class="hero"
+    >
 
       <div class="container hero-inner">
 
@@ -298,7 +737,7 @@
     </section>
 
 
-    <!-- ================= FEATURES ================= -->
+    <!-- FEATURES -->
 
     <section class="features container">
 
@@ -372,9 +811,12 @@
     </section>
 
 
-    <!-- ================= ABOUT ================= -->
+    <!-- ABOUT -->
 
-    <section id="about" class="about container">
+    <section
+      id="about"
+      class="about container"
+    >
 
       <div class="quote-card">
 
@@ -409,7 +851,10 @@
           الطلاب على الارتباط بكتاب الله.
         </p>
 
-        <a class="btn btn-gold big" href="programs.html">
+        <a
+          class="btn btn-gold big"
+          href="programs.html"
+        >
           تعرّف على الشعب ←
         </a>
 
@@ -418,9 +863,12 @@
     </section>
 
 
-    <!-- ================= SCHEDULE ================= -->
+    <!-- SCHEDULE -->
 
-    <section id="schedule" class="schedule container">
+    <section
+      id="schedule"
+      class="schedule container"
+    >
 
       <div>
 
@@ -472,9 +920,12 @@
     </section>
 
 
-    <!-- ================= REGISTER ================= -->
+    <!-- REGISTER -->
 
-    <section id="register" class="register">
+    <section
+      id="register"
+      class="register"
+    >
 
       <div class="container register-inner">
 
@@ -499,10 +950,9 @@
 
           <a
             class="btn btn-gold big"
-            href="register.html">
-
+            href="register.html"
+          >
             التسجيل الإلكتروني 📝
-
           </a>
 
 
@@ -510,10 +960,9 @@
             class="btn btn-gold big"
             href="https://wa.me/962780791622"
             target="_blank"
-            rel="noopener">
-
+            rel="noopener"
+          >
             التسجيل عبر واتساب 💬
-
           </a>
 
         </div>
@@ -523,9 +972,12 @@
     </section>
 
 
-    <!-- ================= CONTACT ================= -->
+    <!-- CONTACT -->
 
-    <section id="contact" class="contact container">
+    <section
+      id="contact"
+      class="contact container"
+    >
 
       <div>
 
@@ -545,8 +997,6 @@
       </div>
 
 
-      <!-- دوائر التواصل -->
-
       <div class="contact-list">
 
 
@@ -557,7 +1007,8 @@
           <a
             href="tel:+962780791622"
             aria-label="الاتصال بالمركز"
-            title="الاتصال بالمركز">
+            title="الاتصال بالمركز"
+          >
 
             <i class="fa-solid fa-phone"></i>
 
@@ -575,7 +1026,8 @@
             target="_blank"
             rel="noopener"
             aria-label="واتساب المركز"
-            title="واتساب المركز">
+            title="واتساب المركز"
+          >
 
             <i class="fa-brands fa-whatsapp"></i>
 
@@ -589,11 +1041,12 @@
         <div>
 
           <a
-            href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
+            href="https://maps.app.goo.gl/22hyWWJtPrH8UpAr9"
             target="_blank"
             rel="noopener"
             aria-label="موقع المركز"
-            title="موقع المركز">
+            title="موقع المركز"
+          >
 
             <i class="fa-solid fa-location-dot"></i>
 
@@ -611,7 +1064,8 @@
             target="_blank"
             rel="noopener"
             aria-label="فيسبوك المركز"
-            title="فيسبوك المركز">
+            title="فيسبوك المركز"
+          >
 
             <i class="fa-brands fa-facebook-f"></i>
 
@@ -626,7 +1080,9 @@
   </main>
 
 
-  <!-- ================= FOOTER ================= -->
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
 
   <footer>
 
@@ -645,24 +1101,66 @@
   </footer>
 
 
-  <!-- ================= JAVASCRIPT ================= -->
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
 
   <script>
 
-    /* ================= القائمة ================= */
+    const menuButton =
+      document.querySelector('.menu-btn');
 
-    const menuButton = document.querySelector('.menu-btn');
-    const nav = document.querySelector('nav');
+    const nav =
+      document.querySelector('nav');
+
 
     if (menuButton && nav) {
 
-      menuButton.addEventListener('click', () => {
-        nav.classList.toggle('open');
-      });
+      menuButton.addEventListener(
+        'click',
+        () => {
+
+          nav.classList.toggle('open');
+
+          const isOpen =
+            nav.classList.contains('open');
+
+          menuButton.setAttribute(
+            'aria-expanded',
+            isOpen
+          );
+
+        }
+      );
+
+
+      /* إغلاق القائمة بعد اختيار رابط */
+
+      nav.querySelectorAll('a').forEach(
+        link => {
+
+          link.addEventListener(
+            'click',
+            () => {
+
+              nav.classList.remove('open');
+
+              menuButton.setAttribute(
+                'aria-expanded',
+                'false'
+              );
+
+            }
+          );
+
+        }
+      );
 
     }
 
   </script>
 
+
 </body>
+
 </html>
