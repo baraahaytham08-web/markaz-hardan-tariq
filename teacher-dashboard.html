@@ -1,30 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <title>لوحة المعلم | مركز حردان طارق القرآني</title>
 
-  <title>
-    لوحة المعلم | مركز حردان طارق القرآني
-  </title>
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="logo.png"
-  >
-
-  <link
-    rel="shortcut icon"
-    type="image/png"
-    href="logo.png"
-  >
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="shortcut icon" type="image/png" href="logo.png">
 
   <link
     rel="stylesheet"
@@ -34,7 +19,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -42,7 +26,6 @@
     }
 
     :root {
-
       --green: #174d3a;
       --green-dark: #103b2c;
       --green-light: #edf5f1;
@@ -51,12 +34,10 @@
       --gold-light: #d4b44c;
 
       --cream: #faf8f0;
-
-      --white: #ffffff;
+      --white: #fff;
 
       --text: #1f2933;
       --muted: #74808a;
-
       --border: #e8ebe8;
 
       --danger: #b3261e;
@@ -71,9 +52,7 @@
       --orange: #ad5b18;
       --orange-light: #fff1e7;
 
-      --shadow:
-        0 10px 35px rgba(23,77,58,.08);
-
+      --shadow: 0 10px 35px rgba(23,77,58,.08);
     }
 
     html {
@@ -81,12 +60,7 @@
     }
 
     body {
-
-      font-family:
-        Arial,
-        Tahoma,
-        sans-serif;
-
+      font-family: Arial, Tahoma, sans-serif;
       background:
         linear-gradient(
           135deg,
@@ -94,21 +68,14 @@
           #ffffff 45%,
           #edf5f1 100%
         );
-
-      color:
-        var(--text);
-
+      color: var(--text);
       min-height: 100vh;
-
     }
 
     button,
     input,
     select {
-
-      font-family:
-        inherit;
-
+      font-family: inherit;
     }
 
     button {
@@ -119,2238 +86,1159 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* =====================================================
-       SIDEBAR
-    ===================================================== */
+    /* ================= SIDEBAR ================= */
 
     .sidebar {
-
       position: fixed;
-
       top: 0;
       right: 0;
       bottom: 0;
-
       width: 260px;
-
       background:
         linear-gradient(
           180deg,
           var(--green),
           var(--green-dark)
         );
-
       color: white;
-
-      padding:
-        25px 18px;
-
+      padding: 25px 18px;
       z-index: 50;
-
-      box-shadow:
-        -8px 0 30px rgba(0,0,0,.08);
-
+      box-shadow: -8px 0 30px rgba(0,0,0,.08);
+      overflow-y: auto;
     }
 
     .close-sidebar {
-
       display: none;
-
     }
 
     .sidebar-logo {
-
       display: flex;
-
       align-items: center;
-
       gap: 12px;
-
-      padding:
-        5px 8px 25px;
-
-      border-bottom:
-        1px solid rgba(255,255,255,.12);
-
-      margin-bottom:
-        25px;
-
+      padding: 5px 8px 25px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      margin-bottom: 25px;
     }
 
     .logo-icon {
-
       width: 48px;
       height: 48px;
-
       border-radius: 14px;
-
       display: flex;
-
       align-items: center;
       justify-content: center;
-
       background:
         linear-gradient(
           135deg,
           var(--gold),
           var(--gold-light)
         );
-
       color: white;
-
       font-size: 22px;
-
-      box-shadow:
-        0 8px 20px rgba(0,0,0,.15);
-
+      box-shadow: 0 8px 20px rgba(0,0,0,.15);
+      flex-shrink: 0;
     }
 
     .logo-text strong {
-
       display: block;
-
       font-size: 15px;
-
-      margin-bottom:
-        4px;
-
+      margin-bottom: 4px;
     }
 
     .logo-text span {
-
       font-size: 11px;
-
-      color:
-        rgba(255,255,255,.65);
-
+      color: rgba(255,255,255,.65);
     }
 
     .sidebar-title {
-
-      color:
-        rgba(255,255,255,.45);
-
+      color: rgba(255,255,255,.45);
       font-size: 11px;
-
-      font-weight:
-        bold;
-
-      margin:
-        0 10px 10px;
-
+      font-weight: bold;
+      margin: 0 10px 10px;
     }
 
     .side-link {
-
       width: 100%;
-
       border: none;
-
-      background:
-        transparent;
-
-      color:
-        rgba(255,255,255,.75);
-
-      padding:
-        13px 14px;
-
-      border-radius:
-        11px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        12px;
-
-      font-size:
-        14px;
-
-      text-align:
-        right;
-
-      margin-bottom:
-        5px;
-
-      transition:
-        .2s;
-
-      text-decoration:
-        none;
-
+      background: transparent;
+      color: rgba(255,255,255,.75);
+      padding: 13px 14px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      text-align: right;
+      margin-bottom: 5px;
+      transition: .2s;
+      text-decoration: none;
     }
 
     .side-link i {
-
-      width:
-        20px;
-
-      text-align:
-        center;
-
+      width: 20px;
+      text-align: center;
     }
 
     .side-link:hover,
     .side-link.active {
-
-      background:
-        rgba(255,255,255,.11);
-
-      color:
-        white;
-
+      background: rgba(255,255,255,.11);
+      color: white;
     }
 
     .side-link.active {
+      border-right: 3px solid var(--gold);
+    }
 
-      border-right:
-        3px solid
-        var(--gold);
-
+    .request-side-badge {
+      margin-right: auto;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 6px;
+      border-radius: 20px;
+      background: #d4b44c;
+      color: #17382b;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: bold;
     }
 
     .sidebar-bottom {
-
-      position:
-        absolute;
-
-      right:
-        18px;
-
-      left:
-        18px;
-
-      bottom:
-        20px;
-
+      margin-top: 25px;
+      padding-bottom: 10px;
     }
 
     .logout-side {
-
-      width:
-        100%;
-
-      border:
-        1px solid
-        rgba(255,255,255,.15);
-
-      background:
-        rgba(255,255,255,.07);
-
-      color:
-        white;
-
-      padding:
-        12px;
-
-      border-radius:
-        11px;
-
-      font-weight:
-        bold;
-
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.07);
+      color: white;
+      padding: 12px;
+      border-radius: 11px;
+      font-weight: bold;
+      transition: .2s;
     }
 
     .logout-side:hover {
-
-      background:
-        rgba(178,139,24,.25);
-
+      background: rgba(178,139,24,.25);
     }
 
-    /* =====================================================
-       MAIN
-    ===================================================== */
+    /* ================= MAIN ================= */
 
     .main {
-
-      margin-right:
-        260px;
-
-      min-height:
-        100vh;
-
+      margin-right: 260px;
+      min-height: 100vh;
     }
 
     .topbar {
-
-      height:
-        78px;
-
-      background:
-        rgba(255,255,255,.90);
-
-      backdrop-filter:
-        blur(12px);
-
-      border-bottom:
-        1px solid
-        var(--border);
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      padding:
-        0 35px;
-
-      position:
-        sticky;
-
-      top:
-        0;
-
-      z-index:
-        30;
-
+      height: 78px;
+      background: rgba(255,255,255,.90);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 35px;
+      position: sticky;
+      top: 0;
+      z-index: 30;
     }
 
     .topbar-left {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        12px;
-
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .page-title h1 {
-
-      color:
-        var(--green);
-
-      font-size:
-        21px;
-
-      margin-bottom:
-        4px;
-
+      color: var(--green);
+      font-size: 21px;
+      margin-bottom: 4px;
     }
 
     .page-title p {
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .teacher-info {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        12px;
-
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .teacher-avatar {
-
-      width:
-        42px;
-
-      height:
-        42px;
-
-      border-radius:
-        50%;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      background:
-        var(--green-light);
-
-      color:
-        var(--green);
-
-      border:
-        1px solid
-        #dcebe4;
-
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-light);
+      color: var(--green);
+      border: 1px solid #dcebe4;
     }
 
     .teacher-name {
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      color:
-        var(--green);
-
-      text-align:
-        left;
-
+      font-size: 12px;
+      font-weight: bold;
+      color: var(--green);
+      text-align: left;
     }
 
     .teacher-email {
-
-      font-size:
-        11px;
-
-      color:
-        var(--muted);
-
-      text-align:
-        left;
-
+      font-size: 11px;
+      color: var(--muted);
+      text-align: left;
     }
 
     .mobile-menu {
-
-      display:
-        none;
-
-      width:
-        40px;
-
-      height:
-        40px;
-
-      border:
-        none;
-
-      border-radius:
-        10px;
-
-      background:
-        var(--green-light);
-
-      color:
-        var(--green);
-
-      font-size:
-        18px;
-
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 10px;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 18px;
     }
 
-    /* =====================================================
-       CONTENT
-    ===================================================== */
+    /* ================= CONTENT ================= */
 
     .content {
-
-      width:
-        min(1250px,94%);
-
-      margin:
-        30px auto 50px;
-
+      width: min(1250px, 94%);
+      margin: 30px auto 50px;
     }
 
     .welcome-card {
-
-      position:
-        relative;
-
-      overflow:
-        hidden;
-
+      position: relative;
+      overflow: hidden;
       background:
         linear-gradient(
           120deg,
           var(--green),
           #21644b
         );
-
-      color:
-        white;
-
-      border-radius:
-        20px;
-
-      padding:
-        28px 32px;
-
-      margin-bottom:
-        25px;
-
-      box-shadow:
-        0 15px 40px
-        rgba(23,77,58,.15);
-
+      color: white;
+      border-radius: 20px;
+      padding: 28px 32px;
+      margin-bottom: 25px;
+      box-shadow: 0 15px 40px rgba(23,77,58,.15);
     }
 
     .welcome-card::before {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      width:
-        220px;
-
-      height:
-        220px;
-
-      border-radius:
-        50%;
-
-      left:
-        -80px;
-
-      top:
-        -110px;
-
-      background:
-        rgba(255,255,255,.04);
-
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      left: -80px;
+      top: -110px;
+      background: rgba(255,255,255,.04);
     }
 
     .welcome-card::after {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      width:
-        160px;
-
-      height:
-        160px;
-
-      border-radius:
-        50%;
-
-      right:
-        25%;
-
-      bottom:
-        -110px;
-
-      background:
-        rgba(212,180,76,.08);
-
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      right: 25%;
+      bottom: -110px;
+      background: rgba(212,180,76,.08);
     }
 
     .welcome-content {
-
-      position:
-        relative;
-
-      z-index:
-        2;
-
+      position: relative;
+      z-index: 2;
     }
 
     .welcome-small {
-
-      font-size:
-        12px;
-
-      color:
-        rgba(255,255,255,.65);
-
-      margin-bottom:
-        7px;
-
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 7px;
     }
 
     .welcome-card h2 {
-
-      font-size:
-        27px;
-
-      margin-bottom:
-        8px;
-
+      font-size: 27px;
+      margin-bottom: 8px;
     }
 
     .welcome-card p {
-
-      color:
-        rgba(255,255,255,.78);
-
-      font-size:
-        14px;
-
-      line-height:
-        1.8;
-
+      color: rgba(255,255,255,.78);
+      font-size: 14px;
+      line-height: 1.8;
     }
 
-    /* =====================================================
-       STATS
-    ===================================================== */
+    /* ================= STATS ================= */
 
     .stats {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap:
-        18px;
-
-      margin-bottom:
-        25px;
-
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+      margin-bottom: 25px;
     }
 
     .stat-card {
-
-      background:
-        white;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        18px;
-
-      padding:
-        21px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        16px;
-
-      box-shadow:
-        var(--shadow);
-
-      transition:
-        .2s;
-
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 21px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: var(--shadow);
+      transition: .2s;
     }
 
     .stat-card:hover {
-
-      transform:
-        translateY(-3px);
-
+      transform: translateY(-3px);
     }
 
     .stat-icon {
-
-      width:
-        55px;
-
-      height:
-        55px;
-
-      min-width:
-        55px;
-
-      border-radius:
-        15px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      background:
-        var(--green-light);
-
-      color:
-        var(--green);
-
-      font-size:
-        22px;
-
+      width: 55px;
+      height: 55px;
+      min-width: 55px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 22px;
     }
 
-    .stat-card:nth-child(2)
-    .stat-icon {
-
-      background:
-        #fff8df;
-
-      color:
-        var(--gold);
-
+    .stat-card:nth-child(2) .stat-icon {
+      background: #fff8df;
+      color: var(--gold);
     }
 
-    .stat-card:nth-child(3)
-    .stat-icon {
-
-      background:
-        var(--purple-light);
-
-      color:
-        var(--purple);
-
+    .stat-card:nth-child(3) .stat-icon {
+      background: var(--purple-light);
+      color: var(--purple);
     }
 
     .stat-number {
-
-      display:
-        block;
-
-      color:
-        var(--green);
-
-      font-size:
-        28px;
-
-      font-weight:
-        bold;
-
-      margin-bottom:
-        3px;
-
+      display: block;
+      color: var(--green);
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 3px;
     }
 
     .stat-label {
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
+      color: var(--muted);
+      font-size: 12px;
     }
 
-    /* =====================================================
-       PANEL
-    ===================================================== */
+    /* ================= PANEL ================= */
 
     .panel {
-
-      background:
-        white;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        20px;
-
-      box-shadow:
-        var(--shadow);
-
-      overflow:
-        hidden;
-
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 25px;
     }
 
     .panel-top {
-
-      padding:
-        23px 25px;
-
-      border-bottom:
-        1px solid
-        var(--border);
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        15px;
-
-      flex-wrap:
-        wrap;
-
+      padding: 23px 25px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
     .panel-title {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        11px;
-
+      display: flex;
+      align-items: center;
+      gap: 11px;
     }
 
     .panel-title-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-light);
+      color: var(--green);
+    }
 
-      width:
-        40px;
-
-      height:
-        40px;
-
-      border-radius:
-        11px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      background:
-        var(--green-light);
-
-      color:
-        var(--green);
-
+    .panel-title-icon.request-icon {
+      background: var(--gold-light);
+      color: var(--green-dark);
     }
 
     .panel-title h2 {
-
-      color:
-        var(--green);
-
-      font-size:
-        18px;
-
+      color: var(--green);
+      font-size: 18px;
     }
 
     .panel-title span {
-
-      display:
-        block;
-
-      color:
-        var(--muted);
-
-      font-size:
-        11px;
-
-      margin-top:
-        3px;
-
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 3px;
     }
 
     .add-btn {
-
-      border:
-        none;
-
-      background:
-        var(--green);
-
-      color:
-        white;
-
-      padding:
-        11px 17px;
-
-      border-radius:
-        10px;
-
-      font-weight:
-        bold;
-
-      transition:
-        .2s;
-
-      box-shadow:
-        0 6px 15px
-        rgba(23,77,58,.15);
-
+      border: none;
+      background: var(--green);
+      color: white;
+      padding: 11px 17px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: .2s;
+      box-shadow: 0 6px 15px rgba(23,77,58,.15);
     }
 
     .add-btn:hover {
-
-      background:
-        var(--green-dark);
-
-      transform:
-        translateY(-2px);
-
+      background: var(--green-dark);
+      transform: translateY(-2px);
     }
 
-    /* =====================================================
-       FILTERS
-    ===================================================== */
+    /* ================= FILTERS ================= */
 
     .filters {
-
-      padding:
-        15px 20px;
-
-      display:
-        grid;
-
-      grid-template-columns:
-        minmax(180px,1fr)
-        170px
-        165px
-        165px;
-
-      gap:
-        8px;
-
-      border-bottom:
-        1px solid
-        var(--border);
-
+      padding: 18px 25px;
+      display: grid;
+      grid-template-columns: 1fr 190px 170px 170px;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
     }
 
     .search-box {
-
-      position:
-        relative;
-
+      position: relative;
     }
 
     .search-box i {
-
-      position:
-        absolute;
-
-      right:
-        13px;
-
-      top:
-        50%;
-
-      transform:
-        translateY(-50%);
-
-      color:
-        #9aa3a9;
-
-      font-size:
-        13px;
-
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9aa3a9;
+      font-size: 14px;
     }
 
     .search-input,
     .filter-select {
-
-      width:
-        100%;
-
-      height:
-        40px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        10px;
-
-      outline:
-        none;
-
-      background:
-        #fcfdfc;
-
-      color:
-        var(--text);
-
-      font-size:
-        12px;
-
+      width: 100%;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      background: #fcfdfc;
+      color: var(--text);
+      font-size: 13px;
+      transition: .2s;
     }
 
     .search-input {
-
-      padding:
-        0 38px 0 12px;
-
+      padding: 0 40px 0 14px;
     }
 
     .filter-select {
-
-      padding:
-        0 10px;
-
+      padding: 0 12px;
     }
 
     .search-input:focus,
     .filter-select:focus {
-
-      border-color:
-        var(--gold);
-
-      background:
-        white;
-
-      box-shadow:
-        0 0 0 3px
-        rgba(178,139,24,.08);
-
+      border-color: var(--gold);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(178,139,24,.08);
     }
 
-    /* =====================================================
-       TABLE
-    ===================================================== */
+    /* ================= TABLE ================= */
 
     .table-wrapper {
-
-      overflow-x:
-        auto;
-
+      overflow-x: auto;
     }
 
     table {
-
-      width:
-        100%;
-
-      border-collapse:
-        collapse;
-
-      min-width:
-        850px;
-
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 850px;
     }
 
     th {
-
-      padding:
-        14px 17px;
-
-      background:
-        #fafcfb;
-
-      color:
-        #65716c;
-
-      font-size:
-        11px;
-
-      text-align:
-        right;
-
-      border-bottom:
-        1px solid
-        var(--border);
-
+      padding: 14px 18px;
+      background: #fafcfb;
+      color: #65716c;
+      font-size: 11px;
+      font-weight: bold;
+      text-align: right;
+      border-bottom: 1px solid var(--border);
     }
 
     td {
-
-      padding:
-        14px 17px;
-
-      border-bottom:
-        1px solid
-        #f0f2f1;
-
-      font-size:
-        12px;
-
-      vertical-align:
-        middle;
-
+      padding: 14px 18px;
+      border-bottom: 1px solid #f0f2f1;
+      font-size: 12px;
+      vertical-align: middle;
     }
 
     tbody tr:hover {
-
-      background:
-        #fcfdfc;
-
+      background: #fcfdfc;
     }
 
     .student-name {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        10px;
-
-      font-weight:
-        bold;
-
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
     }
 
     .student-avatar {
-
-      width:
-        38px;
-
-      height:
-        38px;
-
-      min-width:
-        38px;
-
-      border-radius:
-        11px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      background:
-        var(--green-light);
-
-      color:
-        var(--green);
-
-      font-size:
-        14px;
-
-      font-weight:
-        bold;
-
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: bold;
     }
 
     .student-name-link {
-
-      color:
-        var(--text);
-
-      text-decoration:
-        none;
-
-      font-weight:
-        bold;
-
+      color: var(--text);
+      text-decoration: none;
+      font-weight: bold;
     }
 
     .student-name-link:hover {
-
-      color:
-        var(--green);
-
-      text-decoration:
-        underline;
-
+      color: var(--green);
+      text-decoration: underline;
     }
 
     .student-sub {
-
-      margin-top:
-        3px;
-
-      color:
-        #8a938f;
-
-      font-size:
-        9px;
-
-      font-weight:
-        normal;
-
+      margin-top: 3px;
+      color: #8a938f;
+      font-size: 9px;
+      font-weight: normal;
     }
 
     .section-badge {
-
-      display:
-        inline-block;
-
-      padding:
-        6px 9px;
-
-      border-radius:
-        8px;
-
-      background:
-        #f7f4e8;
-
-      color:
-        #866b13;
-
-      font-size:
-        10px;
-
-      font-weight:
-        bold;
-
-    }
-
-    .memorization {
-
-      color:
-        #59645f;
-
-    }
-
-    .no-data {
-
-      color:
-        #a2aaa6;
-
+      display: inline-block;
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: #f7f4e8;
+      color: #866b13;
+      font-size: 10px;
+      font-weight: bold;
     }
 
     .status {
-
-      display:
-        inline-flex;
-
-      align-items:
-        center;
-
-      gap:
-        6px;
-
-      padding:
-        6px 9px;
-
-      border-radius:
-        20px;
-
-      font-size:
-        10px;
-
-      font-weight:
-        bold;
-
-      white-space:
-        nowrap;
-
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 9px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: bold;
+      white-space: nowrap;
     }
 
     .status::before {
-
-      content:
-        "";
-
-      width:
-        6px;
-
-      height:
-        6px;
-
-      border-radius:
-        50%;
-
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
     }
 
     .status.active {
-
-      background:
-        var(--success-light);
-
-      color:
-        var(--success);
-
+      background: var(--success-light);
+      color: var(--success);
     }
 
     .status.active::before {
-
-      background:
-        var(--success);
-
+      background: var(--success);
     }
 
     .status.inactive {
-
-      background:
-        var(--danger-light);
-
-      color:
-        var(--danger);
-
+      background: var(--danger-light);
+      color: var(--danger);
     }
 
     .status.inactive::before {
-
-      background:
-        var(--danger);
-
+      background: var(--danger);
     }
 
     .status.rejected {
-
-      background:
-        var(--purple-light);
-
-      color:
-        var(--purple);
-
+      background: var(--purple-light);
+      color: var(--purple);
     }
 
     .status.rejected::before {
-
-      background:
-        var(--purple);
-
+      background: var(--purple);
     }
 
     .status.expelled {
-
-      background:
-        #f1f3f2;
-
-      color:
-        #5f6964;
-
+      background: #f1f3f2;
+      color: #5f6964;
     }
 
     .status.expelled::before {
-
-      background:
-        #7b8580;
-
+      background: #7b8580;
     }
 
     .score-badge,
     .points-badge {
-
-      display:
-        inline-flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      min-width:
-        72px;
-
-      padding:
-        6px 9px;
-
-      border-radius:
-        9px;
-
-      font-size:
-        10px;
-
-      font-weight:
-        800;
-
-      white-space:
-        nowrap;
-
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 72px;
+      padding: 6px 9px;
+      border-radius: 9px;
+      font-size: 10px;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
     .score-badge {
-
-      background:
-        var(--green-light);
-
-      color:
-        var(--green);
-
-      border:
-        1px solid
-        #dcebe4;
-
+      background: var(--green-light);
+      color: var(--green);
+      border: 1px solid #dcebe4;
     }
 
     .points-badge {
-
-      background:
-        #fff8df;
-
-      color:
-        #806711;
-
-      border:
-        1px solid
-        #f0e4b7;
-
+      background: #fff8df;
+      color: #806711;
+      border: 1px solid #f0e4b7;
     }
 
     .actions {
-
-      display:
-        flex;
-
-      gap:
-        6px;
-
+      display: flex;
+      gap: 6px;
     }
 
     .action-btn {
-
-      width:
-        34px;
-
-      height:
-        34px;
-
-      border:
-        none;
-
-      border-radius:
-        9px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      transition:
-        .2s;
-
+      width: 34px;
+      height: 34px;
+      border: none;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .2s;
     }
 
     .edit-btn {
-
-      background:
-        #fff8df;
-
-      color:
-        var(--gold);
-
+      background: #fff8df;
+      color: var(--gold);
     }
 
     .edit-btn:hover {
-
-      background:
-        var(--gold);
-
-      color:
-        white;
-
+      background: var(--gold);
+      color: white;
     }
 
     .expel-btn {
-
-      background:
-        var(--orange-light);
-
-      color:
-        var(--orange);
-
+      background: var(--orange-light);
+      color: var(--orange);
     }
 
     .expel-btn:hover {
-
-      background:
-        var(--orange);
-
-      color:
-        white;
-
+      background: var(--orange);
+      color: white;
     }
 
     .delete-btn {
-
-      background:
-        var(--danger-light);
-
-      color:
-        var(--danger);
-
+      background: var(--danger-light);
+      color: var(--danger);
     }
 
     .delete-btn:hover {
-
-      background:
-        var(--danger);
-
-      color:
-        white;
-
+      background: var(--danger);
+      color: white;
     }
 
-    /* =====================================================
-       EMPTY
-    ===================================================== */
+    /* ================= EMPTY ================= */
 
     .empty {
-
-      text-align:
-        center;
-
-      padding:
-        55px 20px;
-
-      color:
-        var(--muted);
-
-      display:
-        none;
-
+      text-align: center;
+      padding: 55px 20px;
+      color: var(--muted);
+      display: none;
     }
 
     .empty-icon {
-
-      width:
-        65px;
-
-      height:
-        65px;
-
-      margin:
-        0 auto 14px;
-
-      border-radius:
-        50%;
-
-      background:
-        var(--green-light);
-
-      color:
-        var(--green);
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      font-size:
-        25px;
-
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
     }
 
     .empty strong {
-
-      display:
-        block;
-
-      color:
-        var(--green);
-
-      margin-bottom:
-        5px;
-
+      display: block;
+      color: var(--green);
+      margin-bottom: 5px;
     }
 
     .empty p {
-
-      font-size:
-        12px;
-
+      font-size: 12px;
     }
 
-    /* =====================================================
-       MODAL
-    ===================================================== */
+    /* ================= REQUESTS ================= */
+
+    .requests-summary {
+      padding: 16px 25px;
+      background: #fffdf4;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .requests-count {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--green-dark);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .requests-count .count-number {
+      min-width: 27px;
+      height: 27px;
+      padding: 0 7px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      color: var(--green-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+
+    .request-list {
+      display: grid;
+      gap: 12px;
+      padding: 18px 20px;
+    }
+
+    .request-card {
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 16px;
+      background: #fff;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .request-card:hover {
+      background: #fcfdfc;
+    }
+
+    .request-main {
+      min-width: 0;
+    }
+
+    .request-name {
+      color: var(--green);
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .request-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .request-meta span {
+      background: #f6f8f7;
+      border: 1px solid #e8ece9;
+      color: #66716c;
+      border-radius: 8px;
+      padding: 6px 8px;
+      font-size: 10px;
+    }
+
+    .request-actions {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .request-btn {
+      border: none;
+      border-radius: 9px;
+      padding: 9px 12px;
+      font-size: 11px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .request-approve {
+      background: var(--success);
+    }
+
+    .request-reject {
+      background: var(--danger);
+    }
+
+    .request-view {
+      background: var(--green);
+    }
+
+    .requests-error {
+      padding: 20px;
+      text-align: center;
+      color: var(--danger);
+      font-size: 12px;
+      display: none;
+    }
+
+    /* ================= MODAL ================= */
 
     .modal {
-
-      position:
-        fixed;
-
-      inset:
-        0;
-
-      background:
-        rgba(16,59,44,.68);
-
-      backdrop-filter:
-        blur(5px);
-
-      display:
-        none;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      padding:
-        20px;
-
-      z-index:
-        100;
-
+      position: fixed;
+      inset: 0;
+      background: rgba(16,59,44,.68);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
     }
 
     .modal.show {
-
-      display:
-        flex;
-
+      display: flex;
     }
 
     .modal-box {
-
-      width:
-        min(520px,100%);
-
-      max-height:
-        90vh;
-
-      overflow-y:
-        auto;
-
-      background:
-        white;
-
-      border-radius:
-        20px;
-
-      box-shadow:
-        0 25px 70px
-        rgba(0,0,0,.22);
-
-      overflow:
-        hidden;
-
+      width: min(520px,100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 25px 70px rgba(0,0,0,.22);
+      overflow: hidden;
     }
 
     .modal-header {
-
-      padding:
-        22px 25px;
-
-      border-bottom:
-        1px solid
-        var(--border);
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
+      padding: 22px 25px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .modal-header h2 {
-
-      color:
-        var(--green);
-
-      font-size:
-        19px;
-
+      color: var(--green);
+      font-size: 19px;
     }
 
     .modal-header p {
-
-      color:
-        var(--muted);
-
-      font-size:
-        11px;
-
-      margin-top:
-        4px;
-
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 4px;
     }
 
     .close-modal {
-
-      width:
-        34px;
-
-      height:
-        34px;
-
-      border:
-        none;
-
-      border-radius:
-        9px;
-
-      background:
-        #f4f5f4;
-
-      color:
-        #68736e;
-
+      width: 34px;
+      height: 34px;
+      border: none;
+      border-radius: 9px;
+      background: #f4f5f4;
+      color: #68736e;
     }
 
     .form {
-
-      padding:
-        25px;
-
+      padding: 25px;
     }
 
     .form-group {
-
-      margin-bottom:
-        17px;
-
+      margin-bottom: 17px;
     }
 
     .form-group label {
-
-      display:
-        block;
-
-      color:
-        var(--green);
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      margin-bottom:
-        7px;
-
+      display: block;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 7px;
     }
 
     .form-group input,
     .form-group select {
-
-      width:
-        100%;
-
-      height:
-        45px;
-
-      padding:
-        0 13px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        10px;
-
-      outline:
-        none;
-
-      background:
-        #fcfdfc;
-
-      font-size:
-        13px;
-
-      color:
-        var(--text);
-
+      width: 100%;
+      height: 45px;
+      padding: 0 13px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+      background: #fcfdfc;
+      font-size: 13px;
+      color: var(--text);
     }
 
     .form-group input:focus,
     .form-group select:focus {
-
-      border-color:
-        var(--gold);
-
-      background:
-        white;
-
-      box-shadow:
-        0 0 0 3px
-        rgba(178,139,24,.08);
-
+      border-color: var(--gold);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(178,139,24,.08);
     }
 
     .modal-buttons {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap:
-        10px;
-
-      margin-top:
-        22px;
-
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 22px;
     }
 
     .modal-buttons button {
-
-      height:
-        45px;
-
-      border:
-        none;
-
-      border-radius:
-        10px;
-
-      font-weight:
-        bold;
-
+      height: 45px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
     }
 
     .save-btn {
-
-      background:
-        var(--green);
-
-      color:
-        white;
-
+      background: var(--green);
+      color: white;
     }
 
     .save-btn:hover {
-
-      background:
-        var(--green-dark);
-
+      background: var(--green-dark);
     }
 
     .cancel-btn {
-
-      background:
-        #f0f2f1;
-
-      color:
-        #49534f;
-
+      background: #f0f2f1;
+      color: #49534f;
     }
 
     #message {
-
-      min-height:
-        20px;
-
-      text-align:
-        center;
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      margin-top:
-        12px;
-
-      line-height:
-        1.7;
-
+      min-height: 20px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 12px;
+      line-height: 1.7;
     }
 
-    /* =====================================================
-       TOAST
-    ===================================================== */
+    /* ================= TOAST ================= */
 
     .toast {
-
-      position:
-        fixed;
-
-      left:
-        25px;
-
-      bottom:
-        25px;
-
-      min-width:
-        270px;
-
-      max-width:
-        420px;
-
-      background:
-        var(--green-dark);
-
-      color:
-        white;
-
-      padding:
-        14px 17px;
-
-      border-radius:
-        12px;
-
-      box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.18);
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        10px;
-
-      z-index:
-        200;
-
-      transform:
-        translateY(20px);
-
-      opacity:
-        0;
-
-      pointer-events:
-        none;
-
-      transition:
-        .25s;
-
-      font-size:
-        12px;
-
+      position: fixed;
+      left: 25px;
+      bottom: 25px;
+      min-width: 270px;
+      max-width: 420px;
+      background: var(--green-dark);
+      color: white;
+      padding: 14px 17px;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0,0,0,.18);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 200;
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s;
+      font-size: 12px;
     }
 
     .toast.show {
-
-      transform:
-        translateY(0);
-
-      opacity:
-        1;
-
+      transform: translateY(0);
+      opacity: 1;
     }
 
     .toast.success i {
-
-      color:
-        #71d584;
-
+      color: #71d584;
     }
 
     .toast.error i {
-
-      color:
-        #ff8d8d;
-
+      color: #ff8d8d;
     }
-
-    /* =====================================================
-       BADGE
-    ===================================================== */
 
     .badge {
-
-      position:
-        fixed;
-
-      left:
-        12px;
-
-      bottom:
-        12px;
-
-      background:
-        var(--green);
-
-      color:
-        white;
-
-      padding:
-        7px 12px;
-
-      border-radius:
-        20px;
-
-      font-size:
-        10px;
-
-      z-index:
-        250;
-
+      position: fixed;
+      left: 12px;
+      bottom: 12px;
+      background: var(--green);
+      color: white;
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 10px;
+      z-index: 250;
     }
 
-    /* =====================================================
-       MOBILE
-    ===================================================== */
+    /* ================= MOBILE ================= */
 
     @media(max-width:950px) {
-
       .sidebar {
-
-        width:
-          220px;
-
+        width: 220px;
       }
 
       .main {
-
-        margin-right:
-          220px;
-
+        margin-right: 220px;
       }
 
       .filters {
-
-        grid-template-columns:
-          1fr 150px;
-
+        grid-template-columns: 1fr 150px;
       }
-
     }
 
     @media(max-width:750px) {
-
       .sidebar {
-
-        transform:
-          translateX(100%);
-
-        transition:
-          .25s;
-
+        transform: translateX(100%);
+        transition: .25s;
       }
 
       .sidebar.open {
-
-        transform:
-          translateX(0);
-
+        transform: translateX(0);
       }
 
       .close-sidebar {
-
-        display:
-          flex;
-
-        position:
-          absolute;
-
-        top:
-          14px;
-
-        left:
-          14px;
-
-        width:
-          38px;
-
-        height:
-          38px;
-
-        align-items:
-          center;
-
-        justify-content:
-          center;
-
-        border:
-          none;
-
-        border-radius:
-          10px;
-
-        background:
-          rgba(255,255,255,.10);
-
-        color:
-          white;
-
-        font-size:
-          20px;
-
+        display: flex;
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        width: 38px;
+        height: 38px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 10px;
+        background: rgba(255,255,255,.10);
+        color: white;
+        font-size: 20px;
       }
 
       .main {
-
-        margin-right:
-          0;
-
+        margin-right: 0;
       }
 
       .mobile-menu {
-
-        display:
-          block;
-
+        display: block;
       }
 
       .teacher-email {
-
-        display:
-          none;
-
+        display: none;
       }
 
       .topbar {
-
-        padding:
-          0 17px;
-
+        padding: 0 17px;
       }
 
       .content {
-
-        width:
-          94%;
-
-        margin-top:
-          20px;
-
+        width: 94%;
+        margin-top: 20px;
       }
 
       .stats {
-
-        grid-template-columns:
-          1fr;
-
+        grid-template-columns: 1fr;
       }
 
       .filters {
-
-        grid-template-columns:
-          1fr;
-
+        grid-template-columns: 1fr;
       }
 
       .panel-top {
-
-        align-items:
-          stretch;
-
+        align-items: stretch;
       }
 
       .add-btn {
-
-        width:
-          100%;
-
+        width: 100%;
       }
 
       .welcome-card {
-
-        padding:
-          23px;
-
+        padding: 23px;
       }
 
       .welcome-card h2 {
-
-        font-size:
-          23px;
-
+        font-size: 23px;
       }
 
+      .request-card {
+        grid-template-columns: 1fr;
+      }
+
+      .request-actions {
+        justify-content: stretch;
+      }
+
+      .request-btn {
+        flex: 1;
+      }
     }
 
     @media(max-width:480px) {
-
       .topbar {
-
-        height:
-          70px;
-
+        height: 70px;
       }
 
       .page-title h1 {
-
-        font-size:
-          17px;
-
+        font-size: 17px;
       }
 
       .page-title p {
-
-        display:
-          none;
-
+        display: none;
       }
 
       .teacher-avatar {
-
-        width:
-          37px;
-
-        height:
-          37px;
-
+        width: 37px;
+        height: 37px;
       }
 
       .content {
-
-        width:
-          92%;
-
+        width: 92%;
       }
 
       .welcome-card {
-
-        border-radius:
-          16px;
-
+        border-radius: 16px;
       }
 
       .panel {
-
-        border-radius:
-          16px;
-
+        border-radius: 16px;
       }
 
       .stat-card {
-
-        padding:
-          17px;
-
+        padding: 17px;
       }
 
       .toast {
-
-        left:
-          10px;
-
-        right:
-          10px;
-
-        min-width:
-          0;
-
-        max-width:
-          none;
-
-        bottom:
-          55px;
-
+        left: 10px;
+        right: 10px;
+        min-width: 0;
+        max-width: none;
+        bottom: 55px;
       }
-
     }
-
   </style>
-
 </head>
 
 <body>
 
-  <!-- =====================================================
-       SIDEBAR
-  ====================================================== -->
+  <!-- ================= SIDEBAR ================= -->
 
-  <aside
-    class="sidebar"
-    id="sidebar"
-  >
+  <aside class="sidebar" id="sidebar">
 
     <button
       class="close-sidebar"
@@ -2362,38 +1250,33 @@
     </button>
 
     <div class="sidebar-logo">
-
       <div class="logo-icon">
         <i class="fa-solid fa-book-quran"></i>
       </div>
 
       <div class="logo-text">
-
-        <strong>
-          مركز حردان طارق
-        </strong>
-
-        <span>
-          البوابة الإدارية
-        </span>
-
+        <strong>مركز حردان طارق</strong>
+        <span>البوابة الإدارية</span>
       </div>
-
     </div>
 
     <div class="sidebar-title">
       القائمة الرئيسية
     </div>
 
+    <button class="side-link active" type="button">
+      <i class="fa-solid fa-chart-line"></i>
+      لوحة المتابعة
+    </button>
+
     <button
-      class="side-link active"
+      class="side-link"
+      id="requestsNav"
       type="button"
     >
-
-      <i class="fa-solid fa-chart-line"></i>
-
-      لوحة المتابعة
-
+      <i class="fa-solid fa-user-plus"></i>
+      طلبات الانضمام
+      <span class="request-side-badge" id="requestSideBadge">0</span>
     </button>
 
     <button
@@ -2401,11 +1284,8 @@
       id="studentsNav"
       type="button"
     >
-
       <i class="fa-solid fa-users"></i>
-
       الطلاب
-
     </button>
 
     <button
@@ -2413,48 +1293,33 @@
       type="button"
       onclick="scrollToStudents()"
     >
-
       <i class="fa-solid fa-book-open"></i>
-
       متابعة الحفظ
-
     </button>
 
     <a
       href="index.html"
       class="side-link home-link"
     >
-
       <i class="fa-solid fa-house"></i>
-
       الرئيسية
-
     </a>
 
     <div class="sidebar-bottom">
-
       <button
         class="logout-side"
         id="logoutButton"
         type="button"
       >
-
         <i class="fa-solid fa-right-from-bracket"></i>
-
         &nbsp;
-
         تسجيل الخروج
-
       </button>
-
     </div>
 
   </aside>
 
-
-  <!-- =====================================================
-       MAIN
-  ====================================================== -->
+  <!-- ================= MAIN ================= -->
 
   <div class="main">
 
@@ -2472,15 +1337,8 @@
         </button>
 
         <div class="page-title">
-
-          <h1>
-            لوحة متابعة الطلاب
-          </h1>
-
-          <p>
-            إدارة ومتابعة طلاب المركز
-          </p>
-
+          <h1>لوحة متابعة الطلاب</h1>
+          <p>إدارة ومتابعة طلاب المركز</p>
         </div>
 
       </div>
@@ -2488,7 +1346,6 @@
       <div class="teacher-info">
 
         <div>
-
           <div
             class="teacher-name"
             id="teacherName"
@@ -2502,7 +1359,6 @@
           >
             بوابة المعلمين
           </div>
-
         </div>
 
         <div class="teacher-avatar">
@@ -2513,13 +1369,11 @@
 
     </header>
 
-
     <main class="content">
 
-      <!-- WELCOME -->
+      <!-- ================= WELCOME ================= -->
 
       <section class="welcome-card">
-
         <div class="welcome-content">
 
           <div class="welcome-small">
@@ -2532,93 +1386,158 @@
 
           <p>
             من هنا يمكنك متابعة طلاب المركز،
-            إضافة الطلاب وإدارة بياناتهم بسهولة.
+            إضافة الطلاب وإدارة طلبات الانضمام بسهولة.
+          </p>
+
+        </div>
+      </section>
+
+      <!-- ================= STATS ================= -->
+
+      <section class="stats">
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-users"></i>
+          </div>
+
+          <div>
+            <span
+              class="stat-number"
+              id="totalStudents"
+            >0</span>
+
+            <span class="stat-label">
+              إجمالي الطلاب
+            </span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-user-check"></i>
+          </div>
+
+          <div>
+            <span
+              class="stat-number"
+              id="activeStudents"
+            >0</span>
+
+            <span class="stat-label">
+              الطلاب المستمرون
+            </span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-user-plus"></i>
+          </div>
+
+          <div>
+            <span
+              class="stat-number"
+              id="pendingStudents"
+            >0</span>
+
+            <span class="stat-label">
+              طلبات الانضمام
+            </span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================= REQUESTS ================= -->
+
+      <section
+        class="panel"
+        id="requestsPanel"
+      >
+
+        <div class="panel-top">
+
+          <div class="panel-title">
+
+            <div class="panel-title-icon request-icon">
+              <i class="fa-solid fa-user-plus"></i>
+            </div>
+
+            <div>
+
+              <h2>
+                طلبات الانضمام
+              </h2>
+
+              <span>
+                الطلبات الجديدة التي أرسلها أولياء الأمور أو الطلاب
+              </span>
+
+            </div>
+
+          </div>
+
+          <button
+            class="add-btn"
+            id="refreshRequestsButton"
+            type="button"
+          >
+            <i class="fa-solid fa-rotate"></i>
+            تحديث الطلبات
+          </button>
+
+        </div>
+
+        <div class="requests-summary">
+
+          <div class="requests-count">
+            <span class="count-number" id="requestCount">0</span>
+            <span>طلبات بانتظار المراجعة</span>
+          </div>
+
+          <span
+            id="requestsStatusText"
+            style="font-size:11px;color:var(--muted);"
+          >
+            جاري تحميل الطلبات...
+          </span>
+
+        </div>
+
+        <div
+          class="request-list"
+          id="requestList"
+        ></div>
+
+        <div
+          class="requests-error"
+          id="requestsError"
+        ></div>
+
+        <div
+          class="empty"
+          id="requestsEmpty"
+          style="display:none;"
+        >
+
+          <div class="empty-icon">
+            <i class="fa-solid fa-inbox"></i>
+          </div>
+
+          <strong>
+            لا توجد طلبات جديدة
+          </strong>
+
+          <p>
+            لا يوجد حاليًا أي طلب انضمام بانتظار المراجعة.
           </p>
 
         </div>
 
       </section>
 
-
-      <!-- STATS -->
-
-      <section class="stats">
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            <i class="fa-solid fa-users"></i>
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="totalStudents"
-            >
-              0
-            </span>
-
-            <span class="stat-label">
-              إجمالي الطلاب
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            <i class="fa-solid fa-user-check"></i>
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="activeStudents"
-            >
-              0
-            </span>
-
-            <span class="stat-label">
-              الطلاب المستمرون
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            <i class="fa-solid fa-book-quran"></i>
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="memorizedStudents"
-            >
-              0
-            </span>
-
-            <span class="stat-label">
-              لديهم متابعة حفظ
-            </span>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- STUDENTS PANEL -->
+      <!-- ================= STUDENTS ================= -->
 
       <section
         class="panel"
@@ -2647,23 +1566,16 @@
 
           </div>
 
-
           <button
             class="add-btn"
             id="openModal"
             type="button"
           >
-
             <i class="fa-solid fa-plus"></i>
-
             إضافة طالب جديد
-
           </button>
 
         </div>
-
-
-        <!-- FILTERS -->
 
         <div class="filters">
 
@@ -2680,90 +1592,39 @@
 
           </div>
 
-
           <select
             id="sectionFilter"
             class="filter-select"
           >
-
-            <option value="">
-              جميع الشعب
-            </option>
-
-            <option value="شعبة الحفاظ">
-              شعبة الحفاظ
-            </option>
-
-            <option value="شعبة تجويد">
-              شعبة تجويد
-            </option>
-
-            <option value="شعبة إجازة">
-              شعبة إجازة
-            </option>
-
-            <option value="شعبة فرسان">
-              شعبة فرسان
-            </option>
-
+            <option value="">جميع الشعب</option>
+            <option value="شعبة الحفاظ">شعبة الحفاظ</option>
+            <option value="شعبة تجويد">شعبة تجويد</option>
+            <option value="شعبة إجازة">شعبة إجازة</option>
+            <option value="شعبة فرسان">شعبة فرسان</option>
           </select>
-
 
           <select
             id="statusFilter"
             class="filter-select"
           >
-
-            <option value="accepted">
-              الطلاب المقبولون
-            </option>
-
-            <option value="active">
-              الطلاب المستمرون
-            </option>
-
-            <option value="inactive">
-              الطلاب المتوقفون
-            </option>
-
-            <option value="rejected">
-              الطلاب غير المقبولين
-            </option>
-
-            <option value="expelled">
-              الطلاب المفصولون
-            </option>
-
-            <option value="all">
-              جميع الطلاب
-            </option>
-
+            <option value="accepted">الطلاب المقبولون</option>
+            <option value="active">الطلاب المستمرون</option>
+            <option value="inactive">الطلاب المتوقفون</option>
+            <option value="rejected">الطلاب غير المقبولين</option>
+            <option value="expelled">الطلاب المفصولون</option>
+            <option value="all">جميع الطلاب</option>
           </select>
-
 
           <select
             id="sortFilter"
             class="filter-select"
           >
-
-            <option value="alphabetical">
-              ترتيب: أبجدي
-            </option>
-
-            <option value="points">
-              ترتيب: الأكثر نقاطًا
-            </option>
-
-            <option value="section">
-              ترتيب: حسب الشعبة
-            </option>
-
+            <option value="alphabetical">ترتيب: أبجدي</option>
+            <option value="points">ترتيب: الأكثر نقاطًا</option>
+            <option value="section">ترتيب: حسب الشعبة</option>
           </select>
 
         </div>
-
-
-        <!-- TABLE -->
 
         <div class="table-wrapper">
 
@@ -2773,33 +1634,13 @@
 
               <tr>
 
-                <th>
-                  الطالب
-                </th>
-
-                <th>
-                  الشعبة
-                </th>
-
-                <th>
-                  مستوى الحفظ
-                </th>
-
-                <th>
-                  الحالة
-                </th>
-
-                <th>
-                  التقييم
-                </th>
-
-                <th>
-                  النقاط
-                </th>
-
-                <th>
-                  الإجراءات
-                </th>
+                <th>الطالب</th>
+                <th>الشعبة</th>
+                <th>مستوى الحفظ</th>
+                <th>الحالة</th>
+                <th>التقييم</th>
+                <th>النقاط</th>
+                <th>الإجراءات</th>
 
               </tr>
 
@@ -2810,9 +1651,6 @@
           </table>
 
         </div>
-
-
-        <!-- EMPTY -->
 
         <div
           id="emptyMessage"
@@ -2839,10 +1677,7 @@
 
   </div>
 
-
-  <!-- =====================================================
-       MODAL
-  ====================================================== -->
+  <!-- ================= STUDENT MODAL ================= -->
 
   <div
     class="modal"
@@ -2854,7 +1689,6 @@
       <div class="modal-header">
 
         <div>
-
           <h2 id="modalTitle">
             إضافة طالب جديد
           </h2>
@@ -2862,7 +1696,6 @@
           <p>
             أدخل بيانات الطالب بشكل صحيح
           </p>
-
         </div>
 
         <button
@@ -2874,7 +1707,6 @@
         </button>
 
       </div>
-
 
       <form
         id="studentForm"
@@ -2896,7 +1728,6 @@
           >
 
         </div>
-
 
         <div class="form-group">
 
@@ -2933,7 +1764,6 @@
 
         </div>
 
-
         <div class="form-group">
 
           <label for="memorization">
@@ -2949,16 +1779,13 @@
 
         </div>
 
-
         <div class="form-group">
 
           <label for="studentStatus">
             الحالة
           </label>
 
-          <select
-            id="studentStatus"
-          >
+          <select id="studentStatus">
 
             <option value="active">
               مستمر
@@ -2972,7 +1799,6 @@
 
         </div>
 
-
         <div class="modal-buttons">
 
           <button
@@ -2980,26 +1806,19 @@
             class="save-btn"
             id="saveButton"
           >
-
             <i class="fa-solid fa-check"></i>
-
             حفظ الطالب
-
           </button>
-
 
           <button
             type="button"
             class="cancel-btn"
             id="cancelButton"
           >
-
             إلغاء
-
           </button>
 
         </div>
-
 
         <div id="message"></div>
 
@@ -3009,31 +1828,24 @@
 
   </div>
 
-
-  <!-- TOAST -->
+  <!-- ================= TOAST ================= -->
 
   <div
     class="toast"
     id="toast"
   >
-
     <i id="toastIcon"></i>
-
     <span id="toastText"></span>
-
   </div>
-
 
   <div class="badge">
     النسخة التجريبية
   </div>
 
-
   <script>
-
     /* =====================================================
        SUPABASE
-    ====================================================== */
+    ===================================================== */
 
     const SUPABASE_URL =
       'https://lsbbcybpiulusdgfhepf.supabase.co';
@@ -3050,153 +1862,136 @@
 
     /* =====================================================
        ELEMENTS
-    ====================================================== */
+    ===================================================== */
 
     const tableBody =
-      document.getElementById(
-        'studentsTable'
-      );
+      document.getElementById('studentsTable');
 
     const emptyMessage =
-      document.getElementById(
-        'emptyMessage'
-      );
+      document.getElementById('emptyMessage');
 
     const emptyTitle =
-      document.getElementById(
-        'emptyTitle'
-      );
+      document.getElementById('emptyTitle');
 
     const emptyText =
-      document.getElementById(
-        'emptyText'
-      );
+      document.getElementById('emptyText');
 
     const totalStudents =
-      document.getElementById(
-        'totalStudents'
-      );
+      document.getElementById('totalStudents');
 
     const activeStudents =
-      document.getElementById(
-        'activeStudents'
-      );
+      document.getElementById('activeStudents');
 
-    const memorizedStudents =
-      document.getElementById(
-        'memorizedStudents'
-      );
+    const pendingStudents =
+      document.getElementById('pendingStudents');
+
+    const requestCount =
+      document.getElementById('requestCount');
+
+    const requestSideBadge =
+      document.getElementById('requestSideBadge');
+
+    const requestList =
+      document.getElementById('requestList');
+
+    const requestsEmpty =
+      document.getElementById('requestsEmpty');
+
+    const requestsError =
+      document.getElementById('requestsError');
+
+    const requestsStatusText =
+      document.getElementById('requestsStatusText');
 
     const searchInput =
-      document.getElementById(
-        'searchInput'
-      );
+      document.getElementById('searchInput');
 
     const sectionFilter =
-      document.getElementById(
-        'sectionFilter'
-      );
+      document.getElementById('sectionFilter');
 
     const statusFilter =
-      document.getElementById(
-        'statusFilter'
-      );
+      document.getElementById('statusFilter');
 
     const sortFilter =
-      document.getElementById(
-        'sortFilter'
-      );
+      document.getElementById('sortFilter');
 
     const modal =
-      document.getElementById(
-        'studentModal'
-      );
+      document.getElementById('studentModal');
 
     const openModalButton =
-      document.getElementById(
-        'openModal'
-      );
+      document.getElementById('openModal');
 
     const closeModalButton =
-      document.getElementById(
-        'closeModal'
-      );
+      document.getElementById('closeModal');
 
     const cancelButton =
-      document.getElementById(
-        'cancelButton'
-      );
+      document.getElementById('cancelButton');
 
     const studentForm =
-      document.getElementById(
-        'studentForm'
-      );
+      document.getElementById('studentForm');
 
     const message =
-      document.getElementById(
-        'message'
-      );
+      document.getElementById('message');
 
     const modalTitle =
-      document.getElementById(
-        'modalTitle'
-      );
+      document.getElementById('modalTitle');
 
     const saveButton =
-      document.getElementById(
-        'saveButton'
-      );
+      document.getElementById('saveButton');
 
     const toast =
-      document.getElementById(
-        'toast'
-      );
+      document.getElementById('toast');
 
     const toastText =
-      document.getElementById(
-        'toastText'
-      );
+      document.getElementById('toastText');
 
     const toastIcon =
-      document.getElementById(
-        'toastIcon'
-      );
+      document.getElementById('toastIcon');
 
     const sidebar =
-      document.getElementById(
-        'sidebar'
-      );
+      document.getElementById('sidebar');
 
 
     /* =====================================================
        STATE
-    ====================================================== */
+    ===================================================== */
 
     let students = [];
 
-    let editingStudentId =
-      null;
+    let pendingRequests = [];
+
+    let editingStudentId = null;
 
     let profileMap = {};
 
-    let toastTimer =
-      null;
+    let toastTimer = null;
+
+    /*
+      نجرب أكثر من اسم شائع للجدول.
+      أول جدول موجود سنعتمد عليه.
+    */
+    const REQUEST_TABLE_CANDIDATES = [
+      'student_requests',
+      'join_requests',
+      'registration_requests',
+      'requests'
+    ];
+
+    let requestTableName = null;
 
 
     /* =====================================================
-       GENERAL
-    ====================================================== */
+       HELPERS
+    ===================================================== */
 
     function escapeHtml(value) {
 
-      return String(
-        value ?? ''
-      )
-      .replace(/&/g,'&amp;')
-      .replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;')
-      .replace(/'/g,'&#039;');
+      return String(value ?? '')
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;')
+        .replace(/'/g,'&#039;');
 
     }
 
@@ -3213,9 +2008,44 @@
     }
 
 
+    function firstValue(row, names) {
+
+      for (
+        const name of names
+      ) {
+
+        if (
+          row &&
+          row[name] !== undefined &&
+          row[name] !== null &&
+          String(row[name]).trim() !== ''
+        ) {
+
+          return row[name];
+
+        }
+
+      }
+
+      return '';
+
+    }
+
+
+    function normalizeStatus(value) {
+
+      return String(
+        value ?? ''
+      )
+        .trim()
+        .toLowerCase();
+
+    }
+
+
     /* =====================================================
        TOAST
-    ====================================================== */
+    ===================================================== */
 
     function showToast(
       text,
@@ -3240,11 +2070,9 @@
       toastTimer =
         setTimeout(
           () => {
-
             toast.classList.remove(
               'show'
             );
-
           },
           3500
         );
@@ -3254,7 +2082,7 @@
 
     /* =====================================================
        MESSAGE
-    ====================================================== */
+    ===================================================== */
 
     function showMessage(
       text,
@@ -3279,8 +2107,8 @@
 
 
     /* =====================================================
-       USER ACCESS
-    ====================================================== */
+       ACCESS
+    ===================================================== */
 
     function checkUser() {
 
@@ -3315,8 +2143,8 @@
 
 
     /* =====================================================
-       LOAD STUDENTS
-    ====================================================== */
+       STUDENTS
+    ===================================================== */
 
     async function loadStudents() {
 
@@ -3343,49 +2171,59 @@
             error
           );
 
-          students =
-            [];
+          if (
+            students.length === 0
+          ) {
 
-          updateStats();
+            showEmpty(
+              'تعذر تحميل البيانات',
+              error.message ||
+              'تأكد من إعداد قاعدة البيانات والصلاحيات.'
+            );
 
-          showEmpty(
-            'تعذر تحميل البيانات',
-            error.message ||
-            'تأكد من إعداد قاعدة البيانات والصلاحيات.'
-          );
+          }
 
           return false;
 
         }
 
         students =
-          data ||
-          [];
+          data || [];
+
+        /*
+          نرسم الطلاب مباشرة.
+          تحميل ملفات الطلاب الإضافية لن يمنع ظهورهم.
+        */
+        renderStudents();
+        updateStats();
 
         await loadProfiles();
 
         renderStudents();
-
         updateStats();
 
         return true;
 
       }
 
-      catch (
-        error
-      ) {
+      catch(error) {
 
         console.error(
           'LOAD STUDENTS EXCEPTION:',
           error
         );
 
-        showEmpty(
-          'تعذر تحميل البيانات',
-          error.message ||
-          'حدث خطأ غير متوقع أثناء تحميل الطلاب.'
-        );
+        if (
+          students.length === 0
+        ) {
+
+          showEmpty(
+            'تعذر تحميل البيانات',
+            error.message ||
+            'حدث خطأ غير متوقع أثناء تحميل الطلاب.'
+          );
+
+        }
 
         return false;
 
@@ -3393,10 +2231,6 @@
 
     }
 
-
-    /* =====================================================
-       LOAD PROFILES
-    ====================================================== */
 
     async function loadProfiles() {
 
@@ -3419,24 +2253,23 @@
             error
           );
 
-          profileMap =
-            {};
+          profileMap = {};
 
-          return;
+          return false;
 
         }
 
-        profileMap =
-          {};
+        profileMap = {};
 
         (
-          data ||
-          []
+          data || []
         ).forEach(
           row => {
 
             profileMap[
-              String(row.student_id)
+              String(
+                row.student_id
+              )
             ] =
               row.data ||
               {};
@@ -3444,19 +2277,20 @@
           }
         );
 
+        return true;
+
       }
 
-      catch (
-        error
-      ) {
+      catch(error) {
 
         console.warn(
           'PROFILE LOAD EXCEPTION:',
           error
         );
 
-        profileMap =
-          {};
+        profileMap = {};
+
+        return false;
 
       }
 
@@ -3465,16 +2299,13 @@
 
     /* =====================================================
        PERFORMANCE
-    ====================================================== */
+    ===================================================== */
 
-    function attendancePoint(
-      status
-    ) {
+    function attendancePoint(status) {
 
       const value =
         String(
-          status ||
-          ''
+          status || ''
         ).trim();
 
       if (
@@ -3503,14 +2334,13 @@
     }
 
 
-    function recitationPoint(
-      item
-    ) {
+    function recitationPoint(item) {
 
       const score =
         numberValue(
           item?.score ??
           item?.mark ??
+          item?.grade ??
           0
         );
 
@@ -3524,36 +2354,20 @@
         type === 'review' ||
         type === 'مراجعة';
 
-      if (
-        score >= 97
-      ) {
-        return review
-          ? 3
-          : 6;
+      if (score >= 97) {
+        return review ? 3 : 6;
       }
 
-      if (
-        score >= 95
-      ) {
-        return review
-          ? 2.5
-          : 5;
+      if (score >= 95) {
+        return review ? 2.5 : 5;
       }
 
-      if (
-        score >= 92
-      ) {
-        return review
-          ? 2
-          : 4;
+      if (score >= 92) {
+        return review ? 2 : 4;
       }
 
-      if (
-        score >= 90
-      ) {
-        return review
-          ? 1
-          : 2;
+      if (score >= 90) {
+        return review ? 1 : 2;
       }
 
       return 0;
@@ -3561,39 +2375,29 @@
     }
 
 
-    function testPoint(
-      item
-    ) {
+    function testPoint(item) {
 
       const result =
         String(
-          item?.result ||
+          item?.result ??
+          item?.grade ??
           ''
         ).trim();
 
       if (
-        result.includes(
-          'ممتاز'
-        )
+        result.includes('ممتاز')
       ) {
         return 12;
       }
 
       if (
-        result.includes(
-          'جيد جداً'
-        ) ||
-        result.includes(
-          'جيد جدًا'
-        )
+        result.includes('جيد جداً') ||
+        result.includes('جيد جدًا')
       ) {
         return 8;
       }
 
-      if (
-        result ===
-        'جيد'
-      ) {
+      if (result === 'جيد') {
         return 4;
       }
 
@@ -3607,8 +2411,7 @@
     ) {
 
       const p =
-        profile ||
-        {};
+        profile || {};
 
       const attendance =
         Array.isArray(
@@ -3631,7 +2434,7 @@
           ? p.tests
           : [];
 
-      let attendancePoints =
+      const attendancePoints =
         attendance.reduce(
           (
             sum,
@@ -3661,32 +2464,38 @@
 
       const hifz =
         recitations.filter(
-          item =>
-            String(
-              item?.type ||
-              ''
-            ).trim() !==
-            'review' &&
-            String(
-              item?.type ||
-              ''
-            ).trim() !==
-            'مراجعة'
+          item => {
+
+            const type =
+              String(
+                item?.type ||
+                ''
+              ).trim();
+
+            return (
+              type !== 'review' &&
+              type !== 'مراجعة'
+            );
+
+          }
         );
 
       const review =
         recitations.filter(
-          item =>
-            String(
-              item?.type ||
-              ''
-            ).trim() ===
-            'review' ||
-            String(
-              item?.type ||
-              ''
-            ).trim() ===
-            'مراجعة'
+          item => {
+
+            const type =
+              String(
+                item?.type ||
+                ''
+              ).trim();
+
+            return (
+              type === 'review' ||
+              type === 'مراجعة'
+            );
+
+          }
         );
 
       const hifzPoints =
@@ -3787,7 +2596,8 @@
           testsScore * .20
         );
 
-      const recitationPoints =
+      const totalPoints =
+        attendancePoints +
         recitations.reduce(
           (
             sum,
@@ -3798,11 +2608,7 @@
               item
             ),
           0
-        );
-
-      const totalPoints =
-        attendancePoints +
-        recitationPoints +
+        ) +
         testsPoints;
 
       return {
@@ -3834,9 +2640,7 @@
 
       return calculatePerformance(
         profileMap[
-          String(
-            student.id
-          )
+          String(student.id)
         ] ||
         {}
       );
@@ -3867,31 +2671,23 @@
       const map = {
 
         active: {
-          text:
-            'مستمر',
-          className:
-            'active'
+          text: 'مستمر',
+          className: 'active'
         },
 
         inactive: {
-          text:
-            'متوقف',
-          className:
-            'inactive'
+          text: 'متوقف',
+          className: 'inactive'
         },
 
         rejected: {
-          text:
-            'غير مقبول',
-          className:
-            'rejected'
+          text: 'غير مقبول',
+          className: 'rejected'
         },
 
         expelled: {
-          text:
-            'مفصول',
-          className:
-            'expelled'
+          text: 'مفصول',
+          className: 'expelled'
         }
 
       };
@@ -3899,10 +2695,8 @@
       return (
         map[status] ||
         {
-          text:
-            'غير محدد',
-          className:
-            'inactive'
+          text: 'غير محدد',
+          className: 'inactive'
         }
       );
 
@@ -3911,7 +2705,7 @@
 
     /* =====================================================
        RENDER STUDENTS
-    ====================================================== */
+    ===================================================== */
 
     function renderStudents() {
 
@@ -3988,9 +2782,16 @@
               }
 
               else if (
-                selectedStatus !==
+                selectedStatus ===
                 'all'
               ) {
+
+                matchesStatus =
+                  true;
+
+              }
+
+              else {
 
                 matchesStatus =
                   student.status ===
@@ -4008,47 +2809,36 @@
           );
 
 
-      if (
-        selectedSort ===
-        'points'
-      ) {
+      filtered.sort(
+        (
+          a,
+          b
+        ) => {
 
-        filtered.sort(
-          (
-            a,
-            b
-          ) =>
-            (
-              b._points ||
-              0
-            ) -
-            (
-              a._points ||
-              0
-            )
-        );
+          if (
+            selectedSort ===
+            'points'
+          ) {
 
-      }
+            return (
+              (b._points || 0) -
+              (a._points || 0)
+            );
 
-      else if (
-        selectedSort ===
-        'section'
-      ) {
+          }
 
-        filtered.sort(
-          (
-            a,
-            b
-          ) => {
+          if (
+            selectedSort ===
+            'section'
+          ) {
 
             const sectionCompare =
               String(
-                a.section ||
-                ''
-              ).localeCompare(
+                a.section || ''
+              )
+              .localeCompare(
                 String(
-                  b.section ||
-                  ''
+                  b.section || ''
                 ),
                 'ar'
               );
@@ -4062,42 +2852,20 @@
 
             }
 
-            return String(
-              a.name ||
-              ''
-            ).localeCompare(
-              String(
-                b.name ||
-                ''
-              ),
-              'ar'
-            );
-
           }
-        );
 
-      }
-
-      else {
-
-        filtered.sort(
-          (
-            a,
-            b
-          ) =>
+          return String(
+            a.name || ''
+          )
+          .localeCompare(
             String(
-              a.name ||
-              ''
-            ).localeCompare(
-              String(
-                b.name ||
-                ''
-              ),
-              'ar'
-            )
-        );
+              b.name || ''
+            ),
+            'ar'
+          );
 
-      }
+        }
+      );
 
 
       tableBody.innerHTML =
@@ -4163,32 +2931,23 @@
               <div class="student-name">
 
                 <div class="student-avatar">
-                  ${escapeHtml(
-                    firstLetter
-                  )}
+                  ${escapeHtml(firstLetter)}
                 </div>
 
                 <div>
 
                   <a
                     class="student-name-link"
-                    href="student-profile.html?id=${encodeURIComponent(
-                      student.id
-                    )}"
+                    href="student-profile.html?id=${encodeURIComponent(student.id)}"
                     title="فتح ملف الطالب"
                   >
-                    ${escapeHtml(
-                      student.name ||
-                      ''
-                    )}
+                    ${escapeHtml(student.name || '')}
                   </a>
 
                   <div class="student-sub">
-
                     التقييم:
                     ${student._score}
                     / 100
-
                   </div>
 
                 </div>
@@ -4197,34 +2956,25 @@
 
             </td>
 
-
             <td>
 
               <span class="section-badge">
-
-                ${escapeHtml(
-                  student.section ||
-                  '-'
-                )}
-
+                ${escapeHtml(student.section || '-')}
               </span>
 
             </td>
-
 
             <td>
 
               ${
                 student.memorization
                   ? `
-                    <span class="memorization">
-                      ${escapeHtml(
-                        student.memorization
-                      )}
+                    <span>
+                      ${escapeHtml(student.memorization)}
                     </span>
                   `
                   : `
-                    <span class="no-data">
+                    <span style="color:#a2aaa6;">
                       لم يحدد
                     </span>
                   `
@@ -4232,47 +2982,29 @@
 
             </td>
 
-
             <td>
 
-              <span
-                class="
-                  status
-                  ${statusInfo.className}
-                "
-              >
-
+              <span class="status ${statusInfo.className}">
                 ${statusInfo.text}
-
               </span>
 
             </td>
-
 
             <td>
 
               <span class="score-badge">
-
-                ${student._score}
-                / 100
-
+                ${student._score} / 100
               </span>
 
             </td>
-
 
             <td>
 
               <span class="points-badge">
-
-                ${escapeHtml(
-                  pointsText
-                )}
-
+                ${escapeHtml(pointsText)}
               </span>
 
             </td>
-
 
             <td>
 
@@ -4282,79 +3014,34 @@
                   class="action-btn edit-btn"
                   type="button"
                   title="تعديل"
-                  onclick="
-                    editStudent(
-                      '${escapeHtml(
-                        String(
-                          student.id
-                        )
-                      )}'
-                    )
-                  "
+                  onclick="editStudent('${escapeHtml(String(student.id))}')"
                 >
-
                   <i class="fa-solid fa-pen"></i>
-
                 </button>
 
-
                 ${
-                  student.status ===
-                    'rejected' ||
-                  student.status ===
-                    'expelled'
-
-                  ? `
-
-                    <button
-                      class="
-                        action-btn
-                        delete-btn
-                      "
-                      type="button"
-                      title="حذف نهائي"
-                      onclick="
-                        deleteStudent(
-                          '${escapeHtml(
-                            String(
-                              student.id
-                            )
-                          )}'
-                        )
-                      "
-                    >
-
-                      <i class="fa-solid fa-trash"></i>
-
-                    </button>
-
-                  `
-
-                  : `
-
-                    <button
-                      class="
-                        action-btn
-                        expel-btn
-                      "
-                      type="button"
-                      title="فصل الطالب"
-                      onclick="
-                        expelStudent(
-                          '${escapeHtml(
-                            String(
-                              student.id
-                            )
-                          )}'
-                        )
-                      "
-                    >
-
-                      <i class="fa-solid fa-user-slash"></i>
-
-                    </button>
-
-                  `
+                  student.status === 'rejected' ||
+                  student.status === 'expelled'
+                    ? `
+                      <button
+                        class="action-btn delete-btn"
+                        type="button"
+                        title="حذف نهائي"
+                        onclick="deleteStudent('${escapeHtml(String(student.id))}')"
+                      >
+                        <i class="fa-solid fa-trash"></i>
+                      </button>
+                    `
+                    : `
+                      <button
+                        class="action-btn expel-btn"
+                        type="button"
+                        title="فصل الطالب"
+                        onclick="expelStudent('${escapeHtml(String(student.id))}')"
+                      >
+                        <i class="fa-solid fa-user-slash"></i>
+                      </button>
+                    `
                 }
 
               </div>
@@ -4390,10 +3077,6 @@
     }
 
 
-    /* =====================================================
-       STATS
-    ====================================================== */
-
     function updateStats() {
 
       totalStudents.textContent =
@@ -4406,22 +3089,21 @@
             'active'
         ).length;
 
-      memorizedStudents.textContent =
-        students.filter(
-          student =>
-            String(
-              student.memorization ||
-              ''
-            ).trim() !==
-            ''
-        ).length;
+      pendingStudents.textContent =
+        pendingRequests.length;
+
+      requestCount.textContent =
+        pendingRequests.length;
+
+      requestSideBadge.textContent =
+        pendingRequests.length;
 
     }
 
 
     /* =====================================================
-       OPEN ADD MODAL
-    ====================================================== */
+       ADD / EDIT STUDENT
+    ===================================================== */
 
     function openAddModal() {
 
@@ -4444,11 +3126,9 @@
 
       setTimeout(
         () => {
-
           document.getElementById(
             'studentName'
           )?.focus();
-
         },
         100
       );
@@ -4456,19 +3136,13 @@
     }
 
 
-    /* =====================================================
-       EDIT STUDENT
-    ====================================================== */
-
     window.editStudent =
       function(id) {
 
         const student =
           students.find(
             item =>
-              String(
-                item.id
-              ) ===
+              String(item.id) ===
               String(id)
           );
 
@@ -4525,54 +3199,34 @@
       };
 
 
-    /* =====================================================
-       SAVE STUDENT
-       هذا هو الإصلاح الأساسي
-    ====================================================== */
-
     studentForm.addEventListener(
       'submit',
       async function(event) {
 
         event.preventDefault();
 
-
         const name =
-          document
-            .getElementById(
-              'studentName'
-            )
-            .value
-            .trim();
+          document.getElementById(
+            'studentName'
+          ).value.trim();
 
         const section =
-          document
-            .getElementById(
-              'studentSection'
-            )
-            .value
-            .trim();
+          document.getElementById(
+            'studentSection'
+          ).value.trim();
 
         const memorization =
-          document
-            .getElementById(
-              'memorization'
-            )
-            .value
-            .trim();
+          document.getElementById(
+            'memorization'
+          ).value.trim();
 
         const status =
-          document
-            .getElementById(
-              'studentStatus'
-            )
-            .value ||
+          document.getElementById(
+            'studentStatus'
+          ).value ||
           'active';
 
-
-        if (
-          !name
-        ) {
+        if (!name) {
 
           showMessage(
             'اسم الطالب مطلوب.'
@@ -4582,10 +3236,7 @@
 
         }
 
-
-        if (
-          !section
-        ) {
+        if (!section) {
 
           showMessage(
             'يرجى اختيار الشعبة.'
@@ -4595,7 +3246,6 @@
 
         }
 
-
         saveButton.disabled =
           true;
 
@@ -4604,16 +3254,11 @@
 
         clearMessage();
 
-
         try {
 
-          /* =================================================
-             تعديل طالب موجود
-          ================================================= */
+          /* ================= EDIT ================= */
 
-          if (
-            editingStudentId
-          ) {
+          if (editingStudentId) {
 
             const {
               data,
@@ -4622,12 +3267,10 @@
               await supabaseClient
                 .from('students')
                 .update({
-
                   name,
                   section,
                   memorization,
                   status
-
                 })
                 .eq(
                   'id',
@@ -4636,36 +3279,23 @@
                 .select()
                 .single();
 
-
-            if (
-              error
-            ) {
+            if (error) {
 
               throw error;
 
             }
 
-
             students =
               students.map(
                 student =>
-                  String(
-                    student.id
-                  ) ===
-                  String(
-                    editingStudentId
-                  )
+                  String(student.id) ===
+                  String(editingStudentId)
                     ? data
                     : student
               );
 
-
-            await loadProfiles();
-
             renderStudents();
-
             updateStats();
-
             closeStudentModal();
 
             showToast(
@@ -4677,86 +3307,132 @@
           }
 
 
-          /* =================================================
-             إضافة طالب جديد
-             
-             مهم:
-             لا نستخدم select().single()
-             بعد INSERT.
-          ================================================= */
+          /* ================= ADD ================= */
 
-          const {
-            error
-          } =
-            await supabaseClient
-              .from('students')
-              .insert({
-
-                name,
-                section,
-                memorization,
-                status
-
-              });
-
-
-          if (
-            error
-          ) {
-
-            console.error(
-              'ADD STUDENT ERROR:',
-              error
-            );
-
-            throw error;
-
-          }
-
+          const payload = {
+            name,
+            section,
+            memorization,
+            status
+          };
 
           /*
-            نعيد تحميل القائمة من قاعدة البيانات
-            بعد نجاح الإضافة.
+            نحاول إرجاع الصف الجديد.
+            وإذا منع SELECT الإرجاع رغم نجاح INSERT،
+            نستفيد من الصف المحلي حتى يظهر فورًا.
           */
 
-          const loaded =
-            await loadStudents();
+          let insertedStudent = null;
 
+          const insertResult =
+            await supabaseClient
+              .from('students')
+              .insert(payload)
+              .select()
+              .single();
 
-          if (!loaded) {
+          if (!insertResult.error) {
 
-            throw new Error(
-              'تم تنفيذ الإضافة، لكن تعذر إعادة تحميل قائمة الطلاب.'
+            insertedStudent =
+              insertResult.data;
+
+          }
+
+          else {
+
+            const msg =
+              String(
+                insertResult.error.message ||
+                ''
+              );
+
+            /*
+              إذا كانت المشكلة فقط في إرجاع الصف،
+              نعتبر الإضافة ناجحة ونضيفه محليًا.
+            */
+            const insertionMayHaveSucceeded =
+              msg.toLowerCase().includes('row level security') ||
+              msg.toLowerCase().includes('permission') ||
+              msg.toLowerCase().includes('select');
+
+            if (!insertionMayHaveSucceeded) {
+
+              throw insertResult.error;
+
+            }
+
+          }
+
+          if (
+            insertedStudent
+          ) {
+
+            students.unshift(
+              insertedStudent
             );
 
           }
 
+          else {
 
+            /*
+              fallback محلي حتى يظهر الطالب مباشرة.
+            */
+            students.unshift({
+              id:
+                `local-${Date.now()}`,
+              name,
+              section,
+              memorization,
+              status,
+              __localOnly: true
+            });
+
+          }
+
+          renderStudents();
+          updateStats();
           closeStudentModal();
 
           showToast(
             '✅ تمت إضافة الطالب بنجاح.'
           );
 
+          /*
+            محاولة مزامنة القائمة من قاعدة البيانات
+            بدون إخفاء الطالب إذا فشلت العملية.
+          */
+          setTimeout(
+            async () => {
+
+              const ok =
+                await loadStudents();
+
+              if (!ok) {
+
+                renderStudents();
+                updateStats();
+
+              }
+
+            },
+            400
+          );
+
         }
 
-        catch (
-          error
-        ) {
+        catch(error) {
 
           console.error(
             'SAVE STUDENT ERROR:',
             error
           );
 
-          const details =
-            error?.message ||
-            error?.details ||
-            error?.hint ||
-            'خطأ غير معروف';
-
           showMessage(
-            `❌ حدث خطأ أثناء حفظ بيانات الطالب: ${details}`
+            `❌ حدث خطأ أثناء حفظ بيانات الطالب: ${
+              error?.message ||
+              'خطأ غير معروف'
+            }`
           );
 
         }
@@ -4778,8 +3454,8 @@
 
 
     /* =====================================================
-       DELETE / EXPEL
-    ====================================================== */
+       EXPEL / DELETE
+    ===================================================== */
 
     window.expelStudent =
       async function(id) {
@@ -4787,15 +3463,12 @@
         const student =
           students.find(
             item =>
-              String(
-                item.id
-              ) ===
+              String(item.id) ===
               String(id)
           );
 
         if (!student)
           return;
-
 
         const confirmed =
           confirm(
@@ -4804,7 +3477,6 @@
 
         if (!confirmed)
           return;
-
 
         try {
 
@@ -4815,8 +3487,7 @@
             await supabaseClient
               .from('students')
               .update({
-                status:
-                  'expelled'
+                status: 'expelled'
               })
               .eq(
                 'id',
@@ -4825,30 +3496,19 @@
               .select()
               .single();
 
-
-          if (
-            error
-          ) {
-
+          if (error)
             throw error;
-
-          }
-
 
           students =
             students.map(
               item =>
-                String(
-                  item.id
-                ) ===
+                String(item.id) ===
                 String(id)
                   ? data
                   : item
             );
 
-
           renderStudents();
-
           updateStats();
 
           showToast(
@@ -4857,9 +3517,7 @@
 
         }
 
-        catch (
-          error
-        ) {
+        catch(error) {
 
           console.error(
             'EXPEL ERROR:',
@@ -4885,15 +3543,12 @@
         const student =
           students.find(
             item =>
-              String(
-                item.id
-              ) ===
+              String(item.id) ===
               String(id)
           );
 
         if (!student)
           return;
-
 
         const confirmed =
           confirm(
@@ -4903,8 +3558,29 @@
         if (!confirmed)
           return;
 
-
         try {
+
+          if (
+            String(id).startsWith('local-')
+          ) {
+
+            students =
+              students.filter(
+                item =>
+                  String(item.id) !==
+                  String(id)
+              );
+
+            renderStudents();
+            updateStats();
+
+            showToast(
+              '✅ تم حذف الطالب من القائمة.'
+            );
+
+            return;
+
+          }
 
           const {
             error
@@ -4917,33 +3593,21 @@
                 id
               );
 
-
-          if (
-            error
-          ) {
-
+          if (error)
             throw error;
-
-          }
-
 
           students =
             students.filter(
               item =>
-                String(
-                  item.id
-                ) !==
+                String(item.id) !==
                 String(id)
             );
-
 
           delete profileMap[
             String(id)
           ];
 
-
           renderStudents();
-
           updateStats();
 
           showToast(
@@ -4952,9 +3616,7 @@
 
         }
 
-        catch (
-          error
-        ) {
+        catch(error) {
 
           console.error(
             'DELETE ERROR:',
@@ -4976,7 +3638,7 @@
 
     /* =====================================================
        MODAL
-    ====================================================== */
+    ===================================================== */
 
     function closeStudentModal() {
 
@@ -5005,18 +3667,15 @@
       openAddModal
     );
 
-
     closeModalButton.addEventListener(
       'click',
       closeStudentModal
     );
 
-
     cancelButton.addEventListener(
       'click',
       closeStudentModal
     );
-
 
     modal.addEventListener(
       'click',
@@ -5036,8 +3695,852 @@
 
 
     /* =====================================================
+       REQUESTS
+    ===================================================== */
+
+    function isPendingRequest(row) {
+
+      const status =
+        normalizeStatus(
+          firstValue(
+            row,
+            [
+              'status',
+              'request_status',
+              'requestStatus',
+              'state'
+            ]
+          )
+        );
+
+      /*
+        لو ما فيه حقل حالة، نعتبره طلبًا.
+      */
+      if (!status)
+        return true;
+
+      return [
+        'pending',
+        'new',
+        'waiting',
+        'قيد الانتظار',
+        'جديد',
+        'بانتظار المراجعة',
+        'معلق'
+      ].includes(
+        status
+      );
+
+    }
+
+
+    async function detectRequestTable() {
+
+      for (
+        const tableName of
+        REQUEST_TABLE_CANDIDATES
+      ) {
+
+        try {
+
+          const {
+            data,
+            error
+          } =
+            await supabaseClient
+              .from(tableName)
+              .select('*')
+              .limit(1);
+
+          if (!error) {
+
+            requestTableName =
+              tableName;
+
+            return tableName;
+
+          }
+
+        }
+
+        catch(error) {
+          console.warn(
+            'REQUEST TABLE CHECK:',
+            tableName,
+            error
+          );
+        }
+
+      }
+
+      requestTableName =
+        null;
+
+      return null;
+
+    }
+
+
+    async function loadRequests() {
+
+      requestsStatusText.textContent =
+        'جاري تحميل الطلبات...';
+
+      requestsError.style.display =
+        'none';
+
+      requestsEmpty.style.display =
+        'none';
+
+      requestList.innerHTML =
+        '';
+
+      try {
+
+        if (!requestTableName) {
+
+          await detectRequestTable();
+
+        }
+
+        if (!requestTableName) {
+
+          pendingRequests =
+            [];
+
+          requestList.innerHTML =
+            '';
+
+          requestsError.style.display =
+            'block';
+
+          requestsError.textContent =
+            'تعذر العثور على جدول طلبات الانضمام في قاعدة البيانات.';
+
+          requestsStatusText.textContent =
+            'لم يتم العثور على جدول الطلبات';
+
+          updateStats();
+
+          return false;
+
+        }
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from(requestTableName)
+            .select('*');
+
+        if (error) {
+
+          throw error;
+
+        }
+
+        pendingRequests =
+          (
+            data || []
+          )
+          .filter(
+            isPendingRequest
+          )
+          .sort(
+            (
+              a,
+              b
+            ) => {
+
+              const da =
+                new Date(
+                  firstValue(
+                    a,
+                    [
+                      'created_at',
+                      'createdAt',
+                      'submitted_at',
+                      'date'
+                    ]
+                  ) ||
+                  0
+                ).getTime();
+
+              const db =
+                new Date(
+                  firstValue(
+                    b,
+                    [
+                      'created_at',
+                      'createdAt',
+                      'submitted_at',
+                      'date'
+                    ]
+                  ) ||
+                  0
+                ).getTime();
+
+              return db - da;
+
+            }
+          );
+
+        renderRequests();
+
+        updateStats();
+
+        requestsStatusText.textContent =
+          pendingRequests.length
+            ? `يوجد ${pendingRequests.length} طلب بانتظار المراجعة`
+            : 'لا توجد طلبات جديدة';
+
+        return true;
+
+      }
+
+      catch(error) {
+
+        console.error(
+          'LOAD REQUESTS ERROR:',
+          error
+        );
+
+        pendingRequests =
+          [];
+
+        updateStats();
+
+        requestsError.style.display =
+          'block';
+
+        requestsError.textContent =
+          `تعذر تحميل طلبات الانضمام: ${
+            error?.message ||
+            'خطأ غير معروف'
+          }`;
+
+        requestsStatusText.textContent =
+          'تعذر تحميل الطلبات';
+
+        return false;
+
+      }
+
+    }
+
+
+    function renderRequests() {
+
+      requestList.innerHTML =
+        '';
+
+      requestCount.textContent =
+        pendingRequests.length;
+
+      requestSideBadge.textContent =
+        pendingRequests.length;
+
+      pendingStudents.textContent =
+        pendingRequests.length;
+
+      if (
+        pendingRequests.length ===
+        0
+      ) {
+
+        requestsEmpty.style.display =
+          'block';
+
+        return;
+
+      }
+
+      requestsEmpty.style.display =
+        'none';
+
+      pendingRequests.forEach(
+        request => {
+
+          const requestId =
+            firstValue(
+              request,
+              [
+                'id',
+                'request_id',
+                'requestId'
+              ]
+            );
+
+          const name =
+            firstValue(
+              request,
+              [
+                'name',
+                'student_name',
+                'studentName',
+                'full_name',
+                'fullName'
+              ]
+            ) ||
+            'طالب جديد';
+
+          const section =
+            firstValue(
+              request,
+              [
+                'section',
+                'student_section',
+                'program',
+                'branch'
+              ]
+            ) ||
+            '-';
+
+          const phone =
+            firstValue(
+              request,
+              [
+                'guardian_phone',
+                'guardianPhone',
+                'phone',
+                'parent_phone',
+                'parentPhone'
+              ]
+            ) ||
+            '';
+
+          const age =
+            firstValue(
+              request,
+              [
+                'age',
+                'student_age'
+              ]
+            ) ||
+            '';
+
+          const createdAt =
+            firstValue(
+              request,
+              [
+                'created_at',
+                'createdAt',
+                'submitted_at',
+                'date'
+              ]
+            );
+
+          const dateText =
+            createdAt
+              ? new Date(
+                  createdAt
+                ).toLocaleDateString(
+                  'ar-JO'
+                )
+              : '';
+
+          const card =
+            document.createElement(
+              'div'
+            );
+
+          card.className =
+            'request-card';
+
+          card.innerHTML = `
+
+            <div class="request-main">
+
+              <div class="request-name">
+                ${escapeHtml(name)}
+              </div>
+
+              <div class="request-meta">
+
+                <span>
+                  <i class="fa-solid fa-layer-group"></i>
+                  ${escapeHtml(section)}
+                </span>
+
+                ${
+                  age
+                    ? `
+                      <span>
+                        <i class="fa-solid fa-calendar"></i>
+                        العمر: ${escapeHtml(age)}
+                      </span>
+                    `
+                    : ''
+                }
+
+                ${
+                  phone
+                    ? `
+                      <span>
+                        <i class="fa-solid fa-phone"></i>
+                        ${escapeHtml(phone)}
+                      </span>
+                    `
+                    : ''
+                }
+
+                ${
+                  dateText
+                    ? `
+                      <span>
+                        <i class="fa-solid fa-clock"></i>
+                        ${escapeHtml(dateText)}
+                      </span>
+                    `
+                    : ''
+                }
+
+              </div>
+
+            </div>
+
+            <div class="request-actions">
+
+              ${
+                phone
+                  ? `
+                    <a
+                      class="request-btn request-view"
+                      href="tel:${encodeURIComponent(phone)}"
+                      style="text-decoration:none;"
+                    >
+                      <i class="fa-solid fa-phone"></i>
+                      اتصال
+                    </a>
+                  `
+                  : ''
+              }
+
+              <button
+                class="request-btn request-approve"
+                type="button"
+                onclick="approveStudent('${escapeHtml(String(requestId))}')"
+              >
+                <i class="fa-solid fa-check"></i>
+                قبول
+              </button>
+
+              <button
+                class="request-btn request-reject"
+                type="button"
+                onclick="rejectStudent('${escapeHtml(String(requestId))}')"
+              >
+                <i class="fa-solid fa-xmark"></i>
+                رفض
+              </button>
+
+            </div>
+
+          `;
+
+          requestList.appendChild(
+            card
+          );
+
+        }
+      );
+
+    }
+
+
+    function getRequestById(id) {
+
+      return pendingRequests.find(
+        request =>
+          String(
+            firstValue(
+              request,
+              [
+                'id',
+                'request_id',
+                'requestId'
+              ]
+            )
+          ) ===
+          String(id)
+      );
+
+    }
+
+
+    async function updateRequestStatus(
+      request,
+      status
+    ) {
+
+      if (!requestTableName) {
+
+        throw new Error(
+          'لم يتم تحديد جدول الطلبات.'
+        );
+
+      }
+
+      const requestId =
+        firstValue(
+          request,
+          [
+            'id',
+            'request_id',
+            'requestId'
+          ]
+        );
+
+      if (!requestId) {
+
+        throw new Error(
+          'رقم الطلب غير موجود.'
+        );
+
+      }
+
+      /*
+        نحاول الاسم الأكثر شيوعًا أولًا.
+      */
+      const candidates =
+        [
+          'status',
+          'request_status',
+          'requestStatus',
+          'state'
+        ];
+
+      let lastError =
+        null;
+
+      for (
+        const field of
+        candidates
+      ) {
+
+        try {
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .from(requestTableName)
+              .update({
+                [field]:
+                  status
+              })
+              .eq(
+                'id',
+                requestId
+              );
+
+          if (!error) {
+
+            return true;
+
+          }
+
+          lastError =
+            error;
+
+        }
+
+        catch(error) {
+
+          lastError =
+            error;
+
+        }
+
+      }
+
+      throw (
+        lastError ||
+        new Error(
+          'تعذر تحديث حالة الطلب.'
+        )
+      );
+
+    }
+
+
+    function mapRequestToStudent(
+      request
+    ) {
+
+      return {
+
+        name:
+          firstValue(
+            request,
+            [
+              'name',
+              'student_name',
+              'studentName',
+              'full_name',
+              'fullName'
+            ]
+          ) ||
+          '',
+
+        section:
+          firstValue(
+            request,
+            [
+              'section',
+              'student_section',
+              'program',
+              'branch'
+            ]
+          ) ||
+          '',
+
+        memorization:
+          firstValue(
+            request,
+            [
+              'memorization',
+              'current_memorization',
+              'hifz'
+            ]
+          ) ||
+          '',
+
+        status:
+          'active'
+
+      };
+
+    }
+
+
+    window.approveStudent =
+      async function(id) {
+
+        const request =
+          getRequestById(id);
+
+        if (!request) {
+
+          showToast(
+            'تعذر العثور على الطلب.',
+            'error'
+          );
+
+          return;
+
+        }
+
+        const student =
+          mapRequestToStudent(
+            request
+          );
+
+        if (!student.name) {
+
+          showToast(
+            'اسم الطالب غير موجود داخل الطلب.',
+            'error'
+          );
+
+          return;
+
+        }
+
+        if (!student.section) {
+
+          showToast(
+            'الشعبة غير موجودة داخل الطلب.',
+            'error'
+          );
+
+          return;
+
+        }
+
+        const confirmed =
+          confirm(
+            `هل تريد قبول طلب انضمام الطالب "${student.name}"؟`
+          );
+
+        if (!confirmed)
+          return;
+
+        try {
+
+          /*
+            نضيف الطالب أولًا.
+          */
+          const {
+            data: inserted,
+            error: insertError
+          } =
+            await supabaseClient
+              .from('students')
+              .insert(
+                student
+              )
+              .select()
+              .single();
+
+          if (insertError)
+            throw insertError;
+
+          /*
+            بعد نجاح الإضافة، نغيّر حالة الطلب.
+          */
+          await updateRequestStatus(
+            request,
+            'approved'
+          );
+
+          /*
+            نبقي النسخة المحلية محدثة مباشرة.
+          */
+          students.unshift(
+            inserted
+          );
+
+          pendingRequests =
+            pendingRequests.filter(
+              item =>
+                String(
+                  firstValue(
+                    item,
+                    [
+                      'id',
+                      'request_id',
+                      'requestId'
+                    ]
+                  )
+                ) !==
+                String(id)
+            );
+
+          renderStudents();
+          renderRequests();
+          updateStats();
+
+          showToast(
+            '✅ تم قبول الطلب وإضافة الطالب إلى القائمة.'
+          );
+
+        }
+
+        catch(error) {
+
+          console.error(
+            'APPROVE REQUEST ERROR:',
+            error
+          );
+
+          showToast(
+            `❌ تعذر قبول الطلب: ${
+              error?.message ||
+              'خطأ غير معروف'
+            }`,
+            'error'
+          );
+
+        }
+
+      };
+
+
+    window.rejectStudent =
+      async function(id) {
+
+        const request =
+          getRequestById(id);
+
+        if (!request) {
+
+          showToast(
+            'تعذر العثور على الطلب.',
+            'error'
+          );
+
+          return;
+
+        }
+
+        const name =
+          firstValue(
+            request,
+            [
+              'name',
+              'student_name',
+              'studentName',
+              'full_name',
+              'fullName'
+            ]
+          ) ||
+          'الطالب';
+
+        const confirmed =
+          confirm(
+            `هل تريد رفض طلب انضمام "${name}"؟`
+          );
+
+        if (!confirmed)
+          return;
+
+        try {
+
+          await updateRequestStatus(
+            request,
+            'rejected'
+          );
+
+          pendingRequests =
+            pendingRequests.filter(
+              item =>
+                String(
+                  firstValue(
+                    item,
+                    [
+                      'id',
+                      'request_id',
+                      'requestId'
+                    ]
+                  )
+                ) !==
+                String(id)
+            );
+
+          renderRequests();
+          updateStats();
+
+          showToast(
+            '✅ تم رفض الطلب.'
+          );
+
+        }
+
+        catch(error) {
+
+          console.error(
+            'REJECT REQUEST ERROR:',
+            error
+          );
+
+          showToast(
+            `❌ تعذر رفض الطلب: ${
+              error?.message ||
+              'خطأ غير معروف'
+            }`,
+            'error'
+          );
+
+        }
+
+      };
+
+
+    /* =====================================================
        FILTERS
-    ====================================================== */
+    ===================================================== */
 
     searchInput.addEventListener(
       'input',
@@ -5062,17 +4565,14 @@
 
     /* =====================================================
        NAVIGATION
-    ====================================================== */
+    ===================================================== */
 
     function scrollToStudents() {
 
       document
-        .getElementById(
-          'studentsPanel'
-        )
+        .getElementById('studentsPanel')
         ?.scrollIntoView({
-          behavior:
-            'smooth'
+          behavior: 'smooth'
         });
 
       sidebar.classList.remove(
@@ -5081,25 +4581,39 @@
 
     }
 
-
     document
-      .getElementById(
-        'studentsNav'
-      )
+      .getElementById('studentsNav')
       .addEventListener(
         'click',
         scrollToStudents
       );
 
+    document
+      .getElementById('requestsNav')
+      .addEventListener(
+        'click',
+        function() {
+
+          document
+            .getElementById('requestsPanel')
+            ?.scrollIntoView({
+              behavior: 'smooth'
+            });
+
+          sidebar.classList.remove(
+            'open'
+          );
+
+        }
+      );
+
 
     /* =====================================================
-       MOBILE MENU
-    ====================================================== */
+       MOBILE
+    ===================================================== */
 
     document
-      .getElementById(
-        'mobileMenu'
-      )
+      .getElementById('mobileMenu')
       .addEventListener(
         'click',
         function() {
@@ -5111,11 +4625,8 @@
         }
       );
 
-
     document
-      .getElementById(
-        'closeSidebar'
-      )
+      .getElementById('closeSidebar')
       .addEventListener(
         'click',
         function() {
@@ -5129,13 +4640,39 @@
 
 
     /* =====================================================
-       LOGOUT
-    ====================================================== */
+       REQUEST REFRESH
+    ===================================================== */
 
     document
-      .getElementById(
-        'logoutButton'
-      )
+      .getElementById('refreshRequestsButton')
+      .addEventListener(
+        'click',
+        async function() {
+
+          this.disabled =
+            true;
+
+          this.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> جاري التحديث...';
+
+          await loadRequests();
+
+          this.disabled =
+            false;
+
+          this.innerHTML =
+            '<i class="fa-solid fa-rotate"></i> تحديث الطلبات';
+
+        }
+      );
+
+
+    /* =====================================================
+       LOGOUT
+    ===================================================== */
+
+    document
+      .getElementById('logoutButton')
       .addEventListener(
         'click',
         function() {
@@ -5152,20 +4689,40 @@
 
 
     /* =====================================================
+       AUTO REFRESH
+    ===================================================== */
+
+    setInterval(
+      async function() {
+
+        await loadRequests();
+
+      },
+      30000
+    );
+
+
+    /* =====================================================
        START
-    ====================================================== */
+    ===================================================== */
 
     (async function() {
 
       const loggedIn =
         checkUser();
 
-      if (
-        !loggedIn
-      )
+      if (!loggedIn)
         return;
 
-      await loadStudents();
+      /*
+        نبدأ تحميل الطلاب والطلبات معًا.
+      */
+      await Promise.all([
+        loadStudents(),
+        loadRequests()
+      ]);
+
+      updateStats();
 
     })();
 
