@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* النسخة التجريبية */
+    /* شريط النسخة التجريبية */
     .demo-badge {
       position: fixed;
       top: 12px;
@@ -32,133 +32,11 @@
       text-decoration: none;
     }
 
-    .contact-buttons,
-    .register-buttons {
+    .contact-buttons {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
       margin-top: 20px;
-    }
-
-    /* التسجيل الإلكتروني */
-    .online-register {
-      padding: 70px 20px;
-      background: #f8f8f8;
-    }
-
-    .registration-form {
-      max-width: 700px;
-      margin: 30px auto 0;
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.08);
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 15px;
-      box-sizing: border-box;
-    }
-
-    .form-group textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    /* الشعب القابلة للضغط */
-    .program-clickable {
-      cursor: pointer;
-      transition: transform .2s ease, box-shadow .2s ease;
-    }
-
-    .program-clickable:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,.12);
-    }
-
-    /* النافذة المنبثقة */
-    .program-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.65);
-      z-index: 10000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .program-modal.active {
-      display: flex;
-    }
-
-    .program-modal-content {
-      background: white;
-      width: 100%;
-      max-width: 650px;
-      max-height: 85vh;
-      overflow-y: auto;
-      border-radius: 20px;
-      padding: 30px;
-      position: relative;
-      box-sizing: border-box;
-    }
-
-    .program-modal-close {
-      position: absolute;
-      top: 12px;
-      left: 15px;
-      border: none;
-      background: #eee;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 20px;
-    }
-
-    .program-modal-icon {
-      font-size: 45px;
-      margin-bottom: 10px;
-    }
-
-    .program-modal h2 {
-      margin-top: 0;
-    }
-
-    .program-modal h3 {
-      margin-top: 25px;
-    }
-
-    .program-modal p {
-      line-height: 1.9;
-    }
-
-    @media (max-width: 600px) {
-      .registration-form {
-        padding: 20px;
-      }
-
-      .program-modal-content {
-        padding: 25px 20px;
-      }
     }
   </style>
 </head>
@@ -176,18 +54,9 @@
     <div class="container nav">
 
       <a class="brand" href="#home">
-
-        <img
-          src="logo.png"
-          alt="شعار مركز حردان طارق القرآني"
-        >
-
-        <span>
-          مركز حردان طارق القرآني
-        </span>
-
+        <img src="logo.png" alt="شعار مركز حردان طارق القرآني">
+        <span>مركز حردان طارق القرآني</span>
       </a>
-
 
       <nav>
 
@@ -213,7 +82,6 @@
 
       </nav>
 
-
       <div class="actions">
 
         <a class="btn btn-outline" href="#register">
@@ -229,7 +97,6 @@
 
       </div>
 
-
       <button class="menu-btn" aria-label="فتح القائمة">
         ☰
       </button>
@@ -244,7 +111,7 @@
   <main>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- HERO -->
 
     <section id="home" class="hero">
 
@@ -440,12 +307,7 @@
         <div class="cards">
 
 
-          <article
-            class="program program-clickable"
-            tabindex="0"
-            role="button"
-            onclick="openProgram('huffaz')"
-            onkeydown="if(event.key==='Enter') openProgram('huffaz')">
+          <article class="program">
 
             <div class="program-icon">
               📗
@@ -462,12 +324,7 @@
           </article>
 
 
-          <article
-            class="program program-clickable"
-            tabindex="0"
-            role="button"
-            onclick="openProgram('tajweed')"
-            onkeydown="if(event.key==='Enter') openProgram('tajweed')">
+          <article class="program">
 
             <div class="program-icon">
               📖
@@ -484,12 +341,7 @@
           </article>
 
 
-          <article
-            class="program program-clickable"
-            tabindex="0"
-            role="button"
-            onclick="openProgram('ijazah')"
-            onkeydown="if(event.key==='Enter') openProgram('ijazah')">
+          <article class="program">
 
             <div class="program-icon">
               🏅
@@ -506,12 +358,7 @@
           </article>
 
 
-          <article
-            class="program program-clickable"
-            tabindex="0"
-            role="button"
-            onclick="openProgram('fursan')"
-            onkeydown="if(event.key==='Enter') openProgram('fursan')">
+          <article class="program">
 
             <div class="program-icon">
               ⭐
@@ -610,180 +457,22 @@
           </h2>
 
           <p>
-            يمكنك التسجيل إلكترونيًا أو التواصل معنا مباشرة عبر واتساب.
+            للتسجيل أو الاستفسار عن الشعب والحلقات،
+            يمكنكم التواصل معنا مباشرة عبر واتساب.
           </p>
 
         </div>
 
 
-        <div class="register-buttons">
+        <a class="btn btn-gold big"
+           href="https://wa.me/962780791622"
+           target="_blank"
+           rel="noopener">
 
-          <a class="btn btn-gold big"
-             href="#online-register">
+          التسجيل عبر واتساب
 
-            التسجيل الإلكتروني 📝
+        </a>
 
-          </a>
-
-
-          <a class="btn btn-outline big"
-             href="https://wa.me/962780791622"
-             target="_blank"
-             rel="noopener">
-
-            التسجيل عبر واتساب 💬
-
-          </a>
-
-        </div>
-
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= ONLINE REGISTER ================= -->
-
-    <section id="online-register" class="online-register">
-
-      <div class="container">
-
-        <div class="section-title">
-
-          <span></span>
-
-          <h2>
-            التسجيل الإلكتروني
-          </h2>
-
-          <span></span>
-
-        </div>
-
-
-        <form class="registration-form" id="registrationForm">
-
-          <div class="form-group">
-
-            <label for="studentName">
-              اسم الطالب
-            </label>
-
-            <input
-              type="text"
-              id="studentName"
-              name="studentName"
-              placeholder="اكتب اسم الطالب"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="studentAge">
-              العمر
-            </label>
-
-            <input
-              type="number"
-              id="studentAge"
-              name="studentAge"
-              min="1"
-              max="100"
-              placeholder="اكتب العمر"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="guardianPhone">
-              رقم ولي الأمر
-            </label>
-
-            <input
-              type="tel"
-              id="guardianPhone"
-              name="guardianPhone"
-              placeholder="07XXXXXXXX"
-              required
-            >
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="program">
-              الشعبة المطلوبة
-            </label>
-
-            <select
-              id="program"
-              name="program"
-              required
-            >
-
-              <option value="">
-                اختر الشعبة
-              </option>
-
-              <option value="شعبة الحفاظ">
-                شعبة الحفاظ
-              </option>
-
-              <option value="شعبة تجويد">
-                شعبة تجويد
-              </option>
-
-              <option value="شعبة إجازة">
-                شعبة إجازة
-              </option>
-
-              <option value="شعبة فرسان">
-                شعبة فرسان
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="notes">
-              ملاحظات إضافية
-            </label>
-
-            <textarea
-              id="notes"
-              name="notes"
-              placeholder="أي ملاحظات ترغب بإضافتها..."
-            ></textarea>
-
-          </div>
-
-
-          <button
-            type="submit"
-            class="btn btn-gold big">
-
-            إرسال طلب التسجيل 📝
-
-          </button>
-
-
-          <p style="margin-top:15px; font-size:13px;">
-            هذا النموذج في نسخته التجريبية، وسيتم ربطه لاحقًا
-            بنظام لحفظ طلبات التسجيل.
-          </p>
-
-        </form>
 
       </div>
 
@@ -857,11 +546,9 @@
           📞
 
           <a href="tel:+962780791622">
-
             <span>
               +962 7 8079 1622
             </span>
-
           </a>
 
         </div>
@@ -871,10 +558,9 @@
 
           💬
 
-          <a
-            href="https://wa.me/962780791622"
-            target="_blank"
-            rel="noopener">
+          <a href="https://wa.me/962780791622"
+             target="_blank"
+             rel="noopener">
 
             <span>
               واتساب المركز
@@ -889,10 +575,9 @@
 
           📍
 
-          <a
-            href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
-            target="_blank"
-            rel="noopener">
+          <a href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
+             target="_blank"
+             rel="noopener">
 
             <span>
               موقع المركز على الخريطة
@@ -909,61 +594,6 @@
 
 
   </main>
-
-
-  <!-- ================= PROGRAM MODAL ================= -->
-
-  <div
-    class="program-modal"
-    id="programModal"
-    onclick="closeProgram(event)">
-
-    <div
-      class="program-modal-content"
-      onclick="event.stopPropagation()">
-
-      <button
-        class="program-modal-close"
-        onclick="closeProgram()"
-        aria-label="إغلاق">
-
-        ×
-
-      </button>
-
-
-      <div
-        class="program-modal-icon"
-        id="modalIcon">
-      </div>
-
-
-      <h2 id="modalTitle">
-      </h2>
-
-
-      <p id="modalDescription">
-      </p>
-
-
-      <h3>
-        ماذا تهتم به الشعبة؟
-      </h3>
-
-      <p id="modalFocus">
-      </p>
-
-
-      <h3>
-        متابعة الطلاب
-      </h3>
-
-      <p id="modalFollow">
-      </p>
-
-    </div>
-
-  </div>
 
 
   <!-- ================= FOOTER ================= -->
@@ -989,176 +619,12 @@
 
   <script>
 
-    /* القائمة */
     const menuButton = document.querySelector('.menu-btn');
     const nav = document.querySelector('nav');
 
-    if (menuButton && nav) {
-
-      menuButton.addEventListener('click', () => {
-        nav.classList.toggle('open');
-      });
-
-    }
-
-
-    /* بيانات الشعب */
-    const programs = {
-
-      huffaz: {
-
-        icon: '📗',
-
-        title: 'شعبة الحفاظ',
-
-        description:
-          'شعبة مخصصة للطلاب الذين يهتمون بحفظ القرآن الكريم ومراجعته بصورة منتظمة.',
-
-        focus:
-          'الحفظ والمراجعة، تثبيت المحفوظ، وتحسين مستوى الطالب في تلاوة القرآن الكريم.',
-
-        follow:
-          'متابعة مستوى الطالب في الحفظ والمراجعة بصورة مستمرة، مع معرفة مقدار التقدم في البرنامج.'
-      },
-
-
-      tajweed: {
-
-        icon: '📖',
-
-        title: 'شعبة تجويد',
-
-        description:
-          'شعبة تهتم بتعليم أحكام التجويد وتصحيح تلاوة القرآن الكريم.',
-
-        focus:
-          'أحكام التجويد، مخارج الحروف، صفات الحروف، وتصحيح الأخطاء في التلاوة.',
-
-        follow:
-          'متابعة تطور الطالب في التلاوة ومدى تطبيق أحكام التجويد أثناء القراءة.'
-      },
-
-
-      ijazah: {
-
-        icon: '🏅',
-
-        title: 'شعبة إجازة',
-
-        description:
-          'مسار متخصص للطلاب الراغبين في برنامج الإجازة في القرآن الكريم.',
-
-        focus:
-          'العناية بالتلاوة والحفظ والمراجعة وفق متطلبات مسار الإجازة.',
-
-        follow:
-          'متابعة تقدم الطالب في الحفظ والمراجعة والتلاوة ضمن متطلبات البرنامج.'
-      },
-
-
-      fursan: {
-
-        icon: '⭐',
-
-        title: 'شعبة فرسان',
-
-        description:
-          'شعبة قرآنية وتربوية موجهة للناشئة، تجمع بين تعلم القرآن والاهتمام بالجانب التربوي.',
-
-        focus:
-          'تعزيز ارتباط الناشئة بالقرآن الكريم، وتشجيعهم على التعلم والاستمرار.',
-
-        follow:
-          'متابعة مشاركة الطالب وتقدمه في الأنشطة والمهارات القرآنية والتربوية.'
-      }
-
-    };
-
-
-    /* فتح معلومات الشعبة */
-    function openProgram(programId) {
-
-      const program = programs[programId];
-
-      if (!program) {
-        return;
-      }
-
-      document.getElementById('modalIcon').textContent =
-        program.icon;
-
-      document.getElementById('modalTitle').textContent =
-        program.title;
-
-      document.getElementById('modalDescription').textContent =
-        program.description;
-
-      document.getElementById('modalFocus').textContent =
-        program.focus;
-
-      document.getElementById('modalFollow').textContent =
-        program.follow;
-
-      document.getElementById('programModal')
-        .classList.add('active');
-
-      document.body.style.overflow = 'hidden';
-
-    }
-
-
-    /* إغلاق معلومات الشعبة */
-    function closeProgram(event) {
-
-      if (
-        event &&
-        event.target !== document.getElementById('programModal')
-      ) {
-        return;
-      }
-
-      document.getElementById('programModal')
-        .classList.remove('active');
-
-      document.body.style.overflow = '';
-
-    }
-
-
-    /* زر ESC لإغلاق النافذة */
-    document.addEventListener('keydown', function(event) {
-
-      if (event.key === 'Escape') {
-
-        document.getElementById('programModal')
-          .classList.remove('active');
-
-        document.body.style.overflow = '';
-
-      }
-
+    menuButton.addEventListener('click', () => {
+      nav.classList.toggle('open');
     });
-
-
-    /* نموذج التسجيل - نسخة تجريبية */
-    const registrationForm =
-      document.getElementById('registrationForm');
-
-    if (registrationForm) {
-
-      registrationForm.addEventListener('submit', function(event) {
-
-        event.preventDefault();
-
-        alert(
-          'تم استلام طلبك في النسخة التجريبية. سيتم ربط النموذج بنظام حفظ الطلبات لاحقًا.'
-        );
-
-        registrationForm.reset();
-
-      });
-
-    }
 
   </script>
 
