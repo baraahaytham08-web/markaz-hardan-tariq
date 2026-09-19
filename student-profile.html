@@ -21,18 +21,15 @@
   <link
     rel="icon"
     type="image/png"
-    href="logo.png"
-  >
+    href="logo.png">
 
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  >
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <link
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+    rel="stylesheet">
 
 
   <style>
@@ -43,7 +40,6 @@
       padding: 0;
     }
 
-
     :root {
 
       --green: #174d3a;
@@ -52,8 +48,6 @@
 
       --gold: #b28b18;
       --gold-light: #fff8df;
-
-      --cream: #faf8f0;
 
       --white: #ffffff;
 
@@ -68,7 +62,7 @@
       --danger: #b3261e;
       --danger-light: #fff0ef;
 
-      --warning: #9a7610;
+      --warning: #94720d;
       --warning-light: #fff8df;
 
       --purple: #6552a8;
@@ -108,7 +102,8 @@
       color:
         var(--text);
 
-      min-height: 100vh;
+      min-height:
+        100vh;
 
     }
 
@@ -132,13 +127,10 @@
     }
 
 
-    /* =====================================================
-       PAGE
-    ===================================================== */
-
     .page {
 
-      width: min(1250px, 94%);
+      width:
+        min(1250px, 94%);
 
       margin:
         0 auto;
@@ -253,9 +245,6 @@
       color:
         var(--muted);
 
-      margin-top:
-        2px;
-
     }
 
 
@@ -325,7 +314,7 @@
     }
 
 
-    .edit-btn {
+    .edit-main {
 
       background:
         var(--gold-light);
@@ -516,7 +505,7 @@
 
 
     /* =====================================================
-       WEEKLY SUMMARY
+       SUMMARY
     ===================================================== */
 
     .summary-grid {
@@ -556,6 +545,23 @@
     }
 
 
+    .summary-top {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+
+    }
+
+
     .summary-title {
 
       color:
@@ -583,40 +589,6 @@
 
       line-height:
         1.7;
-
-    }
-
-
-    .summary-value {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        12px;
-
-    }
-
-
-    .big-number {
-
-      color:
-        var(--green);
-
-      font-size:
-        35px;
-
-      font-weight:
-        800;
-
-      line-height:
-        1;
 
     }
 
@@ -674,6 +646,23 @@
     }
 
 
+    .big-number {
+
+      color:
+        var(--green);
+
+      font-size:
+        35px;
+
+      font-weight:
+        800;
+
+      line-height:
+        1;
+
+    }
+
+
     .progress-wrap {
 
       margin-top:
@@ -714,6 +703,9 @@
           #55a862
         );
 
+      transition:
+        width .3s ease;
+
     }
 
 
@@ -721,9 +713,6 @@
 
       display:
         flex;
-
-      align-items:
-        center;
 
       justify-content:
         space-between;
@@ -741,7 +730,7 @@
 
 
     /* =====================================================
-       SECTION HEADER
+       SECTION
     ===================================================== */
 
     .section-head {
@@ -862,10 +851,10 @@
 
 
     /* =====================================================
-       MAIN CARD
+       CARD
     ===================================================== */
 
-    .main-card {
+    .card {
 
       background:
         white;
@@ -941,6 +930,33 @@
 
       overflow:
         hidden;
+
+    }
+
+
+    .student-photo img {
+
+      width:
+        110px;
+
+      height:
+        110px;
+
+      object-fit:
+        cover;
+
+      border-radius:
+        50%;
+
+      margin-bottom:
+        12px;
+
+      border:
+        5px solid white;
+
+      box-shadow:
+        0 12px 30px
+        rgba(23,77,58,.12);
 
     }
 
@@ -1090,12 +1106,6 @@
     }
 
 
-    .detail-value.gold {
-      color:
-        var(--gold);
-    }
-
-
     .whatsapp {
 
       display:
@@ -1194,10 +1204,6 @@
     }
 
 
-    /* =====================================================
-       NOTES
-    ===================================================== */
-
     .notes {
 
       margin:
@@ -1256,6 +1262,9 @@
       line-height:
         1.9;
 
+      white-space:
+        pre-line;
+
     }
 
 
@@ -1297,6 +1306,9 @@
       text-align:
         center;
 
+      position:
+        relative;
+
     }
 
 
@@ -1328,12 +1340,6 @@
       gap:
         5px;
 
-      color:
-        var(--success);
-
-      background:
-        var(--success-light);
-
       padding:
         5px 8px;
 
@@ -1345,6 +1351,39 @@
 
       font-weight:
         800;
+
+    }
+
+
+    .present {
+
+      color:
+        var(--success);
+
+      background:
+        var(--success-light);
+
+    }
+
+
+    .absent {
+
+      color:
+        var(--danger);
+
+      background:
+        var(--danger-light);
+
+    }
+
+
+    .late {
+
+      color:
+        var(--warning);
+
+      background:
+        var(--warning-light);
 
     }
 
@@ -1364,13 +1403,30 @@
         50%;
 
       background:
-        var(--success);
+        currentColor;
+
+    }
+
+
+    .empty-small {
+
+      padding:
+        25px;
+
+      text-align:
+        center;
+
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
 
     }
 
 
     /* =====================================================
-       WEEKLY PLAN
+       PLAN
     ===================================================== */
 
     .plan-summary {
@@ -1438,55 +1494,16 @@
     }
 
 
-    .plan-sub {
-
-      color:
-        var(--muted);
-
-      font-size:
-        10px;
-
-      margin-top:
-        4px;
-
-    }
-
-
-    .percent-card {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        space-between;
-
-      gap:
-        12px;
-
-    }
-
-
     .percent-number {
-
-      font-size:
-        30px;
-
-      font-weight:
-        800;
 
       color:
         var(--green);
 
-    }
+      font-size:
+        28px;
 
-
-    .mini-progress {
-
-      flex:
-        1;
+      font-weight:
+        800;
 
     }
 
@@ -1494,13 +1511,7 @@
     .evaluation {
 
       display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        9px;
+        inline-flex;
 
       color:
         #8d6e11;
@@ -1520,8 +1531,22 @@
       font-weight:
         800;
 
-      width:
-        fit-content;
+    }
+
+
+    .plan-sub {
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      margin-top:
+        4px;
+
+      line-height:
+        1.8;
 
     }
 
@@ -1568,10 +1593,6 @@
 
     }
 
-
-    /* =====================================================
-       TEST
-    ===================================================== */
 
     .next-test {
 
@@ -1650,10 +1671,6 @@
     }
 
 
-    /* =====================================================
-       TABLE
-    ===================================================== */
-
     .table-scroll {
 
       overflow-x:
@@ -1662,7 +1679,7 @@
     }
 
 
-    .plan-table {
+    .data-table {
 
       width:
         100%;
@@ -1671,12 +1688,12 @@
         collapse;
 
       min-width:
-        900px;
+        850px;
 
     }
 
 
-    .plan-table th {
+    .data-table th {
 
       background:
         #fafcfb;
@@ -1696,13 +1713,10 @@
       border-bottom:
         1px solid var(--border);
 
-      white-space:
-        nowrap;
-
     }
 
 
-    .plan-table td {
+    .data-table td {
 
       padding:
         13px 14px;
@@ -1719,13 +1733,8 @@
     }
 
 
-    .plan-table tr:last-child td {
-      border-bottom:
-        none;
-    }
-
-
     .date-cell {
+
       color:
         var(--green);
 
@@ -1735,13 +1744,11 @@
       direction:
         ltr;
 
-      text-align:
-        right;
-
     }
 
 
     .juz {
+
       color:
         var(--gold);
 
@@ -1778,70 +1785,17 @@
 
 
     /* =====================================================
-       EXAMS
+       TESTS
     ===================================================== */
 
-    .exam-card {
+    .test-empty {
 
       padding:
-        20px;
-
-    }
-
-
-    .exam-table {
-
-      width:
-        100%;
-
-      border-collapse:
-        collapse;
-
-    }
-
-
-    .exam-table th {
-
-      background:
-        #fafcfb;
-
-      padding:
-        12px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        10px;
-
-      text-align:
-        right;
-
-    }
-
-
-    .exam-table td {
-
-      padding:
-        14px 12px;
-
-      border-bottom:
-        1px solid var(--border);
-
-      font-size:
-        11px;
-
-    }
-
-
-    .no-exams {
+        25px;
 
       text-align:
         center;
 
-      padding:
-        22px;
-
       color:
         var(--muted);
 
@@ -1850,10 +1804,6 @@
 
     }
 
-
-    /* =====================================================
-       SCORE SYSTEM
-    ===================================================== */
 
     .score-system {
 
@@ -1969,8 +1919,602 @@
 
 
     /* =====================================================
-       TOAST
+       MODAL
     ===================================================== */
+
+    .modal {
+
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      background:
+        rgba(16,59,44,.70);
+
+      backdrop-filter:
+        blur(5px);
+
+      display:
+        none;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        15px;
+
+      z-index:
+        100;
+
+    }
+
+
+    .modal.show {
+
+      display:
+        flex;
+
+    }
+
+
+    .modal-box {
+
+      width:
+        min(850px,100%);
+
+      max-height:
+        92vh;
+
+      overflow-y:
+        auto;
+
+      background:
+        white;
+
+      border-radius:
+        20px;
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.22);
+
+    }
+
+
+    .modal-head {
+
+      padding:
+        20px 22px;
+
+      border-bottom:
+        1px solid var(--border);
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+
+      position:
+        sticky;
+
+      top:
+        0;
+
+      background:
+        rgba(255,255,255,.96);
+
+      backdrop-filter:
+        blur(10px);
+
+      z-index:
+        2;
+
+    }
+
+
+    .modal-head h3 {
+
+      color:
+        var(--green);
+
+      font-size:
+        18px;
+
+    }
+
+
+    .modal-head p {
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      margin-top:
+        3px;
+
+    }
+
+
+    .close-modal {
+
+      width:
+        35px;
+
+      height:
+        35px;
+
+      border:
+        none;
+
+      border-radius:
+        9px;
+
+      background:
+        #f4f5f4;
+
+      color:
+        #68736e;
+
+      font-size:
+        18px;
+
+    }
+
+
+    .modal-body {
+
+      padding:
+        22px;
+
+    }
+
+
+    .form-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(2,1fr);
+
+      gap:
+        13px;
+
+    }
+
+
+    .form-group {
+
+      margin-bottom:
+        2px;
+
+    }
+
+
+    .form-group.full {
+
+      grid-column:
+        1 / -1;
+
+    }
+
+
+    .form-group label {
+
+      display:
+        block;
+
+      color:
+        var(--green);
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+
+      margin-bottom:
+        6px;
+
+    }
+
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+
+      width:
+        100%;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        10px;
+
+      outline:
+        none;
+
+      background:
+        #fcfdfc;
+
+      color:
+        var(--text);
+
+      font-size:
+        11px;
+
+      padding:
+        10px 12px;
+
+      transition:
+        .2s;
+
+    }
+
+
+    .form-group input,
+    .form-group select {
+
+      height:
+        44px;
+
+    }
+
+
+    .form-group textarea {
+
+      min-height:
+        100px;
+
+      resize:
+        vertical;
+
+      line-height:
+        1.8;
+
+    }
+
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+
+      border-color:
+        var(--gold);
+
+      background:
+        white;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(178,139,24,.08);
+
+    }
+
+
+    .modal-actions {
+
+      display:
+        flex;
+
+      gap:
+        9px;
+
+      margin-top:
+        20px;
+
+    }
+
+
+    .save-modal {
+
+      flex:
+        1;
+
+      height:
+        45px;
+
+      border:
+        none;
+
+      border-radius:
+        10px;
+
+      background:
+        var(--green);
+
+      color:
+        white;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .cancel-modal {
+
+      flex:
+        1;
+
+      height:
+        45px;
+
+      border:
+        none;
+
+      border-radius:
+        10px;
+
+      background:
+        #f0f2f1;
+
+      color:
+        #49534f;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .form-message {
+
+      min-height:
+        18px;
+
+      text-align:
+        center;
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+
+      margin-top:
+        10px;
+
+    }
+
+
+    /* LIST INSIDE MODALS */
+
+    .modal-list {
+
+      margin-top:
+        20px;
+
+      border-top:
+        1px solid var(--border);
+
+      padding-top:
+        18px;
+
+    }
+
+
+    .modal-list-title {
+
+      color:
+        var(--green);
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+      margin-bottom:
+        10px;
+
+    }
+
+
+    .list-row {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr auto;
+
+      gap:
+        10px;
+
+      align-items:
+        center;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        12px;
+
+      padding:
+        11px;
+
+      margin-bottom:
+        8px;
+
+      background:
+        #fcfdfc;
+
+    }
+
+
+    .list-row-main {
+
+      min-width:
+        0;
+
+    }
+
+
+    .list-row-title {
+
+      color:
+        var(--green);
+
+      font-size:
+        11px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .list-row-sub {
+
+      color:
+        var(--muted);
+
+      font-size:
+        9px;
+
+      margin-top:
+        3px;
+
+      line-height:
+        1.8;
+
+    }
+
+
+    .mini-actions {
+
+      display:
+        flex;
+
+      gap:
+        6px;
+
+    }
+
+
+    .mini-btn {
+
+      width:
+        33px;
+
+      height:
+        33px;
+
+      border:
+        none;
+
+      border-radius:
+        8px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+    }
+
+
+    .mini-edit {
+
+      background:
+        var(--gold-light);
+
+      color:
+        var(--gold);
+
+    }
+
+
+    .mini-delete {
+
+      background:
+        var(--danger-light);
+
+      color:
+        var(--danger);
+
+    }
+
+
+    /* =====================================================
+       LOADING / ERROR
+    ===================================================== */
+
+    .loading {
+
+      text-align:
+        center;
+
+      padding:
+        90px 20px;
+
+      color:
+        var(--muted);
+
+    }
+
+
+    .loading i {
+
+      display:
+        block;
+
+      font-size:
+        34px;
+
+      color:
+        var(--green);
+
+      margin-bottom:
+        10px;
+
+    }
+
+
+    .error {
+
+      display:
+        none;
+
+      background:
+        var(--danger-light);
+
+      border:
+        1px solid #f2c8c4;
+
+      color:
+        var(--danger);
+
+      border-radius:
+        15px;
+
+      padding:
+        20px;
+
+      text-align:
+        center;
+
+      font-size:
+        12px;
+
+    }
+
 
     .toast {
 
@@ -2030,71 +2574,6 @@
 
     }
 
-
-    /* =====================================================
-       LOADING / ERROR
-    ===================================================== */
-
-    .loading {
-
-      text-align:
-        center;
-
-      padding:
-        80px 20px;
-
-      color:
-        var(--muted);
-
-    }
-
-
-    .loading i {
-
-      font-size:
-        32px;
-
-      color:
-        var(--green);
-
-      margin-bottom:
-        10px;
-
-    }
-
-
-    .error {
-
-      display:
-        none;
-
-      background:
-        var(--danger-light);
-
-      border:
-        1px solid #f2c8c4;
-
-      color:
-        var(--danger);
-
-      padding:
-        20px;
-
-      border-radius:
-        15px;
-
-      text-align:
-        center;
-
-      font-size:
-        12px;
-
-    }
-
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
 
     footer {
 
@@ -2179,9 +2658,6 @@
         position:
           static;
 
-        border-radius:
-          16px;
-
         padding:
           10px 12px;
 
@@ -2242,11 +2718,11 @@
 
       .hero {
 
-        padding:
-          24px 20px;
-
         border-radius:
           20px;
+
+        padding:
+          24px 20px;
 
       }
 
@@ -2255,14 +2731,6 @@
 
         font-size:
           27px;
-
-      }
-
-
-      .hero-section {
-
-        font-size:
-          12px;
 
       }
 
@@ -2301,11 +2769,11 @@
 
       .section-action {
 
-        padding:
-          8px 10px;
-
         font-size:
           10px;
+
+        padding:
+          8px 10px;
 
       }
 
@@ -2337,7 +2805,7 @@
       .attendance-grid {
 
         grid-template-columns:
-          repeat(2, 1fr);
+          repeat(2,1fr);
 
         padding:
           15px;
@@ -2345,10 +2813,18 @@
       }
 
 
-      .attendance-item:last-child {
+      .form-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .form-group.full {
 
         grid-column:
-          span 2;
+          auto;
 
       }
 
@@ -2360,31 +2836,15 @@
 
       }
 
-
-      .exam-card {
-
-        padding:
-          15px;
-
-      }
-
     }
 
 
-    @media (max-width: 390px) {
+    @media (max-width:390px) {
 
       .attendance-grid {
 
         grid-template-columns:
           1fr;
-
-      }
-
-
-      .attendance-item:last-child {
-
-        grid-column:
-          auto;
 
       }
 
@@ -2417,9 +2877,9 @@
   <div class="page">
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          TOPBAR
-    ====================================================== -->
+    ==================================================== -->
 
     <header class="topbar">
 
@@ -2427,8 +2887,7 @@
 
         <img
           src="logo.png"
-          alt="شعار المركز"
-        >
+          alt="شعار المركز">
 
         <div>
 
@@ -2437,7 +2896,7 @@
           </h1>
 
           <p>
-            الملف الشخصي للطالب
+            ملف الطالب
           </p>
 
         </div>
@@ -2449,8 +2908,7 @@
 
         <a
           href="teacher-dashboard.html"
-          class="top-btn back-btn"
-        >
+          class="top-btn back-btn">
 
           <i class="fa-solid fa-arrow-right"></i>
 
@@ -2462,15 +2920,14 @@
 
 
         <button
-          class="top-btn edit-btn"
+          class="top-btn edit-main"
           type="button"
-          onclick="openEditModal()"
-        >
+          onclick="openProfileModal()">
 
           <i class="fa-solid fa-pen"></i>
 
           <span>
-            تعديل البيانات
+            تعديل الملف
           </span>
 
         </button>
@@ -2480,14 +2937,13 @@
     </header>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          LOADING
-    ====================================================== -->
+    ==================================================== -->
 
     <div
       id="loading"
-      class="loading"
-    >
+      class="loading">
 
       <i class="fa-solid fa-spinner fa-spin"></i>
 
@@ -2498,29 +2954,26 @@
     </div>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          ERROR
-    ====================================================== -->
+    ==================================================== -->
 
     <div
       id="errorBox"
-      class="error"
-    ></div>
+      class="error">
+    </div>
 
 
-    <!-- =====================================================
+    <!-- ===================================================
          PROFILE
-    ====================================================== -->
+    ==================================================== -->
 
     <main
       id="profile"
-      style="display:none;"
-    >
+      style="display:none;">
 
 
-      <!-- =====================================================
-           HERO
-      ====================================================== -->
+      <!-- HERO -->
 
       <section class="hero">
 
@@ -2537,9 +2990,7 @@
 
           <h2
             id="heroName"
-            class="hero-name"
-          >
-            آدم ايوب أحمد السروجي
+            class="hero-name">
           </h2>
 
 
@@ -2548,7 +2999,6 @@
             <i class="fa-solid fa-people-group"></i>
 
             <span id="heroSection">
-              شعبة الصحابي زيد بن ثابت
             </span>
 
           </div>
@@ -2558,16 +3008,14 @@
       </section>
 
 
-      <!-- =====================================================
-           WEEKLY SUMMARY
-      ====================================================== -->
+      <!-- SUMMARY -->
 
       <section class="summary-grid">
 
 
         <div class="summary-card">
 
-          <div class="summary-value">
+          <div class="summary-top">
 
             <div>
 
@@ -2577,13 +3025,10 @@
 
               <div
                 class="summary-main"
-                id="weeklyGoal"
-              >
-                حفظ 2 صفحة / مراجعة 2 صفحة
+                id="weeklyGoal">
               </div>
 
             </div>
-
 
             <div class="summary-icon">
 
@@ -2602,13 +3047,11 @@
             النقاط الكلية
           </div>
 
-          <div class="summary-value">
+          <div class="summary-top">
 
             <div
               class="big-number"
-              id="totalPoints"
-            >
-              78
+              id="totalPoints">
             </div>
 
             <div class="summary-icon">
@@ -2628,13 +3071,11 @@
             إنجاز الأسبوع الحالي
           </div>
 
-          <div class="summary-value">
+          <div class="summary-top">
 
             <div
               class="big-number"
-              id="weeklyProgress"
-            >
-              83%
+              id="weeklyProgress">
             </div>
 
             <div class="summary-icon">
@@ -2651,9 +3092,9 @@
             <div class="progress-line">
 
               <div
-                class="progress-fill"
-                style="width:83%;"
-              ></div>
+                id="weeklyProgressBar"
+                class="progress-fill">
+              </div>
 
             </div>
 
@@ -2664,8 +3105,7 @@
                 الإنجاز
               </span>
 
-              <span>
-                83%
+              <span id="weeklyProgressSmall">
               </span>
 
             </div>
@@ -2678,18 +3118,14 @@
       </section>
 
 
-      <!-- =====================================================
-           STUDENT CARD
-      ====================================================== -->
+      <!-- STUDENT CARD -->
 
       <div class="section-head">
 
         <div class="section-heading">
 
           <div class="section-icon">
-
             <i class="fa-solid fa-id-card"></i>
-
           </div>
 
           <div>
@@ -2710,8 +3146,7 @@
         <button
           class="section-action"
           type="button"
-          onclick="openEditModal()"
-        >
+          onclick="openProfileModal()">
 
           <i class="fa-solid fa-pen"></i>
 
@@ -2722,35 +3157,28 @@
       </div>
 
 
-      <section class="main-card">
+      <section class="card">
 
 
         <div class="student-info">
 
 
-          <!-- PHOTO -->
-
           <div class="student-photo">
 
-            <div
-              class="student-avatar-large"
-              id="studentAvatar"
-            >
-              آ
+            <div id="photoContainer">
             </div>
 
             <div class="photo-label">
               صورة الطالب الشخصية
             </div>
 
-            <div class="photo-note">
-              لم يتم رفع صورة بعد
+            <div
+              id="photoNote"
+              class="photo-note">
             </div>
 
           </div>
 
-
-          <!-- DETAILS -->
 
           <div class="info-details">
 
@@ -2762,10 +3190,8 @@
               </div>
 
               <div
-                class="detail-value green"
                 id="infoName"
-              >
-                آدم ايوب أحمد السروجي
+                class="detail-value green">
               </div>
 
             </div>
@@ -2778,10 +3204,8 @@
               </div>
 
               <div
-                class="detail-value"
                 id="infoSection"
-              >
-                شعبة الصحابي زيد بن ثابت
+                class="detail-value">
               </div>
 
             </div>
@@ -2796,7 +3220,6 @@
               <div class="detail-value">
 
                 <span id="guardianPhone">
-                  781742511
                 </span>
 
                 <br>
@@ -2804,10 +3227,9 @@
                 <a
                   id="whatsappLink"
                   class="whatsapp"
-                  href="https://wa.me/962781742511"
+                  href="#"
                   target="_blank"
-                  rel="noopener"
-                >
+                  rel="noopener">
 
                   <i class="fa-brands fa-whatsapp"></i>
 
@@ -2826,8 +3248,9 @@
                 تاريخ الانضمام للحلقة
               </div>
 
-              <div class="detail-value">
-                ٤ يوليو ٢٠٢٦
+              <div
+                id="joinDate"
+                class="detail-value">
               </div>
 
             </div>
@@ -2839,8 +3262,9 @@
                 أجزاء القرآن المنجزة
               </div>
 
-              <div class="detail-value green">
-                0 أجزاء من القرآن الكريم
+              <div
+                id="completedJuz"
+                class="detail-value green">
               </div>
 
             </div>
@@ -2852,8 +3276,9 @@
                 منطقة السكن
               </div>
 
-              <div class="detail-value">
-                عوجان
+              <div
+                id="residence"
+                class="detail-value">
               </div>
 
             </div>
@@ -2862,11 +3287,12 @@
             <div class="detail-box">
 
               <div class="detail-label">
-                حافلة الطالب (خط الباص)
+                حافلة الطالب
               </div>
 
-              <div class="detail-value">
-                لم يتم التعيين لحافلة بعد
+              <div
+                id="bus"
+                class="detail-value">
               </div>
 
             </div>
@@ -2878,8 +3304,9 @@
                 موقع بيت الطالب
               </div>
 
-              <div class="detail-value">
-                غير محدد
+              <div
+                id="homeLocation"
+                class="detail-value">
               </div>
 
             </div>
@@ -2894,25 +3321,35 @@
               <div class="code-box">
 
                 <span
-                  class="student-code"
                   id="studentCode"
-                >
-                  26001
+                  class="student-code">
                 </span>
 
-
                 <button
-                  class="copy-btn"
                   type="button"
-                  onclick="copyCode()"
-                >
+                  class="copy-btn"
+                  onclick="copyCode()">
 
                   <i class="fa-solid fa-copy"></i>
 
-                  نسخ الرمز
+                  نسخ
 
                 </button>
 
+              </div>
+
+            </div>
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                حالة الطالب
+              </div>
+
+              <div
+                id="studentStatus"
+                class="detail-value">
               </div>
 
             </div>
@@ -2922,8 +3359,6 @@
 
         </div>
 
-
-        <!-- NOTES -->
 
         <div class="notes">
 
@@ -2935,8 +3370,7 @@
 
           </div>
 
-          <p>
-            لا يوجد ملاحظات عامة مسجلة للطالب في الوقت الحالي.
+          <p id="generalNotes">
           </p>
 
         </div>
@@ -2945,9 +3379,7 @@
       </section>
 
 
-      <!-- =====================================================
-           AI ASSISTANT
-      ====================================================== -->
+      <!-- AI -->
 
       <div class="section-head">
 
@@ -2966,7 +3398,7 @@
             </h2>
 
             <p>
-              مساحة مستقبلية لمساعدة المعلم في تحليل المتابعة
+              مساحة مستقبلية لمساعدة المعلم في تحليل أداء الطالب
             </p>
 
           </div>
@@ -2976,15 +3408,14 @@
       </div>
 
 
-      <section class="main-card">
+      <section class="card">
 
         <div
           style="
             padding:25px;
             text-align:center;
             color:#74808a;
-          "
-        >
+          ">
 
           <div
             style="
@@ -2997,8 +3428,7 @@
               background:#f1edff;
               color:#6552a8;
               font-size:25px;
-            "
-          >
+            ">
 
             <i class="fa-solid fa-robot"></i>
 
@@ -3010,18 +3440,16 @@
               color:#174d3a;
               margin-bottom:5px;
               font-size:14px;
-            "
-          >
+            ">
+
             المساعد الذكي
+
           </strong>
 
-          <span
-            style="
-              font-size:11px;
-            "
-          >
-            هذه المساحة جاهزة لربطها لاحقًا بتحليلات أداء الطالب
-            واقتراحات المتابعة.
+          <span style="font-size:11px;">
+
+            هذه المساحة جاهزة للربط لاحقًا بالتحليلات والاقتراحات.
+
           </span>
 
         </div>
@@ -3029,9 +3457,7 @@
       </section>
 
 
-      <!-- =====================================================
-           ATTENDANCE
-      ====================================================== -->
+      <!-- ATTENDANCE -->
 
       <div class="section-head">
 
@@ -3046,7 +3472,7 @@
           <div>
 
             <h2>
-              سجل الحضور الأخير (أيام الجمعة)
+              سجل الحضور الأخير
             </h2>
 
             <p>
@@ -3057,87 +3483,32 @@
 
         </div>
 
+
+        <button
+          class="section-action"
+          type="button"
+          onclick="openAttendanceModal()">
+
+          <i class="fa-solid fa-pen"></i>
+
+          تعديل الحضور
+
+        </button>
+
       </div>
 
 
-      <section class="main-card">
+      <section class="card">
 
-        <div class="attendance-grid">
-
-
-          <div class="attendance-item">
-
-            <div class="attendance-date">
-              08-14
-            </div>
-
-            <span class="attendance-status">
-              حاضر
-            </span>
-
-          </div>
-
-
-          <div class="attendance-item">
-
-            <div class="attendance-date">
-              08-21
-            </div>
-
-            <span class="attendance-status">
-              حاضر
-            </span>
-
-          </div>
-
-
-          <div class="attendance-item">
-
-            <div class="attendance-date">
-              08-28
-            </div>
-
-            <span class="attendance-status">
-              حاضر
-            </span>
-
-          </div>
-
-
-          <div class="attendance-item">
-
-            <div class="attendance-date">
-              09-11
-            </div>
-
-            <span class="attendance-status">
-              حاضر
-            </span>
-
-          </div>
-
-
-          <div class="attendance-item">
-
-            <div class="attendance-date">
-              09-18
-            </div>
-
-            <span class="attendance-status">
-              حاضر
-            </span>
-
-          </div>
-
-
+        <div
+          id="attendanceGrid"
+          class="attendance-grid">
         </div>
 
       </section>
 
 
-      <!-- =====================================================
-           WEEKLY PLAN
-      ====================================================== -->
+      <!-- WEEKLY PLAN -->
 
       <div class="section-head">
 
@@ -3167,7 +3538,7 @@
         <button
           class="section-action"
           type="button"
-        >
+          onclick="openSummaryModal()">
 
           <i class="fa-solid fa-pen"></i>
 
@@ -3178,10 +3549,8 @@
       </div>
 
 
-      <section class="main-card">
+      <section class="card">
 
-
-        <!-- PLAN SUMMARY -->
 
         <div class="plan-summary">
 
@@ -3192,42 +3561,24 @@
               📖 نسبة إنجاز الحفظ
             </div>
 
-            <div class="percent-card">
+            <div class="percent-number">
+              <span id="hifzPercent">
+              </span>%
+            </div>
 
-              <div>
+            <div
+              id="hifzSub"
+              class="plan-sub">
+            </div>
+
+
+            <div class="progress-wrap">
+
+              <div class="progress-line">
 
                 <div
-                  class="percent-number"
-                  style="font-size:28px;"
-                >
-                  100%
-                </div>
-
-                <div class="plan-sub">
-                  بطل 🚀
-                </div>
-
-              </div>
-
-              <div
-                class="mini-progress"
-              >
-
-                <div class="progress-line">
-
-                  <div
-                    class="progress-fill"
-                    style="width:100%;"
-                  ></div>
-
-                </div>
-
-                <div class="progress-info">
-
-                  <span>
-                    تم إنجاز 2 صفحة من 2
-                  </span>
-
+                  id="hifzBar"
+                  class="progress-fill">
                 </div>
 
               </div>
@@ -3243,29 +3594,26 @@
               🔄 نسبة إنجاز المراجعة
             </div>
 
-            <div
-              class="percent-number"
-              style="font-size:28px;"
-            >
-              0%
+            <div class="percent-number">
+              <span id="reviewPercent">
+              </span>%
             </div>
 
-            <div class="plan-sub">
-              تم إنجاز 0 صفحة (0.0 صفحة) من 2
+            <div
+              id="reviewSub"
+              class="plan-sub">
             </div>
 
 
-            <div
-              class="progress-wrap"
-              style="margin-top:9px;"
-            >
+            <div class="progress-wrap">
 
               <div class="progress-line">
 
                 <div
+                  id="reviewBar"
                   class="progress-fill"
-                  style="width:0%;"
-                ></div>
+                  style="width:0%">
+                </div>
 
               </div>
 
@@ -3280,15 +3628,15 @@
               👑 التقييم العام والمتابعة
             </div>
 
-            <div class="evaluation">
-              ⚠️ ملتزم جزئيًا
+            <div
+              id="evaluation"
+              class="evaluation">
             </div>
 
             <div
+              id="evaluationNote"
               class="plan-sub"
-              style="margin-top:12px;"
-            >
-              يحتاج إلى المحافظة على ورد المراجعة الأسبوعي.
+              style="margin-top:10px;">
             </div>
 
           </div>
@@ -3297,8 +3645,6 @@
         </div>
 
 
-        <!-- EQUIVALENT -->
-
         <div
           style="
             padding:16px 20px;
@@ -3306,12 +3652,13 @@
             font-size:10px;
             border-bottom:1px solid var(--border);
             line-height:1.9;
-          "
-        >
+          ">
 
           مجموع صفحات التسميع المعادلة هذا الأسبوع:
-          <strong style="color:#174d3a;">
-            2.0 صفحة من 2.4 مطلوبة
+
+          <strong
+            id="equivalentText"
+            style="color:#174d3a;">
           </strong>
 
           <br>
@@ -3321,46 +3668,44 @@
         </div>
 
 
-        <!-- REQUIREMENT -->
-
         <div class="requirement">
 
           <div class="requirement-label">
             الورد الأسبوعي المطلوب حاليًا
           </div>
 
-          <div class="requirement-value">
-            📖 حفظ 2 صفحة / مراجعة 2 صفحة
+          <div
+            id="requirementValue"
+            class="requirement-value">
           </div>
 
         </div>
 
-
-        <!-- NEXT EXAM -->
 
         <div class="next-test">
 
           <div>
 
-            <div class="test-title">
-              🎯 جزء عم
+            <div
+              id="nextExamPart"
+              class="test-title">
             </div>
 
-            <div class="test-meta">
-              📅 موعد الاختبار: 2026-10-09
+            <div
+              id="nextExamDate"
+              class="test-meta">
             </div>
 
           </div>
 
 
-          <span class="scheduled">
-            مجدول
+          <span
+            id="nextExamStatus"
+            class="scheduled">
           </span>
 
         </div>
 
-
-        <!-- TABLE TITLE -->
 
         <div
           style="
@@ -3368,19 +3713,16 @@
             color:#174d3a;
             font-size:13px;
             font-weight:800;
-          "
-        >
+          ">
 
           📌 مخطط وجدول الحفظ والمراجعة الأسبوعي الحالي
 
         </div>
 
 
-        <!-- TABLE -->
-
         <div class="table-scroll">
 
-          <table class="plan-table">
+          <table class="data-table">
 
             <thead>
 
@@ -3410,400 +3752,19 @@
 
             </thead>
 
-
-            <tbody>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-09-18
-                </td>
-
-                <td class="juz">
-                  عم
-                </td>
-
-                <td>
-                  595-596
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-09-25
-                </td>
-
-                <td class="juz">
-                  عم
-                </td>
-
-                <td>
-                  597-598
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-10-02
-                </td>
-
-                <td class="juz">
-                  عم
-                </td>
-
-                <td>
-                  599-604
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-10-09
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  562-563
-                </td>
-
-                <td>
-                  اختبار ب جزء عم
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-10-16
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  564-565
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-10-23
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  566-567
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-10-30
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  568-569
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-11-06
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  570-571
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-11-13
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  572-573
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-11-20
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  574-575
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-11-27
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  576-577
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-12-04
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  578-579
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-12-11
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  580-581
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
-              <tr>
-
-                <td class="date-cell">
-                  2026-12-18
-                </td>
-
-                <td class="juz">
-                  تبارك
-                </td>
-
-                <td>
-                  لا يوجد
-                </td>
-
-                <td>
-                  اختبار جزء تبارك
-                </td>
-
-                <td>
-                  <span class="pending">
-                    قيد الانتظار
-                  </span>
-                </td>
-
-              </tr>
-
-
+            <tbody
+              id="planTable">
             </tbody>
 
           </table>
 
         </div>
 
+
       </section>
 
 
-      <!-- =====================================================
-           EXAM RECORD
-      ====================================================== -->
+      <!-- TESTS -->
 
       <div class="section-head">
 
@@ -3833,25 +3794,23 @@
         <button
           class="section-action"
           type="button"
-          onclick="showFutureMessage()"
-        >
+          onclick="openExamsModal()">
 
-          <i class="fa-solid fa-plus"></i>
+          <i class="fa-solid fa-pen"></i>
 
-          إضافة اختبار
+          إدارة الاختبارات
 
         </button>
 
       </div>
 
 
-      <section class="main-card">
+      <section class="card">
 
 
-        <div class="exam-card">
+        <div class="table-scroll">
 
-
-          <table class="exam-table">
+          <table class="data-table">
 
             <thead>
 
@@ -3882,31 +3841,13 @@
             </thead>
 
 
-            <tbody>
-
-              <tr>
-
-                <td colspan="5">
-
-                  <div class="no-exams">
-
-                    لا توجد اختبارات مسجلة لهذا الطالب.
-
-                  </div>
-
-                </td>
-
-              </tr>
-
+            <tbody id="examsTable">
             </tbody>
 
           </table>
 
-
         </div>
 
-
-        <!-- SCORE SYSTEM -->
 
         <div class="score-system">
 
@@ -3978,81 +3919,35 @@
 
     </footer>
 
-
   </div>
 
-
-  <!-- =====================================================
-       TOAST
-  ====================================================== -->
 
   <div
     id="toast"
-    class="toast"
-  >
-    تم نسخ الرمز بنجاح
+    class="toast">
   </div>
 
 
   <!-- =====================================================
-       EDIT MODAL
+       PROFILE MODAL
   ====================================================== -->
 
   <div
-    id="editModal"
-    style="
-      position:fixed;
-      inset:0;
-      background:rgba(16,59,44,.68);
-      backdrop-filter:blur(5px);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-      z-index:100;
-    "
-  >
+    id="profileModal"
+    class="modal">
 
-    <div
-      style="
-        width:min(520px,100%);
-        background:#fff;
-        border-radius:20px;
-        box-shadow:0 25px 70px rgba(0,0,0,.22);
-        overflow:hidden;
-      "
-    >
+    <div class="modal-box">
 
-
-      <div
-        style="
-          padding:20px 22px;
-          display:flex;
-          align-items:center;
-          justify-content:space-between;
-          border-bottom:1px solid var(--border);
-        "
-      >
+      <div class="modal-head">
 
         <div>
 
-          <h2
-            style="
-              color:var(--green);
-              font-size:18px;
-            "
-          >
-            تعديل بيانات الطالب
-          </h2>
+          <h3>
+            تعديل ملف الطالب
+          </h3>
 
-          <p
-            style="
-              color:var(--muted);
-              font-size:10px;
-              margin-top:4px;
-            "
-          >
-            تعديل البيانات الموجودة حاليًا في النظام
+          <p>
+            جميع البيانات الأساسية والمعلومات الإضافية
           </p>
 
         </div>
@@ -4060,17 +3955,8 @@
 
         <button
           type="button"
-          onclick="closeEditModal()"
-          style="
-            width:35px;
-            height:35px;
-            border:none;
-            border-radius:9px;
-            background:#f4f5f4;
-            color:#68736e;
-            font-size:18px;
-          "
-        >
+          class="close-modal"
+          onclick="closeModal('profileModal')">
 
           ×
 
@@ -4080,216 +3966,223 @@
 
 
       <form
-        id="editForm"
-        style="
-          padding:22px;
-        "
-      >
+        id="profileForm"
+        class="modal-body">
 
 
-        <div
-          style="
-            margin-bottom:15px;
-          "
-        >
+        <div class="form-grid">
 
-          <label
-            style="
-              display:block;
-              color:var(--green);
-              font-size:11px;
-              font-weight:800;
-              margin-bottom:6px;
-            "
-          >
-            اسم الطالب
-          </label>
 
-          <input
-            type="text"
-            id="editName"
-            required
-            style="
-              width:100%;
-              height:44px;
-              border:1px solid var(--border);
-              border-radius:10px;
-              padding:0 12px;
-              outline:none;
-              font-size:12px;
-            "
-          >
+          <div class="form-group">
+
+            <label>
+              اسم الطالب
+            </label>
+
+            <input
+              id="editName"
+              required
+              type="text">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              الشعبة / الحلقة
+            </label>
+
+            <input
+              id="editSection"
+              required
+              type="text">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              مستوى الحفظ
+            </label>
+
+            <input
+              id="editMemorization"
+              type="text">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              الحالة
+            </label>
+
+            <select id="editStatus">
+
+              <option value="active">
+                مستمر
+              </option>
+
+              <option value="inactive">
+                متوقف
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              رقم جوال ولي الأمر
+            </label>
+
+            <input
+              id="editGuardianPhone"
+              type="text"
+              placeholder="مثال: 0781742511">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              تاريخ الانضمام
+            </label>
+
+            <input
+              id="editJoinDate"
+              type="date">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              أجزاء القرآن المنجزة
+            </label>
+
+            <input
+              id="editCompletedJuz"
+              type="number"
+              min="0"
+              step="0.1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              منطقة السكن
+            </label>
+
+            <input
+              id="editResidence"
+              type="text">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              حافلة الطالب
+            </label>
+
+            <input
+              id="editBus"
+              type="text">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              موقع بيت الطالب
+            </label>
+
+            <input
+              id="editHomeLocation"
+              type="text"
+              placeholder="مثال: 32.0345, 36.0871">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              الرمز الخاص بدخول الطالب
+            </label>
+
+            <input
+              id="editLoginCode"
+              type="text">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              رابط صورة الطالب
+            </label>
+
+            <input
+              id="editPhotoUrl"
+              type="url"
+              placeholder="https://...">
+
+          </div>
+
+
+          <div class="form-group full">
+
+            <label>
+              ملاحظات عامة وتوجيهات ولي الأمر
+            </label>
+
+            <textarea
+              id="editNotes"
+              placeholder="اكتب الملاحظات هنا..."></textarea>
+
+          </div>
+
 
         </div>
 
 
         <div
-          style="
-            margin-bottom:15px;
-          "
-        >
-
-          <label
-            style="
-              display:block;
-              color:var(--green);
-              font-size:11px;
-              font-weight:800;
-              margin-bottom:6px;
-            "
-          >
-            الشعبة
-          </label>
-
-          <input
-            type="text"
-            id="editSection"
-            required
-            style="
-              width:100%;
-              height:44px;
-              border:1px solid var(--border);
-              border-radius:10px;
-              padding:0 12px;
-              outline:none;
-              font-size:12px;
-            "
-          >
-
+          id="profileMessage"
+          class="form-message">
         </div>
 
 
-        <div
-          style="
-            margin-bottom:15px;
-          "
-        >
-
-          <label
-            style="
-              display:block;
-              color:var(--green);
-              font-size:11px;
-              font-weight:800;
-              margin-bottom:6px;
-            "
-          >
-            مستوى الحفظ
-          </label>
-
-          <input
-            type="text"
-            id="editMemorization"
-            style="
-              width:100%;
-              height:44px;
-              border:1px solid var(--border);
-              border-radius:10px;
-              padding:0 12px;
-              outline:none;
-              font-size:12px;
-            "
-          >
-
-        </div>
-
-
-        <div
-          style="
-            margin-bottom:15px;
-          "
-        >
-
-          <label
-            style="
-              display:block;
-              color:var(--green);
-              font-size:11px;
-              font-weight:800;
-              margin-bottom:6px;
-            "
-          >
-            الحالة
-          </label>
-
-          <select
-            id="editStatus"
-            style="
-              width:100%;
-              height:44px;
-              border:1px solid var(--border);
-              border-radius:10px;
-              padding:0 12px;
-              outline:none;
-              font-size:12px;
-              background:#fff;
-            "
-          >
-
-            <option value="active">
-              مستمر
-            </option>
-
-            <option value="inactive">
-              متوقف
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div
-          id="editMessage"
-          style="
-            min-height:18px;
-            text-align:center;
-            font-size:11px;
-            font-weight:800;
-          "
-        ></div>
-
-
-        <div
-          style="
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:10px;
-            margin-top:10px;
-          "
-        >
+        <div class="modal-actions">
 
           <button
             type="submit"
-            style="
-              height:44px;
-              border:none;
-              border-radius:10px;
-              background:var(--green);
-              color:#fff;
-              font-weight:800;
-            "
-          >
+            class="save-modal">
 
             <i class="fa-solid fa-check"></i>
 
-            حفظ التعديلات
+            حفظ البيانات
 
           </button>
 
 
           <button
             type="button"
-            onclick="closeEditModal()"
-            style="
-              height:44px;
-              border:none;
-              border-radius:10px;
-              background:#f0f2f1;
-              color:#49534f;
-              font-weight:800;
-            "
-          >
+            class="cancel-modal"
+            onclick="closeModal('profileModal')">
 
             إلغاء
 
@@ -4306,12 +4199,787 @@
 
 
   <!-- =====================================================
+       SUMMARY MODAL
+  ====================================================== -->
+
+  <div
+    id="summaryModal"
+    class="modal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <div>
+
+          <h3>
+            تعديل الخطة والإنجاز
+          </h3>
+
+          <p>
+            الأهداف والنقاط ونسب الإنجاز والاختبار القادم
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-modal"
+          onclick="closeModal('summaryModal')">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <form
+        id="summaryForm"
+        class="modal-body">
+
+
+        <div class="form-grid">
+
+
+          <div class="form-group">
+
+            <label>
+              صفحات الحفظ المطلوبة
+            </label>
+
+            <input
+              id="editGoalHifz"
+              type="number"
+              min="0"
+              step="0.1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              صفحات المراجعة المطلوبة
+            </label>
+
+            <input
+              id="editGoalReview"
+              type="number"
+              min="0"
+              step="0.1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              النقاط الكلية
+            </label>
+
+            <input
+              id="editTotalPoints"
+              type="number"
+              min="0"
+              step="1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              إنجاز الأسبوع %
+            </label>
+
+            <input
+              id="editWeeklyProgress"
+              type="number"
+              min="0"
+              max="100"
+              step="1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              صفحات الحفظ المنجزة
+            </label>
+
+            <input
+              id="editHifzDone"
+              type="number"
+              min="0"
+              step="0.1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              صفحات الحفظ المستهدفة
+            </label>
+
+            <input
+              id="editHifzTarget"
+              type="number"
+              min="0"
+              step="0.1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              صفحات المراجعة المنجزة
+            </label>
+
+            <input
+              id="editReviewDone"
+              type="number"
+              min="0"
+              step="0.1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              صفحات المراجعة المستهدفة
+            </label>
+
+            <input
+              id="editReviewTarget"
+              type="number"
+              min="0"
+              step="0.1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              التقييم العام
+            </label>
+
+            <input
+              id="editEvaluation"
+              type="text"
+              placeholder="مثال: ملتزم جزئيًا">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              ملاحظة التقييم
+            </label>
+
+            <input
+              id="editEvaluationNote"
+              type="text">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              الصفحات المعادلة المنجزة
+            </label>
+
+            <input
+              id="editEquivalentDone"
+              type="number"
+              min="0"
+              step="0.1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              الصفحات المعادلة المطلوبة
+            </label>
+
+            <input
+              id="editEquivalentRequired"
+              type="number"
+              min="0"
+              step="0.1">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              الاختبار القادم
+            </label>
+
+            <input
+              id="editNextExamPart"
+              type="text"
+              placeholder="مثال: جزء عم">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              موعد الاختبار
+            </label>
+
+            <input
+              id="editNextExamDate"
+              type="date">
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              حالة الاختبار
+            </label>
+
+            <select id="editNextExamStatus">
+
+              <option value="مجدول">
+                مجدول
+              </option>
+
+              <option value="تم">
+                تم
+              </option>
+
+              <option value="ملغي">
+                ملغي
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="summaryMessage"
+          class="form-message">
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="submit"
+            class="save-modal">
+
+            <i class="fa-solid fa-check"></i>
+
+            حفظ الخطة
+
+          </button>
+
+
+          <button
+            type="button"
+            class="cancel-modal"
+            onclick="closeModal('summaryModal')">
+
+            إلغاء
+
+          </button>
+
+        </div>
+
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       ATTENDANCE MODAL
+  ====================================================== -->
+
+  <div
+    id="attendanceModal"
+    class="modal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <div>
+
+          <h3>
+            إدارة الحضور
+          </h3>
+
+          <p>
+            إضافة وتعديل وحذف سجلات الحضور
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-modal"
+          onclick="closeModal('attendanceModal')">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="modal-body">
+
+
+        <form id="attendanceForm">
+
+          <div class="form-grid">
+
+
+            <div class="form-group">
+
+              <label>
+                التاريخ
+              </label>
+
+              <input
+                id="attendanceDate"
+                type="date"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                الحالة
+              </label>
+
+              <select
+                id="attendanceStatus">
+
+                <option value="حاضر">
+                  حاضر
+                </option>
+
+                <option value="غائب">
+                  غائب
+                </option>
+
+                <option value="متأخر">
+                  متأخر
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="attendanceMessage"
+            class="form-message">
+          </div>
+
+
+          <div class="modal-actions">
+
+            <button
+              type="submit"
+              class="save-modal">
+
+              <i class="fa-solid fa-plus"></i>
+
+              إضافة السجل
+
+            </button>
+
+          </div>
+
+        </form>
+
+
+        <div class="modal-list">
+
+          <div class="modal-list-title">
+            السجلات الحالية
+          </div>
+
+          <div id="attendanceList">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       PLAN MODAL
+  ====================================================== -->
+
+  <div
+    id="planModal"
+    class="modal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <div>
+
+          <h3>
+            إدارة الخطة الأسبوعية
+          </h3>
+
+          <p>
+            إضافة وتعديل وحذف بنود الخطة
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-modal"
+          onclick="closeModal('planModal')">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="modal-body">
+
+
+        <form id="planForm">
+
+          <div class="form-grid">
+
+
+            <div class="form-group">
+
+              <label>
+                التاريخ
+              </label>
+
+              <input
+                id="planDate"
+                type="date"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                الجزء المستهدف
+              </label>
+
+              <input
+                id="planJuz"
+                type="text"
+                placeholder="مثال: عم"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                الحفظ الجديد
+              </label>
+
+              <input
+                id="planNew"
+                type="text"
+                placeholder="مثال: 595-596">
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                المراجعة
+              </label>
+
+              <input
+                id="planReview"
+                type="text"
+                placeholder="مثال: لا يوجد">
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                الحالة
+              </label>
+
+              <input
+                id="planStatus"
+                type="text"
+                value="قيد الانتظار">
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="planMessage"
+            class="form-message">
+          </div>
+
+
+          <div class="modal-actions">
+
+            <button
+              type="submit"
+              class="save-modal">
+
+              <i class="fa-solid fa-plus"></i>
+
+              إضافة للخطة
+
+            </button>
+
+          </div>
+
+        </form>
+
+
+        <div class="modal-list">
+
+          <div class="modal-list-title">
+            بنود الخطة الحالية
+          </div>
+
+          <div id="planList">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       EXAMS MODAL
+  ====================================================== -->
+
+  <div
+    id="examsModal"
+    class="modal">
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <div>
+
+          <h3>
+            إدارة الاختبارات
+          </h3>
+
+          <p>
+            إضافة وتعديل وحذف اختبارات الطالب
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="close-modal"
+          onclick="closeModal('examsModal')">
+
+          ×
+
+        </button>
+
+      </div>
+
+
+      <div class="modal-body">
+
+
+        <form id="examForm">
+
+          <div class="form-grid">
+
+
+            <div class="form-group">
+
+              <label>
+                اسم الاختبار
+              </label>
+
+              <input
+                id="examName"
+                type="text"
+                placeholder="مثال: اختبار جزء عم"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                الدرجة
+              </label>
+
+              <input
+                id="examScore"
+                type="text"
+                placeholder="مثال: 95">
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                التقييم
+              </label>
+
+              <select id="examRating">
+
+                <option value="ممتاز">
+                  ممتاز
+                </option>
+
+                <option value="جيد جداً">
+                  جيد جداً
+                </option>
+
+                <option value="جيد">
+                  جيد
+                </option>
+
+                <option value="غير ذلك">
+                  غير ذلك
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                النقاط
+              </label>
+
+              <input
+                id="examPoints"
+                type="number"
+                min="0"
+                step="1"
+                value="12">
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label>
+                التاريخ
+              </label>
+
+              <input
+                id="examDate"
+                type="date">
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="examMessage"
+            class="form-message">
+          </div>
+
+
+          <div class="modal-actions">
+
+            <button
+              type="submit"
+              class="save-modal">
+
+              <i class="fa-solid fa-plus"></i>
+
+              إضافة الاختبار
+
+            </button>
+
+          </div>
+
+        </form>
+
+
+        <div class="modal-list">
+
+          <div class="modal-list-title">
+            الاختبارات الحالية
+          </div>
+
+          <div id="examList">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
        SUPABASE
   ====================================================== -->
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
   <script>
@@ -4336,7 +5004,7 @@
 
 
     /* =====================================================
-       STUDENT ID
+       URL
     ===================================================== */
 
     const params =
@@ -4352,78 +5020,436 @@
     let currentStudent = null;
 
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
-
-    const loading =
-      document.getElementById(
-        'loading'
-      );
+    let profileData = null;
 
 
-    const errorBox =
-      document.getElementById(
-        'errorBox'
-      );
+    let attendanceEditId = null;
 
+    let planEditId = null;
 
-    const profile =
-      document.getElementById(
-        'profile'
-      );
+    let examEditId = null;
 
 
     /* =====================================================
-       ESCAPE
+       DEFAULT PROFILE
     ===================================================== */
 
-    function escapeHtml(text) {
+    function defaultProfile() {
 
-      return String(text)
+      return {
 
-        .replaceAll(
-          '&',
-          '&amp;'
-        )
+        guardianPhone:
+          '781742511',
 
-        .replaceAll(
-          '<',
-          '&lt;'
-        )
+        joinDate:
+          '2026-07-04',
 
-        .replaceAll(
-          '>',
-          '&gt;'
-        )
+        completedJuz:
+          0,
 
-        .replaceAll(
-          '"',
-          '&quot;'
-        )
+        residence:
+          'عوجان',
 
-        .replaceAll(
-          "'",
-          '&#039;'
-        );
+        bus:
+          'لم يتم التعيين لحافلة بعد',
+
+        homeLocation:
+          'غير محدد',
+
+        loginCode:
+          '26001',
+
+        photoUrl:
+          '',
+
+        notes:
+          '',
+
+
+        weekly: {
+
+          goalHifz:
+            2,
+
+          goalReview:
+            2,
+
+          totalPoints:
+            78,
+
+          weeklyProgress:
+            83,
+
+          hifzDone:
+            2,
+
+          hifzTarget:
+            2,
+
+          reviewDone:
+            0,
+
+          reviewTarget:
+            2,
+
+          evaluation:
+            '⚠️ ملتزم جزئيًا',
+
+          evaluationNote:
+            'يحتاج إلى المحافظة على ورد المراجعة الأسبوعي.',
+
+          equivalentDone:
+            2.0,
+
+          equivalentRequired:
+            2.4,
+
+          nextExamPart:
+            '🎯 جزء عم',
+
+          nextExamDate:
+            '2026-10-09',
+
+          nextExamStatus:
+            'مجدول'
+
+        },
+
+
+        attendance: [
+
+          {
+            id: 'att-1',
+            date: '2026-08-14',
+            status: 'حاضر'
+          },
+
+          {
+            id: 'att-2',
+            date: '2026-08-21',
+            status: 'حاضر'
+          },
+
+          {
+            id: 'att-3',
+            date: '2026-08-28',
+            status: 'حاضر'
+          },
+
+          {
+            id: 'att-4',
+            date: '2026-09-11',
+            status: 'حاضر'
+          },
+
+          {
+            id: 'att-5',
+            date: '2026-09-18',
+            status: 'حاضر'
+          }
+
+        ],
+
+
+        plan: [
+
+          {
+            id: 'pl-1',
+            date: '2026-09-18',
+            juz: 'عم',
+            newMem: '595-596',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-2',
+            date: '2026-09-25',
+            juz: 'عم',
+            newMem: '597-598',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-3',
+            date: '2026-10-02',
+            juz: 'عم',
+            newMem: '599-604',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-4',
+            date: '2026-10-09',
+            juz: 'تبارك',
+            newMem: '562-563',
+            review: 'اختبار ب جزء عم',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-5',
+            date: '2026-10-16',
+            juz: 'تبارك',
+            newMem: '564-565',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-6',
+            date: '2026-10-23',
+            juz: 'تبارك',
+            newMem: '566-567',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-7',
+            date: '2026-10-30',
+            juz: 'تبارك',
+            newMem: '568-569',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-8',
+            date: '2026-11-06',
+            juz: 'تبارك',
+            newMem: '570-571',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-9',
+            date: '2026-11-13',
+            juz: 'تبارك',
+            newMem: '572-573',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-10',
+            date: '2026-11-20',
+            juz: 'تبارك',
+            newMem: '574-575',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-11',
+            date: '2026-11-27',
+            juz: 'تبارك',
+            newMem: '576-577',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-12',
+            date: '2026-12-04',
+            juz: 'تبارك',
+            newMem: '578-579',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-13',
+            date: '2026-12-11',
+            juz: 'تبارك',
+            newMem: '580-581',
+            review: 'لا يوجد',
+            status: 'قيد الانتظار'
+          },
+
+          {
+            id: 'pl-14',
+            date: '2026-12-18',
+            juz: 'تبارك',
+            newMem: 'لا يوجد',
+            review: 'اختبار جزء تبارك',
+            status: 'قيد الانتظار'
+          }
+
+        ],
+
+
+        exams: []
+
+      };
 
     }
 
 
     /* =====================================================
-       ERROR
+       HELPERS
     ===================================================== */
 
-    function showError(message) {
+    function escapeHtml(text) {
 
-      loading.style.display =
-        'none';
+      return String(text ?? '')
 
-      errorBox.style.display =
-        'block';
+        .replaceAll('&', '&amp;')
 
-      errorBox.textContent =
+        .replaceAll('<', '&lt;')
+
+        .replaceAll('>', '&gt;')
+
+        .replaceAll('"', '&quot;')
+
+        .replaceAll("'", '&#039;');
+
+    }
+
+
+    function moneySafeNumber(value) {
+
+      const number =
+        Number(value);
+
+      return Number.isFinite(number)
+        ? number
+        : 0;
+
+    }
+
+
+    function clampPercent(value) {
+
+      const number =
+        moneySafeNumber(value);
+
+      return Math.max(
+        0,
+        Math.min(
+          100,
+          number
+        )
+      );
+
+    }
+
+
+    function formatDateArabic(dateString) {
+
+      if (!dateString) {
+        return 'غير محدد';
+      }
+
+
+      const date =
+        new Date(
+          dateString + 'T00:00:00'
+        );
+
+
+      if (
+        Number.isNaN(
+          date.getTime()
+        )
+      ) {
+
+        return dateString;
+
+      }
+
+
+      return new Intl.DateTimeFormat(
+        'ar-JO',
+        {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        }
+      ).format(date);
+
+    }
+
+
+    function normalizeWhatsApp(number) {
+
+      let phone =
+        String(number || '')
+          .replace(/\D/g, '');
+
+
+      if (!phone) {
+        return '';
+      }
+
+
+      if (phone.startsWith('00')) {
+
+        phone =
+          phone.substring(2);
+
+      }
+
+
+      if (phone.startsWith('0')) {
+
+        phone =
+          phone.substring(1);
+
+      }
+
+
+      if (!phone.startsWith('962')) {
+
+        phone =
+          '962' + phone;
+
+      }
+
+
+      return phone;
+
+    }
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById(
+          'toast'
+        );
+
+
+      toast.textContent =
         message;
+
+
+      toast.classList.add(
+        'show'
+      );
+
+
+      setTimeout(() => {
+
+        toast.classList.remove(
+          'show'
+        );
+
+      }, 2400);
+
+    }
+
+
+    function closeModal(id) {
+
+      document
+        .getElementById(id)
+        .classList.remove(
+          'show'
+        );
 
     }
 
@@ -4457,6 +5483,7 @@
         return false;
 
       }
+
 
       return true;
 
@@ -4501,7 +5528,7 @@
         console.error(error);
 
         showError(
-          'لم يتم العثور على بيانات هذا الطالب.'
+          'لم يتم العثور على بيانات الطالب.'
         );
 
         return;
@@ -4513,32 +5540,222 @@
         data;
 
 
-      renderStudent(
-        data
-      );
+      const {
+        data: profileRow,
+        error: profileError
+      } =
+        await supabaseClient
+          .from('student_profiles')
+          .select(
+            'data'
+          )
+          .eq(
+            'student_id',
+            String(studentId)
+          )
+          .maybeSingle();
+
+
+      if (
+        profileError &&
+        profileError.code !==
+        'PGRST116'
+      ) {
+
+        console.error(
+          profileError
+        );
+
+        showError(
+          'تعذر تحميل ملف الطالب الإضافي.'
+        );
+
+        return;
+
+      }
+
+
+      const defaults =
+        defaultProfile();
+
+
+      profileData =
+        profileRow?.data
+          ? mergeDeep(
+              defaults,
+              profileRow.data
+            )
+          : defaults;
+
+
+      renderAll();
+
+    }
+
+
+    function mergeDeep(
+      base,
+      extra
+    ) {
+
+      if (
+        Array.isArray(base)
+      ) {
+
+        return Array.isArray(extra)
+          ? extra
+          : base;
+
+      }
+
+
+      if (
+        base &&
+        typeof base === 'object'
+      ) {
+
+        const result =
+          {
+            ...base
+          };
+
+
+        Object.keys(
+          extra || {}
+        ).forEach(
+          key => {
+
+            if (
+              base[key] &&
+              typeof base[key] === 'object' &&
+              !Array.isArray(base[key]) &&
+              extra[key] &&
+              typeof extra[key] === 'object' &&
+              !Array.isArray(extra[key])
+            ) {
+
+              result[key] =
+                mergeDeep(
+                  base[key],
+                  extra[key]
+                );
+
+            } else {
+
+              result[key] =
+                extra[key];
+
+            }
+
+          }
+        );
+
+
+        return result;
+
+      }
+
+
+      return extra ?? base;
 
     }
 
 
     /* =====================================================
-       RENDER
+       SAVE PROFILE
     ===================================================== */
 
-    function renderStudent(student) {
+    async function saveProfile() {
+
+      if (!studentId) {
+        return false;
+      }
+
+
+      const {
+        error
+      } =
+        await supabaseClient
+          .from('student_profiles')
+          .upsert(
+            {
+              student_id:
+                String(studentId),
+
+              data:
+                profileData,
+
+              updated_at:
+                new Date().toISOString()
+
+            },
+            {
+              onConflict:
+                'student_id'
+            }
+          );
+
+
+      if (error) {
+
+        console.error(error);
+
+        return false;
+
+      }
+
+
+      return true;
+
+    }
+
+
+    /* =====================================================
+       RENDER ALL
+    ===================================================== */
+
+    function renderAll() {
+
+      renderHero();
+
+      renderStudentInfo();
+
+      renderSummary();
+
+      renderAttendance();
+
+      renderPlan();
+
+      renderExams();
+
+
+      document
+        .getElementById(
+          'loading'
+        )
+        .style.display =
+        'none';
+
+
+      document
+        .getElementById(
+          'profile'
+        )
+        .style.display =
+        'block';
+
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    function renderHero() {
 
       const name =
-        student.name ||
+        currentStudent.name ||
         'الطالب';
-
-
-      const section =
-        student.section ||
-        'غير محددة';
-
-
-      const memorization =
-        student.memorization ||
-        'غير محدد';
 
 
       document.getElementById(
@@ -4548,107 +5765,672 @@
 
 
       document.getElementById(
+        'heroSection'
+      ).textContent =
+        currentStudent.section ||
+        'غير محددة';
+
+    }
+
+
+    /* =====================================================
+       STUDENT INFO
+    ===================================================== */
+
+    function renderStudentInfo() {
+
+      const p =
+        profileData;
+
+
+      const name =
+        currentStudent.name ||
+        'الطالب';
+
+
+      document.getElementById(
         'infoName'
       ).textContent =
         name;
 
 
       document.getElementById(
-        'heroSection'
-      ).textContent =
-        section;
-
-
-      document.getElementById(
         'infoSection'
       ).textContent =
-        section;
-
-
-      /* الحرف الأول */
-
-      const firstLetter =
-        name
-          .trim()
-          .charAt(0) ||
-        'ط';
+        currentStudent.section ||
+        'غير محددة';
 
 
       document.getElementById(
-        'studentAvatar'
+        'guardianPhone'
       ).textContent =
-        firstLetter;
+        p.guardianPhone ||
+        'غير محدد';
 
 
-      /* ممكن استخدام مستوى الحفظ الحالي لاحقًا */
-
-      console.log(
-        'مستوى الحفظ:',
-        memorization
-      );
+      const wa =
+        normalizeWhatsApp(
+          p.guardianPhone
+        );
 
 
-      loading.style.display =
-        'none';
-
-
-      profile.style.display =
-        'block';
-
-    }
-
-
-    /* =====================================================
-       COPY CODE
-    ===================================================== */
-
-    function copyCode() {
-
-      const code =
+      const waLink =
         document.getElementById(
-          'studentCode'
-        ).textContent.trim();
+          'whatsappLink'
+        );
 
 
-      navigator.clipboard
-        .writeText(code)
-        .then(() => {
+      if (wa) {
 
-          const toast =
-            document.getElementById(
-              'toast'
-            );
+        waLink.href =
+          'https://wa.me/' + wa;
 
-          toast.classList.add(
-            'show'
-          );
+        waLink.style.display =
+          'inline-flex';
+
+      } else {
+
+        waLink.style.display =
+          'none';
+
+      }
 
 
-          setTimeout(() => {
+      document.getElementById(
+        'joinDate'
+      ).textContent =
+        formatDateArabic(
+          p.joinDate
+        );
 
-            toast.classList.remove(
-              'show'
-            );
 
-          }, 2200);
+      document.getElementById(
+        'completedJuz'
+      ).textContent =
+        `${p.completedJuz ?? 0} أجزاء من القرآن الكريم`;
 
-        })
-        .catch(() => {
 
-          alert(
-            'تعذر نسخ الرمز تلقائيًا.'
-          );
+      document.getElementById(
+        'residence'
+      ).textContent =
+        p.residence ||
+        'غير محدد';
 
-        });
+
+      document.getElementById(
+        'bus'
+      ).textContent =
+        p.bus ||
+        'لم يتم التعيين لحافلة بعد';
+
+
+      document.getElementById(
+        'homeLocation'
+      ).textContent =
+        p.homeLocation ||
+        'غير محدد';
+
+
+      document.getElementById(
+        'studentCode'
+      ).textContent =
+        p.loginCode ||
+        'غير محدد';
+
+
+      const statusElement =
+        document.getElementById(
+          'studentStatus'
+        );
+
+
+      if (
+        currentStudent.status ===
+        'active'
+      ) {
+
+        statusElement.innerHTML =
+          `
+            <span
+              style="
+                display:inline-flex;
+                align-items:center;
+                gap:6px;
+                background:#e9f7eb;
+                color:#237a31;
+                padding:6px 10px;
+                border-radius:999px;
+                font-size:10px;
+              "
+            >
+              <span
+                style="
+                  width:6px;
+                  height:6px;
+                  border-radius:50%;
+                  background:#237a31;
+                "
+              ></span>
+              مستمر
+            </span>
+          `;
+
+      } else {
+
+        statusElement.innerHTML =
+          `
+            <span
+              style="
+                display:inline-flex;
+                align-items:center;
+                gap:6px;
+                background:#fff0ef;
+                color:#b3261e;
+                padding:6px 10px;
+                border-radius:999px;
+                font-size:10px;
+              "
+            >
+              متوقف
+            </span>
+          `;
+
+      }
+
+
+      document.getElementById(
+        'generalNotes'
+      ).textContent =
+        p.notes ||
+        'لا يوجد ملاحظات عامة مسجلة للطالب في الوقت الحالي.';
+
+
+      const photoContainer =
+        document.getElementById(
+          'photoContainer'
+        );
+
+
+      const photoNote =
+        document.getElementById(
+          'photoNote'
+        );
+
+
+      if (
+        p.photoUrl &&
+        p.photoUrl.trim()
+      ) {
+
+        photoContainer.innerHTML =
+          `
+            <img
+              src="${escapeHtml(p.photoUrl)}"
+              alt="صورة الطالب"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+            >
+
+            <div
+              class="student-avatar-large"
+              style="display:none;"
+            >
+              ${escapeHtml(name.charAt(0))}
+            </div>
+          `;
+
+        photoNote.textContent =
+          'صورة مضافة';
+
+      } else {
+
+        photoContainer.innerHTML =
+          `
+            <div class="student-avatar-large">
+              ${escapeHtml(name.charAt(0))}
+            </div>
+          `;
+
+        photoNote.textContent =
+          'لم يتم رفع صورة بعد';
+
+      }
 
     }
 
 
     /* =====================================================
-       EDIT MODAL
+       SUMMARY
     ===================================================== */
 
-    function openEditModal() {
+    function renderSummary() {
+
+      const w =
+        profileData.weekly;
+
+
+      document.getElementById(
+        'weeklyGoal'
+      ).textContent =
+        `حفظ ${w.goalHifz} صفحة / مراجعة ${w.goalReview} صفحة`;
+
+
+      document.getElementById(
+        'totalPoints'
+      ).textContent =
+        w.totalPoints;
+
+
+      const overall =
+        clampPercent(
+          w.weeklyProgress
+        );
+
+
+      document.getElementById(
+        'weeklyProgress'
+      ).textContent =
+        `${overall}%`;
+
+
+      document.getElementById(
+        'weeklyProgressSmall'
+      ).textContent =
+        `${overall}%`;
+
+
+      document.getElementById(
+        'weeklyProgressBar'
+      ).style.width =
+        `${overall}%`;
+
+
+      const hifzTarget =
+        moneySafeNumber(
+          w.hifzTarget
+        );
+
+
+      const hifzDone =
+        moneySafeNumber(
+          w.hifzDone
+        );
+
+
+      const hifzPercent =
+        hifzTarget > 0
+          ? clampPercent(
+              (hifzDone / hifzTarget) * 100
+            )
+          : 0;
+
+
+      document.getElementById(
+        'hifzPercent'
+      ).textContent =
+        Math.round(
+          hifzPercent
+        );
+
+
+      document.getElementById(
+        'hifzSub'
+      ).textContent =
+        `تم إنجاز ${hifzDone} صفحة من ${hifzTarget}`;
+
+
+      document.getElementById(
+        'hifzBar'
+      ).style.width =
+        `${hifzPercent}%`;
+
+
+      const reviewTarget =
+        moneySafeNumber(
+          w.reviewTarget
+        );
+
+
+      const reviewDone =
+        moneySafeNumber(
+          w.reviewDone
+        );
+
+
+      const reviewPercent =
+        reviewTarget > 0
+          ? clampPercent(
+              (reviewDone / reviewTarget) * 100
+            )
+          : 0;
+
+
+      document.getElementById(
+        'reviewPercent'
+      ).textContent =
+        Math.round(
+          reviewPercent
+        );
+
+
+      document.getElementById(
+        'reviewSub'
+      ).textContent =
+        `تم إنجاز ${reviewDone} صفحة (${reviewDone.toFixed(1)} صفحة) من ${reviewTarget}`;
+
+
+      document.getElementById(
+        'reviewBar'
+      ).style.width =
+        `${reviewPercent}%`;
+
+
+      document.getElementById(
+        'evaluation'
+      ).textContent =
+        w.evaluation ||
+        'غير محدد';
+
+
+      document.getElementById(
+        'evaluationNote'
+      ).textContent =
+        w.evaluationNote ||
+        '';
+
+
+      document.getElementById(
+        'equivalentText'
+      ).textContent =
+        `${w.equivalentDone} صفحة من ${w.equivalentRequired} مطلوبة`;
+
+
+      document.getElementById(
+        'requirementValue'
+      ).textContent =
+        `📖 حفظ ${w.goalHifz} صفحة / مراجعة ${w.goalReview} صفحة`;
+
+
+      document.getElementById(
+        'nextExamPart'
+      ).textContent =
+        w.nextExamPart ||
+        'لا يوجد اختبار قادم';
+
+
+      document.getElementById(
+        'nextExamDate'
+      ).textContent =
+        w.nextExamDate
+          ? `📅 موعد الاختبار: ${w.nextExamDate}`
+          : '📅 لا يوجد موعد محدد';
+
+
+      document.getElementById(
+        'nextExamStatus'
+      ).textContent =
+        w.nextExamStatus ||
+        'غير محدد';
+
+    }
+
+
+    /* =====================================================
+       ATTENDANCE
+    ===================================================== */
+
+    function attendanceClass(status) {
+
+      if (status === 'حاضر') {
+        return 'present';
+      }
+
+      if (status === 'غائب') {
+        return 'absent';
+      }
+
+      return 'late';
+
+    }
+
+
+    function renderAttendance() {
+
+      const grid =
+        document.getElementById(
+          'attendanceGrid'
+        );
+
+
+      const records =
+        [
+          ...(profileData.attendance || [])
+        ]
+        .sort(
+          (a,b) =>
+            String(b.date)
+              .localeCompare(
+                String(a.date)
+              )
+        );
+
+
+      if (!records.length) {
+
+        grid.innerHTML =
+          `
+            <div
+              class="empty-small"
+              style="grid-column:1/-1;"
+            >
+              لا توجد سجلات حضور حاليًا.
+            </div>
+          `;
+
+        return;
+
+      }
+
+
+      grid.innerHTML =
+        records
+          .map(record => {
+
+            return `
+
+              <div class="attendance-item">
+
+                <div class="attendance-date">
+                  ${escapeHtml(
+                    String(record.date)
+                      .slice(5)
+                  )}
+                </div>
+
+                <span
+                  class="
+                    attendance-status
+                    ${attendanceClass(record.status)}
+                  "
+                >
+                  ${escapeHtml(
+                    record.status
+                  )}
+                </span>
+
+              </div>
+
+            `;
+
+          })
+          .join('');
+
+    }
+
+
+    /* =====================================================
+       PLAN
+    ===================================================== */
+
+    function renderPlan() {
+
+      const table =
+        document.getElementById(
+          'planTable'
+        );
+
+
+      const rows =
+        [
+          ...(profileData.plan || [])
+        ]
+        .sort(
+          (a,b) =>
+            String(a.date)
+              .localeCompare(
+                String(b.date)
+              )
+        );
+
+
+      if (!rows.length) {
+
+        table.innerHTML =
+          `
+            <tr>
+              <td
+                colspan="5"
+                class="empty-small"
+              >
+                لا توجد خطة مسجلة.
+              </td>
+            </tr>
+          `;
+
+        return;
+
+      }
+
+
+      table.innerHTML =
+        rows
+          .map(item => {
+
+            return `
+
+              <tr>
+
+                <td class="date-cell">
+                  ${escapeHtml(item.date)}
+                </td>
+
+                <td class="juz">
+                  ${escapeHtml(item.juz)}
+                </td>
+
+                <td>
+                  ${escapeHtml(item.newMem || 'لا يوجد')}
+                </td>
+
+                <td>
+                  ${escapeHtml(item.review || 'لا يوجد')}
+                </td>
+
+                <td>
+
+                  <span class="pending">
+                    ${escapeHtml(item.status || 'قيد الانتظار')}
+                  </span>
+
+                </td>
+
+              </tr>
+
+            `;
+
+          })
+          .join('');
+
+    }
+
+
+    /* =====================================================
+       EXAMS
+    ===================================================== */
+
+    function renderExams() {
+
+      const table =
+        document.getElementById(
+          'examsTable'
+        );
+
+
+      const exams =
+        profileData.exams || [];
+
+
+      if (!exams.length) {
+
+        table.innerHTML =
+          `
+            <tr>
+              <td
+                colspan="5"
+                class="test-empty"
+              >
+                لا توجد اختبارات مسجلة لهذا الطالب.
+              </td>
+            </tr>
+          `;
+
+        return;
+
+      }
+
+
+      table.innerHTML =
+        exams
+          .map(exam => {
+
+            return `
+
+              <tr>
+
+                <td>
+                  ${escapeHtml(exam.name)}
+                </td>
+
+                <td>
+                  ${escapeHtml(exam.score || '-')}
+                </td>
+
+                <td>
+                  ${escapeHtml(exam.rating || '-')}
+                </td>
+
+                <td>
+                  +${escapeHtml(exam.points || 0)}
+                </td>
+
+                <td>
+                  ${escapeHtml(exam.date || '-')}
+                </td>
+
+              </tr>
+
+            `;
+
+          })
+          .join('');
+
+    }
+
+
+    /* =====================================================
+       PROFILE MODAL
+    ===================================================== */
+
+    function openProfileModal() {
 
       if (!currentStudent) {
         return;
@@ -4680,36 +6462,77 @@
 
 
       document.getElementById(
-        'editMessage'
+        'editGuardianPhone'
+      ).value =
+        profileData.guardianPhone || '';
+
+
+      document.getElementById(
+        'editJoinDate'
+      ).value =
+        profileData.joinDate || '';
+
+
+      document.getElementById(
+        'editCompletedJuz'
+      ).value =
+        profileData.completedJuz ?? 0;
+
+
+      document.getElementById(
+        'editResidence'
+      ).value =
+        profileData.residence || '';
+
+
+      document.getElementById(
+        'editBus'
+      ).value =
+        profileData.bus || '';
+
+
+      document.getElementById(
+        'editHomeLocation'
+      ).value =
+        profileData.homeLocation || '';
+
+
+      document.getElementById(
+        'editLoginCode'
+      ).value =
+        profileData.loginCode || '';
+
+
+      document.getElementById(
+        'editPhotoUrl'
+      ).value =
+        profileData.photoUrl || '';
+
+
+      document.getElementById(
+        'editNotes'
+      ).value =
+        profileData.notes || '';
+
+
+      document.getElementById(
+        'profileMessage'
       ).textContent =
         '';
 
 
       document.getElementById(
-        'editModal'
-      ).style.display =
-        'flex';
+        'profileModal'
+      ).classList.add(
+        'show'
+      );
 
     }
 
-
-    function closeEditModal() {
-
-      document.getElementById(
-        'editModal'
-      ).style.display =
-        'none';
-
-    }
-
-
-    /* =====================================================
-       SAVE EDITS
-    ===================================================== */
 
     document
       .getElementById(
-        'editForm'
+        'profileForm'
       )
       .addEventListener(
         'submit',
@@ -4718,70 +6541,41 @@
           event.preventDefault();
 
 
-          if (!currentStudent) {
-            return;
-          }
-
-
-          const name =
-            document
-              .getElementById(
-                'editName'
-              )
-              .value
-              .trim();
-
-
-          const section =
-            document
-              .getElementById(
-                'editSection'
-              )
-              .value
-              .trim();
-
-
-          const memorization =
-            document
-              .getElementById(
-                'editMemorization'
-              )
-              .value
-              .trim();
-
-
-          const status =
-            document
-              .getElementById(
-                'editStatus'
-              )
-              .value;
-
-
-          const editMessage =
+          const msg =
             document.getElementById(
-              'editMessage'
+              'profileMessage'
             );
 
 
-          if (!name || !section) {
-
-            editMessage.style.color =
-              'var(--danger)';
-
-            editMessage.textContent =
-              'يرجى تعبئة الاسم والشعبة.';
-
-            return;
-
-          }
-
-
-          editMessage.style.color =
+          msg.style.color =
             'var(--muted)';
 
-          editMessage.textContent =
+          msg.textContent =
             'جارٍ الحفظ...';
+
+
+          const name =
+            document.getElementById(
+              'editName'
+            ).value.trim();
+
+
+          const section =
+            document.getElementById(
+              'editSection'
+            ).value.trim();
+
+
+          const memorization =
+            document.getElementById(
+              'editMemorization'
+            ).value.trim();
+
+
+          const status =
+            document.getElementById(
+              'editStatus'
+            ).value;
 
 
           const {
@@ -4791,15 +6585,10 @@
             await supabaseClient
               .from('students')
               .update({
-
                 name,
-
                 section,
-
                 memorization,
-
                 status
-
               })
               .eq(
                 'id',
@@ -4813,11 +6602,11 @@
 
             console.error(error);
 
-            editMessage.style.color =
+            msg.style.color =
               'var(--danger)';
 
-            editMessage.textContent =
-              'حدث خطأ أثناء حفظ التعديلات.';
+            msg.textContent =
+              'حدث خطأ أثناء حفظ بيانات الطالب.';
 
             return;
 
@@ -4828,21 +6617,99 @@
             data;
 
 
-          renderStudent(
-            data
-          );
+          profileData.guardianPhone =
+            document.getElementById(
+              'editGuardianPhone'
+            ).value.trim();
 
 
-          editMessage.style.color =
+          profileData.joinDate =
+            document.getElementById(
+              'editJoinDate'
+            ).value;
+
+
+          profileData.completedJuz =
+            moneySafeNumber(
+              document.getElementById(
+                'editCompletedJuz'
+              ).value
+            );
+
+
+          profileData.residence =
+            document.getElementById(
+              'editResidence'
+            ).value.trim();
+
+
+          profileData.bus =
+            document.getElementById(
+              'editBus'
+            ).value.trim();
+
+
+          profileData.homeLocation =
+            document.getElementById(
+              'editHomeLocation'
+            ).value.trim();
+
+
+          profileData.loginCode =
+            document.getElementById(
+              'editLoginCode'
+            ).value.trim();
+
+
+          profileData.photoUrl =
+            document.getElementById(
+              'editPhotoUrl'
+            ).value.trim();
+
+
+          profileData.notes =
+            document.getElementById(
+              'editNotes'
+            ).value.trim();
+
+
+          const saved =
+            await saveProfile();
+
+
+          if (!saved) {
+
+            msg.style.color =
+              'var(--danger)';
+
+            msg.textContent =
+              'تم تعديل البيانات الأساسية لكن تعذر حفظ التفاصيل الإضافية.';
+
+            return;
+
+          }
+
+
+          msg.style.color =
             'var(--success)';
 
-          editMessage.textContent =
-            'تم حفظ التعديلات بنجاح.';
+          msg.textContent =
+            'تم حفظ جميع البيانات بنجاح.';
+
+
+          renderAll();
+
+
+          showToast(
+            'تم حفظ بيانات الطالب بنجاح.'
+          );
 
 
           setTimeout(() => {
 
-            closeEditModal();
+            closeModal(
+              'profileModal'
+            );
 
           }, 600);
 
@@ -4851,60 +6718,1367 @@
 
 
     /* =====================================================
-       FUTURE MESSAGE
+       SUMMARY MODAL
     ===================================================== */
 
-    function showFutureMessage() {
+    function openSummaryModal() {
 
-      const toast =
-        document.getElementById(
-          'toast'
-        );
+      const w =
+        profileData.weekly;
 
 
-      toast.textContent =
-        'قسم الاختبارات جاهز للربط بقاعدة البيانات.';
+      document.getElementById(
+        'editGoalHifz'
+      ).value =
+        w.goalHifz;
 
 
-      toast.classList.add(
-        'show'
-      );
+      document.getElementById(
+        'editGoalReview'
+      ).value =
+        w.goalReview;
 
 
-      setTimeout(() => {
+      document.getElementById(
+        'editTotalPoints'
+      ).value =
+        w.totalPoints;
 
-        toast.classList.remove(
+
+      document.getElementById(
+        'editWeeklyProgress'
+      ).value =
+        w.weeklyProgress;
+
+
+      document.getElementById(
+        'editHifzDone'
+      ).value =
+        w.hifzDone;
+
+
+      document.getElementById(
+        'editHifzTarget'
+      ).value =
+        w.hifzTarget;
+
+
+      document.getElementById(
+        'editReviewDone'
+      ).value =
+        w.reviewDone;
+
+
+      document.getElementById(
+        'editReviewTarget'
+      ).value =
+        w.reviewTarget;
+
+
+      document.getElementById(
+        'editEvaluation'
+      ).value =
+        w.evaluation;
+
+
+      document.getElementById(
+        'editEvaluationNote'
+      ).value =
+        w.evaluationNote;
+
+
+      document.getElementById(
+        'editEquivalentDone'
+      ).value =
+        w.equivalentDone;
+
+
+      document.getElementById(
+        'editEquivalentRequired'
+      ).value =
+        w.equivalentRequired;
+
+
+      document.getElementById(
+        'editNextExamPart'
+      ).value =
+        w.nextExamPart;
+
+
+      document.getElementById(
+        'editNextExamDate'
+      ).value =
+        w.nextExamDate;
+
+
+      document.getElementById(
+        'editNextExamStatus'
+      ).value =
+        w.nextExamStatus;
+
+
+      document.getElementById(
+        'summaryMessage'
+      ).textContent =
+        '';
+
+
+      document
+        .getElementById(
+          'summaryModal'
+        )
+        .classList.add(
           'show'
         );
 
-        toast.textContent =
-          'تم نسخ الرمز بنجاح';
+    }
 
-      }, 2500);
+
+    document
+      .getElementById(
+        'summaryForm'
+      )
+      .addEventListener(
+        'submit',
+        async function(event) {
+
+          event.preventDefault();
+
+
+          const msg =
+            document.getElementById(
+              'summaryMessage'
+            );
+
+
+          msg.style.color =
+            'var(--muted)';
+
+          msg.textContent =
+            'جارٍ الحفظ...';
+
+
+          const w =
+            profileData.weekly;
+
+
+          w.goalHifz =
+            moneySafeNumber(
+              document.getElementById(
+                'editGoalHifz'
+              ).value
+            );
+
+
+          w.goalReview =
+            moneySafeNumber(
+              document.getElementById(
+                'editGoalReview'
+              ).value
+            );
+
+
+          w.totalPoints =
+            moneySafeNumber(
+              document.getElementById(
+                'editTotalPoints'
+              ).value
+            );
+
+
+          w.weeklyProgress =
+            clampPercent(
+              document.getElementById(
+                'editWeeklyProgress'
+              ).value
+            );
+
+
+          w.hifzDone =
+            moneySafeNumber(
+              document.getElementById(
+                'editHifzDone'
+              ).value
+            );
+
+
+          w.hifzTarget =
+            moneySafeNumber(
+              document.getElementById(
+                'editHifzTarget'
+              ).value
+            );
+
+
+          w.reviewDone =
+            moneySafeNumber(
+              document.getElementById(
+                'editReviewDone'
+              ).value
+            );
+
+
+          w.reviewTarget =
+            moneySafeNumber(
+              document.getElementById(
+                'editReviewTarget'
+              ).value
+            );
+
+
+          w.evaluation =
+            document.getElementById(
+              'editEvaluation'
+            ).value.trim();
+
+
+          w.evaluationNote =
+            document.getElementById(
+              'editEvaluationNote'
+            ).value.trim();
+
+
+          w.equivalentDone =
+            moneySafeNumber(
+              document.getElementById(
+                'editEquivalentDone'
+              ).value
+            );
+
+
+          w.equivalentRequired =
+            moneySafeNumber(
+              document.getElementById(
+                'editEquivalentRequired'
+              ).value
+            );
+
+
+          w.nextExamPart =
+            document.getElementById(
+              'editNextExamPart'
+            ).value.trim();
+
+
+          w.nextExamDate =
+            document.getElementById(
+              'editNextExamDate'
+            ).value;
+
+
+          w.nextExamStatus =
+            document.getElementById(
+              'editNextExamStatus'
+            ).value;
+
+
+          const saved =
+            await saveProfile();
+
+
+          if (!saved) {
+
+            msg.style.color =
+              'var(--danger)';
+
+            msg.textContent =
+              'حدث خطأ أثناء حفظ الخطة.';
+
+            return;
+
+          }
+
+
+          renderSummary();
+
+
+          msg.style.color =
+            'var(--success)';
+
+          msg.textContent =
+            'تم حفظ الخطة بنجاح.';
+
+
+          showToast(
+            'تم حفظ الخطة والإنجاز.'
+          );
+
+
+          setTimeout(() => {
+
+            closeModal(
+              'summaryModal'
+            );
+
+          }, 500);
+
+        }
+      );
+
+
+    /* =====================================================
+       ATTENDANCE MODAL
+    ===================================================== */
+
+    function openAttendanceModal() {
+
+      attendanceEditId =
+        null;
+
+
+      document
+        .getElementById(
+          'attendanceForm'
+        )
+        .reset();
+
+
+      document.getElementById(
+        'attendanceMessage'
+      ).textContent =
+        '';
+
+
+      renderAttendanceList();
+
+
+      document
+        .getElementById(
+          'attendanceModal'
+        )
+        .classList.add(
+          'show'
+        );
+
+    }
+
+
+    function renderAttendanceList() {
+
+      const container =
+        document.getElementById(
+          'attendanceList'
+        );
+
+
+      const records =
+        [
+          ...(profileData.attendance || [])
+        ]
+        .sort(
+          (a,b) =>
+            String(b.date)
+              .localeCompare(
+                String(a.date)
+              )
+        );
+
+
+      if (!records.length) {
+
+        container.innerHTML =
+          `
+            <div class="empty-small">
+              لا توجد سجلات.
+            </div>
+          `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        records
+          .map(record => {
+
+            return `
+
+              <div class="list-row">
+
+                <div class="list-row-main">
+
+                  <div class="list-row-title">
+
+                    ${escapeHtml(
+                      record.date
+                    )}
+
+                    —
+
+                    ${escapeHtml(
+                      record.status
+                    )}
+
+                  </div>
+
+                  <div class="list-row-sub">
+                    ${formatDateArabic(record.date)}
+                  </div>
+
+                </div>
+
+
+                <div class="mini-actions">
+
+                  <button
+                    class="mini-btn mini-delete"
+                    type="button"
+                    onclick="deleteAttendance('${escapeHtml(record.id)}')">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            `;
+
+          })
+          .join('');
+
+    }
+
+
+    document
+      .getElementById(
+        'attendanceForm'
+      )
+      .addEventListener(
+        'submit',
+        async function(event) {
+
+          event.preventDefault();
+
+
+          const date =
+            document.getElementById(
+              'attendanceDate'
+            ).value;
+
+
+          const status =
+            document.getElementById(
+              'attendanceStatus'
+            ).value;
+
+
+          if (!date) {
+            return;
+          }
+
+
+          profileData.attendance =
+            profileData.attendance || [];
+
+
+          profileData.attendance.push({
+
+            id:
+              crypto.randomUUID(),
+
+            date,
+
+            status
+
+          });
+
+
+          const saved =
+            await saveProfile();
+
+
+          if (!saved) {
+
+            showToast(
+              'تعذر حفظ سجل الحضور.'
+            );
+
+            return;
+
+          }
+
+
+          renderAttendance();
+
+          renderAttendanceList();
+
+
+          document
+            .getElementById(
+              'attendanceForm'
+            )
+            .reset();
+
+
+          showToast(
+            'تمت إضافة سجل الحضور.'
+          );
+
+        }
+      );
+
+
+    window.deleteAttendance =
+      async function(id) {
+
+        profileData.attendance =
+          (
+            profileData.attendance ||
+            []
+          )
+          .filter(
+            item =>
+              item.id !== id
+          );
+
+
+        const saved =
+          await saveProfile();
+
+
+        if (!saved) {
+
+          showToast(
+            'تعذر حذف سجل الحضور.'
+          );
+
+          return;
+
+        }
+
+
+        renderAttendance();
+
+        renderAttendanceList();
+
+
+        showToast(
+          'تم حذف سجل الحضور.'
+        );
+
+      };
+
+
+    /* =====================================================
+       PLAN MODAL
+    ===================================================== */
+
+    function openPlanModal() {
+
+      planEditId =
+        null;
+
+
+      document
+        .getElementById(
+          'planForm'
+        )
+        .reset();
+
+
+      document.getElementById(
+        'planStatus'
+      ).value =
+        'قيد الانتظار';
+
+
+      document.getElementById(
+        'planMessage'
+      ).textContent =
+        '';
+
+
+      renderPlanList();
+
+
+      document
+        .getElementById(
+          'planModal'
+        )
+        .classList.add(
+          'show'
+        );
+
+    }
+
+
+    function renderPlanList() {
+
+      const container =
+        document.getElementById(
+          'planList'
+        );
+
+
+      const rows =
+        [
+          ...(profileData.plan || [])
+        ]
+        .sort(
+          (a,b) =>
+            String(a.date)
+              .localeCompare(
+                String(b.date)
+              )
+        );
+
+
+      if (!rows.length) {
+
+        container.innerHTML =
+          `
+            <div class="empty-small">
+              لا توجد بنود.
+            </div>
+          `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        rows
+          .map(item => {
+
+            return `
+
+              <div class="list-row">
+
+                <div class="list-row-main">
+
+                  <div class="list-row-title">
+
+                    ${escapeHtml(
+                      item.date
+                    )}
+
+                    — الجزء:
+
+                    ${escapeHtml(
+                      item.juz
+                    )}
+
+                  </div>
+
+                  <div class="list-row-sub">
+
+                    الحفظ:
+                    ${escapeHtml(
+                      item.newMem || 'لا يوجد'
+                    )}
+
+                    <br>
+
+                    المراجعة:
+                    ${escapeHtml(
+                      item.review || 'لا يوجد'
+                    )}
+
+                    <br>
+
+                    الحالة:
+                    ${escapeHtml(
+                      item.status || 'قيد الانتظار'
+                    )}
+
+                  </div>
+
+                </div>
+
+
+                <div class="mini-actions">
+
+                  <button
+                    class="mini-btn mini-edit"
+                    type="button"
+                    onclick="editPlan('${escapeHtml(item.id)}')">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                  </button>
+
+
+                  <button
+                    class="mini-btn mini-delete"
+                    type="button"
+                    onclick="deletePlan('${escapeHtml(item.id)}')">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            `;
+
+          })
+          .join('');
+
+    }
+
+
+    window.editPlan =
+      function(id) {
+
+        const item =
+          profileData.plan.find(
+            x => x.id === id
+          );
+
+
+        if (!item) {
+          return;
+        }
+
+
+        planEditId =
+          id;
+
+
+        document.getElementById(
+          'planDate'
+        ).value =
+          item.date;
+
+
+        document.getElementById(
+          'planJuz'
+        ).value =
+          item.juz;
+
+
+        document.getElementById(
+          'planNew'
+        ).value =
+          item.newMem;
+
+
+        document.getElementById(
+          'planReview'
+        ).value =
+          item.review;
+
+
+        document.getElementById(
+          'planStatus'
+        ).value =
+          item.status;
+
+
+        document.querySelector(
+          '#planForm .save-modal'
+        ).innerHTML =
+          '<i class="fa-solid fa-check"></i> حفظ التعديل';
+
+    };
+
+
+    document
+      .getElementById(
+        'planForm'
+      )
+      .addEventListener(
+        'submit',
+        async function(event) {
+
+          event.preventDefault();
+
+
+          const record = {
+
+            date:
+              document.getElementById(
+                'planDate'
+              ).value,
+
+            juz:
+              document.getElementById(
+                'planJuz'
+              ).value.trim(),
+
+            newMem:
+              document.getElementById(
+                'planNew'
+              ).value.trim(),
+
+            review:
+              document.getElementById(
+                'planReview'
+              ).value.trim(),
+
+            status:
+              document.getElementById(
+                'planStatus'
+              ).value.trim()
+
+          };
+
+
+          if (
+            !record.date ||
+            !record.juz
+          ) {
+
+            return;
+
+          }
+
+
+          if (planEditId) {
+
+            profileData.plan =
+              profileData.plan.map(
+                item =>
+                  item.id === planEditId
+                    ? {
+                        ...record,
+                        id:
+                          planEditId
+                      }
+                    : item
+              );
+
+          } else {
+
+            profileData.plan.push({
+
+              ...record,
+
+              id:
+                crypto.randomUUID()
+
+            });
+
+          }
+
+
+          const saved =
+            await saveProfile();
+
+
+          if (!saved) {
+
+            showToast(
+              'تعذر حفظ بند الخطة.'
+            );
+
+            return;
+
+          }
+
+
+          renderPlan();
+
+          renderPlanList();
+
+
+          this.reset();
+
+
+          document.getElementById(
+            'planStatus'
+          ).value =
+            'قيد الانتظار';
+
+
+          planEditId =
+            null;
+
+
+          this.querySelector(
+            '.save-modal'
+          ).innerHTML =
+            '<i class="fa-solid fa-plus"></i> إضافة للخطة';
+
+
+          showToast(
+            'تم حفظ بند الخطة.'
+          );
+
+        }
+      );
+
+
+    window.deletePlan =
+      async function(id) {
+
+        profileData.plan =
+          profileData.plan.filter(
+            item =>
+              item.id !== id
+          );
+
+
+        const saved =
+          await saveProfile();
+
+
+        if (!saved) {
+
+          showToast(
+            'تعذر حذف البند.'
+          );
+
+          return;
+
+        }
+
+
+        renderPlan();
+
+        renderPlanList();
+
+
+        showToast(
+          'تم حذف بند الخطة.'
+        );
+
+      };
+
+
+    /* =====================================================
+       EXAMS MODAL
+    ===================================================== */
+
+    function openExamsModal() {
+
+      examEditId =
+        null;
+
+
+      document
+        .getElementById(
+          'examForm'
+        )
+        .reset();
+
+
+      document.getElementById(
+        'examPoints'
+      ).value =
+        12;
+
+
+      document
+        .getElementById(
+          'examMessage'
+        )
+        .textContent =
+        '';
+
+
+      renderExamList();
+
+
+      document
+        .getElementById(
+          'examsModal'
+        )
+        .classList.add(
+          'show'
+        );
+
+    }
+
+
+    function renderExamList() {
+
+      const container =
+        document.getElementById(
+          'examList'
+        );
+
+
+      const exams =
+        profileData.exams ||
+        [];
+
+
+      if (!exams.length) {
+
+        container.innerHTML =
+          `
+            <div class="empty-small">
+              لا توجد اختبارات مسجلة.
+            </div>
+          `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        exams
+          .map(exam => {
+
+            return `
+
+              <div class="list-row">
+
+                <div class="list-row-main">
+
+                  <div class="list-row-title">
+
+                    ${escapeHtml(
+                      exam.name
+                    )}
+
+                  </div>
+
+                  <div class="list-row-sub">
+
+                    الدرجة:
+                    ${escapeHtml(
+                      exam.score || '-'
+                    )}
+
+                    —
+
+                    التقييم:
+                    ${escapeHtml(
+                      exam.rating || '-'
+                    )}
+
+                    —
+
+                    النقاط:
+                    +${escapeHtml(
+                      exam.points || 0
+                    )}
+
+                    <br>
+
+                    التاريخ:
+                    ${escapeHtml(
+                      exam.date || '-'
+                    )}
+
+                  </div>
+
+                </div>
+
+
+                <div class="mini-actions">
+
+                  <button
+                    class="mini-btn mini-edit"
+                    type="button"
+                    onclick="editExam('${escapeHtml(exam.id)}')">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                  </button>
+
+
+                  <button
+                    class="mini-btn mini-delete"
+                    type="button"
+                    onclick="deleteExam('${escapeHtml(exam.id)}')">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                  </button>
+
+                </div>
+
+              </div>
+
+            `;
+
+          })
+          .join('');
+
+    }
+
+
+    window.editExam =
+      function(id) {
+
+        const exam =
+          profileData.exams.find(
+            x => x.id === id
+          );
+
+
+        if (!exam) {
+          return;
+        }
+
+
+        examEditId =
+          id;
+
+
+        document.getElementById(
+          'examName'
+        ).value =
+          exam.name || '';
+
+
+        document.getElementById(
+          'examScore'
+        ).value =
+          exam.score || '';
+
+
+        document.getElementById(
+          'examRating'
+        ).value =
+          exam.rating || 'ممتاز';
+
+
+        document.getElementById(
+          'examPoints'
+        ).value =
+          exam.points ?? 12;
+
+
+        document.getElementById(
+          'examDate'
+        ).value =
+          exam.date || '';
+
+
+        document.querySelector(
+          '#examForm .save-modal'
+        ).innerHTML =
+          '<i class="fa-solid fa-check"></i> حفظ التعديل';
+
+      };
+
+
+    document
+      .getElementById(
+        'examForm'
+      )
+      .addEventListener(
+        'submit',
+        async function(event) {
+
+          event.preventDefault();
+
+
+          const record = {
+
+            name:
+              document.getElementById(
+                'examName'
+              ).value.trim(),
+
+            score:
+              document.getElementById(
+                'examScore'
+              ).value.trim(),
+
+            rating:
+              document.getElementById(
+                'examRating'
+              ).value,
+
+            points:
+              moneySafeNumber(
+                document.getElementById(
+                  'examPoints'
+                ).value
+              ),
+
+            date:
+              document.getElementById(
+                'examDate'
+              ).value
+
+          };
+
+
+          if (!record.name) {
+            return;
+          }
+
+
+          if (examEditId) {
+
+            profileData.exams =
+              profileData.exams.map(
+                item =>
+                  item.id === examEditId
+                    ? {
+                        ...record,
+                        id:
+                          examEditId
+                      }
+                    : item
+              );
+
+          } else {
+
+            profileData.exams.push({
+
+              ...record,
+
+              id:
+                crypto.randomUUID()
+
+            });
+
+          }
+
+
+          const saved =
+            await saveProfile();
+
+
+          if (!saved) {
+
+            showToast(
+              'تعذر حفظ الاختبار.'
+            );
+
+            return;
+
+          }
+
+
+          renderExams();
+
+          renderExamList();
+
+
+          this.reset();
+
+
+          document.getElementById(
+            'examPoints'
+          ).value =
+            12;
+
+
+          examEditId =
+            null;
+
+
+          this.querySelector(
+            '.save-modal'
+          ).innerHTML =
+            '<i class="fa-solid fa-plus"></i> إضافة الاختبار';
+
+
+          showToast(
+            'تم حفظ الاختبار.'
+          );
+
+        }
+      );
+
+
+    window.deleteExam =
+      async function(id) {
+
+        profileData.exams =
+          profileData.exams.filter(
+            item =>
+              item.id !== id
+          );
+
+
+        const saved =
+          await saveProfile();
+
+
+        if (!saved) {
+
+          showToast(
+            'تعذر حذف الاختبار.'
+          );
+
+          return;
+
+        }
+
+
+        renderExams();
+
+        renderExamList();
+
+
+        showToast(
+          'تم حذف الاختبار.'
+        );
+
+      };
+
+
+    /* =====================================================
+       COPY CODE
+    ===================================================== */
+
+    function copyCode() {
+
+      const code =
+        document.getElementById(
+          'studentCode'
+        ).textContent.trim();
+
+
+      if (!code) {
+        return;
+      }
+
+
+      navigator.clipboard
+        .writeText(code)
+        .then(() => {
+
+          showToast(
+            'تم نسخ رمز دخول الطالب.'
+          );
+
+        })
+        .catch(() => {
+
+          showToast(
+            'تعذر نسخ الرمز تلقائيًا.'
+          );
+
+        });
 
     }
 
 
     /* =====================================================
-       CLOSE MODAL BY BACKDROP
+       CLOSE MODAL BACKDROP
     ===================================================== */
 
     document
-      .getElementById(
-        'editModal'
+      .querySelectorAll(
+        '.modal'
       )
-      .addEventListener(
-        'click',
-        function(event) {
+      .forEach(
+        modal => {
 
-          if (
-            event.target ===
-            this
-          ) {
+          modal.addEventListener(
+            'click',
+            function(event) {
 
-            closeEditModal();
+              if (
+                event.target ===
+                modal
+              ) {
 
-          }
+                closeModal(
+                  modal.id
+                );
+
+              }
+
+            }
+          );
 
         }
       );
@@ -4916,11 +8090,11 @@
 
     (async function() {
 
-      const teacherLoggedIn =
+      const loggedIn =
         await checkTeacher();
 
 
-      if (teacherLoggedIn) {
+      if (loggedIn) {
 
         await loadStudent();
 
