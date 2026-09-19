@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>بوابة المعلمين | مركز حردان طارق القرآني</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #111, #252525);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: white;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 430px;
+      background: #fff;
+      color: #222;
+      border-radius: 24px;
+      padding: 35px 30px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      text-align: center;
+    }
+
+    .logo {
+      width: 85px;
+      height: 85px;
+      object-fit: contain;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      margin: 5px 0 8px;
+      font-size: 26px;
+    }
+
+    .subtitle {
+      color: #777;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    .input-group {
+      text-align: right;
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #222;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: #111;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      opacity: .9;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: wait;
+      transform: none;
+    }
+
+    #message {
+      margin-top: 18px;
+      min-height: 24px;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    .badge {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      background: #111;
+      color: white;
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="badge">النسخة التجريبية</div>
+
+  <div class="login-box">
+
+    <img src="logo.png" class="logo" alt="شعار المركز">
+
+    <h1>بوابة المعلمين</h1>
+
+    <div class="subtitle">
+      مركز حردان طارق القرآني<br>
+      الدخول مخصص للمستخدمين المصرح لهم
+    </div>
+
+    <form id="loginForm">
+
+      <div class="input-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="أدخل البريد الإلكتروني"
+          required
+          autocomplete="email"
+        >
+      </div>
+
+      <div class="input-group">
+        <label for="password">كلمة المرور</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="أدخل كلمة المرور"
+          required
+          autocomplete="current-password"
+        >
+      </div>
+
+      <button type="submit" id="loginButton">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        دخول البوابة
+      </button>
+
+    </form>
+
+    <div id="message"></div>
+
+    <a href="index.html" class="back">
+      ← العودة إلى الموقع
+    </a>
+
+  </div>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL = 'https://lsbbcybpiulusdgfhepf.supabase.co';
+
+    const SUPABASE_PUBLISHABLE_KEY = 'ضع_المفتاح_هنا';
+
+    const supabase = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const allowedEmail = 'baraahaytham08@gmail.com';
+
+    const form = document.getElementById('loginForm');
+    const button = document.getElementById('loginButton');
+    const message = document.getElementById('message');
+
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value.trim().toLowerCase();
+      const password = document.getElementById('password').value;
+
+      message.textContent = '';
+      button.disabled = true;
+      button.innerHTML = 'جارٍ تسجيل الدخول...';
+
+      // منع أي حساب غير مصرح له
+      if (email !== allowedEmail) {
+        message.textContent = 'هذا الحساب غير مصرح له بالدخول.';
+        button.disabled = false;
+        button.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+        return;
+      }
+
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+      if (error) {
+        message.textContent = 'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+        button.disabled = false;
+        button.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+        return;
+      }
+
+      if (data.user && data.user.email.toLowerCase() === allowedEmail) {
+        window.location.href = 'teacher-dashboard.html';
+      } else {
+        await supabase.auth.signOut();
+
+        message.textContent = 'هذا الحساب غير مصرح له بالدخول.';
+        button.disabled = false;
+        button.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+      }
+    });
+  </script>
+
+</body>
+</html>
