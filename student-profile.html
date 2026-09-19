@@ -1,47 +1,41 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
   <meta
     name="theme-color"
-    content="#0f5132"
-  >
+    content="#174d3a">
 
   <title>
     ملف الطالب | مركز حردان طارق القرآني
   </title>
 
   <link
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
+
   <style>
-
-    :root {
-      --green-dark: #0f5132;
-      --green: #177245;
-      --green-light: #eaf5ee;
-
-      --gold: #c8a951;
-      --gold-light: #f6f0da;
-
-      --cream: #fbfaf6;
-      --white: #ffffff;
-
-      --text: #1f2937;
-      --muted: #6b7280;
-      --border: #e7e7e7;
-
-      --danger: #b42318;
-
-      --shadow:
-        0 14px 40px rgba(15, 81, 50, 0.08);
-
-      --radius: 22px;
-    }
 
     * {
       box-sizing: border-box;
@@ -49,889 +43,4290 @@
       padding: 0;
     }
 
+
+    :root {
+
+      --green: #174d3a;
+      --green-dark: #103b2c;
+      --green-light: #edf5f1;
+
+      --gold: #b28b18;
+      --gold-light: #fff8df;
+
+      --cream: #faf8f0;
+
+      --white: #ffffff;
+
+      --text: #1f2933;
+      --muted: #74808a;
+
+      --border: #e8ebe8;
+
+      --success: #237a31;
+      --success-light: #e9f7eb;
+
+      --danger: #b3261e;
+      --danger-light: #fff0ef;
+
+      --warning: #9a7610;
+      --warning-light: #fff8df;
+
+      --purple: #6552a8;
+      --purple-light: #f1edff;
+
+      --blue: #286b9c;
+      --blue-light: #eef7ff;
+
+      --shadow:
+        0 10px 35px rgba(23, 77, 58, .08);
+
+      --radius: 20px;
+    }
+
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+
     body {
-      font-family: "Cairo", sans-serif;
 
-      min-height: 100vh;
-
-      background:
-        radial-gradient(
-          circle at top right,
-          rgba(200,169,81,0.10),
-          transparent 30%
-        ),
-        linear-gradient(
-          180deg,
-          #fdfcf9,
-          #f4f8f4
-        );
-
-      color: var(--text);
-    }
-
-    button,
-    a {
-      font-family: inherit;
-    }
-
-    .page {
-      width: 100%;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .container {
-      width: min(1100px, 100%);
-      margin: auto;
-    }
-
-    /* HEADER */
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 15px;
-
-      background:
-        rgba(255,255,255,0.92);
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 22px;
-
-      padding: 14px 18px;
-
-      box-shadow: var(--shadow);
-
-      margin-bottom: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand img {
-      width: 48px;
-      height: 48px;
-
-      object-fit: contain;
-
-      border-radius: 14px;
-    }
-
-    .brand h1 {
-      color: var(--green-dark);
-
-      font-size: 17px;
-
-      font-weight: 800;
-    }
-
-    .brand p {
-      color: var(--muted);
-
-      font-size: 11px;
-    }
-
-    .back-btn {
-      text-decoration: none;
-
-      background: var(--green-light);
-      color: var(--green-dark);
-
-      padding: 10px 15px;
-
-      border-radius: 13px;
-
-      font-size: 13px;
-
-      font-weight: 800;
-
-      transition: 0.2s ease;
-    }
-
-    .back-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    /* HERO */
-
-    .profile-hero {
-      position: relative;
-
-      overflow: hidden;
+      font-family:
+        "Cairo",
+        Arial,
+        Tahoma,
+        sans-serif;
 
       background:
         linear-gradient(
           135deg,
-          var(--green-dark),
-          #17683f 65%,
-          #257b50
+          #faf8f0 0%,
+          #ffffff 45%,
+          #edf5f1 100%
         );
 
-      border-radius: 28px;
+      color:
+        var(--text);
 
-      padding: 35px;
+      min-height: 100vh;
 
-      color: white;
-
-      box-shadow:
-        0 18px 45px
-        rgba(15,81,50,0.18);
-
-      margin-bottom: 20px;
     }
 
-    .profile-hero::before {
-      content: "";
 
-      position: absolute;
-
-      width: 240px;
-      height: 240px;
-
-      border:
-        1px solid
-        rgba(255,255,255,0.10);
-
-      border-radius: 50%;
-
-      left: -90px;
-      top: -100px;
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
     }
 
-    .profile-hero::after {
-      content: "";
 
-      position: absolute;
-
-      width: 180px;
-      height: 180px;
-
-      border:
-        1px solid
-        rgba(255,255,255,0.08);
-
-      border-radius: 50%;
-
-      right: -70px;
-      bottom: -90px;
+    button {
+      cursor: pointer;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .hero-label {
-      display: inline-block;
 
-      background:
-        rgba(255,255,255,0.12);
+    /* =====================================================
+       PAGE
+    ===================================================== */
 
-      border:
-        1px solid
-        rgba(255,255,255,0.14);
+    .page {
+
+      width: min(1250px, 94%);
+
+      margin:
+        0 auto;
 
       padding:
-        7px 12px;
+        22px 0 50px;
 
-      border-radius: 999px;
-
-      font-size: 11px;
-
-      margin-bottom: 15px;
     }
 
-    .profile-name {
-      font-size:
-        clamp(28px, 5vw, 42px);
 
-      font-weight: 800;
+    /* =====================================================
+       TOPBAR
+    ===================================================== */
 
-      margin-bottom: 5px;
-    }
+    .topbar {
 
-    .profile-subtitle {
-      color:
-        rgba(255,255,255,0.82);
-
-      font-size: 14px;
-    }
-
-    /* CONTENT */
-
-    .section-title {
-      margin:
-        28px 3px 13px;
-    }
-
-    .section-title h2 {
-      color: var(--green-dark);
-
-      font-size: 21px;
-
-      font-weight: 800;
-    }
-
-    .section-title p {
-      color: var(--muted);
-
-      font-size: 12px;
-
-      margin-top: 3px;
-    }
-
-    .info-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 14px;
-    }
-
-    .info-card {
-      background: white;
+      background:
+        rgba(255,255,255,.92);
 
       border:
         1px solid var(--border);
 
-      border-radius: var(--radius);
+      border-radius:
+        20px;
 
-      padding: 21px;
-
-      min-height: 150px;
-
-      box-shadow: var(--shadow);
-    }
-
-    .info-icon {
-      width: 44px;
-      height: 44px;
-
-      display: grid;
-      place-items: center;
-
-      background: var(--green-light);
-
-      border-radius: 14px;
-
-      font-size: 20px;
-
-      margin-bottom: 13px;
-    }
-
-    .info-label {
-      color: var(--muted);
-
-      font-size: 11px;
-
-      margin-bottom: 4px;
-    }
-
-    .info-value {
-      color: var(--green-dark);
-
-      font-size: 16px;
-
-      font-weight: 800;
-
-      word-break: break-word;
-    }
-
-    /* STATUS */
-
-    .status {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 7px;
+      box-shadow:
+        var(--shadow);
 
       padding:
-        6px 10px;
+        14px 18px;
 
-      border-radius: 999px;
+      display:
+        flex;
 
-      background: #eaf8ef;
+      align-items:
+        center;
 
-      color: #157347;
+      justify-content:
+        space-between;
 
-      font-size: 12px;
+      gap:
+        15px;
 
-      font-weight: 800;
+      margin-bottom:
+        20px;
+
+      position:
+        sticky;
+
+      top:
+        12px;
+
+      z-index:
+        20;
+
+      backdrop-filter:
+        blur(12px);
+
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
 
-      background: #18a558;
+    .brand {
 
-      border-radius: 50%;
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        12px;
+
     }
 
-    /* FUTURE SECTIONS */
 
-    .cards-grid {
-      display: grid;
+    .brand img {
+
+      width:
+        48px;
+
+      height:
+        48px;
+
+      object-fit:
+        contain;
+
+      border-radius:
+        14px;
+
+    }
+
+
+    .brand h1 {
+
+      font-size:
+        16px;
+
+      color:
+        var(--green);
+
+      font-weight:
+        800;
+
+    }
+
+
+    .brand p {
+
+      font-size:
+        11px;
+
+      color:
+        var(--muted);
+
+      margin-top:
+        2px;
+
+    }
+
+
+    .top-actions {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        8px;
+
+      flex-wrap:
+        wrap;
+
+    }
+
+
+    .top-btn {
+
+      border:
+        none;
+
+      border-radius:
+        11px;
+
+      padding:
+        10px 14px;
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        7px;
+
+      transition:
+        .2s;
+
+    }
+
+
+    .top-btn:hover {
+      transform:
+        translateY(-2px);
+    }
+
+
+    .back-btn {
+
+      background:
+        var(--green-light);
+
+      color:
+        var(--green);
+
+    }
+
+
+    .edit-btn {
+
+      background:
+        var(--gold-light);
+
+      color:
+        var(--gold);
+
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
+
+      background:
+        linear-gradient(
+          120deg,
+          var(--green-dark),
+          #21644b
+        );
+
+      color:
+        white;
+
+      border-radius:
+        25px;
+
+      padding:
+        30px;
+
+      margin-bottom:
+        20px;
+
+      box-shadow:
+        0 16px 45px
+        rgba(23,77,58,.15);
+
+    }
+
+
+    .hero::before {
+
+      content:
+        "";
+
+      position:
+        absolute;
+
+      width:
+        260px;
+
+      height:
+        260px;
+
+      left:
+        -110px;
+
+      top:
+        -130px;
+
+      border-radius:
+        50%;
+
+      border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    }
+
+
+    .hero::after {
+
+      content:
+        "";
+
+      position:
+        absolute;
+
+      width:
+        210px;
+
+      height:
+        210px;
+
+      right:
+        -85px;
+
+      bottom:
+        -120px;
+
+      border-radius:
+        50%;
+
+      border:
+        1px solid
+        rgba(212,180,76,.12);
+
+    }
+
+
+    .hero-content {
+
+      position:
+        relative;
+
+      z-index:
+        2;
+
+    }
+
+
+    .hero-tag {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        7px;
+
+      background:
+        rgba(255,255,255,.10);
+
+      border:
+        1px solid
+        rgba(255,255,255,.14);
+
+      padding:
+        7px 11px;
+
+      border-radius:
+        999px;
+
+      font-size:
+        11px;
+
+      margin-bottom:
+        13px;
+
+    }
+
+
+    .hero-name {
+
+      font-size:
+        clamp(27px, 5vw, 42px);
+
+      font-weight:
+        800;
+
+      line-height:
+        1.35;
+
+      margin-bottom:
+        7px;
+
+    }
+
+
+    .hero-section {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        7px;
+
+      color:
+        rgba(255,255,255,.88);
+
+      font-size:
+        14px;
+
+    }
+
+
+    /* =====================================================
+       WEEKLY SUMMARY
+    ===================================================== */
+
+    .summary-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        1.5fr 1fr 1fr;
+
+      gap:
+        15px;
+
+      margin-bottom:
+        20px;
+
+    }
+
+
+    .summary-card {
+
+      background:
+        white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius);
+
+      box-shadow:
+        var(--shadow);
+
+      padding:
+        20px;
+
+    }
+
+
+    .summary-title {
+
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+
+      margin-bottom:
+        7px;
+
+    }
+
+
+    .summary-main {
+
+      color:
+        var(--green);
+
+      font-size:
+        18px;
+
+      font-weight:
+        800;
+
+      line-height:
+        1.7;
+
+    }
+
+
+    .summary-value {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        12px;
+
+    }
+
+
+    .big-number {
+
+      color:
+        var(--green);
+
+      font-size:
+        35px;
+
+      font-weight:
+        800;
+
+      line-height:
+        1;
+
+    }
+
+
+    .summary-icon {
+
+      width:
+        47px;
+
+      height:
+        47px;
+
+      border-radius:
+        14px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      font-size:
+        20px;
+
+      background:
+        var(--green-light);
+
+      color:
+        var(--green);
+
+    }
+
+
+    .summary-card:nth-child(2)
+    .summary-icon {
+
+      background:
+        var(--gold-light);
+
+      color:
+        var(--gold);
+
+    }
+
+
+    .summary-card:nth-child(3)
+    .summary-icon {
+
+      background:
+        var(--purple-light);
+
+      color:
+        var(--purple);
+
+    }
+
+
+    .progress-wrap {
+
+      margin-top:
+        12px;
+
+    }
+
+
+    .progress-line {
+
+      height:
+        9px;
+
+      border-radius:
+        99px;
+
+      background:
+        #edf0ee;
+
+      overflow:
+        hidden;
+
+    }
+
+
+    .progress-fill {
+
+      height:
+        100%;
+
+      border-radius:
+        inherit;
+
+      background:
+        linear-gradient(
+          90deg,
+          #237a31,
+          #55a862
+        );
+
+    }
+
+
+    .progress-info {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      margin-top:
+        6px;
+
+      font-size:
+        10px;
+
+      color:
+        var(--muted);
+
+    }
+
+
+    /* =====================================================
+       SECTION HEADER
+    ===================================================== */
+
+    .section-head {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        15px;
+
+      margin:
+        28px 2px 13px;
+
+    }
+
+
+    .section-heading {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        11px;
+
+    }
+
+
+    .section-icon {
+
+      width:
+        42px;
+
+      height:
+        42px;
+
+      border-radius:
+        12px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      background:
+        var(--green-light);
+
+      color:
+        var(--green);
+
+      font-size:
+        18px;
+
+    }
+
+
+    .section-head h2 {
+
+      color:
+        var(--green);
+
+      font-size:
+        19px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .section-head p {
+
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+
+      margin-top:
+        2px;
+
+    }
+
+
+    .section-action {
+
+      border:
+        none;
+
+      background:
+        var(--gold-light);
+
+      color:
+        var(--gold);
+
+      border-radius:
+        10px;
+
+      padding:
+        9px 12px;
+
+      font-size:
+        11px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    /* =====================================================
+       MAIN CARD
+    ===================================================== */
+
+    .main-card {
+
+      background:
+        white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        var(--radius);
+
+      box-shadow:
+        var(--shadow);
+
+      overflow:
+        hidden;
+
+    }
+
+
+    /* =====================================================
+       STUDENT INFO
+    ===================================================== */
+
+    .student-info {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        220px 1fr;
+
+      gap:
+        25px;
+
+      padding:
+        25px;
+
+    }
+
+
+    .student-photo {
+
+      min-height:
+        255px;
+
+      border-radius:
+        18px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green-light),
+          var(--gold-light)
+        );
+
+      border:
+        1px solid var(--border);
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      text-align:
+        center;
+
+      overflow:
+        hidden;
+
+    }
+
+
+    .student-avatar-large {
+
+      width:
+        110px;
+
+      height:
+        110px;
+
+      border-radius:
+        50%;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      background:
+        white;
+
+      border:
+        5px solid
+        rgba(255,255,255,.75);
+
+      box-shadow:
+        0 12px 30px
+        rgba(23,77,58,.10);
+
+      color:
+        var(--green);
+
+      font-size:
+        42px;
+
+      font-weight:
+        800;
+
+      margin-bottom:
+        12px;
+
+    }
+
+
+    .photo-label {
+
+      color:
+        var(--green);
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .photo-note {
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      margin-top:
+        3px;
+
+    }
+
+
+    .info-details {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap:
+        12px;
+
+    }
+
+
+    .detail-box {
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        14px;
+
+      padding:
+        14px;
+
+      background:
+        #fcfdfc;
+
+      min-height:
+        87px;
+
+    }
+
+
+    .detail-label {
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      margin-bottom:
+        5px;
+
+    }
+
+
+    .detail-value {
+
+      color:
+        var(--text);
+
+      font-size:
+        13px;
+
+      font-weight:
+        800;
+
+      line-height:
+        1.7;
+
+      word-break:
+        break-word;
+
+    }
+
+
+    .detail-value.green {
+      color:
+        var(--green);
+    }
+
+
+    .detail-value.gold {
+      color:
+        var(--gold);
+    }
+
+
+    .whatsapp {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        7px;
+
+      color:
+        #167b3f;
+
+      background:
+        var(--success-light);
+
+      padding:
+        7px 9px;
+
+      border-radius:
+        9px;
+
+      margin-top:
+        6px;
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .code-box {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+
+    }
+
+
+    .student-code {
+
+      color:
+        var(--green);
+
+      font-size:
+        20px;
+
+      letter-spacing:
+        1px;
+
+      font-weight:
+        800;
+
+      direction:
+        ltr;
+
+    }
+
+
+    .copy-btn {
+
+      border:
+        none;
+
+      background:
+        var(--green-light);
+
+      color:
+        var(--green);
+
+      padding:
+        7px 10px;
+
+      border-radius:
+        9px;
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    /* =====================================================
+       NOTES
+    ===================================================== */
+
+    .notes {
+
+      margin:
+        0 25px 25px;
+
+      padding:
+        17px;
+
+      border-radius:
+        14px;
+
+      background:
+        #fffdf4;
+
+      border:
+        1px solid
+        #efe5bf;
+
+    }
+
+
+    .notes-title {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        8px;
+
+      color:
+        var(--green);
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+      margin-bottom:
+        6px;
+
+    }
+
+
+    .notes p {
+
+      color:
+        #71684d;
+
+      font-size:
+        11px;
+
+      line-height:
+        1.9;
+
+    }
+
+
+    /* =====================================================
+       ATTENDANCE
+    ===================================================== */
+
+    .attendance-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
+      gap:
+        10px;
+
+      padding:
+        20px;
+
+    }
+
+
+    .attendance-item {
+
+      background:
+        #fcfdfc;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        14px;
+
+      padding:
+        14px 8px;
+
+      text-align:
+        center;
+
+    }
+
+
+    .attendance-date {
+
+      color:
+        var(--green);
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+      margin-bottom:
+        7px;
+
+    }
+
+
+    .attendance-status {
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        5px;
+
+      color:
+        var(--success);
+
+      background:
+        var(--success-light);
+
+      padding:
+        5px 8px;
+
+      border-radius:
+        999px;
+
+      font-size:
+        9px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .attendance-status::before {
+
+      content:
+        "";
+
+      width:
+        6px;
+
+      height:
+        6px;
+
+      border-radius:
+        50%;
+
+      background:
+        var(--success);
+
+    }
+
+
+    /* =====================================================
+       WEEKLY PLAN
+    ===================================================== */
+
+    .plan-summary {
+
+      display:
+        grid;
 
       grid-template-columns:
         repeat(3, 1fr);
 
-      gap: 15px;
+      gap:
+        14px;
+
+      padding:
+        20px;
+
+      border-bottom:
+        1px solid var(--border);
+
     }
 
-    .future-card {
-      background: white;
+
+    .plan-box {
 
       border:
         1px solid var(--border);
 
-      border-radius: var(--radius);
-
-      padding: 23px;
-
-      box-shadow: var(--shadow);
-
-      position: relative;
-
-      overflow: hidden;
-    }
-
-    .future-card::before {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      right: 0;
-
-      width: 70px;
-      height: 70px;
-
-      background:
-        var(--gold-light);
-
       border-radius:
-        0 0 0 70px;
-    }
-
-    .future-icon {
-      position: relative;
-
-      width: 48px;
-      height: 48px;
-
-      display: grid;
-
-      place-items: center;
-
-      background:
-        var(--gold-light);
-
-      border-radius: 14px;
-
-      font-size: 22px;
-
-      margin-bottom: 14px;
-    }
-
-    .future-card h3 {
-      color: var(--green-dark);
-
-      font-size: 16px;
-
-      font-weight: 800;
-
-      margin-bottom: 6px;
-    }
-
-    .future-card p {
-      color: var(--muted);
-
-      font-size: 12px;
-
-      line-height: 1.9;
-    }
-
-    .soon {
-      display: inline-block;
-
-      margin-top: 11px;
+        15px;
 
       padding:
-        5px 9px;
-
-      border-radius: 999px;
+        16px;
 
       background:
-        var(--gold-light);
+        #fcfdfc;
+
+    }
+
+
+    .plan-label {
 
       color:
-        #80691f;
+        var(--muted);
 
-      font-size: 10px;
+      font-size:
+        10px;
 
-      font-weight: 800;
+      margin-bottom:
+        6px;
+
     }
 
-    /* LOADING */
 
-    .loading {
-      text-align: center;
+    .plan-value {
 
-      padding: 70px 20px;
+      color:
+        var(--green);
 
-      color: var(--muted);
+      font-size:
+        17px;
+
+      font-weight:
+        800;
+
     }
 
-    .loading-icon {
-      font-size: 35px;
 
-      margin-bottom: 10px;
+    .plan-sub {
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      margin-top:
+        4px;
+
     }
 
-    /* ERROR */
 
-    .error-box {
-      display: none;
+    .percent-card {
 
-      background: #fff4f2;
+      display:
+        flex;
 
-      border:
-        1px solid #f4c7c1;
+      align-items:
+        center;
 
-      color: var(--danger);
+      justify-content:
+        space-between;
 
-      border-radius: 18px;
+      gap:
+        12px;
 
-      padding: 20px;
-
-      text-align: center;
-
-      font-size: 13px;
     }
 
-    /* FOOTER */
 
-    footer {
-      text-align: center;
+    .percent-number {
 
-      color: var(--muted);
+      font-size:
+        30px;
 
-      font-size: 11px;
+      font-weight:
+        800;
+
+      color:
+        var(--green);
+
+    }
+
+
+    .mini-progress {
+
+      flex:
+        1;
+
+    }
+
+
+    .evaluation {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        9px;
+
+      color:
+        #8d6e11;
+
+      background:
+        var(--warning-light);
 
       padding:
-        28px 10px 10px;
+        7px 10px;
+
+      border-radius:
+        999px;
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+
+      width:
+        fit-content;
+
     }
 
-    /* MOBILE */
+
+    .requirement {
+
+      padding:
+        18px 20px;
+
+      background:
+        #fffdf4;
+
+      border-bottom:
+        1px solid
+        #efe7c9;
+
+    }
+
+
+    .requirement-label {
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      margin-bottom:
+        5px;
+
+    }
+
+
+    .requirement-value {
+
+      color:
+        var(--green);
+
+      font-size:
+        15px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    /* =====================================================
+       TEST
+    ===================================================== */
+
+    .next-test {
+
+      padding:
+        18px 20px;
+
+      border-bottom:
+        1px solid var(--border);
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        14px;
+
+      flex-wrap:
+        wrap;
+
+    }
+
+
+    .test-title {
+
+      color:
+        var(--green);
+
+      font-size:
+        14px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    .test-meta {
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      margin-top:
+        3px;
+
+    }
+
+
+    .scheduled {
+
+      background:
+        var(--green-light);
+
+      color:
+        var(--green);
+
+      padding:
+        7px 10px;
+
+      border-radius:
+        999px;
+
+      font-size:
+        10px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    /* =====================================================
+       TABLE
+    ===================================================== */
+
+    .table-scroll {
+
+      overflow-x:
+        auto;
+
+    }
+
+
+    .plan-table {
+
+      width:
+        100%;
+
+      border-collapse:
+        collapse;
+
+      min-width:
+        900px;
+
+    }
+
+
+    .plan-table th {
+
+      background:
+        #fafcfb;
+
+      color:
+        #65716c;
+
+      font-size:
+        10px;
+
+      padding:
+        13px 14px;
+
+      text-align:
+        right;
+
+      border-bottom:
+        1px solid var(--border);
+
+      white-space:
+        nowrap;
+
+    }
+
+
+    .plan-table td {
+
+      padding:
+        13px 14px;
+
+      font-size:
+        11px;
+
+      border-bottom:
+        1px solid #f0f2f1;
+
+      vertical-align:
+        middle;
+
+    }
+
+
+    .plan-table tr:last-child td {
+      border-bottom:
+        none;
+    }
+
+
+    .date-cell {
+      color:
+        var(--green);
+
+      font-weight:
+        800;
+
+      direction:
+        ltr;
+
+      text-align:
+        right;
+
+    }
+
+
+    .juz {
+      color:
+        var(--gold);
+
+      font-weight:
+        800;
+
+    }
+
+
+    .pending {
+
+      display:
+        inline-flex;
+
+      padding:
+        5px 8px;
+
+      border-radius:
+        999px;
+
+      background:
+        #f2f4f3;
+
+      color:
+        #6e7773;
+
+      font-size:
+        9px;
+
+      font-weight:
+        800;
+
+    }
+
+
+    /* =====================================================
+       EXAMS
+    ===================================================== */
+
+    .exam-card {
+
+      padding:
+        20px;
+
+    }
+
+
+    .exam-table {
+
+      width:
+        100%;
+
+      border-collapse:
+        collapse;
+
+    }
+
+
+    .exam-table th {
+
+      background:
+        #fafcfb;
+
+      padding:
+        12px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      text-align:
+        right;
+
+    }
+
+
+    .exam-table td {
+
+      padding:
+        14px 12px;
+
+      border-bottom:
+        1px solid var(--border);
+
+      font-size:
+        11px;
+
+    }
+
+
+    .no-exams {
+
+      text-align:
+        center;
+
+      padding:
+        22px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+
+    }
+
+
+    /* =====================================================
+       SCORE SYSTEM
+    ===================================================== */
+
+    .score-system {
+
+      margin:
+        0 20px 20px;
+
+      padding:
+        16px;
+
+      border-radius:
+        14px;
+
+      background:
+        var(--blue-light);
+
+      border:
+        1px solid
+        #d9ebfa;
+
+    }
+
+
+    .score-title {
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        8px;
+
+      color:
+        var(--blue);
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+      margin-bottom:
+        12px;
+
+    }
+
+
+    .score-grid {
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap:
+        10px;
+
+    }
+
+
+    .score-item {
+
+      background:
+        white;
+
+      border:
+        1px solid
+        #e0eef7;
+
+      border-radius:
+        11px;
+
+      padding:
+        11px;
+
+      text-align:
+        center;
+
+    }
+
+
+    .score-item strong {
+
+      display:
+        block;
+
+      color:
+        var(--green);
+
+      font-size:
+        14px;
+
+    }
+
+
+    .score-item span {
+
+      display:
+        block;
+
+      color:
+        var(--muted);
+
+      font-size:
+        9px;
+
+      margin-top:
+        3px;
+
+    }
+
+
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
+    .toast {
+
+      position:
+        fixed;
+
+      left:
+        20px;
+
+      bottom:
+        20px;
+
+      background:
+        var(--green-dark);
+
+      color:
+        white;
+
+      padding:
+        12px 15px;
+
+      border-radius:
+        11px;
+
+      box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.18);
+
+      font-size:
+        11px;
+
+      opacity:
+        0;
+
+      transform:
+        translateY(15px);
+
+      pointer-events:
+        none;
+
+      transition:
+        .25s;
+
+      z-index:
+        200;
+
+    }
+
+
+    .toast.show {
+
+      opacity:
+        1;
+
+      transform:
+        translateY(0);
+
+    }
+
+
+    /* =====================================================
+       LOADING / ERROR
+    ===================================================== */
+
+    .loading {
+
+      text-align:
+        center;
+
+      padding:
+        80px 20px;
+
+      color:
+        var(--muted);
+
+    }
+
+
+    .loading i {
+
+      font-size:
+        32px;
+
+      color:
+        var(--green);
+
+      margin-bottom:
+        10px;
+
+    }
+
+
+    .error {
+
+      display:
+        none;
+
+      background:
+        var(--danger-light);
+
+      border:
+        1px solid #f2c8c4;
+
+      color:
+        var(--danger);
+
+      padding:
+        20px;
+
+      border-radius:
+        15px;
+
+      text-align:
+        center;
+
+      font-size:
+        12px;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+
+      text-align:
+        center;
+
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
+
+      padding:
+        25px 0 5px;
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
 
     @media (max-width: 900px) {
 
-      .info-grid {
+      .summary-grid {
+
         grid-template-columns:
-          repeat(2, 1fr);
+          1fr 1fr;
+
       }
 
-      .cards-grid {
-        grid-template-columns: 1fr;
+
+      .summary-card:first-child {
+
+        grid-column:
+          span 2;
+
+      }
+
+
+      .student-info {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .student-photo {
+
+        min-height:
+          200px;
+
+      }
+
+
+      .plan-summary {
+
+        grid-template-columns:
+          1fr;
+
       }
 
     }
 
-    @media (max-width: 600px) {
+
+    @media (max-width: 650px) {
 
       .page {
-        padding: 11px;
+
+        width:
+          94%;
+
+        padding-top:
+          10px;
+
       }
+
 
       .topbar {
-        padding: 11px;
-        border-radius: 18px;
+
+        position:
+          static;
+
+        border-radius:
+          16px;
+
+        padding:
+          10px 12px;
+
       }
+
 
       .brand img {
-        width: 42px;
-        height: 42px;
+
+        width:
+          40px;
+
+        height:
+          40px;
+
       }
+
 
       .brand h1 {
-        font-size: 13px;
+
+        font-size:
+          12px;
+
       }
+
 
       .brand p {
-        font-size: 9px;
+
+        font-size:
+          9px;
+
       }
 
-      .back-btn {
+
+      .top-btn span {
+
+        display:
+          none;
+
+      }
+
+
+      .top-btn {
+
+        width:
+          38px;
+
+        height:
+          38px;
+
+        padding:
+          0;
+
+        justify-content:
+          center;
+
+      }
+
+
+      .hero {
+
+        padding:
+          24px 20px;
+
+        border-radius:
+          20px;
+
+      }
+
+
+      .hero-name {
+
+        font-size:
+          27px;
+
+      }
+
+
+      .hero-section {
+
+        font-size:
+          12px;
+
+      }
+
+
+      .summary-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .summary-card:first-child {
+
+        grid-column:
+          auto;
+
+      }
+
+
+      .section-head {
+
+        align-items:
+          flex-start;
+
+      }
+
+
+      .section-head h2 {
+
+        font-size:
+          16px;
+
+      }
+
+
+      .section-action {
+
         padding:
           8px 10px;
 
-        font-size: 10px;
+        font-size:
+          10px;
+
       }
 
-      .profile-hero {
-        border-radius: 22px;
-        padding: 25px 20px;
+
+      .student-info {
+
+        padding:
+          15px;
+
       }
 
-      .profile-name {
-        font-size: 28px;
+
+      .info-details {
+
+        grid-template-columns:
+          1fr;
+
       }
 
-      .profile-subtitle {
-        font-size: 12px;
+
+      .notes {
+
+        margin:
+          0 15px 15px;
+
       }
 
-      .info-grid {
-        gap: 10px;
+
+      .attendance-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        padding:
+          15px;
+
       }
 
-      .info-card {
-        padding: 16px;
-        min-height: 135px;
-        border-radius: 18px;
+
+      .attendance-item:last-child {
+
+        grid-column:
+          span 2;
+
       }
 
-      .info-icon {
-        width: 39px;
-        height: 39px;
-        font-size: 18px;
+
+      .score-grid {
+
+        grid-template-columns:
+          1fr;
+
       }
 
-      .info-value {
-        font-size: 13px;
+
+      .exam-card {
+
+        padding:
+          15px;
+
       }
 
     }
 
+
     @media (max-width: 390px) {
 
-      .info-grid {
-        grid-template-columns: 1fr;
+      .attendance-grid {
+
+        grid-template-columns:
+          1fr;
+
+      }
+
+
+      .attendance-item:last-child {
+
+        grid-column:
+          auto;
+
+      }
+
+
+      .hero-name {
+
+        font-size:
+          24px;
+
+      }
+
+
+      .big-number {
+
+        font-size:
+          30px;
+
       }
 
     }
 
   </style>
+
 </head>
+
 
 <body>
 
+
   <div class="page">
 
-    <div class="container">
 
-      <!-- HEADER -->
+    <!-- =====================================================
+         TOPBAR
+    ====================================================== -->
 
-      <header class="topbar">
+    <header class="topbar">
 
-        <div class="brand">
+      <div class="brand">
 
-          <img
-            src="logo.png"
-            alt="شعار المركز"
-          >
+        <img
+          src="logo.png"
+          alt="شعار المركز"
+        >
 
-          <div>
+        <div>
 
-            <h1>
-              مركز حردان طارق القرآني
-            </h1>
+          <h1>
+            مركز حردان طارق القرآني
+          </h1>
 
-            <p>
-              ملف الطالب
-            </p>
-
-          </div>
+          <p>
+            الملف الشخصي للطالب
+          </p>
 
         </div>
 
+      </div>
+
+
+      <div class="top-actions">
+
         <a
           href="teacher-dashboard.html"
-          class="back-btn"
+          class="top-btn back-btn"
         >
-          ← العودة للطلاب
+
+          <i class="fa-solid fa-arrow-right"></i>
+
+          <span>
+            العودة للطلاب
+          </span>
+
         </a>
 
-      </header>
+
+        <button
+          class="top-btn edit-btn"
+          type="button"
+          onclick="openEditModal()"
+        >
+
+          <i class="fa-solid fa-pen"></i>
+
+          <span>
+            تعديل البيانات
+          </span>
+
+        </button>
+
+      </div>
+
+    </header>
 
 
-      <!-- PROFILE HERO -->
+    <!-- =====================================================
+         LOADING
+    ====================================================== -->
 
-      <section
-        id="profileHero"
-        class="profile-hero"
-        style="display:none;"
-      >
+    <div
+      id="loading"
+      class="loading"
+    >
+
+      <i class="fa-solid fa-spinner fa-spin"></i>
+
+      <p>
+        جارٍ تحميل ملف الطالب...
+      </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         ERROR
+    ====================================================== -->
+
+    <div
+      id="errorBox"
+      class="error"
+    ></div>
+
+
+    <!-- =====================================================
+         PROFILE
+    ====================================================== -->
+
+    <main
+      id="profile"
+      style="display:none;"
+    >
+
+
+      <!-- =====================================================
+           HERO
+      ====================================================== -->
+
+      <section class="hero">
 
         <div class="hero-content">
 
-          <span class="hero-label">
+          <div class="hero-tag">
+
+            <i class="fa-solid fa-user-graduate"></i>
+
             ملف الطالب
-          </span>
+
+          </div>
+
 
           <h2
-            id="studentName"
-            class="profile-name"
+            id="heroName"
+            class="hero-name"
           >
-            —
+            آدم ايوب أحمد السروجي
           </h2>
 
-          <p class="profile-subtitle">
-            متابعة بيانات الطالب في المركز
-          </p>
+
+          <div class="hero-section">
+
+            <i class="fa-solid fa-people-group"></i>
+
+            <span id="heroSection">
+              شعبة الصحابي زيد بن ثابت
+            </span>
+
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- LOADING -->
+      <!-- =====================================================
+           WEEKLY SUMMARY
+      ====================================================== -->
 
-      <div
-        id="loading"
-        class="loading"
-      >
+      <section class="summary-grid">
 
-        <div class="loading-icon">
-          📖
+
+        <div class="summary-card">
+
+          <div class="summary-value">
+
+            <div>
+
+              <div class="summary-title">
+                الهدف الحالي الأسبوعي
+              </div>
+
+              <div
+                class="summary-main"
+                id="weeklyGoal"
+              >
+                حفظ 2 صفحة / مراجعة 2 صفحة
+              </div>
+
+            </div>
+
+
+            <div class="summary-icon">
+
+              <i class="fa-solid fa-bullseye"></i>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <p>
-          جارٍ تحميل بيانات الطالب...
-        </p>
+
+        <div class="summary-card">
+
+          <div class="summary-title">
+            النقاط الكلية
+          </div>
+
+          <div class="summary-value">
+
+            <div
+              class="big-number"
+              id="totalPoints"
+            >
+              78
+            </div>
+
+            <div class="summary-icon">
+
+              <i class="fa-solid fa-star"></i>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+          <div class="summary-title">
+            إنجاز الأسبوع الحالي
+          </div>
+
+          <div class="summary-value">
+
+            <div
+              class="big-number"
+              id="weeklyProgress"
+            >
+              83%
+            </div>
+
+            <div class="summary-icon">
+
+              <i class="fa-solid fa-chart-line"></i>
+
+            </div>
+
+          </div>
+
+
+          <div class="progress-wrap">
+
+            <div class="progress-line">
+
+              <div
+                class="progress-fill"
+                style="width:83%;"
+              ></div>
+
+            </div>
+
+
+            <div class="progress-info">
+
+              <span>
+                الإنجاز
+              </span>
+
+              <span>
+                83%
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+      <!-- =====================================================
+           STUDENT CARD
+      ====================================================== -->
+
+      <div class="section-head">
+
+        <div class="section-heading">
+
+          <div class="section-icon">
+
+            <i class="fa-solid fa-id-card"></i>
+
+          </div>
+
+          <div>
+
+            <h2>
+              بطاقة الطالب
+            </h2>
+
+            <p>
+              البيانات الأساسية والمعلومات المسجلة
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="section-action"
+          type="button"
+          onclick="openEditModal()"
+        >
+
+          <i class="fa-solid fa-pen"></i>
+
+          تعديل البيانات
+
+        </button>
 
       </div>
 
 
-      <!-- ERROR -->
-
-      <div
-        id="errorBox"
-        class="error-box"
-      >
-        تعذر تحميل بيانات الطالب.
-      </div>
+      <section class="main-card">
 
 
-      <!-- INFO -->
+        <div class="student-info">
 
-      <div
-        id="profileContent"
-        style="display:none;"
-      >
 
-        <div class="section-title">
+          <!-- PHOTO -->
 
-          <h2>
-            بيانات الطالب
-          </h2>
+          <div class="student-photo">
+
+            <div
+              class="student-avatar-large"
+              id="studentAvatar"
+            >
+              آ
+            </div>
+
+            <div class="photo-label">
+              صورة الطالب الشخصية
+            </div>
+
+            <div class="photo-note">
+              لم يتم رفع صورة بعد
+            </div>
+
+          </div>
+
+
+          <!-- DETAILS -->
+
+          <div class="info-details">
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                اسم الطالب
+              </div>
+
+              <div
+                class="detail-value green"
+                id="infoName"
+              >
+                آدم ايوب أحمد السروجي
+              </div>
+
+            </div>
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                الشعبة / الحلقة
+              </div>
+
+              <div
+                class="detail-value"
+                id="infoSection"
+              >
+                شعبة الصحابي زيد بن ثابت
+              </div>
+
+            </div>
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                رقم جوال ولي الأمر
+              </div>
+
+              <div class="detail-value">
+
+                <span id="guardianPhone">
+                  781742511
+                </span>
+
+                <br>
+
+                <a
+                  id="whatsappLink"
+                  class="whatsapp"
+                  href="https://wa.me/962781742511"
+                  target="_blank"
+                  rel="noopener"
+                >
+
+                  <i class="fa-brands fa-whatsapp"></i>
+
+                  واتساب
+
+                </a>
+
+              </div>
+
+            </div>
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                تاريخ الانضمام للحلقة
+              </div>
+
+              <div class="detail-value">
+                ٤ يوليو ٢٠٢٦
+              </div>
+
+            </div>
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                أجزاء القرآن المنجزة
+              </div>
+
+              <div class="detail-value green">
+                0 أجزاء من القرآن الكريم
+              </div>
+
+            </div>
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                منطقة السكن
+              </div>
+
+              <div class="detail-value">
+                عوجان
+              </div>
+
+            </div>
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                حافلة الطالب (خط الباص)
+              </div>
+
+              <div class="detail-value">
+                لم يتم التعيين لحافلة بعد
+              </div>
+
+            </div>
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                موقع بيت الطالب
+              </div>
+
+              <div class="detail-value">
+                غير محدد
+              </div>
+
+            </div>
+
+
+            <div class="detail-box">
+
+              <div class="detail-label">
+                الرمز الخاص بدخول الطالب
+              </div>
+
+              <div class="code-box">
+
+                <span
+                  class="student-code"
+                  id="studentCode"
+                >
+                  26001
+                </span>
+
+
+                <button
+                  class="copy-btn"
+                  type="button"
+                  onclick="copyCode()"
+                >
+
+                  <i class="fa-solid fa-copy"></i>
+
+                  نسخ الرمز
+
+                </button>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <!-- NOTES -->
+
+        <div class="notes">
+
+          <div class="notes-title">
+
+            <i class="fa-solid fa-note-sticky"></i>
+
+            ملاحظات عامة وتوجيهات ولي الأمر
+
+          </div>
 
           <p>
-            المعلومات المسجلة في نظام المركز
+            لا يوجد ملاحظات عامة مسجلة للطالب في الوقت الحالي.
           </p>
 
         </div>
 
 
-        <section class="info-grid">
+      </section>
 
-          <article class="info-card">
 
-            <div class="info-icon">
-              👤
+      <!-- =====================================================
+           AI ASSISTANT
+      ====================================================== -->
+
+      <div class="section-head">
+
+        <div class="section-heading">
+
+          <div class="section-icon">
+
+            <i class="fa-solid fa-robot"></i>
+
+          </div>
+
+          <div>
+
+            <h2>
+              استشارة المساعد الذكي
+            </h2>
+
+            <p>
+              مساحة مستقبلية لمساعدة المعلم في تحليل المتابعة
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <section class="main-card">
+
+        <div
+          style="
+            padding:25px;
+            text-align:center;
+            color:#74808a;
+          "
+        >
+
+          <div
+            style="
+              width:60px;
+              height:60px;
+              margin:0 auto 12px;
+              display:grid;
+              place-items:center;
+              border-radius:50%;
+              background:#f1edff;
+              color:#6552a8;
+              font-size:25px;
+            "
+          >
+
+            <i class="fa-solid fa-robot"></i>
+
+          </div>
+
+          <strong
+            style="
+              display:block;
+              color:#174d3a;
+              margin-bottom:5px;
+              font-size:14px;
+            "
+          >
+            المساعد الذكي
+          </strong>
+
+          <span
+            style="
+              font-size:11px;
+            "
+          >
+            هذه المساحة جاهزة لربطها لاحقًا بتحليلات أداء الطالب
+            واقتراحات المتابعة.
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           ATTENDANCE
+      ====================================================== -->
+
+      <div class="section-head">
+
+        <div class="section-heading">
+
+          <div class="section-icon">
+
+            <i class="fa-solid fa-calendar-check"></i>
+
+          </div>
+
+          <div>
+
+            <h2>
+              سجل الحضور الأخير (أيام الجمعة)
+            </h2>
+
+            <p>
+              آخر اللقاءات المسجلة للطالب
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <section class="main-card">
+
+        <div class="attendance-grid">
+
+
+          <div class="attendance-item">
+
+            <div class="attendance-date">
+              08-14
             </div>
 
-            <div class="info-label">
-              اسم الطالب
+            <span class="attendance-status">
+              حاضر
+            </span>
+
+          </div>
+
+
+          <div class="attendance-item">
+
+            <div class="attendance-date">
+              08-21
+            </div>
+
+            <span class="attendance-status">
+              حاضر
+            </span>
+
+          </div>
+
+
+          <div class="attendance-item">
+
+            <div class="attendance-date">
+              08-28
+            </div>
+
+            <span class="attendance-status">
+              حاضر
+            </span>
+
+          </div>
+
+
+          <div class="attendance-item">
+
+            <div class="attendance-date">
+              09-11
+            </div>
+
+            <span class="attendance-status">
+              حاضر
+            </span>
+
+          </div>
+
+
+          <div class="attendance-item">
+
+            <div class="attendance-date">
+              09-18
+            </div>
+
+            <span class="attendance-status">
+              حاضر
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           WEEKLY PLAN
+      ====================================================== -->
+
+      <div class="section-head">
+
+        <div class="section-heading">
+
+          <div class="section-icon">
+
+            <i class="fa-solid fa-book-open"></i>
+
+          </div>
+
+          <div>
+
+            <h2>
+              خطة الحفظ والمراجعة الأسبوعية
+            </h2>
+
+            <p>
+              الخطة الحالية ومتابعة الإنجاز
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="section-action"
+          type="button"
+        >
+
+          <i class="fa-solid fa-pen"></i>
+
+          تعديل الخطة
+
+        </button>
+
+      </div>
+
+
+      <section class="main-card">
+
+
+        <!-- PLAN SUMMARY -->
+
+        <div class="plan-summary">
+
+
+          <div class="plan-box">
+
+            <div class="plan-label">
+              📖 نسبة إنجاز الحفظ
+            </div>
+
+            <div class="percent-card">
+
+              <div>
+
+                <div
+                  class="percent-number"
+                  style="font-size:28px;"
+                >
+                  100%
+                </div>
+
+                <div class="plan-sub">
+                  بطل 🚀
+                </div>
+
+              </div>
+
+              <div
+                class="mini-progress"
+              >
+
+                <div class="progress-line">
+
+                  <div
+                    class="progress-fill"
+                    style="width:100%;"
+                  ></div>
+
+                </div>
+
+                <div class="progress-info">
+
+                  <span>
+                    تم إنجاز 2 صفحة من 2
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="plan-box">
+
+            <div class="plan-label">
+              🔄 نسبة إنجاز المراجعة
             </div>
 
             <div
-              class="info-value"
-              id="infoName"
+              class="percent-number"
+              style="font-size:28px;"
             >
-              —
+              0%
             </div>
 
-          </article>
-
-
-          <article class="info-card">
-
-            <div class="info-icon">
-              🏫
+            <div class="plan-sub">
+              تم إنجاز 0 صفحة (0.0 صفحة) من 2
             </div>
 
-            <div class="info-label">
-              الشعبة / الحلقة
+
+            <div
+              class="progress-wrap"
+              style="margin-top:9px;"
+            >
+
+              <div class="progress-line">
+
+                <div
+                  class="progress-fill"
+                  style="width:0%;"
+                ></div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="plan-box">
+
+            <div class="plan-label">
+              👑 التقييم العام والمتابعة
+            </div>
+
+            <div class="evaluation">
+              ⚠️ ملتزم جزئيًا
             </div>
 
             <div
-              class="info-value"
-              id="infoSection"
+              class="plan-sub"
+              style="margin-top:12px;"
             >
-              —
+              يحتاج إلى المحافظة على ورد المراجعة الأسبوعي.
             </div>
 
-          </article>
+          </div>
 
 
-          <article class="info-card">
+        </div>
 
-            <div class="info-icon">
-              📖
+
+        <!-- EQUIVALENT -->
+
+        <div
+          style="
+            padding:16px 20px;
+            color:#68736e;
+            font-size:10px;
+            border-bottom:1px solid var(--border);
+            line-height:1.9;
+          "
+        >
+
+          مجموع صفحات التسميع المعادلة هذا الأسبوع:
+          <strong style="color:#174d3a;">
+            2.0 صفحة من 2.4 مطلوبة
+          </strong>
+
+          <br>
+
+          حيث كل 5 صفحات مراجعة = صفحة حفظ.
+
+        </div>
+
+
+        <!-- REQUIREMENT -->
+
+        <div class="requirement">
+
+          <div class="requirement-label">
+            الورد الأسبوعي المطلوب حاليًا
+          </div>
+
+          <div class="requirement-value">
+            📖 حفظ 2 صفحة / مراجعة 2 صفحة
+          </div>
+
+        </div>
+
+
+        <!-- NEXT EXAM -->
+
+        <div class="next-test">
+
+          <div>
+
+            <div class="test-title">
+              🎯 جزء عم
             </div>
 
-            <div class="info-label">
-              مستوى الحفظ
+            <div class="test-meta">
+              📅 موعد الاختبار: 2026-10-09
             </div>
 
-            <div
-              class="info-value"
-              id="infoMemorization"
-            >
-              —
+          </div>
+
+
+          <span class="scheduled">
+            مجدول
+          </span>
+
+        </div>
+
+
+        <!-- TABLE TITLE -->
+
+        <div
+          style="
+            padding:18px 20px 12px;
+            color:#174d3a;
+            font-size:13px;
+            font-weight:800;
+          "
+        >
+
+          📌 مخطط وجدول الحفظ والمراجعة الأسبوعي الحالي
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-scroll">
+
+          <table class="plan-table">
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  التاريخ
+                </th>
+
+                <th>
+                  الجزء المستهدف
+                </th>
+
+                <th>
+                  الحفظ الجديد
+                </th>
+
+                <th>
+                  المراجعة
+                </th>
+
+                <th>
+                  الحالة
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-09-18
+                </td>
+
+                <td class="juz">
+                  عم
+                </td>
+
+                <td>
+                  595-596
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-09-25
+                </td>
+
+                <td class="juz">
+                  عم
+                </td>
+
+                <td>
+                  597-598
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-10-02
+                </td>
+
+                <td class="juz">
+                  عم
+                </td>
+
+                <td>
+                  599-604
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-10-09
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  562-563
+                </td>
+
+                <td>
+                  اختبار ب جزء عم
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-10-16
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  564-565
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-10-23
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  566-567
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-10-30
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  568-569
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-11-06
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  570-571
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-11-13
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  572-573
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-11-20
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  574-575
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-11-27
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  576-577
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-12-04
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  578-579
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-12-11
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  580-581
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+              <tr>
+
+                <td class="date-cell">
+                  2026-12-18
+                </td>
+
+                <td class="juz">
+                  تبارك
+                </td>
+
+                <td>
+                  لا يوجد
+                </td>
+
+                <td>
+                  اختبار جزء تبارك
+                </td>
+
+                <td>
+                  <span class="pending">
+                    قيد الانتظار
+                  </span>
+                </td>
+
+              </tr>
+
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           EXAM RECORD
+      ====================================================== -->
+
+      <div class="section-head">
+
+        <div class="section-heading">
+
+          <div class="section-icon">
+
+            <i class="fa-solid fa-award"></i>
+
+          </div>
+
+          <div>
+
+            <h2>
+              سجل اختبارات الخطة والنقاط
+            </h2>
+
+            <p>
+              الاختبارات والدرجات المحتسبة للطالب
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="section-action"
+          type="button"
+          onclick="showFutureMessage()"
+        >
+
+          <i class="fa-solid fa-plus"></i>
+
+          إضافة اختبار
+
+        </button>
+
+      </div>
+
+
+      <section class="main-card">
+
+
+        <div class="exam-card">
+
+
+          <table class="exam-table">
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  الاختبار
+                </th>
+
+                <th>
+                  الدرجة
+                </th>
+
+                <th>
+                  التقييم
+                </th>
+
+                <th>
+                  النقاط
+                </th>
+
+                <th>
+                  التاريخ
+                </th>
+
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              <tr>
+
+                <td colspan="5">
+
+                  <div class="no-exams">
+
+                    لا توجد اختبارات مسجلة لهذا الطالب.
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+
+        </div>
+
+
+        <!-- SCORE SYSTEM -->
+
+        <div class="score-system">
+
+          <div class="score-title">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            نظام احتساب نقاط الاختبارات الأكاديمية
+
+          </div>
+
+
+          <div class="score-grid">
+
+
+            <div class="score-item">
+
+              <strong>
+                +12 نقطة
+              </strong>
+
+              <span>
+                ممتاز
+              </span>
+
             </div>
 
-          </article>
 
+            <div class="score-item">
 
-          <article class="info-card">
+              <strong>
+                +8 نقاط
+              </strong>
 
-            <div class="info-icon">
-              ✅
+              <span>
+                جيد جداً
+              </span>
+
             </div>
 
-            <div class="info-label">
-              حالة الطالب
+
+            <div class="score-item">
+
+              <strong>
+                +4 نقاط
+              </strong>
+
+              <span>
+                جيد
+              </span>
+
             </div>
 
-            <div id="infoStatus">
-              —
-            </div>
 
-          </article>
+          </div>
 
-        </section>
+        </div>
 
 
-        <!-- FUTURE -->
+      </section>
 
-        <div class="section-title">
 
-          <h2>
-            متابعة الطالب
+    </main>
+
+
+    <footer>
+
+      © 2026 مركز حردان طارق القرآني — ملف الطالب
+
+    </footer>
+
+
+  </div>
+
+
+  <!-- =====================================================
+       TOAST
+  ====================================================== -->
+
+  <div
+    id="toast"
+    class="toast"
+  >
+    تم نسخ الرمز بنجاح
+  </div>
+
+
+  <!-- =====================================================
+       EDIT MODAL
+  ====================================================== -->
+
+  <div
+    id="editModal"
+    style="
+      position:fixed;
+      inset:0;
+      background:rgba(16,59,44,.68);
+      backdrop-filter:blur(5px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:100;
+    "
+  >
+
+    <div
+      style="
+        width:min(520px,100%);
+        background:#fff;
+        border-radius:20px;
+        box-shadow:0 25px 70px rgba(0,0,0,.22);
+        overflow:hidden;
+      "
+    >
+
+
+      <div
+        style="
+          padding:20px 22px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          border-bottom:1px solid var(--border);
+        "
+      >
+
+        <div>
+
+          <h2
+            style="
+              color:var(--green);
+              font-size:18px;
+            "
+          >
+            تعديل بيانات الطالب
           </h2>
 
-          <p>
-            أقسام المتابعة التي سنربطها لاحقًا بالنظام
+          <p
+            style="
+              color:var(--muted);
+              font-size:10px;
+              margin-top:4px;
+            "
+          >
+            تعديل البيانات الموجودة حاليًا في النظام
           </p>
 
         </div>
 
 
-        <section class="cards-grid">
+        <button
+          type="button"
+          onclick="closeEditModal()"
+          style="
+            width:35px;
+            height:35px;
+            border:none;
+            border-radius:9px;
+            background:#f4f5f4;
+            color:#68736e;
+            font-size:18px;
+          "
+        >
 
-          <article class="future-card">
+          ×
 
-            <div class="future-icon">
-              📚
-            </div>
-
-            <h3>
-              متابعة الحفظ
-            </h3>
-
-            <p>
-              عرض آخر ما تم تسميعه،
-              والسور والأجزاء التي تم حفظها.
-            </p>
-
-            <span class="soon">
-              قريبًا
-            </span>
-
-          </article>
-
-
-          <article class="future-card">
-
-            <div class="future-icon">
-              📅
-            </div>
-
-            <h3>
-              الحضور والغياب
-            </h3>
-
-            <p>
-              سجل حضور الطالب وغيابه
-              ومتابعة انتظامه في الحلقة.
-            </p>
-
-            <span class="soon">
-              قريبًا
-            </span>
-
-          </article>
-
-
-          <article class="future-card">
-
-            <div class="future-icon">
-              📝
-            </div>
-
-            <h3>
-              ملاحظات المعلم
-            </h3>
-
-            <p>
-              مساحة خاصة لملاحظات المعلم
-              وتوجيهاته للطالب.
-            </p>
-
-            <span class="soon">
-              قريبًا
-            </span>
-
-          </article>
-
-        </section>
+        </button>
 
       </div>
 
 
-      <footer>
-        © 2026 مركز حردان طارق القرآني — جميع الحقوق محفوظة
-      </footer>
+      <form
+        id="editForm"
+        style="
+          padding:22px;
+        "
+      >
+
+
+        <div
+          style="
+            margin-bottom:15px;
+          "
+        >
+
+          <label
+            style="
+              display:block;
+              color:var(--green);
+              font-size:11px;
+              font-weight:800;
+              margin-bottom:6px;
+            "
+          >
+            اسم الطالب
+          </label>
+
+          <input
+            type="text"
+            id="editName"
+            required
+            style="
+              width:100%;
+              height:44px;
+              border:1px solid var(--border);
+              border-radius:10px;
+              padding:0 12px;
+              outline:none;
+              font-size:12px;
+            "
+          >
+
+        </div>
+
+
+        <div
+          style="
+            margin-bottom:15px;
+          "
+        >
+
+          <label
+            style="
+              display:block;
+              color:var(--green);
+              font-size:11px;
+              font-weight:800;
+              margin-bottom:6px;
+            "
+          >
+            الشعبة
+          </label>
+
+          <input
+            type="text"
+            id="editSection"
+            required
+            style="
+              width:100%;
+              height:44px;
+              border:1px solid var(--border);
+              border-radius:10px;
+              padding:0 12px;
+              outline:none;
+              font-size:12px;
+            "
+          >
+
+        </div>
+
+
+        <div
+          style="
+            margin-bottom:15px;
+          "
+        >
+
+          <label
+            style="
+              display:block;
+              color:var(--green);
+              font-size:11px;
+              font-weight:800;
+              margin-bottom:6px;
+            "
+          >
+            مستوى الحفظ
+          </label>
+
+          <input
+            type="text"
+            id="editMemorization"
+            style="
+              width:100%;
+              height:44px;
+              border:1px solid var(--border);
+              border-radius:10px;
+              padding:0 12px;
+              outline:none;
+              font-size:12px;
+            "
+          >
+
+        </div>
+
+
+        <div
+          style="
+            margin-bottom:15px;
+          "
+        >
+
+          <label
+            style="
+              display:block;
+              color:var(--green);
+              font-size:11px;
+              font-weight:800;
+              margin-bottom:6px;
+            "
+          >
+            الحالة
+          </label>
+
+          <select
+            id="editStatus"
+            style="
+              width:100%;
+              height:44px;
+              border:1px solid var(--border);
+              border-radius:10px;
+              padding:0 12px;
+              outline:none;
+              font-size:12px;
+              background:#fff;
+            "
+          >
+
+            <option value="active">
+              مستمر
+            </option>
+
+            <option value="inactive">
+              متوقف
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div
+          id="editMessage"
+          style="
+            min-height:18px;
+            text-align:center;
+            font-size:11px;
+            font-weight:800;
+          "
+        ></div>
+
+
+        <div
+          style="
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:10px;
+            margin-top:10px;
+          "
+        >
+
+          <button
+            type="submit"
+            style="
+              height:44px;
+              border:none;
+              border-radius:10px;
+              background:var(--green);
+              color:#fff;
+              font-weight:800;
+            "
+          >
+
+            <i class="fa-solid fa-check"></i>
+
+            حفظ التعديلات
+
+          </button>
+
+
+          <button
+            type="button"
+            onclick="closeEditModal()"
+            style="
+              height:44px;
+              border:none;
+              border-radius:10px;
+              background:#f0f2f1;
+              color:#49534f;
+              font-weight:800;
+            "
+          >
+
+            إلغاء
+
+          </button>
+
+        </div>
+
+
+      </form>
 
     </div>
 
   </div>
 
 
-  <!-- SUPABASE -->
+  <!-- =====================================================
+       SUPABASE
+  ====================================================== -->
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
 
 
   <script>
 
+    /* =====================================================
+       SUPABASE
+    ===================================================== */
+
     const SUPABASE_URL =
       'https://lsbbcybpiulusdgfhepf.supabase.co';
 
+
     const SUPABASE_PUBLISHABLE_KEY =
       'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
+
 
     const supabaseClient =
       window.supabase.createClient(
@@ -940,41 +4335,92 @@
       );
 
 
+    /* =====================================================
+       STUDENT ID
+    ===================================================== */
+
     const params =
       new URLSearchParams(
         window.location.search
       );
 
+
     const studentId =
       params.get('id');
 
+
+    let currentStudent = null;
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
     const loading =
       document.getElementById(
         'loading'
       );
 
+
     const errorBox =
       document.getElementById(
         'errorBox'
       );
 
-    const profileHero =
+
+    const profile =
       document.getElementById(
-        'profileHero'
+        'profile'
       );
 
-    const profileContent =
-      document.getElementById(
-        'profileContent'
-      );
 
+    /* =====================================================
+       ESCAPE
+    ===================================================== */
+
+    function escapeHtml(text) {
+
+      return String(text)
+
+        .replaceAll(
+          '&',
+          '&amp;'
+        )
+
+        .replaceAll(
+          '<',
+          '&lt;'
+        )
+
+        .replaceAll(
+          '>',
+          '&gt;'
+        )
+
+        .replaceAll(
+          '"',
+          '&quot;'
+        )
+
+        .replaceAll(
+          "'",
+          '&#039;'
+        );
+
+    }
+
+
+    /* =====================================================
+       ERROR
+    ===================================================== */
 
     function showError(message) {
 
-      loading.style.display = 'none';
+      loading.style.display =
+        'none';
 
-      errorBox.style.display = 'block';
+      errorBox.style.display =
+        'block';
 
       errorBox.textContent =
         message;
@@ -982,58 +4428,9 @@
     }
 
 
-    function renderStatus(status) {
-
-      if (status === 'active') {
-
-        return `
-          <span class="status">
-            <span class="status-dot"></span>
-            مستمر
-          </span>
-        `;
-
-      }
-
-
-      if (status === 'inactive') {
-
-        return `
-          <span
-            class="status"
-            style="
-              background:#fff1f0;
-              color:#b42318;
-            "
-          >
-
-            <span
-              class="status-dot"
-              style="background:#d92d20;"
-            ></span>
-
-            متوقف
-
-          </span>
-        `;
-
-      }
-
-
-      return `
-        <span
-          class="status"
-          style="
-            background:#f3f4f6;
-            color:#6b7280;
-          "
-        >
-          غير محدد
-        </span>
-      `;
-
-    }
-
+    /* =====================================================
+       CHECK TEACHER
+    ===================================================== */
 
     async function checkTeacher() {
 
@@ -1066,6 +4463,10 @@
     }
 
 
+    /* =====================================================
+       LOAD STUDENT
+    ===================================================== */
+
     async function loadStudent() {
 
       if (!studentId) {
@@ -1088,7 +4489,10 @@
           .select(
             'id,name,section,memorization,status'
           )
-          .eq('id', studentId)
+          .eq(
+            'id',
+            studentId
+          )
           .single();
 
 
@@ -1105,49 +4509,410 @@
       }
 
 
+      currentStudent =
+        data;
+
+
+      renderStudent(
+        data
+      );
+
+    }
+
+
+    /* =====================================================
+       RENDER
+    ===================================================== */
+
+    function renderStudent(student) {
+
+      const name =
+        student.name ||
+        'الطالب';
+
+
+      const section =
+        student.section ||
+        'غير محددة';
+
+
+      const memorization =
+        student.memorization ||
+        'غير محدد';
+
+
       document.getElementById(
-        'studentName'
+        'heroName'
       ).textContent =
-        data.name || 'الطالب';
+        name;
 
 
       document.getElementById(
         'infoName'
       ).textContent =
-        data.name || '—';
+        name;
+
+
+      document.getElementById(
+        'heroSection'
+      ).textContent =
+        section;
 
 
       document.getElementById(
         'infoSection'
       ).textContent =
-        data.section || 'غير محددة';
+        section;
+
+
+      /* الحرف الأول */
+
+      const firstLetter =
+        name
+          .trim()
+          .charAt(0) ||
+        'ط';
 
 
       document.getElementById(
-        'infoMemorization'
+        'studentAvatar'
       ).textContent =
-        data.memorization || 'غير محدد';
+        firstLetter;
 
 
-      document.getElementById(
-        'infoStatus'
-      ).innerHTML =
-        renderStatus(
-          data.status
-        );
+      /* ممكن استخدام مستوى الحفظ الحالي لاحقًا */
+
+      console.log(
+        'مستوى الحفظ:',
+        memorization
+      );
 
 
       loading.style.display =
         'none';
 
-      profileHero.style.display =
-        'block';
 
-      profileContent.style.display =
+      profile.style.display =
         'block';
 
     }
 
+
+    /* =====================================================
+       COPY CODE
+    ===================================================== */
+
+    function copyCode() {
+
+      const code =
+        document.getElementById(
+          'studentCode'
+        ).textContent.trim();
+
+
+      navigator.clipboard
+        .writeText(code)
+        .then(() => {
+
+          const toast =
+            document.getElementById(
+              'toast'
+            );
+
+          toast.classList.add(
+            'show'
+          );
+
+
+          setTimeout(() => {
+
+            toast.classList.remove(
+              'show'
+            );
+
+          }, 2200);
+
+        })
+        .catch(() => {
+
+          alert(
+            'تعذر نسخ الرمز تلقائيًا.'
+          );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       EDIT MODAL
+    ===================================================== */
+
+    function openEditModal() {
+
+      if (!currentStudent) {
+        return;
+      }
+
+
+      document.getElementById(
+        'editName'
+      ).value =
+        currentStudent.name || '';
+
+
+      document.getElementById(
+        'editSection'
+      ).value =
+        currentStudent.section || '';
+
+
+      document.getElementById(
+        'editMemorization'
+      ).value =
+        currentStudent.memorization || '';
+
+
+      document.getElementById(
+        'editStatus'
+      ).value =
+        currentStudent.status || 'active';
+
+
+      document.getElementById(
+        'editMessage'
+      ).textContent =
+        '';
+
+
+      document.getElementById(
+        'editModal'
+      ).style.display =
+        'flex';
+
+    }
+
+
+    function closeEditModal() {
+
+      document.getElementById(
+        'editModal'
+      ).style.display =
+        'none';
+
+    }
+
+
+    /* =====================================================
+       SAVE EDITS
+    ===================================================== */
+
+    document
+      .getElementById(
+        'editForm'
+      )
+      .addEventListener(
+        'submit',
+        async function(event) {
+
+          event.preventDefault();
+
+
+          if (!currentStudent) {
+            return;
+          }
+
+
+          const name =
+            document
+              .getElementById(
+                'editName'
+              )
+              .value
+              .trim();
+
+
+          const section =
+            document
+              .getElementById(
+                'editSection'
+              )
+              .value
+              .trim();
+
+
+          const memorization =
+            document
+              .getElementById(
+                'editMemorization'
+              )
+              .value
+              .trim();
+
+
+          const status =
+            document
+              .getElementById(
+                'editStatus'
+              )
+              .value;
+
+
+          const editMessage =
+            document.getElementById(
+              'editMessage'
+            );
+
+
+          if (!name || !section) {
+
+            editMessage.style.color =
+              'var(--danger)';
+
+            editMessage.textContent =
+              'يرجى تعبئة الاسم والشعبة.';
+
+            return;
+
+          }
+
+
+          editMessage.style.color =
+            'var(--muted)';
+
+          editMessage.textContent =
+            'جارٍ الحفظ...';
+
+
+          const {
+            data,
+            error
+          } =
+            await supabaseClient
+              .from('students')
+              .update({
+
+                name,
+
+                section,
+
+                memorization,
+
+                status
+
+              })
+              .eq(
+                'id',
+                currentStudent.id
+              )
+              .select()
+              .single();
+
+
+          if (error) {
+
+            console.error(error);
+
+            editMessage.style.color =
+              'var(--danger)';
+
+            editMessage.textContent =
+              'حدث خطأ أثناء حفظ التعديلات.';
+
+            return;
+
+          }
+
+
+          currentStudent =
+            data;
+
+
+          renderStudent(
+            data
+          );
+
+
+          editMessage.style.color =
+            'var(--success)';
+
+          editMessage.textContent =
+            'تم حفظ التعديلات بنجاح.';
+
+
+          setTimeout(() => {
+
+            closeEditModal();
+
+          }, 600);
+
+        }
+      );
+
+
+    /* =====================================================
+       FUTURE MESSAGE
+    ===================================================== */
+
+    function showFutureMessage() {
+
+      const toast =
+        document.getElementById(
+          'toast'
+        );
+
+
+      toast.textContent =
+        'قسم الاختبارات جاهز للربط بقاعدة البيانات.';
+
+
+      toast.classList.add(
+        'show'
+      );
+
+
+      setTimeout(() => {
+
+        toast.classList.remove(
+          'show'
+        );
+
+        toast.textContent =
+          'تم نسخ الرمز بنجاح';
+
+      }, 2500);
+
+    }
+
+
+    /* =====================================================
+       CLOSE MODAL BY BACKDROP
+    ===================================================== */
+
+    document
+      .getElementById(
+        'editModal'
+      )
+      .addEventListener(
+        'click',
+        function(event) {
+
+          if (
+            event.target ===
+            this
+          ) {
+
+            closeEditModal();
+
+          }
+
+        }
+      );
+
+
+    /* =====================================================
+       START
+    ===================================================== */
 
     (async function() {
 
@@ -1166,4 +4931,6 @@
   </script>
 
 </body>
+
 </html>
+```
