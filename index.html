@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -41,6 +40,7 @@
       margin-top: 20px;
     }
 
+
     /* ================= ترتيب المعلومات العامة ================= */
 
     .features {
@@ -75,6 +75,7 @@
       }
     }
 
+
     /* ================= الشعب ================= */
 
     .program-clickable {
@@ -99,6 +100,7 @@
       color: #b28b18;
       font-size: 14px;
     }
+
 
     /* ================= نافذة معلومات الشعبة ================= */
 
@@ -243,12 +245,89 @@
       transform: rotate(90deg);
     }
 
+
     /* ================= أزرار التسجيل ================= */
 
     .register-buttons .btn-gold {
       min-width: 190px;
       text-align: center;
     }
+
+
+    /* =========================================================
+       التواصل - دوائر التواصل
+       ========================================================= */
+
+    .contact {
+      align-items: center;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      padding: 10px;
+    }
+
+    .contact-list > div {
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .contact-list a {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid #eee;
+      box-shadow: 0 8px 22px rgba(0,0,0,.08);
+      transition: .25s ease;
+      position: relative;
+      font-size: 0;
+    }
+
+    .contact-list a:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.14);
+    }
+
+    .contact-list > div {
+      font-size: 0;
+    }
+
+    .contact-list > div::first-letter {
+      font-size: 0;
+    }
+
+    .contact-list a::before {
+      font-size: 27px;
+    }
+
+    .contact-list > div:nth-child(1) a::before {
+      content: "📞";
+    }
+
+    .contact-list > div:nth-child(2) a::before {
+      content: "💬";
+    }
+
+    .contact-list > div:nth-child(3) a::before {
+      content: "📍";
+    }
+
+    .contact-list a span {
+      display: none;
+    }
+
 
     /* ================= الجوال ================= */
 
@@ -283,6 +362,19 @@
         width: 100%;
         box-sizing: border-box;
       }
+
+      .contact-list {
+        gap: 14px;
+      }
+
+      .contact-list a {
+        width: 58px;
+        height: 58px;
+      }
+
+      .contact-list a::before {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
@@ -290,6 +382,7 @@
 <body>
 
   <div class="demo-badge">النسخة التجريبية</div>
+
 
   <!-- ================= HEADER ================= -->
 
@@ -309,6 +402,7 @@
         </span>
 
       </a>
+
 
       <nav>
 
@@ -334,6 +428,7 @@
 
       </nav>
 
+
       <div class="actions">
 
         <a class="btn btn-outline" href="#register">
@@ -352,6 +447,7 @@
 
       </div>
 
+
       <button class="menu-btn" aria-label="فتح القائمة">
         ☰
       </button>
@@ -364,6 +460,7 @@
   <!-- ================= MAIN ================= -->
 
   <main>
+
 
     <!-- ================= HERO ================= -->
 
@@ -396,6 +493,7 @@
           </a>
 
         </div>
+
 
         <div class="hero-art">
 
@@ -554,6 +652,7 @@
 
 
         <div class="cards">
+
 
           <!-- شعبة الحفاظ -->
 
@@ -752,8 +851,6 @@
 
         <div class="register-buttons">
 
-          <!-- التسجيل الإلكتروني: صفحة مستقلة -->
-
           <a
             class="btn btn-gold big"
             href="register.html">
@@ -762,8 +859,6 @@
 
           </a>
 
-
-          <!-- التسجيل عبر واتساب -->
 
           <a
             class="btn btn-gold big"
@@ -841,13 +936,19 @@
       </div>
 
 
+      <!-- دوائر التواصل -->
+
       <div class="contact-list">
+
+
+        <!-- اتصال -->
 
         <div>
 
-          📞
-
-          <a href="tel:+962780791622">
+          <a
+            href="tel:+962780791622"
+            aria-label="الاتصال بالمركز"
+            title="الاتصال بالمركز">
 
             <span>
               +962 7 8079 1622
@@ -858,14 +959,16 @@
         </div>
 
 
-        <div>
+        <!-- واتساب -->
 
-          💬
+        <div>
 
           <a
             href="https://wa.me/962780791622"
             target="_blank"
-            rel="noopener">
+            rel="noopener"
+            aria-label="واتساب المركز"
+            title="واتساب المركز">
 
             <span>
               واتساب المركز
@@ -876,17 +979,39 @@
         </div>
 
 
-        <div>
+        <!-- الموقع -->
 
-          📍
+        <div>
 
           <a
             href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
             target="_blank"
-            rel="noopener">
+            rel="noopener"
+            aria-label="موقع المركز"
+            title="موقع المركز">
 
             <span>
               موقع المركز على الخريطة
+            </span>
+
+          </a>
+
+        </div>
+
+
+        <!-- فيسبوك -->
+
+        <div>
+
+          <a
+            href="https://web.facebook.com/profile.php?id=61552970752227&locale=ar_AR"
+            target="_blank"
+            rel="noopener"
+            aria-label="فيسبوك المركز"
+            title="فيسبوك المركز">
+
+            <span>
+              فيسبوك المركز
             </span>
 
           </a>
@@ -1170,4 +1295,3 @@
 
 </body>
 </html>
-```
