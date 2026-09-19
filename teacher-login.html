@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -7,277 +8,501 @@
 
   <title>دخول المعلمين | مركز حردان طارق القرآني</title>
 
+  <!-- شعار الموقع -->
   <link rel="icon" type="image/png" href="logo.png">
 
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   >
 
   <style>
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    :root{
-      --green:#174d3a;
-      --green-dark:#103b2c;
-      --green-mid:#21644b;
-      --green-soft:#eef6f2;
+    :root {
+      --green: #174d3a;
+      --green-dark: #0e3628;
+      --green-light: #edf6f1;
 
-      --gold:#b38c1c;
-      --gold-dark:#967417;
-      --gold-light:#d5b650;
+      --gold: #b28b18;
+      --gold-light: #d4b44c;
+      --gold-soft: #fbf6df;
 
-      --cream:#faf8f0;
-      --white:#ffffff;
+      --white: #ffffff;
+      --cream: #faf8f0;
 
-      --text:#1d2924;
-      --muted:#7b8781;
+      --text: #1e2924;
+      --muted: #7b8781;
 
-      --border:#e6ebe8;
-      --danger:#bd3027;
-      --success:#23803a;
+      --border: #e4ebe7;
+      --danger: #b3261e;
+      --success: #237a31;
+
+      --shadow:
+        0 30px 80px rgba(15, 56, 41, 0.14);
     }
 
     html,
-    body{
-      width:100%;
-      min-height:100%;
+    body {
+      width: 100%;
+      min-height: 100%;
     }
 
-    body{
-      min-height:100vh;
-      font-family:Arial,"Tahoma",sans-serif;
-      color:var(--text);
+    body {
+      min-height: 100vh;
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      font-family:
+        Arial,
+        "Tahoma",
+        sans-serif;
 
-      padding:30px 18px;
+      color: var(--text);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 24px;
 
       background:
-        radial-gradient(circle at top right, rgba(179,140,28,.08), transparent 30%),
-        radial-gradient(circle at bottom left, rgba(23,77,58,.08), transparent 30%),
-        linear-gradient(135deg,#faf8f0 0%,#ffffff 50%,#edf5f1 100%);
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(178, 139, 24, 0.08),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 90% 90%,
+          rgba(23, 77, 58, 0.10),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #f8f6ed 0%,
+          #ffffff 46%,
+          #eef6f2 100%
+        );
 
-      position:relative;
-      overflow:hidden;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    /* زخرفة خلفية خفيفة */
-    body::before{
-      content:"";
-      position:fixed;
-      width:330px;
-      height:330px;
-      border:1px solid rgba(179,140,28,.08);
-      border-radius:50%;
-      top:-190px;
-      left:-150px;
-      pointer-events:none;
+    /* زخارف الخلفية */
+    body::before {
+      content: "";
+      position: fixed;
+
+      width: 430px;
+      height: 430px;
+
+      border: 1px solid rgba(178, 139, 24, 0.08);
+
+      border-radius: 50%;
+
+      top: -260px;
+      left: -230px;
+
+      pointer-events: none;
     }
 
-    body::after{
-      content:"";
-      position:fixed;
-      width:430px;
-      height:430px;
-      border:1px solid rgba(23,77,58,.06);
-      border-radius:50%;
-      bottom:-270px;
-      right:-200px;
-      pointer-events:none;
+    body::after {
+      content: "";
+      position: fixed;
+
+      width: 520px;
+      height: 520px;
+
+      border: 1px solid rgba(23, 77, 58, 0.06);
+
+      border-radius: 50%;
+
+      bottom: -330px;
+      right: -260px;
+
+      pointer-events: none;
     }
 
-    .login-wrap{
-      width:min(450px,100%);
-      position:relative;
-      z-index:2;
+    button,
+    input {
+      font-family: inherit;
     }
 
     /* =========================
-       الشعار والعنوان
-    ========================= */
+       الحاوية الرئيسية
+    ========================== */
 
-    .brand{
-      text-align:center;
-      margin-bottom:24px;
+    .login-wrap {
+      width: min(940px, 100%);
+      position: relative;
+      z-index: 2;
     }
 
-    .logo-box{
-      width:86px;
-      height:86px;
+    /* =========================
+       الكرت الرئيسي
+    ========================== */
 
-      margin:0 auto 15px;
+    .login-card {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
 
-      border-radius:25px;
+      min-height: 570px;
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      background: rgba(255, 255, 255, 0.96);
+
+      border: 1px solid rgba(228, 235, 231, 0.95);
+
+      border-radius: 30px;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
+
+      backdrop-filter: blur(14px);
+    }
+
+    /* =========================
+       الجانب التعريفي
+    ========================== */
+
+    .brand-side {
+      position: relative;
+
+      padding: 44px 34px;
+
+      color: white;
 
       background:
-        linear-gradient(145deg,var(--green),var(--green-dark));
+        linear-gradient(
+          155deg,
+          #174d3a 0%,
+          #103b2c 58%,
+          #0c3125 100%
+        );
 
-      box-shadow:
-        0 16px 35px rgba(23,77,58,.18);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-      border:4px solid rgba(255,255,255,.9);
-
-      position:relative;
-      overflow:hidden;
+      overflow: hidden;
     }
 
-    .logo-box::before{
-      content:"";
-      position:absolute;
-      width:45px;
-      height:45px;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:50%;
+    .brand-side::before {
+      content: "";
+
+      position: absolute;
+
+      width: 290px;
+      height: 290px;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      top: -145px;
+      left: -145px;
     }
 
-    .logo-box i{
-      position:relative;
-      z-index:2;
-      color:var(--gold-light);
-      font-size:36px;
+    .brand-side::after {
+      content: "";
+
+      position: absolute;
+
+      width: 350px;
+      height: 350px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(212,180,76,0.13),
+          transparent 68%
+        );
+
+      bottom: -210px;
+      right: -170px;
     }
 
-    .brand h1{
-      color:var(--green);
-      font-size:24px;
-      line-height:1.4;
-      font-weight:800;
-      margin-bottom:6px;
-    }
-
-    .brand p{
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.8;
-    }
-
-    /* =========================
-       الكرت
-    ========================= */
-
-    .card{
-      background:rgba(255,255,255,.96);
-
-      border:1px solid rgba(230,235,232,.95);
-
-      border-radius:26px;
-
-      padding:32px;
-
-      box-shadow:
-        0 25px 65px rgba(16,59,44,.10),
-        0 5px 18px rgba(16,59,44,.04);
-
-      backdrop-filter:blur(10px);
-    }
-
-    .card-head{
-      margin-bottom:25px;
-    }
-
-    .small-title{
-      display:inline-flex;
-      align-items:center;
-      gap:7px;
-
-      color:var(--gold-dark);
-
-      font-size:11px;
-      font-weight:bold;
-
-      background:#fbf8ec;
-
-      border:1px solid rgba(179,140,28,.12);
-
-      padding:7px 10px;
-
-      border-radius:999px;
-
-      margin-bottom:11px;
-    }
-
-    .small-title i{
-      font-size:10px;
-    }
-
-    .card-head h2{
-      color:var(--green);
-      font-size:23px;
-      line-height:1.4;
-      margin-bottom:7px;
-      font-weight:800;
-    }
-
-    .card-head p{
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.9;
+    .brand-content {
+      position: relative;
+      z-index: 2;
     }
 
     /* =========================
-       الحقول
-    ========================= */
+       الشعار
+    ========================== */
 
-    .field{
-      margin-bottom:18px;
+    .logo-holder {
+      width: 112px;
+      height: 112px;
+
+      margin-bottom: 25px;
+
+      border-radius: 28px;
+
+      background: rgba(255,255,255,0.98);
+
+      border: 5px solid rgba(255,255,255,0.16);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      box-shadow:
+        0 18px 35px rgba(0,0,0,0.18);
     }
 
-    label{
-      display:block;
-      color:var(--green);
-      font-size:12px;
-      font-weight:bold;
-      margin-bottom:9px;
+    .logo-holder img {
+      width: 88px;
+      height: 88px;
+
+      object-fit: contain;
+
+      display: block;
     }
 
-    .input-wrap{
-      position:relative;
+    .brand-side .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+      font-weight: bold;
+
+      margin-bottom: 12px;
     }
 
-    .input-icon{
-      position:absolute;
-      right:15px;
-      top:50%;
-      transform:translateY(-50%);
+    .brand-side h1 {
+      font-size: 29px;
 
-      color:#87928d;
-      font-size:14px;
+      line-height: 1.5;
 
-      pointer-events:none;
-      z-index:2;
+      margin-bottom: 11px;
+
+      font-weight: 800;
     }
 
-    input{
-      width:100%;
-      height:54px;
+    .brand-side .subtitle {
+      color: rgba(255,255,255,0.72);
 
-      border:1px solid var(--border);
-      border-radius:14px;
+      font-size: 13px;
 
-      outline:none;
+      line-height: 2;
 
-      background:#fcfdfc;
-      color:var(--text);
+      max-width: 330px;
+    }
 
-      font-size:18px;
-      font-weight:bold;
+    .feature-list {
+      position: relative;
+      z-index: 2;
 
-      letter-spacing:4px;
-      text-align:center;
+      display: flex;
+      flex-direction: column;
+
+      gap: 10px;
+
+      margin-top: 30px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      color: rgba(255,255,255,0.76);
+
+      font-size: 11px;
+    }
+
+    .feature-icon {
+      width: 28px;
+      height: 28px;
+
+      border-radius: 9px;
+
+      background: rgba(255,255,255,0.08);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: var(--gold-light);
+
+      font-size: 11px;
+
+      flex-shrink: 0;
+    }
+
+    .brand-bottom {
+      position: relative;
+      z-index: 2;
+
+      padding-top: 25px;
+
+      border-top:
+        1px solid rgba(255,255,255,0.10);
+
+      color: rgba(255,255,255,0.45);
+
+      font-size: 10px;
+
+      line-height: 1.8;
+    }
+
+    /* =========================
+       جهة تسجيل الدخول
+    ========================== */
+
+    .form-side {
+      padding: 50px 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #fcfdfc 100%
+        );
+    }
+
+    .form-inner {
+      width: min(390px, 100%);
+    }
+
+    .mobile-logo {
+      display: none;
+    }
+
+    .login-heading {
+      margin-bottom: 28px;
+    }
+
+    .login-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 7px 10px;
+
+      margin-bottom: 12px;
+
+      background: var(--gold-soft);
+
+      border:
+        1px solid rgba(178,139,24,0.12);
+
+      color: #8b6e14;
+
+      border-radius: 999px;
+
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .login-heading h2 {
+      color: var(--green);
+
+      font-size: 27px;
+
+      line-height: 1.4;
+
+      margin-bottom: 8px;
+    }
+
+    .login-heading p {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.9;
+    }
+
+    /* =========================
+       الحقل
+    ========================== */
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 9px;
+    }
+
+    .field-label label {
+      color: var(--green);
+
+      font-size: 12px;
+
+      font-weight: bold;
+    }
+
+    .field-label span {
+      color: #9aa39f;
+
+      font-size: 10px;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+
+      right: 16px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #8e9994;
+
+      font-size: 14px;
+
+      pointer-events: none;
+
+      z-index: 2;
+    }
+
+    input {
+      width: 100%;
+      height: 56px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 15px;
+
+      outline: none;
+
+      background: #fbfdfb;
+
+      color: var(--text);
+
+      font-size: 19px;
+
+      font-weight: bold;
+
+      letter-spacing: 5px;
+
+      text-align: center;
 
       padding:
-        0 50px 0 52px;
+        0 52px 0 53px;
 
       transition:
         border-color .2s ease,
@@ -286,263 +511,355 @@
         transform .2s ease;
     }
 
-    input::placeholder{
-      color:#a0aaa5;
-      font-weight:normal;
-      letter-spacing:0;
-      font-size:13px;
+    input::placeholder {
+      color: #a3ada8;
+
+      font-weight: normal;
+
+      font-size: 12px;
+
+      letter-spacing: 0;
     }
 
-    input:focus{
-      border-color:var(--gold);
+    input:focus {
+      border-color: var(--gold);
 
-      background:#fff;
+      background: white;
 
       box-shadow:
-        0 0 0 4px rgba(179,140,28,.09);
+        0 0 0 4px rgba(178,139,24,0.08);
 
-      transform:translateY(-1px);
+      transform: translateY(-1px);
     }
 
-    .show-code{
-      position:absolute;
-      left:8px;
-      top:8px;
+    .show-code {
+      position: absolute;
 
-      width:38px;
-      height:38px;
+      left: 8px;
+      top: 8px;
 
-      border:0;
-      border-radius:10px;
+      width: 40px;
+      height: 40px;
 
-      background:#f1f4f2;
-      color:#65716b;
+      border: none;
 
-      cursor:pointer;
+      border-radius: 10px;
 
-      transition:.2s;
+      background: #f0f4f1;
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      color: #68746e;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      transition: .2s;
     }
 
-    .show-code:hover{
-      background:#e8eeea;
-      color:var(--green);
+    .show-code:hover {
+      background: #e7eeea;
+
+      color: var(--green);
     }
 
     /* =========================
        زر الدخول
-    ========================= */
+    ========================== */
 
-    .submit{
-      width:100%;
-      height:54px;
+    .submit {
+      width: 100%;
+      height: 56px;
 
-      margin-top:2px;
+      margin-top: 3px;
 
-      border:0;
-      border-radius:14px;
+      border: none;
+
+      border-radius: 15px;
 
       background:
         linear-gradient(
           135deg,
           var(--green),
-          var(--green-mid)
+          #21644b
         );
 
-      color:#fff;
+      color: white;
 
-      font-weight:bold;
-      font-size:14px;
+      font-size: 14px;
 
-      cursor:pointer;
+      font-weight: bold;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 13px 25px rgba(23,77,58,0.16);
 
       transition:
         transform .2s ease,
         box-shadow .2s ease,
         filter .2s ease;
+    }
+
+    .submit:hover {
+      transform: translateY(-2px);
 
       box-shadow:
-        0 12px 24px rgba(23,77,58,.16);
+        0 17px 30px rgba(23,77,58,0.20);
 
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
+      filter: brightness(1.03);
     }
 
-    .submit:hover{
-      transform:translateY(-2px);
+    .submit:active {
+      transform: translateY(0);
+    }
+
+    .submit:disabled {
+      opacity: .85;
+
+      cursor: not-allowed;
+
+      transform: none;
 
       box-shadow:
-        0 16px 28px rgba(23,77,58,.19);
-
-      filter:brightness(1.03);
-    }
-
-    .submit:active{
-      transform:translateY(0);
-    }
-
-    .submit:disabled{
-      cursor:not-allowed;
-      opacity:.85;
-      transform:none;
+        0 8px 18px rgba(23,77,58,0.11);
     }
 
     /* =========================
        الرسالة
-    ========================= */
+    ========================== */
 
-    .message{
-      min-height:24px;
+    .message {
+      min-height: 24px;
 
-      margin-top:14px;
+      margin-top: 13px;
 
-      text-align:center;
+      text-align: center;
 
-      font-size:12px;
-      font-weight:bold;
+      font-size: 11px;
 
-      line-height:1.8;
+      font-weight: bold;
+
+      line-height: 1.8;
     }
 
-    .message.error{
-      color:var(--danger);
+    .message.error {
+      color: var(--danger);
     }
 
-    .message.success{
-      color:var(--success);
+    .message.success {
+      color: var(--success);
     }
 
     /* =========================
        التنبيه
-    ========================= */
+    ========================== */
 
-    .hint{
-      margin-top:20px;
+    .security-note {
+      margin-top: 20px;
 
-      padding:13px 15px;
+      display: flex;
+      align-items: flex-start;
 
-      border-radius:14px;
+      gap: 10px;
 
-      background:var(--green-soft);
+      padding: 13px 14px;
 
-      border:1px solid rgba(23,77,58,.06);
+      background: var(--green-light);
 
-      color:#617069;
+      border:
+        1px solid rgba(23,77,58,0.06);
 
-      font-size:11px;
-      line-height:1.9;
-
-      text-align:center;
+      border-radius: 14px;
     }
 
-    .hint i{
-      color:var(--gold-dark);
-      margin-left:4px;
+    .security-note-icon {
+      width: 29px;
+      height: 29px;
+
+      border-radius: 9px;
+
+      background: white;
+
+      color: var(--green);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      font-size: 11px;
+
+      box-shadow:
+        0 4px 10px rgba(23,77,58,0.06);
     }
 
-    /* =========================
-       الفوتر
-    ========================= */
+    .security-note-text {
+      color: #63706a;
 
-    .footer-note{
-      text-align:center;
+      font-size: 10px;
 
-      color:#8d9792;
+      line-height: 1.9;
+    }
 
-      font-size:10px;
+    .security-note-text strong {
+      display: block;
 
-      margin-top:17px;
+      color: var(--green);
+
+      margin-bottom: 2px;
+
+      font-size: 10px;
+    }
+
+    .footer-note {
+      text-align: center;
+
+      margin-top: 15px;
+
+      color: #919b96;
+
+      font-size: 9px;
     }
 
     /* =========================
        موبايل
-    ========================= */
+    ========================== */
 
-    @media(max-width:480px){
+    @media (max-width: 780px) {
 
-      body{
-        padding:20px 14px;
+      body {
+        padding: 18px 14px;
       }
 
-      .brand{
-        margin-bottom:19px;
+      .login-card {
+        display: block;
+
+        min-height: auto;
+
+        border-radius: 24px;
       }
 
-      .logo-box{
-        width:76px;
-        height:76px;
-        border-radius:21px;
-        margin-bottom:12px;
+      .brand-side {
+        display: none;
       }
 
-      .logo-box i{
-        font-size:31px;
+      .form-side {
+        padding: 27px 20px 24px;
       }
 
-      .brand h1{
-        font-size:20px;
+      .mobile-logo {
+        display: flex;
+
+        width: 88px;
+        height: 88px;
+
+        margin: 0 auto 18px;
+
+        border-radius: 24px;
+
+        background: white;
+
+        border: 1px solid var(--border);
+
+        align-items: center;
+        justify-content: center;
+
+        box-shadow:
+          0 12px 28px rgba(23,77,58,0.10);
       }
 
-      .brand p{
-        font-size:11px;
+      .mobile-logo img {
+        width: 70px;
+        height: 70px;
+
+        object-fit: contain;
       }
 
-      .card{
-        padding:23px 18px;
-        border-radius:22px;
+      .login-heading {
+        text-align: center;
+
+        margin-bottom: 24px;
       }
 
-      .card-head h2{
-        font-size:21px;
+      .login-heading h2 {
+        font-size: 23px;
       }
 
-      .card-head p{
-        font-size:11px;
+      .login-heading p {
+        font-size: 11px;
       }
 
-      input,
-      .submit{
-        height:52px;
+      .footer-note {
+        font-size: 9px;
       }
     }
 
-    /* =========================
-       شاشات صغيرة جداً
-    ========================= */
+    @media (max-width: 430px) {
 
-    @media(max-height:700px){
-
-      body{
-        align-items:flex-start;
-        padding-top:18px;
-        padding-bottom:18px;
+      body {
+        padding: 12px;
       }
 
-      .brand{
-        margin-bottom:15px;
+      .form-side {
+        padding: 23px 16px 20px;
       }
 
-      .logo-box{
-        width:66px;
-        height:66px;
-        margin-bottom:9px;
+      .login-card {
+        border-radius: 21px;
       }
 
-      .logo-box i{
-        font-size:27px;
+      .mobile-logo {
+        width: 78px;
+        height: 78px;
+
+        border-radius: 21px;
       }
 
-      .brand h1{
-        font-size:19px;
+      .mobile-logo img {
+        width: 62px;
+        height: 62px;
       }
 
-      .card{
-        padding:22px 18px;
+      .login-heading h2 {
+        font-size: 21px;
+      }
+
+      input,
+      .submit {
+        height: 53px;
+      }
+    }
+
+    @media (max-height: 700px) {
+
+      body {
+        align-items: flex-start;
+
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      .login-card {
+        min-height: auto;
+      }
+
+      .brand-side {
+        padding-top: 28px;
+        padding-bottom: 28px;
+      }
+
+      .form-side {
+        padding-top: 28px;
+        padding-bottom: 22px;
       }
     }
   </style>
@@ -552,118 +869,221 @@
 
   <div class="login-wrap">
 
-    <!-- =========================
-         العنوان
-    ========================== -->
+    <div class="login-card">
 
-    <div class="brand">
+      <!-- ==========================================
+           الجانب التعريفي
+      =========================================== -->
 
-      <div class="logo-box">
-        <i class="fa-solid fa-book-quran"></i>
-      </div>
+      <section class="brand-side">
 
-      <h1>
-        مركز حردان طارق القرآني
-      </h1>
+        <div class="brand-content">
 
-      <p>
-        البوابة الإدارية الخاصة بالمعلمين
-      </p>
-
-    </div>
-
-
-    <!-- =========================
-         كرت الدخول
-    ========================== -->
-
-    <div class="card">
-
-      <div class="card-head">
-
-        <div class="small-title">
-          <i class="fa-solid fa-shield-halved"></i>
-          دخول آمن للمعلمين
-        </div>
-
-        <h2>
-          دخول المعلمين
-        </h2>
-
-        <p>
-          أدخل كود المعلمين الموحد للوصول إلى لوحة متابعة الطلاب وإدارة المركز.
-        </p>
-
-      </div>
-
-
-      <form id="teacherLoginForm">
-
-        <div class="field">
-
-          <label for="teacherCode">
-            كود الدخول
-          </label>
-
-          <div class="input-wrap">
-
-            <i class="fa-solid fa-key input-icon"></i>
-
-            <input
-              id="teacherCode"
-              type="password"
-              inputmode="text"
-              autocomplete="off"
-              autocapitalize="characters"
-              spellcheck="false"
-              maxlength="32"
-              placeholder="أدخل الكود الموحد"
-              required
+          <div class="logo-holder">
+            <img
+              src="logo.png"
+              alt="شعار مركز حردان طارق القرآني"
             >
+          </div>
 
-            <button
-              class="show-code"
-              id="showCode"
-              type="button"
-              aria-label="إظهار الكود"
-            >
-              <i class="fa-solid fa-eye"></i>
-            </button>
+          <div class="eyebrow">
+            <i class="fa-solid fa-mosque"></i>
+            البوابة الإدارية
+          </div>
+
+          <h1>
+            مركز حردان طارق القرآني
+          </h1>
+
+          <p class="subtitle">
+            نظام إداري مخصص للمعلمين لمتابعة الطلاب،
+            الحفظ، التسميع، والتقدم الدراسي بطريقة منظمة.
+          </p>
+
+          <div class="feature-list">
+
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fa-solid fa-users"></i>
+              </div>
+
+              <span>
+                متابعة وإدارة بيانات الطلاب
+              </span>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fa-solid fa-book-quran"></i>
+              </div>
+
+              <span>
+                متابعة الحفظ والتسميع
+              </span>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+
+              <span>
+                متابعة التقدم والأداء
+              </span>
+            </div>
 
           </div>
 
         </div>
 
 
-        <button
-          class="submit"
-          id="loginButton"
-          type="submit"
-        >
-          <i class="fa-solid fa-right-to-bracket"></i>
-          دخول إلى لوحة المعلم
-        </button>
+        <div class="brand-bottom">
+
+          مركز حردان طارق القرآني
+          <br>
+          © 2026 جميع الحقوق محفوظة
+
+        </div>
+
+      </section>
 
 
-        <div
-          class="message"
-          id="message"
-          aria-live="polite"
-        ></div>
+      <!-- ==========================================
+           نموذج الدخول
+      =========================================== -->
 
-      </form>
+      <section class="form-side">
+
+        <div class="form-inner">
+
+          <div class="mobile-logo">
+            <img
+              src="logo.png"
+              alt="شعار مركز حردان طارق القرآني"
+            >
+          </div>
 
 
-      <div class="hint">
-        <i class="fa-solid fa-circle-info"></i>
-        الكود موحّد لجميع المعلمين، ولا حاجة لإدخال البريد الإلكتروني.
-      </div>
+          <div class="login-heading">
 
-    </div>
+            <div class="login-badge">
+              <i class="fa-solid fa-shield-halved"></i>
+              دخول مخصص للمعلمين
+            </div>
+
+            <h2>
+              مرحباً بك 👋
+            </h2>
+
+            <p>
+              أدخل كود المعلمين الموحد للوصول إلى لوحة
+              المتابعة والإدارة.
+            </p>
+
+          </div>
 
 
-    <div class="footer-note">
-      © 2026 مركز حردان طارق القرآني
+          <form id="teacherLoginForm">
+
+            <div class="field">
+
+              <div class="field-label">
+
+                <label for="teacherCode">
+                  كود الدخول
+                </label>
+
+                <span>
+                  مطلوب
+                </span>
+
+              </div>
+
+
+              <div class="input-wrap">
+
+                <i
+                  class="fa-solid fa-key input-icon">
+                </i>
+
+
+                <input
+                  id="teacherCode"
+                  type="password"
+                  inputmode="text"
+                  autocomplete="off"
+                  autocapitalize="characters"
+                  spellcheck="false"
+                  maxlength="32"
+                  placeholder="أدخل الكود الموحد"
+                  required
+                >
+
+
+                <button
+                  class="show-code"
+                  id="showCode"
+                  type="button"
+                  aria-label="إظهار الكود"
+                >
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="submit"
+              id="loginButton"
+              type="submit"
+            >
+
+              <i class="fa-solid fa-right-to-bracket"></i>
+
+              دخول إلى لوحة المعلم
+
+            </button>
+
+
+            <div
+              class="message"
+              id="message"
+              aria-live="polite"
+            ></div>
+
+          </form>
+
+
+          <div class="security-note">
+
+            <div class="security-note-icon">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <div class="security-note-text">
+
+              <strong>
+                معلومات الدخول
+              </strong>
+
+              الكود موحّد لجميع المعلمين،
+              ولا حاجة لإدخال البريد الإلكتروني.
+
+            </div>
+
+          </div>
+
+
+          <div class="footer-note">
+            © 2026 مركز حردان طارق القرآني
+          </div>
+
+        </div>
+
+      </section>
+
     </div>
 
   </div>
@@ -724,10 +1144,12 @@
         const visible =
           codeInput.type === 'text';
 
+
         codeInput.type =
           visible
             ? 'password'
             : 'text';
+
 
         showCode.innerHTML =
           visible
@@ -753,7 +1175,6 @@
           codeInput.value.trim();
 
 
-        /* إزالة الرسالة القديمة */
         message.textContent = '';
         message.className = 'message';
 
@@ -797,7 +1218,6 @@
 
 
           return;
-
         }
 
 
@@ -812,7 +1232,6 @@
         codeInput.value =
           '';
 
-
         codeInput.focus();
 
       }
@@ -822,3 +1241,4 @@
 
 </body>
 </html>
+```
