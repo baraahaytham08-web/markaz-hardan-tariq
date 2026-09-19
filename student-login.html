@@ -80,13 +80,13 @@
       border: 2px solid #e1dfd4;
       border-radius: 15px;
       padding: 0 18px;
-      font-size: 22px;
-      text-align: center;
-      letter-spacing: 6px;
+      font-size: 18px;
+      text-align: right;
       outline: none;
       transition: .2s;
       color: #174638;
       background: white;
+      letter-spacing: normal;
     }
 
     input:focus {
@@ -164,7 +164,7 @@
 
 <div class="subtitle">
   أهلاً بك في بوابة الطالب<br>
-  أدخل رمز الدخول الخاص بك للوصول إلى ملفك
+  أدخل اسمك للوصول إلى ملفك
 </div>
 
 <div id="errorBox" class="error"></div>
@@ -172,15 +172,13 @@
 <form id="loginForm">
 
   <div class="field">
-    <label for="loginCode">رمز دخول الطالب</label>
+    <label for="studentName">اسم الطالب</label>
 
     <input
-      id="loginCode"
+      id="studentName"
       type="text"
-      inputmode="numeric"
       autocomplete="off"
-      maxlength="10"
-      placeholder="مثال: 26001"
+      placeholder="اكتب اسمك الكامل"
       required
     >
   </div>
@@ -192,7 +190,7 @@
 </form>
 
 <div class="hint">
-  رمز الدخول خاص بك، احتفظ به ولا تشاركه مع الآخرين.
+  اكتب اسمك كما هو مسجل لدى المركز.
 </div>
 
 <a class="back" href="index.html">
@@ -203,95 +201,139 @@
   </div>
 
 <script>
-  const SUPABASE_URL = 'https://lsbbcybpiulusdgfhepf.supabase.co';
+
+  const SUPABASE_URL =
+    'https://lsbbcybpiulusdgfhepf.supabase.co';
 
   const SUPABASE_KEY =
     'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
   const supabaseClient =
-    supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
 
-  const form = document.getElementById('loginForm');
-  const input = document.getElementById('loginCode');
-  const button = document.getElementById('loginButton');
-  const errorBox = document.getElementById('errorBox');
+  const form =
+    document.getElementById('loginForm');
+
+  const input =
+    document.getElementById('studentName');
+
+  const button =
+    document.getElementById('loginButton');
+
+  const errorBox =
+    document.getElementById('errorBox');
+
 
   function showError(message) {
+
     errorBox.textContent = message;
     errorBox.style.display = 'block';
+
   }
+
 
   function hideError() {
+
     errorBox.style.display = 'none';
+
   }
 
-  form.addEventListener('submit', async function(event) {
 
-    event.preventDefault();
+  form.addEventListener(
+    'submit',
+    async function(event) {
 
-    hideError();
+      event.preventDefault();
 
-    const code = input.value.trim();
+      hideError();
 
-    if (!code) {
-      showError('اكتب رمز الدخول أولاً.');
-      return;
-    }
+      const name =
+        input.value.trim();
 
-    button.disabled = true;
-    button.textContent = 'جاري التحقق...';
+      if (!name) {
 
-    try {
+        showError('اكتب اسم الطالب أولاً.');
 
-      const { data, error } =
-        await supabaseClient.rpc(
-          'get_student_by_login_code',
-          {
-            p_login_code: code
-          }
+        return;
+
+      }
+
+      button.disabled = true;
+      button.textContent = 'جاري التحقق...';
+
+      try {
+
+        const {
+          data,
+          error
+        } = await supabaseClient
+          .from('students')
+          .select('*')
+          .eq('name', name)
+          .eq('status', 'active')
+          .maybeSingle();
+
+
+        if (error) {
+
+          console.error(error);
+
+          throw new Error(
+            'حدث خطأ أثناء الاتصال بالنظام.'
+          );
+
+        }
+
+
+        if (!data) {
+
+          showError(
+            'لم يتم العثور على طالب بهذا الاسم أو أن الحساب غير فعال.'
+          );
+
+          return;
+
+        }
+
+
+        sessionStorage.setItem(
+          'studentSession',
+          JSON.stringify({
+            id: data.id,
+            name: data.name,
+            section: data.section,
+            memorization: data.memorization,
+            status: data.status
+          })
         );
 
-      if (error) {
+
+        window.location.href =
+          'student-dashboard.html';
+
+
+      } catch (error) {
+
         console.error(error);
-        throw new Error('حدث خطأ أثناء الاتصال بالنظام.');
+
+        showError(
+          error.message ||
+          'تعذر تسجيل الدخول، حاول مرة أخرى.'
+        );
+
+      } finally {
+
+        button.disabled = false;
+        button.textContent = 'دخول إلى ملفي';
+
       }
-
-      if (!data || !data.id) {
-        showError('رمز الدخول غير صحيح أو أن حساب الطالب غير فعال.');
-        return;
-      }
-
-      sessionStorage.setItem(
-        'studentSession',
-        JSON.stringify({
-          id: data.id,
-          name: data.name,
-          section: data.section,
-          memorization: data.memorization,
-          status: data.status,
-          login_code: data.login_code
-        })
-      );
-
-      window.location.href = 'student-dashboard.html';
-
-    } catch (error) {
-
-      console.error(error);
-
-      showError(
-        error.message ||
-        'تعذر تسجيل الدخول، حاول مرة أخرى.'
-      );
-
-    } finally {
-
-      button.disabled = false;
-      button.textContent = 'دخول إلى ملفي';
 
     }
+  );
 
-  });
 </script>
 
 </body>
