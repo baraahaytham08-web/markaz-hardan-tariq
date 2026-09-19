@@ -41,63 +41,38 @@
       margin-top: 20px;
     }
 
-    /* ================= التسجيل الإلكتروني ================= */
+    /* ================= ترتيب المعلومات العامة ================= */
 
-    .online-register {
-      padding: 70px 20px;
-      background: #f8f8f8;
-    }
-
-    .registration-form {
-      max-width: 700px;
-      margin: 30px auto 0;
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.08);
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .features {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      align-items: stretch;
+      justify-content: center;
       width: 100%;
-      padding: 13px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-family: inherit;
-      font-size: 15px;
+      max-width: 1200px;
+      margin-left: auto !important;
+      margin-right: auto !important;
       box-sizing: border-box;
-      outline: none;
-      transition: .2s;
     }
 
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: #c9a227;
-      box-shadow: 0 0 0 3px rgba(201,162,39,.12);
+    .feature {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      margin: 0 !important;
     }
 
-    .form-group textarea {
-      min-height: 110px;
-      resize: vertical;
+    @media (max-width: 900px) {
+      .features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
-    .form-note {
-      margin-top: 15px;
-      font-size: 13px;
-      line-height: 1.8;
-      color: #666;
+    @media (max-width: 600px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ================= الشعب ================= */
@@ -268,7 +243,7 @@
       transform: rotate(90deg);
     }
 
-    /* ================= زر التسجيل ================= */
+    /* ================= أزرار التسجيل ================= */
 
     .register-buttons .btn-gold {
       min-width: 190px;
@@ -278,10 +253,6 @@
     /* ================= الجوال ================= */
 
     @media (max-width: 600px) {
-
-      .registration-form {
-        padding: 20px;
-      }
 
       .program-modal {
         padding: 12px;
@@ -341,15 +312,25 @@
 
       <nav>
 
-        <a class="active" href="#home">الرئيسية</a>
+        <a class="active" href="#home">
+          الرئيسية
+        </a>
 
-        <a href="#about">عن المركز</a>
+        <a href="#about">
+          عن المركز
+        </a>
 
-        <a href="#programs">الشعب والحلقات</a>
+        <a href="#programs">
+          الشعب والحلقات
+        </a>
 
-        <a href="#schedule">أوقات الدوام</a>
+        <a href="#schedule">
+          أوقات الدوام
+        </a>
 
-        <a href="#contact">تواصل معنا</a>
+        <a href="#contact">
+          تواصل معنا
+        </a>
 
       </nav>
 
@@ -439,7 +420,9 @@
 
       <article class="feature">
 
-        <div class="icon">📖</div>
+        <div class="icon">
+          📖
+        </div>
 
         <h3>
           تحفيظ القرآن الكريم
@@ -451,9 +434,12 @@
 
       </article>
 
+
       <article class="feature">
 
-        <div class="icon">✨</div>
+        <div class="icon">
+          ✨
+        </div>
 
         <h3>
           تعليم التجويد
@@ -465,9 +451,12 @@
 
       </article>
 
+
       <article class="feature">
 
-        <div class="icon">🌱</div>
+        <div class="icon">
+          🌱
+        </div>
 
         <h3>
           بناء الأجيال
@@ -479,9 +468,12 @@
 
       </article>
 
+
       <article class="feature">
 
-        <div class="icon">📅</div>
+        <div class="icon">
+          📅
+        </div>
 
         <h3>
           مواعيد منظمة
@@ -515,6 +507,7 @@
         </small>
 
       </div>
+
 
       <div class="about-text">
 
@@ -559,9 +552,10 @@
 
         </div>
 
+
         <div class="cards">
 
-          <!-- الحفاظ -->
+          <!-- شعبة الحفاظ -->
 
           <article
             class="program program-clickable"
@@ -589,7 +583,7 @@
           </article>
 
 
-          <!-- التجويد -->
+          <!-- شعبة تجويد -->
 
           <article
             class="program program-clickable"
@@ -617,7 +611,7 @@
           </article>
 
 
-          <!-- الإجازة -->
+          <!-- شعبة إجازة -->
 
           <article
             class="program program-clickable"
@@ -645,7 +639,7 @@
           </article>
 
 
-          <!-- فرسان -->
+          <!-- شعبة فرسان -->
 
           <article
             class="program program-clickable"
@@ -700,6 +694,7 @@
 
       </div>
 
+
       <div class="schedule-box">
 
         <div>
@@ -713,6 +708,7 @@
           </span>
 
         </div>
+
 
         <div>
 
@@ -753,13 +749,14 @@
 
         </div>
 
+
         <div class="register-buttons">
 
-          <!-- التسجيل الإلكتروني -->
+          <!-- التسجيل الإلكتروني: صفحة مستقلة -->
 
           <a
             class="btn btn-gold big"
-            href="#online-register">
+            href="register.html">
 
             التسجيل الإلكتروني 📝
 
@@ -785,143 +782,6 @@
     </section>
 
 
-    <!-- ================= ONLINE REGISTER ================= -->
-
-    <section id="online-register" class="online-register">
-
-      <div class="container">
-
-        <div class="section-title">
-
-          <span></span>
-
-          <h2>
-            التسجيل الإلكتروني
-          </h2>
-
-          <span></span>
-
-        </div>
-
-        <form
-          class="registration-form"
-          id="registrationForm">
-
-          <div class="form-group">
-
-            <label for="studentName">
-              اسم الطالب
-            </label>
-
-            <input
-              type="text"
-              id="studentName"
-              name="studentName"
-              placeholder="اكتب اسم الطالب"
-              required>
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="studentAge">
-              العمر
-            </label>
-
-            <input
-              type="number"
-              id="studentAge"
-              name="studentAge"
-              min="1"
-              max="100"
-              placeholder="اكتب العمر"
-              required>
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="guardianPhone">
-              رقم ولي الأمر
-            </label>
-
-            <input
-              type="tel"
-              id="guardianPhone"
-              name="guardianPhone"
-              placeholder="07XXXXXXXX"
-              required>
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="program">
-              الشعبة المطلوبة
-            </label>
-
-            <select
-              id="program"
-              name="program"
-              required>
-
-              <option value="">
-                اختر الشعبة
-              </option>
-
-              <option value="شعبة الحفاظ">
-                شعبة الحفاظ
-              </option>
-
-              <option value="شعبة تجويد">
-                شعبة تجويد
-              </option>
-
-              <option value="شعبة إجازة">
-                شعبة إجازة
-              </option>
-
-              <option value="شعبة فرسان">
-                شعبة فرسان
-              </option>
-
-            </select>
-
-          </div>
-
-          <div class="form-group">
-
-            <label for="notes">
-              ملاحظات إضافية
-            </label>
-
-            <textarea
-              id="notes"
-              name="notes"
-              placeholder="أي ملاحظات ترغب بإضافتها..."></textarea>
-
-          </div>
-
-          <button
-            type="submit"
-            class="btn btn-gold big">
-
-            إرسال طلب التسجيل عبر واتساب 📝
-
-          </button>
-
-          <p class="form-note">
-            عند الضغط على إرسال، سيتم فتح واتساب وإرسال بيانات التسجيل
-            إلى رقم المركز لمراجعة الطلب والتواصل مع ولي الأمر.
-          </p>
-
-        </form>
-
-      </div>
-
-    </section>
-
-
     <!-- ================= CONTACT ================= -->
 
     <section id="contact" class="contact container">
@@ -941,6 +801,7 @@
           يمكنكم التواصل معنا.
         </p>
 
+
         <div class="contact-buttons">
 
           <a
@@ -953,6 +814,7 @@
 
           </a>
 
+
           <a
             class="btn btn-outline"
             href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
@@ -962,6 +824,7 @@
             موقع المركز 📍
 
           </a>
+
 
           <a
             class="btn btn-outline"
@@ -976,6 +839,7 @@
         </div>
 
       </div>
+
 
       <div class="contact-list">
 
@@ -993,6 +857,7 @@
 
         </div>
 
+
         <div>
 
           💬
@@ -1009,6 +874,7 @@
           </a>
 
         </div>
+
 
         <div>
 
@@ -1045,6 +911,7 @@
       class="program-modal-content"
       onclick="event.stopPropagation()">
 
+
       <button
         class="program-modal-close"
         onclick="closeProgram()"
@@ -1053,6 +920,7 @@
         ×
 
       </button>
+
 
       <div class="program-modal-header">
 
@@ -1064,6 +932,7 @@
         <h2 id="modalTitle"></h2>
 
       </div>
+
 
       <div class="program-modal-body">
 
@@ -1077,6 +946,7 @@
 
         </div>
 
+
         <div class="program-detail">
 
           <h3>
@@ -1087,6 +957,7 @@
 
         </div>
 
+
         <div class="program-detail">
 
           <h3>
@@ -1096,6 +967,7 @@
           <p id="modalFollow"></p>
 
         </div>
+
 
         <a
           href="followup.html"
@@ -1170,6 +1042,7 @@
 
       },
 
+
       tajweed: {
 
         icon: '📖',
@@ -1187,6 +1060,7 @@
 
       },
 
+
       ijazah: {
 
         icon: '🏅',
@@ -1203,6 +1077,7 @@
           'متابعة تقدم الطالب في الحفظ والمراجعة والتلاوة ضمن متطلبات البرنامج.'
 
       },
+
 
       fursan: {
 
@@ -1290,69 +1165,6 @@
       }
 
     });
-
-
-    /* ================= التسجيل الإلكتروني ================= */
-
-    const registrationForm =
-      document.getElementById('registrationForm');
-
-    if (registrationForm) {
-
-      registrationForm.addEventListener('submit', function(event) {
-
-        event.preventDefault();
-
-        const studentName =
-          document.getElementById('studentName').value.trim();
-
-        const studentAge =
-          document.getElementById('studentAge').value.trim();
-
-        const guardianPhone =
-          document.getElementById('guardianPhone').value.trim();
-
-        const program =
-          document.getElementById('program').value;
-
-        const notes =
-          document.getElementById('notes').value.trim();
-
-        const message = [
-
-          'السلام عليكم، أرغب بتسجيل طالب في مركز حردان طارق القرآني.',
-
-          '',
-
-          `اسم الطالب: ${studentName}`,
-
-          `العمر: ${studentAge}`,
-
-          `رقم ولي الأمر: ${guardianPhone}`,
-
-          `الشعبة المطلوبة: ${program}`,
-
-          `ملاحظات إضافية: ${notes || 'لا يوجد'}`,
-
-          '',
-
-          'تم إرسال الطلب من الموقع الإلكتروني للمركز.'
-
-        ].join('\n');
-
-        const whatsappURL =
-          'https://wa.me/962780791622?text=' +
-          encodeURIComponent(message);
-
-        window.open(
-          whatsappURL,
-          '_blank',
-          'noopener'
-        );
-
-      });
-
-    }
 
   </script>
 
