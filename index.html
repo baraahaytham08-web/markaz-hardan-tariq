@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="ar" dir="rtl">
 
@@ -87,208 +88,363 @@
 
     .portal-section {
       width: min(1150px, 92%);
-      margin: 30px auto 45px;
-      padding: 34px 30px;
+      margin: 35px auto 50px;
+      padding: 35px 30px;
+
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,.96),
-          rgba(250,248,240,.92)
+          rgba(255,255,255,.97),
+          rgba(250,248,240,.94)
         );
-      border: 1px solid rgba(178,139,24,.16);
+
+      border:
+        1px solid
+        rgba(178,139,24,.16);
+
       border-radius: 25px;
+
       box-shadow:
-        0 15px 45px rgba(23,77,58,.09);
+        0 15px 45px
+        rgba(23,77,58,.09);
+
       position: relative;
+
       overflow: hidden;
     }
 
 
     .portal-section::before {
+
       content: "";
+
       position: absolute;
+
       width: 190px;
       height: 190px;
+
       top: -100px;
       right: -65px;
+
       border-radius: 50%;
-      background: rgba(23,77,58,.045);
+
+      background:
+        rgba(23,77,58,.045);
+
     }
 
 
     .portal-section::after {
+
       content: "";
+
       position: absolute;
+
       width: 160px;
       height: 160px;
+
       bottom: -95px;
       left: -55px;
+
       border-radius: 50%;
-      background: rgba(178,139,24,.055);
+
+      background:
+        rgba(178,139,24,.055);
+
     }
 
 
     .portal-heading {
+
       position: relative;
+
       z-index: 2;
+
       text-align: center;
+
       margin-bottom: 26px;
+
     }
 
 
     .portal-heading .section-kicker {
+
       display: inline-block;
+
       margin-bottom: 7px;
-      color: var(--gold);
+
+      color:
+        var(--gold);
+
       font-size: 12px;
+
       font-weight: bold;
+
     }
 
 
     .portal-heading h2 {
-      color: var(--green);
+
+      color:
+        var(--green);
+
       font-size: 28px;
+
       margin-bottom: 8px;
+
       line-height: 1.4;
+
     }
 
 
     .portal-heading p {
-      color: #6f7a75;
+
+      color:
+        #6f7a75;
+
       font-size: 13px;
+
       line-height: 1.9;
+
       margin: 0 auto;
+
       max-width: 650px;
+
     }
 
 
     .portal-cards {
+
       position: relative;
+
       z-index: 2;
+
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
       gap: 20px;
+
     }
 
 
     .portal-card {
+
       position: relative;
+
       overflow: hidden;
+
       display: flex;
+
       align-items: center;
+
       gap: 18px;
+
       min-height: 145px;
+
       padding: 24px 22px;
+
       border-radius: 19px;
+
       text-decoration: none;
+
       background: #fff;
-      border: 1px solid rgba(23,77,58,.09);
-      box-shadow: 0 8px 25px rgba(23,77,58,.07);
+
+      border:
+        1px solid
+        rgba(23,77,58,.09);
+
+      box-shadow:
+        0 8px 25px
+        rgba(23,77,58,.07);
+
       transition:
         transform .25s ease,
         box-shadow .25s ease,
         border-color .25s ease;
+
     }
 
 
     .portal-card::before {
+
       content: "";
+
       position: absolute;
+
       top: 0;
+
       right: 0;
+
       bottom: 0;
+
       width: 5px;
+
       background:
         linear-gradient(
           180deg,
           var(--green),
           var(--gold)
         );
+
     }
 
 
     .portal-card:hover {
-      transform: translateY(-6px);
+
+      transform:
+        translateY(-6px);
+
       box-shadow:
-        0 18px 38px rgba(23,77,58,.13);
-      border-color: rgba(178,139,24,.28);
+        0 18px 38px
+        rgba(23,77,58,.13);
+
+      border-color:
+        rgba(178,139,24,.28);
+
     }
 
 
     .portal-card.teacher .portal-icon {
-      background: var(--green-light);
-      color: var(--green);
+
+      background:
+        var(--green-light);
+
+      color:
+        var(--green);
+
     }
 
 
     .portal-card.student .portal-icon {
-      background: #fff8df;
-      color: var(--gold);
+
+      background:
+        #fff8df;
+
+      color:
+        var(--gold);
+
     }
 
 
     .portal-icon {
+
       width: 68px;
+
       height: 68px;
+
       min-width: 68px;
+
       border-radius: 19px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       font-size: 31px;
-      border: 1px solid rgba(178,139,24,.12);
+
+      border:
+        1px solid
+        rgba(178,139,24,.12);
+
     }
 
 
     .portal-content {
+
       flex: 1;
+
     }
 
 
     .portal-content h3 {
-      color: var(--green);
+
+      color:
+        var(--green);
+
       font-size: 18px;
+
       margin-bottom: 7px;
+
     }
 
 
     .portal-content p {
-      color: #707b76;
+
+      color:
+        #707b76;
+
       font-size: 11px;
+
       line-height: 1.9;
+
       margin: 0;
+
     }
 
 
     .portal-arrow {
+
       width: 40px;
+
       height: 40px;
+
       min-width: 40px;
+
       border-radius: 50%;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
-      background: var(--green-light);
-      color: var(--green);
+
+      background:
+        var(--green-light);
+
+      color:
+        var(--green);
+
       font-size: 15px;
-      transition: .25s ease;
+
+      transition:
+        .25s ease;
+
     }
 
 
     .portal-card:hover .portal-arrow {
-      transform: translateX(-4px);
-      background: var(--green);
-      color: #fff;
+
+      transform:
+        translateX(-4px);
+
+      background:
+        var(--green);
+
+      color:
+        #fff;
+
     }
 
 
     .portal-note {
+
       position: relative;
+
       z-index: 2;
+
       text-align: center;
+
       margin-top: 18px;
-      color: #8b9690;
+
+      color:
+        #8b9690;
+
       font-size: 10px;
+
     }
 
 
@@ -297,15 +453,24 @@
     ===================================================== */
 
     .register-buttons {
+
       display: flex;
+
       gap: 12px;
+
       flex-wrap: wrap;
+
       margin-top: 20px;
+
     }
 
+
     .register-buttons .btn-gold {
+
       min-width: 190px;
+
       text-align: center;
+
     }
 
 
@@ -314,55 +479,107 @@
     ===================================================== */
 
     .contact {
+
       align-items: center;
+
     }
+
 
     .contact-list {
+
       display: flex;
+
       flex-wrap: wrap;
+
       justify-content: center;
+
       align-items: center;
+
       gap: 18px;
+
       padding: 10px;
+
     }
+
 
     .contact-list > div {
+
       margin: 0 !important;
+
       padding: 0 !important;
+
       border: none !important;
+
       background: transparent !important;
+
       box-shadow: none !important;
+
       font-size: 0;
+
     }
+
 
     .contact-list a {
+
       width: 64px;
+
       height: 64px;
+
       border-radius: 50%;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
       text-decoration: none;
+
       background: #fff;
-      border: 1px solid #eee;
-      box-shadow: 0 8px 22px rgba(0,0,0,.08);
-      transition: .25s ease;
+
+      border:
+        1px solid
+        #eee;
+
+      box-shadow:
+        0 8px 22px
+        rgba(0,0,0,.08);
+
+      transition:
+        .25s ease;
+
       position: relative;
+
       color: #222;
+
     }
+
 
     .contact-list a:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 28px rgba(0,0,0,.14);
+
+      transform:
+        translateY(-5px);
+
+      box-shadow:
+        0 12px 28px
+        rgba(0,0,0,.14);
+
     }
+
 
     .contact-list a i {
+
       font-size: 27px;
+
       line-height: 1;
+
     }
 
+
     .contact-list a span {
+
       display: none;
+
     }
 
 
@@ -373,7 +590,10 @@
     @media (max-width: 900px) {
 
       .features {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
       }
 
     }
@@ -382,67 +602,111 @@
     @media (max-width: 700px) {
 
       .portal-section {
+
         width: 92%;
-        padding: 27px 17px;
-        margin: 25px auto 38px;
-        border-radius: 21px;
+
+        padding:
+          27px 17px;
+
+        margin:
+          25px auto 38px;
+
+        border-radius:
+          21px;
+
       }
 
 
       .portal-heading {
-        margin-bottom: 21px;
+
+        margin-bottom:
+          21px;
+
       }
 
 
       .portal-heading h2 {
+
         font-size: 22px;
+
       }
 
 
       .portal-heading p {
+
         font-size: 12px;
+
         line-height: 1.8;
+
       }
 
 
       .portal-cards {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
+
         gap: 13px;
+
       }
 
 
       .portal-card {
-        min-height: 125px;
-        padding: 19px 16px;
+
+        min-height:
+          125px;
+
+        padding:
+          19px 16px;
+
         gap: 13px;
-        border-radius: 17px;
+
+        border-radius:
+          17px;
+
       }
 
 
       .portal-icon {
+
         width: 56px;
+
         height: 56px;
+
         min-width: 56px;
-        border-radius: 16px;
+
+        border-radius:
+          16px;
+
         font-size: 25px;
+
       }
 
 
       .portal-content h3 {
+
         font-size: 15px;
+
       }
 
 
       .portal-content p {
+
         font-size: 10px;
+
         line-height: 1.8;
+
       }
 
 
       .portal-arrow {
+
         width: 35px;
+
         height: 35px;
+
         min-width: 35px;
+
       }
 
     }
@@ -454,19 +718,29 @@
 
       html,
       body {
+
         width: 100%;
+
         max-width: 100%;
+
         overflow-x: hidden;
+
       }
 
 
       /* النسخة التجريبية */
 
       .demo-badge {
+
         top: 8px;
+
         left: 8px;
-        padding: 5px 10px;
+
+        padding:
+          5px 10px;
+
         font-size: 10px;
+
       }
 
 
@@ -475,94 +749,176 @@
       ================================================= */
 
       .header {
+
         position: sticky;
+
         top: 0;
+
         z-index: 999;
+
       }
+
 
       .header .container {
-        min-height: 70px;
+
+        min-height:
+          70px;
+
       }
+
 
       .brand {
-        max-width: calc(100% - 55px);
+
+        max-width:
+          calc(100% - 55px);
+
       }
+
 
       .brand img {
-        width: 42px !important;
-        height: 42px !important;
+
+        width:
+          42px !important;
+
+        height:
+          42px !important;
+
       }
 
+
       .brand span {
-        font-size: 13px !important;
-        line-height: 1.4;
+
+        font-size:
+          13px !important;
+
+        line-height:
+          1.4;
+
       }
 
 
       /* إخفاء أزرار الهيدر على الهاتف */
 
       .header .actions {
-        display: none !important;
+
+        display:
+          none !important;
+
       }
 
 
       /* زر القائمة */
 
       .menu-btn {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
+
+        display:
+          flex !important;
+
+        align-items:
+          center;
+
+        justify-content:
+          center;
+
         width: 44px;
+
         height: 44px;
+
         min-width: 44px;
-        border-radius: 12px;
-        font-size: 23px;
-        cursor: pointer;
+
+        border-radius:
+          12px;
+
+        font-size:
+          23px;
+
+        cursor:
+          pointer;
+
       }
 
 
       /* =================================================
-         القائمة الجانبية/المنسدلة
+         القائمة
       ================================================= */
 
       .header nav {
-        position: absolute !important;
-        top: calc(100% + 8px);
-        right: 12px;
-        left: 12px;
 
-        display: none !important;
+        position:
+          absolute !important;
 
-        flex-direction: column;
+        top:
+          calc(100% + 8px);
+
+        right:
+          12px;
+
+        left:
+          12px;
+
+        display:
+          none !important;
+
+        flex-direction:
+          column;
+
         gap: 4px;
 
-        padding: 10px;
+        padding:
+          10px;
 
-        background: rgba(255,255,255,.98);
-        border-radius: 18px;
+        background:
+          rgba(255,255,255,.98);
+
+        border-radius:
+          18px;
 
         box-shadow:
-          0 15px 40px rgba(0,0,0,.14);
+          0 15px 40px
+          rgba(0,0,0,.14);
 
-        border: 1px solid #eee;
+        border:
+          1px solid #eee;
+
       }
+
 
       .header nav.open {
-        display: flex !important;
+
+        display:
+          flex !important;
+
       }
 
+
       .header nav a {
+
         width: 100%;
-        box-sizing: border-box;
-        padding: 13px 15px;
-        border-radius: 12px;
-        font-size: 15px;
-        text-align: right;
+
+        box-sizing:
+          border-box;
+
+        padding:
+          13px 15px;
+
+        border-radius:
+          12px;
+
+        font-size:
+          15px;
+
+        text-align:
+          right;
+
       }
+
 
       .header nav a:hover,
       .header nav a.active {
-        background: #f4f1e7;
+
+        background:
+          #f4f1e7;
+
       }
 
 
@@ -571,56 +927,118 @@
       ================================================= */
 
       .hero {
-        padding-top: 55px !important;
-        padding-bottom: 45px !important;
+
+        padding-top:
+          55px !important;
+
+        padding-bottom:
+          45px !important;
+
       }
+
 
       .hero-inner {
-        display: flex !important;
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
+
+        display:
+          flex !important;
+
+        flex-direction:
+          column;
+
+        gap:
+          30px;
+
+        text-align:
+          center;
+
       }
+
 
       .hero-content {
-        width: 100%;
-        max-width: 100%;
+
+        width:
+          100%;
+
+        max-width:
+          100%;
+
       }
+
 
       .hero-content .eyebrow {
-        font-size: 14px;
-        margin-bottom: 8px;
+
+        font-size:
+          14px;
+
+        margin-bottom:
+          8px;
+
       }
+
 
       .hero-content h1 {
-        font-size: 31px !important;
-        line-height: 1.35;
-        margin-bottom: 12px;
+
+        font-size:
+          31px !important;
+
+        line-height:
+          1.35;
+
+        margin-bottom:
+          12px;
+
       }
+
 
       .hero-content h2 {
-        font-size: 19px !important;
-        line-height: 1.6;
+
+        font-size:
+          19px !important;
+
+        line-height:
+          1.6;
+
       }
 
+
       .hero-text {
-        font-size: 15px !important;
-        line-height: 1.9;
-        margin-top: 15px;
+
+        font-size:
+          15px !important;
+
+        line-height:
+          1.9;
+
+        margin-top:
+          15px;
+
       }
 
 
       /* الرسم في الهيرو */
 
       .hero-art {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+
+        width:
+          100%;
+
+        display:
+          flex;
+
+        justify-content:
+          center;
+
       }
 
+
       .arch {
-        max-width: 250px;
-        width: 75%;
+
+        max-width:
+          250px;
+
+        width:
+          75%;
+
       }
 
 
@@ -629,28 +1047,57 @@
       ================================================= */
 
       .features {
-        grid-template-columns: 1fr !important;
-        gap: 14px;
-        padding-left: 15px;
-        padding-right: 15px;
+
+        grid-template-columns:
+          1fr !important;
+
+        gap:
+          14px;
+
+        padding-left:
+          15px;
+
+        padding-right:
+          15px;
+
       }
+
 
       .feature {
-        padding: 24px 18px !important;
-        border-radius: 18px;
+
+        padding:
+          24px 18px !important;
+
+        border-radius:
+          18px;
+
       }
+
 
       .feature .icon {
-        font-size: 30px;
+
+        font-size:
+          30px;
+
       }
+
 
       .feature h3 {
-        font-size: 18px;
+
+        font-size:
+          18px;
+
       }
 
+
       .feature p {
-        font-size: 14px;
-        line-height: 1.8;
+
+        font-size:
+          14px;
+
+        line-height:
+          1.8;
+
       }
 
 
@@ -659,41 +1106,88 @@
       ================================================= */
 
       .about {
-        display: flex !important;
-        flex-direction: column;
-        gap: 25px;
-        padding-left: 18px;
-        padding-right: 18px;
+
+        display:
+          flex !important;
+
+        flex-direction:
+          column;
+
+        gap:
+          25px;
+
+        padding-left:
+          18px;
+
+        padding-right:
+          18px;
+
       }
+
 
       .quote-card {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 25px 18px !important;
-        text-align: center;
+
+        width:
+          100%;
+
+        box-sizing:
+          border-box;
+
+        padding:
+          25px 18px !important;
+
+        text-align:
+          center;
+
       }
+
 
       .quote-card blockquote {
-        font-size: 19px !important;
-        line-height: 1.9;
+
+        font-size:
+          19px !important;
+
+        line-height:
+          1.9;
+
       }
+
 
       .about-text {
-        text-align: center;
+
+        text-align:
+          center;
+
       }
+
 
       .about-text h2 {
-        font-size: 27px !important;
+
+        font-size:
+          27px !important;
+
       }
+
 
       .about-text p {
-        font-size: 15px;
-        line-height: 1.9;
+
+        font-size:
+          15px;
+
+        line-height:
+          1.9;
+
       }
 
+
       .about-text .btn {
-        width: 100%;
-        box-sizing: border-box;
+
+        width:
+          100%;
+
+        box-sizing:
+          border-box;
+
       }
 
 
@@ -702,38 +1196,79 @@
       ================================================= */
 
       .schedule {
-        display: flex !important;
-        flex-direction: column;
-        gap: 25px;
-        padding-left: 18px;
-        padding-right: 18px;
-        text-align: center;
+
+        display:
+          flex !important;
+
+        flex-direction:
+          column;
+
+        gap:
+          25px;
+
+        padding-left:
+          18px;
+
+        padding-right:
+          18px;
+
+        text-align:
+          center;
+
       }
+
 
       .schedule h2 {
-        font-size: 27px !important;
+
+        font-size:
+          27px !important;
+
       }
+
 
       .schedule p {
-        font-size: 15px;
-        line-height: 1.9;
+
+        font-size:
+          15px;
+
+        line-height:
+          1.9;
+
       }
+
 
       .schedule-box {
-        width: 100%;
-        box-sizing: border-box;
+
+        width:
+          100%;
+
+        box-sizing:
+          border-box;
+
       }
+
 
       .schedule-box > div {
-        padding: 18px 15px !important;
+
+        padding:
+          18px 15px !important;
+
       }
+
 
       .schedule-box strong {
-        font-size: 17px;
+
+        font-size:
+          17px;
+
       }
 
+
       .schedule-box span {
-        font-size: 14px;
+
+        font-size:
+          14px;
+
       }
 
 
@@ -742,38 +1277,83 @@
       ================================================= */
 
       .register {
-        padding-left: 18px;
-        padding-right: 18px;
+
+        padding-left:
+          18px;
+
+        padding-right:
+          18px;
+
       }
+
 
       .register-inner {
-        display: flex !important;
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
+
+        display:
+          flex !important;
+
+        flex-direction:
+          column;
+
+        gap:
+          20px;
+
+        text-align:
+          center;
+
       }
+
 
       .register-inner h2 {
-        font-size: 26px !important;
-        line-height: 1.5;
+
+        font-size:
+          26px !important;
+
+        line-height:
+          1.5;
+
       }
+
 
       .register-inner p {
-        font-size: 14px;
-        line-height: 1.8;
+
+        font-size:
+          14px;
+
+        line-height:
+          1.8;
+
       }
+
 
       .register-buttons {
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
+
+        flex-direction:
+          column;
+
+        width:
+          100%;
+
+        gap:
+          10px;
+
       }
 
+
       .register-buttons .btn {
-        width: 100%;
-        min-width: 0 !important;
-        box-sizing: border-box;
-        padding: 14px 15px;
+
+        width:
+          100%;
+
+        min-width:
+          0 !important;
+
+        box-sizing:
+          border-box;
+
+        padding:
+          14px 15px;
+
       }
 
 
@@ -782,35 +1362,74 @@
       ================================================= */
 
       .contact {
-        display: flex !important;
-        flex-direction: column;
-        gap: 20px;
-        padding-left: 18px;
-        padding-right: 18px;
-        text-align: center;
+
+        display:
+          flex !important;
+
+        flex-direction:
+          column;
+
+        gap:
+          20px;
+
+        padding-left:
+          18px;
+
+        padding-right:
+          18px;
+
+        text-align:
+          center;
+
       }
+
 
       .contact h2 {
-        font-size: 27px !important;
+
+        font-size:
+          27px !important;
+
       }
+
 
       .contact p {
-        font-size: 14px;
-        line-height: 1.9;
+
+        font-size:
+          14px;
+
+        line-height:
+          1.9;
+
       }
+
 
       .contact-list {
-        gap: 13px;
-        padding: 5px;
+
+        gap:
+          13px;
+
+        padding:
+          5px;
+
       }
+
 
       .contact-list a {
-        width: 56px;
-        height: 56px;
+
+        width:
+          56px;
+
+        height:
+          56px;
+
       }
 
+
       .contact-list a i {
-        font-size: 22px;
+
+        font-size:
+          22px;
+
       }
 
 
@@ -819,16 +1438,33 @@
       ================================================= */
 
       footer {
-        padding: 25px 15px !important;
+
+        padding:
+          25px 15px !important;
+
       }
 
+
       .footer-inner {
-        display: flex !important;
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-        font-size: 13px;
-        line-height: 1.7;
+
+        display:
+          flex !important;
+
+        flex-direction:
+          column;
+
+        gap:
+          8px;
+
+        text-align:
+          center;
+
+        font-size:
+          13px;
+
+        line-height:
+          1.7;
+
       }
 
     }
@@ -841,40 +1477,81 @@
     @media (max-width: 380px) {
 
       .hero-content h1 {
-        font-size: 27px !important;
+
+        font-size:
+          27px !important;
+
       }
+
 
       .hero-content h2 {
-        font-size: 17px !important;
+
+        font-size:
+          17px !important;
+
       }
+
 
       .brand span {
-        font-size: 12px !important;
+
+        font-size:
+          12px !important;
+
       }
+
 
       .contact-list a {
-        width: 52px;
-        height: 52px;
+
+        width:
+          52px;
+
+        height:
+          52px;
+
       }
+
 
       .portal-card {
-        gap: 10px;
-        padding: 17px 13px;
+
+        gap:
+          10px;
+
+        padding:
+          17px 13px;
+
       }
+
 
       .portal-icon {
-        width: 51px;
-        height: 51px;
-        min-width: 51px;
-        font-size: 22px;
+
+        width:
+          51px;
+
+        height:
+          51px;
+
+        min-width:
+          51px;
+
+        font-size:
+          22px;
+
       }
+
 
       .portal-content h3 {
-        font-size: 14px;
+
+        font-size:
+          14px;
+
       }
 
+
       .portal-content p {
-        font-size: 9px;
+
+        font-size:
+          9px;
+
       }
 
     }
@@ -1039,7 +1716,84 @@
 
 
     <!-- =====================================================
+         FEATURES
+    ===================================================== -->
+
+    <section class="features container">
+
+      <article class="feature">
+
+        <div class="icon">
+          📖
+        </div>
+
+        <h3>
+          تحفيظ القرآن الكريم
+        </h3>
+
+        <p>
+          العناية بحفظ كتاب الله ومراجعته.
+        </p>
+
+      </article>
+
+
+      <article class="feature">
+
+        <div class="icon">
+          ✨
+        </div>
+
+        <h3>
+          تعليم التجويد
+        </h3>
+
+        <p>
+          تعلم أحكام التجويد وتحسين التلاوة.
+        </p>
+
+      </article>
+
+
+      <article class="feature">
+
+        <div class="icon">
+          🌱
+        </div>
+
+        <h3>
+          بناء الأجيال
+        </h3>
+
+        <p>
+          بيئة تربوية تعين على تعلم القرآن والعمل به.
+        </p>
+
+      </article>
+
+
+      <article class="feature">
+
+        <div class="icon">
+          📅
+        </div>
+
+        <h3>
+          مواعيد منظمة
+        </h3>
+
+        <p>
+          السبت والأربعاء من 4:30 إلى 6:30 مساءً.
+        </p>
+
+      </article>
+
+    </section>
+
+
+    <!-- =====================================================
          البوابات الإلكترونية
+         تحت الخانات الأربع مباشرة
     ===================================================== -->
 
     <section class="portal-section">
@@ -1140,80 +1894,6 @@
         بوابات المركز مخصصة للطلاب والمعلمين
 
       </div>
-
-    </section>
-
-
-    <!-- FEATURES -->
-
-    <section class="features container">
-
-      <article class="feature">
-
-        <div class="icon">
-          📖
-        </div>
-
-        <h3>
-          تحفيظ القرآن الكريم
-        </h3>
-
-        <p>
-          العناية بحفظ كتاب الله ومراجعته.
-        </p>
-
-      </article>
-
-
-      <article class="feature">
-
-        <div class="icon">
-          ✨
-        </div>
-
-        <h3>
-          تعليم التجويد
-        </h3>
-
-        <p>
-          تعلم أحكام التجويد وتحسين التلاوة.
-        </p>
-
-      </article>
-
-
-      <article class="feature">
-
-        <div class="icon">
-          🌱
-        </div>
-
-        <h3>
-          بناء الأجيال
-        </h3>
-
-        <p>
-          بيئة تربوية تعين على تعلم القرآن والعمل به.
-        </p>
-
-      </article>
-
-
-      <article class="feature">
-
-        <div class="icon">
-          📅
-        </div>
-
-        <h3>
-          مواعيد منظمة
-        </h3>
-
-        <p>
-          السبت والأربعاء من 4:30 إلى 6:30 مساءً.
-        </p>
-
-      </article>
 
     </section>
 
@@ -1541,8 +2221,6 @@
       );
 
 
-      /* إغلاق القائمة بعد اختيار رابط */
-
       nav.querySelectorAll('a').forEach(
         link => {
 
@@ -1571,3 +2249,4 @@
 </body>
 
 </html>
+```
