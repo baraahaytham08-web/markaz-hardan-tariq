@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>ملف الطالب | مركز حردان طارق القرآني</title>
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="shortcut icon" type="image/png" href="logo.png">
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -20,120 +23,423 @@
     }
 
     :root {
-      --green: #07563c;
-      --green2: #0b7450;
-      --gold: #c29d45;
-      --cream: #f8f4e8;
-      --text: #17352b;
-      --muted: #777;
+      --green: #0d4d3a;
+      --green-2: #176b50;
+      --green-3: #218866;
+      --dark: #092f25;
+      --gold: #c5a04a;
+      --gold-2: #e0c36c;
+      --cream: #f8f5eb;
+      --bg: #f2f6f3;
       --white: #fff;
+      --text: #17362c;
+      --muted: #718078;
+      --border: #e2e9e5;
+      --success: #16834b;
       --danger: #b42318;
+      --blue: #2869a8;
+      --orange: #b76a18;
+      --shadow: 0 12px 35px rgba(13, 77, 58, .08);
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: #f3f5f2;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(197,160,74,.10), transparent 25%),
+        radial-gradient(circle at 90% 15%, rgba(23,107,80,.08), transparent 25%),
+        var(--bg);
       color: var(--text);
-      font-family: Arial, Tahoma, sans-serif;
+      font-family: Tahoma, Arial, sans-serif;
+      min-height: 100vh;
     }
 
+    button,
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* HEADER */
+
     header {
-      background: linear-gradient(135deg, var(--green), #063626);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9,47,37,.96);
+      backdrop-filter: blur(16px);
       color: white;
-      padding: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.10);
     }
 
     .header-inner {
-      max-width: 1150px;
+      width: min(1250px, calc(100% - 30px));
+      min-height: 78px;
       margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 15px;
+      gap: 18px;
+    }
+
+    .brand-link {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      overflow: hidden;
+      border: 2px solid rgba(224,195,108,.8);
+      box-shadow: 0 5px 18px rgba(0,0,0,.2);
     }
 
     .brand h1 {
-      font-size: 22px;
-      margin-bottom: 5px;
+      font-size: 18px;
+      margin-bottom: 4px;
     }
 
     .brand p {
-      opacity: .8;
-      font-size: 13px;
+      color: rgba(255,255,255,.68);
+      font-size: 12px;
     }
 
     .back {
       color: white;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,.35);
-      padding: 10px 14px;
-      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.07);
+      padding: 11px 16px;
+      border-radius: 12px;
+      transition: .2s;
+      white-space: nowrap;
     }
+
+    .back:hover {
+      background: rgba(255,255,255,.14);
+      transform: translateY(-2px);
+    }
+
+    /* PAGE */
 
     .container {
-      width: calc(100% - 30px);
-      max-width: 1150px;
-      margin: 25px auto 60px;
+      width: min(1250px, calc(100% - 30px));
+      margin: 28px auto 80px;
     }
 
-    .top-card {
-      background: white;
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    /* MESSAGE */
+
+    .message {
+      display: none;
+      padding: 15px 18px;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      font-weight: bold;
+      box-shadow: var(--shadow);
+    }
+
+    .success {
+      background: #eaf8ef;
+      color: #13743f;
+      border: 1px solid #cbead6;
+    }
+
+    .error {
+      background: #fff0ef;
+      color: #a31d16;
+      border: 1px solid #f2cdca;
+    }
+
+    /* HERO */
+
+    .student-hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(224,195,108,.18), transparent 28%),
+        linear-gradient(135deg, #0a382c, #14654b);
+      border-radius: 28px;
+      padding: 28px;
+      color: white;
       margin-bottom: 20px;
+      box-shadow: 0 18px 45px rgba(13,77,58,.18);
+    }
+
+    .student-hero::before {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 50%;
+      left: -90px;
+      top: -120px;
+    }
+
+    .student-hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(224,195,108,.12);
+      border-radius: 50%;
+      right: -130px;
+      bottom: -170px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 22px;
     }
 
     .photo-preview {
-      width: 110px;
-      height: 110px;
+      width: 105px;
+      height: 105px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid var(--gold);
-      background: var(--cream);
+      overflow: hidden;
+      border: 4px solid rgba(224,195,108,.95);
+      background: rgba(255,255,255,.10);
       flex-shrink: 0;
+      box-shadow: 0 8px 28px rgba(0,0,0,.20);
     }
 
-    .top-card h2 {
-      color: var(--green);
+    .photo-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+    }
+
+    .hero-info {
+      flex: 1;
+    }
+
+    .hero-info h2 {
+      font-size: clamp(24px, 4vw, 34px);
       margin-bottom: 7px;
     }
 
-    .grid {
+    .hero-info p {
+      color: rgba(255,255,255,.75);
+      margin-bottom: 14px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hero-pill {
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.13);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .hero-side {
+      min-width: 180px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .hero-side small {
+      display: block;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 5px;
+    }
+
+    .hero-side strong {
+      font-size: 28px;
+      color: var(--gold-2);
+    }
+
+    /* SECTION */
+
+    .section {
+      margin-top: 20px;
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(226,233,229,.9);
+      border-radius: 22px;
+      padding: 23px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green);
+      font-size: 20px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 5px;
+      height: 25px;
+      border-radius: 20px;
+      background: linear-gradient(var(--gold), var(--gold-2));
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .stat {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #fff, #f8fbf9);
+      border-radius: 18px;
+      padding: 18px;
+      transition: .25s;
+    }
+
+    .stat:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(13,77,58,.10);
+    }
+
+    .stat::after {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      left: -25px;
+      bottom: -35px;
+      background: rgba(197,160,74,.08);
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 13px;
+      background: var(--cream);
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .stat-value {
+      color: var(--green);
+      font-size: 26px;
+      font-weight: 900;
+    }
+
+    .stat-note {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 5px;
+    }
+
+    /* PROGRESS */
+
+    .progress-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 16px;
     }
 
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 22px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.05);
+    .progress-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      background: #fcfdfc;
     }
 
-    .full {
-      grid-column: 1 / -1;
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
-    .title {
+    .progress-top strong {
       color: var(--green);
-      margin-bottom: 18px;
-      font-size: 20px;
-      border-right: 4px solid var(--gold);
-      padding-right: 10px;
     }
+
+    .percent {
+      font-weight: 900;
+      color: var(--gold);
+      font-size: 21px;
+    }
+
+    .bar {
+      height: 11px;
+      background: #e8eee9;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), var(--green-3));
+      transition: width .5s ease;
+    }
+
+    .progress-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* FORM */
 
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 15px;
-    }
-
-    .field {
-      margin-bottom: 5px;
     }
 
     .field.full-field {
@@ -142,152 +448,514 @@
 
     label {
       display: block;
-      margin-bottom: 7px;
-      font-weight: bold;
       color: #345248;
-      font-size: 14px;
+      font-weight: bold;
+      font-size: 13px;
+      margin-bottom: 7px;
     }
 
     input,
     textarea,
     select {
       width: 100%;
-      border: 1px solid #ddd;
-      border-radius: 11px;
+      border: 1px solid #dce5df;
+      border-radius: 12px;
       padding: 12px 13px;
-      font-family: inherit;
+      background: white;
+      color: var(--text);
       font-size: 14px;
       outline: none;
-      background: white;
+      transition: .2s;
     }
 
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(7,86,60,.08);
+      border-color: var(--green-2);
+      box-shadow: 0 0 0 4px rgba(23,107,80,.08);
     }
 
     textarea {
-      min-height: 100px;
+      min-height: 130px;
       resize: vertical;
     }
 
-    .array-editor {
+    /* TABLE */
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    th {
+      background: #f3f7f4;
+      color: var(--green);
+      padding: 13px;
+      text-align: right;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    tr:hover td {
+      background: #fbfdfc;
+    }
+
+    /* EDITOR */
+
+    .editor-list {
       display: flex;
       flex-direction: column;
+      gap: 12px;
+    }
+
+    .editor-row {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fbfdfc;
+      padding: 15px;
+    }
+
+    .editor-row-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
       gap: 10px;
     }
 
-    .array-row {
-      background: #f8faf8;
-      border: 1px solid #e4e9e5;
-      border-radius: 12px;
-      padding: 12px;
+    .editor-row-title {
+      font-weight: 900;
+      color: var(--green);
     }
 
-    .array-row-grid {
+    .editor-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
+      gap: 10px;
     }
 
     .remove {
-      margin-top: 8px;
       border: none;
-      background: #fff0f0;
+      background: #fff0ef;
       color: var(--danger);
-      padding: 7px 10px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .add {
-      border: 1px dashed #b7c8bd;
-      background: #f8fbf8;
-      color: var(--green);
-      padding: 11px;
-      border-radius: 10px;
+      border-radius: 9px;
+      padding: 8px 11px;
       cursor: pointer;
       font-weight: bold;
     }
+
+    .remove:hover {
+      background: #ffe1df;
+    }
+
+    .add {
+      width: 100%;
+      margin-top: 12px;
+      border: 1px dashed #b9c9c0;
+      background: #f8fbf9;
+      color: var(--green);
+      padding: 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .add:hover {
+      background: #edf5f1;
+      border-color: var(--green-2);
+    }
+
+    /* RECITATION */
+
+    .recitation-summary {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .mini-stat {
+      padding: 14px;
+      background: #f7faf8;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .mini-stat small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    .mini-stat strong {
+      color: var(--green);
+      font-size: 20px;
+    }
+
+    .grade-badge,
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .grade-excellent {
+      background: #e7f7ed;
+      color: #13743f;
+    }
+
+    .grade-very-good {
+      background: #e8f1fb;
+      color: #2869a8;
+    }
+
+    .grade-good {
+      background: #fff3df;
+      color: #9b5c0d;
+    }
+
+    .grade-other {
+      background: #f1f3f2;
+      color: #63716b;
+    }
+
+    /* QURAN MAP */
+
+    .quran-progress {
+      margin-bottom: 20px;
+      padding: 18px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, #f4f8f5, #fbfaf3);
+      border: 1px solid var(--border);
+    }
+
+    .quran-progress-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .quran-progress-head strong {
+      color: var(--green);
+      font-size: 22px;
+    }
+
+    .juz-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+    }
+
+    .juz-card {
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 13px;
+      background: white;
+    }
+
+    .juz-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .juz-title {
+      font-weight: 900;
+      color: var(--green);
+      font-size: 13px;
+    }
+
+    .juz-count {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .page-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 4px;
+    }
+
+    .page-dot {
+      aspect-ratio: 1;
+      border-radius: 6px;
+      border: 1px solid #e2e8e4;
+      background: #f1f4f2;
+      cursor: pointer;
+      transition: .15s;
+      position: relative;
+    }
+
+    .page-dot:hover {
+      transform: scale(1.12);
+      z-index: 2;
+    }
+
+    .page-dot.hifz {
+      background: #19764f;
+      border-color: #19764f;
+    }
+
+    .page-dot.review {
+      background: #d5b24e;
+      border-color: #d5b24e;
+    }
+
+    .page-dot.both {
+      background: linear-gradient(135deg, #19764f 50%, #d5b24e 50%);
+      border-color: #19764f;
+    }
+
+    .page-dot[title] {
+      cursor: help;
+    }
+
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 4px;
+      background: #f1f4f2;
+      border: 1px solid #ddd;
+    }
+
+    .legend-dot.hifz {
+      background: #19764f;
+      border-color: #19764f;
+    }
+
+    .legend-dot.review {
+      background: #d5b24e;
+      border-color: #d5b24e;
+    }
+
+    /* ACTIONS */
 
     .actions {
       position: sticky;
       bottom: 15px;
-      margin-top: 20px;
-      background: rgba(255,255,255,.95);
-      backdrop-filter: blur(10px);
-      border-radius: 17px;
+      z-index: 20;
+      margin-top: 22px;
+      background: rgba(255,255,255,.90);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(226,233,229,.9);
+      border-radius: 18px;
       padding: 13px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+      box-shadow: 0 12px 35px rgba(0,0,0,.12);
       display: flex;
-      gap: 10px;
       justify-content: flex-start;
+      gap: 10px;
     }
 
     .save {
-      background: linear-gradient(135deg, var(--green), var(--green2));
-      color: white;
       border: none;
-      padding: 13px 24px;
-      border-radius: 11px;
+      background: linear-gradient(135deg, var(--green), var(--green-3));
+      color: white;
+      padding: 14px 24px;
+      border-radius: 12px;
       cursor: pointer;
-      font-weight: bold;
-      font-size: 15px;
+      font-weight: 900;
+      font-size: 14px;
+      box-shadow: 0 8px 20px rgba(13,77,58,.18);
+      transition: .2s;
+    }
+
+    .save:hover {
+      transform: translateY(-2px);
     }
 
     .save:disabled {
-      opacity: .6;
+      opacity: .65;
       cursor: wait;
+      transform: none;
     }
 
-    .message {
-      display: none;
-      padding: 12px 15px;
-      border-radius: 11px;
-      margin-bottom: 15px;
+    .secondary {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--green);
+      padding: 14px 18px;
+      border-radius: 12px;
+      cursor: pointer;
       font-weight: bold;
     }
 
-    .success {
-      background: #e9f8ee;
-      color: #137333;
-    }
-
-    .error {
-      background: #fff0f0;
-      color: #b42318;
-    }
+    /* LOADING */
 
     .loading {
+      background: white;
+      border-radius: 22px;
+      padding: 90px 20px;
       text-align: center;
-      padding: 80px;
-      color: #777;
+      color: var(--muted);
+      box-shadow: var(--shadow);
+    }
+
+    .loading-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+      animation: pulse 1.2s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: .45;
+        transform: scale(.94);
+      }
+    }
+
+    /* MOBILE */
+
+    @media(max-width: 1050px) {
+
+      .stats,
+      .recitation-summary {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .juz-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
     }
 
     @media(max-width: 750px) {
 
-      .grid,
-      .form-grid {
+      .header-inner {
+        min-height: 70px;
+      }
+
+      .brand h1 {
+        font-size: 15px;
+      }
+
+      .brand p {
+        font-size: 10px;
+      }
+
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .back {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+
+      .container {
+        width: calc(100% - 18px);
+        margin-top: 14px;
+      }
+
+      .student-hero {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .hero-content {
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .photo-preview {
+        width: 82px;
+        height: 82px;
+      }
+
+      .hero-side {
+        width: 100%;
+      }
+
+      .section {
+        padding: 16px;
+        border-radius: 18px;
+      }
+
+      .stats,
+      .progress-grid,
+      .form-grid,
+      .juz-grid,
+      .recitation-summary {
         grid-template-columns: 1fr;
       }
 
-      .full,
-      .field.full-field {
-        grid-column: auto;
-      }
-
-      .top-card {
-        align-items: flex-start;
-      }
-
-      .array-row-grid {
+      .editor-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .header-inner {
+      .page-grid {
+        grid-template-columns: repeat(10, 1fr);
+      }
+
+      .section-head {
         align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .actions {
+        bottom: 8px;
+      }
+
+      .save,
+      .secondary {
+        flex: 1;
+      }
+
+    }
+
+    @media(max-width: 480px) {
+
+      .editor-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-info h2 {
+        font-size: 22px;
+      }
+
+      .page-grid {
+        gap: 3px;
+      }
+
+      .page-dot {
+        border-radius: 4px;
       }
 
     }
@@ -302,10 +970,20 @@
 
   <div class="header-inner">
 
-    <div class="brand">
-      <h1>مركز حردان طارق القرآني</h1>
-      <p>إدارة ملف الطالب</p>
-    </div>
+    <a href="index.html" class="brand-link">
+
+      <img
+        src="logo.png"
+        class="brand-logo"
+        alt="شعار مركز حردان طارق القرآني"
+      >
+
+      <div class="brand">
+        <h1>مركز حردان طارق القرآني</h1>
+        <p>ملف الطالب والمتابعة الأكاديمية</p>
+      </div>
+
+    </a>
 
     <a
       class="back"
@@ -318,17 +996,22 @@
 
 </header>
 
+
 <main class="container">
 
   <div id="message" class="message"></div>
 
   <div id="app">
+
     <div class="loading">
+      <div class="loading-icon">📖</div>
       جاري تحميل ملف الطالب...
     </div>
+
   </div>
 
 </main>
+
 
 <script>
 
@@ -340,6 +1023,10 @@ const SUPABASE_KEY =
 
 const TEACHER_EMAIL =
   'baraahaytham08@gmail.com';
+
+const TOTAL_QURAN_PAGES = 604;
+
+const REVIEW_TO_HIFZ_RATIO = 5;
 
 const supabaseClient =
   supabase.createClient(
@@ -353,6 +1040,10 @@ let student = null;
 let profile = {};
 
 
+/* =========================
+   أدوات عامة
+========================= */
+
 function escapeHtml(value) {
 
   return String(value ?? '')
@@ -364,6 +1055,152 @@ function escapeHtml(value) {
 
 }
 
+
+function number(value) {
+
+  const n = Number(value);
+
+  return Number.isFinite(n) ? n : 0;
+
+}
+
+
+function formatNumber(value, digits = 1) {
+
+  const n = number(value);
+
+  if (Number.isInteger(n)) return String(n);
+
+  return n.toFixed(digits)
+    .replace(/\.0+$/, '');
+
+}
+
+
+function clamp(value, min, max) {
+
+  return Math.min(
+    max,
+    Math.max(min, number(value))
+  );
+
+}
+
+
+function todayISO() {
+
+  const d = new Date();
+
+  const year =
+    d.getFullYear();
+
+  const month =
+    String(d.getMonth() + 1)
+      .padStart(2, '0');
+
+  const day =
+    String(d.getDate())
+      .padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+
+}
+
+
+/*
+  المركز يعتمد الجمعة كبداية أسبوع.
+  لذلك:
+  الجمعة → الخميس
+*/
+
+function getCurrentWeekRange() {
+
+  const now = new Date();
+
+  const day =
+    now.getDay();
+
+  const daysSinceFriday =
+    (day + 2) % 7;
+
+  const start =
+    new Date(now);
+
+  start.setDate(
+    now.getDate() -
+    daysSinceFriday
+  );
+
+  start.setHours(0, 0, 0, 0);
+
+  const end =
+    new Date(start);
+
+  end.setDate(
+    start.getDate() + 6
+  );
+
+  end.setHours(23, 59, 59, 999);
+
+  return {
+    start,
+    end
+  };
+
+}
+
+
+function dateInCurrentWeek(dateValue) {
+
+  if (!dateValue) return false;
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+  if (Number.isNaN(d.getTime()))
+    return false;
+
+  const range =
+    getCurrentWeekRange();
+
+  return (
+    d >= range.start &&
+    d <= range.end
+  );
+
+}
+
+
+function formatDate(dateValue) {
+
+  if (!dateValue)
+    return '—';
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+  if (Number.isNaN(d.getTime()))
+    return escapeHtml(dateValue);
+
+  return d.toLocaleDateString(
+    'ar-JO',
+    {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }
+  );
+
+}
+
+
+/* =========================
+   الرسائل
+========================= */
 
 function showMessage(text, type) {
 
@@ -387,11 +1224,17 @@ function showMessage(text, type) {
 
 function hideMessage() {
 
-  document.getElementById('message')
-    .style.display = 'none';
+  const box =
+    document.getElementById('message');
+
+  box.style.display = 'none';
 
 }
 
+
+/* =========================
+   البيانات الافتراضية
+========================= */
 
 function defaultProfile() {
 
@@ -403,50 +1246,28 @@ function defaultProfile() {
 
     joiningDate: '',
 
-    completedQuranParts:
-      '0 أجزاء من القرآن الكريم',
+    completedQuranParts: 0,
 
     residence: '',
 
-    bus:
-      'لم يتم التعيين لحافلة بعد',
+    bus: '',
 
-    homeLocation:
-      'غير محدد',
-
-    weeklyGoal:
-      'حفظ 2 صفحة / مراجعة 2 صفحة',
-
-    totalPoints: 0,
-
-    weeklyProgress: 0,
-
-    hifzProgress: 0,
-
-    reviewProgress: 0,
-
-    completedPages:
-      '0 صفحة',
-
-    requiredPages:
-      '2 صفحة',
-
-    generalEvaluation:
-      'ملتزم جزئياً',
-
-    equivalentRecitation: '',
-
-    nextExam: '',
-
-    nextExamDate: '',
+    homeLocation: '',
 
     notes: '',
+
+    weeklyGoal: {
+      hifz: 4,
+      review: 20
+    },
 
     attendance: [],
 
     weeklyPlan: [],
 
-    tests: []
+    tests: [],
+
+    recitations: []
 
   };
 
@@ -455,13 +1276,442 @@ function defaultProfile() {
 
 function mergeProfile(data) {
 
-  return {
-    ...defaultProfile(),
+  const base =
+    defaultProfile();
+
+  const merged = {
+    ...base,
     ...(data || {})
+  };
+
+  if (
+    typeof merged.weeklyGoal !== 'object' ||
+    merged.weeklyGoal === null
+  ) {
+
+    merged.weeklyGoal = {
+      hifz: 4,
+      review: 20
+    };
+
+  }
+
+  if (!Array.isArray(merged.attendance))
+    merged.attendance = [];
+
+  if (!Array.isArray(merged.weeklyPlan))
+    merged.weeklyPlan = [];
+
+  if (!Array.isArray(merged.tests))
+    merged.tests = [];
+
+  if (!Array.isArray(merged.recitations))
+    merged.recitations = [];
+
+  return merged;
+
+}
+
+
+/* =========================
+   الحسابات التلقائية
+========================= */
+
+function getWeeklyRecitations() {
+
+  return profile.recitations.filter(
+    item =>
+      dateInCurrentWeek(item.date)
+  );
+
+}
+
+
+function getCurrentWeekStats() {
+
+  const goalHifz =
+    number(
+      profile.weeklyGoal?.hifz
+    );
+
+  const goalReview =
+    number(
+      profile.weeklyGoal?.review
+    );
+
+  const records =
+    getWeeklyRecitations();
+
+  const hifzPages =
+    records
+      .filter(
+        item =>
+          item.type === 'hifz'
+      )
+      .reduce(
+        (sum, item) =>
+          sum + number(item.pages),
+        0
+      );
+
+  const reviewPages =
+    records
+      .filter(
+        item =>
+          item.type === 'review'
+      )
+      .reduce(
+        (sum, item) =>
+          sum + number(item.pages),
+        0
+      );
+
+  const hifzProgress =
+    goalHifz > 0
+      ? (hifzPages / goalHifz) * 100
+      : 0;
+
+  const reviewProgress =
+    goalReview > 0
+      ? (reviewPages / goalReview) * 100
+      : 0;
+
+  const equivalent =
+    hifzPages +
+    (
+      reviewPages /
+      REVIEW_TO_HIFZ_RATIO
+    );
+
+  const requiredEquivalent =
+    goalHifz +
+    (
+      goalReview /
+      REVIEW_TO_HIFZ_RATIO
+    );
+
+  const weeklyProgress =
+    requiredEquivalent > 0
+      ? (
+          equivalent /
+          requiredEquivalent
+        ) * 100
+      : 0;
+
+  return {
+
+    goalHifz,
+
+    goalReview,
+
+    hifzPages,
+
+    reviewPages,
+
+    hifzProgress,
+
+    reviewProgress,
+
+    equivalent,
+
+    requiredEquivalent,
+
+    weeklyProgress
+
   };
 
 }
 
+
+function getAllHifzPages() {
+
+  return profile.recitations
+    .filter(
+      item =>
+        item.type === 'hifz'
+    )
+    .map(
+      item =>
+        number(item.page)
+    )
+    .filter(
+      page =>
+        page >= 1 &&
+        page <= TOTAL_QURAN_PAGES
+    );
+
+}
+
+
+function getAllReviewPages() {
+
+  return profile.recitations
+    .filter(
+      item =>
+        item.type === 'review'
+    )
+    .map(
+      item =>
+        number(item.page)
+    )
+    .filter(
+      page =>
+        page >= 1 &&
+        page <= TOTAL_QURAN_PAGES
+    );
+
+}
+
+
+function getUniquePages() {
+
+  const pages =
+    new Set([
+      ...getAllHifzPages(),
+      ...getAllReviewPages()
+    ]);
+
+  return pages;
+
+}
+
+
+function getQuranProgress() {
+
+  const unique =
+    getUniquePages();
+
+  return {
+
+    completed:
+      unique.size,
+
+    percent:
+      (
+        unique.size /
+        TOTAL_QURAN_PAGES
+      ) * 100
+
+  };
+
+}
+
+
+function getCompletedJuz() {
+
+  const hifzPages =
+    new Set(
+      getAllHifzPages()
+    );
+
+  let completed = 0;
+
+  let start = 1;
+
+  for (
+    let juz = 1;
+    juz <= 30;
+    juz++
+  ) {
+
+    const length =
+      juz === 1 ||
+      juz === 2
+        ? 21
+        : (
+            juz === 30
+              ? 23
+              : 20
+          );
+
+    let all = true;
+
+    for (
+      let page = start;
+      page < start + length;
+      page++
+    ) {
+
+      if (!hifzPages.has(page)) {
+        all = false;
+        break;
+      }
+
+    }
+
+    if (all)
+      completed++;
+
+    start += length;
+
+  }
+
+  return completed;
+
+}
+
+
+function getTestPoints() {
+
+  return profile.tests.reduce(
+    (sum, item) => {
+
+      if (
+        item.points !== '' &&
+        item.points !== null &&
+        item.points !== undefined
+      ) {
+
+        return sum +
+          number(item.points);
+
+      }
+
+      const result =
+        String(
+          item.result || ''
+        ).trim();
+
+      if (
+        result.includes('ممتاز')
+      )
+        return sum + 12;
+
+      if (
+        result.includes('جيد جداً') ||
+        result.includes('جيد جدًا')
+      )
+        return sum + 8;
+
+      if (
+        result.includes('جيد')
+      )
+        return sum + 4;
+
+      return sum;
+
+    },
+    0
+  );
+
+}
+
+
+function getRecitationStats() {
+
+  const records =
+    profile.recitations;
+
+  const pages =
+    records.reduce(
+      (sum, item) =>
+        sum + number(item.pages || 1),
+      0
+    );
+
+  const graded =
+    records
+      .map(
+        item =>
+          number(item.score)
+      )
+      .filter(
+        score =>
+          score > 0
+      );
+
+  const average =
+    graded.length
+      ? (
+          graded.reduce(
+            (a,b) => a + b,
+            0
+          ) /
+          graded.length
+        )
+      : 0;
+
+  let highest = '—';
+
+  if (records.length) {
+
+    const grades =
+      records
+        .map(
+          item =>
+            item.grade || ''
+        )
+        .filter(Boolean);
+
+    const order = [
+      'ممتاز+',
+      'ممتاز',
+      'جيد جداً',
+      'جيد جدًا',
+      'جيد'
+    ];
+
+    for (
+      const wanted of order
+    ) {
+
+      if (
+        grades.some(
+          grade =>
+            grade === wanted
+        )
+      ) {
+
+        highest = wanted;
+        break;
+
+      }
+
+    }
+
+  }
+
+  return {
+
+    records:
+      records.length,
+
+    pages,
+
+    average,
+
+    highest
+
+  };
+
+}
+
+
+function getGeneralEvaluation() {
+
+  const weekly =
+    getCurrentWeekStats();
+
+  if (weekly.weeklyProgress >= 100)
+    return 'ملتزم ممتاز';
+
+  if (weekly.weeklyProgress >= 75)
+    return 'ملتزم جداً';
+
+  if (weekly.weeklyProgress >= 50)
+    return 'ملتزم';
+
+  if (weekly.weeklyProgress > 0)
+    return 'ملتزم جزئياً';
+
+  return 'بحاجة للمتابعة';
+
+}
+
+
+/* =========================
+   التحقق من المعلم
+========================= */
 
 async function checkTeacher() {
 
@@ -470,7 +1720,8 @@ async function checkTeacher() {
     const {
       data: { user },
       error
-    } = await supabaseClient.auth.getUser();
+    } =
+      await supabaseClient.auth.getUser();
 
     if (
       error ||
@@ -485,11 +1736,14 @@ async function checkTeacher() {
     }
 
     if (
-      String(user.email || '').toLowerCase() !==
+      String(user.email || '')
+        .toLowerCase() !==
       TEACHER_EMAIL.toLowerCase()
     ) {
 
-      alert('هذا القسم مخصص للمعلم فقط.');
+      alert(
+        'هذا القسم مخصص للمعلم فقط.'
+      );
 
       await supabaseClient.auth.signOut();
 
@@ -504,7 +1758,7 @@ async function checkTeacher() {
 
   } catch (error) {
 
-    console.error('Teacher check error:', error);
+    console.error(error);
 
     window.location.href =
       'teacher-login.html';
@@ -516,11 +1770,16 @@ async function checkTeacher() {
 }
 
 
+/* =========================
+   تحميل الطالب
+========================= */
+
 async function loadStudent() {
 
   try {
 
-    if (!(await checkTeacher())) return;
+    if (!(await checkTeacher()))
+      return;
 
     const params =
       new URLSearchParams(
@@ -532,8 +1791,10 @@ async function loadStudent() {
 
     if (!studentId) {
 
-      document.getElementById('app').innerHTML = `
-        <div class="card">
+      document.getElementById(
+        'app'
+      ).innerHTML = `
+        <div class="loading">
           لم يتم تحديد الطالب.
         </div>
       `;
@@ -542,36 +1803,25 @@ async function loadStudent() {
 
     }
 
-
     const {
       data,
       error
-    } = await supabaseClient
-      .from('students')
-      .select('*')
-      .eq('id', studentId)
-      .maybeSingle();
+    } =
+      await supabaseClient
+        .from('students')
+        .select('*')
+        .eq('id', studentId)
+        .maybeSingle();
 
-
-    if (error) {
-
-      console.error('Student loading error:', error);
-
-      document.getElementById('app').innerHTML = `
-        <div class="card">
-          تعذر تحميل بيانات الطالب.
-        </div>
-      `;
-
-      return;
-
-    }
-
+    if (error)
+      throw error;
 
     if (!data) {
 
-      document.getElementById('app').innerHTML = `
-        <div class="card">
+      document.getElementById(
+        'app'
+      ).innerHTML = `
+        <div class="loading">
           تعذر العثور على الطالب.
         </div>
       `;
@@ -580,31 +1830,30 @@ async function loadStudent() {
 
     }
 
-
     student = data;
-
 
     const {
       data: profileRow,
       error: profileError
-    } = await supabaseClient
-      .from('student_profiles')
-      .select('data')
-      .eq(
-        'student_id',
-        String(studentId)
-      )
-      .maybeSingle();
-
+    } =
+      await supabaseClient
+        .from('student_profiles')
+        .select('data')
+        .eq(
+          'student_id',
+          String(studentId)
+        )
+        .maybeSingle();
 
     if (profileError) {
 
       console.error(
-        'Profile loading error:',
+        'Profile error:',
         profileError
       );
 
-      profile = defaultProfile();
+      profile =
+        defaultProfile();
 
     } else {
 
@@ -615,7 +1864,6 @@ async function loadStudent() {
 
     }
 
-
     render();
 
   } catch (error) {
@@ -625,14 +1873,16 @@ async function loadStudent() {
       error
     );
 
-    document.getElementById('app').innerHTML = `
-      <div class="card">
+    document.getElementById(
+      'app'
+    ).innerHTML = `
+      <div class="loading">
         <h2 style="color:#b42318;margin-bottom:10px;">
           تعذر تحميل ملف الطالب
         </h2>
 
-        <p style="color:#777;">
-          حدث خطأ أثناء تحميل البيانات. حاول تحديث الصفحة.
+        <p>
+          حدث خطأ أثناء تحميل البيانات.
         </p>
       </div>
     `;
@@ -642,446 +1892,1037 @@ async function loadStudent() {
 }
 
 
+/* =========================
+   الواجهة الرئيسية
+========================= */
+
 function render() {
 
   const app =
     document.getElementById('app');
 
+  const weekly =
+    getCurrentWeekStats();
+
+  const quran =
+    getQuranProgress();
+
+  const recitation =
+    getRecitationStats();
+
+  const completedJuz =
+    getCompletedJuz();
+
+  const testPoints =
+    getTestPoints();
+
+  const evaluation =
+    getGeneralEvaluation();
+
+  const photo =
+    profile.photoUrl
+      ? `
+        <img
+          class="photo-preview"
+          src="${escapeHtml(profile.photoUrl)}"
+          alt="صورة الطالب"
+        >
+      `
+      : `
+        <div
+          class="photo-preview photo-placeholder"
+        >
+          👤
+        </div>
+      `;
 
   app.innerHTML = `
 
-    <div class="top-card">
+    <!-- بطاقة الطالب -->
 
-      ${
-        profile.photoUrl
-          ? `
-            <img
-              id="photoPreview"
-              class="photo-preview"
-              src="${escapeHtml(profile.photoUrl)}"
-              alt="صورة الطالب"
-            >
-          `
-          : `
-            <div
-              id="photoPreview"
-              class="photo-preview"
-              style="
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-size:40px;
-              "
-            >
-              👤
-            </div>
-          `
-      }
+    <section class="student-hero">
 
-      <div>
+      <div class="hero-content">
 
-        <h2>
-          ${escapeHtml(student.name)}
-        </h2>
+        ${photo}
 
-        <p style="color:#777">
-          ${escapeHtml(
-            student.section || 'غير محدد'
-          )}
-        </p>
+        <div class="hero-info">
+
+          <h2>
+            ${escapeHtml(student.name)}
+          </h2>
+
+          <p>
+            شعبة
+            ${escapeHtml(
+              student.section ||
+              'غير محددة'
+            )}
+          </p>
+
+          <div class="hero-pills">
+
+            <span class="hero-pill">
+              📖 ${completedJuz} جزء مكتمل
+            </span>
+
+            <span class="hero-pill">
+              📚 ${quran.completed} صفحة
+            </span>
+
+            <span class="hero-pill">
+              🏆 ${formatNumber(testPoints, 1)} نقطة اختبار
+            </span>
+
+            <span class="hero-pill">
+              👑 ${escapeHtml(evaluation)}
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="hero-side">
+
+          <small>
+            إنجاز الأسبوع
+          </small>
+
+          <strong>
+            ${formatNumber(
+              weekly.weeklyProgress,
+              0
+            )}%
+          </strong>
+
+        </div>
 
       </div>
 
-    </div>
+    </section>
 
 
-    <div class="grid">
+    <!-- الإحصائيات -->
 
-      <section class="card">
+    <section class="section">
 
-        <h2 class="title">
-          البيانات الأساسية
-        </h2>
+      <div class="section-head">
 
-        <div class="form-grid">
+        <div>
 
-          <div class="field">
-            <label>اسم الطالب</label>
+          <h2 class="section-title">
+            لوحة الإنجاز
+          </h2>
 
-            <input
-              id="name"
-              value="${escapeHtml(
-                student.name || ''
-              )}"
-            >
+          <p class="section-subtitle">
+            الإحصائيات التالية محسوبة تلقائياً من السجلات.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="stats">
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            📖
           </div>
 
-          <div class="field">
-            <label>الشعبة</label>
-
-            <input
-              id="section"
-              value="${escapeHtml(
-                student.section || ''
-              )}"
-            >
+          <div class="stat-label">
+            صفحات الحفظ هذا الأسبوع
           </div>
 
-          <div class="field">
-            <label>الحفظ الحالي</label>
-
-            <input
-              id="memorization"
-              value="${escapeHtml(
-                student.memorization || ''
-              )}"
-            >
+          <div class="stat-value">
+            ${formatNumber(
+              weekly.hifzPages,
+              1
+            )}
           </div>
 
-          <div class="field">
-
-            <label>الحالة</label>
-
-            <select id="status">
-
-              <option
-                value="active"
-                ${
-                  student.status === 'active'
-                    ? 'selected'
-                    : ''
-                }
-              >
-                فعال
-              </option>
-
-              <option
-                value="inactive"
-                ${
-                  student.status === 'inactive'
-                    ? 'selected'
-                    : ''
-                }
-              >
-                غير فعال
-              </option>
-
-            </select>
-
+          <div class="stat-note">
+            من ${formatNumber(
+              weekly.goalHifz,
+              1
+            )} مطلوبة
           </div>
 
         </div>
 
-      </section>
 
+        <div class="stat">
 
-      <section class="card">
-
-        <h2 class="title">
-          المعلومات الشخصية
-        </h2>
-
-        <div class="form-grid">
-
-          <div class="field">
-            <label>رابط صورة الطالب</label>
-
-            <input
-              id="photoUrl"
-              value="${escapeHtml(
-                profile.photoUrl
-              )}"
-              placeholder="رابط الصورة"
-            >
+          <div class="stat-icon">
+            🔄
           </div>
 
-          <div class="field">
-            <label>رقم ولي الأمر</label>
-
-            <input
-              id="guardianPhone"
-              value="${escapeHtml(
-                profile.guardianPhone
-              )}"
-            >
+          <div class="stat-label">
+            صفحات المراجعة هذا الأسبوع
           </div>
 
-          <div class="field">
-            <label>تاريخ الالتحاق</label>
-
-            <input
-              id="joiningDate"
-              value="${escapeHtml(
-                profile.joiningDate
-              )}"
-            >
+          <div class="stat-value">
+            ${formatNumber(
+              weekly.reviewPages,
+              1
+            )}
           </div>
 
-          <div class="field">
-            <label>أجزاء القرآن المكتملة</label>
-
-            <input
-              id="completedQuranParts"
-              value="${escapeHtml(
-                profile.completedQuranParts
-              )}"
-            >
-          </div>
-
-          <div class="field">
-            <label>مكان السكن</label>
-
-            <input
-              id="residence"
-              value="${escapeHtml(
-                profile.residence
-              )}"
-            >
-          </div>
-
-          <div class="field">
-            <label>الحافلة</label>
-
-            <input
-              id="bus"
-              value="${escapeHtml(
-                profile.bus
-              )}"
-            >
-          </div>
-
-          <div class="field full-field">
-
-            <label>موقع المنزل</label>
-
-            <input
-              id="homeLocation"
-              value="${escapeHtml(
-                profile.homeLocation
-              )}"
-            >
-
+          <div class="stat-note">
+            من ${formatNumber(
+              weekly.goalReview,
+              1
+            )} مطلوبة
           </div>
 
         </div>
 
-      </section>
 
+        <div class="stat">
 
-      <section class="card full">
-
-        <h2 class="title">
-          التقدم والخطة
-        </h2>
-
-        <div class="form-grid">
-
-          <div class="field">
-            <label>الهدف الأسبوعي</label>
-
-            <input
-              id="weeklyGoal"
-              value="${escapeHtml(
-                profile.weeklyGoal
-              )}"
-            >
+          <div class="stat-icon">
+            📚
           </div>
 
-          <div class="field">
-            <label>مجموع النقاط</label>
-
-            <input
-              id="totalPoints"
-              type="number"
-              value="${profile.totalPoints ?? 0}"
-            >
+          <div class="stat-label">
+            إنجاز القرآن
           </div>
 
-          <div class="field">
-            <label>التقدم الأسبوعي %</label>
-
-            <input
-              id="weeklyProgress"
-              type="number"
-              min="0"
-              max="100"
-              value="${profile.weeklyProgress ?? 0}"
-            >
+          <div class="stat-value">
+            ${formatNumber(
+              quran.percent,
+              1
+            )}%
           </div>
 
-          <div class="field">
-            <label>تقدم الحفظ %</label>
-
-            <input
-              id="hifzProgress"
-              type="number"
-              min="0"
-              max="100"
-              value="${profile.hifzProgress ?? 0}"
-            >
-          </div>
-
-          <div class="field">
-            <label>تقدم المراجعة %</label>
-
-            <input
-              id="reviewProgress"
-              type="number"
-              min="0"
-              max="100"
-              value="${profile.reviewProgress ?? 0}"
-            >
-          </div>
-
-          <div class="field">
-            <label>الصفحات المنجزة</label>
-
-            <input
-              id="completedPages"
-              value="${escapeHtml(
-                profile.completedPages
-              )}"
-            >
-          </div>
-
-          <div class="field">
-            <label>الصفحات المطلوبة</label>
-
-            <input
-              id="requiredPages"
-              value="${escapeHtml(
-                profile.requiredPages
-              )}"
-            >
-          </div>
-
-          <div class="field">
-            <label>التقييم العام</label>
-
-            <input
-              id="generalEvaluation"
-              value="${escapeHtml(
-                profile.generalEvaluation
-              )}"
-            >
-          </div>
-
-          <div class="field">
-            <label>التسميع المكافئ</label>
-
-            <input
-              id="equivalentRecitation"
-              value="${escapeHtml(
-                profile.equivalentRecitation
-              )}"
-            >
-          </div>
-
-          <div class="field">
-            <label>الاختبار القادم</label>
-
-            <input
-              id="nextExam"
-              value="${escapeHtml(
-                profile.nextExam
-              )}"
-            >
-          </div>
-
-          <div class="field">
-            <label>تاريخ الاختبار القادم</label>
-
-            <input
-              id="nextExamDate"
-              type="date"
-              value="${escapeHtml(
-                profile.nextExamDate
-              )}"
-            >
+          <div class="stat-note">
+            ${quran.completed} من 604 صفحة
           </div>
 
         </div>
 
-      </section>
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            🏆
+          </div>
+
+          <div class="stat-label">
+            النقاط
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              testPoints,
+              1
+            )}
+          </div>
+
+          <div class="stat-note">
+            من الاختبارات المسجلة
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
 
 
-      <section class="card full">
+    <!-- نسب التقدم -->
 
-        <h2 class="title">
-          الحضور
-        </h2>
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            التقدم الأسبوعي
+          </h2>
+
+          <p class="section-subtitle">
+            الأسبوع الحالي يبدأ من الجمعة وينتهي الخميس.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="progress-grid">
+
+        <div class="progress-card">
+
+          <div class="progress-top">
+
+            <strong>
+              📖 إنجاز الحفظ
+            </strong>
+
+            <span class="percent">
+              ${formatNumber(
+                weekly.hifzProgress,
+                0
+              )}%
+            </span>
+
+          </div>
+
+          <div class="bar">
+
+            <div
+              class="bar-fill"
+              style="width:${clamp(
+                weekly.hifzProgress,
+                0,
+                100
+              )}%"
+            ></div>
+
+          </div>
+
+          <div class="progress-note">
+            تم إنجاز
+            <b>${formatNumber(
+              weekly.hifzPages,
+              1
+            )}</b>
+            من
+            <b>${formatNumber(
+              weekly.goalHifz,
+              1
+            )}</b>
+            صفحة
+          </div>
+
+        </div>
+
+
+        <div class="progress-card">
+
+          <div class="progress-top">
+
+            <strong>
+              🔄 إنجاز المراجعة
+            </strong>
+
+            <span class="percent">
+              ${formatNumber(
+                weekly.reviewProgress,
+                0
+              )}%
+            </span>
+
+          </div>
+
+          <div class="bar">
+
+            <div
+              class="bar-fill"
+              style="width:${clamp(
+                weekly.reviewProgress,
+                0,
+                100
+              )}%"
+            ></div>
+
+          </div>
+
+          <div class="progress-note">
+            تم إنجاز
+            <b>${formatNumber(
+              weekly.reviewPages,
+              1
+            )}</b>
+            من
+            <b>${formatNumber(
+              weekly.goalReview,
+              1
+            )}</b>
+            صفحة
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        style="
+          margin-top:15px;
+          padding:14px;
+          border-radius:14px;
+          background:#f7faf8;
+          color:#52645c;
+          font-size:13px;
+        "
+      >
+
+        <b style="color:#0d4d3a;">
+          🧮 التسميع المكافئ:
+        </b>
+
+        ${formatNumber(
+          weekly.equivalent,
+          1
+        )}
+        صفحة من
+        ${formatNumber(
+          weekly.requiredEquivalent,
+          1
+        )}
+        مطلوبة.
+
+        <span style="color:#8a7650;">
+          كل 5 صفحات مراجعة = صفحة حفظ.
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- البيانات الأساسية -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            👤 البيانات الأساسية
+          </h2>
+
+          <p class="section-subtitle">
+            المعلومات التي تخص الطالب مباشرة.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="form-grid">
+
+        <div class="field">
+
+          <label>اسم الطالب</label>
+
+          <input
+            id="name"
+            value="${escapeHtml(
+              student.name || ''
+            )}"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>الشعبة</label>
+
+          <input
+            id="section"
+            value="${escapeHtml(
+              student.section || ''
+            )}"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>الحفظ الحالي</label>
+
+          <input
+            id="memorization"
+            value="${escapeHtml(
+              student.memorization || ''
+            )}"
+            placeholder="مثال: 10 أجزاء"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>حالة الطالب</label>
+
+          <select id="status">
+
+            <option
+              value="active"
+              ${
+                student.status === 'active'
+                  ? 'selected'
+                  : ''
+              }
+            >
+              فعال
+            </option>
+
+            <option
+              value="inactive"
+              ${
+                student.status === 'inactive'
+                  ? 'selected'
+                  : ''
+              }
+            >
+              غير فعال
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>رابط صورة الطالب</label>
+
+          <input
+            id="photoUrl"
+            value="${escapeHtml(
+              profile.photoUrl
+            )}"
+            placeholder="رابط الصورة"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>رقم جوال ولي الأمر</label>
+
+          <input
+            id="guardianPhone"
+            value="${escapeHtml(
+              profile.guardianPhone
+            )}"
+            placeholder="07XXXXXXXX"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>تاريخ الالتحاق</label>
+
+          <input
+            id="joiningDate"
+            type="date"
+            value="${escapeHtml(
+              profile.joiningDate
+            )}"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>مكان السكن</label>
+
+          <input
+            id="residence"
+            value="${escapeHtml(
+              profile.residence
+            )}"
+            placeholder="مثال: القادسية"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>الحافلة</label>
+
+          <input
+            id="bus"
+            value="${escapeHtml(
+              profile.bus
+            )}"
+            placeholder="مثال: حافلة 1 - الرشيد"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>موقع المنزل</label>
+
+          <input
+            id="homeLocation"
+            value="${escapeHtml(
+              profile.homeLocation
+            )}"
+            placeholder="32.01993, 35.86838"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- الهدف الأسبوعي -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            🎯 الهدف الأسبوعي
+          </h2>
+
+          <p class="section-subtitle">
+            غيّر المطلوب فقط، والنظام يحسب النسب تلقائياً.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="form-grid">
+
+        <div class="field">
+
+          <label>
+            صفحات الحفظ المطلوبة أسبوعياً
+          </label>
+
+          <input
+            id="goalHifz"
+            type="number"
+            min="0"
+            step="0.5"
+            value="${number(
+              profile.weeklyGoal?.hifz
+            )}"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            صفحات المراجعة المطلوبة أسبوعياً
+          </label>
+
+          <input
+            id="goalReview"
+            type="number"
+            min="0"
+            step="0.5"
+            value="${number(
+              profile.weeklyGoal?.review
+            )}"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- الحضور -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            📅 سجل الحضور
+          </h2>
+
+          <p class="section-subtitle">
+            أضف حضور أيام الحلقة.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div
+        id="attendanceEditor"
+        class="editor-list"
+      ></div>
+
+      <button
+        class="add"
+        onclick="addAttendance()"
+      >
+        + إضافة سجل حضور
+      </button>
+
+    </section>
+
+
+    <!-- الخطة -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            📋 الخطة الأسبوعية
+          </h2>
+
+          <p class="section-subtitle">
+            خطة الحفظ والمراجعة لكل أسبوع.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div
+        id="planEditor"
+        class="editor-list"
+      ></div>
+
+      <button
+        class="add"
+        onclick="addPlan()"
+      >
+        + إضافة أسبوع جديد
+      </button>
+
+    </section>
+
+
+    <!-- الاختبارات -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            🧪 الاختبارات والنقاط
+          </h2>
+
+          <p class="section-subtitle">
+            النقاط تحسب تلقائياً حسب النتيجة إذا تركت خانة النقاط فارغة.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="recitation-summary">
+
+        <div class="mini-stat">
+
+          <small>
+            مجموع النقاط
+          </small>
+
+          <strong>
+            ${formatNumber(testPoints, 1)}
+          </strong>
+
+        </div>
+
+        <div class="mini-stat">
+
+          <small>
+            الاختبارات
+          </small>
+
+          <strong>
+            ${profile.tests.length}
+          </strong>
+
+        </div>
+
+        <div class="mini-stat">
+
+          <small>
+            متوسط التسميع
+          </small>
+
+          <strong>
+            ${formatNumber(
+              recitation.average,
+              1
+            )}%
+          </strong>
+
+        </div>
+
+        <div class="mini-stat">
+
+          <small>
+            أعلى تقدير
+          </small>
+
+          <strong style="font-size:16px;">
+            ${escapeHtml(
+              recitation.highest
+            )}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="testsEditor"
+        class="editor-list"
+      ></div>
+
+      <button
+        class="add"
+        onclick="addTest()"
+      >
+        + إضافة اختبار
+      </button>
+
+    </section>
+
+
+    <!-- التسميع -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            📖 سجل التسميع
+          </h2>
+
+          <p class="section-subtitle">
+            هنا تسجل الصفحات التي سمعها الطالب، والنظام يحسب الإحصائيات تلقائياً.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="recitation-summary">
+
+        <div class="mini-stat">
+
+          <small>
+            الصفحات المسجلة
+          </small>
+
+          <strong>
+            ${recitation.pages}
+          </strong>
+
+        </div>
+
+        <div class="mini-stat">
+
+          <small>
+            متوسط الدرجات
+          </small>
+
+          <strong>
+            ${formatNumber(
+              recitation.average,
+              1
+            )}%
+          </strong>
+
+        </div>
+
+        <div class="mini-stat">
+
+          <small>
+            أعلى تقدير
+          </small>
+
+          <strong style="font-size:16px;">
+            ${escapeHtml(
+              recitation.highest
+            )}
+          </strong>
+
+        </div>
+
+        <div class="mini-stat">
+
+          <small>
+            إنجاز القرآن
+          </small>
+
+          <strong>
+            ${formatNumber(
+              quran.percent,
+              1
+            )}%
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="recitationsEditor"
+        class="editor-list"
+      ></div>
+
+      <button
+        class="add"
+        onclick="addRecitation()"
+      >
+        + تسجيل تسميع جديد
+      </button>
+
+    </section>
+
+
+    <!-- خريطة القرآن -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            🗺️ خريطة القرآن
+          </h2>
+
+          <p class="section-subtitle">
+            604 صفحة، وتتغير حالتها بناءً على سجلات التسميع الفعلية.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="quran-progress">
+
+        <div class="quran-progress-head">
+
+          <span>
+            الإنجاز الكلي
+          </span>
+
+          <strong>
+            ${formatNumber(
+              quran.percent,
+              1
+            )}%
+          </strong>
+
+        </div>
+
+        <div class="bar">
+
+          <div
+            class="bar-fill"
+            style="width:${clamp(
+              quran.percent,
+              0,
+              100
+            )}%"
+          ></div>
+
+        </div>
 
         <div
-          id="attendanceEditor"
-          class="array-editor"
-        ></div>
-
-        <button
-          class="add"
-          onclick="addAttendance()"
+          style="
+            margin-top:9px;
+            color:#718078;
+            font-size:12px;
+          "
         >
-          + إضافة حضور
-        </button>
+          ${quran.completed}
+          صفحة من أصل
+          ${TOTAL_QURAN_PAGES}
+          صفحة
+        </div>
 
-      </section>
-
-
-      <section class="card full">
-
-        <h2 class="title">
-          الخطة الأسبوعية
-        </h2>
-
-        <div
-          id="planEditor"
-          class="array-editor"
-        ></div>
-
-        <button
-          class="add"
-          onclick="addPlan()"
-        >
-          + إضافة أسبوع
-        </button>
-
-      </section>
+      </div>
 
 
-      <section class="card full">
-
-        <h2 class="title">
-          الاختبارات
-        </h2>
-
-        <div
-          id="testsEditor"
-          class="array-editor"
-        ></div>
-
-        <button
-          class="add"
-          onclick="addTest()"
-        >
-          + إضافة اختبار
-        </button>
-
-      </section>
+      <div
+        id="quranMap"
+        class="juz-grid"
+      ></div>
 
 
-      <section class="card full">
+      <div class="map-legend">
 
-        <h2 class="title">
-          ملاحظات المعلم
-        </h2>
+        <div class="legend-item">
+          <span class="legend-dot hifz"></span>
+          حفظ جديد
+        </div>
 
-        <textarea id="notes">${escapeHtml(
-          profile.notes || ''
-        )}</textarea>
+        <div class="legend-item">
+          <span class="legend-dot review"></span>
+          مراجعة
+        </div>
 
-      </section>
+        <div class="legend-item">
+          <span class="legend-dot"></span>
+          غير مسجلة
+        </div>
 
-    </div>
+      </div>
 
+    </section>
+
+
+    <!-- ملاحظات -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            📝 ملاحظات المعلم
+          </h2>
+
+          <p class="section-subtitle">
+            توجيهات تربوية وملاحظات المتابعة.
+          </p>
+
+        </div>
+
+      </div>
+
+      <textarea id="notes">${escapeHtml(
+        profile.notes || ''
+      )}</textarea>
+
+    </section>
+
+
+    <!-- الحفظ -->
 
     <div class="actions">
 
@@ -1093,16 +2934,30 @@ function render() {
         💾 حفظ جميع التعديلات
       </button>
 
+      <button
+        class="secondary"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})"
+      >
+        ↑ للأعلى
+      </button>
+
     </div>
 
   `;
 
+
   renderAttendance();
   renderPlan();
   renderTests();
+  renderRecitations();
+  renderQuranMap();
 
 }
 
+
+/* =========================
+   الحضور
+========================= */
 
 function renderAttendance() {
 
@@ -1112,57 +2967,140 @@ function renderAttendance() {
     );
 
   const items =
-    Array.isArray(profile.attendance)
-      ? profile.attendance
-      : [];
+    profile.attendance || [];
+
+  if (!items.length) {
+
+    box.innerHTML = `
+      <div
+        style="
+          padding:18px;
+          text-align:center;
+          color:#718078;
+          background:#f7faf8;
+          border-radius:14px;
+        "
+      >
+        لا يوجد سجل حضور بعد.
+      </div>
+    `;
+
+    return;
+
+  }
 
   box.innerHTML =
-    items.map((item, index) => `
+    items.map(
+      (item, index) => `
 
-      <div class="array-row">
+        <div class="editor-row">
 
-        <div class="array-row-grid">
+          <div class="editor-row-head">
 
-          <input
-            placeholder="التاريخ"
-            value="${escapeHtml(
-              item.date || ''
-            )}"
-            data-attendance-date="${index}"
-          >
+            <span class="editor-row-title">
+              حضور #${index + 1}
+            </span>
 
-          <input
-            placeholder="الحالة"
-            value="${escapeHtml(
-              item.status || 'حاضر'
-            )}"
-            data-attendance-status="${index}"
-          >
+            <button
+              class="remove"
+              onclick="removeAttendance(${index})"
+            >
+              حذف
+            </button>
+
+          </div>
+
+          <div class="editor-grid">
+
+            <div class="field">
+
+              <label>
+                التاريخ
+              </label>
+
+              <input
+                type="date"
+                value="${escapeHtml(
+                  item.date || ''
+                )}"
+                data-attendance-date="${index}"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                الحالة
+              </label>
+
+              <select
+                data-attendance-status="${index}"
+              >
+
+                <option
+                  ${
+                    item.status === 'حاضر'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  حاضر
+                </option>
+
+                <option
+                  ${
+                    item.status === 'غائب'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  غائب
+                </option>
+
+                <option
+                  ${
+                    item.status === 'معتذر'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  معتذر
+                </option>
+
+                <option
+                  ${
+                    item.status === 'متأخر'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  متأخر
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
 
         </div>
 
-        <button
-          class="remove"
-          onclick="removeAttendance(${index})"
-        >
-          حذف
-        </button>
-
-      </div>
-
-    `).join('');
+      `
+    )
+    .join('');
 
 }
 
 
 function addAttendance() {
 
-  if (!Array.isArray(profile.attendance))
-    profile.attendance = [];
-
   profile.attendance.push({
-    date: '',
+
+    date: todayISO(),
+
     status: 'حاضر'
+
   });
 
   renderAttendance();
@@ -1172,7 +3110,10 @@ function addAttendance() {
 
 function removeAttendance(index) {
 
-  profile.attendance.splice(index, 1);
+  profile.attendance.splice(
+    index,
+    1
+  );
 
   renderAttendance();
 
@@ -1181,33 +3122,28 @@ function removeAttendance(index) {
 
 function collectAttendance() {
 
-  const result = [];
+  return profile.attendance.map(
+    (item, index) => ({
 
-  profile.attendance.forEach(
-    (item, index) => {
-
-      const date =
+      date:
         document.querySelector(
           `[data-attendance-date="${index}"]`
-        )?.value || '';
+        )?.value || '',
 
-      const status =
+      status:
         document.querySelector(
           `[data-attendance-status="${index}"]`
-        )?.value || '';
+        )?.value || ''
 
-      result.push({
-        date,
-        status
-      });
-
-    }
+    })
   );
-
-  return result;
 
 }
 
+
+/* =========================
+   الخطة الأسبوعية
+========================= */
 
 function renderPlan() {
 
@@ -1217,85 +3153,183 @@ function renderPlan() {
     );
 
   const items =
-    Array.isArray(profile.weeklyPlan)
-      ? profile.weeklyPlan
-      : [];
+    profile.weeklyPlan || [];
+
+  if (!items.length) {
+
+    box.innerHTML = `
+      <div
+        style="
+          padding:18px;
+          text-align:center;
+          color:#718078;
+          background:#f7faf8;
+          border-radius:14px;
+        "
+      >
+        لم تتم إضافة خطة أسبوعية بعد.
+      </div>
+    `;
+
+    return;
+
+  }
 
   box.innerHTML =
-    items.map((item, index) => `
+    items.map(
+      (item, index) => `
 
-      <div class="array-row">
+        <div class="editor-row">
 
-        <div class="array-row-grid">
+          <div class="editor-row-head">
 
-          <input
-            placeholder="التاريخ"
-            value="${escapeHtml(
-              item.date || ''
-            )}"
-            data-plan-date="${index}"
-          >
+            <span class="editor-row-title">
+              أسبوع #${index + 1}
+            </span>
 
-          <input
-            placeholder="الجزء"
-            value="${escapeHtml(
-              item.juz || ''
-            )}"
-            data-plan-juz="${index}"
-          >
+            <button
+              class="remove"
+              onclick="removePlan(${index})"
+            >
+              حذف
+            </button>
 
-          <input
-            placeholder="الصفحات"
-            value="${escapeHtml(
-              item.pages || ''
-            )}"
-            data-plan-pages="${index}"
-          >
+          </div>
 
-          <input
-            placeholder="الاختبار / المطلوب"
-            value="${escapeHtml(
-              item.exam || ''
-            )}"
-            data-plan-exam="${index}"
-          >
+          <div class="editor-grid">
+
+            <div class="field">
+
+              <label>
+                تاريخ الأسبوع
+              </label>
+
+              <input
+                type="date"
+                value="${escapeHtml(
+                  item.date || ''
+                )}"
+                data-plan-date="${index}"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                الجزء
+              </label>
+
+              <input
+                value="${escapeHtml(
+                  item.juz || ''
+                )}"
+                placeholder="مثال: 20"
+                data-plan-juz="${index}"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                الحفظ الجديد
+              </label>
+
+              <input
+                value="${escapeHtml(
+                  item.hifz || item.pages || ''
+                )}"
+                placeholder="مثال: 385 - 389"
+                data-plan-hifz="${index}"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                المراجعة / الاختبار
+              </label>
+
+              <input
+                value="${escapeHtml(
+                  item.review || item.exam || ''
+                )}"
+                placeholder="مثال: 25 + 26"
+                data-plan-review="${index}"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                الحالة
+              </label>
+
+              <select data-plan-status="${index}">
+
+                <option
+                  ${
+                    item.status === 'مكتمل'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  مكتمل
+                </option>
+
+                <option
+                  ${
+                    item.status === 'جزئي'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  جزئي
+                </option>
+
+                <option
+                  ${
+                    item.status === 'قيد الانتظار'
+                      || !item.status
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  قيد الانتظار
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
 
         </div>
 
-        <input
-          style="margin-top:8px"
-          placeholder="الحالة"
-          value="${escapeHtml(
-            item.status || 'قيد الانتظار'
-          )}"
-          data-plan-status="${index}"
-        >
-
-        <button
-          class="remove"
-          onclick="removePlan(${index})"
-        >
-          حذف
-        </button>
-
-      </div>
-
-    `).join('');
+      `
+    )
+    .join('');
 
 }
 
 
 function addPlan() {
 
-  if (!Array.isArray(profile.weeklyPlan))
-    profile.weeklyPlan = [];
-
   profile.weeklyPlan.push({
-    date: '',
+
+    date: todayISO(),
+
     juz: '',
-    pages: '',
-    exam: 'لا يوجد',
+
+    hifz: '',
+
+    review: '',
+
     status: 'قيد الانتظار'
+
   });
 
   renderPlan();
@@ -1305,7 +3339,10 @@ function addPlan() {
 
 function removePlan(index) {
 
-  profile.weeklyPlan.splice(index, 1);
+  profile.weeklyPlan.splice(
+    index,
+    1
+  );
 
   renderPlan();
 
@@ -1315,42 +3352,42 @@ function removePlan(index) {
 function collectPlan() {
 
   return profile.weeklyPlan.map(
-    (item, index) => {
+    (item, index) => ({
 
-      return {
+      date:
+        document.querySelector(
+          `[data-plan-date="${index}"]`
+        )?.value || '',
 
-        date:
-          document.querySelector(
-            `[data-plan-date="${index}"]`
-          )?.value || '',
+      juz:
+        document.querySelector(
+          `[data-plan-juz="${index}"]`
+        )?.value || '',
 
-        juz:
-          document.querySelector(
-            `[data-plan-juz="${index}"]`
-          )?.value || '',
+      hifz:
+        document.querySelector(
+          `[data-plan-hifz="${index}"]`
+        )?.value || '',
 
-        pages:
-          document.querySelector(
-            `[data-plan-pages="${index}"]`
-          )?.value || '',
+      review:
+        document.querySelector(
+          `[data-plan-review="${index}"]`
+        )?.value || '',
 
-        exam:
-          document.querySelector(
-            `[data-plan-exam="${index}"]`
-          )?.value || '',
+      status:
+        document.querySelector(
+          `[data-plan-status="${index}"]`
+        )?.value || ''
 
-        status:
-          document.querySelector(
-            `[data-plan-status="${index}"]`
-          )?.value || ''
-
-      };
-
-    }
+    })
   );
 
 }
 
+
+/* =========================
+   الاختبارات
+========================= */
 
 function renderTests() {
 
@@ -1360,76 +3397,184 @@ function renderTests() {
     );
 
   const items =
-    Array.isArray(profile.tests)
-      ? profile.tests
-      : [];
+    profile.tests || [];
+
+  if (!items.length) {
+
+    box.innerHTML = `
+      <div
+        style="
+          padding:18px;
+          text-align:center;
+          color:#718078;
+          background:#f7faf8;
+          border-radius:14px;
+        "
+      >
+        لا يوجد اختبارات مسجلة بعد.
+      </div>
+    `;
+
+    return;
+
+  }
 
   box.innerHTML =
-    items.map((item, index) => `
+    items.map(
+      (item, index) => `
 
-      <div class="array-row">
+        <div class="editor-row">
 
-        <div class="array-row-grid">
+          <div class="editor-row-head">
 
-          <input
-            placeholder="اسم الاختبار"
-            value="${escapeHtml(
-              item.name || ''
-            )}"
-            data-test-name="${index}"
-          >
+            <span class="editor-row-title">
+              ${escapeHtml(
+                item.name ||
+                `اختبار #${index + 1}`
+              )}
+            </span>
 
-          <input
-            type="date"
-            value="${escapeHtml(
-              item.date || ''
-            )}"
-            data-test-date="${index}"
-          >
+            <button
+              class="remove"
+              onclick="removeTest(${index})"
+            >
+              حذف
+            </button>
 
-          <input
-            placeholder="النتيجة"
-            value="${escapeHtml(
-              item.result || ''
-            )}"
-            data-test-result="${index}"
-          >
+          </div>
 
-          <input
-            type="number"
-            placeholder="النقاط"
-            value="${escapeHtml(
-              item.points || ''
-            )}"
-            data-test-points="${index}"
-          >
+          <div class="editor-grid">
+
+            <div class="field">
+
+              <label>
+                اسم الاختبار
+              </label>
+
+              <input
+                value="${escapeHtml(
+                  item.name || ''
+                )}"
+                placeholder="مثال: اختبار آخر 6 أجزاء"
+                data-test-name="${index}"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                التاريخ
+              </label>
+
+              <input
+                type="date"
+                value="${escapeHtml(
+                  item.date || ''
+                )}"
+                data-test-date="${index}"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                النتيجة
+              </label>
+
+              <select data-test-result="${index}">
+
+                <option value="">
+                  اختر النتيجة
+                </option>
+
+                <option
+                  ${
+                    item.result === 'ممتاز+'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  ممتاز+
+                </option>
+
+                <option
+                  ${
+                    item.result === 'ممتاز'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  ممتاز
+                </option>
+
+                <option
+                  ${
+                    item.result === 'جيد جداً'
+                      || item.result === 'جيد جدًا'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  جيد جداً
+                </option>
+
+                <option
+                  ${
+                    item.result === 'جيد'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  جيد
+                </option>
+
+              </select>
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                النقاط
+              </label>
+
+              <input
+                type="number"
+                min="0"
+                value="${escapeHtml(
+                  item.points ?? ''
+                )}"
+                placeholder="تلقائي"
+                data-test-points="${index}"
+              >
+
+            </div>
+
+          </div>
 
         </div>
 
-        <button
-          class="remove"
-          onclick="removeTest(${index})"
-        >
-          حذف
-        </button>
-
-      </div>
-
-    `).join('');
+      `
+    )
+    .join('');
 
 }
 
 
 function addTest() {
 
-  if (!Array.isArray(profile.tests))
-    profile.tests = [];
-
   profile.tests.push({
+
     name: '',
-    date: '',
+
+    date: todayISO(),
+
     result: '',
+
     points: ''
+
   });
 
   renderTests();
@@ -1439,7 +3584,10 @@ function addTest() {
 
 function removeTest(index) {
 
-  profile.tests.splice(index, 1);
+  profile.tests.splice(
+    index,
+    1
+  );
 
   renderTests();
 
@@ -1449,37 +3597,623 @@ function removeTest(index) {
 function collectTests() {
 
   return profile.tests.map(
-    (item, index) => {
+    (item, index) => ({
 
-      return {
+      name:
+        document.querySelector(
+          `[data-test-name="${index}"]`
+        )?.value || '',
 
-        name:
-          document.querySelector(
-            `[data-test-name="${index}"]`
-          )?.value || '',
+      date:
+        document.querySelector(
+          `[data-test-date="${index}"]`
+        )?.value || '',
 
-        date:
-          document.querySelector(
-            `[data-test-date="${index}"]`
-          )?.value || '',
+      result:
+        document.querySelector(
+          `[data-test-result="${index}"]`
+        )?.value || '',
 
-        result:
-          document.querySelector(
-            `[data-test-result="${index}"]`
-          )?.value || '',
+      points:
+        document.querySelector(
+          `[data-test-points="${index}"]`
+        )?.value || ''
 
-        points:
-          document.querySelector(
-            `[data-test-points="${index}"]`
-          )?.value || ''
-
-      };
-
-    }
+    })
   );
 
 }
 
+
+/* =========================
+   التسميع
+========================= */
+
+function gradeClass(grade) {
+
+  if (
+    grade === 'ممتاز+' ||
+    grade === 'ممتاز'
+  )
+    return 'grade-excellent';
+
+  if (
+    grade === 'جيد جداً' ||
+    grade === 'جيد جدًا'
+  )
+    return 'grade-very-good';
+
+  if (grade === 'جيد')
+    return 'grade-good';
+
+  return 'grade-other';
+
+}
+
+
+function renderRecitations() {
+
+  const box =
+    document.getElementById(
+      'recitationsEditor'
+    );
+
+  const items =
+    profile.recitations || [];
+
+  if (!items.length) {
+
+    box.innerHTML = `
+      <div
+        style="
+          padding:18px;
+          text-align:center;
+          color:#718078;
+          background:#f7faf8;
+          border-radius:14px;
+        "
+      >
+        لم يتم تسجيل أي تسميع بعد.
+      </div>
+    `;
+
+    return;
+
+  }
+
+  box.innerHTML =
+    items.map(
+      (item, index) => `
+
+        <div class="editor-row">
+
+          <div class="editor-row-head">
+
+            <span class="editor-row-title">
+              📖 صفحة
+              ${escapeHtml(
+                item.page || '—'
+              )}
+            </span>
+
+            <button
+              class="remove"
+              onclick="removeRecitation(${index})"
+            >
+              حذف
+            </button>
+
+          </div>
+
+          <div class="editor-grid">
+
+            <div class="field">
+
+              <label>
+                التاريخ
+              </label>
+
+              <input
+                type="date"
+                value="${escapeHtml(
+                  item.date || ''
+                )}"
+                data-rec-date="${index}"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                رقم الصفحة
+              </label>
+
+              <input
+                type="number"
+                min="1"
+                max="604"
+                value="${escapeHtml(
+                  item.page || ''
+                )}"
+                placeholder="1 - 604"
+                data-rec-page="${index}"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                النوع
+              </label>
+
+              <select data-rec-type="${index}">
+
+                <option
+                  value="hifz"
+                  ${
+                    item.type === 'hifz'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  حفظ جديد
+                </option>
+
+                <option
+                  value="review"
+                  ${
+                    item.type === 'review'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  مراجعة
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                الدرجة %
+              </label>
+
+              <input
+                type="number"
+                min="0"
+                max="100"
+                value="${escapeHtml(
+                  item.score ?? ''
+                )}"
+                placeholder="مثال: 95"
+                data-rec-score="${index}"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                عدد الصفحات
+              </label>
+
+              <input
+                type="number"
+                min="1"
+                value="${escapeHtml(
+                  item.pages || 1
+                )}"
+                data-rec-pages="${index}"
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                التقدير
+              </label>
+
+              <select data-rec-grade="${index}">
+
+                <option value="">
+                  اختر التقدير
+                </option>
+
+                <option
+                  ${
+                    item.grade === 'ممتاز+'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  ممتاز+
+                </option>
+
+                <option
+                  ${
+                    item.grade === 'ممتاز'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  ممتاز
+                </option>
+
+                <option
+                  ${
+                    item.grade === 'جيد جداً'
+                      || item.grade === 'جيد جدًا'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  جيد جداً
+                </option>
+
+                <option
+                  ${
+                    item.grade === 'جيد'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  جيد
+                </option>
+
+              </select>
+
+            </div>
+
+            <div
+              class="field"
+              style="grid-column:1 / -1;"
+            >
+
+              <label>
+                ملاحظة
+              </label>
+
+              <input
+                value="${escapeHtml(
+                  item.note || ''
+                )}"
+                placeholder="مثال: يحتاج تثبيت بداية الصفحة"
+                data-rec-note="${index}"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `
+    )
+    .join('');
+
+}
+
+
+function addRecitation() {
+
+  profile.recitations.unshift({
+
+    date: todayISO(),
+
+    page: '',
+
+    type: 'hifz',
+
+    pages: 1,
+
+    score: '',
+
+    grade: '',
+
+    note: ''
+
+  });
+
+  renderRecitations();
+
+}
+
+
+function removeRecitation(index) {
+
+  profile.recitations.splice(
+    index,
+    1
+  );
+
+  renderRecitations();
+
+}
+
+
+function collectRecitations() {
+
+  return profile.recitations.map(
+    (item, index) => ({
+
+      date:
+        document.querySelector(
+          `[data-rec-date="${index}"]`
+        )?.value || '',
+
+      page:
+        number(
+          document.querySelector(
+            `[data-rec-page="${index}"]`
+          )?.value
+        ),
+
+      type:
+        document.querySelector(
+          `[data-rec-type="${index}"]`
+        )?.value || 'hifz',
+
+      score:
+        document.querySelector(
+          `[data-rec-score="${index}"]`
+        )?.value || '',
+
+      grade:
+        document.querySelector(
+          `[data-rec-grade="${index}"]`
+        )?.value || '',
+
+      pages:
+        number(
+          document.querySelector(
+            `[data-rec-pages="${index}"]`
+          )?.value
+        ) || 1,
+
+      note:
+        document.querySelector(
+          `[data-rec-note="${index}"]`
+        )?.value || ''
+
+    })
+  );
+
+}
+
+
+/* =========================
+   خريطة القرآن
+========================= */
+
+function getJuzInfo(juz) {
+
+  let start = 1;
+
+  for (
+    let i = 1;
+    i < juz;
+    i++
+  ) {
+
+    start +=
+      i === 1 ||
+      i === 2
+        ? 21
+        : (
+            i === 30
+              ? 23
+              : 20
+          );
+
+  }
+
+  const length =
+    juz === 1 ||
+    juz === 2
+      ? 21
+      : (
+          juz === 30
+            ? 23
+            : 20
+        );
+
+  return {
+
+    start,
+
+    end:
+      start + length - 1,
+
+    length
+
+  };
+
+}
+
+
+function getPageState(page) {
+
+  const hasHifz =
+    profile.recitations.some(
+      item =>
+        item.type === 'hifz' &&
+        number(item.page) === page
+    );
+
+  const hasReview =
+    profile.recitations.some(
+      item =>
+        item.type === 'review' &&
+        number(item.page) === page
+    );
+
+  if (hasHifz && hasReview)
+    return 'both';
+
+  if (hasHifz)
+    return 'hifz';
+
+  if (hasReview)
+    return 'review';
+
+  return '';
+
+}
+
+
+function renderQuranMap() {
+
+  const box =
+    document.getElementById(
+      'quranMap'
+    );
+
+  if (!box) return;
+
+  let html = '';
+
+  for (
+    let juz = 1;
+    juz <= 30;
+    juz++
+  ) {
+
+    const info =
+      getJuzInfo(juz);
+
+    let completed = 0;
+
+    let pagesHtml = '';
+
+    for (
+      let page = info.start;
+      page <= info.end;
+      page++
+    ) {
+
+      const state =
+        getPageState(page);
+
+      if (state)
+        completed++;
+
+      let title =
+        `صفحة ${page}`;
+
+      if (state === 'hifz')
+        title += ' — حفظ جديد';
+
+      if (state === 'review')
+        title += ' — مراجعة';
+
+      if (state === 'both')
+        title += ' — حفظ + مراجعة';
+
+      pagesHtml += `
+
+        <div
+          class="page-dot ${state}"
+          title="${title}"
+          onclick="showPageInfo(${page})"
+        ></div>
+
+      `;
+
+    }
+
+    html += `
+
+      <div class="juz-card">
+
+        <div class="juz-head">
+
+          <span class="juz-title">
+            الجزء ${juz}
+          </span>
+
+          <span class="juz-count">
+            ${completed}/${info.length}
+          </span>
+
+        </div>
+
+        <div class="page-grid">
+
+          ${pagesHtml}
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+  box.innerHTML = html;
+
+}
+
+
+function showPageInfo(page) {
+
+  const records =
+    profile.recitations.filter(
+      item =>
+        number(item.page) === page
+    );
+
+  if (!records.length) {
+
+    alert(
+      `صفحة ${page}\n\nلا يوجد سجل تسميع لهذه الصفحة حتى الآن.`
+    );
+
+    return;
+
+  }
+
+  const text =
+    records
+      .map(
+        item => {
+
+          const type =
+            item.type === 'review'
+              ? 'مراجعة'
+              : 'حفظ جديد';
+
+          return `
+${type}
+التاريخ: ${formatDate(item.date)}
+الدرجة: ${item.score || 'غير مسجلة'}%
+التقدير: ${item.grade || 'غير مسجل'}
+الملاحظة: ${item.note || 'لا توجد'}
+          `.trim();
+
+        }
+      )
+      .join('\n\n----------------\n\n');
+
+  alert(
+    `📖 تفاصيل الصفحة ${page}\n\n${text}`
+  );
+
+}
+
+
+/* =========================
+   الحفظ
+========================= */
 
 async function saveProfile() {
 
@@ -1527,15 +4261,15 @@ async function saveProfile() {
 
     const {
       error: studentError
-    } = await supabaseClient
-      .from('students')
-      .update(studentUpdate)
-      .eq('id', studentId);
+    } =
+      await supabaseClient
+        .from('students')
+        .update(studentUpdate)
+        .eq('id', studentId);
 
 
-    if (studentError) {
+    if (studentError)
       throw studentError;
-    }
 
 
     const newProfile = {
@@ -1555,16 +4289,10 @@ async function saveProfile() {
       joiningDate:
         document
           .getElementById('joiningDate')
-          .value
-          .trim(),
+          .value,
 
       completedQuranParts:
-        document
-          .getElementById(
-            'completedQuranParts'
-          )
-          .value
-          .trim(),
+        getCompletedJuz(),
 
       residence:
         document
@@ -1584,94 +4312,23 @@ async function saveProfile() {
           .value
           .trim(),
 
-      weeklyGoal:
-        document
-          .getElementById('weeklyGoal')
-          .value
-          .trim(),
+      weeklyGoal: {
 
-      totalPoints:
-        Number(
-          document
-            .getElementById('totalPoints')
-            .value
-        ) || 0,
+        hifz:
+          number(
+            document
+              .getElementById('goalHifz')
+              .value
+          ),
 
-      weeklyProgress:
-        Number(
-          document
-            .getElementById(
-              'weeklyProgress'
-            )
-            .value
-        ) || 0,
-
-      hifzProgress:
-        Number(
-          document
-            .getElementById('hifzProgress')
-            .value
-        ) || 0,
-
-      reviewProgress:
-        Number(
-          document
-            .getElementById(
-              'reviewProgress'
-            )
-            .value
-        ) || 0,
-
-      completedPages:
-        document
-          .getElementById(
-            'completedPages'
+        review:
+          number(
+            document
+              .getElementById('goalReview')
+              .value
           )
-          .value
-          .trim(),
 
-      requiredPages:
-        document
-          .getElementById(
-            'requiredPages'
-          )
-          .value
-          .trim(),
-
-      generalEvaluation:
-        document
-          .getElementById(
-            'generalEvaluation'
-          )
-          .value
-          .trim(),
-
-      equivalentRecitation:
-        document
-          .getElementById(
-            'equivalentRecitation'
-          )
-          .value
-          .trim(),
-
-      nextExam:
-        document
-          .getElementById('nextExam')
-          .value
-          .trim(),
-
-      nextExamDate:
-        document
-          .getElementById(
-            'nextExamDate'
-          )
-          .value,
-
-      notes:
-        document
-          .getElementById('notes')
-          .value
-          .trim(),
+      },
 
       attendance:
         collectAttendance(),
@@ -1680,36 +4337,47 @@ async function saveProfile() {
         collectPlan(),
 
       tests:
-        collectTests()
+        collectTests(),
+
+      recitations:
+        collectRecitations(),
+
+      notes:
+        document
+          .getElementById('notes')
+          .value
+          .trim()
 
     };
 
 
     const {
       error: profileError
-    } = await supabaseClient
-      .from('student_profiles')
-      .upsert({
+    } =
+      await supabaseClient
+        .from('student_profiles')
+        .upsert({
 
-        student_id:
-          String(studentId),
+          student_id:
+            String(studentId),
 
-        data:
-          newProfile,
+          data:
+            newProfile,
 
-        updated_at:
-          new Date().toISOString()
+          updated_at:
+            new Date().toISOString()
 
-      });
+        });
 
 
-    if (profileError) {
+    if (profileError)
       throw profileError;
-    }
 
 
     profile =
-      newProfile;
+      mergeProfile(
+        newProfile
+      );
 
     student = {
       ...student,
@@ -1718,7 +4386,7 @@ async function saveProfile() {
 
 
     showMessage(
-      'تم حفظ جميع بيانات الطالب بنجاح، وسيظهر التحديث للطالب عند دخوله القادم.',
+      'تم حفظ بيانات الطالب وحساب الإحصائيات تلقائياً بنجاح ✅',
       'success'
     );
 
@@ -1727,7 +4395,10 @@ async function saveProfile() {
 
   } catch (error) {
 
-    console.error(error);
+    console.error(
+      'SAVE ERROR:',
+      error
+    );
 
     showMessage(
       error.message ||
@@ -1747,9 +4418,14 @@ async function saveProfile() {
 }
 
 
+/* =========================
+   تشغيل
+========================= */
+
 loadStudent();
 
 </script>
 
 </body>
 </html>
+```
