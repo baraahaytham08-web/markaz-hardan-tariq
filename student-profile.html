@@ -2,9130 +2,1514 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <title>ملف الطالب | مركز حردان طارق القرآني</title>
 
-  <title>
-    ملف الطالب | مركز حردان طارق القرآني
-  </title>
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="logo.png"
-  >
-
-  <link
-    rel="shortcut icon"
-    type="image/png"
-    href="logo.png"
-  >
-
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-  ></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-
     :root {
-
-      --green: #0d4d3a;
-      --green-2: #176b50;
-      --green-3: #218866;
-      --dark: #092f25;
-
-      --gold: #c5a04a;
-      --gold-2: #e0c36c;
-
-      --cream: #f8f5eb;
-
-      --bg: #f2f6f3;
-      --white: #ffffff;
-
-      --text: #17362c;
-      --muted: #718078;
-
-      --border: #e2e9e5;
-
-      --success: #16834b;
-      --danger: #b42318;
-
-      --blue: #2869a8;
-
-      --shadow:
-        0 12px 35px rgba(13, 77, 58, .08);
-
+      --green: #07563c;
+      --green2: #0b7450;
+      --gold: #c29d45;
+      --cream: #f8f4e8;
+      --text: #17352b;
+      --muted: #777;
+      --white: #fff;
+      --danger: #a22;
     }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
 
     body {
-
-      background:
-        radial-gradient(
-          circle at 10% 5%,
-          rgba(197,160,74,.10),
-          transparent 25%
-        ),
-        radial-gradient(
-          circle at 90% 15%,
-          rgba(23,107,80,.08),
-          transparent 25%
-        ),
-        var(--bg);
-
-      color:
-        var(--text);
-
-      font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
-      min-height: 100vh;
-
+      background: #f4f6f2;
+      color: var(--text);
+      font-family: Arial, Tahoma, sans-serif;
     }
-
-
-    button,
-    input,
-    textarea,
-    select {
-      font-family: inherit;
-    }
-
-
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-
-    /* =========================================================
-       HEADER
-    ========================================================= */
 
     header {
-
-      position: sticky;
-
-      top: 0;
-
-      z-index: 100;
-
-      background:
-        rgba(9,47,37,.96);
-
-      backdrop-filter:
-        blur(16px);
-
+      background: linear-gradient(135deg, var(--green), #063626);
       color: white;
-
-      box-shadow:
-        0 8px 25px rgba(0,0,0,.10);
-
+      padding: 22px 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .12);
     }
-
 
     .header-inner {
-
-      width:
-        min(
-          1250px,
-          calc(100% - 30px)
-        );
-
-      min-height: 78px;
-
+      max-width: 1100px;
       margin: auto;
-
       display: flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      gap: 18px;
-
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
     }
-
-
-    .brand-link {
-
-      color:
-        white;
-
-      text-decoration:
-        none;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap: 13px;
-
-    }
-
-
-    .brand-logo {
-
-      width: 48px;
-      height: 48px;
-
-      border-radius:
-        50%;
-
-      object-fit:
-        cover;
-
-      border:
-        2px solid
-        rgba(224,195,108,.8);
-
-      box-shadow:
-        0 5px 18px
-        rgba(0,0,0,.2);
-
-    }
-
 
     .brand h1 {
-
-      font-size: 18px;
-
-      margin-bottom:
-        4px;
-
+      font-size: 22px;
+      margin-bottom: 5px;
     }
-
 
     .brand p {
-
-      color:
-        rgba(255,255,255,.68);
-
-      font-size:
-        12px;
-
+      font-size: 13px;
+      opacity: .8;
     }
 
-
-    .back {
-
-      color:
-        white;
-
-      text-decoration:
-        none;
-
-      border:
-        1px solid
-        rgba(255,255,255,.20);
-
-      background:
-        rgba(255,255,255,.07);
-
-      padding:
-        11px 16px;
-
-      border-radius:
-        12px;
-
-      transition:
-        .2s;
-
-      white-space:
-        nowrap;
-
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
     }
 
-
-    .back:hover {
-
-      background:
-        rgba(255,255,255,.14);
-
-      transform:
-        translateY(-2px);
-
+    .header-btn {
+      border: 1px solid rgba(255, 255, 255, .3);
+      background: transparent;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 14px;
     }
 
-
-    /* =========================================================
-       PAGE
-    ========================================================= */
+    .header-btn:hover {
+      background: rgba(255, 255, 255, .1);
+    }
 
     .container {
-
-      width:
-        min(
-          1250px,
-          calc(100% - 30px)
-        );
-
-      margin:
-        28px auto 80px;
-
+      width: calc(100% - 30px);
+      max-width: 1100px;
+      margin: 25px auto 50px;
     }
 
-
-    /* =========================================================
-       MESSAGE
-    ========================================================= */
-
-    .message {
-
-      display:
-        none;
-
-      padding:
-        15px 18px;
-
-      border-radius:
-        15px;
-
-      margin-bottom:
-        18px;
-
-      font-weight:
-        bold;
-
-      box-shadow:
-        var(--shadow);
-
+    .welcome {
+      background: white;
+      border-radius: 22px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+      border-right: 5px solid var(--gold);
     }
 
-
-    .success {
-
-      background:
-        #eaf8ef;
-
-      color:
-        #13743f;
-
-      border:
-        1px solid
-        #cbead6;
-
+    .welcome h2 {
+      color: var(--green);
+      margin-bottom: 8px;
     }
 
-
-    .error {
-
-      background:
-        #fff0ef;
-
-      color:
-        #a31d16;
-
-      border:
-        1px solid
-        #f2cdca;
-
+    .welcome p {
+      color: var(--muted);
+      line-height: 1.7;
     }
 
-
-    /* =========================================================
-       HERO / البيانات الأساسية
-    ========================================================= */
-
-    .student-hero {
-
-      position:
-        relative;
-
-      overflow:
-        hidden;
-
-      background:
-        radial-gradient(
-          circle at 10% 10%,
-          rgba(224,195,108,.18),
-          transparent 28%
-        ),
-        linear-gradient(
-          135deg,
-          #0a382c,
-          #14654b
-        );
-
-      border-radius:
-        28px;
-
-      padding:
-        28px;
-
-      color:
-        white;
-
-      margin-bottom:
-        20px;
-
-      box-shadow:
-        0 18px 45px
-        rgba(13,77,58,.18);
-
+    .profile {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
-
-    .student-hero::before {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      width:
-        240px;
-
-      height:
-        240px;
-
-      border:
-        1px solid
-        rgba(255,255,255,.08);
-
-      border-radius:
-        50%;
-
-      left:
-        -90px;
-
-      top:
-        -120px;
-
+    .card {
+      background: white;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
     }
 
-
-    .student-hero::after {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      width:
-        300px;
-
-      height:
-        300px;
-
-      border:
-        1px solid
-        rgba(224,195,108,.12);
-
-      border-radius:
-        50%;
-
-      right:
-        -140px;
-
-      bottom:
-        -180px;
-
+    .student-card {
+      text-align: center;
     }
 
-
-    .hero-top {
-
-      position:
-        relative;
-
-      z-index:
-        2;
-
-      display:
-        flex;
-
-      align-items:
-        flex-start;
-
-      gap:
-        22px;
-
+    .photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--gold);
+      background: var(--cream);
+      margin-bottom: 15px;
     }
 
-
-    .hero-photo {
-
-      width:
-        108px;
-
-      height:
-        108px;
-
-      border-radius:
-        50%;
-
-      object-fit:
-        cover;
-
-      border:
-        4px solid
-        rgba(224,195,108,.95);
-
-      background:
-        rgba(255,255,255,.10);
-
-      flex-shrink:
-        0;
-
-      box-shadow:
-        0 8px 28px
-        rgba(0,0,0,.20);
-
+    .student-card h2 {
+      color: var(--green);
+      margin-bottom: 8px;
+      font-size: 21px;
     }
-
-
-    .hero-info {
-
-      flex:
-        1;
-
-      min-width:
-        0;
-
-    }
-
-
-    .hero-info h2 {
-
-      font-size:
-        clamp(
-          24px,
-          4vw,
-          34px
-        );
-
-      margin-bottom:
-        7px;
-
-    }
-
-
-    .hero-info p {
-
-      color:
-        rgba(255,255,255,.75);
-
-      margin-bottom:
-        14px;
-
-    }
-
-
-    .hero-pills {
-
-      display:
-        flex;
-
-      flex-wrap:
-        wrap;
-
-      gap:
-        8px;
-
-    }
-
-
-    .hero-pill {
-
-      background:
-        rgba(255,255,255,.10);
-
-      border:
-        1px solid
-        rgba(255,255,255,.13);
-
-      padding:
-        8px 12px;
-
-      border-radius:
-        999px;
-
-      font-size:
-        12px;
-
-    }
-
-
-    /* =========================================================
-       HERO EDIT FORM
-    ========================================================= */
-
-    .hero-edit {
-
-      position:
-        relative;
-
-      z-index:
-        2;
-
-      margin-top:
-        25px;
-
-      padding-top:
-        22px;
-
-      border-top:
-        1px solid
-        rgba(255,255,255,.13);
-
-    }
-
-
-    .hero-edit-title {
-
-      color:
-        rgba(255,255,255,.85);
-
-      font-size:
-        13px;
-
-      font-weight:
-        900;
-
-      margin-bottom:
-        14px;
-
-    }
-
-
-    .hero-form-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap:
-        13px;
-
-    }
-
-
-    .hero-field.full {
-
-      grid-column:
-        1 / -1;
-
-    }
-
-
-    .hero-field label {
-
-      display:
-        block;
-
-      color:
-        rgba(255,255,255,.76);
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      margin-bottom:
-        6px;
-
-    }
-
-
-    .hero-field input,
-    .hero-field select {
-
-      width:
-        100%;
-
-      border:
-        1px solid
-        rgba(255,255,255,.15);
-
-      background:
-        rgba(255,255,255,.09);
-
-      color:
-        white;
-
-      border-radius:
-        11px;
-
-      padding:
-        11px 12px;
-
-      outline:
-        none;
-
-      font-size:
-        13px;
-
-      transition:
-        .2s;
-
-    }
-
-
-    .hero-field input::placeholder {
-
-      color:
-        rgba(255,255,255,.45);
-
-    }
-
-
-    .hero-field input:focus,
-    .hero-field select:focus {
-
-      border-color:
-        rgba(224,195,108,.75);
-
-      box-shadow:
-        0 0 0 3px
-        rgba(224,195,108,.10);
-
-    }
-
-
-    .hero-field select option {
-
-      color:
-        #17362c;
-
-      background:
-        white;
-
-    }
-
-
-    .hero-image-upload {
-
-      border:
-        1px dashed
-        rgba(255,255,255,.22);
-
-      background:
-        rgba(255,255,255,.055);
-
-      border-radius:
-        14px;
-
-      padding:
-        13px;
-
-    }
-
-
-    .hero-image-row {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        14px;
-
-    }
-
-
-    .hero-image-preview {
-
-      width:
-        68px;
-
-      height:
-        68px;
-
-      border-radius:
-        50%;
-
-      object-fit:
-        cover;
-
-      border:
-        2px solid
-        var(--gold-2);
-
-      flex-shrink:
-        0;
-
-    }
-
-
-    .hero-file-button {
-
-      position:
-        relative;
-
-      display:
-        inline-flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      gap:
-        7px;
-
-      padding:
-        10px 14px;
-
-      border-radius:
-        10px;
-
-      background:
-        rgba(255,255,255,.12);
-
-      color:
-        white;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        bold;
-
-      border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    }
-
-
-    .hero-file-button input {
-
-      position:
-        absolute;
-
-      inset:
-        0;
-
-      opacity:
-        0;
-
-      cursor:
-        pointer;
-
-    }
-
-
-    .hero-image-help {
-
-      margin-top:
-        7px;
-
-      color:
-        rgba(255,255,255,.55);
-
-      font-size:
-        10px;
-
-    }
-
-
-    .hero-save-row {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        12px;
-
-      margin-top:
-        16px;
-
-      flex-wrap:
-        wrap;
-
-    }
-
-
-    .hero-save-btn {
-
-      border:
-        none;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--gold),
-          var(--gold-2)
-        );
-
-      color:
-        #342708;
-
-      padding:
-        13px 20px;
-
-      border-radius:
-        12px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        900;
-
-      font-size:
-        13px;
-
-      box-shadow:
-        0 8px 20px
-        rgba(0,0,0,.14);
-
-      transition:
-        .2s;
-
-    }
-
-
-    .hero-save-btn:hover {
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    .hero-save-btn:disabled {
-
-      opacity:
-        .65;
-
-      cursor:
-        wait;
-
-      transform:
-        none;
-
-    }
-
-
-    .hero-save-message {
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      min-height:
-        20px;
-
-    }
-
-
-    .hero-save-message.success {
-
-      color:
-        #d7f7e2;
-
-    }
-
-
-    .hero-save-message.error {
-
-      color:
-        #ffd8d4;
-
-    }
-
-
-    /* =========================================================
-       HERO STATS
-    ========================================================= */
-
-    .hero-side {
-
-      min-width:
-        250px;
-
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap:
-        9px;
-
-    }
-
-
-    .hero-stat {
-
-      background:
-        rgba(255,255,255,.08);
-
-      border:
-        1px solid
-        rgba(255,255,255,.12);
-
-      border-radius:
-        18px;
-
-      padding:
-        15px 12px;
-
-      text-align:
-        center;
-
-    }
-
-
-    .hero-stat small {
-
-      display:
-        block;
-
-      color:
-        rgba(255,255,255,.65);
-
-      margin-bottom:
-        5px;
-
-      font-size:
-        11px;
-
-    }
-
-
-    .hero-stat strong {
-
-      font-size:
-        23px;
-
-      color:
-        var(--gold-2);
-
-    }
-
-
-    /* =========================================================
-       SECTION
-    ========================================================= */
 
     .section {
-
-      margin-top:
-        20px;
-
-      background:
-        rgba(255,255,255,.94);
-
-      border:
-        1px solid
-        rgba(226,233,229,.9);
-
-      border-radius:
-        22px;
-
-      padding:
-        23px;
-
-      box-shadow:
-        var(--shadow);
-
-      overflow:
-        hidden;
-
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 15px;
     }
 
-
-    /* =========================================================
-       ACCORDION
-    ========================================================= */
-
-    .accordion-section >
-    .section-head {
-
-      position:
-        relative;
-
-      cursor:
-        pointer;
-
-      user-select:
-        none;
-
-      min-height:
-        56px;
-
-      padding:
-        5px 50px 5px 48px;
-
-      margin-bottom:
-        0;
-
-      border-radius:
-        15px;
-
-      transition:
-        background .2s ease;
-
+    .details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 13px;
     }
 
-
-    .accordion-section >
-    .section-head:hover {
-
-      background:
-        #f8fbf9;
-
+    .detail {
+      background: #fafafa;
+      border-radius: 13px;
+      padding: 15px;
+      border: 1px solid #eee;
     }
 
-
-    .accordion-section >
-    .section-head::after {
-
-      content:
-        '+';
-
-      position:
-        absolute;
-
-      left:
-        8px;
-
-      top:
-        50%;
-
-      transform:
-        translateY(-50%);
-
-      width:
-        34px;
-
-      height:
-        34px;
-
-      border-radius:
-        10px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      background:
-        #f1f6f3;
-
-      color:
-        var(--green);
-
-      font-size:
-        21px;
-
-      font-weight:
-        900;
-
+    .detail small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 6px;
     }
 
-
-    .accordion-section.open >
-    .section-head {
-
-      margin-bottom:
-        20px;
-
-      background:
-        #f8fbf9;
-
+    .detail strong {
+      color: var(--text);
+      line-height: 1.5;
+      word-break: break-word;
     }
-
-
-    .accordion-section.open >
-    .section-head::after {
-
-      content:
-        '−';
-
-      background:
-        #e8f3ed;
-
-    }
-
-
-    .section-body {
-
-      display:
-        none;
-
-      animation:
-        accordionOpen .22s ease;
-
-    }
-
-
-    .accordion-section.open >
-    .section-body {
-
-      display:
-        block;
-
-    }
-
-
-    @keyframes accordionOpen {
-
-      from {
-        opacity:
-          0;
-
-        transform:
-          translateY(-5px);
-      }
-
-      to {
-        opacity:
-          1;
-
-        transform:
-          translateY(0);
-      }
-
-    }
-
-
-    /* =========================================================
-       SECTION SAVE
-    ========================================================= */
-
-    .section-save-wrap {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        10px;
-
-      flex-wrap:
-        wrap;
-
-      margin-top:
-        20px;
-
-      padding-top:
-        16px;
-
-      border-top:
-        1px solid
-        var(--border);
-
-    }
-
-
-    .section-save-btn {
-
-      border:
-        none;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-3)
-        );
-
-      color:
-        white;
-
-      padding:
-        13px 20px;
-
-      border-radius:
-        12px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        900;
-
-      font-size:
-        13px;
-
-      box-shadow:
-        0 8px 20px
-        rgba(13,77,58,.16);
-
-    }
-
-
-    .section-save-btn:hover {
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    .section-save-btn:disabled {
-
-      opacity:
-        .65;
-
-      cursor:
-        wait;
-
-      transform:
-        none;
-
-    }
-
-
-    .section-save-message {
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      min-height:
-        20px;
-
-    }
-
-
-    .section-save-message.success {
-
-      color:
-        #13743f;
-
-    }
-
-
-    .section-save-message.error {
-
-      color:
-        #b42318;
-
-    }
-
-
-    .section-head {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      gap:
-        15px;
-
-    }
-
 
     .section-title {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        10px;
-
-      color:
-        var(--green);
-
-      font-size:
-        20px;
-
-    }
-
-
-    .section-title::before {
-
-      content:
-        "";
-
-      width:
-        5px;
-
-      height:
-        25px;
-
-      border-radius:
-        20px;
-
-      background:
-        linear-gradient(
-          var(--gold),
-          var(--gold-2)
-        );
-
-      flex-shrink:
-        0;
-
-    }
-
-
-    .section-subtitle {
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      margin-top:
-        4px;
-
-    }
-
-
-    /* =========================================================
-       STATS
-    ========================================================= */
-
-    .stats {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        14px;
-
-    }
-
-
-    .stat {
-
-      position:
-        relative;
-
-      overflow:
-        hidden;
-
-      border:
-        1px solid
-        var(--border);
-
-      background:
-        linear-gradient(
-          145deg,
-          #fff,
-          #f8fbf9
-        );
-
-      border-radius:
-        18px;
-
-      padding:
-        18px;
-
-    }
-
-
-    .stat-icon {
-
-      width:
-        42px;
-
-      height:
-        42px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      border-radius:
-        13px;
-
-      background:
-        var(--cream);
-
-      margin-bottom:
-        12px;
-
-      font-size:
-        20px;
-
-    }
-
-
-    .stat-label {
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      margin-bottom:
-        5px;
-
-    }
-
-
-    .stat-value {
-
-      color:
-        var(--green);
-
-      font-size:
-        26px;
-
-      font-weight:
-        900;
-
-    }
-
-
-    .stat-note {
-
-      color:
-        var(--muted);
-
-      font-size:
-        11px;
-
-      margin-top:
-        5px;
-
-    }
-
-
-    /* =========================================================
-       PROGRESS
-    ========================================================= */
-
-    .progress-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(2,1fr);
-
-      gap:
-        16px;
-
-      margin-top:
-        16px;
-
-    }
-
-
-    .progress-card {
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        18px;
-
-      padding:
-        18px;
-
-      background:
-        #fcfdfc;
-
-    }
-
-
-    .progress-top {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      gap:
-        12px;
-
-      margin-bottom:
-        12px;
-
-    }
-
-
-    .progress-top strong {
-
-      color:
-        var(--green);
-
-    }
-
-
-    .percent {
-
-      font-weight:
-        900;
-
-      color:
-        var(--gold);
-
-      font-size:
-        21px;
-
-    }
-
-
-    .bar {
-
-      height:
-        11px;
-
-      background:
-        #e8eee9;
-
-      border-radius:
-        999px;
-
-      overflow:
-        hidden;
-
-    }
-
-
-    .bar-fill {
-
-      height:
-        100%;
-
-      width:
-        0;
-
-      border-radius:
-        inherit;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--green),
-          var(--green-3)
-        );
-
-    }
-
-
-    .progress-note {
-
-      margin-top:
-        10px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      line-height:
-        1.7;
-
-    }
-
-
-    /* =========================================================
-       COMMITMENT
-    ========================================================= */
-
-    .commitment-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        12px;
-
-      margin-top:
-        16px;
-
-    }
-
-
-    .commitment-card {
-
-      padding:
-        15px;
-
-      background:
-        #f7faf8;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        15px;
-
-    }
-
-
-    .commitment-card small {
-
-      display:
-        block;
-
-      color:
-        var(--muted);
-
-      margin-bottom:
-        5px;
-
-    }
-
-
-    .commitment-card strong {
-
-      color:
-        var(--green);
-
-      font-size:
-        22px;
-
-    }
-
-
-    .commitment-final {
-
-      margin-top:
-        16px;
-
-      padding:
-        18px;
-
-      border-radius:
-        16px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #edf7f1,
-          #fffaf0
-        );
-
-      border:
-        1px solid
-        #dfe9e1;
-
-      text-align:
-        center;
-
-    }
-
-
-    .commitment-final-label {
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      margin-bottom:
-        4px;
-
-    }
-
-
-    .commitment-final-value {
-
-      color:
-        var(--green);
-
-      font-size:
-        30px;
-
-      font-weight:
-        900;
-
-    }
-
-
-    .commitment-final-text {
-
-      margin-top:
-        4px;
-
-      color:
-        #8a7650;
-
-      font-weight:
-        bold;
-
-    }
-
-
-    /* =========================================================
-       FORM
-    ========================================================= */
-
-    .form-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(2,1fr);
-
-      gap:
-        15px;
-
-    }
-
-
-    .field.full-field {
-
-      grid-column:
-        1 / -1;
-
-    }
-
-
-    label {
-
-      display:
-        block;
-
-      color:
-        #345248;
-
-      font-weight:
-        bold;
-
-      font-size:
-        13px;
-
-      margin-bottom:
-        7px;
-
-    }
-
-
-    input,
-    textarea,
-    select {
-
-      width:
-        100%;
-
-      border:
-        1px solid
-        #dce5df;
-
-      border-radius:
-        12px;
-
-      padding:
-        12px 13px;
-
-      background:
-        white;
-
-      color:
-        var(--text);
-
-      font-size:
-        14px;
-
-      outline:
-        none;
-
-    }
-
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-
-      border-color:
-        var(--green-2);
-
-      box-shadow:
-        0 0 0 4px
-        rgba(23,107,80,.08);
-
-    }
-
-
-    textarea {
-
-      min-height:
-        130px;
-
-      resize:
-        vertical;
-
-    }
-
-
-    /* =========================================================
-       EDITOR
-    ========================================================= */
-
-    .editor-list {
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      gap:
-        12px;
-
-    }
-
-
-    .editor-row {
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        16px;
-
-      background:
-        #fbfdfc;
-
-      padding:
-        15px;
-
-    }
-
-
-    .editor-row-head {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      margin-bottom:
-        12px;
-
-      gap:
-        10px;
-
-    }
-
-
-    .editor-row-title {
-
-      font-weight:
-        900;
-
-      color:
-        var(--green);
-
-    }
-
-
-    .editor-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        10px;
-
-    }
-
-
-    .remove {
-
-      border:
-        none;
-
-      background:
-        #fff0ef;
-
-      color:
-        var(--danger);
-
-      border-radius:
-        9px;
-
-      padding:
-        8px 11px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        bold;
-
-    }
-
-
-    .add {
-
-      width:
-        100%;
-
-      margin-top:
-        12px;
-
-      border:
-        1px dashed
-        #b9c9c0;
-
-      background:
-        #f8fbf9;
-
-      color:
-        var(--green);
-
-      padding:
-        12px;
-
-      border-radius:
-        12px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        bold;
-
-    }
-
-
-    /* =========================================================
-       RECITATION / POINTS / MAP
-    ========================================================= */
-
-    .recitation-summary {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        12px;
-
-      margin-bottom:
-        16px;
-
-    }
-
-
-    .mini-stat {
-
-      padding:
-        14px;
-
-      background:
-        #f7faf8;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        14px;
-
-    }
-
-
-    .mini-stat small {
-
-      display:
-        block;
-
-      color:
-        var(--muted);
-
-      margin-bottom:
-        5px;
-
-    }
-
-
-    .mini-stat strong {
-
-      color:
-        var(--green);
-
-      font-size:
-        20px;
-
-    }
-
-
-    .grade-preview {
-
-      display:
-        inline-flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      width:
-        100%;
-
-      min-height:
-        45px;
-
-      padding:
-        8px 10px;
-
-      border-radius:
-        11px;
-
-      font-size:
-        12px;
-
-      font-weight:
-        900;
-
-      text-align:
-        center;
-
-    }
-
-
-    .grade-excellent {
-
-      background:
-        #e7f7ed;
-
-      color:
-        #13743f;
-
-    }
-
-
-    .grade-very-good {
-
-      background:
-        #e8f1fb;
-
-      color:
-        #2869a8;
-
-    }
-
-
-    .grade-good {
-
-      background:
-        #fff3df;
-
-      color:
-        #9b5c0d;
-
-    }
-
-
-    .grade-acceptable {
-
-      background:
-        #f6f0dd;
-
-      color:
-        #7b6634;
-
-    }
-
-
-    .grade-review {
-
-      background:
-        #fff0ef;
-
-      color:
-        #b42318;
-
-    }
-
-
-    .grade-empty {
-
-      background:
-        #f1f3f2;
-
-      color:
-        #63716b;
-
-    }
-
-
-    .status-badge {
-
-      display:
-        inline-flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      padding:
-        7px 11px;
-
-      border-radius:
-        999px;
-
-      font-size:
-        11px;
-
-      font-weight:
-        bold;
-
-      white-space:
-        nowrap;
-
-    }
-
-
-    .status-complete {
-
-      background:
-        #e7f7ed;
-
-      color:
-        #13743f;
-
-    }
-
-
-    .status-partial {
-
-      background:
-        #fff3df;
-
-      color:
-        #9b5c0d;
-
-    }
-
-
-    .status-running {
-
-      background:
-        #e8f1fb;
-
-      color:
-        #2869a8;
-
-    }
-
-
-    .status-pending {
-
-      background:
-        #f1f3f2;
-
-      color:
-        #63716b;
-
-    }
-
-
-    .quran-progress {
-
-      margin-bottom:
-        20px;
-
-      padding:
-        18px;
-
-      border-radius:
-        17px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #f4f8f5,
-          #fbfaf3
-        );
-
-      border:
-        1px solid
-        var(--border);
-
-    }
-
-
-    .quran-progress-head {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      margin-bottom:
-        10px;
-
-    }
-
-
-    .quran-progress-head strong {
-
-      color:
-        var(--green);
-
-      font-size:
-        22px;
-
-    }
-
-
-    .juz-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap:
-        13px;
-
-    }
-
-
-    .juz-card {
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        15px;
-
-      padding:
-        13px;
-
-      background:
-        white;
-
-    }
-
-
-    .juz-head {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      gap:
-        8px;
-
-      margin-bottom:
-        10px;
-
-    }
-
-
-    .juz-title {
-
-      font-weight:
-        900;
-
-      color:
-        var(--green);
-
-      font-size:
-        13px;
-
-    }
-
-
-    .juz-count {
-
-      color:
-        var(--muted);
-
-      font-size:
-        11px;
-
-    }
-
-
-    .juz-range {
-
-      color:
-        #8a968f;
-
-      font-size:
-        10px;
-
-      margin-bottom:
-        8px;
-
-    }
-
-
-    .page-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(10,1fr);
-
-      gap:
-        4px;
-
-    }
-
-
-    .page-dot {
-
-      min-height:
-        26px;
-
-      border-radius:
-        6px;
-
-      border:
-        1px solid
-        #e2e8e4;
-
-      background:
-        #f1f4f2;
-
-      cursor:
-        pointer;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      color:
-        #68756f;
-
-      font-size:
-        8px;
-
-      font-weight:
-        900;
-
-      user-select:
-        none;
-
-    }
-
-
-    .page-dot.hifz {
-
-      background:
-        #19764f;
-
-      border-color:
-        #19764f;
-
-      color:
-        white;
-
+      color: var(--green);
+      margin-bottom: 18px;
+      font-size: 21px;
     }
-
-
-    .page-dot.review {
-
-      background:
-        #d5b24e;
 
-      border-color:
-        #d5b24e;
-
-      color:
-        #3f3210;
-
+    .progress-box {
+      margin-bottom: 18px;
     }
-
-
-    .page-dot.both {
 
-      background:
-        linear-gradient(
-          135deg,
-          #19764f 50%,
-          #d5b24e 50%
-        );
-
-      border-color:
-        #19764f;
-
-      color:
-        white;
-
+    .progress-head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: bold;
     }
-
 
-    .map-legend {
-
-      display:
-        flex;
-
-      flex-wrap:
-        wrap;
-
-      gap:
-        15px;
-
-      margin-top:
-        15px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
+    .progress {
+      height: 13px;
+      background: #e9ece8;
+      border-radius: 20px;
+      overflow: hidden;
     }
-
 
-    .legend-item {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        6px;
-
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      border-radius: inherit;
     }
-
-
-    .legend-dot {
-
-      width:
-        13px;
-
-      height:
-        13px;
 
-      border-radius:
-        4px;
-
-      background:
-        #f1f4f2;
-
-      border:
-        1px solid
-        #ddd;
-
+    .table-wrap {
+      overflow-x: auto;
     }
-
 
-    .legend-dot.hifz {
-
-      background:
-        #19764f;
-
-      border-color:
-        #19764f;
-
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
     }
-
 
-    .legend-dot.review {
-
-      background:
-        #d5b24e;
-
-      border-color:
-        #d5b24e;
-
+    th,
+    td {
+      padding: 13px;
+      text-align: right;
+      border-bottom: 1px solid #eee;
     }
-
-
-    .points-breakdown {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        10px;
 
-      margin-bottom:
-        16px;
-
+    th {
+      background: var(--cream);
+      color: var(--green);
     }
-
-
-    .points-card {
-
-      padding:
-        14px;
 
-      border-radius:
-        14px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #f8fbf9,
-          #fffdf6
-        );
-
-      border:
-        1px solid
-        var(--border);
-
+    .status {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: #fff5d8;
+      color: #856404;
+      font-size: 13px;
     }
-
 
-    .points-card small {
-
-      display:
-        block;
-
-      color:
-        var(--muted);
-
-      margin-bottom:
-        5px;
-
+    .attendance {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
     }
-
-
-    .points-card strong {
-
-      color:
-        var(--green);
-
-      font-size:
-        20px;
 
+    .attendance-item {
+      background: #f8fbf8;
+      border: 1px solid #dce9df;
+      padding: 15px;
+      border-radius: 14px;
+      text-align: center;
     }
 
-
-    /* =========================================================
-       TOP BUTTON
-    ========================================================= */
-
-    .top-actions {
-
-      display:
-        flex;
-
-      justify-content:
-        flex-start;
-
-      margin-top:
-        20px;
-
+    .present {
+      color: #087443;
+      font-weight: bold;
+      margin-top: 7px;
     }
-
-
-    .secondary {
 
-      border:
-        1px solid
-        var(--border);
-
-      background:
-        white;
-
-      color:
-        var(--green);
-
-      padding:
-        13px 18px;
-
-      border-radius:
-        12px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        bold;
-
+    .empty {
+      color: var(--muted);
+      padding: 20px 0;
     }
-
-
-    /* =========================================================
-       LOADING
-    ========================================================= */
 
     .loading {
-
-      background:
-        white;
-
-      border-radius:
-        22px;
-
-      padding:
-        90px 20px;
-
-      text-align:
-        center;
-
-      color:
-        var(--muted);
-
-      box-shadow:
-        var(--shadow);
-
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
+      font-size: 17px;
     }
 
-
-    .loading-icon {
-
-      font-size:
-        40px;
-
-      margin-bottom:
-        12px;
-
-      animation:
-        pulse 1.2s infinite;
-
+    .error {
+      max-width: 650px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      color: var(--danger);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, .08);
     }
 
+    .error h2 {
+      margin-bottom: 10px;
+    }
 
-    @keyframes pulse {
+    .error p {
+      color: #666;
+      line-height: 1.8;
+    }
 
-      50% {
+    .error button {
+      margin-top: 18px;
+      border: none;
+      background: var(--green);
+      color: white;
+      padding: 11px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-        opacity:
-          .45;
+    .id-box {
+      margin-top: 12px;
+      background: #f7f7f7;
+      border-radius: 10px;
+      padding: 10px;
+      color: #555;
+      font-size: 12px;
+      direction: ltr;
+      word-break: break-all;
+    }
 
-        transform:
-          scale(.94);
+    @media (max-width: 750px) {
 
+      .profile {
+        grid-template-columns: 1fr;
       }
 
-    }
-
-
-    /* =========================================================
-       MOBILE
-    ========================================================= */
-
-    @media(max-width:1050px) {
-
-      .stats,
-      .commitment-grid,
-      .points-breakdown,
-      .recitation-summary {
-
-        grid-template-columns:
-          repeat(2,1fr);
-
+      .details {
+        grid-template-columns: 1fr;
       }
-
-
-      .juz-grid {
-
-        grid-template-columns:
-          repeat(2,1fr);
-
-      }
-
-    }
-
-
-    @media(max-width:750px) {
 
       .header-inner {
-
-        min-height:
-          70px;
-
+        align-items: flex-start;
       }
-
 
       .brand h1 {
-
-        font-size:
-          15px;
-
+        font-size: 18px;
       }
 
-
-      .brand p {
-
-        font-size:
-          10px;
-
+      .welcome {
+        padding: 20px;
       }
 
-
-      .brand-logo {
-
-        width:
-          42px;
-
-        height:
-          42px;
-
+      .header-actions {
+        flex-direction: column;
+        width: 100%;
       }
 
-
-      .back {
-
-        padding:
-          9px 11px;
-
-        font-size:
-          12px;
-
+      .header-inner {
+        flex-direction: column;
       }
 
-
-      .container {
-
-        width:
-          calc(100% - 18px);
-
-        margin-top:
-          14px;
-
+      .header-btn {
+        width: 100%;
+        text-align: center;
       }
-
-
-      .student-hero {
-
-        padding:
-          20px;
-
-        border-radius:
-          22px;
-
-      }
-
-
-      .hero-top {
-
-        flex-direction:
-          column;
-
-      }
-
-
-      .hero-photo {
-
-        width:
-          86px;
-
-        height:
-          86px;
-
-      }
-
-
-      .hero-side {
-
-        width:
-          100%;
-
-      }
-
-
-      .hero-form-grid {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .hero-field.full {
-
-        grid-column:
-          auto;
-
-      }
-
-
-      .hero-image-row {
-
-        align-items:
-          flex-start;
-
-        flex-direction:
-          column;
-
-      }
-
-
-      .hero-save-row {
-
-        align-items:
-          stretch;
-
-        flex-direction:
-          column;
-
-      }
-
-
-      .hero-save-btn {
-
-        width:
-          100%;
-
-      }
-
-
-      .section {
-
-        padding:
-          16px;
-
-        border-radius:
-          18px;
-
-      }
-
-
-      .accordion-section >
-      .section-head {
-
-        padding:
-          5px 42px 5px 40px;
-
-      }
-
-
-      .accordion-section >
-      .section-head::after {
-
-        width:
-          30px;
-
-        height:
-          30px;
-
-        font-size:
-          18px;
-
-      }
-
-
-      .stats,
-      .progress-grid,
-      .form-grid,
-      .juz-grid,
-      .commitment-grid,
-      .recitation-summary,
-      .points-breakdown {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .editor-grid {
-
-        grid-template-columns:
-          1fr 1fr;
-
-      }
-
-
-      .page-grid {
-
-        grid-template-columns:
-          repeat(10,1fr);
-
-      }
-
-
-      .section-save-wrap {
-
-        flex-direction:
-          column;
-
-        align-items:
-          stretch;
-
-      }
-
-
-      .section-save-btn {
-
-        width:
-          100%;
-
-      }
-
     }
-
-
-    @media(max-width:480px) {
-
-      .editor-grid {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .hero-info h2 {
-
-        font-size:
-          22px;
-
-      }
-
-
-      .page-grid {
-
-        gap:
-          3px;
-
-      }
-
-
-      .page-dot {
-
-        min-height:
-          23px;
-
-        border-radius:
-          4px;
-
-        font-size:
-          7px;
-
-      }
-
-    }
-
   </style>
 
 </head>
 
-
 <body>
 
-
 <header>
-
   <div class="header-inner">
 
-    <a
-      href="index.html"
-      class="brand-link"
-    >
-
-      <img
-        src="logo.png"
-        class="brand-logo"
-        alt="شعار مركز حردان طارق القرآني"
-      >
-
-      <div class="brand">
-
-        <h1>
-          مركز حردان طارق القرآني
-        </h1>
-
-        <p>
-          ملف الطالب والمتابعة الأكاديمية
-        </p>
-
-      </div>
-
-    </a>
-
-
-    <a
-      class="back"
-      href="teacher-dashboard.html"
-    >
-      ← لوحة المعلم
-    </a>
-
-  </div>
-
-</header>
-
-
-
-<main class="container">
-
-  <div
-    id="message"
-    class="message"
-  ></div>
-
-
-  <div id="app">
-
-    <div class="loading">
-
-      <div class="loading-icon">
-        📖
-      </div>
-
-      جاري تحميل ملف الطالب...
-
+    <div class="brand">
+      <h1>مركز حردان طارق القرآني</h1>
+      <p>ملف متابعة الطالب</p>
     </div>
 
+    <div class="header-actions">
+      <a class="header-btn" href="./teacher-dashboard.html">
+        ← لوحة المعلم
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<main class="container" id="app">
+
+  <div class="loading">
+    جاري تحميل ملف الطالب...
   </div>
 
 </main>
 
-
-
 <script>
 
+  /* =========================
+     إعدادات Supabase
+  ========================= */
 
-/* =========================================================
-   SUPABASE
-========================================================= */
+  const SUPABASE_URL =
+    'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-const SUPABASE_URL =
-  'https://lsbbcybpiulusdgfhepf.supabase.co';
-
-const SUPABASE_KEY =
-  'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
-
-const TEACHER_EMAIL =
-  'baraahaytham08@gmail.com';
-
-const TOTAL_QURAN_PAGES =
-  604;
-
-const REVIEW_TO_HIFZ_RATIO =
-  3;
+  const SUPABASE_KEY =
+    'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
 
-const supabaseClient =
-  supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+  /* =========================
+     التحقق من Supabase
+  ========================= */
 
+  if (!window.supabase) {
 
-let studentId =
-  null;
+    document.getElementById('app').innerHTML = `
+      <div class="error">
+        <h2>تعذر تشغيل الصفحة</h2>
 
-let student =
-  null;
+        <p>
+          لم يتم تحميل مكتبة Supabase.
+          تأكد من اتصال الإنترنت ثم أعد تحميل الصفحة.
+        </p>
 
-let profile =
-  {};
+        <button onclick="location.reload()">
+          إعادة المحاولة
+        </button>
+      </div>
+    `;
 
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-function escapeHtml(value) {
-
-  return String(value ?? '')
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;')
-    .replace(/'/g,'&#039;');
-
-}
-
-
-function number(value) {
-
-  const n =
-    Number(value);
-
-  return Number.isFinite(n)
-    ? n
-    : 0;
-
-}
-
-
-function formatNumber(
-  value,
-  digits = 1
-) {
-
-  const n =
-    number(value);
-
-  if (
-    Number.isInteger(n)
-  ) {
-
-    return String(n);
+    throw new Error('Supabase library not loaded');
 
   }
 
-  return n
-    .toFixed(digits)
-    .replace(
-      /\.0+$/,
-      ''
+
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
     );
 
-}
 
+  /* =========================
+     أدوات مساعدة
+  ========================= */
 
-function clamp(
-  value,
-  min,
-  max
-) {
+  function escapeHtml(value) {
 
-  return Math.min(
-    max,
-    Math.max(
-      min,
-      number(value)
-    )
-  );
-
-}
-
-
-function todayISO() {
-
-  const d =
-    new Date();
-
-  return `${d.getFullYear()}-${String(
-    d.getMonth() + 1
-  ).padStart(2,'0')}-${String(
-    d.getDate()
-  ).padStart(2,'0')}`;
-
-}
-
-
-function formatDate(
-  dateValue
-) {
-
-  if (!dateValue)
-    return '—';
-
-  const d =
-    new Date(
-      `${dateValue}T12:00:00`
-    );
-
-  if (
-    Number.isNaN(
-      d.getTime()
-    )
-  ) {
-
-    return escapeHtml(
-      dateValue
-    );
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
 
   }
 
-  return d.toLocaleDateString(
-    'ar-JO',
-    {
-      year:'numeric',
-      month:'2-digit',
-      day:'2-digit'
-    }
-  );
 
-}
-
-
-/* =========================================================
-   WEEK
-========================================================= */
-
-function getWeekRangeForDate(
-  dateValue
-) {
-
-  const d =
-    new Date(
-      `${dateValue}T12:00:00`
-    );
-
-  if (
-    Number.isNaN(
-      d.getTime()
-    )
-  )
-    return null;
-
-  const day =
-    d.getDay();
-
-  const daysSinceFriday =
-    (day + 2) % 7;
-
-  const start =
-    new Date(d);
-
-  start.setDate(
-    d.getDate() -
-    daysSinceFriday
-  );
-
-  start.setHours(
-    0,0,0,0
-  );
-
-  const end =
-    new Date(start);
-
-  end.setDate(
-    start.getDate() + 6
-  );
-
-  end.setHours(
-    23,59,59,999
-  );
-
-  return {
-    start,
-    end
-  };
-
-}
-
-
-function dateInCurrentWeek(
-  dateValue
-) {
-
-  if (!dateValue)
-    return false;
-
-  const range =
-    getWeekRangeForDate(
-      todayISO()
-    );
-
-  const d =
-    new Date(
-      `${dateValue}T12:00:00`
-    );
-
-  return !!range &&
-    d >= range.start &&
-    d <= range.end;
-
-}
-
-
-/* =========================================================
-   MESSAGE
-========================================================= */
-
-function showMessage(
-  text,
-  type
-) {
-
-  const box =
-    document.getElementById(
-      'message'
-    );
-
-  box.textContent =
-    text;
-
-  box.className =
-    `message ${type}`;
-
-  box.style.display =
-    'block';
-
-  window.scrollTo({
-    top:0,
-    behavior:'smooth'
-  });
-
-}
-
-
-function hideMessage() {
-
-  const box =
-    document.getElementById(
-      'message'
-    );
-
-  box.style.display =
-    'none';
-
-}
-
-
-/* =========================================================
-   PROFILE
-========================================================= */
-
-function defaultProfile() {
-
-  return {
-
-    photoUrl:'',
-
-    guardianPhone:'',
-
-    joiningDate:'',
-
-    residence:'',
-
-    bus:'',
-
-    homeLocation:'',
-
-    notes:'',
-
-    weeklyGoal:{
-      hifz:4,
-      review:20
-    },
-
-    attendance:[],
-
-    weeklyPlan:[],
-
-    tests:[],
-
-    recitations:[]
-
-  };
-
-}
-
-
-function mergeProfile(
-  data
-) {
-
-  const base =
-    defaultProfile();
-
-  const merged = {
-
-    ...base,
-    ...(data || {})
-
-  };
-
-  if (
-    typeof merged.weeklyGoal !== 'object' ||
-    merged.weeklyGoal === null
-  ) {
-
-    merged.weeklyGoal = {
-      hifz:4,
-      review:20
-    };
-
-  }
-
-  if (
-    !Array.isArray(
-      merged.attendance
-    )
-  )
-    merged.attendance = [];
-
-  if (
-    !Array.isArray(
-      merged.weeklyPlan
-    )
-  )
-    merged.weeklyPlan = [];
-
-  if (
-    !Array.isArray(
-      merged.tests
-    )
-  )
-    merged.tests = [];
-
-  if (
-    !Array.isArray(
-      merged.recitations
-    )
-  )
-    merged.recitations = [];
-
-  return merged;
-
-}
-
-
-/* =========================================================
-   RECITATION GRADES
-========================================================= */
-
-function getRecitationGrade(
-  score
-) {
-
-  const s =
-    number(score);
-
-  if (
-    !score &&
-    score !== 0
-  ) {
-
-    return {
-      label:'لم يتم التقييم',
-      className:'grade-empty'
-    };
-
-  }
-
-  if (
-    s >= 97
-  ) {
-
-    return {
-      label:'ممتاز (متقن)',
-      className:'grade-excellent'
-    };
-
-  }
-
-  if (
-    s >= 95
-  ) {
-
-    return {
-      label:'جيد جداً (أخطاء قليلة)',
-      className:'grade-very-good'
-    };
-
-  }
-
-  if (
-    s >= 92
-  ) {
-
-    return {
-      label:'جيد (أخطاء متعددة)',
-      className:'grade-good'
-    };
-
-  }
-
-  if (
-    s >= 90
-  ) {
-
-    return {
-      label:'مقبول (يحتاج تمكين)',
-      className:'grade-acceptable'
-    };
-
-  }
-
-  return {
-    label:'مراجعة الصفحة',
-    className:'grade-review'
-  };
-
-}
-
-
-/* =========================================================
-   POINTS
-========================================================= */
-
-function getRecitationPoints(
-  item
-) {
-
-  const score =
-    number(item.score);
-
-  if (
-    score <= 0
-  )
-    return 0;
-
-  if (
-    item.type === 'hifz'
-  ) {
-
-    if (score >= 97) return 6;
-    if (score >= 95) return 5;
-    if (score >= 92) return 4;
-    if (score >= 90) return 2;
-
-    return 0;
-
-  }
-
-  if (
-    item.type === 'review'
-  ) {
-
-    if (score >= 97) return 3;
-    if (score >= 95) return 2.5;
-    if (score >= 92) return 2;
-    if (score >= 90) return 1;
-
-    return 0;
-
-  }
-
-  return 0;
-
-}
-
-
-function getTestPointsByResult(
-  result
-) {
-
-  const r =
-    String(result || '');
-
-  if (
-    r.includes('ممتاز+')
-  )
-    return 12;
-
-  if (
-    r.includes('ممتاز')
-  )
-    return 12;
-
-  if (
-    r.includes('جيد جداً') ||
-    r.includes('جيد جدًا')
-  )
-    return 8;
-
-  if (
-    r.includes('جيد')
-  )
-    return 4;
-
-  return 0;
-
-}
-
-
-function getAttendancePoints(
-  status
-) {
-
-  switch (
-    String(status || '')
-  ) {
-
-    case 'حاضر':
-      return 2;
-
-    case 'متأخر':
-      return 1;
-
-    case 'معتذر':
-      return 0.5;
-
-    case 'غائب':
-      return 0;
-
-    default:
-      return 0;
-
-  }
-
-}
-
-
-/* =========================================================
-   WEEKLY
-========================================================= */
-
-function getWeeklyRecitations() {
-
-  return profile.recitations.filter(
-    item =>
-      dateInCurrentWeek(
-        item.date
-      )
-  );
-
-}
-
-
-function getCurrentWeekStats() {
-
-  const goalHifz =
-    number(
-      profile.weeklyGoal?.hifz
-    );
-
-  const goalReview =
-    number(
-      profile.weeklyGoal?.review
-    );
-
-  const records =
-    getWeeklyRecitations();
-
-  const hifzPages =
-    records.filter(
-      item =>
-        item.type === 'hifz'
-    ).length;
-
-  const reviewPages =
-    records.filter(
-      item =>
-        item.type === 'review'
-    ).length;
-
-  const hifzProgress =
-    goalHifz > 0
-      ? (
-          hifzPages /
-          goalHifz
-        ) * 100
-      : 0;
-
-  const reviewProgress =
-    goalReview > 0
-      ? (
-          reviewPages /
-          goalReview
-        ) * 100
-      : 0;
-
-  const equivalent =
-    hifzPages +
-    (
-      reviewPages /
-      REVIEW_TO_HIFZ_RATIO
-    );
-
-  const requiredEquivalent =
-    goalHifz +
-    (
-      goalReview /
-      REVIEW_TO_HIFZ_RATIO
-    );
-
-  const weeklyProgress =
-    requiredEquivalent > 0
-      ? (
-          equivalent /
-          requiredEquivalent
-        ) * 100
-      : 0;
-
-  return {
-
-    goalHifz,
-
-    goalReview,
-
-    hifzPages,
-
-    reviewPages,
-
-    hifzProgress,
-
-    reviewProgress,
-
-    equivalent,
-
-    requiredEquivalent,
-
-    weeklyProgress
-
-  };
-
-}
-
-
-/* =========================================================
-   QURAN
-========================================================= */
-
-function getHifzPageSet() {
-
-  return new Set(
-    profile.recitations
-      .filter(
-        item =>
-          item.type === 'hifz'
-      )
-      .map(
-        item =>
-          number(item.page)
-      )
-      .filter(
-        page =>
-          page >= 1 &&
-          page <= 604
-      )
-  );
-
-}
-
-
-function getReviewPageSet() {
-
-  return new Set(
-    profile.recitations
-      .filter(
-        item =>
-          item.type === 'review'
-      )
-      .map(
-        item =>
-          number(item.page)
-      )
-      .filter(
-        page =>
-          page >= 1 &&
-          page <= 604
-      )
-  );
-
-}
-
-
-function getUniqueRecitedPages() {
-
-  const set =
-    new Set();
-
-  profile.recitations.forEach(
-    item => {
-
-      const page =
-        number(item.page);
-
-      if (
-        page >= 1 &&
-        page <= 604
-      )
-        set.add(page);
-
-    }
-  );
-
-  return set;
-
-}
-
-
-function getQuranProgress() {
-
-  const pages =
-    getUniqueRecitedPages();
-
-  return {
-
-    completed:
-      pages.size,
-
-    percent:
-      (
-        pages.size /
-        TOTAL_QURAN_PAGES
-      ) * 100
-
-  };
-
-}
-
-
-function getJuzInfo(
-  juz
-) {
-
-  let start =
-    1;
-
-  for (
-    let i = 1;
-    i < juz;
-    i++
-  ) {
-
-    if (
-      i === 1
-    ) {
-
-      start += 21;
-
-    } else {
-
-      start += 20;
-
-    }
-
-  }
-
-  let length =
-    20;
-
-  if (
-    juz === 1
-  )
-    length = 21;
-
-  if (
-    juz === 30
-  )
-    length = 23;
-
-  return {
-
-    start,
-
-    end:
-      start + length - 1,
-
-    length
-
-  };
-
-}
-
-
-function getCompletedJuz() {
-
-  const hifz =
-    getHifzPageSet();
-
-  let completed =
-    0;
-
-  for (
-    let juz = 1;
-    juz <= 30;
-    juz++
-  ) {
-
-    const info =
-      getJuzInfo(juz);
-
-    let all =
-      true;
-
-    for (
-      let page = info.start;
-      page <= info.end;
-      page++
-    ) {
-
-      if (
-        !hifz.has(page)
-      ) {
-
-        all =
-          false;
-
-        break;
-
-      }
-
-    }
-
-    if (
-      all
-    )
-      completed++;
-
-  }
-
-  return completed;
-
-}
-
-
-/* =========================================================
-   TOTAL POINTS
-========================================================= */
-
-function getTotalRecitationPoints() {
-
-  return profile.recitations.reduce(
-    (
-      total,
-      item
-    ) =>
-      total +
-      getRecitationPoints(
-        item
-      ),
-    0
-  );
-
-}
-
-
-function getWeeklyRecitationPoints() {
-
-  return profile.recitations
-    .filter(
-      item =>
-        dateInCurrentWeek(
-          item.date
-        )
-    )
-    .reduce(
-      (
-        total,
-        item
-      ) =>
-        total +
-        getRecitationPoints(
-          item
-        ),
-      0
-    );
-
-}
-
-
-function getTotalAttendancePoints() {
-
-  return profile.attendance.reduce(
-    (
-      total,
-      item
-    ) =>
-      total +
-      getAttendancePoints(
-        item.status
-      ),
-    0
-  );
-
-}
-
-
-function getWeeklyAttendancePoints() {
-
-  return profile.attendance
-    .filter(
-      item =>
-        dateInCurrentWeek(
-          item.date
-        )
-    )
-    .reduce(
-      (
-        total,
-        item
-      ) =>
-        total +
-        getAttendancePoints(
-          item.status
-        ),
-      0
-    );
-
-}
-
-
-function getTotalTestPoints() {
-
-  return profile.tests.reduce(
-    (
-      total,
-      item
-    ) =>
-      total +
-      getTestPointsByResult(
-        item.result
-      ),
-    0
-  );
-
-}
-
-
-function getWeeklyTestPoints() {
-
-  return profile.tests
-    .filter(
-      item =>
-        dateInCurrentWeek(
-          item.date
-        )
-    )
-    .reduce(
-      (
-        total,
-        item
-      ) =>
-        total +
-        getTestPointsByResult(
-          item.result
-        ),
-      0
-    );
-
-}
-
-
-function getTotalPoints() {
-
-  return (
-    getTotalRecitationPoints() +
-    getTotalAttendancePoints() +
-    getTotalTestPoints()
-  );
-
-}
-
-
-function getWeeklyPoints() {
-
-  return (
-    getWeeklyRecitationPoints() +
-    getWeeklyAttendancePoints() +
-    getWeeklyTestPoints()
-  );
-
-}
-
-
-/* =========================================================
-   COMMITMENT
-========================================================= */
-
-function getAttendanceCommitment() {
-
-  const records =
-    profile.attendance.filter(
-      item =>
-        dateInCurrentWeek(
-          item.date
-        )
-    );
-
-  if (
-    !records.length
-  )
-    return 100;
-
-  let score =
-    0;
-
-  records.forEach(
-    item => {
-
-      if (
-        item.status === 'حاضر'
-      )
-        score += 1;
-
-      else if (
-        item.status === 'متأخر'
-      )
-        score += .5;
-
-      else if (
-        item.status === 'معتذر'
-      )
-        score += .5;
-
-    }
-  );
-
-  return (
-    score /
-    records.length
-  ) * 100;
-
-}
-
-
-function getTestCommitment() {
-
-  const tests =
-    profile.tests.filter(
-      item =>
-        dateInCurrentWeek(
-          item.date
-        )
-    );
-
-  if (
-    !tests.length
-  )
-    return 100;
-
-  const passed =
-    tests.filter(
-      item =>
-        getTestPointsByResult(
-          item.result
-        ) > 0
-    ).length;
-
-  return (
-    passed /
-    tests.length
-  ) * 100;
-
-}
-
-
-function getCommitment() {
-
-  const weekly =
-    getCurrentWeekStats();
-
-  const attendance =
-    clamp(
-      getAttendanceCommitment(),
-      0,
-      100
-    );
-
-  const hifz =
-    clamp(
-      weekly.hifzProgress,
-      0,
-      100
-    );
-
-  const review =
-    clamp(
-      weekly.reviewProgress,
-      0,
-      100
-    );
-
-  const tests =
-    clamp(
-      getTestCommitment(),
-      0,
-      100
-    );
-
-  const total =
-    (
-      attendance * .20
-    ) +
-    (
-      hifz * .35
-    ) +
-    (
-      review * .25
-    ) +
-    (
-      tests * .20
-    );
-
-  let label =
-    'بحاجة للمتابعة';
-
-  if (
-    total >= 90
-  )
-    label =
-      'ممتاز الالتزام';
-
-  else if (
-    total >= 80
-  )
-    label =
-      'جيد جداً';
-
-  else if (
-    total >= 70
-  )
-    label =
-      'جيد';
-
-  else if (
-    total >= 60
-  )
-    label =
-      'مقبول';
-
-  return {
-
-    total,
-
-    label,
-
-    attendance,
-
-    hifz,
-
-    review,
-
-    tests
-
-  };
-
-}
-
-
-/* =========================================================
-   RECITATION STATS
-========================================================= */
-
-function getHighestGrade() {
-
-  const grades =
-    profile.recitations
-      .map(
-        item =>
-          getRecitationGrade(
-            item.score
-          )
-      )
-      .filter(
-        grade =>
-          grade.label !==
-          'لم يتم التقييم'
-      );
-
-  if (
-    !grades.length
-  )
-    return '—';
-
-  const order = [
-
-    'ممتاز (متقن)',
-
-    'جيد جداً (أخطاء قليلة)',
-
-    'جيد (أخطاء متعددة)',
-
-    'مقبول (يحتاج تمكين)',
-
-    'مراجعة الصفحة'
-
-  ];
-
-  for (
-    const wanted of order
-  ) {
-
-    if (
-      grades.some(
-        grade =>
-          grade.label ===
-          wanted
-      )
-    )
-      return wanted;
-
-  }
-
-  return '—';
-
-}
-
-
-function getRecitationStats() {
-
-  const records =
-    profile.recitations;
-
-  const scores =
-    records
-      .map(
-        item =>
-          number(item.score)
-      )
-      .filter(
-        score =>
-          score >= 0 &&
-          score <= 100
-      );
-
-  const average =
-    scores.length
-      ? (
-          scores.reduce(
-            (
-              a,
-              b
-            ) =>
-              a + b,
-            0
-          ) /
-          scores.length
-        )
-      : 0;
-
-  return {
-
-    records:
-      records.length,
-
-    pages:
-      records.length,
-
-    average,
-
-    highest:
-      getHighestGrade()
-
-  };
-
-}
-
-
-/* =========================================================
-   PLAN
-========================================================= */
-
-function isDateInsideRange(
-  dateValue,
-  range
-) {
-
-  if (!dateValue)
-    return false;
-
-  const d =
-    new Date(
-      `${dateValue}T12:00:00`
-    );
-
-  return (
-    d >= range.start &&
-    d <= range.end
-  );
-
-}
-
-
-function getPlanStatus(
-  item
-) {
-
-  const targetHifz =
-    number(
-      item.hifzTarget ??
-      item.hifz ??
-      0
-    );
-
-  const targetReview =
-    number(
-      item.reviewTarget ??
-      item.review ??
-      0
-    );
-
-  if (!item.date) {
-
-    return {
-
-      label:
-        'قيد الإدخال',
-
-      className:
-        'status-pending'
-
-    };
-
-  }
-
-  const range =
-    getWeekRangeForDate(
-      item.date
-    );
-
-  if (!range) {
-
-    return {
-
-      label:
-        'قيد الإدخال',
-
-      className:
-        'status-pending'
-
-    };
-
-  }
-
-  const hifz =
-    profile.recitations.filter(
-      rec =>
-        rec.type === 'hifz' &&
-        isDateInsideRange(
-          rec.date,
-          range
-        )
-    ).length;
-
-  const review =
-    profile.recitations.filter(
-      rec =>
-        rec.type === 'review' &&
-        isDateInsideRange(
-          rec.date,
-          range
-        )
-    ).length;
-
-  const hifzDone =
-    targetHifz <= 0
-      ? true
-      : hifz >= targetHifz;
-
-  const reviewDone =
-    targetReview <= 0
-      ? true
-      : review >= targetReview;
-
-  if (
-    hifzDone &&
-    reviewDone
-  ) {
-
-    return {
-
-      label:
-        'مكتملة ✅',
-
-      className:
-        'status-complete'
-
-    };
-
-  }
-
-  if (
-    hifz > 0 ||
-    review > 0
-  ) {
-
-    return {
-
-      label:
-        'جزئية',
-
-      className:
-        'status-partial'
-
-    };
-
-  }
-
-  return {
-
-    label:
-      'قيد التنفيذ',
-
-    className:
-      'status-running'
-
-  };
-
-}
-
-
-/* =========================================================
-   TEACHER CHECK
-========================================================= */
-
-async function checkTeacher() {
-
-  try {
-
-    const {
-      data:{
-        user
-      },
-      error
-    } =
-      await supabaseClient
-        .auth
-        .getUser();
-
-    if (
-      error ||
-      !user
-    ) {
-
-      window.location.href =
-        'teacher-login.html';
-
-      return false;
-
-    }
-
-    if (
-      String(
-        user.email || ''
-      ).toLowerCase() !==
-      TEACHER_EMAIL.toLowerCase()
-    ) {
-
-      alert(
-        'هذا القسم مخصص للمعلم فقط.'
-      );
-
-      await supabaseClient
-        .auth
-        .signOut();
-
-      window.location.href =
-        'teacher-login.html';
-
-      return false;
-
-    }
-
-    return true;
-
-  } catch (
-    error
-  ) {
-
-    console.error(
-      error
-    );
-
-    window.location.href =
-      'teacher-login.html';
-
-    return false;
-
-  }
-
-}
-
-
-/* =========================================================
-   LOAD
-========================================================= */
-
-async function loadStudent() {
-
-  try {
-
-    if (
-      !(await checkTeacher())
-    )
-      return;
+  function getStudentIdFromUrl() {
 
     const params =
       new URLSearchParams(
         window.location.search
       );
 
-    studentId =
-      params.get('id');
+    const id =
+      params.get('id') ||
+      params.get('student_id') ||
+      params.get('studentId');
+
+    return id ? String(id).trim() : '';
+
+  }
+
+
+  function detail(label, value) {
+
+    const finalValue =
+      value === undefined ||
+      value === null ||
+      String(value).trim() === ''
+        ? 'غير محدد'
+        : value;
+
+    return `
+      <div class="detail">
+
+        <small>
+          ${escapeHtml(label)}
+        </small>
+
+        <strong>
+          ${escapeHtml(finalValue)}
+        </strong>
+
+      </div>
+    `;
+
+  }
+
+
+  function progressBar(value) {
+
+    let number =
+      Number(value);
+
+    if (isNaN(number)) {
+      number = 0;
+    }
+
+    number =
+      Math.max(
+        0,
+        Math.min(100, number)
+      );
+
+    return `
+      <div class="progress">
+
+        <div
+          class="progress-bar"
+          style="width:${number}%"
+        ></div>
+
+      </div>
+    `;
+
+  }
+
+
+  function showError(title, message, studentId = '') {
+
+    document.getElementById('app').innerHTML = `
+
+      <div class="error">
+
+        <h2>
+          ${escapeHtml(title)}
+        </h2>
+
+        <p>
+          ${escapeHtml(message)}
+        </p>
+
+        ${
+          studentId
+            ? `
+              <div class="id-box">
+                ID: ${escapeHtml(studentId)}
+              </div>
+            `
+            : ''
+        }
+
+        <button onclick="location.reload()">
+          المحاولة مرة أخرى
+        </button>
+
+        <button
+          onclick="window.location.href='./teacher-dashboard.html'"
+          style="
+            background:#777;
+            margin-right:8px;
+          "
+        >
+          العودة للوحة المعلم
+        </button>
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* =========================
+     تحميل الطالب
+  ========================= */
+
+  async function loadStudent() {
+
+    const app =
+      document.getElementById('app');
+
+    const studentId =
+      getStudentIdFromUrl();
+
+
+    /* لا يوجد ID */
 
     if (!studentId) {
 
-      document.getElementById(
-        'app'
-      ).innerHTML = `
-
-        <div class="loading">
-          لم يتم تحديد الطالب.
-        </div>
-
-      `;
+      showError(
+        'لم يتم تحديد الطالب',
+        'رابط صفحة الطالب لا يحتوي على رقم الطالب.'
+      );
 
       return;
 
     }
 
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
+
+    try {
+
+      /* =========================
+         جلب بيانات الطالب
+      ========================= */
+
+      const {
+        data: student,
+        error: studentError
+      } = await supabaseClient
+
         .from('students')
+
         .select('*')
-        .eq(
-          'id',
-          studentId
-        )
-        .maybeSingle();
 
-    if (error)
-      throw error;
+        .eq('id', studentId)
 
-    if (!data) {
+        .single();
 
-      document.getElementById(
-        'app'
-      ).innerHTML = `
 
-        <div class="loading">
-          تعذر العثور على الطالب.
-        </div>
+      if (studentError) {
 
-      `;
+        console.error(
+          'Student error:',
+          studentError
+        );
 
-      return;
+        throw new Error(
+          studentError.message ||
+          'تعذر جلب بيانات الطالب'
+        );
 
-    }
+      }
 
-    student =
-      data;
 
-    const {
-      data:profileRow,
-      error:profileError
-    } =
-      await supabaseClient
+      if (!student) {
+
+        throw new Error(
+          'لم يتم العثور على الطالب'
+        );
+
+      }
+
+
+      /* =========================
+         جلب ملف الطالب
+      ========================= */
+
+      const {
+        data: profileRow,
+        error: profileError
+      } = await supabaseClient
+
         .from('student_profiles')
+
         .select('data')
+
         .eq(
           'student_id',
           String(studentId)
         )
+
         .maybeSingle();
 
-    if (profileError) {
 
-      console.error(
-        profileError
+      if (profileError) {
+
+        console.error(
+          'Profile error:',
+          profileError
+        );
+
+        throw new Error(
+          profileError.message ||
+          'تعذر جلب ملف الطالب'
+        );
+
+      }
+
+
+      const profile =
+        profileRow &&
+        profileRow.data &&
+        typeof profileRow.data === 'object'
+
+          ? profileRow.data
+
+          : {};
+
+
+      renderStudent(
+        student,
+        profile,
+        studentId
       );
 
-      profile =
-        defaultProfile();
 
-    } else {
+    } catch (error) {
 
-      profile =
-        mergeProfile(
-          profileRow?.data || {}
-        );
+      console.error(
+        'Load student error:',
+        error
+      );
+
+
+      showError(
+        'تعذر تحميل ملف الطالب',
+        error.message ||
+        'حدث خطأ غير معروف أثناء تحميل البيانات.',
+        studentId
+      );
 
     }
 
-    render();
+  }
 
-  } catch (
-    error
+
+  /* =========================
+     عرض الطالب
+  ========================= */
+
+  function renderStudent(
+    student,
+    profile,
+    studentId
   ) {
 
-    console.error(
-      'LOAD ERROR:',
-      error
-    );
+    const app =
+      document.getElementById('app');
 
-    document.getElementById(
-      'app'
-    ).innerHTML = `
 
-      <div class="loading">
+    /* الصورة */
 
-        <h2
-          style="
-            color:#b42318;
-            margin-bottom:10px;
-          "
-        >
-          تعذر تحميل ملف الطالب
+    const photo =
+      profile.photoUrl ||
+      profile.photo_url ||
+      '';
+
+
+    /* البيانات */
+
+    const weeklyGoal =
+      profile.weeklyGoal ??
+      profile.weekly_goal ??
+      'غير محدد';
+
+
+    const points =
+      profile.totalPoints ??
+      profile.total_points ??
+      '0';
+
+
+    const weeklyProgress =
+      profile.weeklyProgress ??
+      profile.weekly_progress ??
+      0;
+
+
+    const attendance =
+      Array.isArray(profile.attendance)
+        ? profile.attendance
+        : [];
+
+
+    const weeklyPlan =
+      Array.isArray(profile.weeklyPlan)
+        ? profile.weeklyPlan
+        : [];
+
+
+    const tests =
+      Array.isArray(profile.tests)
+        ? profile.tests
+        : [];
+
+
+    const recitations =
+      Array.isArray(profile.recitations)
+        ? profile.recitations
+        : [];
+
+
+    const hifzProgress =
+      Number(
+        profile.hifzProgress ??
+        profile.hifz_progress ??
+        0
+      );
+
+
+    const reviewProgress =
+      Number(
+        profile.reviewProgress ??
+        profile.review_progress ??
+        0
+      );
+
+
+    const completedPages =
+      profile.completedPages ??
+      profile.completed_pages ??
+      '0';
+
+
+    const requiredPages =
+      profile.requiredPages ??
+      profile.required_pages ??
+      '0';
+
+
+    const generalEvaluation =
+      profile.generalEvaluation ??
+      profile.general_evaluation ??
+      'غير محدد';
+
+
+    const equivalentRecitation =
+      profile.equivalentRecitation ??
+      profile.equivalent_recitation ??
+      'غير محدد';
+
+
+    const nextExam =
+      profile.nextExam ??
+      profile.next_exam ??
+      'غير محدد';
+
+
+    const nextExamDate =
+      profile.nextExamDate ??
+      profile.next_exam_date ??
+      'غير محدد';
+
+
+    /* =========================
+       عرض الصفحة
+    ========================= */
+
+    app.innerHTML = `
+
+      <!-- الترحيب -->
+
+      <section class="welcome">
+
+        <h2>
+          ملف الطالب:
+          ${escapeHtml(student.name)}
         </h2>
 
         <p>
-          حدث خطأ أثناء تحميل البيانات.
+          هذه صفحة متابعة الطالب في مركز حردان طارق القرآني.
+          يتم تحديث المعلومات من لوحة المعلم.
         </p>
 
-      </div>
+      </section>
 
-    `;
 
-  }
+      <!-- معلومات الطالب -->
 
-}
+      <section class="profile">
 
+        <div class="card student-card">
 
-/* =========================================================
-   RENDER
-========================================================= */
+          ${
+            photo
 
-function render() {
-
-  const app =
-    document.getElementById(
-      'app'
-    );
-
-  const weekly =
-    getCurrentWeekStats();
-
-  const quran =
-    getQuranProgress();
-
-  const recitation =
-    getRecitationStats();
-
-  const completedJuz =
-    getCompletedJuz();
-
-  const totalPoints =
-    getTotalPoints();
-
-  const weeklyPoints =
-    getWeeklyPoints();
-
-  const commitment =
-    getCommitment();
-
-  const photo =
-    profile.photoUrl || '';
-
-  app.innerHTML = `
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
-    <section class="student-hero">
-
-      <div class="hero-top">
-
-        <img
-          id="heroPhoto"
-          class="hero-photo"
-          src="${
-            photo ||
-            'data:image/svg+xml;charset=UTF-8,' +
-            encodeURIComponent(`
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="200"
-                height="200"
-              >
-                <rect
-                  width="200"
-                  height="200"
-                  fill="#e8eee9"
-                />
-                <text
-                  x="100"
-                  y="112"
-                  text-anchor="middle"
-                  font-size="80"
-                >
-                  👤
-                </text>
-              </svg>
-            `)
-          }"
-          alt="صورة الطالب"
-        >
-
-
-        <div class="hero-info">
-
-          <h2>
-            ${escapeHtml(
-              student.name || 'طالب'
-            )}
-          </h2>
-
-          <p>
-            ملف الطالب والمتابعة الأكاديمية
-          </p>
-
-
-          <div class="hero-pills">
-
-            <span class="hero-pill">
-              📖
-              ${completedJuz}
-              جزء مكتمل
-            </span>
-
-            <span class="hero-pill">
-              📚
-              ${quran.completed}
-              صفحة مسجلة
-            </span>
-
-            <span class="hero-pill">
-              🏆
-              ${formatNumber(
-                totalPoints,
-                1
-              )}
-              نقطة
-            </span>
-
-            <span class="hero-pill">
-              ⭐
-              ${escapeHtml(
-                commitment.label
-              )}
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="hero-side">
-
-          <div class="hero-stat">
-
-            <small>
-              إنجاز الأسبوع
-            </small>
-
-            <strong>
-              ${formatNumber(
-                weekly.weeklyProgress,
-                0
-              )}%
-            </strong>
-
-          </div>
-
-
-          <div class="hero-stat">
-
-            <small>
-              نقاط الطالب
-            </small>
-
-            <strong>
-              ${formatNumber(
-                totalPoints,
-                1
-              )}
-            </strong>
-
-          </div>
-
-
-          <div class="hero-stat">
-
-            <small>
-              نقاط هذا الأسبوع
-            </small>
-
-            <strong>
-              ${formatNumber(
-                weeklyPoints,
-                1
-              )}
-            </strong>
-
-          </div>
-
-
-          <div class="hero-stat">
-
-            <small>
-              الالتزام
-            </small>
-
-            <strong>
-              ${formatNumber(
-                commitment.total,
-                0
-              )}%
-            </strong>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- =================================================
-           البيانات الأساسية داخل الأخضر
-      ================================================== -->
-
-      <div class="hero-edit">
-
-        <div class="hero-edit-title">
-          👤 البيانات الأساسية
-        </div>
-
-
-        <div class="hero-form-grid">
-
-          <div class="hero-field">
-
-            <label>
-              اسم الطالب
-            </label>
-
-            <input
-              id="name"
-              value="${escapeHtml(
-                student.name || ''
-              )}"
-            >
-
-          </div>
-
-
-          <div class="hero-field">
-
-            <label>
-              الشعبة
-            </label>
-
-            <input
-              id="section"
-              value="${escapeHtml(
-                student.section || ''
-              )}"
-            >
-
-          </div>
-
-
-          <div class="hero-field">
-
-            <label>
-              الحفظ الحالي
-            </label>
-
-            <input
-              id="memorization"
-              value="${escapeHtml(
-                student.memorization || ''
-              )}"
-              placeholder="مثال: 10 أجزاء"
-            >
-
-          </div>
-
-
-          <div class="hero-field">
-
-            <label>
-              حالة الطالب
-            </label>
-
-            <select id="status">
-
-              <option
-                value="active"
-                ${
-                  student.status === 'active'
-                    ? 'selected'
-                    : ''
-                }
-              >
-                فعال
-              </option>
-
-              <option
-                value="inactive"
-                ${
-                  student.status === 'inactive'
-                    ? 'selected'
-                    : ''
-                }
-              >
-                غير فعال
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="hero-field">
-
-            <label>
-              رقم جوال ولي الأمر
-            </label>
-
-            <input
-              id="guardianPhone"
-              value="${escapeHtml(
-                profile.guardianPhone
-              )}"
-              placeholder="07XXXXXXXX"
-            >
-
-          </div>
-
-
-          <div class="hero-field">
-
-            <label>
-              تاريخ الالتحاق
-            </label>
-
-            <input
-              id="joiningDate"
-              type="date"
-              value="${escapeHtml(
-                profile.joiningDate
-              )}"
-            >
-
-          </div>
-
-
-          <div class="hero-field">
-
-            <label>
-              مكان السكن
-            </label>
-
-            <input
-              id="residence"
-              value="${escapeHtml(
-                profile.residence
-              )}"
-              placeholder="مثال: حي الرشيد"
-            >
-
-          </div>
-
-
-          <div class="hero-field">
-
-            <label>
-              الحافلة
-            </label>
-
-            <input
-              id="bus"
-              value="${escapeHtml(
-                profile.bus
-              )}"
-              placeholder="مثال: حافلة 1"
-            >
-
-          </div>
-
-
-          <div class="hero-field full">
-
-            <label>
-              موقع المنزل
-            </label>
-
-            <input
-              id="homeLocation"
-              value="${escapeHtml(
-                profile.homeLocation
-              )}"
-              placeholder="32.01993, 35.86838"
-            >
-
-          </div>
-
-
-          <div class="hero-field full">
-
-            <label>
-              صورة الطالب
-            </label>
-
-
-            <div class="hero-image-upload">
-
-              <div class="hero-image-row">
+              ? `
 
                 <img
-                  id="photoPreview"
-                  class="hero-image-preview"
-                  src="${
-                    photo ||
-                    'data:image/svg+xml;charset=UTF-8,' +
-                    encodeURIComponent(`
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="200"
-                        height="200"
-                      >
-                        <rect
-                          width="200"
-                          height="200"
-                          fill="#e8eee9"
-                        />
-                        <text
-                          x="100"
-                          y="112"
-                          text-anchor="middle"
-                          font-size="80"
-                        >
-                          👤
-                        </text>
-                      </svg>
-                    `)
-                  }"
+                  class="photo"
+                  src="${escapeHtml(photo)}"
                   alt="صورة الطالب"
                 >
 
+              `
 
-                <div>
+              : `
 
-                  <label
-                    class="hero-file-button"
-                  >
+                <div
+                  class="photo"
+                  style="
+                    display:inline-flex;
+                    align-items:center;
+                    justify-content:center;
+                    font-size:40px;
+                    color:#07563c;
+                  "
+                >
+                  👤
+                </div>
 
-                    📷 اختيار صورة من الجهاز
-
-                    <input
-                      id="photoFile"
-                      type="file"
-                      accept="image/*"
-                      onchange="handlePhotoFile(this)"
-                    >
-
-                  </label>
+              `
+          }
 
 
-                  <div class="hero-image-help">
+          <h2>
+            ${escapeHtml(student.name)}
+          </h2>
 
-                    اختر صورة من ملفات الكمبيوتر.
+
+          <div class="section">
+
+            ${escapeHtml(
+              student.section ||
+              'غير محدد'
+            )}
+
+          </div>
+
+
+          <div style="
+            color:#777;
+            font-size:12px;
+            direction:ltr;
+            word-break:break-all;
+          ">
+
+            ID:
+            ${escapeHtml(studentId)}
+
+          </div>
+
+        </div>
+
+
+        <div class="card">
+
+          <h2 class="section-title">
+            معلومات الطالب
+          </h2>
+
+
+          <div class="details">
+
+            ${detail(
+              'الشعبة',
+              student.section
+            )}
+
+
+            ${detail(
+              'الحفظ الحالي',
+              student.memorization
+            )}
+
+
+            ${detail(
+              'الحالة',
+              student.status === 'active'
+                ? 'فعال'
+                : student.status
+            )}
+
+
+            ${detail(
+              'الهدف الأسبوعي',
+              weeklyGoal
+            )}
+
+
+            ${detail(
+              'مجموع النقاط',
+              points
+            )}
+
+
+            ${detail(
+              'التقدم الأسبوعي',
+              weeklyProgress + '%'
+            )}
+
+
+            ${detail(
+              'تاريخ الالتحاق',
+              profile.joiningDate ||
+              profile.joining_date
+            )}
+
+
+            ${detail(
+              'مكان السكن',
+              profile.residence
+            )}
+
+
+            ${detail(
+              'الحافلة',
+              profile.bus
+            )}
+
+
+            ${detail(
+              'موقع المنزل',
+              profile.homeLocation ||
+              profile.home_location
+            )}
+
+
+            ${detail(
+              'رقم ولي الأمر',
+              profile.guardianPhone ||
+              profile.guardian_phone
+            )}
+
+
+            ${detail(
+              'أجزاء القرآن المكتملة',
+              profile.completedQuranParts ||
+              profile.completed_quran_parts
+            )}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- التقدم -->
+
+      <section
+        class="card"
+        style="margin-bottom:20px"
+      >
+
+        <h2 class="section-title">
+          التقدم الأسبوعي
+        </h2>
+
+
+        <div class="progress-box">
+
+          <div class="progress-head">
+
+            <span>
+              الحفظ
+            </span>
+
+            <span>
+              ${hifzProgress}%
+            </span>
+
+          </div>
+
+
+          ${progressBar(hifzProgress)}
+
+
+          <p style="
+            margin-top:8px;
+            color:#777;
+          ">
+
+            تم إنجاز
+            ${escapeHtml(completedPages)}
+            من
+            ${escapeHtml(requiredPages)}
+
+          </p>
+
+        </div>
+
+
+        <div class="progress-box">
+
+          <div class="progress-head">
+
+            <span>
+              المراجعة
+            </span>
+
+            <span>
+              ${reviewProgress}%
+            </span>
+
+          </div>
+
+
+          ${progressBar(reviewProgress)}
+
+        </div>
+
+
+        <div class="details">
+
+          ${detail(
+            'التقييم العام',
+            generalEvaluation
+          )}
+
+
+          ${detail(
+            'التسميع المكافئ',
+            equivalentRecitation
+          )}
+
+
+          ${detail(
+            'الهدف الأسبوعي',
+            weeklyGoal
+          )}
+
+
+          ${detail(
+            'الاختبار القادم',
+            nextExam
+          )}
+
+
+          ${detail(
+            'تاريخ الاختبار',
+            nextExamDate
+          )}
+
+        </div>
+
+      </section>
+
+
+      <!-- الحضور -->
+
+      <section
+        class="card"
+        style="margin-bottom:20px"
+      >
+
+        <h2 class="section-title">
+          الحضور
+        </h2>
+
+
+        ${
+          attendance.length
+
+            ? `
+
+              <div class="attendance">
+
+                ${attendance.map(item => `
+
+                  <div class="attendance-item">
+
+                    <strong>
+                      ${escapeHtml(
+                        item.date ||
+                        item.day ||
+                        ''
+                      )}
+                    </strong>
+
+                    <div class="present">
+
+                      ${escapeHtml(
+                        item.status ||
+                        'حاضر'
+                      )}
+
+                    </div>
 
                   </div>
 
-                </div>
+                `).join('')}
 
               </div>
 
-            </div>
+            `
 
-          </div>
+            : `
 
-        </div>
+              <div class="empty">
+                لا يوجد سجل حضور مسجل حاليًا.
+              </div>
 
+            `
+        }
 
-        <div class="hero-save-row">
+      </section>
 
-          <button
-            id="basicSaveButton"
-            class="hero-save-btn"
-            type="button"
-            onclick="saveBasicFromHero()"
-          >
-            💾 حفظ البيانات الأساسية
-          </button>
 
+      <!-- الخطة الأسبوعية -->
 
-          <span
-            id="basicSaveMessage"
-            class="hero-save-message"
-          ></span>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         لوحة الإنجاز والالتزام
-    ====================================================== -->
-
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            📊 لوحة الإنجاز والالتزام
-          </h2>
-
-          <p class="section-subtitle">
-            الإحصائيات والتقدم ونسبة التزام الطالب في لوحة واحدة.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- الإحصائيات -->
-
-      <div class="stats">
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            📖
-          </div>
-
-          <div class="stat-label">
-            حفظ هذا الأسبوع
-          </div>
-
-          <div class="stat-value">
-            ${weekly.hifzPages}
-          </div>
-
-          <div class="stat-note">
-            من ${formatNumber(
-              weekly.goalHifz,
-              1
-            )} صفحة مطلوبة
-          </div>
-
-        </div>
-
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            🔄
-          </div>
-
-          <div class="stat-label">
-            مراجعة هذا الأسبوع
-          </div>
-
-          <div class="stat-value">
-            ${weekly.reviewPages}
-          </div>
-
-          <div class="stat-note">
-            من ${formatNumber(
-              weekly.goalReview,
-              1
-            )} صفحة مطلوبة
-          </div>
-
-        </div>
-
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            📚
-          </div>
-
-          <div class="stat-label">
-            إنجاز القرآن
-          </div>
-
-          <div class="stat-value">
-            ${formatNumber(
-              quran.percent,
-              1
-            )}%
-          </div>
-
-          <div class="stat-note">
-            ${quran.completed}
-            من 604 صفحة
-          </div>
-
-        </div>
-
-
-        <div class="stat">
-
-          <div class="stat-icon">
-            ⭐
-          </div>
-
-          <div class="stat-label">
-            التقييم النهائي
-          </div>
-
-          <div class="stat-value">
-            ${formatNumber(
-              commitment.total,
-              0
-            )}%
-          </div>
-
-          <div class="stat-note">
-            ${escapeHtml(
-              commitment.label
-            )}
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- التقدم الأسبوعي -->
-
-      <div class="progress-grid">
-
-        <div class="progress-card">
-
-          <div class="progress-top">
-
-            <strong>
-              📖 إنجاز الحفظ الجديد
-            </strong>
-
-            <span class="percent">
-              ${formatNumber(
-                weekly.hifzProgress,
-                0
-              )}%
-            </span>
-
-          </div>
-
-
-          <div class="bar">
-
-            <div
-              class="bar-fill"
-              style="
-                width:${clamp(
-                  weekly.hifzProgress,
-                  0,
-                  100
-                )}%
-              "
-            ></div>
-
-          </div>
-
-
-          <div class="progress-note">
-
-            تم إنجاز
-            <b>
-              ${weekly.hifzPages}
-            </b>
-            من
-            <b>
-              ${weekly.goalHifz}
-            </b>
-            صفحة.
-
-          </div>
-
-        </div>
-
-
-        <div class="progress-card">
-
-          <div class="progress-top">
-
-            <strong>
-              🔄 إنجاز المراجعة
-            </strong>
-
-            <span class="percent">
-              ${formatNumber(
-                weekly.reviewProgress,
-                0
-              )}%
-            </span>
-
-          </div>
-
-
-          <div class="bar">
-
-            <div
-              class="bar-fill"
-              style="
-                width:${clamp(
-                  weekly.reviewProgress,
-                  0,
-                  100
-                )}%
-              "
-            ></div>
-
-          </div>
-
-
-          <div class="progress-note">
-
-            تم إنجاز
-            <b>
-              ${weekly.reviewPages}
-            </b>
-            من
-            <b>
-              ${weekly.goalReview}
-            </b>
-            صفحة.
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div
-        style="
-          margin-top:15px;
-          padding:15px;
-          border-radius:14px;
-          background:#f7faf8;
-          color:#52645c;
-          font-size:13px;
-          line-height:1.8;
-        "
+      <section
+        class="card"
+        style="margin-bottom:20px"
       >
 
-        <b
-          style="
-            color:#0d4d3a;
-          "
-        >
-          🧮 التسميع المكافئ:
-        </b>
-
-        ${formatNumber(
-          weekly.equivalent,
-          1
-        )}
-
-        صفحة حفظ مكافئة من
-
-        ${formatNumber(
-          weekly.requiredEquivalent,
-          1
-        )}
-
-        مطلوبة.
-
-        <span
-          style="
-            color:#8a7650;
-          "
-        >
-          كل 3 صفحات مراجعة = صفحة حفظ جديد.
-        </span>
-
-      </div>
+        <h2 class="section-title">
+          الخطة الأسبوعية
+        </h2>
 
 
-      <!-- الالتزام -->
+        ${
+          weeklyPlan.length
 
-      <div class="commitment-grid">
+            ? `
 
-        <div class="commitment-card">
+              <div class="table-wrap">
 
-          <small>
-            📅 الحضور
-          </small>
+                <table>
 
-          <strong>
-            ${formatNumber(
-              commitment.attendance,
-              0
-            )}%
-          </strong>
+                  <thead>
 
-        </div>
+                    <tr>
 
+                      <th>
+                        التاريخ
+                      </th>
 
-        <div class="commitment-card">
+                      <th>
+                        الجزء
+                      </th>
 
-          <small>
-            📖 الحفظ
-          </small>
+                      <th>
+                        الصفحات
+                      </th>
 
-          <strong>
-            ${formatNumber(
-              commitment.hifz,
-              0
-            )}%
-          </strong>
+                      <th>
+                        المطلوب
+                      </th>
 
-        </div>
+                      <th>
+                        الحالة
+                      </th>
 
+                    </tr>
 
-        <div class="commitment-card">
-
-          <small>
-            🔄 المراجعة
-          </small>
-
-          <strong>
-            ${formatNumber(
-              commitment.review,
-              0
-            )}%
-          </strong>
-
-        </div>
+                  </thead>
 
 
-        <div class="commitment-card">
+                  <tbody>
 
-          <small>
-            🧪 الاختبارات
-          </small>
+                    ${weeklyPlan.map(item => `
 
-          <strong>
-            ${formatNumber(
-              commitment.tests,
-              0
-            )}%
-          </strong>
+                      <tr>
 
-        </div>
+                        <td>
+                          ${escapeHtml(item.date)}
+                        </td>
 
-      </div>
+                        <td>
+                          ${escapeHtml(item.juz)}
+                        </td>
+
+                        <td>
+                          ${escapeHtml(item.pages)}
+                        </td>
+
+                        <td>
+                          ${escapeHtml(
+                            item.exam ||
+                            'لا يوجد'
+                          )}
+                        </td>
+
+                        <td>
+
+                          <span class="status">
+
+                            ${escapeHtml(
+                              item.status ||
+                              'قيد الانتظار'
+                            )}
+
+                          </span>
+
+                        </td>
+
+                      </tr>
+
+                    `).join('')}
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            `
+
+            : `
+
+              <div class="empty">
+                لم يتم تسجيل خطة أسبوعية بعد.
+              </div>
+
+            `
+        }
+
+      </section>
 
 
-      <div class="commitment-final">
+      <!-- الاختبارات -->
 
-        <div class="commitment-final-label">
-          التقييم الأسبوعي النهائي
-        </div>
+      <section
+        class="card"
+        style="margin-bottom:20px"
+      >
 
-        <div class="commitment-final-value">
-          ${formatNumber(
-            commitment.total,
-            0
-          )}%
-        </div>
+        <h2 class="section-title">
+          الاختبارات
+        </h2>
 
-        <div class="commitment-final-text">
+
+        ${
+          tests.length
+
+            ? `
+
+              <div class="table-wrap">
+
+                <table>
+
+                  <thead>
+
+                    <tr>
+
+                      <th>
+                        الاختبار
+                      </th>
+
+                      <th>
+                        التاريخ
+                      </th>
+
+                      <th>
+                        النتيجة
+                      </th>
+
+                      <th>
+                        النقاط
+                      </th>
+
+                    </tr>
+
+                  </thead>
+
+
+                  <tbody>
+
+                    ${tests.map(test => `
+
+                      <tr>
+
+                        <td>
+                          ${escapeHtml(test.name)}
+                        </td>
+
+                        <td>
+                          ${escapeHtml(test.date)}
+                        </td>
+
+                        <td>
+                          ${escapeHtml(test.result)}
+                        </td>
+
+                        <td>
+                          ${escapeHtml(test.points)}
+                        </td>
+
+                      </tr>
+
+                    `).join('')}
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            `
+
+            : `
+
+              <div class="empty">
+                لا توجد اختبارات مسجلة حاليًا.
+              </div>
+
+            `
+        }
+
+      </section>
+
+
+      <!-- التسميع -->
+
+      <section
+        class="card"
+        style="margin-bottom:20px"
+      >
+
+        <h2 class="section-title">
+          سجل التسميع
+        </h2>
+
+
+        ${
+          recitations.length
+
+            ? `
+
+              <div class="table-wrap">
+
+                <table>
+
+                  <thead>
+
+                    <tr>
+
+                      <th>
+                        الصفحة
+                      </th>
+
+                      <th>
+                        النوع
+                      </th>
+
+                      <th>
+                        العلامة
+                      </th>
+
+                      <th>
+                        التقييم
+                      </th>
+
+                      <th>
+                        التاريخ
+                      </th>
+
+                    </tr>
+
+                  </thead>
+
+
+                  <tbody>
+
+                    ${recitations.map(item => `
+
+                      <tr>
+
+                        <td>
+                          ${escapeHtml(item.page)}
+                        </td>
+
+                        <td>
+                          ${escapeHtml(
+                            item.type === 'hifz'
+                              ? 'حفظ'
+                              : item.type === 'review'
+                                ? 'مراجعة'
+                                : item.type || '-'
+                          )}
+                        </td>
+
+                        <td>
+                          ${escapeHtml(item.score)}
+                        </td>
+
+                        <td>
+                          ${escapeHtml(
+                            item.grade ||
+                            '-'
+                          )}
+                        </td>
+
+                        <td>
+                          ${escapeHtml(
+                            item.date ||
+                            '-'
+                          )}
+                        </td>
+
+                      </tr>
+
+                    `).join('')}
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            `
+
+            : `
+
+              <div class="empty">
+                لا يوجد تسميع مسجل حاليًا.
+              </div>
+
+            `
+        }
+
+      </section>
+
+
+      <!-- الملاحظات -->
+
+      <section class="card">
+
+        <h2 class="section-title">
+          ملاحظات المعلم
+        </h2>
+
+
+        <p style="
+          line-height:2;
+          color:#555;
+        ">
+
           ${escapeHtml(
-            commitment.label
+            profile.notes ||
+            profile.generalNotes ||
+            profile.general_notes ||
+            'لا يوجد ملاحظات عامة مسجلة للطالب في الوقت الحالي.'
           )}
-        </div>
 
-      </div>
+        </p>
 
-    </section>
-
-
-    <!-- =====================================================
-         نظام النقاط
-    ====================================================== -->
-
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            🏆 نظام النقاط
-          </h2>
-
-          <p class="section-subtitle">
-            النقاط تُحتسب تلقائياً حسب جودة التسميع والحضور والاختبارات.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="points-breakdown">
-
-        <div class="points-card">
-
-          <small>
-            نقاط الحفظ الجديد
-          </small>
-
-          <strong>
-            ${formatNumber(
-              getTotalRecitationPoints(),
-              1
-            )}
-          </strong>
-
-        </div>
-
-
-        <div class="points-card">
-
-          <small>
-            نقاط الحضور
-          </small>
-
-          <strong>
-            ${formatNumber(
-              getTotalAttendancePoints(),
-              1
-            )}
-          </strong>
-
-        </div>
-
-
-        <div class="points-card">
-
-          <small>
-            نقاط الاختبارات
-          </small>
-
-          <strong>
-            ${formatNumber(
-              getTotalTestPoints(),
-              1
-            )}
-          </strong>
-
-        </div>
-
-
-        <div class="points-card">
-
-          <small>
-            المجموع الكلي
-          </small>
-
-          <strong>
-            ${formatNumber(
-              totalPoints,
-              1
-            )}
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div
-        style="
-          padding:15px;
-          border-radius:14px;
-          background:#fffdf6;
-          border:1px solid #eee4c5;
-          color:#675a37;
-          font-size:12px;
-          line-height:1.8;
-        "
-      >
-
-        <b>
-          توزيع النقاط:
-        </b>
-
-        الحفظ الجديد:
-        6 / 5 / 4 / 2 / 0
-
-        حسب جودة التسميع.
-
-        المراجعة:
-        3 / 2.5 / 2 / 1 / 0
-
-        حسب الجودة.
-
-        الحضور:
-        حاضر 2،
-        متأخر 1،
-        معتذر 0.5،
-        غائب 0.
-
-        الاختبارات:
-        ممتاز 12،
-        جيد جداً 8،
-        جيد 4،
-        غير مجتاز 0.
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         الهدف الأسبوعي
-    ====================================================== -->
-
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            🎯 الهدف الأسبوعي
-          </h2>
-
-          <p class="section-subtitle">
-            هذه الأرقام هي المطلوب من الطالب خلال الأسبوع الحالي.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="form-grid">
-
-        <div class="field">
-
-          <label>
-            صفحات الحفظ المطلوبة
-          </label>
-
-          <input
-            id="goalHifz"
-            type="number"
-            min="0"
-            step="1"
-            value="${number(
-              profile.weeklyGoal?.hifz
-            )}"
-          >
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            صفحات المراجعة المطلوبة
-          </label>
-
-          <input
-            id="goalReview"
-            type="number"
-            min="0"
-            step="1"
-            value="${number(
-              profile.weeklyGoal?.review
-            )}"
-          >
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         الحضور
-    ====================================================== -->
-
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            📅 سجل الحضور
-          </h2>
-
-          <p class="section-subtitle">
-            نقاط الحضور تحسب تلقائياً.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div
-        id="attendanceEditor"
-        class="editor-list"
-      ></div>
-
-
-      <button
-        class="add"
-        type="button"
-        onclick="addAttendance()"
-      >
-        + إضافة سجل حضور
-      </button>
-
-    </section>
-
-
-    <!-- =====================================================
-         الخطة
-    ====================================================== -->
-
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            📋 الخطة الأسبوعية
-          </h2>
-
-          <p class="section-subtitle">
-            الحالة تتحدد تلقائياً من التسميع المسجل في نفس الأسبوع.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div
-        id="planEditor"
-        class="editor-list"
-      ></div>
-
-
-      <button
-        class="add"
-        type="button"
-        onclick="addPlan()"
-      >
-        + إضافة خطة أسبوعية
-      </button>
-
-    </section>
-
-
-    <!-- =====================================================
-         الاختبارات
-    ====================================================== -->
-
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            🧪 الاختبارات
-          </h2>
-
-          <p class="section-subtitle">
-            النقاط تُحسب تلقائياً من نتيجة الاختبار.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="recitation-summary">
-
-        <div class="mini-stat">
-
-          <small>
-            مجموع نقاط الاختبارات
-          </small>
-
-          <strong>
-            ${formatNumber(
-              getTotalTestPoints(),
-              1
-            )}
-          </strong>
-
-        </div>
-
-
-        <div class="mini-stat">
-
-          <small>
-            عدد الاختبارات
-          </small>
-
-          <strong>
-            ${profile.tests.length}
-          </strong>
-
-        </div>
-
-
-        <div class="mini-stat">
-
-          <small>
-            اختبارات هذا الأسبوع
-          </small>
-
-          <strong>
-            ${
-              profile.tests.filter(
-                item =>
-                  dateInCurrentWeek(
-                    item.date
-                  )
-              ).length
-            }
-          </strong>
-
-        </div>
-
-
-        <div class="mini-stat">
-
-          <small>
-            متوسط التسميع
-          </small>
-
-          <strong>
-            ${formatNumber(
-              recitation.average,
-              1
-            )}%
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div
-        id="testsEditor"
-        class="editor-list"
-      ></div>
-
-
-      <button
-        class="add"
-        type="button"
-        onclick="addTest()"
-      >
-        + إضافة اختبار
-      </button>
-
-    </section>
-
-
-    <!-- =====================================================
-         التسميع
-    ====================================================== -->
-
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            📖 سجل التسميع
-          </h2>
-
-          <p class="section-subtitle">
-            سجّل كل صفحة سمعها الطالب، وسيظهر التقدير والنقاط تلقائياً.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="recitation-summary">
-
-        <div class="mini-stat">
-
-          <small>
-            إجمالي جلسات التسميع
-          </small>
-
-          <strong>
-            ${recitation.records}
-          </strong>
-
-        </div>
-
-
-        <div class="mini-stat">
-
-          <small>
-            متوسط درجة التسميع
-          </small>
-
-          <strong>
-            ${formatNumber(
-              recitation.average,
-              1
-            )}%
-          </strong>
-
-        </div>
-
-
-        <div class="mini-stat">
-
-          <small>
-            أعلى تقدير
-          </small>
-
-          <strong
-            style="
-              font-size:13px;
-            "
-          >
-            ${escapeHtml(
-              recitation.highest
-            )}
-          </strong>
-
-        </div>
-
-
-        <div class="mini-stat">
-
-          <small>
-            نقاط التسميع
-          </small>
-
-          <strong>
-            ${formatNumber(
-              getTotalRecitationPoints(),
-              1
-            )}
-          </strong>
-
-        </div>
-
-      </div>
-
-
-      <div
-        id="recitationsEditor"
-        class="editor-list"
-      ></div>
-
-
-      <button
-        class="add"
-        type="button"
-        onclick="addRecitation()"
-      >
-        + تسجيل تسميع صفحة
-      </button>
-
-    </section>
-
-
-    <!-- =====================================================
-         خريطة القرآن
-    ====================================================== -->
-
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            🗺️ خريطة القرآن
-          </h2>
-
-          <p class="section-subtitle">
-            كل مربع يمثل صفحة حقيقية من 1 إلى 604.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <div class="quran-progress">
-
-        <div class="quran-progress-head">
-
-          <span>
-            الإنجاز الكلي
-          </span>
-
-          <strong>
-            ${formatNumber(
-              quran.percent,
-              1
-            )}%
-          </strong>
-
-        </div>
-
-
-        <div class="bar">
-
-          <div
-            class="bar-fill"
-            style="
-              width:${clamp(
-                quran.percent,
-                0,
-                100
-              )}%
-            "
-          ></div>
-
-        </div>
-
-
-        <div
-          style="
-            margin-top:9px;
-            color:#718078;
-            font-size:12px;
-          "
-        >
-
-          ${quran.completed}
-
-          صفحة مسجلة من أصل
-
-          ${TOTAL_QURAN_PAGES}
-
-          صفحة
-
-        </div>
-
-      </div>
-
-
-      <div
-        id="quranMap"
-        class="juz-grid"
-      ></div>
-
-
-      <div class="map-legend">
-
-        <div class="legend-item">
-
-          <span
-            class="legend-dot hifz"
-          ></span>
-
-          حفظ جديد
-
-        </div>
-
-
-        <div class="legend-item">
-
-          <span
-            class="legend-dot review"
-          ></span>
-
-          مراجعة
-
-        </div>
-
-
-        <div class="legend-item">
-
-          <span
-            class="legend-dot"
-          ></span>
-
-          غير مسجلة
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         الملاحظات
-    ====================================================== -->
-
-    <section class="section">
-
-      <div class="section-head">
-
-        <div>
-
-          <h2 class="section-title">
-            📝 ملاحظات المعلم
-          </h2>
-
-          <p class="section-subtitle">
-            الملاحظات والتوجيهات الخاصة بالطالب.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <textarea
-        id="notes"
-      >${escapeHtml(
-        profile.notes || ''
-      )}</textarea>
-
-    </section>
-
-
-    <div class="top-actions">
-
-      <button
-        class="secondary"
-        type="button"
-        onclick="
-          window.scrollTo({
-            top:0,
-            behavior:'smooth'
-          })
-        "
-      >
-        ↑ للأعلى
-      </button>
-
-    </div>
-
-  `;
-
-
-  renderAttendance();
-
-  renderPlan();
-
-  renderTests();
-
-  renderRecitations();
-
-  renderQuranMap();
-
-  setupAccordions();
-
-}
-
-
-/* =========================================================
-   BASIC DATA
-========================================================= */
-
-async function handlePhotoFile(
-  input
-) {
-
-  const file =
-    input.files?.[0];
-
-  if (!file)
-    return;
-
-  if (
-    !file.type.startsWith(
-      'image/'
-    )
-  ) {
-
-    alert(
-      'الملف المحدد ليس صورة.'
-    );
-
-    input.value =
-      '';
-
-    return;
-
-  }
-
-  try {
-
-    const compressed =
-      await compressImage(
-        file
-      );
-
-    profile.photoUrl =
-      compressed;
-
-    const preview =
-      document.getElementById(
-        'photoPreview'
-      );
-
-    const hero =
-      document.getElementById(
-        'heroPhoto'
-      );
-
-    if (preview)
-      preview.src =
-        compressed;
-
-    if (hero)
-      hero.src =
-        compressed;
-
-    setHeroSaveMessage(
-      '📷 تم إدراج الصورة، اضغط حفظ البيانات الأساسية لتثبيتها.',
-      'success'
-    );
-
-  } catch (
-    error
-  ) {
-
-    console.error(
-      error
-    );
-
-    alert(
-      'تعذر تجهيز الصورة.'
-    );
-
-  }
-
-}
-
-
-function compressImage(
-  file
-) {
-
-  return new Promise(
-    (
-      resolve,
-      reject
-    ) => {
-
-      const reader =
-        new FileReader();
-
-      reader.onload =
-        () => {
-
-          const img =
-            new Image();
-
-          img.onload =
-            () => {
-
-              const maxSize =
-                700;
-
-              let width =
-                img.width;
-
-              let height =
-                img.height;
-
-              if (
-                width > height &&
-                width > maxSize
-              ) {
-
-                height =
-                  Math.round(
-                    height *
-                    maxSize /
-                    width
-                  );
-
-                width =
-                  maxSize;
-
-              }
-
-              else if (
-                height >= width &&
-                height > maxSize
-              ) {
-
-                width =
-                  Math.round(
-                    width *
-                    maxSize /
-                    height
-                  );
-
-                height =
-                  maxSize;
-
-              }
-
-              const canvas =
-                document.createElement(
-                  'canvas'
-                );
-
-              canvas.width =
-                width;
-
-              canvas.height =
-                height;
-
-              const ctx =
-                canvas.getContext(
-                  '2d'
-                );
-
-              ctx.drawImage(
-                img,
-                0,
-                0,
-                width,
-                height
-              );
-
-              resolve(
-                canvas.toDataURL(
-                  'image/jpeg',
-                  0.82
-                )
-              );
-
-            };
-
-          img.onerror =
-            reject;
-
-          img.src =
-            reader.result;
-
-        };
-
-      reader.onerror =
-        reject;
-
-      reader.readAsDataURL(
-        file
-      );
-
-    }
-  );
-
-}
-
-
-function setHeroSaveMessage(
-  text,
-  type
-) {
-
-  const box =
-    document.getElementById(
-      'basicSaveMessage'
-    );
-
-  if (!box)
-    return;
-
-  box.className =
-    `hero-save-message ${type}`;
-
-  box.textContent =
-    text;
-
-}
-
-
-/* =========================================================
-   SAVE PROFILE PATCH
-========================================================= */
-
-async function readFreshProfile() {
-
-  const {
-    data,
-    error
-  } =
-    await supabaseClient
-      .from('student_profiles')
-      .select('data')
-      .eq(
-        'student_id',
-        String(studentId)
-      )
-      .maybeSingle();
-
-  if (error)
-    throw error;
-
-  return mergeProfile(
-    data?.data || {}
-  );
-
-}
-
-
-async function saveProfilePatch(
-  changes
-) {
-
-  const fresh =
-    await readFreshProfile();
-
-  const merged = {
-
-    ...fresh,
-
-    ...changes
-
-  };
-
-  const {
-    error
-  } =
-    await supabaseClient
-      .from('student_profiles')
-      .upsert({
-
-        student_id:
-          String(studentId),
-
-        data:
-          merged,
-
-        updated_at:
-          new Date()
-            .toISOString()
-
-      });
-
-  if (error)
-    throw error;
-
-  return merged;
-
-}
-
-
-/* =========================================================
-   SAVE BASIC
-========================================================= */
-
-async function saveBasicFromHero() {
-
-  const button =
-    document.getElementById(
-      'basicSaveButton'
-    );
-
-  if (!button)
-    return;
-
-  const oldText =
-    button.textContent;
-
-  button.disabled =
-    true;
-
-  button.textContent =
-    '⏳ جاري الحفظ...';
-
-  try {
-
-    const studentUpdate = {
-
-      name:
-        document
-          .getElementById(
-            'name'
-          )
-          ?.value
-          .trim() || '',
-
-      section:
-        document
-          .getElementById(
-            'section'
-          )
-          ?.value
-          .trim() || '',
-
-      memorization:
-        document
-          .getElementById(
-            'memorization'
-          )
-          ?.value
-          .trim() || '',
-
-      status:
-        document
-          .getElementById(
-            'status'
-          )
-          ?.value ||
-        'active'
-
-    };
-
-
-    if (
-      !studentUpdate.name
-    ) {
-
-      throw new Error(
-        'اسم الطالب مطلوب.'
-      );
-
-    }
-
-
-    const {
-      error:
-        studentError
-    } =
-      await supabaseClient
-        .from('students')
-        .update(
-          studentUpdate
-        )
-        .eq(
-          'id',
-          studentId
-        );
-
-    if (studentError)
-      throw studentError;
-
-
-    const profilePatch = {
-
-      photoUrl:
-        profile.photoUrl || '',
-
-      guardianPhone:
-        document
-          .getElementById(
-            'guardianPhone'
-          )
-          ?.value
-          .trim() || '',
-
-      joiningDate:
-        document
-          .getElementById(
-            'joiningDate'
-          )
-          ?.value || '',
-
-      residence:
-        document
-          .getElementById(
-            'residence'
-          )
-          ?.value
-          .trim() || '',
-
-      bus:
-        document
-          .getElementById(
-            'bus'
-          )
-          ?.value
-          .trim() || '',
-
-      homeLocation:
-        document
-          .getElementById(
-            'homeLocation'
-          )
-          ?.value
-          .trim() || ''
-
-    };
-
-
-    const saved =
-      await saveProfilePatch(
-        profilePatch
-      );
-
-
-    profile =
-      mergeProfile(
-        saved
-      );
-
-
-    student = {
-
-      ...student,
-
-      ...studentUpdate
-
-    };
-
-
-    render();
-
-
-    setHeroSaveMessage(
-      '✅ تم حفظ البيانات الأساسية بنجاح.',
-      'success'
-    );
-
-
-  } catch (
-    error
-  ) {
-
-    console.error(
-      'BASIC SAVE ERROR:',
-      error
-    );
-
-    setHeroSaveMessage(
-      error?.message ||
-      'حدث خطأ أثناء الحفظ.',
-      'error'
-    );
-
-  } finally {
-
-    const freshButton =
-      document.getElementById(
-        'basicSaveButton'
-      );
-
-    if (
-      freshButton
-    ) {
-
-      freshButton.disabled =
-        false;
-
-      freshButton.textContent =
-        oldText;
-
-    }
-
-  }
-
-}
-
-
-/* =========================================================
-   ACCORDIONS
-========================================================= */
-
-const SECTION_SAVE_CONFIG = [
-
-  {
-    match:
-      'الهدف الأسبوعي',
-
-    key:
-      'weeklyGoal',
-
-    label:
-      '💾 حفظ الهدف الأسبوعي'
-
-  },
-
-  {
-    match:
-      'سجل الحضور',
-
-    key:
-      'attendance',
-
-    label:
-      '💾 حفظ الحضور'
-
-  },
-
-  {
-    match:
-      'الخطة الأسبوعية',
-
-    key:
-      'weeklyPlan',
-
-    label:
-      '💾 حفظ الخطة الأسبوعية'
-
-  },
-
-  {
-    match:
-      'الاختبارات',
-
-    key:
-      'tests',
-
-    label:
-      '💾 حفظ الاختبارات'
-
-  },
-
-  {
-    match:
-      'سجل التسميع',
-
-    key:
-      'recitations',
-
-    label:
-      '💾 حفظ التسميع'
-
-  },
-
-  {
-    match:
-      'ملاحظات المعلم',
-
-    key:
-      'notes',
-
-    label:
-      '💾 حفظ الملاحظات'
-
-  }
-
-];
-
-
-function setupAccordions() {
-
-  const sections =
-    [
-      ...document.querySelectorAll(
-        '#app > .section'
-      )
-    ];
-
-  sections.forEach(
-    section => {
-
-      if (
-        section.dataset.accordionReady ===
-        '1'
-      )
-        return;
-
-      const head =
-        section.querySelector(
-          ':scope > .section-head'
-        );
-
-      const titleElement =
-        head?.querySelector(
-          '.section-title'
-        );
-
-      if (
-        !head ||
-        !titleElement
-      )
-        return;
-
-      const title =
-        titleElement
-          .textContent
-          .replace(
-            /\s+/g,
-            ' '
-          )
-          .trim();
-
-      const config =
-        SECTION_SAVE_CONFIG.find(
-          item =>
-            title.includes(
-              item.match
-            )
-        );
-
-      section.classList.add(
-        'accordion-section'
-      );
-
-      section.dataset.accordionReady =
-        '1';
-
-      section.dataset.accordionKey =
-        config?.key || '';
-
-
-      head.setAttribute(
-        'role',
-        'button'
-      );
-
-      head.setAttribute(
-        'tabindex',
-        '0'
-      );
-
-      head.setAttribute(
-        'aria-expanded',
-        'false'
-      );
-
-
-      head.addEventListener(
-        'click',
-        () => {
-
-          toggleAccordion(
-            section
-          );
-
-        }
-      );
-
-
-      head.addEventListener(
-        'keydown',
-        event => {
-
-          if (
-            event.key === 'Enter' ||
-            event.key === ' '
-          ) {
-
-            event.preventDefault();
-
-            toggleAccordion(
-              section
-            );
-
-          }
-
-        }
-      );
-
-
-      const body =
-        document.createElement(
-          'div'
-        );
-
-      body.className =
-        'section-body';
-
-
-      [
-        ...section.children
-      ].forEach(
-        child => {
-
-          if (
-            child !== head
-          )
-            body.appendChild(
-              child
-            );
-
-        }
-      );
-
-
-      section.appendChild(
-        body
-      );
-
-
-      if (
-        config
-      ) {
-
-        const saveWrap =
-          document.createElement(
-            'div'
-          );
-
-        saveWrap.className =
-          'section-save-wrap';
-
-
-        const saveButton =
-          document.createElement(
-            'button'
-          );
-
-        saveButton.type =
-          'button';
-
-        saveButton.className =
-          'section-save-btn';
-
-        saveButton.textContent =
-          config.label;
-
-
-        saveButton.addEventListener(
-          'click',
-          event => {
-
-            event.stopPropagation();
-
-            saveStudentSection(
-              config.key,
-              saveButton
-            );
-
-          }
-        );
-
-
-        const saveMessage =
-          document.createElement(
-            'span'
-          );
-
-        saveMessage.className =
-          'section-save-message';
-
-
-        saveWrap.appendChild(
-          saveButton
-        );
-
-        saveWrap.appendChild(
-          saveMessage
-        );
-
-
-        body.appendChild(
-          saveWrap
-        );
-
-      }
-
-
-      closeAccordion(
-        section
-      );
-
-    }
-  );
-
-}
-
-
-function toggleAccordion(
-  section
-) {
-
-  if (
-    section.classList.contains(
-      'open'
-    )
-  ) {
-
-    closeAccordion(
-      section
-    );
-
-  } else {
-
-    openAccordion(
-      section
-    );
-
-  }
-
-}
-
-
-function openAccordion(
-  section
-) {
-
-  document.querySelectorAll(
-    '.accordion-section.open'
-  ).forEach(
-    other => {
-
-      if (
-        other !== section
-      )
-        closeAccordion(
-          other
-        );
-
-    }
-  );
-
-
-  section.classList.add(
-    'open'
-  );
-
-
-  section
-    .querySelector(
-      '.section-head'
-    )
-    ?.setAttribute(
-      'aria-expanded',
-      'true'
-    );
-
-}
-
-
-function closeAccordion(
-  section
-) {
-
-  section.classList.remove(
-    'open'
-  );
-
-  section
-    .querySelector(
-      '.section-head'
-    )
-    ?.setAttribute(
-      'aria-expanded',
-      'false'
-    );
-
-}
-
-
-function openAccordionByKey(
-  key
-) {
-
-  const section =
-    document.querySelector(
-      `.accordion-section[data-accordion-key="${key}"]`
-    );
-
-  if (
-    section
-  )
-    openAccordion(
-      section
-    );
-
-  return section;
-
-}
-
-
-function showSectionSaveMessage(
-  section,
-  text,
-  type = 'success'
-) {
-
-  const message =
-    section?.querySelector(
-      '.section-save-message'
-    );
-
-  if (!message)
-    return;
-
-  message.className =
-    `section-save-message ${type}`;
-
-  message.textContent =
-    text;
-
-}
-
-
-/* =========================================================
-   SAVE SECTION
-========================================================= */
-
-async function saveStudentSection(
-  key,
-  button
-) {
-
-  if (
-    !studentId ||
-    !profile
-  )
-    return;
-
-
-  const section =
-    button.closest(
-      '.accordion-section'
-    );
-
-
-  const oldText =
-    button.textContent;
-
-
-  button.disabled =
-    true;
-
-  button.textContent =
-    '⏳ جاري الحفظ...';
-
-
-  try {
-
-    switch (
-      key
-    ) {
-
-
-      case 'weeklyGoal': {
-
-        const weeklyGoal = {
-
-          hifz:
-            number(
-              document
-                .getElementById(
-                  'goalHifz'
-                )
-                ?.value
-            ),
-
-          review:
-            number(
-              document
-                .getElementById(
-                  'goalReview'
-                )
-                ?.value
-            )
-
-        };
-
-
-        profile =
-          mergeProfile(
-            await saveProfilePatch({
-              weeklyGoal
-            })
-          );
-
-
-        break;
-
-      }
-
-
-      case 'attendance': {
-
-        const attendance =
-          collectAttendance();
-
-
-        profile =
-          mergeProfile(
-            await saveProfilePatch({
-              attendance
-            })
-          );
-
-
-        break;
-
-      }
-
-
-      case 'weeklyPlan': {
-
-        const weeklyPlan =
-          collectPlan();
-
-
-        profile =
-          mergeProfile(
-            await saveProfilePatch({
-              weeklyPlan
-            })
-          );
-
-
-        break;
-
-      }
-
-
-      case 'tests': {
-
-        const tests =
-          collectTests();
-
-
-        profile =
-          mergeProfile(
-            await saveProfilePatch({
-              tests
-            })
-          );
-
-
-        break;
-
-      }
-
-
-      case 'recitations': {
-
-        const recitations =
-          collectRecitations();
-
-
-        profile =
-          mergeProfile(
-            await saveProfilePatch({
-              recitations
-            })
-          );
-
-
-        break;
-
-      }
-
-
-      case 'notes': {
-
-        const notes =
-          document
-            .getElementById(
-              'notes'
-            )
-            ?.value
-            .trim() || '';
-
-
-        profile =
-          mergeProfile(
-            await saveProfilePatch({
-              notes
-            })
-          );
-
-
-        break;
-
-      }
-
-
-      default:
-
-        throw new Error(
-          'الخانة غير معروفة.'
-        );
-
-    }
-
-
-    render();
-
-
-    const reopened =
-      openAccordionByKey(
-        key
-      );
-
-
-    showSectionSaveMessage(
-      reopened,
-
-      '✅ تم حفظ هذه الخانة فقط بنجاح.',
-
-      'success'
-    );
-
-
-  } catch (
-    error
-  ) {
-
-    console.error(
-      'SECTION SAVE ERROR:',
-      error
-    );
-
-
-    showSectionSaveMessage(
-      section,
-
-      error?.message ||
-      'حدث خطأ أثناء الحفظ.',
-
-      'error'
-    );
-
-  } finally {
-
-    if (
-      button
-    ) {
-
-      const current =
-        document.querySelector(
-          `.accordion-section[data-accordion-key="${key}"] .section-save-btn`
-        );
-
-      if (
-        current
-      ) {
-
-        current.disabled =
-          false;
-
-        current.textContent =
-          oldText;
-
-      }
-
-    }
-
-  }
-
-}
-
-
-/* =========================================================
-   ATTENDANCE
-========================================================= */
-
-function renderAttendance() {
-
-  const box =
-    document.getElementById(
-      'attendanceEditor'
-    );
-
-  const items =
-    profile.attendance || [];
-
-
-  if (!items.length) {
-
-    box.innerHTML = `
-
-      <div
-        style="
-          padding:18px;
-          text-align:center;
-          color:#718078;
-          background:#f7faf8;
-          border-radius:14px;
-        "
-      >
-        لا يوجد سجل حضور بعد.
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    items.map(
-      (
-        item,
-        index
-      ) => `
-
-        <div class="editor-row">
-
-          <div class="editor-row-head">
-
-            <span class="editor-row-title">
-              حضور #${index + 1}
-            </span>
-
-            <button
-              class="remove"
-              type="button"
-              onclick="
-                removeAttendance(
-                  ${index}
-                )
-              "
-            >
-              حذف
-            </button>
-
-          </div>
-
-
-          <div class="editor-grid">
-
-            <div class="field">
-
-              <label>
-                التاريخ
-              </label>
-
-              <input
-                type="date"
-                value="${escapeHtml(
-                  item.date || ''
-                )}"
-                data-attendance-date="${index}"
-              >
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                الحالة
-              </label>
-
-              <select
-                data-attendance-status="${index}"
-              >
-
-                <option
-                  ${
-                    item.status === 'حاضر'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  حاضر
-                </option>
-
-                <option
-                  ${
-                    item.status === 'متأخر'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  متأخر
-                </option>
-
-                <option
-                  ${
-                    item.status === 'معتذر'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  معتذر
-                </option>
-
-                <option
-                  ${
-                    item.status === 'غائب'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  غائب
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                النقاط
-              </label>
-
-              <input
-                readonly
-                value="${formatNumber(
-                  getAttendancePoints(
-                    item.status
-                  ),
-                  1
-                )}"
-              >
-
-            </div>
-
-          </div>
-
-        </div>
-
-      `
-    )
-    .join('');
-
-}
-
-
-function addAttendance() {
-
-  profile.attendance.push({
-
-    date:
-      todayISO(),
-
-    status:
-      'حاضر'
-
-  });
-
-
-  renderAttendance();
-
-}
-
-
-function removeAttendance(
-  index
-) {
-
-  profile.attendance.splice(
-    index,
-    1
-  );
-
-  renderAttendance();
-
-}
-
-
-function collectAttendance() {
-
-  return profile.attendance.map(
-    (
-      item,
-      index
-    ) => ({
-
-      date:
-        document.querySelector(
-          `[data-attendance-date="${index}"]`
-        )?.value || '',
-
-      status:
-        document.querySelector(
-          `[data-attendance-status="${index}"]`
-        )?.value || ''
-
-    })
-  );
-
-}
-
-
-/* =========================================================
-   PLAN
-========================================================= */
-
-function renderPlan() {
-
-  const box =
-    document.getElementById(
-      'planEditor'
-    );
-
-  const items =
-    profile.weeklyPlan || [];
-
-
-  if (!items.length) {
-
-    box.innerHTML = `
-
-      <div
-        style="
-          padding:18px;
-          text-align:center;
-          color:#718078;
-          background:#f7faf8;
-          border-radius:14px;
-        "
-      >
-        لم تتم إضافة خطة أسبوعية بعد.
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    items.map(
-      (
-        item,
-        index
-      ) => {
-
-        const status =
-          getPlanStatus(
-            item
-          );
-
-        return `
-
-          <div class="editor-row">
-
-            <div class="editor-row-head">
-
-              <span class="editor-row-title">
-                خطة أسبوع #${index + 1}
-              </span>
-
-              <button
-                class="remove"
-                type="button"
-                onclick="
-                  removePlan(
-                    ${index}
-                  )
-                "
-              >
-                حذف
-              </button>
-
-            </div>
-
-
-            <div class="editor-grid">
-
-              <div class="field">
-
-                <label>
-                  تاريخ بداية الأسبوع
-                </label>
-
-                <input
-                  type="date"
-                  value="${escapeHtml(
-                    item.date || ''
-                  )}"
-                  data-plan-date="${index}"
-                  onchange="
-                    refreshPlanStatus(
-                      ${index}
-                    )
-                  "
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  الجزء
-                </label>
-
-                <input
-                  value="${escapeHtml(
-                    item.juz || ''
-                  )}"
-                  placeholder="مثال: 20"
-                  data-plan-juz="${index}"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  عدد صفحات الحفظ
-                </label>
-
-                <input
-                  type="number"
-                  min="0"
-                  value="${number(
-                    item.hifzTarget ??
-                    (
-                      /^\d+$/.test(
-                        String(
-                          item.hifz || ''
-                        ).trim()
-                      )
-                        ? item.hifz
-                        : 0
-                    )
-                  )}"
-                  data-plan-hifz="${index}"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  عدد صفحات المراجعة
-                </label>
-
-                <input
-                  type="number"
-                  min="0"
-                  value="${number(
-                    item.reviewTarget ??
-                    (
-                      /^\d+$/.test(
-                        String(
-                          item.review || ''
-                        ).trim()
-                      )
-                        ? item.review
-                        : 0
-                    )
-                  )}"
-                  data-plan-review="${index}"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  حالة الخطة
-                </label>
-
-                <div
-                  id="plan-status-${index}"
-                  class="
-                    status-badge
-                    ${status.className}
-                  "
-                  style="
-                    width:100%;
-                    min-height:45px;
-                  "
-                >
-                  ${status.label}
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-    )
-    .join('');
-
-}
-
-
-function refreshPlanStatus(
-  index
-) {
-
-  const item =
-    profile.weeklyPlan[index];
-
-  if (!item)
-    return;
-
-  const date =
-    document.querySelector(
-      `[data-plan-date="${index}"]`
-    )?.value || '';
-
-  const hifz =
-    number(
-      document.querySelector(
-        `[data-plan-hifz="${index}"]`
-      )?.value
-    );
-
-  const review =
-    number(
-      document.querySelector(
-        `[data-plan-review="${index}"]`
-      )?.value
-    );
-
-  const status =
-    getPlanStatus({
-
-      ...item,
-
-      date,
-
-      hifzTarget:
-        hifz,
-
-      reviewTarget:
-        review
-
-    });
-
-  const element =
-    document.getElementById(
-      `plan-status-${index}`
-    );
-
-  if (
-    element
-  ) {
-
-    element.className =
-      `status-badge ${status.className}`;
-
-    element.textContent =
-      status.label;
-
-  }
-
-}
-
-
-function addPlan() {
-
-  profile.weeklyPlan.push({
-
-    date:
-      todayISO(),
-
-    juz:
-      '',
-
-    hifzTarget:
-      number(
-        profile.weeklyGoal?.hifz
-      ),
-
-    reviewTarget:
-      number(
-        profile.weeklyGoal?.review
-      )
-
-  });
-
-  renderPlan();
-
-}
-
-
-function removePlan(
-  index
-) {
-
-  profile.weeklyPlan.splice(
-    index,
-    1
-  );
-
-  renderPlan();
-
-}
-
-
-function collectPlan() {
-
-  return profile.weeklyPlan.map(
-    (
-      item,
-      index
-    ) => ({
-
-      date:
-        document.querySelector(
-          `[data-plan-date="${index}"]`
-        )?.value || '',
-
-      juz:
-        document.querySelector(
-          `[data-plan-juz="${index}"]`
-        )?.value || '',
-
-      hifzTarget:
-        number(
-          document.querySelector(
-            `[data-plan-hifz="${index}"]`
-          )?.value
-        ),
-
-      reviewTarget:
-        number(
-          document.querySelector(
-            `[data-plan-review="${index}"]`
-          )?.value
-        )
-
-    })
-  );
-
-}
-
-
-/* =========================================================
-   TESTS
-========================================================= */
-
-function renderTests() {
-
-  const box =
-    document.getElementById(
-      'testsEditor'
-    );
-
-  const items =
-    profile.tests || [];
-
-
-  if (!items.length) {
-
-    box.innerHTML = `
-
-      <div
-        style="
-          padding:18px;
-          text-align:center;
-          color:#718078;
-          background:#f7faf8;
-          border-radius:14px;
-        "
-      >
-        لا يوجد اختبارات مسجلة بعد.
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    items.map(
-      (
-        item,
-        index
-      ) => {
-
-        const points =
-          getTestPointsByResult(
-            item.result
-          );
-
-        return `
-
-          <div class="editor-row">
-
-            <div class="editor-row-head">
-
-              <span class="editor-row-title">
-
-                ${
-                  escapeHtml(
-                    item.name ||
-                    `اختبار #${index + 1}`
-                  )
-                }
-
-              </span>
-
-
-              <button
-                class="remove"
-                type="button"
-                onclick="
-                  removeTest(
-                    ${index}
-                  )
-                "
-              >
-                حذف
-              </button>
-
-            </div>
-
-
-            <div class="editor-grid">
-
-              <div class="field">
-
-                <label>
-                  اسم الاختبار
-                </label>
-
-                <input
-                  value="${escapeHtml(
-                    item.name || ''
-                  )}"
-                  placeholder="مثال: اختبار الجزء 20"
-                  data-test-name="${index}"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  التاريخ
-                </label>
-
-                <input
-                  type="date"
-                  value="${escapeHtml(
-                    item.date || ''
-                  )}"
-                  data-test-date="${index}"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  النتيجة
-                </label>
-
-                <select
-                  data-test-result="${index}"
-                >
-
-                  <option value="">
-                    اختر النتيجة
-                  </option>
-
-                  <option
-                    ${
-                      item.result === 'ممتاز' ||
-                      item.result === 'ممتاز+'
-                        ? 'selected'
-                        : ''
-                    }
-                  >
-                    ممتاز
-                  </option>
-
-                  <option
-                    ${
-                      item.result === 'جيد جداً' ||
-                      item.result === 'جيد جدًا'
-                        ? 'selected'
-                        : ''
-                    }
-                  >
-                    جيد جداً
-                  </option>
-
-                  <option
-                    ${
-                      item.result === 'جيد'
-                        ? 'selected'
-                        : ''
-                    }
-                  >
-                    جيد
-                  </option>
-
-                  <option
-                    ${
-                      item.result === 'غير مجتاز'
-                        ? 'selected'
-                        : ''
-                    }
-                  >
-                    غير مجتاز
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  النقاط
-                </label>
-
-                <input
-                  readonly
-                  value="${formatNumber(
-                    points,
-                    1
-                  )}"
-                >
-
-              </div>
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-    )
-    .join('');
-
-}
-
-
-function addTest() {
-
-  profile.tests.unshift({
-
-    name:
-      '',
-
-    date:
-      todayISO(),
-
-    result:
-      ''
-
-  });
-
-  renderTests();
-
-}
-
-
-function removeTest(
-  index
-) {
-
-  profile.tests.splice(
-    index,
-    1
-  );
-
-  renderTests();
-
-}
-
-
-function collectTests() {
-
-  return profile.tests.map(
-    (
-      item,
-      index
-    ) => {
-
-      const result =
-        document.querySelector(
-          `[data-test-result="${index}"]`
-        )?.value || '';
-
-      return {
-
-        name:
-          document.querySelector(
-            `[data-test-name="${index}"]`
-          )?.value || '',
-
-        date:
-          document.querySelector(
-            `[data-test-date="${index}"]`
-          )?.value || '',
-
-        result,
-
-        points:
-          getTestPointsByResult(
-            result
-          )
-
-      };
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   RECITATIONS
-========================================================= */
-
-function renderRecitations() {
-
-  const box =
-    document.getElementById(
-      'recitationsEditor'
-    );
-
-  const items =
-    profile.recitations || [];
-
-
-  if (!items.length) {
-
-    box.innerHTML = `
-
-      <div
-        style="
-          padding:18px;
-          text-align:center;
-          color:#718078;
-          background:#f7faf8;
-          border-radius:14px;
-        "
-      >
-        لم يتم تسجيل أي تسميع بعد.
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    items.map(
-      (
-        item,
-        index
-      ) => {
-
-        const grade =
-          getRecitationGrade(
-            item.score
-          );
-
-        const points =
-          getRecitationPoints(
-            item
-          );
-
-        return `
-
-          <div
-            class="editor-row"
-          >
-
-            <div class="editor-row-head">
-
-              <span class="editor-row-title">
-
-                📖 صفحة
-                ${
-                  escapeHtml(
-                    item.page || '—'
-                  )
-                }
-
-              </span>
-
-
-              <button
-                class="remove"
-                type="button"
-                onclick="
-                  removeRecitation(
-                    ${index}
-                  )
-                "
-              >
-                حذف
-              </button>
-
-            </div>
-
-
-            <div class="editor-grid">
-
-              <div class="field">
-
-                <label>
-                  التاريخ
-                </label>
-
-                <input
-                  type="date"
-                  value="${escapeHtml(
-                    item.date || ''
-                  )}"
-                  data-rec-date="${index}"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  رقم الصفحة
-                </label>
-
-                <input
-                  type="number"
-                  min="1"
-                  max="604"
-                  value="${escapeHtml(
-                    item.page || ''
-                  )}"
-                  placeholder="1 - 604"
-                  data-rec-page="${index}"
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  النوع
-                </label>
-
-                <select
-                  data-rec-type="${index}"
-                  onchange="
-                    refreshRecitationPreview(
-                      ${index}
-                    )
-                  "
-                >
-
-                  <option
-                    value="hifz"
-                    ${
-                      item.type === 'hifz'
-                        ? 'selected'
-                        : ''
-                    }
-                  >
-                    حفظ جديد
-                  </option>
-
-                  <option
-                    value="review"
-                    ${
-                      item.type === 'review'
-                        ? 'selected'
-                        : ''
-                    }
-                  >
-                    مراجعة
-                  </option>
-
-                </select>
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  الدرجة من 100
-                </label>
-
-                <input
-                  type="number"
-                  min="0"
-                  max="100"
-                  step="1"
-                  value="${escapeHtml(
-                    item.score ?? ''
-                  )}"
-                  placeholder="مثال: 97"
-                  data-rec-score="${index}"
-                  oninput="
-                    refreshRecitationPreview(
-                      ${index}
-                    )
-                  "
-                >
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  التقدير التلقائي
-                </label>
-
-                <div
-                  id="grade-preview-${index}"
-                  class="
-                    grade-preview
-                    ${grade.className}
-                  "
-                >
-                  ${escapeHtml(
-                    grade.label
-                  )}
-                </div>
-
-              </div>
-
-
-              <div class="field">
-
-                <label>
-                  نقاط التسميع
-                </label>
-
-                <input
-                  id="points-preview-${index}"
-                  readonly
-                  value="${formatNumber(
-                    points,
-                    1
-                  )}"
-                >
-
-              </div>
-
-
-              <div
-                class="field"
-                style="
-                  grid-column:1 / -1;
-                "
-              >
-
-                <label>
-                  ملاحظة على الصفحة
-                </label>
-
-                <input
-                  value="${escapeHtml(
-                    item.note || ''
-                  )}"
-                  placeholder="مثال: أخطاء في بداية الصفحة"
-                  data-rec-note="${index}"
-                >
-
-              </div>
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-    )
-    .join('');
-
-}
-
-
-function refreshRecitationPreview(
-  index
-) {
-
-  const score =
-    document.querySelector(
-      `[data-rec-score="${index}"]`
-    )?.value;
-
-  const type =
-    document.querySelector(
-      `[data-rec-type="${index}"]`
-    )?.value ||
-    'hifz';
-
-  const grade =
-    getRecitationGrade(
-      score
-    );
-
-  const points =
-    getRecitationPoints({
-      type,
-      score
-    });
-
-  const gradeElement =
-    document.getElementById(
-      `grade-preview-${index}`
-    );
-
-  const pointsElement =
-    document.getElementById(
-      `points-preview-${index}`
-    );
-
-  if (
-    gradeElement
-  ) {
-
-    gradeElement.className =
-      `grade-preview ${grade.className}`;
-
-    gradeElement.textContent =
-      grade.label;
-
-  }
-
-  if (
-    pointsElement
-  ) {
-
-    pointsElement.value =
-      formatNumber(
-        points,
-        1
-      );
-
-  }
-
-}
-
-
-function addRecitation() {
-
-  profile.recitations.unshift({
-
-    date:
-      todayISO(),
-
-    page:
-      '',
-
-    type:
-      'hifz',
-
-    score:
-      '',
-
-    grade:
-      '',
-
-    note:
-      ''
-
-  });
-
-  renderRecitations();
-
-  document
-    .querySelector(
-      '[data-rec-page="0"]'
-    )
-    ?.focus();
-
-}
-
-
-function removeRecitation(
-  index
-) {
-
-  profile.recitations.splice(
-    index,
-    1
-  );
-
-  renderRecitations();
-
-}
-
-
-function collectRecitations() {
-
-  return profile.recitations
-    .map(
-      (
-        item,
-        index
-      ) => {
-
-        const type =
-          document.querySelector(
-            `[data-rec-type="${index}"]`
-          )?.value ||
-          'hifz';
-
-        const scoreRaw =
-          document.querySelector(
-            `[data-rec-score="${index}"]`
-          )?.value;
-
-        const score =
-          scoreRaw === ''
-            ? ''
-            : clamp(
-                scoreRaw,
-                0,
-                100
-              );
-
-        const grade =
-          score === ''
-            ? ''
-            : getRecitationGrade(
-                score
-              ).label;
-
-        return {
-
-          date:
-            document.querySelector(
-              `[data-rec-date="${index}"]`
-            )?.value || '',
-
-          page:
-            number(
-              document.querySelector(
-                `[data-rec-page="${index}"]`
-              )?.value
-            ),
-
-          type,
-
-          score,
-
-          grade,
-
-          note:
-            document.querySelector(
-              `[data-rec-note="${index}"]`
-            )?.value || ''
-
-        };
-
-      }
-    )
-    .filter(
-      item =>
-        item.page >= 1 &&
-        item.page <= 604
-    );
-
-}
-
-
-/* =========================================================
-   QURAN MAP
-========================================================= */
-
-function getPageState(
-  page
-) {
-
-  const hifz =
-    getHifzPageSet();
-
-  const review =
-    getReviewPageSet();
-
-  const hasHifz =
-    hifz.has(page);
-
-  const hasReview =
-    review.has(page);
-
-  if (
-    hasHifz &&
-    hasReview
-  )
-    return 'both';
-
-  if (
-    hasHifz
-  )
-    return 'hifz';
-
-  if (
-    hasReview
-  )
-    return 'review';
-
-  return '';
-
-}
-
-
-function renderQuranMap() {
-
-  const box =
-    document.getElementById(
-      'quranMap'
-    );
-
-  if (!box)
-    return;
-
-  let html =
-    '';
-
-  for (
-    let juz = 1;
-    juz <= 30;
-    juz++
-  ) {
-
-    const info =
-      getJuzInfo(
-        juz
-      );
-
-    let completed =
-      0;
-
-    let pagesHtml =
-      '';
-
-    for (
-      let page =
-        info.start;
-
-      page <= info.end;
-
-      page++
-    ) {
-
-      const state =
-        getPageState(
-          page
-        );
-
-      if (
-        state
-      )
-        completed++;
-
-      let stateText =
-        'غير مسجلة';
-
-      if (
-        state === 'hifz'
-      )
-        stateText =
-          'حفظ جديد';
-
-      else if (
-        state === 'review'
-      )
-        stateText =
-          'مراجعة';
-
-      else if (
-        state === 'both'
-      )
-        stateText =
-          'حفظ + مراجعة';
-
-      pagesHtml += `
-
-        <div
-          class="
-            page-dot
-            ${state}
-          "
-          title="
-            صفحة ${page} —
-            ${stateText}
-          "
-          onclick="
-            showPageInfo(
-              ${page}
-            )
-          "
-        >
-          ${page}
-        </div>
-
-      `;
-
-    }
-
-    html += `
-
-      <div class="juz-card">
-
-        <div class="juz-head">
-
-          <span class="juz-title">
-            الجزء ${juz}
-          </span>
-
-          <span class="juz-count">
-            ${completed}/${info.length}
-          </span>
-
-        </div>
-
-
-        <div class="juz-range">
-          الصفحات
-          ${info.start}
-          -
-          ${info.end}
-        </div>
-
-
-        <div class="page-grid">
-          ${pagesHtml}
-        </div>
-
-      </div>
+      </section>
 
     `;
 
   }
 
-  box.innerHTML =
-    html;
 
-}
+  /* =========================
+     تشغيل الصفحة
+  ========================= */
 
-
-function showPageInfo(
-  page
-) {
-
-  const records =
-    profile.recitations.filter(
-      item =>
-        number(item.page) ===
-        page
-    );
-
-  if (
-    !records.length
-  ) {
-
-    alert(
-      `📖 صفحة ${page}\n\nلا يوجد سجل لهذه الصفحة حتى الآن.`
-    );
-
-    return;
-
-  }
-
-  const details =
-    records.map(
-      item => {
-
-        const grade =
-          getRecitationGrade(
-            item.score
-          );
-
-        const points =
-          getRecitationPoints(
-            item
-          );
-
-        const type =
-          item.type === 'review'
-            ? 'مراجعة'
-            : 'حفظ جديد';
-
-        return [
-
-          `النوع: ${type}`,
-
-          `التاريخ: ${formatDate(
-            item.date
-          )}`,
-
-          `الدرجة: ${
-            item.score === ''
-              ? 'غير مسجلة'
-              : item.score + '%'
-          }`,
-
-          `التقدير: ${grade.label}`,
-
-          `النقاط: ${
-            formatNumber(
-              points,
-              1
-            )
-          }`,
-
-          `الملاحظة: ${
-            item.note ||
-            'لا توجد'
-          }`
-
-        ].join('\n');
-
-      }
-    )
-    .join(
-      '\n\n----------------\n\n'
-    );
-
-  alert(
-    `📖 تفاصيل الصفحة ${page}\n\n${details}`
-  );
-
-}
-
-
-/* =========================================================
-   START
-========================================================= */
-
-loadStudent();
+  loadStudent();
 
 </script>
 
