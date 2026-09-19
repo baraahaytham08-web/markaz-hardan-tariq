@@ -47,8 +47,8 @@
       --purple: #6653a6;
       --purple-soft: #f1edff;
 
+      --gray: #68736e;
       --gray-soft: #f1f3f2;
-      --gray: #606a65;
 
       --shadow: 0 12px 35px rgba(23,77,58,.07);
     }
@@ -61,10 +61,25 @@
       font-family: Arial, Tahoma, sans-serif;
       color: var(--text);
       min-height: 100vh;
+
       background:
-        radial-gradient(circle at 8% 8%, rgba(178,139,24,.10), transparent 23%),
-        radial-gradient(circle at 90% 80%, rgba(23,77,58,.10), transparent 28%),
-        linear-gradient(135deg, #faf8f0, #fff 48%, #edf5f1);
+        radial-gradient(
+          circle at 8% 8%,
+          rgba(178,139,24,.10),
+          transparent 23%
+        ),
+        radial-gradient(
+          circle at 90% 80%,
+          rgba(23,77,58,.10),
+          transparent 28%
+        ),
+        linear-gradient(
+          135deg,
+          #faf8f0,
+          #ffffff 48%,
+          #edf5f1
+        );
+
       overflow-x: hidden;
     }
 
@@ -78,7 +93,9 @@
       cursor: pointer;
     }
 
-    /* ================= SIDEBAR ================= */
+    /* =====================================================
+       SIDEBAR
+    ====================================================== */
 
     .sidebar {
       position: fixed;
@@ -86,13 +103,28 @@
       right: 0;
       bottom: 0;
       width: 275px;
+
       z-index: 50;
+
       padding: 22px 17px;
-      color: #fff;
+
+      color: white;
+
       background:
-        radial-gradient(circle at 80% 10%, rgba(212,180,76,.12), transparent 25%),
-        linear-gradient(160deg, #174d3a, #0c3023);
-      box-shadow: -12px 0 40px rgba(0,0,0,.10);
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(212,180,76,.12),
+          transparent 25%
+        ),
+        linear-gradient(
+          160deg,
+          #174d3a,
+          #0c3023
+        );
+
+      box-shadow:
+        -12px 0 40px rgba(0,0,0,.10);
+
       overflow: hidden;
     }
 
@@ -110,14 +142,20 @@
 
     .sidebar-brand {
       position: relative;
+
       display: flex;
       align-items: center;
       gap: 12px;
+
       padding: 7px 8px 23px;
       margin-bottom: 24px;
+
       text-decoration: none;
       color: white;
-      border-bottom: 1px solid rgba(255,255,255,.12);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.12);
+
       transition: .25s;
     }
 
@@ -129,11 +167,17 @@
       width: 55px;
       height: 55px;
       min-width: 55px;
+
       border-radius: 50%;
       overflow: hidden;
+
       background: white;
-      border: 3px solid rgba(217,188,92,.75);
-      box-shadow: 0 8px 22px rgba(0,0,0,.20);
+
+      border:
+        3px solid rgba(217,188,92,.75);
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.20);
     }
 
     .sidebar-logo img {
@@ -161,24 +205,31 @@
       font-size: 10px;
       font-weight: bold;
       margin: 0 10px 10px;
+      letter-spacing: .4px;
     }
 
     .side-link {
       width: 100%;
       min-height: 48px;
+
       display: flex;
       align-items: center;
       gap: 12px;
+
       border: none;
       border-right: 3px solid transparent;
       border-radius: 12px;
+
       margin-bottom: 5px;
       padding: 11px 13px;
+
       background: transparent;
       color: rgba(255,255,255,.70);
+
       font-size: 13px;
       text-align: right;
       text-decoration: none;
+
       transition: .25s;
     }
 
@@ -195,7 +246,13 @@
     }
 
     .side-link.active {
-      background: linear-gradient(90deg, rgba(255,255,255,.13), rgba(255,255,255,.05));
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.13),
+          rgba(255,255,255,.05)
+        );
+
       color: white;
       border-right-color: var(--gold-light);
     }
@@ -215,11 +272,15 @@
       display: flex;
       align-items: center;
       gap: 8px;
+
       margin-bottom: 10px;
       padding: 10px 12px;
+
       border-radius: 11px;
+
       background: rgba(255,255,255,.06);
       color: rgba(255,255,255,.62);
+
       font-size: 10px;
     }
 
@@ -227,19 +288,30 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
+
       background: #6ee27d;
-      box-shadow: 0 0 0 4px rgba(110,226,125,.10);
+
+      box-shadow:
+        0 0 0 4px rgba(110,226,125,.10);
     }
 
     .logout-side {
       width: 100%;
       padding: 12px;
-      border: 1px solid rgba(255,255,255,.13);
+
+      border:
+        1px solid rgba(255,255,255,.13);
+
       border-radius: 11px;
-      background: rgba(255,255,255,.06);
+
+      background:
+        rgba(255,255,255,.06);
+
       color: white;
+
       font-weight: bold;
       font-size: 12px;
+
       transition: .25s;
     }
 
@@ -251,20 +323,33 @@
 
     .close-sidebar {
       display: none;
+
       position: absolute;
+
       top: 14px;
       left: 14px;
+
       width: 38px;
       height: 38px;
-      border: 1px solid rgba(255,255,255,.16);
+
+      border:
+        1px solid rgba(255,255,255,.16);
+
       border-radius: 10px;
-      background: rgba(255,255,255,.08);
+
+      background:
+        rgba(255,255,255,.08);
+
       color: white;
+
       font-size: 22px;
+
       z-index: 5;
     }
 
-    /* ================= MAIN ================= */
+    /* =====================================================
+       MAIN
+    ====================================================== */
 
     .main {
       margin-right: 275px;
@@ -275,16 +360,27 @@
       position: sticky;
       top: 0;
       z-index: 30;
+
       min-height: 78px;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 20px;
+
       padding: 12px 38px;
-      background: rgba(255,255,255,.84);
+
+      background:
+        rgba(255,255,255,.84);
+
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(229,235,231,.85);
-      box-shadow: 0 5px 25px rgba(23,77,58,.035);
+
+      border-bottom:
+        1px solid rgba(229,235,231,.85);
+
+      box-shadow:
+        0 5px 25px rgba(23,77,58,.035);
     }
 
     .page-heading {
@@ -296,13 +392,24 @@
     .page-heading-icon {
       width: 44px;
       height: 44px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 13px;
-      background: linear-gradient(135deg, var(--green), var(--green-mid));
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--green-mid)
+        );
+
       color: white;
-      box-shadow: 0 7px 18px rgba(23,77,58,.15);
+
+      box-shadow:
+        0 7px 18px rgba(23,77,58,.15);
     }
 
     .page-title h1 {
@@ -328,9 +435,12 @@
 
     .teacher-name {
       display: block;
+
       color: var(--green);
+
       font-size: 12px;
       font-weight: bold;
+
       margin-bottom: 3px;
     }
 
@@ -343,47 +453,117 @@
     .teacher-avatar {
       width: 44px;
       height: 44px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 50%;
-      background: var(--green-soft);
+
+      background:
+        var(--green-soft);
+
       color: var(--green);
-      border: 1px solid #dcebe4;
+
+      border:
+        1px solid #dcebe4;
     }
 
     .mobile-menu {
       display: none;
+
       width: 42px;
       height: 42px;
+
       border: none;
       border-radius: 11px;
-      background: var(--green-soft);
+
+      background:
+        var(--green-soft);
+
       color: var(--green);
+
       font-size: 17px;
     }
 
-    /* ================= CONTENT ================= */
+    /* =====================================================
+       CONTENT
+    ====================================================== */
 
     .content {
       width: min(1320px, 94%);
       margin: 28px auto 55px;
     }
 
+    /* =====================================================
+       WELCOME
+    ====================================================== */
+
     .welcome-card {
       position: relative;
       overflow: hidden;
+
       min-height: 190px;
+
       display: flex;
       align-items: center;
+
       margin-bottom: 22px;
       padding: 31px 35px;
+
       border-radius: 24px;
+
       color: white;
+
       background:
-        radial-gradient(circle at 85% 20%, rgba(217,188,92,.18), transparent 24%),
-        linear-gradient(120deg, #123f2f, #1d6549 58%, #174d3a);
-      box-shadow: 0 20px 45px rgba(23,77,58,.16);
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(217,188,92,.18),
+          transparent 24%
+        ),
+        linear-gradient(
+          120deg,
+          #123f2f,
+          #1d6549 58%,
+          #174d3a
+        );
+
+      box-shadow:
+        0 20px 45px rgba(23,77,58,.16);
+    }
+
+    .welcome-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 260px;
+      height: 260px;
+
+      border:
+        1px solid rgba(255,255,255,.07);
+
+      border-radius: 50%;
+
+      left: -100px;
+      top: -135px;
+    }
+
+    .welcome-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 310px;
+      height: 310px;
+
+      border:
+        1px solid rgba(217,188,92,.10);
+
+      border-radius: 50%;
+
+      left: 42%;
+      bottom: -240px;
     }
 
     .welcome-content {
@@ -395,18 +575,28 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
+
       margin-bottom: 9px;
-      color: rgba(255,255,255,.66);
+
+      color:
+        rgba(255,255,255,.66);
+
       font-size: 11px;
     }
 
     .welcome-small::before {
       content: "";
+
       width: 7px;
       height: 7px;
+
       border-radius: 50%;
-      background: var(--gold-light);
-      box-shadow: 0 0 0 5px rgba(217,188,92,.10);
+
+      background:
+        var(--gold-light);
+
+      box-shadow:
+        0 0 0 5px rgba(217,188,92,.10);
     }
 
     .welcome-card h2 {
@@ -417,92 +607,149 @@
 
     .welcome-card p {
       max-width: 620px;
-      color: rgba(255,255,255,.72);
+
+      color:
+        rgba(255,255,255,.72);
+
       font-size: 13px;
       line-height: 1.9;
     }
 
     .hero-decoration {
       position: absolute;
+
       left: 50px;
       top: 50%;
-      transform: translateY(-50%);
+
+      transform:
+        translateY(-50%);
+
       width: 110px;
       height: 110px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(255,255,255,.10);
+
+      border:
+        1px solid rgba(255,255,255,.10);
+
       border-radius: 50%;
-      color: rgba(255,255,255,.13);
+
+      color:
+        rgba(255,255,255,.13);
+
       font-size: 55px;
     }
 
     .hero-decoration::before {
       content: "";
+
       position: absolute;
+
       inset: -14px;
-      border: 1px solid rgba(217,188,92,.08);
+
+      border:
+        1px solid rgba(217,188,92,.08);
+
       border-radius: 50%;
     }
 
-    /* ================= STATS ================= */
+    /* =====================================================
+       STATS
+    ====================================================== */
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 17px;
+
       margin-bottom: 23px;
     }
 
     .stat-card {
       position: relative;
       overflow: hidden;
+
       display: flex;
       align-items: center;
+
       gap: 15px;
+
       min-height: 110px;
-      padding: 20px 21px;
-      border: 1px solid var(--border);
+
+      padding:
+        20px 21px;
+
+      border:
+        1px solid var(--border);
+
       border-radius: 18px;
-      background: rgba(255,255,255,.94);
-      box-shadow: var(--shadow);
+
+      background:
+        rgba(255,255,255,.94);
+
+      box-shadow:
+        var(--shadow);
+
       transition: .25s;
     }
 
     .stat-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 17px 40px rgba(23,77,58,.11);
+      transform:
+        translateY(-4px);
+
+      box-shadow:
+        0 17px 40px
+        rgba(23,77,58,.11);
     }
 
     .stat-icon {
       width: 57px;
       height: 57px;
       min-width: 57px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 16px;
-      background: var(--green-soft);
+
+      background:
+        var(--green-soft);
+
       color: var(--green);
+
       font-size: 21px;
     }
 
     .stat-card:nth-child(2) .stat-icon {
-      background: var(--gold-soft);
-      color: var(--gold);
+      background:
+        var(--gold-soft);
+
+      color:
+        var(--gold);
     }
 
     .stat-card:nth-child(3) .stat-icon {
-      background: var(--purple-soft);
-      color: var(--purple);
+      background:
+        var(--purple-soft);
+
+      color:
+        var(--purple);
     }
 
     .stat-number {
       display: block;
+
       color: var(--green);
+
       font-size: 28px;
       font-weight: 800;
+
       margin-bottom: 4px;
     }
 
@@ -511,24 +758,41 @@
       font-size: 11px;
     }
 
-    /* ================= PANELS ================= */
+    /* =====================================================
+       PANELS
+    ====================================================== */
 
     .panel {
       overflow: hidden;
+
       margin-bottom: 23px;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid var(--border);
+
       border-radius: 20px;
-      background: rgba(255,255,255,.96);
-      box-shadow: var(--shadow);
+
+      background:
+        rgba(255,255,255,.96);
+
+      box-shadow:
+        var(--shadow);
     }
 
     .panel-top {
       display: flex;
+
       align-items: center;
       justify-content: space-between;
+
       gap: 15px;
-      padding: 21px 24px;
-      border-bottom: 1px solid var(--border);
+
+      padding:
+        21px 24px;
+
+      border-bottom:
+        1px solid var(--border);
+
       flex-wrap: wrap;
     }
 
@@ -541,12 +805,18 @@
     .panel-title-icon {
       width: 42px;
       height: 42px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 12px;
-      background: var(--green-soft);
-      color: var(--green);
+
+      background:
+        var(--green-soft);
+
+      color:
+        var(--green);
     }
 
     .panel-title h2 {
@@ -563,14 +833,22 @@
 
     .pending-count {
       padding: 7px 12px;
+
       border-radius: 20px;
-      background: var(--gold-soft);
-      color: #806711;
+
+      background:
+        var(--gold-soft);
+
+      color:
+        #806711;
+
       font-size: 11px;
       font-weight: bold;
     }
 
-    /* ================= REQUESTS ================= */
+    /* =====================================================
+       REQUESTS
+    ====================================================== */
 
     .requests-list {
       padding: 17px;
@@ -579,9 +857,14 @@
     .request-card {
       padding: 17px;
       margin-bottom: 10px;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid var(--border);
+
       border-radius: 14px;
+
       background: #fff;
+
       transition: .25s;
     }
 
@@ -591,27 +874,38 @@
 
     .request-card:hover {
       border-color: #d2e0d8;
-      box-shadow: 0 8px 22px rgba(23,77,58,.055);
-      transform: translateY(-1px);
+
+      box-shadow:
+        0 8px 22px
+        rgba(23,77,58,.055);
+
+      transform:
+        translateY(-1px);
     }
 
     .request-content {
       display: flex;
+
       align-items: center;
       justify-content: space-between;
+
       gap: 18px;
+
       flex-wrap: wrap;
     }
 
     .request-name {
       color: var(--green);
+
       font-size: 15px;
       font-weight: bold;
+
       margin-bottom: 6px;
     }
 
     .request-details {
       color: var(--muted);
+
       font-size: 11px;
       line-height: 2;
     }
@@ -623,52 +917,79 @@
 
     .approve-btn,
     .reject-btn {
-      padding: 10px 15px;
+      padding:
+        10px 15px;
+
       border: none;
       border-radius: 9px;
+
       font-size: 11px;
       font-weight: bold;
+
       transition: .2s;
     }
 
     .approve-btn {
-      background: var(--green);
+      background:
+        var(--green);
+
       color: white;
     }
 
     .approve-btn:hover {
-      background: var(--green-dark);
-      transform: translateY(-2px);
+      background:
+        var(--green-dark);
+
+      transform:
+        translateY(-2px);
     }
 
     .reject-btn {
-      background: var(--danger-soft);
-      color: var(--danger);
+      background:
+        var(--danger-soft);
+
+      color:
+        var(--danger);
     }
 
     .reject-btn:hover {
-      background: var(--danger);
+      background:
+        var(--danger);
+
       color: white;
-      transform: translateY(-2px);
+
+      transform:
+        translateY(-2px);
     }
 
     .requests-empty {
-      padding: 35px 15px;
+      padding:
+        35px 15px;
+
       text-align: center;
+
       color: var(--muted);
     }
 
     .requests-empty i {
       display: block;
+
       margin-bottom: 11px;
-      color: var(--green);
+
+      color:
+        var(--green);
+
       font-size: 32px;
     }
 
     .requests-empty strong {
       display: block;
+
       margin-bottom: 5px;
-      color: var(--green);
+
+      color:
+        var(--green);
+
       font-size: 13px;
     }
 
@@ -676,14 +997,26 @@
       font-size: 11px;
     }
 
-    /* ================= FILTERS ================= */
+    /* =====================================================
+       FILTERS
+    ====================================================== */
 
     .filters {
       display: grid;
-      grid-template-columns: minmax(180px,1fr) 145px 150px 165px;
+
+      grid-template-columns:
+        minmax(180px, 1fr)
+        145px
+        150px
+        165px;
+
       gap: 8px;
-      padding: 14px 24px;
-      border-bottom: 1px solid var(--border);
+
+      padding:
+        14px 24px;
+
+      border-bottom:
+        1px solid var(--border);
     }
 
     .search-box {
@@ -692,43 +1025,70 @@
 
     .search-box i {
       position: absolute;
+
       right: 12px;
       top: 50%;
-      transform: translateY(-50%);
-      color: #9aa49f;
+
+      transform:
+        translateY(-50%);
+
+      color:
+        #9aa49f;
+
       font-size: 12px;
+
       pointer-events: none;
     }
 
     .search-input,
     .filter-select {
       width: 100%;
+
       height: 38px;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid var(--border);
+
       border-radius: 9px;
+
       outline: none;
-      background: #fafcfb;
-      color: var(--text);
+
+      background:
+        #fafcfb;
+
+      color:
+        var(--text);
+
       font-size: 11px;
+
       transition: .2s;
     }
 
     .search-input {
-      padding: 0 36px 0 12px;
+      padding:
+        0 36px 0 12px;
     }
 
     .filter-select {
-      padding: 0 10px;
+      padding:
+        0 10px;
     }
 
     .search-input:focus,
     .filter-select:focus {
       background: white;
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(178,139,24,.08);
+
+      border-color:
+        var(--gold);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(178,139,24,.08);
     }
 
-    /* ================= TABLE ================= */
+    /* =====================================================
+       TABLE
+    ====================================================== */
 
     .table-wrapper {
       overflow-x: auto;
@@ -736,24 +1096,43 @@
 
     table {
       width: 100%;
+
       min-width: 980px;
-      border-collapse: collapse;
+
+      border-collapse:
+        collapse;
     }
 
     th {
-      padding: 13px 18px;
-      background: #f8faf9;
-      color: #68736e;
+      padding:
+        13px 18px;
+
+      background:
+        #f8faf9;
+
+      color:
+        #68736e;
+
       font-size: 10px;
-      text-align: right;
-      border-bottom: 1px solid var(--border);
+
+      text-align:
+        right;
+
+      border-bottom:
+        1px solid var(--border);
     }
 
     td {
-      padding: 14px 18px;
-      border-bottom: 1px solid #f0f3f1;
+      padding:
+        14px 18px;
+
+      border-bottom:
+        1px solid #f0f3f1;
+
       font-size: 12px;
-      vertical-align: middle;
+
+      vertical-align:
+        middle;
     }
 
     tbody tr {
@@ -761,153 +1140,228 @@
     }
 
     tbody tr:hover {
-      background: #fbfdfc;
+      background:
+        #fbfdfc;
     }
 
     tbody tr:last-child td {
-      border-bottom: none;
+      border-bottom:
+        none;
     }
 
     .student-name {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: bold;
-      min-width: 220px;
+
+      min-width: 230px;
     }
 
     .student-avatar {
       width: 37px;
       height: 37px;
       min-width: 37px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 11px;
-      background: var(--green-soft);
-      color: var(--green);
+
+      background:
+        var(--green-soft);
+
+      color:
+        var(--green);
+
       font-size: 13px;
       font-weight: bold;
     }
 
     .student-name-link {
-      color: var(--green);
-      text-decoration: none;
-      font-weight: bold;
+      color:
+        var(--green);
+
+      text-decoration:
+        none;
+
+      font-weight:
+        bold;
+
       transition: .2s;
     }
 
     .student-name-link:hover {
-      color: var(--gold);
-      text-decoration: underline;
+      color:
+        var(--gold);
+
+      text-decoration:
+        underline;
     }
 
     .student-subinfo {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      flex-wrap: wrap;
       margin-top: 5px;
+
+      color:
+        var(--muted);
+
       font-size: 9px;
-      color: var(--muted);
-      font-weight: normal;
+
+      line-height: 1.7;
+    }
+
+    .student-subinfo strong {
+      color:
+        var(--green);
     }
 
     .section-badge {
       display: inline-block;
-      padding: 6px 9px;
+
+      padding:
+        6px 9px;
+
       border-radius: 8px;
-      background: #f7f4e8;
-      color: #806711;
+
+      background:
+        #f7f4e8;
+
+      color:
+        #806711;
+
       font-size: 10px;
       font-weight: bold;
     }
 
     .memorization {
-      color: #5c6762;
+      color:
+        #5c6762;
     }
 
     .no-data {
-      color: #a3aba7;
+      color:
+        #a3aba7;
     }
 
     .status {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 10px;
+
+      padding:
+        6px 10px;
+
       border-radius: 20px;
+
       font-size: 10px;
       font-weight: bold;
-      white-space: nowrap;
+
+      white-space:
+        nowrap;
     }
 
     .status::before {
       content: "";
+
       width: 6px;
       height: 6px;
+
       border-radius: 50%;
     }
 
     .status.active {
-      background: var(--success-soft);
-      color: var(--success);
+      background:
+        var(--success-soft);
+
+      color:
+        var(--success);
     }
 
     .status.active::before {
-      background: var(--success);
+      background:
+        var(--success);
     }
 
     .status.inactive {
-      background: var(--danger-soft);
-      color: var(--danger);
+      background:
+        var(--danger-soft);
+
+      color:
+        var(--danger);
     }
 
     .status.inactive::before {
-      background: var(--danger);
+      background:
+        var(--danger);
     }
 
     .status.rejected {
-      background: var(--purple-soft);
-      color: var(--purple);
+      background:
+        var(--purple-soft);
+
+      color:
+        var(--purple);
     }
 
     .status.rejected::before {
-      background: var(--purple);
+      background:
+        var(--purple);
     }
 
     .status.expelled {
-      background: var(--gray-soft);
-      color: var(--gray);
+      background:
+        var(--gray-soft);
+
+      color:
+        #66716c;
     }
 
     .status.expelled::before {
-      background: #7b8580;
+      background:
+        #7b8580;
     }
 
     .score-badge,
     .points-badge {
       display: inline-flex;
+
       align-items: center;
       justify-content: center;
-      min-width: 72px;
-      padding: 7px 10px;
+
+      min-width: 75px;
+
+      padding:
+        7px 10px;
+
       border-radius: 9px;
+
       font-size: 10px;
       font-weight: 800;
-      white-space: nowrap;
+
+      white-space:
+        nowrap;
     }
 
     .score-badge {
-      background: var(--green-soft);
-      color: var(--green);
-      border: 1px solid #dcebe4;
+      background:
+        var(--green-soft);
+
+      color:
+        var(--green);
+
+      border:
+        1px solid #dcebe4;
     }
 
     .points-badge {
-      background: var(--gold-soft);
-      color: #806711;
-      border: 1px solid #f0e4b7;
+      background:
+        var(--gold-soft);
+
+      color:
+        #806711;
+
+      border:
+        1px solid #f0e4b7;
     }
 
     .actions {
@@ -918,84 +1372,167 @@
     .action-btn {
       width: 34px;
       height: 34px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border: none;
+
       border-radius: 9px;
+
       transition: .2s;
     }
 
     .edit-btn {
-      background: var(--gold-soft);
-      color: var(--gold);
+      background:
+        var(--gold-soft);
+
+      color:
+        var(--gold);
     }
 
     .edit-btn:hover {
-      background: var(--gold);
-      color: white;
-      transform: translateY(-2px);
+      background:
+        var(--gold);
+
+      color:
+        white;
+
+      transform:
+        translateY(-2px);
+    }
+
+    .expel-btn {
+      background:
+        var(--danger-soft);
+
+      color:
+        var(--danger);
+    }
+
+    .expel-btn:hover {
+      background:
+        var(--danger);
+
+      color:
+        white;
+
+      transform:
+        translateY(-2px);
     }
 
     .delete-btn {
-      background: var(--danger-soft);
-      color: var(--danger);
+      background:
+        #ecefee;
+
+      color:
+        #56615c;
     }
 
     .delete-btn:hover {
-      background: var(--danger);
-      color: white;
-      transform: translateY(-2px);
+      background:
+        #4f5a55;
+
+      color:
+        white;
+
+      transform:
+        translateY(-2px);
     }
 
-    /* ================= ADD ================= */
+    /* =====================================================
+       ADD BUTTON
+    ====================================================== */
 
     .add-btn {
       display: inline-flex;
+
       align-items: center;
       gap: 7px;
-      padding: 11px 16px;
+
+      padding:
+        11px 16px;
+
       border: none;
+
       border-radius: 10px;
-      background: linear-gradient(135deg, var(--green), var(--green-mid));
-      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--green-mid)
+        );
+
+      color:
+        white;
+
       font-size: 11px;
       font-weight: bold;
-      box-shadow: 0 7px 16px rgba(23,77,58,.14);
+
+      box-shadow:
+        0 7px 16px
+        rgba(23,77,58,.14);
+
       transition: .25s;
     }
 
     .add-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 11px 23px rgba(23,77,58,.20);
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 11px 23px
+        rgba(23,77,58,.20);
     }
 
-    /* ================= EMPTY ================= */
+    /* =====================================================
+       EMPTY
+    ====================================================== */
 
     .empty {
       display: none;
-      padding: 55px 20px;
+
+      padding:
+        55px 20px;
+
       text-align: center;
-      color: var(--muted);
+
+      color:
+        var(--muted);
     }
 
     .empty-icon {
       width: 65px;
       height: 65px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 13px;
+
+      margin:
+        0 auto 13px;
+
       border-radius: 50%;
-      background: var(--green-soft);
-      color: var(--green);
+
+      background:
+        var(--green-soft);
+
+      color:
+        var(--green);
+
       font-size: 24px;
     }
 
     .empty strong {
       display: block;
+
       margin-bottom: 5px;
-      color: var(--green);
+
+      color:
+        var(--green);
+
       font-size: 13px;
     }
 
@@ -1003,18 +1540,28 @@
       font-size: 11px;
     }
 
-    /* ================= MODAL ================= */
+    /* =====================================================
+       MODAL
+    ====================================================== */
 
     .modal {
       position: fixed;
       inset: 0;
+
       z-index: 100;
+
       display: none;
+
       align-items: center;
       justify-content: center;
+
       padding: 20px;
-      background: rgba(12,48,35,.70);
-      backdrop-filter: blur(7px);
+
+      background:
+        rgba(12,48,35,.70);
+
+      backdrop-filter:
+        blur(7px);
     }
 
     .modal.show {
@@ -1022,143 +1569,274 @@
     }
 
     .modal-box {
-      width: min(520px,100%);
-      max-height: 90vh;
-      overflow-y: auto;
-      background: white;
-      border-radius: 21px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.25);
+      width:
+        min(520px,100%);
+
+      max-height:
+        90vh;
+
+      overflow-y:
+        auto;
+
+      background:
+        white;
+
+      border-radius:
+        21px;
+
+      box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.25);
     }
 
     .modal-header {
       display: flex;
+
       align-items: center;
       justify-content: space-between;
-      padding: 21px 24px;
-      border-bottom: 1px solid var(--border);
+
+      padding:
+        21px 24px;
+
+      border-bottom:
+        1px solid var(--border);
     }
 
     .modal-header h2 {
-      color: var(--green);
+      color:
+        var(--green);
+
       font-size: 18px;
-      margin-bottom: 4px;
+
+      margin-bottom:
+        4px;
     }
 
     .modal-header p {
-      color: var(--muted);
-      font-size: 10px;
+      color:
+        var(--muted);
+
+      font-size:
+        10px;
     }
 
     .close-modal {
       width: 35px;
       height: 35px;
+
       border: none;
-      border-radius: 9px;
-      background: #f3f5f4;
-      color: #68736e;
+
+      border-radius:
+        9px;
+
+      background:
+        #f3f5f4;
+
+      color:
+        #68736e;
     }
 
     .form {
-      padding: 24px;
+      padding:
+        24px;
     }
 
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom:
+        16px;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 7px;
-      color: var(--green);
-      font-size: 11px;
-      font-weight: bold;
+
+      margin-bottom:
+        7px;
+
+      color:
+        var(--green);
+
+      font-size:
+        11px;
+
+      font-weight:
+        bold;
     }
 
     .form-group input,
     .form-group select {
       width: 100%;
+
       height: 44px;
-      padding: 0 13px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      outline: none;
-      background: #fafcfb;
-      color: var(--text);
-      font-size: 12px;
+
+      padding:
+        0 13px;
+
+      border:
+        1px solid var(--border);
+
+      border-radius:
+        10px;
+
+      outline:
+        none;
+
+      background:
+        #fafcfb;
+
+      color:
+        var(--text);
+
+      font-size:
+        12px;
     }
 
     .modal-buttons {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-      margin-top: 21px;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap:
+        9px;
+
+      margin-top:
+        21px;
     }
 
     .modal-buttons button {
-      height: 44px;
-      border: none;
-      border-radius: 10px;
-      font-weight: bold;
+      height:
+        44px;
+
+      border:
+        none;
+
+      border-radius:
+        10px;
+
+      font-weight:
+        bold;
     }
 
     .save-btn {
-      background: var(--green);
-      color: white;
+      background:
+        var(--green);
+
+      color:
+        white;
     }
 
     .cancel-btn {
-      background: #eef1ef;
-      color: #4d5853;
+      background:
+        #eef1ef;
+
+      color:
+        #4d5853;
     }
 
     #message {
-      min-height: 20px;
-      margin-top: 11px;
-      text-align: center;
-      font-size: 11px;
-      font-weight: bold;
+      min-height:
+        20px;
+
+      margin-top:
+        11px;
+
+      text-align:
+        center;
+
+      font-size:
+        11px;
+
+      font-weight:
+        bold;
     }
 
-    /* ================= TOAST ================= */
+    /* =====================================================
+       TOAST
+    ====================================================== */
 
     .toast {
       position: fixed;
-      left: 24px;
-      bottom: 24px;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      min-width: 250px;
-      max-width: 370px;
-      padding: 13px 16px;
-      border-radius: 12px;
-      background: var(--green-dark);
-      color: white;
-      box-shadow: 0 15px 40px rgba(0,0,0,.18);
-      font-size: 11px;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(18px);
-      transition: .3s;
+
+      left:
+        24px;
+
+      bottom:
+        24px;
+
+      z-index:
+        200;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        9px;
+
+      min-width:
+        250px;
+
+      max-width:
+        370px;
+
+      padding:
+        13px 16px;
+
+      border-radius:
+        12px;
+
+      background:
+        var(--green-dark);
+
+      color:
+        white;
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.18);
+
+      font-size:
+        11px;
+
+      opacity:
+        0;
+
+      pointer-events:
+        none;
+
+      transform:
+        translateY(18px);
+
+      transition:
+        .3s;
     }
 
     .toast.show {
-      opacity: 1;
-      transform: translateY(0);
+      opacity:
+        1;
+
+      transform:
+        translateY(0);
     }
 
     .toast.success i {
-      color: #72d883;
+      color:
+        #72d883;
     }
 
     .toast.error i {
-      color: #ff8585;
+      color:
+        #ff8585;
     }
 
-    /* ================= RESPONSIVE ================= */
+    /* =====================================================
+       RESPONSIVE
+    ====================================================== */
 
     @media (max-width: 1050px) {
+
       .sidebar {
         width: 235px;
       }
@@ -1168,169 +1846,248 @@
       }
 
       .filters {
-        grid-template-columns: minmax(160px,1fr) 135px 140px 145px;
+        grid-template-columns:
+          minmax(160px,1fr)
+          135px
+          140px
+          145px;
       }
     }
 
     @media (max-width: 850px) {
+
       .sidebar {
-        transform: translateX(100%);
-        transition: transform .3s ease;
-        width: 285px;
-        padding-top: 65px;
+        transform:
+          translateX(100%);
+
+        transition:
+          transform .3s ease;
+
+        width:
+          285px;
+
+        padding-top:
+          65px;
       }
 
       .sidebar.open {
-        transform: translateX(0);
+        transform:
+          translateX(0);
       }
 
       .close-sidebar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display:
+          flex;
+
+        align-items:
+          center;
+
+        justify-content:
+          center;
       }
 
       .main {
-        margin-right: 0;
+        margin-right:
+          0;
       }
 
       .mobile-menu {
-        display: block;
+        display:
+          block;
       }
 
       .teacher-email {
-        display: none;
+        display:
+          none;
       }
 
       .topbar {
-        padding: 12px 18px;
+        padding:
+          12px 18px;
       }
 
       .content {
-        width: 94%;
+        width:
+          94%;
       }
     }
 
     @media (max-width: 680px) {
+
       .stats {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
 
       .filters {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
 
       .welcome-card {
-        min-height: 175px;
-        padding: 25px 22px;
+        min-height:
+          175px;
+
+        padding:
+          25px 22px;
       }
 
       .welcome-card h2 {
-        font-size: 24px;
+        font-size:
+          24px;
       }
 
       .hero-decoration {
-        width: 80px;
-        height: 80px;
-        font-size: 38px;
-        left: 12px;
-        opacity: .35;
+        width:
+          80px;
+
+        height:
+          80px;
+
+        font-size:
+          38px;
+
+        left:
+          12px;
+
+        opacity:
+          .35;
       }
 
       .request-content {
-        align-items: stretch;
+        align-items:
+          stretch;
       }
 
       .request-actions {
-        width: 100%;
+        width:
+          100%;
       }
 
       .approve-btn,
       .reject-btn {
-        flex: 1;
+        flex:
+          1;
       }
 
       .panel-top {
-        align-items: stretch;
+        align-items:
+          stretch;
       }
 
       .add-btn {
-        width: 100%;
-        justify-content: center;
+        width:
+          100%;
+
+        justify-content:
+          center;
       }
     }
 
     @media (max-width: 480px) {
+
       .topbar {
-        min-height: 68px;
+        min-height:
+          68px;
       }
 
       .page-heading-icon {
-        width: 39px;
-        height: 39px;
-        min-width: 39px;
+        width:
+          39px;
+
+        height:
+          39px;
+
+        min-width:
+          39px;
       }
 
       .page-title h1 {
-        font-size: 16px;
+        font-size:
+          16px;
       }
 
       .page-title p {
-        display: none;
+        display:
+          none;
       }
 
       .teacher-avatar {
-        width: 38px;
-        height: 38px;
+        width:
+          38px;
+
+        height:
+          38px;
       }
 
       .teacher-name {
-        font-size: 10px;
+        font-size:
+          10px;
       }
 
       .content {
-        width: 92%;
-        margin-top: 19px;
+        width:
+          92%;
+
+        margin-top:
+          19px;
       }
 
       .welcome-card {
-        border-radius: 18px;
+        border-radius:
+          18px;
       }
 
       .panel {
-        border-radius: 17px;
+        border-radius:
+          17px;
       }
 
       .panel-top {
-        padding: 18px 17px;
+        padding:
+          18px 17px;
       }
 
       .filters {
-        padding: 14px 17px;
+        padding:
+          14px 17px;
       }
 
       .requests-list {
-        padding: 13px;
+        padding:
+          13px;
       }
 
       .request-card {
-        padding: 14px;
+        padding:
+          14px;
       }
 
       .stat-card {
-        min-height: 96px;
-        padding: 17px;
+        min-height:
+          96px;
+
+        padding:
+          17px;
       }
 
       .stat-number {
-        font-size: 25px;
+        font-size:
+          25px;
       }
 
       .toast {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        min-width: 0;
+        left:
+          12px;
+
+        right:
+          12px;
+
+        bottom:
+          12px;
+
+        min-width:
+          0;
       }
     }
   </style>
@@ -1340,14 +2097,18 @@
 
   <!-- ================= SIDEBAR ================= -->
 
-  <aside class="sidebar" id="sidebar">
+  <aside
+    class="sidebar"
+    id="sidebar">
 
     <button
       class="close-sidebar"
       id="closeSidebar"
       type="button"
       aria-label="إغلاق القائمة">
+
       ×
+
     </button>
 
     <a
@@ -1356,46 +2117,82 @@
       title="العودة إلى الصفحة الرئيسية">
 
       <div class="sidebar-logo">
+
         <img
           src="logo.png"
           alt="شعار مركز حردان طارق القرآني">
+
       </div>
 
       <div class="brand-text">
-        <strong>مركز حردان طارق القرآني</strong>
-        <span>البوابة الإدارية</span>
+
+        <strong>
+          مركز حردان طارق القرآني
+        </strong>
+
+        <span>
+          البوابة الإدارية
+        </span>
+
       </div>
+
     </a>
 
     <div class="sidebar-heading">
       إدارة المركز
     </div>
 
-    <button class="side-link active" type="button">
+    <button
+      class="side-link active"
+      type="button">
+
       <i class="fa-solid fa-chart-pie"></i>
+
       لوحة المتابعة
+
     </button>
 
-    <button class="side-link" id="studentsNav" type="button">
+    <button
+      class="side-link"
+      id="studentsNav"
+      type="button">
+
       <i class="fa-solid fa-users"></i>
+
       الطلاب
+
     </button>
 
-    <button class="side-link" id="requestsNav" type="button">
+    <button
+      class="side-link"
+      id="requestsNav"
+      type="button">
+
       <i class="fa-solid fa-user-clock"></i>
+
       طلبات الانضمام
+
     </button>
 
-    <button class="side-link" id="memorizationNav" type="button">
+    <button
+      class="side-link"
+      id="memorizationNav"
+      type="button">
+
       <i class="fa-solid fa-book-quran"></i>
+
       متابعة الحفظ
+
     </button>
 
     <div class="sidebar-bottom">
 
       <div class="sidebar-status">
+
         <span class="online-dot"></span>
+
         النظام يعمل بشكل طبيعي
+
       </div>
 
       <button
@@ -1404,11 +2201,15 @@
         type="button">
 
         <i class="fa-solid fa-right-from-bracket"></i>
+
         &nbsp;
+
         تسجيل الخروج
+
       </button>
 
     </div>
+
   </aside>
 
   <!-- ================= MAIN ================= -->
@@ -1422,19 +2223,29 @@
         <button
           class="mobile-menu"
           id="mobileMenu"
-          type="button">
+          type="button"
+          aria-label="فتح القائمة">
 
           <i class="fa-solid fa-bars"></i>
 
         </button>
 
         <div class="page-heading-icon">
+
           <i class="fa-solid fa-chart-line"></i>
+
         </div>
 
         <div class="page-title">
-          <h1>لوحة متابعة الطلاب</h1>
-          <p>إدارة ومتابعة طلاب المركز بسهولة</p>
+
+          <h1>
+            لوحة متابعة الطلاب
+          </h1>
+
+          <p>
+            إدارة ومتابعة طلاب المركز بسهولة
+          </p>
+
         </div>
 
       </div>
@@ -1446,22 +2257,29 @@
           <span
             class="teacher-name"
             id="teacherName">
+
             المعلم
+
           </span>
 
           <span
             class="teacher-email"
             id="teacherEmail">
+
             -
+
           </span>
 
         </div>
 
         <div class="teacher-avatar">
+
           <i class="fa-solid fa-user-tie"></i>
+
         </div>
 
       </div>
+
     </header>
 
     <main class="content">
@@ -1473,7 +2291,9 @@
         <div class="welcome-content">
 
           <div class="welcome-small">
+
             مركز حردان طارق القرآني
+
           </div>
 
           <h2>
@@ -1489,7 +2309,9 @@
         </div>
 
         <div class="hero-decoration">
+
           <i class="fa-solid fa-book-quran"></i>
+
         </div>
 
       </section>
@@ -1501,19 +2323,25 @@
         <div class="stat-card">
 
           <div class="stat-icon">
+
             <i class="fa-solid fa-users"></i>
+
           </div>
 
           <div>
+
             <span
               class="stat-number"
               id="totalStudents">
+
               0
+
             </span>
 
             <span class="stat-label">
               إجمالي الطلاب
             </span>
+
           </div>
 
         </div>
@@ -1521,19 +2349,25 @@
         <div class="stat-card">
 
           <div class="stat-icon">
+
             <i class="fa-solid fa-user-check"></i>
+
           </div>
 
           <div>
+
             <span
               class="stat-number"
               id="activeStudents">
+
               0
+
             </span>
 
             <span class="stat-label">
               الطلاب المستمرون
             </span>
+
           </div>
 
         </div>
@@ -1541,19 +2375,25 @@
         <div class="stat-card">
 
           <div class="stat-icon">
+
             <i class="fa-solid fa-book-quran"></i>
+
           </div>
 
           <div>
+
             <span
               class="stat-number"
               id="memorizedStudents">
+
               0
+
             </span>
 
             <span class="stat-label">
               لديهم متابعة حفظ
             </span>
+
           </div>
 
         </div>
@@ -1571,7 +2411,9 @@
           <div class="panel-title">
 
             <div class="panel-title-icon">
+
               <i class="fa-solid fa-user-clock"></i>
+
             </div>
 
             <div>
@@ -1591,7 +2433,9 @@
           <span
             class="pending-count"
             id="pendingCount">
+
             0 طلب
+
           </span>
 
         </div>
@@ -1599,6 +2443,7 @@
         <div
           class="requests-list"
           id="requestsList">
+
         </div>
 
       </section>
@@ -1614,7 +2459,9 @@
           <div class="panel-title">
 
             <div class="panel-title-icon">
+
               <i class="fa-solid fa-users"></i>
+
             </div>
 
             <div>
@@ -1637,6 +2484,7 @@
             type="button">
 
             <i class="fa-solid fa-user-plus"></i>
+
             إضافة طالب جديد
 
           </button>
@@ -1728,7 +2576,7 @@
             </option>
 
             <option value="section">
-              ترتيب: حسب الشعبة
+              ترتيب: حسب الصف / الشعبة
             </option>
 
           </select>
@@ -1777,7 +2625,9 @@
 
             </thead>
 
-            <tbody id="studentsTable"></tbody>
+            <tbody id="studentsTable">
+
+            </tbody>
 
           </table>
 
@@ -1788,7 +2638,9 @@
           class="empty">
 
           <div class="empty-icon">
+
             <i class="fa-solid fa-users-slash"></i>
+
           </div>
 
           <strong>
@@ -1911,7 +2763,8 @@
             الحالة
           </label>
 
-          <select id="studentStatus">
+          <select
+            id="studentStatus">
 
             <option value="active">
               مستمر
@@ -1941,6 +2794,7 @@
             id="saveButton">
 
             <i class="fa-solid fa-check"></i>
+
             حفظ الطالب
 
           </button>
@@ -1959,7 +2813,9 @@
         <div id="message"></div>
 
       </form>
+
     </div>
+
   </div>
 
   <!-- ================= TOAST ================= -->
@@ -1969,6 +2825,7 @@
     id="toast">
 
     <i id="toastIcon"></i>
+
     <span id="toastText"></span>
 
   </div>
@@ -1994,70 +2851,114 @@
     /* ================= ELEMENTS ================= */
 
     const tableBody =
-      document.getElementById('studentsTable');
+      document.getElementById(
+        'studentsTable'
+      );
 
     const emptyMessage =
-      document.getElementById('emptyMessage');
+      document.getElementById(
+        'emptyMessage'
+      );
 
     const totalStudents =
-      document.getElementById('totalStudents');
+      document.getElementById(
+        'totalStudents'
+      );
 
     const activeStudents =
-      document.getElementById('activeStudents');
+      document.getElementById(
+        'activeStudents'
+      );
 
     const memorizedStudents =
-      document.getElementById('memorizedStudents');
+      document.getElementById(
+        'memorizedStudents'
+      );
 
     const searchInput =
-      document.getElementById('searchInput');
+      document.getElementById(
+        'searchInput'
+      );
 
     const sectionFilter =
-      document.getElementById('sectionFilter');
+      document.getElementById(
+        'sectionFilter'
+      );
 
     const statusFilter =
-      document.getElementById('statusFilter');
+      document.getElementById(
+        'statusFilter'
+      );
 
     const sortFilter =
-      document.getElementById('sortFilter');
+      document.getElementById(
+        'sortFilter'
+      );
 
     const modal =
-      document.getElementById('studentModal');
+      document.getElementById(
+        'studentModal'
+      );
 
     const openModal =
-      document.getElementById('openModal');
+      document.getElementById(
+        'openModal'
+      );
 
     const closeModal =
-      document.getElementById('closeModal');
+      document.getElementById(
+        'closeModal'
+      );
 
     const cancelButton =
-      document.getElementById('cancelButton');
+      document.getElementById(
+        'cancelButton'
+      );
 
     const studentForm =
-      document.getElementById('studentForm');
+      document.getElementById(
+        'studentForm'
+      );
 
     const message =
-      document.getElementById('message');
+      document.getElementById(
+        'message'
+      );
 
     const modalTitle =
-      document.getElementById('modalTitle');
+      document.getElementById(
+        'modalTitle'
+      );
 
     const saveButton =
-      document.getElementById('saveButton');
+      document.getElementById(
+        'saveButton'
+      );
 
     const toast =
-      document.getElementById('toast');
+      document.getElementById(
+        'toast'
+      );
 
     const toastText =
-      document.getElementById('toastText');
+      document.getElementById(
+        'toastText'
+      );
 
     const toastIcon =
-      document.getElementById('toastIcon');
+      document.getElementById(
+        'toastIcon'
+      );
 
     const requestsList =
-      document.getElementById('requestsList');
+      document.getElementById(
+        'requestsList'
+      );
 
     const pendingCount =
-      document.getElementById('pendingCount');
+      document.getElementById(
+        'pendingCount'
+      );
 
     let students = [];
 
@@ -2065,14 +2966,17 @@
 
     let profileMap = {};
 
-    /* ================= TOAST ================= */
+    /* =====================================================
+       TOAST
+    ====================================================== */
 
     function showToast(
       text,
       type = 'success'
     ) {
 
-      toastText.textContent = text;
+      toastText.textContent =
+        text;
 
       toast.className =
         'toast show ' + type;
@@ -2083,11 +2987,17 @@
           : 'fa-solid fa-circle-exclamation';
 
       setTimeout(() => {
-        toast.classList.remove('show');
+
+        toast.classList.remove(
+          'show'
+        );
+
       }, 3000);
     }
 
-    /* ================= AUTH ================= */
+    /* =====================================================
+       AUTH
+    ====================================================== */
 
     async function checkUser() {
 
@@ -2095,9 +3005,7 @@
         data,
         error
       } =
-        await supabaseClient
-          .auth
-          .getUser();
+        await supabaseClient.auth.getUser();
 
       if (
         error ||
@@ -2126,7 +3034,9 @@
       return true;
     }
 
-    /* ================= NUMBER ================= */
+    /* =====================================================
+       SAFE NUMBER
+    ====================================================== */
 
     function toNumber(value) {
 
@@ -2142,7 +3052,9 @@
         : 0;
     }
 
-    /* ================= POINTS ================= */
+    /* =====================================================
+       ATTENDANCE POINTS
+    ====================================================== */
 
     function attendancePoint(status) {
 
@@ -2175,6 +3087,10 @@
       return 0;
     }
 
+    /* =====================================================
+       RECITATION POINTS
+    ====================================================== */
+
     function recitationPoint(item) {
 
       const raw =
@@ -2187,7 +3103,9 @@
         '';
 
       const type =
-        String(item?.type || '')
+        String(
+          item?.type || ''
+        )
           .trim()
           .toLowerCase();
 
@@ -2224,7 +3142,9 @@
           .trim()
           .toLowerCase();
 
-      if (label.includes('ممتاز')) {
+      if (
+        label.includes('ممتاز')
+      ) {
         return isReview ? 3 : 6;
       }
 
@@ -2235,16 +3155,24 @@
         return isReview ? 2.5 : 5;
       }
 
-      if (label === 'جيد') {
+      if (
+        label === 'جيد'
+      ) {
         return isReview ? 2 : 4;
       }
 
-      if (label.includes('مقبول')) {
+      if (
+        label.includes('مقبول')
+      ) {
         return isReview ? 1 : 2;
       }
 
       return 0;
     }
+
+    /* =====================================================
+       TEST POINTS
+    ====================================================== */
 
     function testPoint(item) {
 
@@ -2263,18 +3191,27 @@
 
         const percentage =
           numeric <= 12
-            ? (numeric / 12) * 100
+            ? (
+                numeric /
+                12
+              ) * 100
             : numeric;
 
-        if (percentage >= 97) {
+        if (
+          percentage >= 97
+        ) {
           return 12;
         }
 
-        if (percentage >= 90) {
+        if (
+          percentage >= 90
+        ) {
           return 8;
         }
 
-        if (percentage >= 80) {
+        if (
+          percentage >= 80
+        ) {
           return 4;
         }
 
@@ -2286,7 +3223,9 @@
           .trim()
           .toLowerCase();
 
-      if (label.includes('ممتاز')) {
+      if (
+        label.includes('ممتاز')
+      ) {
         return 12;
       }
 
@@ -2297,14 +3236,18 @@
         return 8;
       }
 
-      if (label === 'جيد') {
+      if (
+        label === 'جيد'
+      ) {
         return 4;
       }
 
       return 0;
     }
 
-    /* ================= PERFORMANCE ================= */
+    /* =====================================================
+       STUDENT PERFORMANCE
+    ====================================================== */
 
     function calculateStudentPerformance(
       profileData
@@ -2314,25 +3257,34 @@
         profileData || {};
 
       const attendance =
-        Array.isArray(profile.attendance)
+        Array.isArray(
+          profile.attendance
+        )
           ? profile.attendance
           : [];
 
       const recitations =
-        Array.isArray(profile.recitations)
+        Array.isArray(
+          profile.recitations
+        )
           ? profile.recitations
           : [];
 
       const tests =
-        Array.isArray(profile.tests)
+        Array.isArray(
+          profile.tests
+        )
           ? profile.tests
           : [];
 
-      /* الحضور */
+      /* ===== الحضور ===== */
 
       const attendancePoints =
         attendance.reduce(
-          (sum, item) =>
+          (
+            sum,
+            item
+          ) =>
             sum +
             attendancePoint(
               item?.status ??
@@ -2348,54 +3300,77 @@
               100,
               (
                 attendancePoints /
-                (attendance.length * 2)
+                (
+                  attendance.length *
+                  2
+                )
               ) * 100
             )
           : 0;
 
-      /* الحفظ */
+      /* ===== الحفظ ===== */
 
       const hifz =
-        recitations.filter(item => {
+        recitations.filter(
+          item => {
 
-          const type =
-            String(item?.type || '')
-              .trim()
-              .toLowerCase();
+            const type =
+              String(
+                item?.type || ''
+              )
+                .trim()
+                .toLowerCase();
 
-          return (
-            type !== 'review' &&
-            type !== 'مراجعة'
-          );
-        });
+            return (
+              type !== 'review' &&
+              type !== 'مراجعة'
+            );
+          }
+        );
 
-      /* المراجعة */
+      /* ===== المراجعة ===== */
 
       const review =
-        recitations.filter(item => {
+        recitations.filter(
+          item => {
 
-          const type =
-            String(item?.type || '')
-              .trim()
-              .toLowerCase();
+            const type =
+              String(
+                item?.type || ''
+              )
+                .trim()
+                .toLowerCase();
 
-          return (
-            type === 'review' ||
-            type === 'مراجعة'
-          );
-        });
+            return (
+              type === 'review' ||
+              type === 'مراجعة'
+            );
+          }
+        );
 
       const hifzPoints =
         hifz.reduce(
-          (sum, item) =>
-            sum + recitationPoint(item),
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            recitationPoint(
+              item
+            ),
           0
         );
 
       const reviewPoints =
         review.reduce(
-          (sum, item) =>
-            sum + recitationPoint(item),
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            recitationPoint(
+              item
+            ),
           0
         );
 
@@ -2405,7 +3380,10 @@
               100,
               (
                 hifzPoints /
-                (hifz.length * 6)
+                (
+                  hifz.length *
+                  6
+                )
               ) * 100
             )
           : 0;
@@ -2416,17 +3394,24 @@
               100,
               (
                 reviewPoints /
-                (review.length * 3)
+                (
+                  review.length *
+                  3
+                )
               ) * 100
             )
           : 0;
 
-      /* الاختبارات */
+      /* ===== الاختبارات ===== */
 
       const testPoints =
         tests.reduce(
-          (sum, item) =>
-            sum + testPoint(item),
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            testPoint(item),
           0
         );
 
@@ -2436,27 +3421,46 @@
               100,
               (
                 testPoints /
-                (tests.length * 12)
+                (
+                  tests.length *
+                  12
+                )
               ) * 100
             )
           : 0;
 
-      /* التقييم */
+      /* ===== التقييم من 100 ===== */
 
       const score =
         (
-          attendanceScore * .20 +
-          hifzScore * .35 +
-          reviewScore * .25 +
-          testsScore * .20
+          attendanceScore *
+          .20
+        ) +
+        (
+          hifzScore *
+          .35
+        ) +
+        (
+          reviewScore *
+          .25
+        ) +
+        (
+          testsScore *
+          .20
         );
 
-      /* النقاط */
+      /* ===== النقاط الكلية ===== */
 
       const recitationPointsTotal =
         recitations.reduce(
-          (sum, item) =>
-            sum + recitationPoint(item),
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            recitationPoint(
+              item
+            ),
           0
         );
 
@@ -2480,13 +3484,16 @@
 
         totalPoints:
           Math.round(
-            totalPoints * 10
+            totalPoints *
+            10
           ) / 10
 
       };
     }
 
-    /* ================= PROFILE LOADING ================= */
+    /* =====================================================
+       LOAD PROFILES
+    ====================================================== */
 
     async function loadProfiles() {
 
@@ -2496,11 +3503,13 @@
       } =
         await supabaseClient
           .from('student_profiles')
-          .select('student_id, data');
+          .select(
+            'student_id, data'
+          );
 
       if (error) {
 
-        console.error(
+        console.warn(
           'تعذر تحميل ملفات الطلاب:',
           error
         );
@@ -2512,17 +3521,24 @@
 
       profileMap = {};
 
-      (data || []).forEach(row => {
+      (
+        data || []
+      ).forEach(
+        row => {
 
-        profileMap[
-          String(row.student_id)
-        ] =
-          row.data || {};
-
-      });
+          profileMap[
+            String(
+              row.student_id
+            )
+          ] =
+            row.data || {};
+        }
+      );
     }
 
-    function getStudentPerformance(student) {
+    function getStudentPerformance(
+      student
+    ) {
 
       return calculateStudentPerformance(
         profileMap[
@@ -2531,19 +3547,29 @@
       );
     }
 
-    function formatPoints(points) {
+    function formatPoints(
+      points
+    ) {
 
       const value =
-        Number(points || 0);
+        Number(
+          points || 0
+        );
 
-      return Number.isInteger(value)
+      return Number.isInteger(
+        value
+      )
         ? `${value} نقطة`
         : `${value.toFixed(1)} نقطة`;
     }
 
-    /* ================= STATUS ================= */
+    /* =====================================================
+       STATUS INFO
+    ====================================================== */
 
-    function getStatusInfo(status) {
+    function getStatusInfo(
+      status
+    ) {
 
       const map = {
 
@@ -2577,7 +3603,9 @@
       );
     }
 
-    /* ================= LOAD STUDENTS ================= */
+    /* =====================================================
+       LOAD STUDENTS
+    ====================================================== */
 
     async function loadStudents() {
 
@@ -2597,7 +3625,9 @@
 
       if (error) {
 
-        console.error(error);
+        console.error(
+          error
+        );
 
         emptyMessage.style.display =
           'block';
@@ -2625,7 +3655,9 @@
       updateStats();
     }
 
-    /* ================= REQUESTS ================= */
+    /* =====================================================
+       LOAD PENDING REQUESTS
+    ====================================================== */
 
     async function loadPendingRequests() {
 
@@ -2663,7 +3695,9 @@
       pendingCount.textContent =
         `${requests.length} طلب`;
 
-      if (!requests.length) {
+      if (
+        requests.length === 0
+      ) {
 
         requestsList.innerHTML = `
 
@@ -2687,82 +3721,106 @@
       }
 
       requestsList.innerHTML =
-        requests.map(student => {
+        requests.map(
+          student => {
 
-          return `
+            return `
 
-            <div class="request-card">
+              <div class="request-card">
 
-              <div class="request-content">
+                <div class="request-content">
 
-                <div>
+                  <div>
 
-                  <div class="request-name">
-                    ${escapeHtml(student.name || '')}
+                    <div class="request-name">
+
+                      ${escapeHtml(
+                        student.name || ''
+                      )}
+
+                    </div>
+
+                    <div class="request-details">
+
+                      العمر:
+                      ${
+                        student.age ||
+                        'غير محدد'
+                      }
+
+                      <br>
+
+                      الشعبة:
+                      ${escapeHtml(
+                        student.section || '-'
+                      )}
+
+                      <br>
+
+                      هاتف ولي الأمر:
+                      ${escapeHtml(
+                        student.guardian_phone || '-'
+                      )}
+
+                      ${
+                        student.notes
+                          ? `
+                            <br>
+                            الملاحظات:
+                            ${escapeHtml(
+                              student.notes
+                            )}
+                          `
+                          : ''
+                      }
+
+                    </div>
+
                   </div>
 
-                  <div class="request-details">
+                  <div class="request-actions">
 
-                    العمر:
-                    ${student.age || 'غير محدد'}
+                    <button
+                      type="button"
+                      class="approve-btn"
+                      onclick="approveStudent('${student.id}')">
 
-                    <br>
+                      <i class="fa-solid fa-check"></i>
 
-                    الشعبة:
-                    ${escapeHtml(student.section || '-')}
+                      قبول
 
-                    <br>
+                    </button>
 
-                    هاتف ولي الأمر:
-                    ${escapeHtml(student.guardian_phone || '-')}
+                    <button
+                      type="button"
+                      class="reject-btn"
+                      onclick="rejectStudent('${student.id}')">
 
-                    ${
-                      student.notes
-                        ? `<br>الملاحظات: ${escapeHtml(student.notes)}`
-                        : ''
-                    }
+                      <i class="fa-solid fa-xmark"></i>
+
+                      رفض
+
+                    </button>
 
                   </div>
-
-                </div>
-
-                <div class="request-actions">
-
-                  <button
-                    type="button"
-                    class="approve-btn"
-                    onclick="approveStudent('${student.id}')">
-
-                    <i class="fa-solid fa-check"></i>
-                    قبول
-
-                  </button>
-
-                  <button
-                    type="button"
-                    class="reject-btn"
-                    onclick="rejectStudent('${student.id}')">
-
-                    <i class="fa-solid fa-xmark"></i>
-                    رفض
-
-                  </button>
 
                 </div>
 
               </div>
 
-            </div>
-
-          `;
-
-        }).join('');
+            `;
+          }
+        ).join('');
     }
 
-    /* ================= APPROVE ================= */
+    /* =====================================================
+       APPROVE
+    ====================================================== */
 
     window.approveStudent =
-      async function(id) {
+      async function(
+        id
+      ) {
 
         const confirmed =
           confirm(
@@ -2777,14 +3835,23 @@
           await supabaseClient
             .from('students')
             .update({
-              status: 'active'
+              status:
+                'active'
             })
-            .eq('id', id)
-            .eq('status', 'pending');
+            .eq(
+              'id',
+              id
+            )
+            .eq(
+              'status',
+              'pending'
+            );
 
         if (error) {
 
-          console.error(error);
+          console.error(
+            error
+          );
 
           showToast(
             'حدث خطأ أثناء قبول الطلب.',
@@ -2799,13 +3866,18 @@
         );
 
         await loadStudents();
+
         await loadPendingRequests();
       };
 
-    /* ================= REJECT ================= */
+    /* =====================================================
+       REJECT
+    ====================================================== */
 
     window.rejectStudent =
-      async function(id) {
+      async function(
+        id
+      ) {
 
         const confirmed =
           confirm(
@@ -2820,14 +3892,23 @@
           await supabaseClient
             .from('students')
             .update({
-              status: 'rejected'
+              status:
+                'rejected'
             })
-            .eq('id', id)
-            .eq('status', 'pending');
+            .eq(
+              'id',
+              id
+            )
+            .eq(
+              'status',
+              'pending'
+            );
 
         if (error) {
 
-          console.error(error);
+          console.error(
+            error
+          );
 
           showToast(
             'حدث خطأ أثناء رفض الطلب.',
@@ -2842,6 +3923,7 @@
         );
 
         await loadStudents();
+
         await loadPendingRequests();
 
         statusFilter.value =
@@ -2850,7 +3932,9 @@
         renderStudents();
       };
 
-    /* ================= FILTERING ================= */
+    /* =====================================================
+       FILTER + SORT
+    ====================================================== */
 
     function getFilteredStudents() {
 
@@ -2865,140 +3949,173 @@
       const selectedStatus =
         statusFilter.value;
 
-      let filtered =
-        students.filter(student => {
-
-          const matchesSearch =
-            String(
-              student.name || ''
-            )
-              .toLowerCase()
-              .includes(search);
-
-          const matchesSection =
-            !selectedSection ||
-            student.section ===
-            selectedSection;
-
-          let matchesStatus = true;
-
-          if (
-            selectedStatus ===
-            'accepted'
-          ) {
-
-            matchesStatus =
-              student.status === 'active' ||
-              student.status === 'inactive';
-
-          }
-
-          else if (
-            selectedStatus !== 'all'
-          ) {
-
-            matchesStatus =
-              student.status ===
-              selectedStatus;
-
-          }
-
-          return (
-            matchesSearch &&
-            matchesSection &&
-            matchesStatus
-          );
-        });
-
-      filtered =
-        filtered.map(student => {
-
-          const performance =
-            getStudentPerformance(student);
-
-          return {
-            ...student,
-            _score:
-              performance.score,
-            _points:
-              performance.totalPoints
-          };
-
-        });
-
-      const sort =
+      const selectedSort =
         sortFilter.value;
 
-      if (
-        sort ===
-        'alphabetical'
-      ) {
+      let filtered =
+        students
+          .map(
+            student => {
 
-        filtered.sort(
-          (a, b) =>
-            String(a.name || '')
-              .localeCompare(
-                String(b.name || ''),
-                'ar'
-              )
-        );
-      }
+              const performance =
+                getStudentPerformance(
+                  student
+                );
 
-      else if (
-        sort ===
-        'points'
-      ) {
+              return {
 
-        filtered.sort(
-          (a, b) =>
-            b._points -
-            a._points
-        );
-      }
+                ...student,
 
-      else if (
-        sort ===
-        'section'
-      ) {
+                _score:
+                  performance.score,
 
-        filtered.sort(
-          (a, b) => {
+                _points:
+                  performance.totalPoints
+
+              };
+            }
+          )
+          .filter(
+            student => {
+
+              const matchesSearch =
+                String(
+                  student.name ||
+                  ''
+                )
+                  .toLowerCase()
+                  .includes(
+                    search
+                  );
+
+              const matchesSection =
+                !selectedSection ||
+                student.section ===
+                selectedSection;
+
+              let matchesStatus =
+                true;
+
+              if (
+                selectedStatus ===
+                'accepted'
+              ) {
+
+                matchesStatus =
+                  student.status ===
+                    'active' ||
+                  student.status ===
+                    'inactive';
+
+              }
+
+              else if (
+                selectedStatus ===
+                'all'
+              ) {
+
+                matchesStatus =
+                  true;
+
+              }
+
+              else {
+
+                matchesStatus =
+                  student.status ===
+                  selectedStatus;
+              }
+
+              return (
+                matchesSearch &&
+                matchesSection &&
+                matchesStatus
+              );
+            }
+          );
+
+      /* ===== SORT ===== */
+
+      filtered.sort(
+        (
+          a,
+          b
+        ) => {
+
+          if (
+            selectedSort ===
+            'points'
+          ) {
+
+            const pointsDiff =
+              (
+                b._points || 0
+              ) -
+              (
+                a._points || 0
+              );
+
+            if (
+              pointsDiff !== 0
+            ) {
+
+              return pointsDiff;
+            }
+          }
+
+          if (
+            selectedSort ===
+            'section'
+          ) {
 
             const sectionCompare =
-              String(a.section || '')
-                .localeCompare(
-                  String(b.section || ''),
-                  'ar'
-                );
+              String(
+                a.section || ''
+              ).localeCompare(
+                String(
+                  b.section || ''
+                ),
+                'ar'
+              );
 
             if (
               sectionCompare !== 0
             ) {
+
               return sectionCompare;
             }
-
-            return String(a.name || '')
-              .localeCompare(
-                String(b.name || ''),
-                'ar'
-              );
           }
-        );
-      }
+
+          return String(
+            a.name || ''
+          ).localeCompare(
+            String(
+              b.name || ''
+            ),
+            'ar'
+          );
+        }
+      );
 
       return filtered;
     }
 
-    /* ================= RENDER ================= */
+    /* =====================================================
+       RENDER STUDENTS
+    ====================================================== */
 
     function renderStudents() {
 
       const filtered =
         getFilteredStudents();
 
-      tableBody.innerHTML = '';
+      tableBody.innerHTML =
+        '';
 
-      if (!filtered.length) {
+      if (
+        filtered.length ===
+        0
+      ) {
 
         emptyMessage.style.display =
           'block';
@@ -3034,188 +4151,232 @@
             'لا يوجد طلاب';
         }
 
-        emptyMessage.querySelector(
-          'p'
-        ).textContent =
-          'لم يتم العثور على طلاب مطابقين للفلاتر الحالية.';
-
         return;
       }
 
       emptyMessage.style.display =
         'none';
 
-      filtered.forEach(student => {
+      filtered.forEach(
+        student => {
 
-        const row =
-          document.createElement('tr');
+          const row =
+            document.createElement(
+              'tr'
+            );
 
-        const statusInfo =
-          getStatusInfo(
-            student.status
-          );
+          const statusInfo =
+            getStatusInfo(
+              student.status
+            );
 
-        const firstLetter =
-          (
-            student.name || '?'
-          )
-            .trim()
-            .charAt(0);
+          const firstLetter =
+            (
+              student.name ||
+              '?'
+            )
+              .trim()
+              .charAt(0);
 
-        const pointsText =
-          formatPoints(
-            student._points
-          );
+          const pointsText =
+            formatPoints(
+              student._points
+            );
 
-        row.innerHTML = `
+          const permanentDelete =
+            student.status ===
+              'rejected' ||
+            student.status ===
+              'expelled';
 
-          <td>
+          row.innerHTML = `
 
-            <div class="student-name">
+            <td>
 
-              <div class="student-avatar">
+              <div class="student-name">
 
-                ${escapeHtml(firstLetter)}
-
-              </div>
-
-              <div>
-
-                <a
-                  class="student-name-link"
-                  href="student-profile.html?id=${encodeURIComponent(student.id)}"
-                  title="فتح ملف الطالب">
+                <div class="student-avatar">
 
                   ${escapeHtml(
-                    student.name || ''
+                    firstLetter
                   )}
 
-                </a>
+                </div>
 
-                <div class="student-subinfo">
+                <div>
 
-                  تقييم:
-                  <strong>
-                    ${student._score}/100
-                  </strong>
+                  <a
+                    class="student-name-link"
+                    href="student-profile.html?id=${encodeURIComponent(
+                      student.id
+                    )}"
+                    title="فتح ملف الطالب">
 
-                  ·
+                    ${escapeHtml(
+                      student.name || ''
+                    )}
 
-                  النقاط:
-                  <strong>
-                    ${escapeHtml(pointsText)}
-                  </strong>
+                  </a>
+
+                  <div class="student-subinfo">
+
+                    التقييم:
+                    <strong>
+                      ${student._score}
+                      / 100
+                    </strong>
+
+                    ·
+
+                    النقاط:
+                    <strong>
+                      ${escapeHtml(
+                        pointsText
+                      )}
+                    </strong>
+
+                  </div>
 
                 </div>
 
               </div>
 
-            </div>
+            </td>
 
-          </td>
+            <td>
 
-          <td>
+              <span class="section-badge">
 
-            <span class="section-badge">
+                ${escapeHtml(
+                  student.section ||
+                  '-'
+                )}
 
-              ${escapeHtml(
-                student.section || '-'
-              )}
+              </span>
 
-            </span>
+            </td>
 
-          </td>
-
-          <td>
-
-            ${
-              student.memorization
-                ? `
-                  <span class="memorization">
-                    ${escapeHtml(student.memorization)}
-                  </span>
-                `
-                : `
-                  <span class="no-data">
-                    لم يحدد
-                  </span>
-                `
-            }
-
-          </td>
-
-          <td>
-
-            <span class="status ${statusInfo.className}">
-
-              ${statusInfo.text}
-
-            </span>
-
-          </td>
-
-          <td>
-
-            <span class="score-badge">
-
-              ${student._score}/100
-
-            </span>
-
-          </td>
-
-          <td>
-
-            <span class="points-badge">
-
-              ${escapeHtml(pointsText)}
-
-            </span>
-
-          </td>
-
-          <td>
-
-            <div class="actions">
-
-              <button
-                class="action-btn edit-btn"
-                title="تعديل"
-                type="button"
-                onclick="editStudent('${student.id}')">
-
-                <i class="fa-solid fa-pen"></i>
-
-              </button>
+            <td>
 
               ${
-                student.status !== 'rejected' &&
-                student.status !== 'expelled'
+                student.memorization
                   ? `
-                    <button
-                      class="action-btn delete-btn"
-                      title="نقل إلى المفصولين"
-                      type="button"
-                      onclick="deleteStudent('${student.id}')">
 
-                      <i class="fa-solid fa-trash"></i>
+                    <span class="memorization">
 
-                    </button>
+                      ${escapeHtml(
+                        student.memorization
+                      )}
+
+                    </span>
+
                   `
-                  : ''
+                  : `
+
+                    <span class="no-data">
+
+                      لم يحدد
+
+                    </span>
+
+                  `
               }
 
-            </div>
+            </td>
 
-          </td>
+            <td>
 
-        `;
+              <span class="status ${statusInfo.className}">
 
-        tableBody.appendChild(row);
-      });
+                ${statusInfo.text}
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <span class="score-badge">
+
+                ${student._score}
+                / 100
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <span class="points-badge">
+
+                ${escapeHtml(
+                  pointsText
+                )}
+
+              </span>
+
+            </td>
+
+            <td>
+
+              <div class="actions">
+
+                <button
+                  class="action-btn edit-btn"
+                  title="تعديل"
+                  type="button"
+                  onclick="editStudent('${student.id}')">
+
+                  <i class="fa-solid fa-pen"></i>
+
+                </button>
+
+                ${
+                  permanentDelete
+                    ? `
+
+                      <button
+                        class="action-btn delete-btn"
+                        title="حذف نهائي"
+                        type="button"
+                        onclick="deleteStudent('${student.id}')">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                      </button>
+
+                    `
+                    : `
+
+                      <button
+                        class="action-btn expel-btn"
+                        title="فصل الطالب"
+                        type="button"
+                        onclick="deleteStudent('${student.id}')">
+
+                        <i class="fa-solid fa-user-slash"></i>
+
+                      </button>
+
+                    `
+                }
+
+              </div>
+
+            </td>
+
+          `;
+
+          tableBody.appendChild(
+            row
+          );
+        }
+      );
     }
 
-    /* ================= STATS ================= */
+    /* =====================================================
+       STATS
+    ====================================================== */
 
     function updateStats() {
 
@@ -3239,11 +4400,14 @@
         ).length;
     }
 
-    /* ================= MODAL ================= */
+    /* =====================================================
+       ADD MODAL
+    ====================================================== */
 
     function openAddModal() {
 
-      editingStudentId = null;
+      editingStudentId =
+        null;
 
       modalTitle.textContent =
         'إضافة طالب جديد';
@@ -3258,9 +4422,12 @@
       ).value =
         'active';
 
-      message.textContent = '';
+      message.textContent =
+        '';
 
-      modal.classList.add('show');
+      modal.classList.add(
+        'show'
+      );
     }
 
     openModal.addEventListener(
@@ -3268,13 +4435,21 @@
       openAddModal
     );
 
+    /* =====================================================
+       EDIT
+    ====================================================== */
+
     window.editStudent =
-      function(id) {
+      function(
+        id
+      ) {
 
         const student =
           students.find(
             item =>
-              String(item.id) ===
+              String(
+                item.id
+              ) ===
               String(id)
           );
 
@@ -3292,33 +4467,44 @@
         document.getElementById(
           'studentName'
         ).value =
-          student.name || '';
+          student.name ||
+          '';
 
         document.getElementById(
           'studentSection'
         ).value =
-          student.section || '';
+          student.section ||
+          '';
 
         document.getElementById(
           'memorization'
         ).value =
-          student.memorization || '';
+          student.memorization ||
+          '';
 
         document.getElementById(
           'studentStatus'
         ).value =
-          student.status || 'active';
+          student.status ||
+          'active';
 
-        message.textContent = '';
+        message.textContent =
+          '';
 
-        modal.classList.add('show');
+        modal.classList.add(
+          'show'
+        );
       };
 
-    /* ================= SAVE STUDENT ================= */
+    /* =====================================================
+       SAVE STUDENT
+    ====================================================== */
 
     studentForm.addEventListener(
       'submit',
-      async function(event) {
+      async function(
+        event
+      ) {
 
         event.preventDefault();
 
@@ -3342,7 +4528,10 @@
             'studentStatus'
           ).value;
 
-        if (!name || !section) {
+        if (
+          !name ||
+          !section
+        ) {
 
           message.style.color =
             'var(--danger)';
@@ -3361,14 +4550,18 @@
 
         try {
 
-          if (editingStudentId) {
+          if (
+            editingStudentId
+          ) {
 
             const {
               data,
               error
             } =
               await supabaseClient
-                .from('students')
+                .from(
+                  'students'
+                )
                 .update({
                   name,
                   section,
@@ -3389,8 +4582,12 @@
             students =
               students.map(
                 student =>
-                  String(student.id) ===
-                  String(editingStudentId)
+                  String(
+                    student.id
+                  ) ===
+                  String(
+                    editingStudentId
+                  )
                     ? data
                     : student
               );
@@ -3408,7 +4605,9 @@
               error
             } =
               await supabaseClient
-                .from('students')
+                .from(
+                  'students'
+                )
                 .insert([
                   {
                     name,
@@ -3436,20 +4635,25 @@
           await loadProfiles();
 
           renderStudents();
+
           updateStats();
+
           closeStudentModal();
 
         }
 
         catch (error) {
 
-          console.error(error);
+          console.error(
+            error
+          );
 
           message.style.color =
             'var(--danger)';
 
           message.textContent =
             'حدث خطأ أثناء حفظ الطالب.';
+
         }
 
         finally {
@@ -3459,27 +4663,113 @@
 
           saveButton.innerHTML =
             '<i class="fa-solid fa-check"></i> حفظ الطالب';
+
         }
+
       }
     );
 
-    /* ================= DELETE -> EXPEL ================= */
+    /* =====================================================
+       DELETE / EXPEL
+       
+       مهم:
+       - الطالب المستمر/المتوقف:
+         زر "فصل" ينقله إلى expelled.
+       - الطالب غير المقبول/المفصول:
+         زر "سلة المهملات" يحذفه نهائيًا.
+    ====================================================== */
 
     window.deleteStudent =
-      async function(id) {
+      async function(
+        id
+      ) {
 
         const student =
           students.find(
             item =>
-              String(item.id) ===
+              String(
+                item.id
+              ) ===
               String(id)
           );
 
         if (!student) return;
 
+        const isPermanentDelete =
+          student.status ===
+            'rejected' ||
+          student.status ===
+            'expelled';
+
+        /* ===== حذف نهائي ===== */
+
+        if (
+          isPermanentDelete
+        ) {
+
+          const confirmed =
+            confirm(
+              `سيتم حذف الطالب "${student.name}" نهائيًا من قاعدة البيانات. لا يمكن التراجع عن هذه العملية. هل تريد المتابعة؟`
+            );
+
+          if (!confirmed) return;
+
+          const {
+            error
+          } =
+            await supabaseClient
+              .from(
+                'students'
+              )
+              .delete()
+              .eq(
+                'id',
+                id
+              );
+
+          if (error) {
+
+            console.error(
+              error
+            );
+
+            showToast(
+              'حدث خطأ أثناء الحذف النهائي للطالب.',
+              'error'
+            );
+
+            return;
+          }
+
+          students =
+            students.filter(
+              item =>
+                String(
+                  item.id
+                ) !==
+                String(id)
+            );
+
+          delete profileMap[
+            String(id)
+          ];
+
+          renderStudents();
+
+          updateStats();
+
+          showToast(
+            'تم حذف الطالب نهائيًا.'
+          );
+
+          return;
+        }
+
+        /* ===== فصل ===== */
+
         const confirmed =
           confirm(
-            `سيتم نقل الطالب "${student.name}" إلى قائمة المفصولين بدل حذفه نهائيًا. هل تريد المتابعة؟`
+            `سيتم فصل الطالب "${student.name}" ونقله إلى قائمة المفصولين. لن تُحذف بياناته. هل تريد المتابعة؟`
           );
 
         if (!confirmed) return;
@@ -3489,9 +4779,12 @@
           error
         } =
           await supabaseClient
-            .from('students')
+            .from(
+              'students'
+            )
             .update({
-              status: 'expelled'
+              status:
+                'expelled'
             })
             .eq(
               'id',
@@ -3502,10 +4795,12 @@
 
         if (error) {
 
-          console.error(error);
+          console.error(
+            error
+          );
 
           showToast(
-            'حدث خطأ أثناء نقل الطالب إلى المفصولين.',
+            'حدث خطأ أثناء فصل الطالب.',
             'error'
           );
 
@@ -3515,24 +4810,26 @@
         students =
           students.map(
             item =>
-              String(item.id) ===
+              String(
+                item.id
+              ) ===
               String(id)
                 ? data
                 : item
           );
 
-        statusFilter.value =
-          'accepted';
-
         renderStudents();
+
         updateStats();
 
         showToast(
-          'تم نقل الطالب إلى قائمة المفصولين، ولم تُحذف بياناته.'
+          'تم فصل الطالب ونقله إلى قائمة المفصولين.'
         );
       };
 
-    /* ================= CLOSE MODAL ================= */
+    /* =====================================================
+       CLOSE MODAL
+    ====================================================== */
 
     function closeStudentModal() {
 
@@ -3542,7 +4839,8 @@
 
       studentForm.reset();
 
-      message.textContent = '';
+      message.textContent =
+        '';
 
       editingStudentId =
         null;
@@ -3566,7 +4864,9 @@
 
     modal.addEventListener(
       'click',
-      function(event) {
+      function(
+        event
+      ) {
 
         if (
           event.target ===
@@ -3574,11 +4874,14 @@
         ) {
 
           closeStudentModal();
+
         }
       }
     );
 
-    /* ================= FILTER EVENTS ================= */
+    /* =====================================================
+       FILTER EVENTS
+    ====================================================== */
 
     searchInput.addEventListener(
       'input',
@@ -3600,10 +4903,14 @@
       renderStudents
     );
 
-    /* ================= LOGOUT ================= */
+    /* =====================================================
+       LOGOUT
+    ====================================================== */
 
     document
-      .getElementById('logoutButton')
+      .getElementById(
+        'logoutButton'
+      )
       .addEventListener(
         'click',
         logout
@@ -3619,7 +4926,9 @@
         'teacher-login.html';
     }
 
-    /* ================= MOBILE ================= */
+    /* =====================================================
+       MOBILE SIDEBAR
+    ====================================================== */
 
     const sidebar =
       document.getElementById(
@@ -3684,7 +4993,8 @@
               'studentsPanel'
             )
             .scrollIntoView({
-              behavior: 'smooth'
+              behavior:
+                'smooth'
             });
 
           sidebar.classList.remove(
@@ -3706,7 +5016,8 @@
               'requestsPanel'
             )
             .scrollIntoView({
-              behavior: 'smooth'
+              behavior:
+                'smooth'
             });
 
           sidebar.classList.remove(
@@ -3728,7 +5039,8 @@
               'studentsPanel'
             )
             .scrollIntoView({
-              behavior: 'smooth'
+              behavior:
+                'smooth'
             });
 
           sidebar.classList.remove(
@@ -3737,39 +5049,42 @@
         }
       );
 
-    /* ================= ESCAPE HTML ================= */
+    /* =====================================================
+       ESCAPE HTML
+    ====================================================== */
 
-    function escapeHtml(text) {
+    function escapeHtml(
+      text
+    ) {
 
-      return String(text)
-
+      return String(
+        text
+      )
         .replaceAll(
           '&',
           '&amp;'
         )
-
         .replaceAll(
           '<',
           '&lt;'
         )
-
         .replaceAll(
           '>',
           '&gt;'
         )
-
         .replaceAll(
           '"',
           '&quot;'
         )
-
         .replaceAll(
           "'",
           '&#039;'
         );
     }
 
-    /* ================= START ================= */
+    /* =====================================================
+       START
+    ====================================================== */
 
     (async function() {
 
