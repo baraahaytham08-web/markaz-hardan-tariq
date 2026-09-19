@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ملفي | مركز حردان طارق القرآني</title>
+  <title>لوحة المعلم | مركز حردان طارق القرآني</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -19,37 +19,57 @@
     :root {
       --green: #07563c;
       --green2: #0b7450;
+      --dark: #063626;
       --gold: #c29d45;
       --cream: #f8f4e8;
+      --bg: #f4f6f2;
       --text: #17352b;
       --muted: #777;
       --white: #fff;
+      --red: #b42318;
+      --blue: #1769aa;
     }
 
     body {
-      background: #f4f6f2;
-      color: var(--text);
       font-family: Arial, Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
     }
 
+    button,
+    input,
+    select {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* HEADER */
+
     header {
-      background: linear-gradient(135deg, var(--green), #063626);
+      background: linear-gradient(135deg, var(--green), var(--dark));
       color: white;
-      padding: 22px 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.12);
+      padding: 18px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.12);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
 
     .header-inner {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 15px;
     }
 
     .brand h1 {
-      font-size: 22px;
+      font-size: 23px;
       margin-bottom: 5px;
     }
 
@@ -58,29 +78,42 @@
       opacity: .8;
     }
 
-    .logout {
-      border: 1px solid rgba(255,255,255,.3);
-      background: transparent;
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .header-btn {
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.08);
       color: white;
-      padding: 10px 15px;
+      padding: 10px 14px;
       border-radius: 10px;
-      cursor: pointer;
       font-weight: bold;
     }
 
+    .header-btn:hover {
+      background: rgba(255,255,255,.16);
+    }
+
+    /* CONTAINER */
+
     .container {
       width: calc(100% - 30px);
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 25px auto 50px;
     }
 
+    /* WELCOME */
+
     .welcome {
       background: white;
-      border-radius: 22px;
+      border-radius: 20px;
       padding: 25px;
       margin-bottom: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.06);
       border-right: 5px solid var(--gold);
+      box-shadow: 0 5px 20px rgba(0,0,0,.05);
     }
 
     .welcome h2 {
@@ -93,883 +126,1598 @@
       line-height: 1.7;
     }
 
-    .profile {
+    /* STATS */
+
+    .stats {
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
       margin-bottom: 20px;
     }
 
-    .card {
+    .stat-card {
       background: white;
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 5px 18px rgba(0,0,0,.05);
+      border-top: 4px solid var(--green);
     }
 
-    .student-card {
-      text-align: center;
-    }
-
-    .photo {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid var(--gold);
-      background: var(--cream);
-      margin-bottom: 15px;
-    }
-
-    .student-card h2 {
-      color: var(--green);
-      margin-bottom: 8px;
-      font-size: 21px;
-    }
-
-    .section {
+    .stat-label {
       color: var(--muted);
       font-size: 14px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
-    .details {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 13px;
-    }
-
-    .detail {
-      background: #fafafa;
-      border-radius: 13px;
-      padding: 15px;
-      border: 1px solid #eee;
-    }
-
-    .detail small {
-      display: block;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .detail strong {
-      color: var(--text);
-      line-height: 1.5;
-    }
-
-    .section-title {
+    .stat-number {
+      font-size: 30px;
+      font-weight: bold;
       color: var(--green);
-      margin-bottom: 18px;
-      font-size: 21px;
     }
 
-    .progress-box {
-      margin-bottom: 18px;
+    /* MAIN CARD */
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.05);
+      margin-bottom: 20px;
     }
 
-    .progress-head {
+    .card-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card-title {
+      color: var(--green);
+      font-size: 22px;
+    }
+
+    /* SEARCH */
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .search-box input {
+      flex: 1;
+      min-width: 220px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 13px 15px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(7,86,60,.08);
+    }
+
+    .primary-btn {
+      border: none;
+      background: var(--green);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 11px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .primary-btn:hover {
+      background: var(--green2);
+      transform: translateY(-1px);
+    }
+
+    .secondary-btn {
+      border: 1px solid #ddd;
+      background: white;
+      color: var(--text);
+      padding: 11px 16px;
+      border-radius: 11px;
       font-weight: bold;
     }
 
-    .progress {
-      height: 13px;
-      background: #e9ece8;
-      border-radius: 20px;
-      overflow: hidden;
+    .danger-btn {
+      border: none;
+      background: #fff0ee;
+      color: var(--red);
+      padding: 9px 12px;
+      border-radius: 9px;
+      font-weight: bold;
     }
 
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--green), var(--gold));
-      border-radius: inherit;
-    }
+    /* TABLE */
 
     .table-wrap {
+      width: 100%;
       overflow-x: auto;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 650px;
+      min-width: 760px;
     }
 
-    th, td {
-      padding: 13px;
+    th,
+    td {
+      padding: 14px 12px;
       text-align: right;
       border-bottom: 1px solid #eee;
+      vertical-align: middle;
     }
 
     th {
       background: var(--cream);
       color: var(--green);
+      font-size: 14px;
+    }
+
+    tr:hover td {
+      background: #fafcf9;
+    }
+
+    .student-name-link {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .student-name-link:hover {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+
+    .student-id {
+      color: #999;
+      font-size: 11px;
+      margin-top: 3px;
+      direction: ltr;
+      text-align: right;
     }
 
     .status {
       display: inline-block;
       padding: 6px 10px;
       border-radius: 8px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .status-active {
+      background: #e7f7ee;
+      color: #087443;
+    }
+
+    .status-inactive {
+      background: #f5eeee;
+      color: #9b2525;
+    }
+
+    .status-other {
       background: #fff5d8;
       color: #856404;
-      font-size: 13px;
     }
 
-    .attendance {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 12px;
+    .actions {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
     }
 
-    .attendance-item {
-      background: #f8fbf8;
-      border: 1px solid #dce9df;
-      padding: 15px;
-      border-radius: 14px;
-      text-align: center;
+    /* MODAL */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.48);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
     }
 
-    .present {
-      color: #087443;
-      font-weight: bold;
-      margin-top: 7px;
+    .modal-overlay.show {
+      display: flex;
     }
 
-    .empty {
-      color: var(--muted);
-      padding: 20px 0;
-    }
-
-    .loading {
-      text-align: center;
-      padding: 80px 20px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .error {
-      max-width: 600px;
-      margin: 60px auto;
+    .modal {
+      width: 100%;
+      max-width: 550px;
+      max-height: 90vh;
+      overflow-y: auto;
       background: white;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      color: #a22;
-      box-shadow: 0 5px 25px rgba(0,0,0,.08);
+      border-radius: 22px;
+      padding: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
     }
 
-    .error button {
-      margin-top: 18px;
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .modal-header h2 {
+      color: var(--green);
+    }
+
+    .close-btn {
       border: none;
-      background: var(--green);
-      color: white;
-      padding: 11px 20px;
-      border-radius: 10px;
+      background: #f1f1f1;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 20px;
       cursor: pointer;
     }
 
-    @media (max-width: 750px) {
+    .form-group {
+      margin-bottom: 15px;
+    }
 
-      .profile {
-        grid-template-columns: 1fr;
+    .form-group label {
+      display: block;
+      color: var(--text);
+      font-weight: bold;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      outline: none;
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--green);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-start;
+      margin-top: 20px;
+    }
+
+    /* MESSAGE */
+
+    .message {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      background: var(--green);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.18);
+      transform: translateY(120px);
+      opacity: 0;
+      transition: .3s;
+      z-index: 200;
+      max-width: calc(100% - 40px);
+    }
+
+    .message.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .message.error {
+      background: var(--red);
+    }
+
+    /* LOADING */
+
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+
+    .spinner {
+      width: 35px;
+      height: 35px;
+      border: 4px solid #ddd;
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      margin: 0 auto 15px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
       }
+    }
 
-      .details {
-        grid-template-columns: 1fr;
-      }
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 45px 20px;
+    }
 
-      .header-inner {
-        align-items: flex-start;
+    .error-box {
+      background: #fff1ef;
+      border: 1px solid #f1c5c0;
+      color: #8f241b;
+      border-radius: 14px;
+      padding: 18px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .brand h1 {
         font-size: 18px;
       }
 
+      .header-inner {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: calc(100% - 20px);
+        margin-top: 15px;
+      }
+
+      header {
+        padding: 14px 12px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+      }
+
+      .header-actions {
+        width: 100%;
+      }
+
+      .header-btn {
+        flex: 1;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .stat-card {
+        padding: 15px;
+      }
+
+      .stat-number {
+        font-size: 24px;
+      }
+
+      .card {
+        padding: 16px;
+        border-radius: 17px;
+      }
+
       .welcome {
-        padding: 20px;
+        padding: 18px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-box input {
+        width: 100%;
+      }
+
+      .primary-btn {
+        width: 100%;
+      }
+
+      .modal {
+        padding: 18px;
       }
     }
   </style>
-
 </head>
 
 <body>
 
 <header>
+
   <div class="header-inner">
 
-```
-<div class="brand">
-  <h1>مركز حردان طارق القرآني</h1>
-  <p>بوابة الطالب</p>
-</div>
+    <div class="brand">
+      <h1>مركز حردان طارق القرآني</h1>
+      <p>لوحة تحكم المعلم</p>
+    </div>
 
-<button class="logout" onclick="logout()">
-  تسجيل الخروج
-</button>
-```
+    <div class="header-actions">
+
+      <button
+        class="header-btn"
+        onclick="location.href='index.html'"
+      >
+        الرئيسية
+      </button>
+
+      <button
+        class="header-btn"
+        onclick="logout()"
+      >
+        تسجيل الخروج
+      </button>
+
+    </div>
 
   </div>
+
 </header>
 
-<main class="container" id="app">
 
-  <div class="loading">
-    جاري تحميل ملفك...
-  </div>
+<main class="container">
+
+  <section class="welcome">
+
+    <h2>أهلاً بك في لوحة المعلم 👋</h2>
+
+    <p>
+      من هنا يمكنك إدارة الطلاب وفتح ملف أي طالب لمتابعة
+      الحفظ والتسميع والحضور والخطة الأسبوعية.
+    </p>
+
+  </section>
+
+
+  <section class="stats">
+
+    <div class="stat-card">
+      <div class="stat-label">إجمالي الطلاب</div>
+      <div class="stat-number" id="totalStudents">0</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">الطلاب الفعالون</div>
+      <div class="stat-number" id="activeStudents">0</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">الطلاب غير الفعالين</div>
+      <div class="stat-number" id="inactiveStudents">0</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-label">عدد الشعب</div>
+      <div class="stat-number" id="sectionsCount">0</div>
+    </div>
+
+  </section>
+
+
+  <section class="card">
+
+    <div class="card-header">
+
+      <h2 class="card-title">
+        الطلاب
+      </h2>
+
+      <button
+        class="primary-btn"
+        onclick="openAddStudentModal()"
+      >
+        + إضافة طالب
+      </button>
+
+    </div>
+
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="ابحث باسم الطالب..."
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <div id="studentsArea">
+
+      <div class="loading">
+
+        <div class="spinner"></div>
+
+        جاري تحميل الطلاب...
+
+      </div>
+
+    </div>
+
+  </section>
 
 </main>
 
+
+<!-- MODAL -->
+
+<div
+  class="modal-overlay"
+  id="studentModal"
+>
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <h2 id="modalTitle">
+        إضافة طالب
+      </h2>
+
+      <button
+        class="close-btn"
+        onclick="closeStudentModal()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <form id="studentForm">
+
+      <input
+        type="hidden"
+        id="studentId"
+      >
+
+
+      <div class="form-group">
+
+        <label for="studentName">
+          اسم الطالب
+        </label>
+
+        <input
+          type="text"
+          id="studentName"
+          required
+          placeholder="مثال: أحمد محمد"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="studentSection">
+          الشعبة
+        </label>
+
+        <input
+          type="text"
+          id="studentSection"
+          placeholder="مثال: أ"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="studentMemorization">
+          الحفظ الحالي
+        </label>
+
+        <input
+          type="text"
+          id="studentMemorization"
+          placeholder="مثال: جزء عم"
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="studentStatus">
+          حالة الطالب
+        </label>
+
+        <select id="studentStatus">
+
+          <option value="active">
+            فعال
+          </option>
+
+          <option value="inactive">
+            غير فعال
+          </option>
+
+          <option value="paused">
+            متوقف مؤقتاً
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-actions">
+
+        <button
+          type="submit"
+          class="primary-btn"
+        >
+          حفظ
+        </button>
+
+        <button
+          type="button"
+          class="secondary-btn"
+          onclick="closeStudentModal()"
+        >
+          إلغاء
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<div
+  class="message"
+  id="message"
+></div>
+
+
 <script>
 
-const SUPABASE_URL =
-  'https://lsbbcybpiulusdgfhepf.supabase.co';
+  /* ================================
+     SUPABASE
+  ================================= */
 
-const SUPABASE_KEY =
-  'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
+  const SUPABASE_URL =
+    'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-const supabaseClient =
-  supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+  const SUPABASE_KEY =
+    'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
-
-function escapeHtml(value) {
-
-  return String(value ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-
-}
-
-
-function logout() {
-
-  sessionStorage.removeItem('studentSession');
-
-  window.location.href =
-    'student-login.html';
-
-}
-
-
-function getSession() {
-
-  try {
-
-    return JSON.parse(
-      sessionStorage.getItem('studentSession')
+  const supabaseClient =
+    supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
     );
 
-  } catch {
 
-    return null;
+  /* ================================
+     VARIABLES
+  ================================= */
 
-  }
+  let allStudents = [];
 
-}
-
-
-function progressBar(value) {
-
-  let number = Number(value);
-
-  if (isNaN(number)) number = 0;
-
-  number = Math.max(0, Math.min(100, number));
-
-  return `
-    <div class="progress">
-      <div
-        class="progress-bar"
-        style="width:${number}%"
-      ></div>
-    </div>
-  `;
-
-}
+  let editingStudentId = null;
 
 
-function detail(label, value) {
+  /* ================================
+     TEACHER ACCESS
+  ================================= */
 
-  return `
-    <div class="detail">
-      <small>${escapeHtml(label)}</small>
-      <strong>${escapeHtml(value || 'غير محدد')}</strong>
-    </div>
-  `;
+  function checkTeacherAccess() {
 
-}
+    const access =
+      localStorage.getItem('teacherAccess');
 
+    if (access !== 'granted') {
 
-async function loadStudent() {
+      window.location.href =
+        'teacher-login.html';
 
-  const session = getSession();
+      return false;
 
-  if (!session || !session.id) {
-
-    window.location.href =
-      'student-login.html';
-
-    return;
-
-  }
-
-  try {
-
-    const {
-      data: profileData,
-      error
-    } = await supabaseClient.rpc(
-      'get_student_profile',
-      {
-        p_student_id: String(session.id)
-      }
-    );
-
-    if (error) {
-      console.error(error);
-      throw error;
     }
 
-    const profile =
-      profileData &&
-      typeof profileData === 'object'
-        ? profileData
-        : {};
+    return true;
 
-    renderStudent(
-      session,
-      profile
+  }
+
+
+  function logout() {
+
+    localStorage.removeItem('teacherAccess');
+
+    window.location.href =
+      'teacher-login.html';
+
+  }
+
+
+  /* ================================
+     ESCAPE HTML
+  ================================= */
+
+  function escapeHtml(value) {
+
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+
+  }
+
+
+  /* ================================
+     MESSAGE
+  ================================= */
+
+  let messageTimer = null;
+
+  function showMessage(
+    text,
+    isError = false
+  ) {
+
+    const box =
+      document.getElementById('message');
+
+    box.textContent = text;
+
+    box.classList.toggle(
+      'error',
+      isError
     );
 
-  } catch (error) {
+    box.classList.add('show');
 
-    console.error(error);
+    clearTimeout(messageTimer);
 
-    document.getElementById('app').innerHTML = `
-      <div class="error">
-        <h2>تعذر تحميل الملف</h2>
+    messageTimer =
+      setTimeout(() => {
 
-        <p style="margin-top:10px">
-          حدثت مشكلة أثناء تحميل بيانات الطالب.
-        </p>
+        box.classList.remove('show');
 
-        <button onclick="location.reload()">
-          المحاولة مرة أخرى
-        </button>
+      }, 3000);
+
+  }
+
+
+  /* ================================
+     LOAD STUDENTS
+  ================================= */
+
+  async function loadStudents() {
+
+    const area =
+      document.getElementById('studentsArea');
+
+    area.innerHTML = `
+      <div class="loading">
+        <div class="spinner"></div>
+        جاري تحميل الطلاب...
       </div>
+    `;
+
+    try {
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from('students')
+        .select('*')
+        .order('created_at', {
+          ascending: false
+        });
+
+      if (error) {
+
+        throw error;
+
+      }
+
+      allStudents =
+        Array.isArray(data)
+          ? data
+          : [];
+
+      updateStats();
+
+      renderStudents(
+        allStudents
+      );
+
+    } catch (error) {
+
+      console.error(
+        'خطأ تحميل الطلاب:',
+        error
+      );
+
+      area.innerHTML = `
+        <div class="error-box">
+
+          <strong>
+            تعذر تحميل الطلاب.
+          </strong>
+
+          <br>
+
+          ${escapeHtml(
+            error.message ||
+            'حدث خطأ غير معروف'
+          )}
+
+        </div>
+      `;
+
+    }
+
+  }
+
+
+  /* ================================
+     STATS
+  ================================= */
+
+  function updateStats() {
+
+    const total =
+      allStudents.length;
+
+    const active =
+      allStudents.filter(
+        student =>
+          student.status === 'active'
+      ).length;
+
+    const inactive =
+      allStudents.filter(
+        student =>
+          student.status !== 'active'
+      ).length;
+
+    const sections =
+      new Set(
+        allStudents
+          .map(student =>
+            String(
+              student.section || ''
+            ).trim()
+          )
+          .filter(Boolean)
+      );
+
+    document.getElementById(
+      'totalStudents'
+    ).textContent = total;
+
+    document.getElementById(
+      'activeStudents'
+    ).textContent = active;
+
+    document.getElementById(
+      'inactiveStudents'
+    ).textContent = inactive;
+
+    document.getElementById(
+      'sectionsCount'
+    ).textContent = sections.size;
+
+  }
+
+
+  /* ================================
+     RENDER STUDENTS
+  ================================= */
+
+  function renderStudents(
+    students
+  ) {
+
+    const area =
+      document.getElementById(
+        'studentsArea'
+      );
+
+    if (!students.length) {
+
+      area.innerHTML = `
+        <div class="empty">
+
+          <div style="font-size:40px;margin-bottom:12px">
+            📚
+          </div>
+
+          لا يوجد طلاب حاليًا.
+
+          <br><br>
+
+          <button
+            class="primary-btn"
+            onclick="openAddStudentModal()"
+          >
+            إضافة أول طالب
+          </button>
+
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    area.innerHTML = `
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                #
+              </th>
+
+              <th>
+                اسم الطالب
+              </th>
+
+              <th>
+                الشعبة
+              </th>
+
+              <th>
+                الحفظ الحالي
+              </th>
+
+              <th>
+                الحالة
+              </th>
+
+              <th>
+                الإجراءات
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            ${students.map(
+              (student, index) => {
+
+                const status =
+                  student.status ||
+                  'active';
+
+                let statusText =
+                  'فعال';
+
+                let statusClass =
+                  'status-active';
+
+                if (
+                  status === 'inactive'
+                ) {
+
+                  statusText =
+                    'غير فعال';
+
+                  statusClass =
+                    'status-inactive';
+
+                } else if (
+                  status !== 'active'
+                ) {
+
+                  statusText =
+                    'متوقف مؤقتاً';
+
+                  statusClass =
+                    'status-other';
+
+                }
+
+
+                const studentId =
+                  String(
+                    student.id
+                  );
+
+
+                return `
+
+                  <tr>
+
+                    <td>
+                      ${index + 1}
+                    </td>
+
+
+                    <td>
+
+                      <a
+                        class="student-name-link"
+                        href="./student-profile.html?id=${encodeURIComponent(studentId)}"
+                        title="فتح ملف الطالب"
+                      >
+                        ${escapeHtml(
+                          student.name ||
+                          'بدون اسم'
+                        )}
+                      </a>
+
+                      <div class="student-id">
+                        ${escapeHtml(
+                          studentId
+                        )}
+                      </div>
+
+                    </td>
+
+
+                    <td>
+                      ${escapeHtml(
+                        student.section ||
+                        'غير محدد'
+                      )}
+                    </td>
+
+
+                    <td>
+                      ${escapeHtml(
+                        student.memorization ||
+                        'غير محدد'
+                      )}
+                    </td>
+
+
+                    <td>
+
+                      <span
+                        class="status ${statusClass}"
+                      >
+                        ${statusText}
+                      </span>
+
+                    </td>
+
+
+                    <td>
+
+                      <div class="actions">
+
+                        <button
+                          class="secondary-btn"
+                          onclick="openEditStudentModal('${escapeHtml(studentId)}')"
+                        >
+                          تعديل
+                        </button>
+
+                        <button
+                          class="danger-btn"
+                          onclick="deleteStudent('${escapeHtml(studentId)}')"
+                        >
+                          حذف
+                        </button>
+
+                      </div>
+
+                    </td>
+
+                  </tr>
+
+                `;
+
+              }
+            ).join('')}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
     `;
 
   }
 
-}
 
+  /* ================================
+     SEARCH
+  ================================= */
 
-function renderStudent(student, profile) {
+  document
+    .getElementById('searchInput')
+    .addEventListener(
+      'input',
+      function () {
 
-  const app =
-    document.getElementById('app');
+        const search =
+          this.value
+            .trim()
+            .toLowerCase();
 
-  const photo =
-    profile.photoUrl ||
-    profile.photo_url ||
-    '';
+        if (!search) {
 
-  const weeklyGoal =
-    profile.weeklyGoal ||
-    profile.weekly_goal ||
-    'غير محدد';
+          renderStudents(
+            allStudents
+          );
 
-  const points =
-    profile.totalPoints ??
-    profile.total_points ??
-    '0';
+          return;
 
-  const weeklyProgress =
-    profile.weeklyProgress ??
-    profile.weekly_progress ??
-    0;
-
-  const attendance =
-    Array.isArray(profile.attendance)
-      ? profile.attendance
-      : [];
-
-  const weeklyPlan =
-    Array.isArray(profile.weeklyPlan)
-      ? profile.weeklyPlan
-      : [];
-
-  const tests =
-    Array.isArray(profile.tests)
-      ? profile.tests
-      : [];
-
-  const hifzProgress =
-    Number(
-      profile.hifzProgress ??
-      profile.hifz_progress ??
-      0
-    );
-
-  const reviewProgress =
-    Number(
-      profile.reviewProgress ??
-      profile.review_progress ??
-      0
-    );
-
-  const completedPages =
-    profile.completedPages ??
-    profile.completed_pages ??
-    '0';
-
-  const requiredPages =
-    profile.requiredPages ??
-    profile.required_pages ??
-    '0';
-
-  const generalEvaluation =
-    profile.generalEvaluation ??
-    profile.general_evaluation ??
-    'غير محدد';
-
-  const equivalentRecitation =
-    profile.equivalentRecitation ??
-    profile.equivalent_recitation ??
-    'غير محدد';
-
-  const nextExam =
-    profile.nextExam ??
-    profile.next_exam ??
-    'غير محدد';
-
-  const nextExamDate =
-    profile.nextExamDate ??
-    profile.next_exam_date ??
-    'غير محدد';
-
-
-  app.innerHTML = `
-
-    <section class="welcome">
-
-      <h2>
-        أهلاً بك، ${escapeHtml(student.name)}
-      </h2>
-
-      <p>
-        هذه صفحتك الشخصية في المركز.
-        المعلومات الظاهرة هنا يتم تسجيلها وتحديثها من قبل المعلم.
-      </p>
-
-    </section>
-
-
-    <section class="profile">
-
-      <div class="card student-card">
-
-        ${
-          photo
-            ? `
-              <img
-                class="photo"
-                src="${escapeHtml(photo)}"
-                alt="صورة الطالب"
-              >
-            `
-            : `
-              <div
-                class="photo"
-                style="
-                  display:inline-flex;
-                  align-items:center;
-                  justify-content:center;
-                  font-size:40px;
-                  color:#07563c;
-                "
-              >
-                👤
-              </div>
-            `
         }
 
-        <h2>
-          ${escapeHtml(student.name)}
-        </h2>
 
-        <div class="section">
-          ${escapeHtml(student.section || 'غير محدد')}
-        </div>
+        const filtered =
+          allStudents.filter(
+            student => {
 
-      </div>
+              const name =
+                String(
+                  student.name || ''
+                ).toLowerCase();
 
+              const section =
+                String(
+                  student.section || ''
+                ).toLowerCase();
 
-      <div class="card">
+              const memorization =
+                String(
+                  student.memorization || ''
+                ).toLowerCase();
 
-        <h2 class="section-title">
-          معلومات الطالب
-        </h2>
+              return (
+                name.includes(search) ||
+                section.includes(search) ||
+                memorization.includes(search)
+              );
 
-        <div class="details">
-
-          ${detail(
-            'الشعبة',
-            student.section
-          )}
-
-          ${detail(
-            'الحفظ الحالي',
-            student.memorization
-          )}
-
-          ${detail(
-            'الحالة',
-            student.status === 'active'
-              ? 'فعال'
-              : student.status
-          )}
-
-          ${detail(
-            'الهدف الأسبوعي',
-            weeklyGoal
-          )}
-
-          ${detail(
-            'مجموع النقاط',
-            points
-          )}
-
-          ${detail(
-            'التقدم الأسبوعي',
-            weeklyProgress + '%'
-          )}
-
-          ${detail(
-            'تاريخ الالتحاق',
-            profile.joiningDate ||
-            profile.joining_date
-          )}
-
-          ${detail(
-            'مكان السكن',
-            profile.residence
-          )}
-
-          ${detail(
-            'الحافلة',
-            profile.bus
-          )}
-
-          ${detail(
-            'موقع المنزل',
-            profile.homeLocation ||
-            profile.home_location
-          )}
-
-          ${detail(
-            'رقم ولي الأمر',
-            profile.guardianPhone ||
-            profile.guardian_phone
-          )}
-
-          ${detail(
-            'أجزاء القرآن المكتملة',
-            profile.completedQuranParts ||
-            profile.completed_quran_parts
-          )}
-
-        </div>
-
-      </div>
-
-    </section>
+            }
+          );
 
 
-    <section class="card" style="margin-bottom:20px">
+        renderStudents(
+          filtered
+        );
 
-      <h2 class="section-title">
-        التقدم الأسبوعي
-      </h2>
-
-      <div class="progress-box">
-
-        <div class="progress-head">
-          <span>الحفظ</span>
-          <span>${hifzProgress}%</span>
-        </div>
-
-        ${progressBar(hifzProgress)}
-
-        <p style="margin-top:8px;color:#777">
-          تم إنجاز
-          ${escapeHtml(completedPages)}
-          من
-          ${escapeHtml(requiredPages)}
-        </p>
-
-      </div>
+      }
+    );
 
 
-      <div class="progress-box">
+  /* ================================
+     ADD STUDENT MODAL
+  ================================= */
 
-        <div class="progress-head">
-          <span>المراجعة</span>
-          <span>${reviewProgress}%</span>
-        </div>
+  function openAddStudentModal() {
 
-        ${progressBar(reviewProgress)}
+    editingStudentId = null;
 
-      </div>
+    document.getElementById(
+      'modalTitle'
+    ).textContent =
+      'إضافة طالب';
 
-      <div class="details">
+    document.getElementById(
+      'studentForm'
+    ).reset();
 
-        ${detail(
-          'التقييم العام',
-          generalEvaluation
-        )}
+    document.getElementById(
+      'studentId'
+    ).value = '';
 
-        ${detail(
-          'التسميع المكافئ',
-          equivalentRecitation
-        )}
+    document.getElementById(
+      'studentStatus'
+    ).value = 'active';
 
-        ${detail(
-          'الهدف الأسبوعي',
-          weeklyGoal
-        )}
+    document.getElementById(
+      'studentModal'
+    ).classList.add('show');
 
-        ${detail(
-          'الاختبار القادم',
-          nextExam
-        )}
-
-        ${detail(
-          'تاريخ الاختبار',
-          nextExamDate
-        )}
-
-      </div>
-
-    </section>
+  }
 
 
-    <section class="card" style="margin-bottom:20px">
+  /* ================================
+     EDIT STUDENT MODAL
+  ================================= */
 
-      <h2 class="section-title">
-        الحضور
-      </h2>
+  function openEditStudentModal(
+    studentId
+  ) {
 
-      ${
-        attendance.length
-          ? `
-            <div class="attendance">
+    const student =
+      allStudents.find(
+        item =>
+          String(item.id) ===
+          String(studentId)
+      );
 
-              ${attendance.map(item => `
+    if (!student) {
 
-                <div class="attendance-item">
+      showMessage(
+        'لم يتم العثور على الطالب',
+        true
+      );
 
-                  <strong>
-                    ${escapeHtml(
-                      item.date ||
-                      item.day ||
-                      ''
-                    )}
-                  </strong>
+      return;
 
-                  <div class="present">
-                    ${escapeHtml(
-                      item.status || 'حاضر'
-                    )}
-                  </div>
+    }
 
-                </div>
 
-              `).join('')}
+    editingStudentId =
+      String(student.id);
 
-            </div>
-          `
-          : `
-            <div class="empty">
-              لا يوجد سجل حضور مسجل حاليًا.
-            </div>
-          `
+
+    document.getElementById(
+      'modalTitle'
+    ).textContent =
+      'تعديل بيانات الطالب';
+
+
+    document.getElementById(
+      'studentId'
+    ).value =
+      String(student.id);
+
+
+    document.getElementById(
+      'studentName'
+    ).value =
+      student.name || '';
+
+
+    document.getElementById(
+      'studentSection'
+    ).value =
+      student.section || '';
+
+
+    document.getElementById(
+      'studentMemorization'
+    ).value =
+      student.memorization || '';
+
+
+    document.getElementById(
+      'studentStatus'
+    ).value =
+      student.status || 'active';
+
+
+    document.getElementById(
+      'studentModal'
+    ).classList.add('show');
+
+  }
+
+
+  /* ================================
+     CLOSE MODAL
+  ================================= */
+
+  function closeStudentModal() {
+
+    document.getElementById(
+      'studentModal'
+    ).classList.remove('show');
+
+  }
+
+
+  /* ================================
+     SAVE STUDENT
+  ================================= */
+
+  document
+    .getElementById('studentForm')
+    .addEventListener(
+      'submit',
+      async function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+          document
+            .getElementById(
+              'studentName'
+            )
+            .value
+            .trim();
+
+
+        const section =
+          document
+            .getElementById(
+              'studentSection'
+            )
+            .value
+            .trim();
+
+
+        const memorization =
+          document
+            .getElementById(
+              'studentMemorization'
+            )
+            .value
+            .trim();
+
+
+        const status =
+          document
+            .getElementById(
+              'studentStatus'
+            )
+            .value;
+
+
+        if (!name) {
+
+          showMessage(
+            'اكتب اسم الطالب أولاً',
+            true
+          );
+
+          return;
+
+        }
+
+
+        const submitButton =
+          this.querySelector(
+            'button[type="submit"]'
+          );
+
+
+        submitButton.disabled =
+          true;
+
+        submitButton.textContent =
+          'جاري الحفظ...';
+
+
+        try {
+
+          if (editingStudentId) {
+
+            const {
+              error
+            } = await supabaseClient
+              .from('students')
+              .update({
+                name,
+                section,
+                memorization,
+                status
+              })
+              .eq(
+                'id',
+                editingStudentId
+              );
+
+
+            if (error) {
+
+              throw error;
+
+            }
+
+
+            showMessage(
+              'تم تعديل بيانات الطالب بنجاح ✅'
+            );
+
+          } else {
+
+            const {
+              error
+            } = await supabaseClient
+              .from('students')
+              .insert({
+                name,
+                section,
+                memorization,
+                status
+              });
+
+
+            if (error) {
+
+              throw error;
+
+            }
+
+
+            showMessage(
+              'تمت إضافة الطالب بنجاح ✅'
+            );
+
+          }
+
+
+          closeStudentModal();
+
+          await loadStudents();
+
+        } catch (error) {
+
+          console.error(error);
+
+          showMessage(
+            error.message ||
+            'حدث خطأ أثناء الحفظ',
+            true
+          );
+
+        } finally {
+
+          submitButton.disabled =
+            false;
+
+          submitButton.textContent =
+            'حفظ';
+
+        }
+
+      }
+    );
+
+
+  /* ================================
+     DELETE STUDENT
+  ================================= */
+
+  async function deleteStudent(
+    studentId
+  ) {
+
+    const student =
+      allStudents.find(
+        item =>
+          String(item.id) ===
+          String(studentId)
+      );
+
+
+    if (!student) {
+
+      showMessage(
+        'الطالب غير موجود',
+        true
+      );
+
+      return;
+
+    }
+
+
+    const confirmed =
+      confirm(
+        `هل أنت متأكد من حذف الطالب "${student.name || ''}"؟\n\nسيتم حذف الطالب من قائمة الطلاب.`
+      );
+
+
+    if (!confirmed) {
+
+      return;
+
+    }
+
+
+    try {
+
+      const {
+        error
+      } = await supabaseClient
+        .from('students')
+        .delete()
+        .eq(
+          'id',
+          studentId
+        );
+
+
+      if (error) {
+
+        throw error;
+
       }
 
-    </section>
+
+      showMessage(
+        'تم حذف الطالب بنجاح'
+      );
 
 
-    <section class="card" style="margin-bottom:20px">
+      await loadStudents();
 
-      <h2 class="section-title">
-        الخطة الأسبوعية
-      </h2>
+    } catch (error) {
 
-      ${
-        weeklyPlan.length
-          ? `
-            <div class="table-wrap">
+      console.error(error);
 
-              <table>
+      showMessage(
+        error.message ||
+        'تعذر حذف الطالب',
+        true
+      );
 
-                <thead>
-                  <tr>
-                    <th>التاريخ</th>
-                    <th>الجزء</th>
-                    <th>الصفحات</th>
-                    <th>المطلوب</th>
-                    <th>الحالة</th>
-                  </tr>
-                </thead>
+    }
 
-                <tbody>
+  }
 
-                  ${weeklyPlan.map(item => `
 
-                    <tr>
+  /* ================================
+     CLOSE MODAL WHEN CLICK OUTSIDE
+  ================================= */
 
-                      <td>
-                        ${escapeHtml(item.date)}
-                      </td>
+  document
+    .getElementById('studentModal')
+    .addEventListener(
+      'click',
+      function (event) {
 
-                      <td>
-                        ${escapeHtml(item.juz)}
-                      </td>
+        if (
+          event.target === this
+        ) {
 
-                      <td>
-                        ${escapeHtml(item.pages)}
-                      </td>
+          closeStudentModal();
 
-                      <td>
-                        ${escapeHtml(item.exam || 'لا يوجد')}
-                      </td>
+        }
 
-                      <td>
-                        <span class="status">
-                          ${escapeHtml(
-                            item.status || 'قيد الانتظار'
-                          )}
-                        </span>
-                      </td>
-
-                    </tr>
-
-                  `).join('')}
-
-                </tbody>
-
-              </table>
-
-            </div>
-          `
-          : `
-            <div class="empty">
-              لم يتم تسجيل خطة أسبوعية بعد.
-            </div>
-          `
       }
-
-    </section>
-
-
-    <section class="card" style="margin-bottom:20px">
-
-      <h2 class="section-title">
-        الاختبارات
-      </h2>
-
-      ${
-        tests.length
-          ? `
-            <div class="table-wrap">
-
-              <table>
-
-                <thead>
-                  <tr>
-                    <th>الاختبار</th>
-                    <th>التاريخ</th>
-                    <th>النتيجة</th>
-                    <th>النقاط</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-
-                  ${tests.map(test => `
-
-                    <tr>
-
-                      <td>
-                        ${escapeHtml(test.name)}
-                      </td>
-
-                      <td>
-                        ${escapeHtml(test.date)}
-                      </td>
-
-                      <td>
-                        ${escapeHtml(test.result)}
-                      </td>
-
-                      <td>
-                        ${escapeHtml(test.points)}
-                      </td>
-
-                    </tr>
-
-                  `).join('')}
-
-                </tbody>
-
-              </table>
-
-            </div>
-          `
-          : `
-            <div class="empty">
-              لا توجد اختبارات مسجلة حاليًا.
-            </div>
-          `
-      }
-
-    </section>
+    );
 
 
-    <section class="card">
+  /* ================================
+     START
+  ================================= */
 
-      <h2 class="section-title">
-        ملاحظات المعلم
-      </h2>
+  if (checkTeacherAccess()) {
 
-      <p style="line-height:2;color:#555">
+    loadStudents();
 
-        ${escapeHtml(
-          profile.notes ||
-          profile.generalNotes ||
-          profile.general_notes ||
-          'لا يوجد ملاحظات عامة مسجلة للطالب في الوقت الحالي.'
-        )}
-
-      </p>
-
-    </section>
-
-  `;
-
-}
-
-
-loadStudent();
+  }
 
 </script>
 
