@@ -29,7 +29,7 @@
     .login-box {
       width: 100%;
       max-width: 430px;
-      background: #fff;
+      background: white;
       color: #222;
       border-radius: 24px;
       padding: 35px 30px;
@@ -154,6 +154,7 @@
 
       <div class="input-group">
         <label for="email">البريد الإلكتروني</label>
+
         <input
           type="email"
           id="email"
@@ -165,6 +166,7 @@
 
       <div class="input-group">
         <label for="password">كلمة المرور</label>
+
         <input
           type="password"
           id="password"
@@ -189,15 +191,17 @@
 
   </div>
 
-  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
-    const SUPABASE_URL = 'https://lsbbcybpiulusdgfhepf.supabase.co';
 
- const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
+    const SUPABASE_URL =
+      'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-    const supabase = window.supabase.createClient(
+    const SUPABASE_PUBLISHABLE_KEY =
+      'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
+
+    const supabaseClient = window.supabase.createClient(
       SUPABASE_URL,
       SUPABASE_PUBLISHABLE_KEY
     );
@@ -209,45 +213,70 @@
     const message = document.getElementById('message');
 
     form.addEventListener('submit', async function(event) {
+
       event.preventDefault();
 
-      const email = document.getElementById('email').value.trim().toLowerCase();
-      const password = document.getElementById('password').value;
+      const email =
+        document.getElementById('email').value.trim().toLowerCase();
+
+      const password =
+        document.getElementById('password').value;
 
       message.textContent = '';
+
       button.disabled = true;
+
       button.innerHTML = 'جارٍ تسجيل الدخول...';
 
-      // منع أي حساب غير مصرح له
       if (email !== allowedEmail) {
-        message.textContent = 'هذا الحساب غير مصرح له بالدخول.';
+
+        message.textContent =
+          'هذا الحساب غير مصرح له بالدخول.';
+
         button.disabled = false;
-        button.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+
+        button.innerHTML =
+          '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+
         return;
       }
 
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
+      const { data, error } =
+        await supabaseClient.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
 
       if (error) {
-        message.textContent = 'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+
+        message.textContent =
+          'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+
         button.disabled = false;
-        button.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+
+        button.innerHTML =
+          '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+
         return;
       }
 
-      if (data.user && data.user.email.toLowerCase() === allowedEmail) {
-        window.location.href = 'teacher-dashboard.html';
-      } else {
-        await supabase.auth.signOut();
+      if (data.user) {
 
-        message.textContent = 'هذا الحساب غير مصرح له بالدخول.';
+        window.location.href = 'teacher-dashboard.html';
+
+      } else {
+
+        message.textContent =
+          'حدث خطأ أثناء تسجيل الدخول.';
+
         button.disabled = false;
-        button.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+
+        button.innerHTML =
+          '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
       }
+
     });
+
   </script>
 
 </body>
