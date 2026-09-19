@@ -1,3158 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <title>
-    ملف الطالب | مركز حردان طارق القرآني
-  </title>
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="logo.png"
-  >
-
-  <link
-    rel="shortcut icon"
-    type="image/png"
-    href="logo.png"
-  >
-
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-  ></script>
-
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-
-    :root {
-
-      --green: #0d4d3a;
-      --green-2: #176b50;
-      --green-3: #218866;
-      --dark: #092f25;
-
-      --gold: #c5a04a;
-      --gold-2: #e0c36c;
-
-      --cream: #f8f5eb;
-
-      --bg: #f2f6f3;
-      --white: #ffffff;
-
-      --text: #17362c;
-      --muted: #718078;
-
-      --border: #e2e9e5;
-
-      --success: #16834b;
-      --danger: #b42318;
-
-      --blue: #2869a8;
-
-      --shadow:
-        0 12px 35px rgba(13, 77, 58, .08);
-
-    }
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-
-    body {
-
-      background:
-        radial-gradient(
-          circle at 10% 5%,
-          rgba(197,160,74,.10),
-          transparent 25%
-        ),
-        radial-gradient(
-          circle at 90% 15%,
-          rgba(23,107,80,.08),
-          transparent 25%
-        ),
-        var(--bg);
-
-      color:
-        var(--text);
-
-      font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
-      min-height: 100vh;
-
-    }
-
-
-    button,
-    input,
-    textarea,
-    select {
-      font-family: inherit;
-    }
-
-
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-
-    /* =========================================================
-       HEADER
-    ========================================================= */
-
-    header {
-
-      position: sticky;
-
-      top: 0;
-
-      z-index: 100;
-
-      background:
-        rgba(9,47,37,.96);
-
-      backdrop-filter:
-        blur(16px);
-
-      color: white;
-
-      box-shadow:
-        0 8px 25px rgba(0,0,0,.10);
-
-    }
-
-
-    .header-inner {
-
-      width:
-        min(
-          1250px,
-          calc(100% - 30px)
-        );
-
-      min-height: 78px;
-
-      margin: auto;
-
-      display: flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      gap: 18px;
-
-    }
-
-
-    .brand-link {
-
-      color:
-        white;
-
-      text-decoration:
-        none;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap: 13px;
-
-    }
-
-
-    .brand-logo {
-
-      width: 48px;
-      height: 48px;
-
-      border-radius:
-        50%;
-
-      object-fit:
-        cover;
-
-      border:
-        2px solid
-        rgba(224,195,108,.8);
-
-      box-shadow:
-        0 5px 18px
-        rgba(0,0,0,.2);
-
-    }
-
-
-    .brand h1 {
-
-      font-size: 18px;
-
-      margin-bottom:
-        4px;
-
-    }
-
-
-    .brand p {
-
-      color:
-        rgba(255,255,255,.68);
-
-      font-size:
-        12px;
-
-    }
-
-
-    .back {
-
-      color:
-        white;
-
-      text-decoration:
-        none;
-
-      border:
-        1px solid
-        rgba(255,255,255,.20);
-
-      background:
-        rgba(255,255,255,.07);
-
-      padding:
-        11px 16px;
-
-      border-radius:
-        12px;
-
-      transition:
-        .2s;
-
-      white-space:
-        nowrap;
-
-    }
-
-
-    .back:hover {
-
-      background:
-        rgba(255,255,255,.14);
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    /* =========================================================
-       PAGE
-    ========================================================= */
-
-    .container {
-
-      width:
-        min(
-          1250px,
-          calc(100% - 30px)
-        );
-
-      margin:
-        28px auto 80px;
-
-    }
-
-
-    /* =========================================================
-       MESSAGE
-    ========================================================= */
-
-    .message {
-
-      display:
-        none;
-
-      padding:
-        15px 18px;
-
-      border-radius:
-        15px;
-
-      margin-bottom:
-        18px;
-
-      font-weight:
-        bold;
-
-      box-shadow:
-        var(--shadow);
-
-    }
-
-
-    .success {
-
-      background:
-        #eaf8ef;
-
-      color:
-        #13743f;
-
-      border:
-        1px solid
-        #cbead6;
-
-    }
-
-
-    .error {
-
-      background:
-        #fff0ef;
-
-      color:
-        #a31d16;
-
-      border:
-        1px solid
-        #f2cdca;
-
-    }
-
-
-    /* =========================================================
-       HERO / البيانات الأساسية
-    ========================================================= */
-
-    .student-hero {
-
-      position:
-        relative;
-
-      overflow:
-        hidden;
-
-      background:
-        radial-gradient(
-          circle at 10% 10%,
-          rgba(224,195,108,.18),
-          transparent 28%
-        ),
-        linear-gradient(
-          135deg,
-          #0a382c,
-          #14654b
-        );
-
-      border-radius:
-        28px;
-
-      padding:
-        28px;
-
-      color:
-        white;
-
-      margin-bottom:
-        20px;
-
-      box-shadow:
-        0 18px 45px
-        rgba(13,77,58,.18);
-
-    }
-
-
-    .student-hero::before {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      width:
-        240px;
-
-      height:
-        240px;
-
-      border:
-        1px solid
-        rgba(255,255,255,.08);
-
-      border-radius:
-        50%;
-
-      left:
-        -90px;
-
-      top:
-        -120px;
-
-    }
-
-
-    .student-hero::after {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      width:
-        300px;
-
-      height:
-        300px;
-
-      border:
-        1px solid
-        rgba(224,195,108,.12);
-
-      border-radius:
-        50%;
-
-      right:
-        -140px;
-
-      bottom:
-        -180px;
-
-    }
-
-
-    .hero-top {
-
-      position:
-        relative;
-
-      z-index:
-        2;
-
-      display:
-        flex;
-
-      align-items:
-        flex-start;
-
-      gap:
-        22px;
-
-    }
-
-
-    .hero-photo {
-
-      width:
-        108px;
-
-      height:
-        108px;
-
-      border-radius:
-        50%;
-
-      object-fit:
-        cover;
-
-      border:
-        4px solid
-        rgba(224,195,108,.95);
-
-      background:
-        rgba(255,255,255,.10);
-
-      flex-shrink:
-        0;
-
-      box-shadow:
-        0 8px 28px
-        rgba(0,0,0,.20);
-
-    }
-
-
-    .hero-info {
-
-      flex:
-        1;
-
-      min-width:
-        0;
-
-    }
-
-
-    .hero-info h2 {
-
-      font-size:
-        clamp(
-          24px,
-          4vw,
-          34px
-        );
-
-      margin-bottom:
-        7px;
-
-    }
-
-
-    .hero-info p {
-
-      color:
-        rgba(255,255,255,.75);
-
-      margin-bottom:
-        14px;
-
-    }
-
-
-    .hero-pills {
-
-      display:
-        flex;
-
-      flex-wrap:
-        wrap;
-
-      gap:
-        8px;
-
-    }
-
-
-    .hero-pill {
-
-      background:
-        rgba(255,255,255,.10);
-
-      border:
-        1px solid
-        rgba(255,255,255,.13);
-
-      padding:
-        8px 12px;
-
-      border-radius:
-        999px;
-
-      font-size:
-        12px;
-
-    }
-
-
-    /* =========================================================
-       HERO EDIT FORM
-    ========================================================= */
-
-    .hero-edit {
-
-      position:
-        relative;
-
-      z-index:
-        2;
-
-      margin-top:
-        25px;
-
-      padding-top:
-        22px;
-
-      border-top:
-        1px solid
-        rgba(255,255,255,.13);
-
-    }
-
-
-    .hero-edit-title {
-
-      color:
-        rgba(255,255,255,.85);
-
-      font-size:
-        13px;
-
-      font-weight:
-        900;
-
-      margin-bottom:
-        14px;
-
-    }
-
-
-    .hero-form-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap:
-        13px;
-
-    }
-
-
-    .hero-field.full {
-
-      grid-column:
-        1 / -1;
-
-    }
-
-
-    .hero-field label {
-
-      display:
-        block;
-
-      color:
-        rgba(255,255,255,.76);
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      margin-bottom:
-        6px;
-
-    }
-
-
-    .hero-field input,
-    .hero-field select {
-
-      width:
-        100%;
-
-      border:
-        1px solid
-        rgba(255,255,255,.15);
-
-      background:
-        rgba(255,255,255,.09);
-
-      color:
-        white;
-
-      border-radius:
-        11px;
-
-      padding:
-        11px 12px;
-
-      outline:
-        none;
-
-      font-size:
-        13px;
-
-      transition:
-        .2s;
-
-    }
-
-
-    .hero-field input::placeholder {
-
-      color:
-        rgba(255,255,255,.45);
-
-    }
-
-
-    .hero-field input:focus,
-    .hero-field select:focus {
-
-      border-color:
-        rgba(224,195,108,.75);
-
-      box-shadow:
-        0 0 0 3px
-        rgba(224,195,108,.10);
-
-    }
-
-
-    .hero-field select option {
-
-      color:
-        #17362c;
-
-      background:
-        white;
-
-    }
-
-
-    .hero-image-upload {
-
-      border:
-        1px dashed
-        rgba(255,255,255,.22);
-
-      background:
-        rgba(255,255,255,.055);
-
-      border-radius:
-        14px;
-
-      padding:
-        13px;
-
-    }
-
-
-    .hero-image-row {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        14px;
-
-    }
-
-
-    .hero-image-preview {
-
-      width:
-        68px;
-
-      height:
-        68px;
-
-      border-radius:
-        50%;
-
-      object-fit:
-        cover;
-
-      border:
-        2px solid
-        var(--gold-2);
-
-      flex-shrink:
-        0;
-
-    }
-
-
-    .hero-file-button {
-
-      position:
-        relative;
-
-      display:
-        inline-flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      gap:
-        7px;
-
-      padding:
-        10px 14px;
-
-      border-radius:
-        10px;
-
-      background:
-        rgba(255,255,255,.12);
-
-      color:
-        white;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        bold;
-
-      border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    }
-
-
-    .hero-file-button input {
-
-      position:
-        absolute;
-
-      inset:
-        0;
-
-      opacity:
-        0;
-
-      cursor:
-        pointer;
-
-    }
-
-
-    .hero-image-help {
-
-      margin-top:
-        7px;
-
-      color:
-        rgba(255,255,255,.55);
-
-      font-size:
-        10px;
-
-    }
-
-
-    .hero-save-row {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        12px;
-
-      margin-top:
-        16px;
-
-      flex-wrap:
-        wrap;
-
-    }
-
-
-    .hero-save-btn {
-
-      border:
-        none;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--gold),
-          var(--gold-2)
-        );
-
-      color:
-        #342708;
-
-      padding:
-        13px 20px;
-
-      border-radius:
-        12px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        900;
-
-      font-size:
-        13px;
-
-      box-shadow:
-        0 8px 20px
-        rgba(0,0,0,.14);
-
-      transition:
-        .2s;
-
-    }
-
-
-    .hero-save-btn:hover {
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    .hero-save-btn:disabled {
-
-      opacity:
-        .65;
-
-      cursor:
-        wait;
-
-      transform:
-        none;
-
-    }
-
-
-    .hero-save-message {
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      min-height:
-        20px;
-
-    }
-
-
-    .hero-save-message.success {
-
-      color:
-        #d7f7e2;
-
-    }
-
-
-    .hero-save-message.error {
-
-      color:
-        #ffd8d4;
-
-    }
-
-
-    /* =========================================================
-       HERO STATS
-    ========================================================= */
-
-    .hero-side {
-
-      min-width:
-        250px;
-
-      display:
-        grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap:
-        9px;
-
-    }
-
-
-    .hero-stat {
-
-      background:
-        rgba(255,255,255,.08);
-
-      border:
-        1px solid
-        rgba(255,255,255,.12);
-
-      border-radius:
-        18px;
-
-      padding:
-        15px 12px;
-
-      text-align:
-        center;
-
-    }
-
-
-    .hero-stat small {
-
-      display:
-        block;
-
-      color:
-        rgba(255,255,255,.65);
-
-      margin-bottom:
-        5px;
-
-      font-size:
-        11px;
-
-    }
-
-
-    .hero-stat strong {
-
-      font-size:
-        23px;
-
-      color:
-        var(--gold-2);
-
-    }
-
-
-    /* =========================================================
-       SECTION
-    ========================================================= */
-
-    .section {
-
-      margin-top:
-        20px;
-
-      background:
-        rgba(255,255,255,.94);
-
-      border:
-        1px solid
-        rgba(226,233,229,.9);
-
-      border-radius:
-        22px;
-
-      padding:
-        23px;
-
-      box-shadow:
-        var(--shadow);
-
-      overflow:
-        hidden;
-
-    }
-
-
-    /* =========================================================
-       ACCORDION
-    ========================================================= */
-
-    .accordion-section >
-    .section-head {
-
-      position:
-        relative;
-
-      cursor:
-        pointer;
-
-      user-select:
-        none;
-
-      min-height:
-        56px;
-
-      padding:
-        5px 50px 5px 48px;
-
-      margin-bottom:
-        0;
-
-      border-radius:
-        15px;
-
-      transition:
-        background .2s ease;
-
-    }
-
-
-    .accordion-section >
-    .section-head:hover {
-
-      background:
-        #f8fbf9;
-
-    }
-
-
-    .accordion-section >
-    .section-head::after {
-
-      content:
-        '+';
-
-      position:
-        absolute;
-
-      left:
-        8px;
-
-      top:
-        50%;
-
-      transform:
-        translateY(-50%);
-
-      width:
-        34px;
-
-      height:
-        34px;
-
-      border-radius:
-        10px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      background:
-        #f1f6f3;
-
-      color:
-        var(--green);
-
-      font-size:
-        21px;
-
-      font-weight:
-        900;
-
-    }
-
-
-    .accordion-section.open >
-    .section-head {
-
-      margin-bottom:
-        20px;
-
-      background:
-        #f8fbf9;
-
-    }
-
-
-    .accordion-section.open >
-    .section-head::after {
-
-      content:
-        '−';
-
-      background:
-        #e8f3ed;
-
-    }
-
-
-    .section-body {
-
-      display:
-        none;
-
-      animation:
-        accordionOpen .22s ease;
-
-    }
-
-
-    .accordion-section.open >
-    .section-body {
-
-      display:
-        block;
-
-    }
-
-
-    @keyframes accordionOpen {
-
-      from {
-        opacity:
-          0;
-
-        transform:
-          translateY(-5px);
-      }
-
-      to {
-        opacity:
-          1;
-
-        transform:
-          translateY(0);
-      }
-
-    }
-
-
-    /* =========================================================
-       SECTION SAVE
-    ========================================================= */
-
-    .section-save-wrap {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        10px;
-
-      flex-wrap:
-        wrap;
-
-      margin-top:
-        20px;
-
-      padding-top:
-        16px;
-
-      border-top:
-        1px solid
-        var(--border);
-
-    }
-
-
-    .section-save-btn {
-
-      border:
-        none;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-3)
-        );
-
-      color:
-        white;
-
-      padding:
-        13px 20px;
-
-      border-radius:
-        12px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        900;
-
-      font-size:
-        13px;
-
-      box-shadow:
-        0 8px 20px
-        rgba(13,77,58,.16);
-
-    }
-
-
-    .section-save-btn:hover {
-
-      transform:
-        translateY(-2px);
-
-    }
-
-
-    .section-save-btn:disabled {
-
-      opacity:
-        .65;
-
-      cursor:
-        wait;
-
-      transform:
-        none;
-
-    }
-
-
-    .section-save-message {
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      min-height:
-        20px;
-
-    }
-
-
-    .section-save-message.success {
-
-      color:
-        #13743f;
-
-    }
-
-
-    .section-save-message.error {
-
-      color:
-        #b42318;
-
-    }
-
-
-    .section-head {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      gap:
-        15px;
-
-    }
-
-
-    .section-title {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        10px;
-
-      color:
-        var(--green);
-
-      font-size:
-        20px;
-
-    }
-
-
-    .section-title::before {
-
-      content:
-        "";
-
-      width:
-        5px;
-
-      height:
-        25px;
-
-      border-radius:
-        20px;
-
-      background:
-        linear-gradient(
-          var(--gold),
-          var(--gold-2)
-        );
-
-      flex-shrink:
-        0;
-
-    }
-
-
-    .section-subtitle {
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      margin-top:
-        4px;
-
-    }
-
-
-    /* =========================================================
-       STATS
-    ========================================================= */
-
-    .stats {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        14px;
-
-    }
-
-
-    .stat {
-
-      position:
-        relative;
-
-      overflow:
-        hidden;
-
-      border:
-        1px solid
-        var(--border);
-
-      background:
-        linear-gradient(
-          145deg,
-          #fff,
-          #f8fbf9
-        );
-
-      border-radius:
-        18px;
-
-      padding:
-        18px;
-
-    }
-
-
-    .stat-icon {
-
-      width:
-        42px;
-
-      height:
-        42px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      border-radius:
-        13px;
-
-      background:
-        var(--cream);
-
-      margin-bottom:
-        12px;
-
-      font-size:
-        20px;
-
-    }
-
-
-    .stat-label {
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      margin-bottom:
-        5px;
-
-    }
-
-
-    .stat-value {
-
-      color:
-        var(--green);
-
-      font-size:
-        26px;
-
-      font-weight:
-        900;
-
-    }
-
-
-    .stat-note {
-
-      color:
-        var(--muted);
-
-      font-size:
-        11px;
-
-      margin-top:
-        5px;
-
-    }
-
-
-    /* =========================================================
-       PROGRESS
-    ========================================================= */
-
-    .progress-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(2,1fr);
-
-      gap:
-        16px;
-
-      margin-top:
-        16px;
-
-    }
-
-
-    .progress-card {
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        18px;
-
-      padding:
-        18px;
-
-      background:
-        #fcfdfc;
-
-    }
-
-
-    .progress-top {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      gap:
-        12px;
-
-      margin-bottom:
-        12px;
-
-    }
-
-
-    .progress-top strong {
-
-      color:
-        var(--green);
-
-    }
-
-
-    .percent {
-
-      font-weight:
-        900;
-
-      color:
-        var(--gold);
-
-      font-size:
-        21px;
-
-    }
-
-
-    .bar {
-
-      height:
-        11px;
-
-      background:
-        #e8eee9;
-
-      border-radius:
-        999px;
-
-      overflow:
-        hidden;
-
-    }
-
-
-    .bar-fill {
-
-      height:
-        100%;
-
-      width:
-        0;
-
-      border-radius:
-        inherit;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--green),
-          var(--green-3)
-        );
-
-    }
-
-
-    .progress-note {
-
-      margin-top:
-        10px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      line-height:
-        1.7;
-
-    }
-
-
-    /* =========================================================
-       COMMITMENT
-    ========================================================= */
-
-    .commitment-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        12px;
-
-      margin-top:
-        16px;
-
-    }
-
-
-    .commitment-card {
-
-      padding:
-        15px;
-
-      background:
-        #f7faf8;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        15px;
-
-    }
-
-
-    .commitment-card small {
-
-      display:
-        block;
-
-      color:
-        var(--muted);
-
-      margin-bottom:
-        5px;
-
-    }
-
-
-    .commitment-card strong {
-
-      color:
-        var(--green);
-
-      font-size:
-        22px;
-
-    }
-
-
-    .commitment-final {
-
-      margin-top:
-        16px;
-
-      padding:
-        18px;
-
-      border-radius:
-        16px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #edf7f1,
-          #fffaf0
-        );
-
-      border:
-        1px solid
-        #dfe9e1;
-
-      text-align:
-        center;
-
-    }
-
-
-    .commitment-final-label {
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-      margin-bottom:
-        4px;
-
-    }
-
-
-    .commitment-final-value {
-
-      color:
-        var(--green);
-
-      font-size:
-        30px;
-
-      font-weight:
-        900;
-
-    }
-
-
-    .commitment-final-text {
-
-      margin-top:
-        4px;
-
-      color:
-        #8a7650;
-
-      font-weight:
-        bold;
-
-    }
-
-
-    /* =========================================================
-       FORM
-    ========================================================= */
-
-    .form-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(2,1fr);
-
-      gap:
-        15px;
-
-    }
-
-
-    .field.full-field {
-
-      grid-column:
-        1 / -1;
-
-    }
-
-
-    label {
-
-      display:
-        block;
-
-      color:
-        #345248;
-
-      font-weight:
-        bold;
-
-      font-size:
-        13px;
-
-      margin-bottom:
-        7px;
-
-    }
-
-
-    input,
-    textarea,
-    select {
-
-      width:
-        100%;
-
-      border:
-        1px solid
-        #dce5df;
-
-      border-radius:
-        12px;
-
-      padding:
-        12px 13px;
-
-      background:
-        white;
-
-      color:
-        var(--text);
-
-      font-size:
-        14px;
-
-      outline:
-        none;
-
-    }
-
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-
-      border-color:
-        var(--green-2);
-
-      box-shadow:
-        0 0 0 4px
-        rgba(23,107,80,.08);
-
-    }
-
-
-    textarea {
-
-      min-height:
-        130px;
-
-      resize:
-        vertical;
-
-    }
-
-
-    /* =========================================================
-       EDITOR
-    ========================================================= */
-
-    .editor-list {
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      gap:
-        12px;
-
-    }
-
-
-    .editor-row {
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        16px;
-
-      background:
-        #fbfdfc;
-
-      padding:
-        15px;
-
-    }
-
-
-    .editor-row-head {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      margin-bottom:
-        12px;
-
-      gap:
-        10px;
-
-    }
-
-
-    .editor-row-title {
-
-      font-weight:
-        900;
-
-      color:
-        var(--green);
-
-    }
-
-
-    .editor-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        10px;
-
-    }
-
-
-    .remove {
-
-      border:
-        none;
-
-      background:
-        #fff0ef;
-
-      color:
-        var(--danger);
-
-      border-radius:
-        9px;
-
-      padding:
-        8px 11px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        bold;
-
-    }
-
-
-    .add {
-
-      width:
-        100%;
-
-      margin-top:
-        12px;
-
-      border:
-        1px dashed
-        #b9c9c0;
-
-      background:
-        #f8fbf9;
-
-      color:
-        var(--green);
-
-      padding:
-        12px;
-
-      border-radius:
-        12px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        bold;
-
-    }
-
-
-    /* =========================================================
-       RECITATION / POINTS / MAP
-    ========================================================= */
-
-    .recitation-summary {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        12px;
-
-      margin-bottom:
-        16px;
-
-    }
-
-
-    .mini-stat {
-
-      padding:
-        14px;
-
-      background:
-        #f7faf8;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        14px;
-
-    }
-
-
-    .mini-stat small {
-
-      display:
-        block;
-
-      color:
-        var(--muted);
-
-      margin-bottom:
-        5px;
-
-    }
-
-
-    .mini-stat strong {
-
-      color:
-        var(--green);
-
-      font-size:
-        20px;
-
-    }
-
-
-    .grade-preview {
-
-      display:
-        inline-flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      width:
-        100%;
-
-      min-height:
-        45px;
-
-      padding:
-        8px 10px;
-
-      border-radius:
-        11px;
-
-      font-size:
-        12px;
-
-      font-weight:
-        900;
-
-      text-align:
-        center;
-
-    }
-
-
-    .grade-excellent {
-
-      background:
-        #e7f7ed;
-
-      color:
-        #13743f;
-
-    }
-
-
-    .grade-very-good {
-
-      background:
-        #e8f1fb;
-
-      color:
-        #2869a8;
-
-    }
-
-
-    .grade-good {
-
-      background:
-        #fff3df;
-
-      color:
-        #9b5c0d;
-
-    }
-
-
-    .grade-acceptable {
-
-      background:
-        #f6f0dd;
-
-      color:
-        #7b6634;
-
-    }
-
-
-    .grade-review {
-
-      background:
-        #fff0ef;
-
-      color:
-        #b42318;
-
-    }
-
-
-    .grade-empty {
-
-      background:
-        #f1f3f2;
-
-      color:
-        #63716b;
-
-    }
-
-
-    .status-badge {
-
-      display:
-        inline-flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      padding:
-        7px 11px;
-
-      border-radius:
-        999px;
-
-      font-size:
-        11px;
-
-      font-weight:
-        bold;
-
-      white-space:
-        nowrap;
-
-    }
-
-
-    .status-complete {
-
-      background:
-        #e7f7ed;
-
-      color:
-        #13743f;
-
-    }
-
-
-    .status-partial {
-
-      background:
-        #fff3df;
-
-      color:
-        #9b5c0d;
-
-    }
-
-
-    .status-running {
-
-      background:
-        #e8f1fb;
-
-      color:
-        #2869a8;
-
-    }
-
-
-    .status-pending {
-
-      background:
-        #f1f3f2;
-
-      color:
-        #63716b;
-
-    }
-
-
-    .quran-progress {
-
-      margin-bottom:
-        20px;
-
-      padding:
-        18px;
-
-      border-radius:
-        17px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #f4f8f5,
-          #fbfaf3
-        );
-
-      border:
-        1px solid
-        var(--border);
-
-    }
-
-
-    .quran-progress-head {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      align-items:
-        center;
-
-      margin-bottom:
-        10px;
-
-    }
-
-
-    .quran-progress-head strong {
-
-      color:
-        var(--green);
-
-      font-size:
-        22px;
-
-    }
-
-
-    .juz-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(3,1fr);
-
-      gap:
-        13px;
-
-    }
-
-
-    .juz-card {
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        15px;
-
-      padding:
-        13px;
-
-      background:
-        white;
-
-    }
-
-
-    .juz-head {
-
-      display:
-        flex;
-
-      justify-content:
-        space-between;
-
-      gap:
-        8px;
-
-      margin-bottom:
-        10px;
-
-    }
-
-
-    .juz-title {
-
-      font-weight:
-        900;
-
-      color:
-        var(--green);
-
-      font-size:
-        13px;
-
-    }
-
-
-    .juz-count {
-
-      color:
-        var(--muted);
-
-      font-size:
-        11px;
-
-    }
-
-
-    .juz-range {
-
-      color:
-        #8a968f;
-
-      font-size:
-        10px;
-
-      margin-bottom:
-        8px;
-
-    }
-
-
-    .page-grid {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(10,1fr);
-
-      gap:
-        4px;
-
-    }
-
-
-    .page-dot {
-
-      min-height:
-        26px;
-
-      border-radius:
-        6px;
-
-      border:
-        1px solid
-        #e2e8e4;
-
-      background:
-        #f1f4f2;
-
-      cursor:
-        pointer;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      color:
-        #68756f;
-
-      font-size:
-        8px;
-
-      font-weight:
-        900;
-
-      user-select:
-        none;
-
-    }
-
-
-    .page-dot.hifz {
-
-      background:
-        #19764f;
-
-      border-color:
-        #19764f;
-
-      color:
-        white;
-
-    }
-
-
-    .page-dot.review {
-
-      background:
-        #d5b24e;
-
-      border-color:
-        #d5b24e;
-
-      color:
-        #3f3210;
-
-    }
-
-
-    .page-dot.both {
-
-      background:
-        linear-gradient(
-          135deg,
-          #19764f 50%,
-          #d5b24e 50%
-        );
-
-      border-color:
-        #19764f;
-
-      color:
-        white;
-
-    }
-
-
-    .map-legend {
-
-      display:
-        flex;
-
-      flex-wrap:
-        wrap;
-
-      gap:
-        15px;
-
-      margin-top:
-        15px;
-
-      color:
-        var(--muted);
-
-      font-size:
-        12px;
-
-    }
-
-
-    .legend-item {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        6px;
-
-    }
-
-
-    .legend-dot {
-
-      width:
-        13px;
-
-      height:
-        13px;
-
-      border-radius:
-        4px;
-
-      background:
-        #f1f4f2;
-
-      border:
-        1px solid
-        #ddd;
-
-    }
-
-
-    .legend-dot.hifz {
-
-      background:
-        #19764f;
-
-      border-color:
-        #19764f;
-
-    }
-
-
-    .legend-dot.review {
-
-      background:
-        #d5b24e;
-
-      border-color:
-        #d5b24e;
-
-    }
-
-
-    .points-breakdown {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap:
-        10px;
-
-      margin-bottom:
-        16px;
-
-    }
-
-
-    .points-card {
-
-      padding:
-        14px;
-
-      border-radius:
-        14px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #f8fbf9,
-          #fffdf6
-        );
-
-      border:
-        1px solid
-        var(--border);
-
-    }
-
-
-    .points-card small {
-
-      display:
-        block;
-
-      color:
-        var(--muted);
-
-      margin-bottom:
-        5px;
-
-    }
-
-
-    .points-card strong {
-
-      color:
-        var(--green);
-
-      font-size:
-        20px;
-
-    }
-
-
-    /* =========================================================
-       TOP BUTTON
-    ========================================================= */
-
-    .top-actions {
-
-      display:
-        flex;
-
-      justify-content:
-        flex-start;
-
-      margin-top:
-        20px;
-
-    }
-
-
-    .secondary {
-
-      border:
-        1px solid
-        var(--border);
-
-      background:
-        white;
-
-      color:
-        var(--green);
-
-      padding:
-        13px 18px;
-
-      border-radius:
-        12px;
-
-      cursor:
-        pointer;
-
-      font-weight:
-        bold;
-
-    }
-
-
-    /* =========================================================
-       LOADING
-    ========================================================= */
-
-    .loading {
-
-      background:
-        white;
-
-      border-radius:
-        22px;
-
-      padding:
-        90px 20px;
-
-      text-align:
-        center;
-
-      color:
-        var(--muted);
-
-      box-shadow:
-        var(--shadow);
-
-    }
-
-
-    .loading-icon {
-
-      font-size:
-        40px;
-
-      margin-bottom:
-        12px;
-
-      animation:
-        pulse 1.2s infinite;
-
-    }
-
-
-    @keyframes pulse {
-
-      50% {
-
-        opacity:
-          .45;
-
-        transform:
-          scale(.94);
-
-      }
-
-    }
-
-
-    /* =========================================================
-       MOBILE
-    ========================================================= */
-
-    @media(max-width:1050px) {
-
-      .stats,
-      .commitment-grid,
-      .points-breakdown,
-      .recitation-summary {
-
-        grid-template-columns:
-          repeat(2,1fr);
-
-      }
-
-
-      .juz-grid {
-
-        grid-template-columns:
-          repeat(2,1fr);
-
-      }
-
-    }
-
-
-    @media(max-width:750px) {
-
-      .header-inner {
-
-        min-height:
-          70px;
-
-      }
-
-
-      .brand h1 {
-
-        font-size:
-          15px;
-
-      }
-
-
-      .brand p {
-
-        font-size:
-          10px;
-
-      }
-
-
-      .brand-logo {
-
-        width:
-          42px;
-
-        height:
-          42px;
-
-      }
-
-
-      .back {
-
-        padding:
-          9px 11px;
-
-        font-size:
-          12px;
-
-      }
-
-
-      .container {
-
-        width:
-          calc(100% - 18px);
-
-        margin-top:
-          14px;
-
-      }
-
-
-      .student-hero {
-
-        padding:
-          20px;
-
-        border-radius:
-          22px;
-
-      }
-
-
-      .hero-top {
-
-        flex-direction:
-          column;
-
-      }
-
-
-      .hero-photo {
-
-        width:
-          86px;
-
-        height:
-          86px;
-
-      }
-
-
-      .hero-side {
-
-        width:
-          100%;
-
-      }
-
-
-      .hero-form-grid {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .hero-field.full {
-
-        grid-column:
-          auto;
-
-      }
-
-
-      .hero-image-row {
-
-        align-items:
-          flex-start;
-
-        flex-direction:
-          column;
-
-      }
-
-
-      .hero-save-row {
-
-        align-items:
-          stretch;
-
-        flex-direction:
-          column;
-
-      }
-
-
-      .hero-save-btn {
-
-        width:
-          100%;
-
-      }
-
-
-      .section {
-
-        padding:
-          16px;
-
-        border-radius:
-          18px;
-
-      }
-
-
-      .accordion-section >
-      .section-head {
-
-        padding:
-          5px 42px 5px 40px;
-
-      }
-
-
-      .accordion-section >
-      .section-head::after {
-
-        width:
-          30px;
-
-        height:
-          30px;
-
-        font-size:
-          18px;
-
-      }
-
-
-      .stats,
-      .progress-grid,
-      .form-grid,
-      .juz-grid,
-      .commitment-grid,
-      .recitation-summary,
-      .points-breakdown {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .editor-grid {
-
-        grid-template-columns:
-          1fr 1fr;
-
-      }
-
-
-      .page-grid {
-
-        grid-template-columns:
-          repeat(10,1fr);
-
-      }
-
-
-      .section-save-wrap {
-
-        flex-direction:
-          column;
-
-        align-items:
-          stretch;
-
-      }
-
-
-      .section-save-btn {
-
-        width:
-          100%;
-
-      }
-
-    }
-
-
-    @media(max-width:480px) {
-
-      .editor-grid {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .hero-info h2 {
-
-        font-size:
-          22px;
-
-      }
-
-
-      .page-grid {
-
-        gap:
-          3px;
-
-      }
-
-
-      .page-dot {
-
-        min-height:
-          23px;
-
-        border-radius:
-          4px;
-
-        font-size:
-          7px;
-
-      }
-
-    }
-
-  </style>
-
-</head>
-
-
-<body>
-
-
-<header>
-
-  <div class="header-inner">
-
-    <a
-      href="index.html"
-      class="brand-link"
-    >
-
-      <img
-        src="logo.png"
-        class="brand-logo"
-        alt="شعار مركز حردان طارق القرآني"
-      >
-
-      <div class="brand">
-
-        <h1>
-          مركز حردان طارق القرآني
-        </h1>
-
-        <p>
-          ملف الطالب والمتابعة الأكاديمية
-        </p>
-
-      </div>
-
-    </a>
-
-
-    <a
-      class="back"
-      href="teacher-dashboard.html"
-    >
-      ← لوحة المعلم
-    </a>
-
-  </div>
-
-</header>
-
-
-
-<main class="container">
-
-  <div
-    id="message"
-    class="message"
-  ></div>
-
-
-  <div id="app">
-
-    <div class="loading">
-
-      <div class="loading-icon">
-        📖
-      </div>
-
-      جاري تحميل ملف الطالب...
-
-    </div>
-
-  </div>
-
-</main>
-
-
-
 <script>
-
 
 /* =========================================================
    SUPABASE
@@ -3181,14 +27,11 @@ const supabaseClient =
   );
 
 
-let studentId =
-  null;
+let studentId = null;
 
-let student =
-  null;
+let student = null;
 
-let profile =
-  {};
+let profile = {};
 
 
 /* =========================================================
@@ -3313,6 +156,152 @@ function formatDate(
 
 
 /* =========================================================
+   NEW — STUDENT ID
+========================================================= */
+
+function getStudentIdFromUrl() {
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const id =
+    params.get('id') ||
+    params.get('student_id') ||
+    params.get('studentId');
+
+  if (
+    id &&
+    String(id).trim()
+  ) {
+
+    return String(id).trim();
+
+  }
+
+  /*
+    احتياط إضافي:
+    إذا فتح المعلم صفحة الطالب بدون ?id=
+    يمكن استخدام آخر طالب محفوظ محلياً.
+  */
+
+  const storedId =
+    localStorage.getItem(
+      'selectedStudentId'
+    );
+
+  if (
+    storedId &&
+    String(storedId).trim()
+  ) {
+
+    return String(
+      storedId
+    ).trim();
+
+  }
+
+  return null;
+
+}
+
+
+/* =========================================================
+   NEW — STUDENT NAME
+========================================================= */
+
+function getStudentName(
+  studentData,
+  profileData
+) {
+
+  const possibleNames = [
+
+    studentData?.name,
+
+    studentData?.full_name,
+
+    studentData?.student_name,
+
+    studentData?.studentName,
+
+    studentData?.['اسم الطالب'],
+
+    studentData?.['الاسم'],
+
+    profileData?.name,
+
+    profileData?.full_name,
+
+    profileData?.student_name,
+
+    profileData?.studentName,
+
+    profileData?.['اسم الطالب'],
+
+    profileData?.['الاسم']
+
+  ];
+
+  for (
+    const value of possibleNames
+  ) {
+
+    const name =
+      String(value ?? '').trim();
+
+    if (
+      name
+    ) {
+
+      return name;
+
+    }
+
+  }
+
+  return '';
+
+}
+
+
+/* =========================================================
+   NEW — NORMALIZE STUDENT
+========================================================= */
+
+function normalizeStudent(
+  studentData,
+  profileData = {}
+) {
+
+  const normalized = {
+
+    ...(studentData || {})
+
+  };
+
+  const detectedName =
+    getStudentName(
+      studentData,
+      profileData
+    );
+
+  if (
+    detectedName
+  ) {
+
+    normalized.name =
+      detectedName;
+
+  }
+
+  return normalized;
+
+}
+
+
+/* =========================================================
    WEEK
 ========================================================= */
 
@@ -3326,9 +315,7 @@ function getWeekRangeForDate(
     );
 
   if (
-    Number.isNaN(
-      d.getTime()
-    )
+    Number.isNaN(d.getTime())
   )
     return null;
 
@@ -3407,6 +394,9 @@ function showMessage(
       'message'
     );
 
+  if (!box)
+    return;
+
   box.textContent =
     text;
 
@@ -3431,6 +421,9 @@ function hideMessage() {
       'message'
     );
 
+  if (!box)
+    return;
+
   box.style.display =
     'none';
 
@@ -3444,6 +437,8 @@ function hideMessage() {
 function defaultProfile() {
 
   return {
+
+    name:'',
 
     photoUrl:'',
 
@@ -3553,8 +548,11 @@ function getRecitationGrade(
   ) {
 
     return {
+
       label:'لم يتم التقييم',
+
       className:'grade-empty'
+
     };
 
   }
@@ -3564,8 +562,11 @@ function getRecitationGrade(
   ) {
 
     return {
+
       label:'ممتاز (متقن)',
+
       className:'grade-excellent'
+
     };
 
   }
@@ -3575,8 +576,11 @@ function getRecitationGrade(
   ) {
 
     return {
+
       label:'جيد جداً (أخطاء قليلة)',
+
       className:'grade-very-good'
+
     };
 
   }
@@ -3586,8 +590,11 @@ function getRecitationGrade(
   ) {
 
     return {
+
       label:'جيد (أخطاء متعددة)',
+
       className:'grade-good'
+
     };
 
   }
@@ -3597,15 +604,21 @@ function getRecitationGrade(
   ) {
 
     return {
+
       label:'مقبول (يحتاج تمكين)',
+
       className:'grade-acceptable'
+
     };
 
   }
 
   return {
+
     label:'مراجعة الصفحة',
+
     className:'grade-review'
+
   };
 
 }
@@ -4616,12 +1629,38 @@ function getPlanStatus(
 
 async function checkTeacher() {
 
+  /*
+    أولاً:
+    نسمح بالدخول إذا كان المعلم دخل من الـDashboard
+    باستخدام مفتاح الدخول المحلي الموجود عندك.
+  */
+
+  const localAccess =
+    localStorage.getItem(
+      'teacherAccess'
+    );
+
+  if (
+    localAccess === 'granted'
+  ) {
+
+    return true;
+
+  }
+
+
+  /*
+    احتياط:
+    إذا كان عندك أيضاً تسجيل دخول Supabase Auth
+    نبقيه شغالاً.
+  */
+
   try {
 
     const {
       data:{
         user
-      },
+      } = {},
       error
     } =
       await supabaseClient
@@ -4629,61 +1668,74 @@ async function checkTeacher() {
         .getUser();
 
     if (
-      error ||
-      !user
+      !error &&
+      user
     ) {
 
-      window.location.href =
-        'teacher-login.html';
+      if (
+        String(
+          user.email || ''
+        ).toLowerCase() ===
+        TEACHER_EMAIL.toLowerCase()
+      ) {
 
-      return false;
+        return true;
 
-    }
-
-    if (
-      String(
-        user.email || ''
-      ).toLowerCase() !==
-      TEACHER_EMAIL.toLowerCase()
-    ) {
-
-      alert(
-        'هذا القسم مخصص للمعلم فقط.'
-      );
-
-      await supabaseClient
-        .auth
-        .signOut();
-
-      window.location.href =
-        'teacher-login.html';
-
-      return false;
+      }
 
     }
-
-    return true;
 
   } catch (
     error
   ) {
 
     console.error(
+      'TEACHER CHECK ERROR:',
       error
     );
 
-    window.location.href =
-      'teacher-login.html';
-
-    return false;
-
   }
+
+
+  window.location.href =
+    'teacher-login.html';
+
+  return false;
 
 }
 
 
 /* =========================================================
-   LOAD
+   LOAD PROFILE DATA
+========================================================= */
+
+async function loadStudentProfileData() {
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from('student_profiles')
+      .select('data')
+      .eq(
+        'student_id',
+        String(studentId)
+      )
+      .maybeSingle();
+
+  if (error)
+    throw error;
+
+  return mergeProfile(
+    data?.data || {}
+  );
+
+}
+
+
+/* =========================================================
+   LOAD STUDENT
 ========================================================= */
 
 async function loadStudent() {
@@ -4695,13 +1747,14 @@ async function loadStudent() {
     )
       return;
 
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
+
+    /*
+      قراءة رقم الطالب من الرابط
+    */
 
     studentId =
-      params.get('id');
+      getStudentIdFromUrl();
+
 
     if (!studentId) {
 
@@ -4710,7 +1763,24 @@ async function loadStudent() {
       ).innerHTML = `
 
         <div class="loading">
-          لم يتم تحديد الطالب.
+
+          <div class="loading-icon">
+            ⚠️
+          </div>
+
+          <h2
+            style="
+              color:#b42318;
+              margin-bottom:10px;
+            "
+          >
+            لم يتم تحديد الطالب
+          </h2>
+
+          <p>
+            افتح ملف الطالب من لوحة المعلم مرة أخرى.
+          </p>
+
         </div>
 
       `;
@@ -4718,6 +1788,21 @@ async function loadStudent() {
       return;
 
     }
+
+
+    /*
+      حفظ المعرّف محلياً كاحتياط
+    */
+
+    localStorage.setItem(
+      'selectedStudentId',
+      String(studentId)
+    );
+
+
+    /*
+      تحميل الطالب من جدول students
+    */
 
     const {
       data,
@@ -4730,10 +1815,13 @@ async function loadStudent() {
           'id',
           studentId
         )
+        .limit(1)
         .maybeSingle();
+
 
     if (error)
       throw error;
+
 
     if (!data) {
 
@@ -4742,7 +1830,42 @@ async function loadStudent() {
       ).innerHTML = `
 
         <div class="loading">
-          تعذر العثور على الطالب.
+
+          <div class="loading-icon">
+            🔎
+          </div>
+
+          <h2
+            style="
+              color:#b42318;
+              margin-bottom:10px;
+            "
+          >
+            تعذر العثور على الطالب
+          </h2>
+
+          <p
+            style="
+              margin-bottom:8px;
+            "
+          >
+            لم يتم العثور على سجل الطالب في قاعدة البيانات.
+          </p>
+
+          <div
+            style="
+              display:inline-block;
+              padding:8px 12px;
+              background:#f7faf8;
+              border-radius:10px;
+              color:#718078;
+              font-size:12px;
+            "
+          >
+            المعرّف:
+            ${escapeHtml(studentId)}
+          </div>
+
         </div>
 
       `;
@@ -4751,39 +1874,90 @@ async function loadStudent() {
 
     }
 
-    student =
-      data;
 
-    const {
-      data:profileRow,
-      error:profileError
-    } =
-      await supabaseClient
-        .from('student_profiles')
-        .select('data')
-        .eq(
-          'student_id',
-          String(studentId)
-        )
-        .maybeSingle();
+    /*
+      تحميل profile قبل تثبيت اسم الطالب
+    */
 
-    if (profileError) {
+    let profileData =
+      {};
+
+    try {
+
+      profileData =
+        await loadStudentProfileData();
+
+    } catch (
+      profileError
+    ) {
 
       console.error(
+        'PROFILE LOAD ERROR:',
         profileError
       );
 
-      profile =
+      profileData =
         defaultProfile();
 
-    } else {
+    }
 
-      profile =
-        mergeProfile(
-          profileRow?.data || {}
-        );
+
+    /*
+      تطبيع بيانات الطالب
+      واستخراج الاسم بشكل قوي
+    */
+
+    student =
+      normalizeStudent(
+        data,
+        profileData
+      );
+
+
+    profile =
+      mergeProfile(
+        profileData
+      );
+
+
+    /*
+      إذا كان الاسم موجوداً في profile فقط،
+      نخليه متاحاً في العرض والحفظ.
+    */
+
+    if (
+      !student.name &&
+      profile.name
+    ) {
+
+      student.name =
+        String(
+          profile.name
+        ).trim();
 
     }
+
+
+    /*
+      تغيير عنوان الصفحة حسب اسم الطالب
+    */
+
+    const displayName =
+      getStudentName(
+        student,
+        profile
+      );
+
+
+    if (
+      displayName
+    ) {
+
+      document.title =
+        `ملف ${displayName} | مركز حردان طارق القرآني`;
+
+    }
+
 
     render();
 
@@ -4796,11 +1970,16 @@ async function loadStudent() {
       error
     );
 
+
     document.getElementById(
       'app'
     ).innerHTML = `
 
       <div class="loading">
+
+        <div class="loading-icon">
+          ❌
+        </div>
 
         <h2
           style="
@@ -4811,9 +1990,33 @@ async function loadStudent() {
           تعذر تحميل ملف الطالب
         </h2>
 
-        <p>
-          حدث خطأ أثناء تحميل البيانات.
+        <p
+          style="
+            margin-bottom:8px;
+          "
+        >
+          حدث خطأ أثناء تحميل بيانات الطالب.
         </p>
+
+        <div
+          style="
+            margin-top:12px;
+            padding:12px;
+            background:#fff5f4;
+            border:1px solid #f2cdca;
+            border-radius:12px;
+            color:#8f241b;
+            font-size:12px;
+            line-height:1.7;
+            direction:ltr;
+            text-align:left;
+          "
+        >
+          ${escapeHtml(
+            error?.message ||
+            String(error)
+          )}
+        </div>
 
       </div>
 
@@ -4834,6 +2037,10 @@ function render() {
     document.getElementById(
       'app'
     );
+
+  if (!app)
+    return;
+
 
   const weekly =
     getCurrentWeekStats();
@@ -4856,8 +2063,33 @@ function render() {
   const commitment =
     getCommitment();
 
+
+  const displayName =
+    getStudentName(
+      student,
+      profile
+    ) ||
+    'اسم الطالب غير موجود';
+
+
   const photo =
     profile.photoUrl || '';
+
+
+  /*
+    حفظ الاسم داخل profile أيضاً كاحتياط
+  */
+
+  if (
+    displayName !==
+    'اسم الطالب غير موجود'
+  ) {
+
+    profile.name =
+      displayName;
+
+  }
+
 
   app.innerHTML = `
 
@@ -4903,15 +2135,40 @@ function render() {
 
         <div class="hero-info">
 
-          <h2>
+          <h2
+            id="studentDisplayName"
+          >
             ${escapeHtml(
-              student.name || 'طالب'
+              displayName
             )}
           </h2>
 
           <p>
             ملف الطالب والمتابعة الأكاديمية
           </p>
+
+          ${
+            displayName ===
+            'اسم الطالب غير موجود'
+              ? `
+                <div
+                  style="
+                    display:inline-block;
+                    margin-bottom:12px;
+                    padding:8px 12px;
+                    border-radius:10px;
+                    background:rgba(255,240,239,.14);
+                    border:1px solid rgba(255,216,212,.25);
+                    color:#ffd8d4;
+                    font-size:11px;
+                    font-weight:bold;
+                  "
+                >
+                  ⚠️ لم يتم العثور على اسم في بيانات الطالب
+                </div>
+              `
+              : ''
+          }
 
 
           <div class="hero-pills">
@@ -5020,7 +2277,7 @@ function render() {
 
 
       <!-- =================================================
-           البيانات الأساسية داخل الأخضر
+           البيانات الأساسية
       ================================================== -->
 
       <div class="hero-edit">
@@ -5043,6 +2300,7 @@ function render() {
               value="${escapeHtml(
                 student.name || ''
               )}"
+              placeholder="اكتب اسم الطالب"
             >
 
           </div>
@@ -5304,7 +2562,7 @@ function render() {
 
 
     <!-- =====================================================
-         لوحة الإنجاز والالتزام
+         باقي الصفحة
     ====================================================== -->
 
     <section class="section">
@@ -5325,8 +2583,6 @@ function render() {
 
       </div>
 
-
-      <!-- الإحصائيات -->
 
       <div class="stats">
 
@@ -5430,8 +2686,6 @@ function render() {
 
       </div>
 
-
-      <!-- التقدم الأسبوعي -->
 
       <div class="progress-grid">
 
@@ -5584,8 +2838,6 @@ function render() {
       </div>
 
 
-      <!-- الالتزام -->
-
       <div class="commitment-grid">
 
         <div class="commitment-card">
@@ -5677,10 +2929,6 @@ function render() {
 
     </section>
 
-
-    <!-- =====================================================
-         نظام النقاط
-    ====================================================== -->
 
     <section class="section">
 
@@ -5812,10 +3060,6 @@ function render() {
     </section>
 
 
-    <!-- =====================================================
-         الهدف الأسبوعي
-    ====================================================== -->
-
     <section class="section">
 
       <div class="section-head">
@@ -5879,10 +3123,6 @@ function render() {
     </section>
 
 
-    <!-- =====================================================
-         الحضور
-    ====================================================== -->
-
     <section class="section">
 
       <div class="section-head">
@@ -5919,10 +3159,6 @@ function render() {
     </section>
 
 
-    <!-- =====================================================
-         الخطة
-    ====================================================== -->
-
     <section class="section">
 
       <div class="section-head">
@@ -5958,10 +3194,6 @@ function render() {
 
     </section>
 
-
-    <!-- =====================================================
-         الاختبارات
-    ====================================================== -->
 
     <section class="section">
 
@@ -6068,10 +3300,6 @@ function render() {
     </section>
 
 
-    <!-- =====================================================
-         التسميع
-    ====================================================== -->
-
     <section class="section">
 
       <div class="section-head">
@@ -6175,10 +3403,6 @@ function render() {
 
     </section>
 
-
-    <!-- =====================================================
-         خريطة القرآن
-    ====================================================== -->
 
     <section class="section">
 
@@ -6298,10 +3522,6 @@ function render() {
 
     </section>
 
-
-    <!-- =====================================================
-         الملاحظات
-    ====================================================== -->
 
     <section class="section">
 
@@ -6752,6 +3972,9 @@ async function saveBasicFromHero() {
 
     const profilePatch = {
 
+      name:
+        studentUpdate.name,
+
       photoUrl:
         profile.photoUrl || '',
 
@@ -6816,6 +4039,10 @@ async function saveBasicFromHero() {
       ...studentUpdate
 
     };
+
+
+    document.title =
+      `ملف ${studentUpdate.name} | مركز حردان طارق القرآني`;
 
 
     render();
@@ -7330,7 +4557,6 @@ async function saveStudentSection(
     switch (
       key
     ) {
-
 
       case 'weeklyGoal': {
 
@@ -9128,6 +6354,3 @@ function showPageInfo(
 loadStudent();
 
 </script>
-
-</body>
-</html>
