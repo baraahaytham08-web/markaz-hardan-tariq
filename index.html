@@ -4,22 +4,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>مركز حردان طارق القرآني</title>
-  <meta name="description" content="مركز حردان طارق القرآني - منارة للقرآن وبناء للأجيال">
+
+  <meta name="description"
+        content="مركز حردان طارق القرآني - منارة للقرآن وبناء للأجيال">
+
   <link rel="stylesheet" href="style.css">
 
   <style>
+    /* شريط النسخة التجريبية */
     .demo-badge {
       position: fixed;
       top: 12px;
       left: 12px;
+      z-index: 9999;
       background: #222;
-      color: #fff;
-      padding: 7px 14px;
+      color: white;
+      padding: 6px 13px;
       border-radius: 20px;
       font-size: 12px;
-      z-index: 9999;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+      box-shadow: 0 3px 10px rgba(0,0,0,.18);
     }
 
     .contact-list a {
@@ -27,20 +32,25 @@
       text-decoration: none;
     }
 
-    .social-links {
-      margin-top: 20px;
+    .contact-buttons {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+      margin-top: 20px;
     }
   </style>
 </head>
 
 <body>
 
+  <!-- النسخة التجريبية -->
   <div class="demo-badge">النسخة التجريبية</div>
 
+
+  <!-- ================= HEADER ================= -->
+
   <header class="header">
+
     <div class="container nav">
 
       <a class="brand" href="#home">
@@ -49,103 +59,215 @@
       </a>
 
       <nav>
-        <a class="active" href="#home">الرئيسية</a>
-        <a href="#about">عن المركز</a>
-        <a href="#programs">الشعب والحلقات</a>
-        <a href="#schedule">الدوام</a>
-        <a href="#contact">تواصل معنا</a>
+
+        <a class="active" href="#home">
+          الرئيسية
+        </a>
+
+        <a href="#about">
+          عن المركز
+        </a>
+
+        <a href="#programs">
+          الشعب والحلقات
+        </a>
+
+        <a href="#schedule">
+          أوقات الدوام
+        </a>
+
+        <a href="#contact">
+          تواصل معنا
+        </a>
+
       </nav>
 
       <div class="actions">
-        <a class="btn btn-outline" href="#register">التسجيل</a>
-        <a class="btn btn-gold" href="#contact">تواصل معنا</a>
+
+        <a class="btn btn-outline" href="#register">
+          التسجيل
+        </a>
+
+        <a class="btn btn-gold"
+           href="https://wa.me/962780791622"
+           target="_blank"
+           rel="noopener">
+          واتساب
+        </a>
+
       </div>
 
-      <button class="menu-btn" aria-label="فتح القائمة">☰</button>
+      <button class="menu-btn" aria-label="فتح القائمة">
+        ☰
+      </button>
+
     </div>
+
   </header>
+
+
+  <!-- ================= MAIN ================= -->
 
   <main>
 
-    <!-- الرئيسية -->
+
+    <!-- HERO -->
+
     <section id="home" class="hero">
+
       <div class="container hero-inner">
 
         <div class="hero-content">
-          <p class="eyebrow">أهلاً وسهلاً بكم في</p>
 
-          <h1>مركز حردان طارق القرآني</h1>
+          <p class="eyebrow">
+            أهلاً وسهلاً بكم في
+          </p>
 
-          <h2>منارةٌ للقرآن .. وبناءٌ للأجيال</h2>
+          <h1>
+            مركز حردان طارق القرآني
+          </h1>
+
+          <h2>
+            منارةٌ للقرآن .. وبناءٌ للأجيال
+          </h2>
 
           <p class="hero-text">
-            نسعى في مركزنا إلى تحفيظ القرآن الكريم وتعليم أحكامه وتجويده،
-            وتربية النشء على قيمه وأخلاقه في بيئة تعليمية مميزة.
+            نسعى في مركزنا إلى تحفيظ القرآن الكريم وتعليم أحكامه
+            وتجويده، وتربية النشء على قيمه وأخلاقه في بيئة تعليمية
+            مميزة.
           </p>
 
           <a class="btn btn-gold big" href="#programs">
             تعرّف على الشعب ←
           </a>
+
         </div>
 
-        <div class="hero-art" aria-label="مساحة بصرية">
+
+        <div class="hero-art">
+
           <div class="arch">
-            <div class="quran">القرآن الكريم</div>
+
+            <div class="quran">
+              القرآن الكريم
+            </div>
+
           </div>
+
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- المميزات -->
+    <!-- ================= FEATURES ================= -->
+
     <section class="features container">
 
-      <article class="feature">
-        <div class="icon">📖</div>
-        <h3>تحفيظ القرآن الكريم</h3>
-        <p>العناية بحفظ كتاب الله ومراجعته.</p>
-      </article>
 
       <article class="feature">
-        <div class="icon">✨</div>
-        <h3>تعليم التجويد</h3>
-        <p>تعلم أحكام التجويد وتحسين التلاوة.</p>
+
+        <div class="icon">
+          📖
+        </div>
+
+        <h3>
+          تحفيظ القرآن الكريم
+        </h3>
+
+        <p>
+          العناية بحفظ كتاب الله ومراجعته.
+        </p>
+
       </article>
 
-      <article class="feature">
-        <div class="icon">🌱</div>
-        <h3>بناء الأجيال</h3>
-        <p>بيئة تربوية تعين على تعلم القرآن والعمل به.</p>
-      </article>
 
       <article class="feature">
-        <div class="icon">📅</div>
-        <h3>دوام منظم</h3>
-        <p>السبت والأربعاء من 4:30 إلى 6:30 مساءً.</p>
+
+        <div class="icon">
+          ✨
+        </div>
+
+        <h3>
+          تعليم التجويد
+        </h3>
+
+        <p>
+          تعلم أحكام التجويد وتحسين التلاوة.
+        </p>
+
       </article>
+
+
+      <article class="feature">
+
+        <div class="icon">
+          🌱
+        </div>
+
+        <h3>
+          بناء الأجيال
+        </h3>
+
+        <p>
+          بيئة تربوية تعين على تعلم القرآن والعمل به.
+        </p>
+
+      </article>
+
+
+      <article class="feature">
+
+        <div class="icon">
+          📅
+        </div>
+
+        <h3>
+          مواعيد منظمة
+        </h3>
+
+        <p>
+          السبت والأربعاء من 4:30 إلى 6:30 مساءً.
+        </p>
+
+      </article>
+
 
     </section>
 
 
-    <!-- عن المركز -->
+    <!-- ================= ABOUT ================= -->
+
     <section id="about" class="about container">
 
+
       <div class="quote-card">
-        <div class="quote-mark">قال ﷺ:</div>
+
+        <div class="quote-mark">
+          قال ﷺ:
+        </div>
 
         <blockquote>
           «خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ»
         </blockquote>
 
-        <small>رواه البخاري</small>
+        <small>
+          رواه البخاري
+        </small>
+
       </div>
+
 
       <div class="about-text">
 
-        <span class="section-kicker">تعرف علينا</span>
+        <span class="section-kicker">
+          تعرف علينا
+        </span>
 
-        <h2>عن المركز</h2>
+        <h2>
+          عن المركز
+        </h2>
 
         <p>
           مركز حردان طارق القرآني هو مركز يُعنى بتعليم القرآن الكريم
@@ -162,50 +284,96 @@
     </section>
 
 
-    <!-- الشعب -->
+    <!-- ================= PROGRAMS ================= -->
+
     <section id="programs" class="programs">
 
       <div class="container">
 
+
         <div class="section-title">
+
           <span></span>
-          <h2>شعب المركز</h2>
+
+          <h2>
+            شعب المركز
+          </h2>
+
           <span></span>
+
         </div>
+
 
         <div class="cards">
 
-          <article class="program">
-            <div class="program-icon">📗</div>
-            <h3>شعبة الحفاظ</h3>
-            <p>
-              عناية بالحفظ والمراجعة ومتابعة مسيرة الطالب في حفظ القرآن الكريم.
-            </p>
-          </article>
 
           <article class="program">
-            <div class="program-icon">📖</div>
-            <h3>شعبة تجويد</h3>
+
+            <div class="program-icon">
+              📗
+            </div>
+
+            <h3>
+              شعبة الحفاظ
+            </h3>
+
             <p>
-              تعليم أحكام التجويد وتصحيح التلاوة والقراءة بصورة سليمة.
+              عناية بحفظ القرآن الكريم ومراجعته.
             </p>
+
           </article>
 
-          <article class="program">
-            <div class="program-icon">🏅</div>
-            <h3>شعبة إجازة</h3>
-            <p>
-              برنامج متخصص للطلاب الراغبين في مسار الإجازة في القرآن الكريم.
-            </p>
-          </article>
 
           <article class="program">
-            <div class="program-icon">⭐</div>
-            <h3>شعبة فرسان</h3>
+
+            <div class="program-icon">
+              📖
+            </div>
+
+            <h3>
+              شعبة تجويد
+            </h3>
+
             <p>
-              شعبة تربوية قرآنية تهتم بالناشئة وتنمية علاقتهم بالقرآن الكريم.
+              تعليم أحكام التجويد وتصحيح التلاوة.
             </p>
+
           </article>
+
+
+          <article class="program">
+
+            <div class="program-icon">
+              🏅
+            </div>
+
+            <h3>
+              شعبة إجازة
+            </h3>
+
+            <p>
+              مسار متخصص للطلاب في برنامج الإجازة.
+            </p>
+
+          </article>
+
+
+          <article class="program">
+
+            <div class="program-icon">
+              ⭐
+            </div>
+
+            <h3>
+              شعبة فرسان
+            </h3>
+
+            <p>
+              شعبة قرآنية وتربوية للناشئة.
+            </p>
+
+          </article>
+
 
         </div>
 
@@ -214,14 +382,20 @@
     </section>
 
 
-    <!-- الدوام -->
+    <!-- ================= SCHEDULE ================= -->
+
     <section id="schedule" class="schedule container">
+
 
       <div>
 
-        <span class="section-kicker">مواعيد المركز</span>
+        <span class="section-kicker">
+          مواعيد المركز
+        </span>
 
-        <h2>الدوام</h2>
+        <h2>
+          أوقات الدوام
+        </h2>
 
         <p>
           يستقبل المركز الطلاب يومي السبت والأربعاء
@@ -230,87 +404,134 @@
 
       </div>
 
+
       <div class="schedule-box">
 
-        <div>
-          <strong>السبت</strong>
-          <span>4:30 مساءً – 6:30 مساءً</span>
-        </div>
 
         <div>
-          <strong>الأربعاء</strong>
-          <span>4:30 مساءً – 6:30 مساءً</span>
+
+          <strong>
+            السبت
+          </strong>
+
+          <span>
+            4:30 مساءً – 6:30 مساءً
+          </span>
+
         </div>
+
+
+        <div>
+
+          <strong>
+            الأربعاء
+          </strong>
+
+          <span>
+            4:30 مساءً – 6:30 مساءً
+          </span>
+
+        </div>
+
 
       </div>
 
     </section>
 
 
-    <!-- التسجيل -->
+    <!-- ================= REGISTER ================= -->
+
     <section id="register" class="register">
 
       <div class="container register-inner">
 
+
         <div>
 
-          <span class="section-kicker">انضم إلينا</span>
+          <span class="section-kicker">
+            انضم إلينا
+          </span>
 
-          <h2>التسجيل في حلقات المركز</h2>
+          <h2>
+            التسجيل في حلقات المركز
+          </h2>
 
           <p>
-            للتسجيل أو الاستفسار، يمكنكم التواصل مباشرة مع المركز عبر الواتساب.
+            للتسجيل أو الاستفسار عن الشعب والحلقات،
+            يمكنكم التواصل معنا مباشرة عبر واتساب.
           </p>
 
         </div>
 
-        <a
-          class="btn btn-gold big"
-          href="https://wa.me/962780791622"
-          target="_blank"
-          rel="noopener"
-        >
+
+        <a class="btn btn-gold big"
+           href="https://wa.me/962780791622"
+           target="_blank"
+           rel="noopener">
+
           التسجيل عبر واتساب
+
         </a>
+
 
       </div>
 
     </section>
 
 
-    <!-- التواصل -->
+    <!-- ================= CONTACT ================= -->
+
     <section id="contact" class="contact container">
+
 
       <div>
 
-        <span class="section-kicker">تواصل معنا</span>
+        <span class="section-kicker">
+          تواصل معنا
+        </span>
 
-        <h2>يسعدنا تواصلكم</h2>
+        <h2>
+          يسعدنا تواصلكم
+        </h2>
 
         <p>
-          للاستفسار عن الشعب والحلقات ومواعيد المركز أو التسجيل،
-          يمكنكم التواصل معنا مباشرة.
+          للاستفسار عن المركز أو الشعب أو مواعيد الدوام،
+          يمكنكم التواصل معنا.
         </p>
 
-        <div class="social-links">
 
-          <a
-            class="btn btn-outline"
-            href="https://web.facebook.com/profile.php?id=61552970752227&locale=ar_AR"
-            target="_blank"
-            rel="noopener"
-          >
-            صفحة فيسبوك
+        <div class="contact-buttons">
+
+
+          <a class="btn btn-gold"
+             href="https://wa.me/962780791622"
+             target="_blank"
+             rel="noopener">
+
+            واتساب 💬
+
           </a>
 
-          <a
-            class="btn btn-gold"
-            href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
-            target="_blank"
-            rel="noopener"
-          >
+
+          <a class="btn btn-outline"
+             href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
+             target="_blank"
+             rel="noopener">
+
             موقع المركز 📍
+
           </a>
+
+
+          <a class="btn btn-outline"
+             href="https://web.facebook.com/profile.php?id=61552970752227&locale=ar_AR"
+             target="_blank"
+             rel="noopener">
+
+            فيسبوك
+
+          </a>
+
 
         </div>
 
@@ -319,59 +540,90 @@
 
       <div class="contact-list">
 
+
         <div>
+
           📞
+
           <a href="tel:+962780791622">
-            <span>+962 7 8079 1622</span>
+            <span>
+              +962 7 8079 1622
+            </span>
           </a>
+
         </div>
 
+
         <div>
+
           💬
-          <a
-            href="https://wa.me/962780791622"
-            target="_blank"
-            rel="noopener"
-          >
-            <span>واتساب المركز</span>
+
+          <a href="https://wa.me/962780791622"
+             target="_blank"
+             rel="noopener">
+
+            <span>
+              واتساب المركز
+            </span>
+
           </a>
+
         </div>
 
+
         <div>
+
           📍
-          <a
-            href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
-            target="_blank"
-            rel="noopener"
-          >
-            <span>موقع المركز على الخريطة</span>
+
+          <a href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
+             target="_blank"
+             rel="noopener">
+
+            <span>
+              موقع المركز على الخريطة
+            </span>
+
           </a>
+
         </div>
+
 
       </div>
 
     </section>
 
+
   </main>
 
+
+  <!-- ================= FOOTER ================= -->
 
   <footer>
 
     <div class="container footer-inner">
 
-      <span>© 2026 مركز حردان طارق القرآني</span>
+      <span>
+        © 2026 مركز حردان طارق القرآني
+      </span>
 
-      <span>منارةٌ للقرآن .. وبناءٌ للأجيال</span>
+      <span>
+        منارةٌ للقرآن .. وبناءٌ للأجيال
+      </span>
 
     </div>
 
   </footer>
 
 
+  <!-- ================= JAVASCRIPT ================= -->
+
   <script>
 
-    document.querySelector('.menu-btn').addEventListener('click', () => {
-      document.querySelector('nav').classList.toggle('open');
+    const menuButton = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav');
+
+    menuButton.addEventListener('click', () => {
+      nav.classList.toggle('open');
     });
 
   </script>
