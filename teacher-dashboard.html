@@ -1,17 +1,952 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>متابعة الطلاب | مركز حردان طارق القرآني</title>
+  <title>لوحة متابعة الطلاب | مركز حردان طارق القرآني</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    .header {
+      background: #111;
+      color: white;
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .logout-btn {
+      border: none;
+      background: white;
+      color: #111;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .logout-btn:hover {
+      opacity: .85;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 30px auto;
+    }
+
+    .welcome {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.07);
+      margin-bottom: 25px;
+    }
+
+    .welcome h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .welcome p {
+      margin: 0;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    .stat {
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.06);
+    }
+
+    .stat i {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .stat-title {
+      color: #777;
+    }
+
+    .panel {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.07);
+      margin-bottom: 25px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .panel-header h2 {
+      margin: 0;
+    }
+
+    .add-btn {
+      border: none;
+      background: #111;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-btn:hover {
+      opacity: .88;
+    }
+
+    .search {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: #111;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+
+    th,
+    td {
+      padding: 14px;
+      text-align: right;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #fafafa;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .active {
+      background: #e8f5e9;
+      color: #237a31;
+    }
+
+    .inactive {
+      background: #ffebee;
+      color: #b71c1c;
+    }
+
+    .delete-btn {
+      border: none;
+      background: #111;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 35px;
+      color: #888;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.65);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      background: white;
+      width: min(500px, 100%);
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .modal-box h2 {
+      margin-top: 0;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .modal-buttons button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .save-btn {
+      background: #111;
+      color: white;
+    }
+
+    .cancel-btn {
+      background: #eee;
+      color: #222;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+      min-height: 22px;
+    }
+
+    .badge {
+      position: fixed;
+      left: 12px;
+      bottom: 12px;
+      background: #111;
+      color: white;
+      padding: 7px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      z-index: 200;
+    }
+
+    @media (max-width: 700px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .header {
+        align-items: stretch;
+      }
+
+      .logout-btn {
+        width: 100%;
+      }
+
+      .welcome h1 {
+        font-size: 23px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-</body>
+  <div class="badge">النسخة التجريبية</div>
 
+  <header class="header">
+    <div class="brand">
+      مركز حردان طارق القرآني
+    </div>
+
+    <button class="logout-btn" id="logoutButton">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      تسجيل الخروج
+    </button>
+  </header>
+
+  <main class="container">
+
+    <section class="welcome">
+      <h1>لوحة متابعة الطلاب 👋</h1>
+
+      <p>
+        مرحبًا بك في بوابة المعلمين.
+        من هنا يمكنك متابعة الطلاب وإدارة بياناتهم.
+      </p>
+    </section>
+
+    <section class="stats">
+
+      <div class="stat">
+        <i class="fa-solid fa-users"></i>
+        <span class="stat-number" id="totalStudents">0</span>
+        <span class="stat-title">إجمالي الطلاب</span>
+      </div>
+
+      <div class="stat">
+        <i class="fa-solid fa-user-check"></i>
+        <span class="stat-number" id="activeStudents">0</span>
+        <span class="stat-title">طلاب مستمرون</span>
+      </div>
+
+      <div class="stat">
+        <i class="fa-solid fa-book-quran"></i>
+        <span class="stat-number" id="memorizedStudents">0</span>
+        <span class="stat-title">طلاب في المتابعة</span>
+      </div>
+
+    </section>
+
+    <section class="panel">
+
+      <div class="panel-header">
+
+        <h2>
+          <i class="fa-solid fa-users"></i>
+          الطلاب
+        </h2>
+
+        <button class="add-btn" id="openModal">
+          <i class="fa-solid fa-plus"></i>
+          إضافة طالب
+        </button>
+
+      </div>
+
+      <input
+        type="text"
+        id="searchInput"
+        class="search"
+        placeholder="ابحث باسم الطالب..."
+      >
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>الاسم</th>
+              <th>الشعبة</th>
+              <th>الحفظ</th>
+              <th>الحالة</th>
+              <th>إجراء</th>
+            </tr>
+          </thead>
+
+          <tbody id="studentsTable">
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <div id="emptyMessage" class="empty">
+        لا يوجد طلاب مضافون حاليًا.
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- إضافة طالب -->
+
+  <div class="modal" id="studentModal">
+
+    <div class="modal-box">
+
+      <h2>إضافة طالب</h2>
+
+      <form id="studentForm">
+
+        <div class="form-group">
+          <label for="studentName">اسم الطالب</label>
+
+          <input
+            type="text"
+            id="studentName"
+            required
+            placeholder="مثال: أحمد محمد"
+          >
+        </div>
+
+        <div class="form-group">
+
+          <label for="studentSection">
+            الشعبة
+          </label>
+
+          <select id="studentSection" required>
+
+            <option value="">
+              اختر الشعبة
+            </option>
+
+            <option value="شعبة الحفاظ">
+              شعبة الحفاظ
+            </option>
+
+            <option value="شعبة تجويد">
+              شعبة تجويد
+            </option>
+
+            <option value="شعبة إجازة">
+              شعبة إجازة
+            </option>
+
+            <option value="شعبة فرسان">
+              شعبة فرسان
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="memorization">
+            مستوى الحفظ
+          </label>
+
+          <input
+            type="text"
+            id="memorization"
+            placeholder="مثال: سورة البقرة"
+          >
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="studentStatus">
+            الحالة
+          </label>
+
+          <select id="studentStatus">
+
+            <option value="active">
+              مستمر
+            </option>
+
+            <option value="inactive">
+              متوقف
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="modal-buttons">
+
+          <button
+            type="submit"
+            class="save-btn">
+            حفظ الطالب
+          </button>
+
+          <button
+            type="button"
+            class="cancel-btn"
+            id="closeModal">
+            إلغاء
+          </button>
+
+        </div>
+
+        <div id="message"></div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+
+    const SUPABASE_URL =
+      'https://lsbbcybpiulusdgfhepf.supabase.co';
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+    const tableBody =
+      document.getElementById('studentsTable');
+
+    const emptyMessage =
+      document.getElementById('emptyMessage');
+
+    const totalStudents =
+      document.getElementById('totalStudents');
+
+    const activeStudents =
+      document.getElementById('activeStudents');
+
+    const memorizedStudents =
+      document.getElementById('memorizedStudents');
+
+    const searchInput =
+      document.getElementById('searchInput');
+
+    const modal =
+      document.getElementById('studentModal');
+
+    const openModal =
+      document.getElementById('openModal');
+
+    const closeModal =
+      document.getElementById('closeModal');
+
+    const studentForm =
+      document.getElementById('studentForm');
+
+    const message =
+      document.getElementById('message');
+
+    let students = [];
+
+
+    // التأكد من تسجيل الدخول
+
+    async function checkUser() {
+
+      const {
+        data,
+        error
+      } = await supabaseClient.auth.getUser();
+
+      if (
+        error ||
+        !data.user ||
+        data.user.email.toLowerCase() !==
+        'baraahaytham08@gmail.com'
+      ) {
+
+        window.location.href =
+          'teacher-login.html';
+
+        return false;
+      }
+
+      return true;
+    }
+
+
+    // تحميل الطلاب
+
+    async function loadStudents() {
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from('students')
+        .select('*')
+        .order('created_at', {
+          ascending: false
+        });
+
+      if (error) {
+
+        console.error(error);
+
+        emptyMessage.textContent =
+          'تعذر تحميل بيانات الطلاب. تأكد من إعداد قاعدة البيانات.';
+
+        return;
+      }
+
+      students = data || [];
+
+      renderStudents();
+      updateStats();
+    }
+
+
+    // عرض الطلاب
+
+    function renderStudents() {
+
+      const search =
+        searchInput.value
+          .trim()
+          .toLowerCase();
+
+      const filtered =
+        students.filter(student =>
+          student.name
+            .toLowerCase()
+            .includes(search)
+        );
+
+      tableBody.innerHTML = '';
+
+      if (filtered.length === 0) {
+
+        emptyMessage.style.display = 'block';
+
+        return;
+
+      } else {
+
+        emptyMessage.style.display = 'none';
+      }
+
+
+      filtered.forEach(student => {
+
+        const row =
+          document.createElement('tr');
+
+        const statusText =
+          student.status === 'active'
+            ? 'مستمر'
+            : 'متوقف';
+
+        const statusClass =
+          student.status === 'active'
+            ? 'active'
+            : 'inactive';
+
+        row.innerHTML = `
+
+          <td>${escapeHtml(student.name)}</td>
+
+          <td>
+            ${escapeHtml(student.section || '-')}
+          </td>
+
+          <td>
+            ${escapeHtml(student.memorization || '-')}
+          </td>
+
+          <td>
+            <span class="status ${statusClass}">
+              ${statusText}
+            </span>
+          </td>
+
+          <td>
+
+            <button
+              class="delete-btn"
+              onclick="deleteStudent('${student.id}')">
+
+              <i class="fa-solid fa-trash"></i>
+
+            </button>
+
+          </td>
+        `;
+
+        tableBody.appendChild(row);
+
+      });
+
+    }
+
+
+    // الإحصائيات
+
+    function updateStats() {
+
+      totalStudents.textContent =
+        students.length;
+
+      activeStudents.textContent =
+        students.filter(
+          student => student.status === 'active'
+        ).length;
+
+      memorizedStudents.textContent =
+        students.filter(
+          student =>
+            student.memorization &&
+            student.memorization.trim() !== ''
+        ).length;
+
+    }
+
+
+    // إضافة طالب
+
+    studentForm.addEventListener(
+      'submit',
+      async function(event) {
+
+        event.preventDefault();
+
+        message.textContent =
+          'جارٍ حفظ الطالب...';
+
+        const name =
+          document
+            .getElementById('studentName')
+            .value
+            .trim();
+
+        const section =
+          document
+            .getElementById('studentSection')
+            .value;
+
+        const memorization =
+          document
+            .getElementById('memorization')
+            .value
+            .trim();
+
+        const status =
+          document
+            .getElementById('studentStatus')
+            .value;
+
+
+        const {
+          data,
+          error
+        } = await supabaseClient
+          .from('students')
+          .insert([
+            {
+              name,
+              section,
+              memorization,
+              status
+            }
+          ])
+          .select()
+          .single();
+
+
+        if (error) {
+
+          console.error(error);
+
+          message.textContent =
+            'حدث خطأ أثناء حفظ الطالب.';
+
+          return;
+        }
+
+
+        students.unshift(data);
+
+        renderStudents();
+        updateStats();
+
+        studentForm.reset();
+
+        modal.classList.remove('show');
+
+        message.textContent = '';
+
+      }
+    );
+
+
+    // حذف طالب
+
+    async function deleteStudent(id) {
+
+      const confirmed =
+        confirm(
+          'هل أنت متأكد من حذف هذا الطالب؟'
+        );
+
+      if (!confirmed) return;
+
+
+      const {
+        error
+      } = await supabaseClient
+        .from('students')
+        .delete()
+        .eq('id', id);
+
+
+      if (error) {
+
+        alert(
+          'حدث خطأ أثناء حذف الطالب.'
+        );
+
+        console.error(error);
+
+        return;
+      }
+
+
+      students =
+        students.filter(
+          student => student.id !== id
+        );
+
+      renderStudents();
+      updateStats();
+
+    }
+
+
+    // فتح النافذة
+
+    openModal.addEventListener(
+      'click',
+      function() {
+
+        modal.classList.add('show');
+
+      }
+    );
+
+
+    // إغلاق النافذة
+
+    closeModal.addEventListener(
+      'click',
+      function() {
+
+        modal.classList.remove('show');
+
+        studentForm.reset();
+
+        message.textContent = '';
+
+      }
+    );
+
+
+    // البحث
+
+    searchInput.addEventListener(
+      'input',
+      renderStudents
+    );
+
+
+    // تسجيل الخروج
+
+    document
+      .getElementById('logoutButton')
+      .addEventListener(
+        'click',
+        async function() {
+
+          await supabaseClient.auth.signOut();
+
+          window.location.href =
+            'teacher-login.html';
+
+        }
+      );
+
+
+    // حماية HTML من النصوص المدخلة
+
+    function escapeHtml(text) {
+
+      return String(text)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+
+    }
+
+
+    // تشغيل الصفحة
+
+    (async function() {
+
+      const loggedIn =
+        await checkUser();
+
+      if (loggedIn) {
+
+        await loadStudents();
+
+      }
+
+    })();
+
+  </script>
+
+</body>
 </html>
