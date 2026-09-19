@@ -1,1 +1,924 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
 
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>شعب المركز | مركز حردان طارق القرآني</title>
+
+  <meta name="description"
+        content="شعب وحلقات مركز حردان طارق القرآني">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+  <style>
+
+    /* ================= النسخة التجريبية ================= */
+
+    .demo-badge {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 9999;
+      background: #222;
+      color: white;
+      padding: 6px 13px;
+      border-radius: 20px;
+      font-size: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.18);
+    }
+
+
+    /* ================= صفحة الشعب ================= */
+
+    .programs-page {
+      padding: 120px 20px 80px;
+      min-height: 70vh;
+    }
+
+
+    .programs-page-title {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 50px;
+    }
+
+
+    .programs-page-title .section-kicker {
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+
+    .programs-page-title h1 {
+      margin: 0 0 15px;
+      font-size: 38px;
+    }
+
+
+    .programs-page-title p {
+      margin: 0;
+      line-height: 1.9;
+      color: #666;
+      font-size: 17px;
+    }
+
+
+    /* ================= البطاقات ================= */
+
+    .programs-page-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+
+    .program-page-card {
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,.06);
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+
+    .program-page-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 32px rgba(0,0,0,.12);
+    }
+
+
+    .program-page-card:focus {
+      outline: 3px solid rgba(201,162,39,.35);
+      outline-offset: 3px;
+    }
+
+
+    .program-page-icon {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: #faf7ea;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+    }
+
+
+    .program-page-card h2 {
+      margin: 0 0 12px;
+      font-size: 23px;
+    }
+
+
+    .program-page-card p {
+      margin: 0;
+      color: #666;
+      line-height: 1.8;
+    }
+
+
+    .program-more {
+      display: inline-block;
+      margin-top: 16px;
+      font-weight: bold;
+      color: #b28b18;
+      font-size: 14px;
+    }
+
+
+    /* ================= زر العودة ================= */
+
+    .programs-back {
+      text-align: center;
+      margin-top: 45px;
+    }
+
+
+    .programs-back .btn {
+      display: inline-block;
+    }
+
+
+    /* ================= نافذة معلومات الشعبة ================= */
+
+    .program-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.68);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+
+    .program-modal.active {
+      display: flex;
+      animation: modalFade .2s ease;
+    }
+
+
+    @keyframes modalFade {
+
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+
+    }
+
+
+    .program-modal-content {
+      background: white;
+      width: 100%;
+      max-width: 680px;
+      max-height: 88vh;
+      overflow-y: auto;
+      border-radius: 24px;
+      padding: 0;
+      position: relative;
+      box-sizing: border-box;
+      box-shadow: 0 25px 70px rgba(0,0,0,.28);
+      animation: modalUp .25s ease;
+    }
+
+
+    @keyframes modalUp {
+
+      from {
+        transform: translateY(25px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+    }
+
+
+    .program-modal-header {
+      padding: 35px 30px 28px;
+      text-align: center;
+      background: linear-gradient(135deg, #f8f1d8, #fff);
+      border-bottom: 1px solid #eee;
+    }
+
+
+    .program-modal-icon {
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      box-shadow: 0 7px 20px rgba(0,0,0,.09);
+    }
+
+
+    .program-modal-header h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+
+    .program-modal-body {
+      padding: 28px 30px 32px;
+    }
+
+
+    .program-detail {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 15px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
+
+
+    .program-detail h3 {
+      margin: 0 0 9px;
+      font-size: 17px;
+    }
+
+
+    .program-detail p {
+      margin: 0;
+      line-height: 1.9;
+      color: #555;
+    }
+
+
+    .student-follow-btn {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      text-decoration: none;
+      background: #222;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      margin-top: 22px;
+      transition: .2s;
+    }
+
+
+    .student-follow-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.15);
+    }
+
+
+    .program-modal-close {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      border: none;
+      background: rgba(255,255,255,.9);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.12);
+      transition: .2s;
+    }
+
+
+    .program-modal-close:hover {
+      transform: rotate(90deg);
+    }
+
+
+    /* ================= الجوال ================= */
+
+    @media (max-width: 700px) {
+
+      .programs-page {
+        padding: 105px 15px 60px;
+      }
+
+
+      .programs-page-title {
+        margin-bottom: 35px;
+      }
+
+
+      .programs-page-title h1 {
+        font-size: 29px;
+      }
+
+
+      .programs-page-title p {
+        font-size: 15px;
+      }
+
+
+      .programs-page-cards {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+
+      .program-page-card {
+        padding: 28px 22px;
+      }
+
+
+      .program-modal {
+        padding: 12px;
+      }
+
+
+      .program-modal-content {
+        max-height: 92vh;
+        border-radius: 20px;
+      }
+
+
+      .program-modal-header {
+        padding: 32px 20px 22px;
+      }
+
+
+      .program-modal-body {
+        padding: 22px 18px 25px;
+      }
+
+
+      .program-modal-header h2 {
+        font-size: 22px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <!-- ================= النسخة التجريبية ================= -->
+
+  <div class="demo-badge">
+    النسخة التجريبية
+  </div>
+
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="header">
+
+    <div class="container nav">
+
+
+      <a class="brand" href="index.html">
+
+        <img
+          src="logo.png"
+          alt="شعار مركز حردان طارق القرآني"
+        >
+
+        <span>
+          مركز حردان طارق القرآني
+        </span>
+
+      </a>
+
+
+      <nav>
+
+        <a href="index.html">
+          الرئيسية
+        </a>
+
+        <a href="index.html#about">
+          عن المركز
+        </a>
+
+        <a class="active" href="programs.html">
+          الشعب والحلقات
+        </a>
+
+        <a href="index.html#schedule">
+          أوقات الدوام
+        </a>
+
+        <a href="index.html#contact">
+          تواصل معنا
+        </a>
+
+      </nav>
+
+
+      <div class="actions">
+
+        <a
+          class="btn btn-outline"
+          href="register.html">
+
+          التسجيل
+
+        </a>
+
+
+        <a
+          class="btn btn-gold"
+          href="https://wa.me/962780791622"
+          target="_blank"
+          rel="noopener">
+
+          واتساب
+
+        </a>
+
+      </div>
+
+
+      <button
+        class="menu-btn"
+        aria-label="فتح القائمة">
+
+        ☰
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main>
+
+    <section class="programs-page">
+
+
+      <!-- ================= عنوان الصفحة ================= -->
+
+      <div class="programs-page-title">
+
+        <span class="section-kicker">
+          شعب وحلقات المركز
+        </span>
+
+        <h1>
+          تعرّف على الشعب
+        </h1>
+
+        <p>
+          اختر الشعبة التي ترغب بمعرفة تفاصيلها
+          للتعرف على طبيعة البرنامج وما يهتم به.
+        </p>
+
+      </div>
+
+
+      <!-- ================= الشعب ================= -->
+
+      <div class="programs-page-cards">
+
+
+        <!-- الحفاظ -->
+
+        <article
+          class="program-page-card"
+          tabindex="0"
+          role="button"
+          onclick="openProgram('huffaz')"
+          onkeydown="if(event.key === 'Enter' || event.key === ' ') openProgram('huffaz')">
+
+          <div class="program-page-icon">
+            📗
+          </div>
+
+          <h2>
+            شعبة الحفاظ
+          </h2>
+
+          <p>
+            عناية بحفظ القرآن الكريم ومراجعته.
+          </p>
+
+          <span class="program-more">
+            اضغط لمعرفة التفاصيل ←
+          </span>
+
+        </article>
+
+
+        <!-- التجويد -->
+
+        <article
+          class="program-page-card"
+          tabindex="0"
+          role="button"
+          onclick="openProgram('tajweed')"
+          onkeydown="if(event.key === 'Enter' || event.key === ' ') openProgram('tajweed')">
+
+          <div class="program-page-icon">
+            📖
+          </div>
+
+          <h2>
+            شعبة تجويد
+          </h2>
+
+          <p>
+            تعليم أحكام التجويد وتصحيح التلاوة.
+          </p>
+
+          <span class="program-more">
+            اضغط لمعرفة التفاصيل ←
+          </span>
+
+        </article>
+
+
+        <!-- الإجازة -->
+
+        <article
+          class="program-page-card"
+          tabindex="0"
+          role="button"
+          onclick="openProgram('ijazah')"
+          onkeydown="if(event.key === 'Enter' || event.key === ' ') openProgram('ijazah')">
+
+          <div class="program-page-icon">
+            🏅
+          </div>
+
+          <h2>
+            شعبة إجازة
+          </h2>
+
+          <p>
+            مسار متخصص للطلاب في برنامج الإجازة.
+          </p>
+
+          <span class="program-more">
+            اضغط لمعرفة التفاصيل ←
+          </span>
+
+        </article>
+
+
+        <!-- فرسان -->
+
+        <article
+          class="program-page-card"
+          tabindex="0"
+          role="button"
+          onclick="openProgram('fursan')"
+          onkeydown="if(event.key === 'Enter' || event.key === ' ') openProgram('fursan')">
+
+          <div class="program-page-icon">
+            ⭐
+          </div>
+
+          <h2>
+            شعبة فرسان
+          </h2>
+
+          <p>
+            شعبة قرآنية وتربوية للناشئة.
+          </p>
+
+          <span class="program-more">
+            اضغط لمعرفة التفاصيل ←
+          </span>
+
+        </article>
+
+      </div>
+
+
+      <!-- ================= العودة للرئيسية ================= -->
+
+      <div class="programs-back">
+
+        <a
+          class="btn btn-outline"
+          href="index.html">
+
+          ← العودة إلى الرئيسية
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ================= PROGRAM MODAL ================= -->
+
+  <div
+    class="program-modal"
+    id="programModal"
+    onclick="closeProgram(event)">
+
+
+    <div
+      class="program-modal-content"
+      onclick="event.stopPropagation()">
+
+
+      <button
+        class="program-modal-close"
+        onclick="closeProgram()"
+        aria-label="إغلاق">
+
+        ×
+
+      </button>
+
+
+      <div class="program-modal-header">
+
+        <div
+          class="program-modal-icon"
+          id="modalIcon">
+        </div>
+
+        <h2 id="modalTitle"></h2>
+
+      </div>
+
+
+      <div class="program-modal-body">
+
+
+        <div class="program-detail">
+
+          <h3>
+            📌 عن الشعبة
+          </h3>
+
+          <p id="modalDescription"></p>
+
+        </div>
+
+
+        <div class="program-detail">
+
+          <h3>
+            🎯 ماذا تهتم به الشعبة؟
+          </h3>
+
+          <p id="modalFocus"></p>
+
+        </div>
+
+
+        <div class="program-detail">
+
+          <h3>
+            📊 متابعة الطلاب
+          </h3>
+
+          <p id="modalFollow"></p>
+
+        </div>
+
+
+        <a
+          href="followup.html"
+          class="student-follow-btn">
+
+          الدخول إلى متابعة الطلاب ←
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <span>
+        © 2026 مركز حردان طارق القرآني
+      </span>
+
+      <span>
+        منارةٌ للقرآن .. وبناءٌ للأجيال
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    /* ================= القائمة ================= */
+
+    const menuButton = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav');
+
+    if (menuButton && nav) {
+
+      menuButton.addEventListener('click', () => {
+        nav.classList.toggle('open');
+      });
+
+    }
+
+
+    /* ================= معلومات الشعب ================= */
+
+    const programs = {
+
+      huffaz: {
+
+        icon: '📗',
+
+        title: 'شعبة الحفاظ',
+
+        description:
+          'شعبة مخصصة للطلاب المهتمين بحفظ القرآن الكريم ومراجعته بصورة منتظمة.',
+
+        focus:
+          'الحفظ والمراجعة وتثبيت المحفوظ وتحسين مستوى الطالب في تلاوة القرآن الكريم.',
+
+        follow:
+          'متابعة تقدم الطالب في الحفظ والمراجعة ومستوى التلاوة بصورة مستمرة.'
+
+      },
+
+
+      tajweed: {
+
+        icon: '📖',
+
+        title: 'شعبة تجويد',
+
+        description:
+          'شعبة تهتم بتعليم أحكام التجويد وتصحيح تلاوة القرآن الكريم.',
+
+        focus:
+          'أحكام التجويد ومخارج الحروف وصفاتها وتصحيح الأخطاء أثناء التلاوة.',
+
+        follow:
+          'متابعة تطور الطالب في التلاوة ومدى تطبيق أحكام التجويد أثناء القراءة.'
+
+      },
+
+
+      ijazah: {
+
+        icon: '🏅',
+
+        title: 'شعبة إجازة',
+
+        description:
+          'مسار متخصص للطلاب الراغبين في برنامج الإجازة في القرآن الكريم.',
+
+        focus:
+          'العناية بالحفظ والمراجعة والتلاوة ضمن متطلبات مسار الإجازة.',
+
+        follow:
+          'متابعة تقدم الطالب في الحفظ والمراجعة والتلاوة ضمن متطلبات البرنامج.'
+
+      },
+
+
+      fursan: {
+
+        icon: '⭐',
+
+        title: 'شعبة فرسان',
+
+        description:
+          'شعبة قرآنية وتربوية للناشئة تهدف إلى تشجيعهم على تعلم القرآن والاستمرار فيه.',
+
+        focus:
+          'تعزيز ارتباط الناشئة بالقرآن الكريم وتشجيعهم على التعلم والاستمرار.',
+
+        follow:
+          'متابعة مشاركة الطالب وتقدمه في الجوانب القرآنية والتربوية.'
+
+      }
+
+    };
+
+
+    /* ================= فتح معلومات الشعبة ================= */
+
+    function openProgram(programId) {
+
+      const program = programs[programId];
+
+      if (!program) {
+        return;
+      }
+
+
+      document.getElementById('modalIcon').textContent =
+        program.icon;
+
+
+      document.getElementById('modalTitle').textContent =
+        program.title;
+
+
+      document.getElementById('modalDescription').textContent =
+        program.description;
+
+
+      document.getElementById('modalFocus').textContent =
+        program.focus;
+
+
+      document.getElementById('modalFollow').textContent =
+        program.follow;
+
+
+      document.getElementById('programModal')
+        .classList.add('active');
+
+
+      document.body.style.overflow = 'hidden';
+
+    }
+
+
+    /* ================= إغلاق معلومات الشعبة ================= */
+
+    function closeProgram(event) {
+
+      if (
+        event &&
+        event.target !== document.getElementById('programModal')
+      ) {
+        return;
+      }
+
+
+      document.getElementById('programModal')
+        .classList.remove('active');
+
+
+      document.body.style.overflow = '';
+
+    }
+
+
+    /* ================= ESC ================= */
+
+    document.addEventListener('keydown', function(event) {
+
+      if (event.key === 'Escape') {
+
+        document.getElementById('programModal')
+          .classList.remove('active');
+
+        document.body.style.overflow = '';
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
