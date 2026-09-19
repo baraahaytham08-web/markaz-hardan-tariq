@@ -1,0 +1,3874 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>متابعة الطالب | مركز حردان طارق القرآني</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --primary: #111827;
+      --primary-2: #1f2937;
+      --gold: #d4a017;
+      --gold-light: #fff8df;
+      --green: #15803d;
+      --green-light: #dcfce7;
+      --blue: #2563eb;
+      --blue-light: #dbeafe;
+      --red: #dc2626;
+      --red-light: #fee2e2;
+      --orange: #ea580c;
+      --orange-light: #ffedd5;
+      --purple: #7c3aed;
+      --purple-light: #ede9fe;
+      --gray: #6b7280;
+      --light: #f5f7fa;
+      --border: #e5e7eb;
+      --white: #ffffff;
+      --shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: var(--light);
+      color: #172033;
+      line-height: 1.7;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1200px, calc(100% - 30px));
+      margin: auto;
+    }
+
+    /* Header */
+    .topbar {
+      background: linear-gradient(135deg, #111827, #263244);
+      color: white;
+      padding: 16px 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: white;
+      padding: 3px;
+    }
+
+    .brand-title {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .brand-subtitle {
+      color: #cbd5e1;
+      font-size: 12px;
+    }
+
+    .back-btn {
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.1);
+      color: white;
+      padding: 9px 15px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .back-btn:hover {
+      background: rgba(255,255,255,.18);
+    }
+
+    /* Main */
+    main {
+      padding: 25px 0 50px;
+    }
+
+    /* Hero */
+    .hero {
+      background: white;
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--gold), #f0c75e, var(--gold));
+    }
+
+    .student-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--gold-light);
+      background: #f1f5f9;
+      flex-shrink: 0;
+    }
+
+    .hero-info {
+      flex: 1;
+    }
+
+    .hero-name {
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .hero-meta {
+      color: var(--gray);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      background: #f1f5f9;
+      color: #475569;
+    }
+
+    .badge.green {
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    .badge.gold {
+      background: var(--gold-light);
+      color: #8a6500;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-stat {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px 14px;
+      min-width: 100px;
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    .hero-stat span {
+      font-size: 11px;
+      color: var(--gray);
+    }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .card.full {
+      grid-column: 1 / -1;
+    }
+
+    .card-header {
+      padding: 17px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .card-header h2 {
+      font-size: 17px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-header .arrow {
+      transition: .2s;
+      color: var(--gray);
+    }
+
+    .card.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    .card-body {
+      padding: 20px;
+      display: none;
+    }
+
+    .card.open .card-body {
+      display: block;
+    }
+
+    .card.open .card-header {
+      background: #fafafa;
+    }
+
+    /* Forms */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 800;
+      color: #374151;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid #d7dce3;
+      background: white;
+      border-radius: 11px;
+      padding: 11px 12px;
+      outline: none;
+      font-size: 14px;
+      color: #172033;
+      transition: .15s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(212,160,23,.12);
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 11px;
+      padding: 10px 18px;
+      font-weight: 800;
+      font-size: 13px;
+      transition: .15s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: white;
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: white;
+    }
+
+    .btn-gray {
+      background: #eef2f7;
+      color: #374151;
+    }
+
+    .btn-small {
+      padding: 7px 11px;
+      font-size: 12px;
+    }
+
+    /* Photo */
+    .photo-upload {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .photo-preview {
+      width: 90px;
+      height: 90px;
+      border-radius: 15px;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      background: #f8fafc;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .stat-box {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 15px;
+      background: #fafafa;
+      text-align: center;
+    }
+
+    .stat-box .icon {
+      font-size: 23px;
+      margin-bottom: 5px;
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 24px;
+      color: var(--primary);
+    }
+
+    .stat-box span {
+      font-size: 11px;
+      color: var(--gray);
+    }
+
+    /* Progress */
+    .progress-wrap {
+      margin-top: 18px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .progress {
+      height: 12px;
+      background: #edf0f3;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), #e6bd48);
+      border-radius: inherit;
+      transition: width .3s;
+    }
+
+    /* Tables */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid var(--border);
+      text-align: right;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #f8fafc;
+      color: #374151;
+      font-weight: 900;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* Quran map */
+    .quran-map {
+      display: grid;
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+      gap: 5px;
+      margin-top: 15px;
+    }
+
+    .page-box {
+      min-height: 34px;
+      border: 1px solid #e1e5ea;
+      background: #f8fafc;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .page-box.hifz {
+      background: var(--green-light);
+      color: var(--green);
+      border-color: #86efac;
+    }
+
+    .page-box.review {
+      background: var(--blue-light);
+      color: var(--blue);
+      border-color: #93c5fd;
+    }
+
+    .page-box.both {
+      background: linear-gradient(135deg, var(--green-light) 50%, var(--blue-light) 50%);
+      color: var(--primary);
+      border-color: #93c5fd;
+    }
+
+    .juz-title {
+      grid-column: 1 / -1;
+      background: var(--primary);
+      color: white;
+      padding: 7px 10px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    .legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--gray);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .legend-color {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* Recitation form */
+    .recitation-form {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 15px;
+      margin-bottom: 18px;
+    }
+
+    .recitation-grid {
+      display: grid;
+      grid-template-columns: 120px 150px 150px 1fr;
+      gap: 10px;
+    }
+
+    .score-result {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Weekly goal */
+    .goal-box {
+      background: linear-gradient(135deg, #fffaf0, #fff);
+      border: 1px solid #f1dfaa;
+      border-radius: 15px;
+      padding: 18px;
+    }
+
+    .goal-numbers {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .goal-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .goal-item strong {
+      font-size: 22px;
+    }
+
+    /* Alerts */
+    .alert {
+      border-radius: 13px;
+      padding: 13px 15px;
+      margin-bottom: 15px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .alert.error {
+      background: var(--red-light);
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .alert.success {
+      background: var(--green-light);
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .alert.info {
+      background: var(--blue-light);
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* Loading */
+    .loading {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+
+    .spinner {
+      width: 45px;
+      height: 45px;
+      border: 4px solid #e5e7eb;
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .empty {
+      text-align: center;
+      color: var(--gray);
+      padding: 25px;
+    }
+
+    .footer {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 12px;
+      padding: 25px 0;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card.full {
+        grid-column: auto;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .recitation-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .quran-map {
+        grid-template-columns: repeat(8, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 18px, 1200px);
+      }
+
+      .topbar {
+        position: static;
+      }
+
+      .brand-title {
+        font-size: 15px;
+      }
+
+      .brand-subtitle {
+        font-size: 10px;
+      }
+
+      .brand img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .back-btn {
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+
+      main {
+        padding-top: 12px;
+      }
+
+      .hero {
+        padding: 20px 15px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-name {
+        font-size: 24px;
+      }
+
+      .hero-meta,
+      .hero-stats {
+        justify-content: center;
+      }
+
+      .hero-stat {
+        min-width: 90px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+
+      .card-body {
+        padding: 15px;
+      }
+
+      .stats-grid {
+        gap: 8px;
+      }
+
+      .stat-box {
+        padding: 11px 6px;
+      }
+
+      .stat-box strong {
+        font-size: 20px;
+      }
+
+      .recitation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .goal-numbers {
+        grid-template-columns: 1fr;
+      }
+
+      .quran-map {
+        grid-template-columns: repeat(6, 1fr);
+      }
+
+      .page-box {
+        min-height: 31px;
+        font-size: 9px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+
+      <div class="brand">
+        <img src="./logo.png" alt="شعار المركز"
+             onerror="this.style.display='none'">
+
+        <div>
+          <div class="brand-title">مركز حردان طارق القرآني</div>
+          <div class="brand-subtitle">صفحة متابعة الطالب</div>
+        </div>
+      </div>
+
+      <a href="./teacher-dashboard.html" class="back-btn">
+        ← لوحة المعلم
+      </a>
+
+    </div>
+  </header>
+
+  <main>
+    <div class="container" id="app">
+
+      <div class="loading">
+        <div class="spinner"></div>
+        <strong>جاري تحميل بيانات الطالب...</strong>
+        <span style="color:#6b7280;font-size:13px">
+          يرجى الانتظار
+        </span>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="container footer">
+    مركز حردان طارق القرآني © جميع الحقوق محفوظة
+  </div>
+
+
+<script>
+/* =========================================================
+   إعدادات الموقع
+========================================================= */
+
+const SUPABASE_URL = 'https://lsbbcybpiulusdgfhepf.supabase.co';
+
+const SUPABASE_KEY =
+  'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
+
+const TEACHER_EMAIL = 'baraahaytham08@gmail.com';
+
+const TOTAL_QURAN_PAGES = 604;
+
+const REVIEW_TO_HIFZ_RATIO = 3;
+
+let supabaseClient = null;
+
+let student = null;
+
+let profile = {};
+
+let studentId = null;
+
+
+/* =========================================================
+   تشغيل الصفحة
+========================================================= */
+
+document.addEventListener('DOMContentLoaded', async function () {
+
+  try {
+
+    if (!window.supabase) {
+      showError(
+        'تعذر تشغيل نظام قاعدة البيانات.',
+        'لم يتم تحميل مكتبة Supabase. تأكد من اتصال الإنترنت ثم أعد تحميل الصفحة.'
+      );
+      return;
+    }
+
+    supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+    studentId = getStudentIdFromUrl();
+
+    if (!studentId) {
+      showError(
+        'لم يتم تحديد الطالب',
+        'الرابط لا يحتوي على رقم الطالب.'
+      );
+      return;
+    }
+
+    /*
+      إذا كان الدخول من لوحة المعلم،
+      teacherAccess يكون محفوظاً في المتصفح.
+    */
+    const teacherAccess =
+      localStorage.getItem('teacherAccess');
+
+    if (teacherAccess !== 'granted') {
+
+      showError(
+        'غير مصرح بالدخول',
+        'يجب الدخول من لوحة المعلم أولاً.',
+        true
+      );
+
+      return;
+    }
+
+    await loadStudent();
+
+  } catch (error) {
+
+    console.error(error);
+
+    showError(
+      'حدث خطأ أثناء تشغيل الصفحة',
+      getErrorMessage(error)
+    );
+
+  }
+
+});
+
+
+/* =========================================================
+   قراءة رقم الطالب من الرابط
+========================================================= */
+
+function getStudentIdFromUrl() {
+
+  const params = new URLSearchParams(
+    window.location.search
+  );
+
+  return (
+    params.get('id') ||
+    params.get('student_id') ||
+    params.get('studentId') ||
+    localStorage.getItem('selectedStudentId') ||
+    ''
+  ).trim();
+
+}
+
+
+/* =========================================================
+   تحميل الطالب والملف الشخصي
+========================================================= */
+
+async function loadStudent() {
+
+  const {
+    data: studentData,
+    error: studentError
+  } = await supabaseClient
+    .from('students')
+    .select('*')
+    .eq('id', studentId)
+    .single();
+
+  if (studentError) {
+
+    console.error(studentError);
+
+    showError(
+      'تعذر تحميل بيانات الطالب',
+      studentError.message ||
+      'حدث خطأ في الاتصال بقاعدة البيانات.'
+    );
+
+    return;
+  }
+
+  if (!studentData) {
+
+    showError(
+      'الطالب غير موجود',
+      'لم يتم العثور على طالب بهذا الرقم.'
+    );
+
+    return;
+  }
+
+  student = studentData;
+
+
+  /*
+    تحميل بيانات student_profiles
+  */
+
+  const {
+    data: profileRow,
+    error: profileError
+  } = await supabaseClient
+    .from('student_profiles')
+    .select('data')
+    .eq('student_id', String(studentId))
+    .maybeSingle();
+
+
+  if (profileError) {
+
+    console.warn(
+      'Profile load warning:',
+      profileError
+    );
+
+    /*
+      لا نوقف الصفحة.
+      إذا لم توجد بيانات الملف الشخصي،
+      نبدأ بملف فارغ.
+    */
+
+    profile = {};
+
+  } else {
+
+    profile =
+      profileRow &&
+      profileRow.data &&
+      typeof profileRow.data === 'object'
+        ? profileRow.data
+        : {};
+
+  }
+
+
+  normalizeProfile();
+
+  renderPage();
+
+}
+
+
+/* =========================================================
+   تجهيز البيانات الافتراضية
+========================================================= */
+
+function normalizeProfile() {
+
+  if (!Array.isArray(profile.attendance)) {
+    profile.attendance = [];
+  }
+
+  if (!Array.isArray(profile.recitations)) {
+    profile.recitations = [];
+  }
+
+  if (!Array.isArray(profile.tests)) {
+    profile.tests = [];
+  }
+
+  if (!Array.isArray(profile.notesList)) {
+    profile.notesList = [];
+  }
+
+  if (!profile.weeklyGoal) {
+
+    profile.weeklyGoal = {
+      hifz: 4,
+      review: 20
+    };
+
+  }
+
+  if (!profile.weeklyPlan) {
+
+    profile.weeklyPlan = {
+      days: ''
+    };
+
+  }
+
+}
+
+
+/* =========================================================
+   حفظ الملف بالكامل
+========================================================= */
+
+async function saveProfile(message = true) {
+
+  try {
+
+    const merged = {
+      ...profile
+    };
+
+    const {
+      error
+    } = await supabaseClient
+      .from('student_profiles')
+      .upsert({
+        student_id: String(studentId),
+        data: merged,
+        updated_at: new Date().toISOString()
+      });
+
+    if (error) {
+
+      console.error(error);
+
+      showSaveMessage(
+        'فشل الحفظ: ' + error.message,
+        'error'
+      );
+
+      return false;
+    }
+
+    if (message) {
+
+      showSaveMessage(
+        'تم حفظ البيانات بنجاح ✓',
+        'success'
+      );
+
+    }
+
+    return true;
+
+  } catch (error) {
+
+    console.error(error);
+
+    showSaveMessage(
+      'حدث خطأ أثناء الحفظ: ' +
+      getErrorMessage(error),
+      'error'
+    );
+
+    return false;
+
+  }
+
+}
+
+
+/* =========================================================
+   عرض الصفحة
+========================================================= */
+
+function renderPage() {
+
+  const app =
+    document.getElementById('app');
+
+  const recitations =
+    getRecitations();
+
+  const hifzCount =
+    recitations.filter(
+      r => r.type === 'hifz'
+    ).length;
+
+  const reviewCount =
+    recitations.filter(
+      r => r.type === 'review'
+    ).length;
+
+  const totalPoints =
+    calculateTotalPoints();
+
+  const pagesRegistered =
+    new Set(
+      recitations.map(r => Number(r.page))
+    ).size;
+
+  const commitment =
+    calculateCommitment();
+
+
+  app.innerHTML = `
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <img
+        id="heroPhoto"
+        class="student-photo"
+        src="${escapeAttr(
+          profile.photoUrl ||
+          './logo.png'
+        )}"
+        alt="صورة الطالب"
+        onerror="this.src='./logo.png'"
+      >
+
+      <div class="hero-info">
+
+        <div class="hero-name">
+          ${escapeHtml(
+            student.name || 'الطالب'
+          )}
+        </div>
+
+        <div class="hero-meta">
+
+          <span class="badge">
+            الشعبة:
+            ${escapeHtml(
+              student.section || '-'
+            )}
+          </span>
+
+          <span class="badge green">
+            الحالة:
+            ${escapeHtml(
+              student.status || 'منتظم'
+            )}
+          </span>
+
+          <span class="badge gold">
+            الحفظ:
+            ${escapeHtml(
+              student.memorization || '-'
+            )}
+          </span>
+
+        </div>
+
+        <div class="hero-stats">
+
+          <div class="hero-stat">
+            <strong>${hifzCount}</strong>
+            <span>صفحات حفظ</span>
+          </div>
+
+          <div class="hero-stat">
+            <strong>${reviewCount}</strong>
+            <span>صفحات مراجعة</span>
+          </div>
+
+          <div class="hero-stat">
+            <strong>${pagesRegistered}</strong>
+            <span>صفحات مسجلة</span>
+          </div>
+
+          <div class="hero-stat">
+            <strong>${totalPoints}</strong>
+            <span>النقاط</span>
+          </div>
+
+          <div class="hero-stat">
+            <strong>${commitment}%</strong>
+            <span>الالتزام</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div id="messageArea"></div>
+
+
+    <!-- GRID -->
+    <div class="grid">
+
+
+      <!-- البيانات الأساسية -->
+      <section class="card open">
+
+        <div class="card-header"
+             onclick="toggleCard(this)">
+
+          <h2>
+            👤 البيانات الأساسية
+          </h2>
+
+          <span class="arrow">▼</span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label>اسم الطالب</label>
+              <input
+                id="studentName"
+                value="${escapeAttr(
+                  student.name || ''
+                )}"
+              >
+            </div>
+
+            <div class="field">
+              <label>الشعبة</label>
+              <input
+                id="studentSection"
+                value="${escapeAttr(
+                  student.section || ''
+                )}"
+              >
+            </div>
+
+            <div class="field">
+              <label>مقدار الحفظ</label>
+              <input
+                id="studentMemorization"
+                value="${escapeAttr(
+                  student.memorization || ''
+                )}"
+              >
+            </div>
+
+            <div class="field">
+              <label>حالة الطالب</label>
+              <select id="studentStatus">
+
+                ${option(
+                  'منتظم',
+                  student.status
+                )}
+
+                ${option(
+                  'متوقف',
+                  student.status
+                )}
+
+                ${option(
+                  'منقطع',
+                  student.status
+                )}
+
+                ${option(
+                  'متميز',
+                  student.status
+                )}
+
+              </select>
+            </div>
+
+            <div class="field">
+              <label>رقم ولي الأمر</label>
+
+              <input
+                id="guardianPhone"
+                type="tel"
+                value="${escapeAttr(
+                  profile.guardianPhone || ''
+                )}"
+                placeholder="07xxxxxxxx"
+              >
+            </div>
+
+            <div class="field">
+              <label>تاريخ الالتحاق</label>
+
+              <input
+                id="joiningDate"
+                type="date"
+                value="${escapeAttr(
+                  profile.joiningDate || ''
+                )}"
+              >
+            </div>
+
+            <div class="field">
+              <label>مكان السكن</label>
+
+              <input
+                id="residence"
+                value="${escapeAttr(
+                  profile.residence || ''
+                )}"
+              >
+            </div>
+
+            <div class="field">
+              <label>الباص</label>
+
+              <input
+                id="bus"
+                value="${escapeAttr(
+                  profile.bus || ''
+                )}"
+              >
+            </div>
+
+            <div class="field full">
+              <label>موقع المنزل</label>
+
+              <input
+                id="homeLocation"
+                value="${escapeAttr(
+                  profile.homeLocation || ''
+                )}"
+                placeholder="وصف الموقع أو العنوان"
+              >
+            </div>
+
+            <div class="field full">
+
+              <label>صورة الطالب</label>
+
+              <div class="photo-upload">
+
+                <img
+                  id="photoPreview"
+                  class="photo-preview"
+                  src="${escapeAttr(
+                    profile.photoUrl ||
+                    './logo.png'
+                  )}"
+                  alt="صورة الطالب"
+                  onerror="this.src='./logo.png'"
+                >
+
+                <div>
+
+                  <input
+                    id="photoInput"
+                    type="file"
+                    accept="image/*"
+                    class="hidden"
+                    onchange="handlePhoto(event)"
+                  >
+
+                  <button
+                    class="btn btn-gray"
+                    type="button"
+                    onclick="document.getElementById('photoInput').click()"
+                  >
+                    📷 اختيار صورة
+                  </button>
+
+                  <div
+                    style="font-size:11px;color:#6b7280;margin-top:5px"
+                  >
+                    اختر الصورة من ملفات جهازك
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="actions">
+
+            <button
+              class="btn btn-primary"
+              onclick="saveBasicData()"
+            >
+              💾 حفظ البيانات
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- الإحصائيات -->
+      <section class="card open">
+
+        <div class="card-header"
+             onclick="toggleCard(this)">
+
+          <h2>
+            📊 لوحة التقدم
+          </h2>
+
+          <span class="arrow">▼</span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="stats-grid">
+
+            <div class="stat-box">
+              <div class="icon">📖</div>
+              <strong id="dashHifz">
+                ${hifzCount}
+              </strong>
+              <span>صفحات الحفظ</span>
+            </div>
+
+            <div class="stat-box">
+              <div class="icon">🔄</div>
+              <strong id="dashReview">
+                ${reviewCount}
+              </strong>
+              <span>صفحات المراجعة</span>
+            </div>
+
+            <div class="stat-box">
+              <div class="icon">⭐</div>
+              <strong id="dashPoints">
+                ${totalPoints}
+              </strong>
+              <span>النقاط</span>
+            </div>
+
+            <div class="stat-box">
+              <div class="icon">🎯</div>
+              <strong id="dashCommitment">
+                ${commitment}%
+              </strong>
+              <span>الالتزام</span>
+            </div>
+
+          </div>
+
+          <div class="progress-wrap">
+
+            <div class="progress-label">
+              <span>نسبة الصفحات المسجلة من القرآن</span>
+
+              <span>
+                ${pagesRegistered}
+                / ${TOTAL_QURAN_PAGES}
+              </span>
+            </div>
+
+            <div class="progress">
+
+              <div
+                class="progress-bar"
+                style="width:${Math.min(
+                  100,
+                  (pagesRegistered /
+                    TOTAL_QURAN_PAGES) *
+                    100
+                )}%"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- الهدف الأسبوعي -->
+      <section class="card">
+
+        <div class="card-header"
+             onclick="toggleCard(this)">
+
+          <h2>
+            🎯 الهدف الأسبوعي
+          </h2>
+
+          <span class="arrow">▼</span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="goal-box">
+
+            <div>
+              <strong>الهدف الأسبوعي للطالب</strong>
+            </div>
+
+            <div class="form-grid"
+                 style="margin-top:15px">
+
+              <div class="field">
+
+                <label>
+                  صفحات الحفظ
+                </label>
+
+                <input
+                  id="goalHifz"
+                  type="number"
+                  min="0"
+                  value="${escapeAttr(
+                    profile.weeklyGoal.hifz
+                  )}"
+                >
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  صفحات المراجعة
+                </label>
+
+                <input
+                  id="goalReview"
+                  type="number"
+                  min="0"
+                  value="${escapeAttr(
+                    profile.weeklyGoal.review
+                  )}"
+                >
+
+              </div>
+
+            </div>
+
+            <div class="goal-numbers">
+
+              <div class="goal-item">
+                <span>المطلوب حفظه</span>
+                <strong>
+                  ${profile.weeklyGoal.hifz}
+                </strong>
+                <small>صفحة</small>
+              </div>
+
+              <div class="goal-item">
+                <span>المطلوب مراجعته</span>
+                <strong>
+                  ${profile.weeklyGoal.review}
+                </strong>
+                <small>صفحة</small>
+              </div>
+
+            </div>
+
+            <div class="actions">
+
+              <button
+                class="btn btn-primary"
+                onclick="saveWeeklyGoal()"
+              >
+                💾 حفظ الهدف
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- الحضور -->
+      <section class="card">
+
+        <div class="card-header"
+             onclick="toggleCard(this)">
+
+          <h2>
+            📅 الحضور والغياب
+          </h2>
+
+          <span class="arrow">▼</span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="form-grid">
+
+            <div class="field">
+
+              <label>التاريخ</label>
+
+              <input
+                id="attendanceDate"
+                type="date"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>الحالة</label>
+
+              <select id="attendanceStatus">
+
+                <option value="حاضر">حاضر</option>
+                <option value="متأخر">متأخر</option>
+                <option value="معتذر">معتذر</option>
+                <option value="غائب">غائب</option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="actions">
+
+            <button
+              class="btn btn-green"
+              onclick="addAttendance()"
+            >
+              + إضافة الحضور
+            </button>
+
+          </div>
+
+          <div
+            id="attendanceTable"
+            style="margin-top:18px"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- التسميع -->
+      <section class="card full open">
+
+        <div class="card-header"
+             onclick="toggleCard(this)">
+
+          <h2>
+            📖 نظام التسميع
+          </h2>
+
+          <span class="arrow">▼</span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="alert info">
+            من <strong>100 إلى 97</strong> =
+            <strong>ممتاز (متقن)</strong>.
+            ويتم حساب النقاط تلقائياً حسب نوع التسميع والدرجة.
+          </div>
+
+          <div class="recitation-form">
+
+            <div class="recitation-grid">
+
+              <div class="field">
+
+                <label>رقم الصفحة</label>
+
+                <input
+                  id="recPage"
+                  type="number"
+                  min="1"
+                  max="604"
+                  placeholder="1 - 604"
+                >
+
+              </div>
+
+              <div class="field">
+
+                <label>نوع التسميع</label>
+
+                <select id="recType">
+
+                  <option value="hifz">
+                    حفظ
+                  </option>
+
+                  <option value="review">
+                    مراجعة
+                  </option>
+
+                </select>
+
+              </div>
+
+              <div class="field">
+
+                <label>الدرجة</label>
+
+                <input
+                  id="recScore"
+                  type="number"
+                  min="0"
+                  max="100"
+                  placeholder="0 - 100"
+                  oninput="previewRecitation()"
+                >
+
+              </div>
+
+              <div class="field">
+
+                <label>التاريخ</label>
+
+                <input
+                  id="recDate"
+                  type="date"
+                >
+
+              </div>
+
+            </div>
+
+            <div class="field"
+                 style="margin-top:10px">
+
+              <label>ملاحظة</label>
+
+              <input
+                id="recNote"
+                placeholder="ملاحظة اختيارية"
+              >
+
+            </div>
+
+            <div
+              id="recPreview"
+              class="score-result"
+            ></div>
+
+            <div class="actions">
+
+              <button
+                class="btn btn-primary"
+                onclick="addRecitation()"
+              >
+                + تسجيل التسميع
+              </button>
+
+            </div>
+
+          </div>
+
+          <div id="recitationTable"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- الاختبارات -->
+      <section class="card">
+
+        <div class="card-header"
+             onclick="toggleCard(this)">
+
+          <h2>
+            📝 الاختبارات
+          </h2>
+
+          <span class="arrow">▼</span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="form-grid">
+
+            <div class="field">
+
+              <label>اسم الاختبار</label>
+
+              <input
+                id="testName"
+                placeholder="مثلاً: اختبار الجزء الأول"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>النتيجة</label>
+
+              <select id="testGrade">
+
+                <option value="ممتاز">ممتاز</option>
+                <option value="جيد جداً">جيد جداً</option>
+                <option value="جيد">جيد</option>
+                <option value="مقبول">مقبول</option>
+
+              </select>
+
+            </div>
+
+            <div class="field">
+
+              <label>التاريخ</label>
+
+              <input
+                id="testDate"
+                type="date"
+              >
+
+            </div>
+
+            <div class="field">
+
+              <label>ملاحظة</label>
+
+              <input
+                id="testNote"
+                placeholder="ملاحظة"
+              >
+
+            </div>
+
+          </div>
+
+          <div class="actions">
+
+            <button
+              class="btn btn-primary"
+              onclick="addTest()"
+            >
+              + إضافة الاختبار
+            </button>
+
+          </div>
+
+          <div
+            id="testsTable"
+            style="margin-top:18px"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- الخطة الأسبوعية -->
+      <section class="card">
+
+        <div class="card-header"
+             onclick="toggleCard(this)">
+
+          <h2>
+            🗓️ الخطة الأسبوعية
+          </h2>
+
+          <span class="arrow">▼</span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="field">
+
+            <label>
+              خطة الطالب لهذا الأسبوع
+            </label>
+
+            <textarea
+              id="weeklyPlan"
+              placeholder="اكتب خطة الطالب هنا..."
+            >${escapeHtml(
+              profile.weeklyPlan.days || ''
+            )}</textarea>
+
+          </div>
+
+          <div class="actions">
+
+            <button
+              class="btn btn-primary"
+              onclick="saveWeeklyPlan()"
+            >
+              💾 حفظ الخطة
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- الملاحظات -->
+      <section class="card">
+
+        <div class="card-header"
+             onclick="toggleCard(this)">
+
+          <h2>
+            🗒️ الملاحظات
+          </h2>
+
+          <span class="arrow">▼</span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="field">
+
+            <label>
+              ملاحظات المعلم
+            </label>
+
+            <textarea
+              id="teacherNotes"
+              placeholder="اكتب الملاحظات الخاصة بالطالب..."
+            >${escapeHtml(
+              profile.notes || ''
+            )}</textarea>
+
+          </div>
+
+          <div class="actions">
+
+            <button
+              class="btn btn-primary"
+              onclick="saveNotes()"
+            >
+              💾 حفظ الملاحظات
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- خريطة القرآن -->
+      <section class="card full">
+
+        <div class="card-header"
+             onclick="toggleCard(this)">
+
+          <h2>
+            🕌 خريطة القرآن الكريم — 604 صفحة
+          </h2>
+
+          <span class="arrow">▼</span>
+
+        </div>
+
+        <div class="card-body">
+
+          <div class="legend">
+
+            <div class="legend-item">
+              <span
+                class="legend-color"
+                style="background:#dcfce7"
+              ></span>
+              حفظ
+            </div>
+
+            <div class="legend-item">
+              <span
+                class="legend-color"
+                style="background:#dbeafe"
+              ></span>
+              مراجعة
+            </div>
+
+            <div class="legend-item">
+              <span
+                class="legend-color"
+                style="background:linear-gradient(135deg,#dcfce7 50%,#dbeafe 50%)"
+              ></span>
+              حفظ + مراجعة
+            </div>
+
+            <div class="legend-item">
+              <span
+                class="legend-color"
+                style="background:#f8fafc"
+              ></span>
+              غير مسجلة
+            </div>
+
+          </div>
+
+          <div
+            id="quranMap"
+            class="quran-map"
+          ></div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+<script>
+/* =========================================================
+   الدوال المساعدة
+========================================================= */
+
+function escapeHtml(value) {
+
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+}
+
+
+function escapeAttr(value) {
+
+  return escapeHtml(value);
+
+}
+
+
+function getErrorMessage(error) {
+
+  if (!error) {
+    return 'خطأ غير معروف';
+  }
+
+  if (typeof error === 'string') {
+    return error;
+  }
+
+  return (
+    error.message ||
+    error.details ||
+    error.hint ||
+    'حدث خطأ غير معروف'
+  );
+
+}
+
+
+function option(value, current) {
+
+  return `
+    <option
+      value="${escapeAttr(value)}"
+      ${String(value) === String(current || '')
+        ? 'selected'
+        : ''}
+    >
+      ${escapeHtml(value)}
+    </option>
+  `;
+
+}
+
+
+/* =========================================================
+   رسالة الخطأ
+========================================================= */
+
+function showError(
+  title,
+  message,
+  loginButton = false
+) {
+
+  const app =
+    document.getElementById('app');
+
+  app.innerHTML = `
+
+    <div
+      style="
+        max-width:700px;
+        margin:50px auto;
+        background:white;
+        padding:30px;
+        border-radius:20px;
+        box-shadow:var(--shadow);
+        text-align:center;
+      "
+    >
+
+      <div
+        style="
+          font-size:55px;
+          margin-bottom:15px;
+        "
+      >
+        ⚠️
+      </div>
+
+      <h2
+        style="
+          margin-bottom:10px;
+          color:#991b1b;
+        "
+      >
+        ${escapeHtml(title)}
+      </h2>
+
+      <p
+        style="
+          color:#6b7280;
+          margin-bottom:20px;
+        "
+      >
+        ${escapeHtml(message)}
+      </p>
+
+      <div
+        style="
+          display:flex;
+          justify-content:center;
+          gap:10px;
+          flex-wrap:wrap;
+        "
+      >
+
+        <button
+          class="btn btn-primary"
+          onclick="location.href='./teacher-dashboard.html'"
+        >
+          ← العودة للوحة المعلم
+        </button>
+
+        ${
+          loginButton
+            ? `
+              <button
+                class="btn btn-gray"
+                onclick="location.href='./teacher-login.html'"
+              >
+                تسجيل دخول المعلم
+              </button>
+            `
+            : ''
+        }
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   رسائل الحفظ
+========================================================= */
+
+function showSaveMessage(
+  message,
+  type = 'success'
+) {
+
+  const area =
+    document.getElementById('messageArea');
+
+  if (!area) return;
+
+  area.innerHTML = `
+    <div class="alert ${type}">
+      ${escapeHtml(message)}
+    </div>
+  `;
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  setTimeout(() => {
+
+    if (area) {
+      area.innerHTML = '';
+    }
+
+  }, 3500);
+
+}
+
+
+/* =========================================================
+   فتح وإغلاق الأقسام
+========================================================= */
+
+function toggleCard(header) {
+
+  const card =
+    header.closest('.card');
+
+  if (card) {
+    card.classList.toggle('open');
+  }
+
+}
+
+
+/* =========================================================
+   الصورة
+========================================================= */
+
+function handlePhoto(event) {
+
+  const file =
+    event.target.files &&
+    event.target.files[0];
+
+  if (!file) return;
+
+  if (!file.type.startsWith('image/')) {
+
+    showSaveMessage(
+      'الملف المختار ليس صورة.',
+      'error'
+    );
+
+    return;
+  }
+
+  const reader =
+    new FileReader();
+
+  reader.onload = function(e) {
+
+    const img =
+      new Image();
+
+    img.onload = function() {
+
+      const MAX_SIZE = 700;
+
+      let width = img.width;
+      let height = img.height;
+
+      if (width > MAX_SIZE || height > MAX_SIZE) {
+
+        if (width > height) {
+
+          height =
+            Math.round(
+              height * MAX_SIZE / width
+            );
+
+          width = MAX_SIZE;
+
+        } else {
+
+          width =
+            Math.round(
+              width * MAX_SIZE / height
+            );
+
+          height = MAX_SIZE;
+
+        }
+
+      }
+
+      const canvas =
+        document.createElement('canvas');
+
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx =
+        canvas.getContext('2d');
+
+      ctx.drawImage(
+        img,
+        0,
+        0,
+        width,
+        height
+      );
+
+      const compressed =
+        canvas.toDataURL(
+          'image/jpeg',
+          0.82
+        );
+
+      profile.photoUrl =
+        compressed;
+
+      const preview =
+        document.getElementById(
+          'photoPreview'
+        );
+
+      if (preview) {
+        preview.src = compressed;
+      }
+
+      const hero =
+        document.getElementById(
+          'heroPhoto'
+        );
+
+      if (hero) {
+        hero.src = compressed;
+      }
+
+      showSaveMessage(
+        'تم تجهيز الصورة. اضغط "حفظ البيانات" لحفظها.',
+        'success'
+      );
+
+    };
+
+    img.src = e.target.result;
+
+  };
+
+  reader.readAsDataURL(file);
+
+}
+
+
+/* =========================================================
+   حفظ البيانات الأساسية
+========================================================= */
+
+async function saveBasicData() {
+
+  try {
+
+    const name =
+      document.getElementById(
+        'studentName'
+      ).value.trim();
+
+    const section =
+      document.getElementById(
+        'studentSection'
+      ).value.trim();
+
+    const memorization =
+      document.getElementById(
+        'studentMemorization'
+      ).value.trim();
+
+    const status =
+      document.getElementById(
+        'studentStatus'
+      ).value;
+
+    const guardianPhone =
+      document.getElementById(
+        'guardianPhone'
+      ).value.trim();
+
+    const joiningDate =
+      document.getElementById(
+        'joiningDate'
+      ).value;
+
+    const residence =
+      document.getElementById(
+        'residence'
+      ).value.trim();
+
+    const bus =
+      document.getElementById(
+        'bus'
+      ).value.trim();
+
+    const homeLocation =
+      document.getElementById(
+        'homeLocation'
+      ).value.trim();
+
+
+    /*
+      تحديث جدول الطلاب
+    */
+
+    const {
+      error: studentError
+    } = await supabaseClient
+      .from('students')
+      .update({
+        name,
+        section,
+        memorization,
+        status
+      })
+      .eq('id', studentId);
+
+
+    if (studentError) {
+
+      showSaveMessage(
+        'تعذر تحديث بيانات الطالب: ' +
+        studentError.message,
+        'error'
+      );
+
+      return;
+    }
+
+
+    /*
+      تحديث الملف الشخصي
+    */
+
+    profile.guardianPhone =
+      guardianPhone;
+
+    profile.joiningDate =
+      joiningDate;
+
+    profile.residence =
+      residence;
+
+    profile.bus =
+      bus;
+
+    profile.homeLocation =
+      homeLocation;
+
+
+    student.name = name;
+    student.section = section;
+    student.memorization = memorization;
+    student.status = status;
+
+
+    const saved =
+      await saveProfile(false);
+
+    if (!saved) return;
+
+
+    showSaveMessage(
+      'تم حفظ البيانات الأساسية بنجاح ✓',
+      'success'
+    );
+
+
+    renderPage();
+
+  } catch (error) {
+
+    console.error(error);
+
+    showSaveMessage(
+      getErrorMessage(error),
+      'error'
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   الهدف الأسبوعي
+========================================================= */
+
+async function saveWeeklyGoal() {
+
+  const hifz =
+    Number(
+      document.getElementById(
+        'goalHifz'
+      ).value
+    ) || 0;
+
+  const review =
+    Number(
+      document.getElementById(
+        'goalReview'
+      ).value
+    ) || 0;
+
+
+  profile.weeklyGoal = {
+    hifz,
+    review
+  };
+
+
+  const saved =
+    await saveProfile(false);
+
+  if (!saved) return;
+
+
+  showSaveMessage(
+    'تم حفظ الهدف الأسبوعي ✓',
+    'success'
+  );
+
+
+  renderPage();
+
+}
+
+
+/* =========================================================
+   الخطة الأسبوعية
+========================================================= */
+
+async function saveWeeklyPlan() {
+
+  const value =
+    document.getElementById(
+      'weeklyPlan'
+    ).value;
+
+  profile.weeklyPlan = {
+    ...(profile.weeklyPlan || {}),
+    days: value
+  };
+
+
+  const saved =
+    await saveProfile(false);
+
+  if (!saved) return;
+
+
+  showSaveMessage(
+    'تم حفظ الخطة الأسبوعية ✓',
+    'success'
+  );
+
+}
+
+
+/* =========================================================
+   الملاحظات
+========================================================= */
+
+async function saveNotes() {
+
+  profile.notes =
+    document.getElementById(
+      'teacherNotes'
+    ).value;
+
+
+  const saved =
+    await saveProfile(false);
+
+  if (!saved) return;
+
+
+  showSaveMessage(
+    'تم حفظ الملاحظات ✓',
+    'success'
+  );
+
+}
+
+
+/* =========================================================
+   الحضور
+========================================================= */
+
+function attendancePoints(status) {
+
+  if (status === 'حاضر') return 2;
+  if (status === 'متأخر') return 1;
+  if (status === 'معتذر') return 0.5;
+
+  return 0;
+
+}
+
+
+async function addAttendance() {
+
+  const date =
+    document.getElementById(
+      'attendanceDate'
+    ).value;
+
+  const status =
+    document.getElementById(
+      'attendanceStatus'
+    ).value;
+
+
+  if (!date) {
+
+    showSaveMessage(
+      'اختر تاريخ الحضور أولاً.',
+      'error'
+    );
+
+    return;
+  }
+
+
+  profile.attendance.push({
+
+    date,
+    status,
+    points:
+      attendancePoints(status)
+
+  });
+
+
+  profile.attendance.sort(
+    (a, b) =>
+      String(b.date)
+        .localeCompare(String(a.date))
+  );
+
+
+  const saved =
+    await saveProfile(false);
+
+  if (!saved) return;
+
+
+  showSaveMessage(
+    'تم تسجيل الحضور ✓',
+    'success'
+  );
+
+
+  renderPage();
+
+}
+
+
+/* =========================================================
+   حذف الحضور
+========================================================= */
+
+async function deleteAttendance(index) {
+
+  if (!confirm('هل تريد حذف هذا السجل؟')) {
+    return;
+  }
+
+  profile.attendance.splice(
+    index,
+    1
+  );
+
+  const saved =
+    await saveProfile(false);
+
+  if (!saved) return;
+
+  renderPage();
+
+}
+
+
+/* =========================================================
+   عرض جدول الحضور
+========================================================= */
+
+function renderAttendance() {
+
+  const container =
+    document.getElementById(
+      'attendanceTable'
+    );
+
+  if (!container) return;
+
+
+  if (!profile.attendance.length) {
+
+    container.innerHTML = `
+      <div class="empty">
+        لا يوجد سجل حضور حتى الآن.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  let html = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>التاريخ</th>
+            <th>الحالة</th>
+            <th>النقاط</th>
+            <th>حذف</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+  `;
+
+
+  profile.attendance.forEach(
+    (item, index) => {
+
+      html += `
+
+        <tr>
+
+          <td>
+            ${escapeHtml(item.date)}
+          </td>
+
+          <td>
+            ${escapeHtml(item.status)}
+          </td>
+
+          <td>
+            ${item.points ?? attendancePoints(item.status)}
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-red btn-small"
+              onclick="deleteAttendance(${index})"
+            >
+              حذف
+            </button>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+  );
+
+
+  html += `
+        </tbody>
+      </table>
+    </div>
+  `;
+
+
+  container.innerHTML = html;
+
+}
+
+
+/* =========================================================
+   نظام درجات التسميع
+========================================================= */
+
+function getRecitationGrade(score) {
+
+  score = Number(score);
+
+  if (score >= 97) {
+    return 'ممتاز (متقن)';
+  }
+
+  if (score >= 95) {
+    return 'جيد جداً';
+  }
+
+  if (score >= 92) {
+    return 'جيد';
+  }
+
+  if (score >= 90) {
+    return 'مقبول';
+  }
+
+  return 'مراجعة الصفحة';
+
+}
+
+
+function getRecitationPoints(
+  type,
+  score
+) {
+
+  score = Number(score);
+
+  if (type === 'hifz') {
+
+    if (score >= 97) return 6;
+    if (score >= 95) return 5;
+    if (score >= 92) return 4;
+    if (score >= 90) return 2;
+
+    return 0;
+  }
+
+
+  if (type === 'review') {
+
+    if (score >= 97) return 3;
+    if (score >= 95) return 2.5;
+    if (score >= 92) return 2;
+    if (score >= 90) return 1;
+
+    return 0;
+  }
+
+
+  return 0;
+
+}
+
+
+/* =========================================================
+   معاينة الدرجة
+========================================================= */
+
+function previewRecitation() {
+
+  const score =
+    Number(
+      document.getElementById(
+        'recScore'
+      ).value
+    );
+
+  const type =
+    document.getElementById(
+      'recType'
+    ).value;
+
+
+  const box =
+    document.getElementById(
+      'recPreview'
+    );
+
+
+  if (
+    !Number.isFinite(score) ||
+    score < 0 ||
+    score > 100
+  ) {
+
+    box.innerHTML = '';
+
+    return;
+  }
+
+
+  const grade =
+    getRecitationGrade(score);
+
+  const points =
+    getRecitationPoints(
+      type,
+      score
+    );
+
+
+  box.innerHTML = `
+
+    <span class="badge green">
+      ${escapeHtml(grade)}
+    </span>
+
+    <span class="badge gold">
+      ⭐ ${points} نقطة
+    </span>
+
+  `;
+
+}
+
+
+/* =========================================================
+   إضافة تسميع
+========================================================= */
+
+async function addRecitation() {
+
+  const page =
+    Number(
+      document.getElementById(
+        'recPage'
+      ).value
+    );
+
+  const type =
+    document.getElementById(
+      'recType'
+    ).value;
+
+  const score =
+    Number(
+      document.getElementById(
+        'recScore'
+      ).value
+    );
+
+  const date =
+    document.getElementById(
+      'recDate'
+    ).value ||
+    new Date()
+      .toISOString()
+      .slice(0, 10);
+
+  const note =
+    document.getElementById(
+      'recNote'
+    ).value.trim();
+
+
+  if (
+    !page ||
+    page < 1 ||
+    page > 604
+  ) {
+
+    showSaveMessage(
+      'رقم الصفحة يجب أن يكون بين 1 و604.',
+      'error'
+    );
+
+    return;
+  }
+
+
+  if (
+    !Number.isFinite(score) ||
+    score < 0 ||
+    score > 100
+  ) {
+
+    showSaveMessage(
+      'الدرجة يجب أن تكون بين 0 و100.',
+      'error'
+    );
+
+    return;
+  }
+
+
+  const grade =
+    getRecitationGrade(score);
+
+  const points =
+    getRecitationPoints(
+      type,
+      score
+    );
+
+
+  profile.recitations.unshift({
+
+    page,
+    type,
+    score,
+    date,
+    note,
+    grade,
+    points
+
+  });
+
+
+  const saved =
+    await saveProfile(false);
+
+  if (!saved) return;
+
+
+  showSaveMessage(
+    'تم تسجيل التسميع بنجاح ✓',
+    'success'
+  );
+
+
+  renderPage();
+
+}
+
+
+/* =========================================================
+   حذف التسميع
+========================================================= */
+
+async function deleteRecitation(index) {
+
+  if (!confirm('هل تريد حذف هذا التسميع؟')) {
+    return;
+  }
+
+
+  profile.recitations.splice(
+    index,
+    1
+  );
+
+
+  const saved =
+    await saveProfile(false);
+
+  if (!saved) return;
+
+
+  renderPage();
+
+}
+
+
+/* =========================================================
+   عرض التسميع
+========================================================= */
+
+function getRecitations() {
+
+  return Array.isArray(
+    profile.recitations
+  )
+    ? profile.recitations
+    : [];
+
+}
+
+
+function renderRecitations() {
+
+  const container =
+    document.getElementById(
+      'recitationTable'
+    );
+
+  if (!container) return;
+
+
+  const rows =
+    getRecitations();
+
+
+  if (!rows.length) {
+
+    container.innerHTML = `
+      <div class="empty">
+        لا يوجد تسميع مسجل حتى الآن.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  let html = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>الصفحة</th>
+            <th>النوع</th>
+            <th>الدرجة</th>
+            <th>التقدير</th>
+            <th>النقاط</th>
+            <th>التاريخ</th>
+            <th>الملاحظة</th>
+            <th>حذف</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+  `;
+
+
+  rows.forEach(
+    (item, index) => {
+
+      const points =
+        item.points ??
+        getRecitationPoints(
+          item.type,
+          item.score
+        );
+
+      const grade =
+        item.grade ||
+        getRecitationGrade(
+          item.score
+        );
+
+
+      html += `
+
+        <tr>
+
+          <td>
+            <strong>
+              ${escapeHtml(item.page)}
+            </strong>
+          </td>
+
+          <td>
+            ${
+              item.type === 'hifz'
+                ? 'حفظ'
+                : 'مراجعة'
+            }
+          </td>
+
+          <td>
+            ${escapeHtml(item.score)}
+          </td>
+
+          <td>
+            <span class="badge ${
+              Number(item.score) >= 97
+                ? 'green'
+                : ''
+            }">
+              ${escapeHtml(grade)}
+            </span>
+          </td>
+
+          <td>
+            ⭐ ${points}
+          </td>
+
+          <td>
+            ${escapeHtml(item.date)}
+          </td>
+
+          <td>
+            ${escapeHtml(item.note || '-')}
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-red btn-small"
+              onclick="deleteRecitation(${index})"
+            >
+              حذف
+            </button>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+  );
+
+
+  html += `
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+
+  container.innerHTML = html;
+
+}
+
+
+/* =========================================================
+   الاختبارات
+========================================================= */
+
+function testPoints(grade) {
+
+  if (grade === 'ممتاز') return 12;
+  if (grade === 'جيد جداً') return 8;
+  if (grade === 'جيد') return 4;
+
+  return 0;
+
+}
+
+
+async function addTest() {
+
+  const name =
+    document.getElementById(
+      'testName'
+    ).value.trim();
+
+  const grade =
+    document.getElementById(
+      'testGrade'
+    ).value;
+
+  const date =
+    document.getElementById(
+      'testDate'
+    ).value ||
+    new Date()
+      .toISOString()
+      .slice(0, 10);
+
+  const note =
+    document.getElementById(
+      'testNote'
+    ).value.trim();
+
+
+  if (!name) {
+
+    showSaveMessage(
+      'اكتب اسم الاختبار أولاً.',
+      'error'
+    );
+
+    return;
+  }
+
+
+  profile.tests.unshift({
+
+    name,
+    grade,
+    date,
+    note,
+    points: testPoints(grade)
+
+  });
+
+
+  const saved =
+    await saveProfile(false);
+
+  if (!saved) return;
+
+
+  showSaveMessage(
+    'تمت إضافة الاختبار ✓',
+    'success'
+  );
+
+
+  renderPage();
+
+}
+
+
+/* =========================================================
+   حذف اختبار
+========================================================= */
+
+async function deleteTest(index) {
+
+  if (!confirm('هل تريد حذف هذا الاختبار؟')) {
+    return;
+  }
+
+
+  profile.tests.splice(
+    index,
+    1
+  );
+
+
+  const saved =
+    await saveProfile(false);
+
+  if (!saved) return;
+
+
+  renderPage();
+
+}
+
+
+/* =========================================================
+   عرض الاختبارات
+========================================================= */
+
+function renderTests() {
+
+  const container =
+    document.getElementById(
+      'testsTable'
+    );
+
+  if (!container) return;
+
+
+  if (!profile.tests.length) {
+
+    container.innerHTML = `
+      <div class="empty">
+        لا يوجد اختبارات مسجلة حتى الآن.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  let html = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>الاختبار</th>
+            <th>النتيجة</th>
+            <th>النقاط</th>
+            <th>التاريخ</th>
+            <th>ملاحظة</th>
+            <th>حذف</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+  `;
+
+
+  profile.tests.forEach(
+    (item, index) => {
+
+      html += `
+
+        <tr>
+
+          <td>
+            ${escapeHtml(item.name)}
+          </td>
+
+          <td>
+            ${escapeHtml(item.grade)}
+          </td>
+
+          <td>
+            ⭐ ${
+              item.points ??
+              testPoints(item.grade)
+            }
+          </td>
+
+          <td>
+            ${escapeHtml(item.date)}
+          </td>
+
+          <td>
+            ${escapeHtml(item.note || '-')}
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-red btn-small"
+              onclick="deleteTest(${index})"
+            >
+              حذف
+            </button>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+  );
+
+
+  html += `
+        </tbody>
+      </table>
+    </div>
+  `;
+
+
+  container.innerHTML = html;
+
+}
+
+
+/* =========================================================
+   النقاط
+========================================================= */
+
+function calculateTotalPoints() {
+
+  let total = 0;
+
+
+  profile.recitations.forEach(
+    item => {
+
+      total +=
+        Number(
+          item.points ??
+          getRecitationPoints(
+            item.type,
+            item.score
+          )
+        ) || 0;
+
+    }
+  );
+
+
+  profile.attendance.forEach(
+    item => {
+
+      total +=
+        Number(
+          item.points ??
+          attendancePoints(
+            item.status
+          )
+        ) || 0;
+
+    }
+  );
+
+
+  profile.tests.forEach(
+    item => {
+
+      total +=
+        Number(
+          item.points ??
+          testPoints(
+            item.grade
+          )
+        ) || 0;
+
+    }
+  );
+
+
+  return Number(
+    total.toFixed(2)
+  );
+
+}
+
+
+/* =========================================================
+   نسبة الالتزام
+========================================================= */
+
+function calculateCommitment() {
+
+  const attendance =
+    profile.attendance || [];
+
+
+  if (!attendance.length) {
+    return 0;
+  }
+
+
+  const present =
+    attendance.filter(
+      item =>
+        item.status === 'حاضر' ||
+        item.status === 'متأخر' ||
+        item.status === 'معتذر'
+    ).length;
+
+
+  return Math.round(
+    (present /
+      attendance.length) *
+      100
+  );
+
+}
+
+
+/* =========================================================
+   خريطة القرآن
+========================================================= */
+
+function getPageStates() {
+
+  const states = {};
+
+  for (
+    let page = 1;
+    page <= TOTAL_QURAN_PAGES;
+    page++
+  ) {
+
+    states[page] = {
+      hifz: false,
+      review: false
+    };
+
+  }
+
+
+  profile.recitations.forEach(
+    item => {
+
+      const page =
+        Number(item.page);
+
+      if (
+        page < 1 ||
+        page > TOTAL_QURAN_PAGES
+      ) {
+        return;
+      }
+
+
+      if (item.type === 'hifz') {
+        states[page].hifz = true;
+      }
+
+      if (item.type === 'review') {
+        states[page].review = true;
+      }
+
+    }
+  );
+
+
+  return states;
+
+}
+
+
+/*
+  تقريب صفحات الأجزاء.
+  نستخدم 20 صفحة لمعظم الأجزاء،
+  مع ضبط بداية ونهاية القرآن إلى 604.
+*/
+
+function getJuzRanges() {
+
+  const ranges = [];
+
+  let currentPage = 1;
+
+
+  for (let juz = 1; juz <= 30; juz++) {
+
+    let size = 20;
+
+
+    if (juz === 1) {
+      size = 21;
+    }
+
+
+    if (juz === 30) {
+      size =
+        TOTAL_QURAN_PAGES -
+        currentPage +
+        1;
+    }
+
+
+    const start =
+      currentPage;
+
+    const end =
+      Math.min(
+        TOTAL_QURAN_PAGES,
+        currentPage + size - 1
+      );
+
+
+    ranges.push({
+      juz,
+      start,
+      end
+    });
+
+
+    currentPage =
+      end + 1;
+
+  }
+
+
+  return ranges;
+
+}
+
+
+function renderQuranMap() {
+
+  const container =
+    document.getElementById(
+      'quranMap'
+    );
+
+  if (!container) return;
+
+
+  const states =
+    getPageStates();
+
+  const ranges =
+    getJuzRanges();
+
+
+  let html = '';
+
+
+  ranges.forEach(
+    range => {
+
+      html += `
+        <div class="juz-title">
+          الجزء ${range.juz}
+          — الصفحات ${range.start}
+          إلى ${range.end}
+        </div>
+      `;
+
+
+      for (
+        let page = range.start;
+        page <= range.end;
+        page++
+      ) {
+
+        const state =
+          states[page];
+
+
+        let className =
+          'page-box';
+
+
+        if (
+          state.hifz &&
+          state.review
+        ) {
+
+          className += ' both';
+
+        } else if (
+          state.hifz
+        ) {
+
+          className += ' hifz';
+
+        } else if (
+          state.review
+        ) {
+
+          className += ' review';
+
+        }
+
+
+        html += `
+
+          <div
+            class="${className}"
+            title="صفحة ${page}"
+          >
+            ${page}
+          </div>
+
+        `;
+
+      }
+
+    }
+  );
+
+
+  container.innerHTML = html;
+
+}
+
+
+/* =========================================================
+   إعادة الرسم بعد تحميل الصفحة
+========================================================= */
+
+const originalRenderPage =
+  renderPage;
+
+
+/*
+  نعيد تعريف renderPage
+  بحيث يتم رسم الجداول والخريطة
+  بعد رسم HTML الأساسي.
+*/
+
+renderPage = function () {
+
+  originalRenderPage();
+
+  renderAttendance();
+
+  renderRecitations();
+
+  renderTests();
+
+  renderQuranMap();
+
+  /*
+    وضع تواريخ اليوم بشكل تلقائي
+  */
+
+  const today =
+    new Date()
+      .toISOString()
+      .slice(0, 10);
+
+
+  const attendanceDate =
+    document.getElementById(
+      'attendanceDate'
+    );
+
+  if (
+    attendanceDate &&
+    !attendanceDate.value
+  ) {
+    attendanceDate.value = today;
+  }
+
+
+  const recDate =
+    document.getElementById(
+      'recDate'
+    );
+
+  if (
+    recDate &&
+    !recDate.value
+  ) {
+    recDate.value = today;
+  }
+
+
+  const testDate =
+    document.getElementById(
+      'testDate'
+    );
+
+  if (
+    testDate &&
+    !testDate.value
+  ) {
+    testDate.value = today;
+  }
+
+};
+
+
+/* =========================================================
+   إصلاح الوصول إلى renderPage بعد تعريفه
+========================================================= */
+
+</script>
+
+</body>
+</html>
