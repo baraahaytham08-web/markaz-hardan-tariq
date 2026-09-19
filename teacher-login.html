@@ -1,1074 +1,227 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-  <title>
-    دخول المعلمين | مركز حردان طارق القرآني
-  </title>
-
-  <link
-    rel="icon"
-    type="image/png"
-    href="logo.png">
-
-  <link
-    rel="shortcut icon"
-    type="image/png"
-    href="logo.png">
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دخول المعلمين | مركز حردان طارق القرآني</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
+    *{box-sizing:border-box;margin:0;padding:0}
 
-    * {
-      box-sizing:
-        border-box;
-
-      margin:
-        0;
-
-      padding:
-        0;
+    :root{
+      --green:#174d3a;
+      --green-dark:#103b2c;
+      --green-light:#edf5f1;
+      --gold:#b28b18;
+      --gold-light:#d4b44c;
+      --cream:#faf8f0;
+      --text:#1f2933;
+      --muted:#74808a;
+      --border:#e5e9e6;
+      --danger:#b3261e;
     }
 
-
-    :root {
-
-      --green:
-        #174d3a;
-
-      --green-dark:
-        #0c3023;
-
-      --green-mid:
-        #21664b;
-
-      --green-soft:
-        #eaf4ef;
-
-      --gold:
-        #b28b18;
-
-      --gold-light:
-        #d9bc5c;
-
-      --gold-soft:
-        #fff8df;
-
-      --cream:
-        #faf8f0;
-
-      --white:
-        #ffffff;
-
-      --text:
-        #1d2924;
-
-      --muted:
-        #78837e;
-
-      --border:
-        #e5ebe7;
-
-      --danger:
-        #b3261e;
-
-      --danger-soft:
-        #fff0ef;
-
-      --success:
-        #237a31;
+    body{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      font-family:Arial,"Tahoma",sans-serif;
+      background:linear-gradient(135deg,#faf8f0 0%,#fff 48%,#edf5f1 100%);
+      color:var(--text);
     }
 
-
-    html {
-      min-height:
-        100%;
+    .login-wrap{
+      width:min(440px,100%);
     }
 
-
-    body {
-
-      min-height:
-        100vh;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      padding:
-        25px;
-
-      position:
-        relative;
-
-      overflow:
-        hidden;
-
-      font-family:
-        Arial,
-        Tahoma,
-        sans-serif;
-
-      color:
-        var(--text);
-
-      background:
-
-        radial-gradient(
-          circle at 8% 10%,
-          rgba(178,139,24,.13),
-          transparent 23%
-        ),
-
-        radial-gradient(
-          circle at 92% 85%,
-          rgba(23,77,58,.13),
-          transparent 28%
-        ),
-
-        linear-gradient(
-          135deg,
-          #faf8f0,
-          #ffffff 48%,
-          #edf5f1
-        );
+    .brand{
+      text-align:center;
+      margin-bottom:18px;
     }
 
-
-    /* =====================================================
-       زخارف الخلفية
-    ====================================================== */
-
-    .bg-circle {
-
-      position:
-        absolute;
-
-      border-radius:
-        50%;
-
-      pointer-events:
-        none;
+    .logo{
+      width:74px;
+      height:74px;
+      margin:0 auto 14px;
+      border-radius:22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:#fff;
+      font-size:31px;
+      box-shadow:0 15px 30px rgba(23,77,58,.14);
     }
 
-
-    .bg-circle.one {
-
-      width:
-        360px;
-
-      height:
-        360px;
-
-      right:
-        -170px;
-
-      top:
-        -140px;
-
-      border:
-        1px solid
-        rgba(23,77,58,.07);
+    .brand h1{
+      color:var(--green);
+      font-size:23px;
+      margin-bottom:6px;
     }
 
-
-    .bg-circle.two {
-
-      width:
-        260px;
-
-      height:
-        260px;
-
-      left:
-        -120px;
-
-      bottom:
-        -110px;
-
-      border:
-        1px solid
-        rgba(178,139,24,.09);
+    .brand p{
+      color:var(--muted);
+      font-size:12px;
     }
 
-
-    .bg-circle.three {
-
-      width:
-        120px;
-
-      height:
-        120px;
-
-      right:
-        13%;
-
-      bottom:
-        8%;
-
-      background:
-        rgba(23,77,58,.025);
+    .card{
+      background:rgba(255,255,255,.95);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:0 20px 55px rgba(23,77,58,.10);
     }
 
-
-    /* =====================================================
-       WRAPPER
-    ====================================================== */
-
-    .login-wrapper {
-
-      width:
-        min(
-          470px,
-          100%
-        );
-
-      position:
-        relative;
-
-      z-index:
-        2;
+    .card-head{
+      margin-bottom:23px;
     }
 
-
-    /* =====================================================
-       BRAND
-    ====================================================== */
-
-    .brand {
-
-      text-align:
-        center;
-
-      margin-bottom:
-        20px;
+    .card-head h2{
+      color:var(--green);
+      font-size:21px;
+      margin-bottom:7px;
     }
 
-
-    .brand-logo {
-
-      width:
-        86px;
-
-      height:
-        86px;
-
-      margin:
-        0 auto 14px;
-
-      padding:
-        4px;
-
-      border:
-        3px solid
-        rgba(178,139,24,.72);
-
-      border-radius:
-        50%;
-
-      background:
-        white;
-
-      box-shadow:
-
-        0 15px 35px
-        rgba(23,77,58,.14),
-
-        0 0 0 7px
-        rgba(217,188,92,.06);
+    .card-head p{
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.8;
     }
 
-
-    .brand-logo img {
-
-      width:
-        100%;
-
-      height:
-        100%;
-
-      display:
-        block;
-
-      border-radius:
-        50%;
-
-      object-fit:
-        cover;
+    label{
+      display:block;
+      color:var(--green);
+      font-size:12px;
+      font-weight:bold;
+      margin-bottom:8px;
     }
 
-
-    .brand h1 {
-
-      color:
-        var(--green);
-
-      font-size:
-        24px;
-
-      line-height:
-        1.5;
-
-      margin-bottom:
-        5px;
+    .input-wrap{
+      position:relative;
     }
 
-
-    .brand p {
-
-      color:
-        var(--muted);
-
-      font-size:
-        11px;
-
-      line-height:
-        1.8;
+    .input-wrap i{
+      position:absolute;
+      right:14px;
+      top:50%;
+      transform:translateY(-50%);
+      color:#98a29d;
+      font-size:14px;
+      pointer-events:none;
     }
 
-
-    /* =====================================================
-       LOGIN CARD
-    ====================================================== */
-
-    .login-card {
-
-      position:
-        relative;
-
-      overflow:
-        hidden;
-
-      background:
-        rgba(255,255,255,.95);
-
-      border:
-        1px solid
-        rgba(229,235,231,.95);
-
-      border-radius:
-        24px;
-
-      box-shadow:
-
-        0 25px 65px
-        rgba(23,77,58,.11),
-
-        0 5px 20px
-        rgba(23,77,58,.035);
-
-      padding:
-        31px;
+    input{
+      width:100%;
+      height:50px;
+      border:1px solid var(--border);
+      border-radius:13px;
+      outline:none;
+      background:#fcfdfc;
+      color:var(--text);
+      font-size:18px;
+      letter-spacing:3px;
+      text-align:center;
+      padding:0 45px 0 45px;
+      transition:.2s;
     }
 
-
-    .login-card::before {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      width:
-        190px;
-
-      height:
-        190px;
-
-      border-radius:
-        50%;
-
-      left:
-        -110px;
-
-      top:
-        -125px;
-
-      border:
-        1px solid
-        rgba(23,77,58,.06);
-
-      pointer-events:
-        none;
+    input:focus{
+      border-color:var(--gold);
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(178,139,24,.08);
     }
 
-
-    .login-card::after {
-
-      content:
-        "";
-
-      position:
-        absolute;
-
-      width:
-        170px;
-
-      height:
-        170px;
-
-      border-radius:
-        50%;
-
-      right:
-        -100px;
-
-      bottom:
-        -105px;
-
-      border:
-        1px solid
-        rgba(178,139,24,.08);
-
-      pointer-events:
-        none;
+    .show-code{
+      position:absolute;
+      left:9px;
+      top:7px;
+      width:36px;
+      height:36px;
+      border:0;
+      border-radius:9px;
+      background:#f1f4f2;
+      color:#62706a;
+      cursor:pointer;
     }
 
-
-    .card-head {
-
-      position:
-        relative;
-
-      z-index:
-        2;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        13px;
-
-      margin-bottom:
-        23px;
+    .submit{
+      width:100%;
+      height:50px;
+      margin-top:18px;
+      border:0;
+      border-radius:13px;
+      background:linear-gradient(135deg,var(--green),#21644b);
+      color:#fff;
+      font-weight:bold;
+      font-size:14px;
+      cursor:pointer;
+      transition:.2s;
+      box-shadow:0 9px 20px rgba(23,77,58,.14);
     }
 
-
-    .card-icon {
-
-      width:
-        46px;
-
-      height:
-        46px;
-
-      min-width:
-        46px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      border-radius:
-        13px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-mid)
-        );
-
-      color:
-        white;
-
-      font-size:
-        18px;
-
-      box-shadow:
-        0 8px 20px
-        rgba(23,77,58,.14);
+    .submit:hover{
+      transform:translateY(-2px);
+      background:linear-gradient(135deg,var(--green-dark),var(--green));
     }
 
-
-    .card-head h2 {
-
-      color:
-        var(--green);
-
-      font-size:
-        20px;
-
-      margin-bottom:
-        4px;
+    .message{
+      min-height:22px;
+      margin-top:13px;
+      text-align:center;
+      font-size:12px;
+      font-weight:bold;
     }
 
-
-    .card-head p {
-
-      color:
-        var(--muted);
-
-      font-size:
-        10px;
-
-      line-height:
-        1.8;
+    .message.error{
+      color:var(--danger);
     }
 
-
-    /* =====================================================
-       FORM
-    ====================================================== */
-
-    .form-content {
-
-      position:
-        relative;
-
-      z-index:
-        2;
+    .message.success{
+      color:#237a31;
     }
 
-
-    .input-label {
-
-      display:
-        block;
-
-      color:
-        var(--green);
-
-      font-size:
-        11px;
-
-      font-weight:
-        bold;
-
-      margin-bottom:
-        8px;
+    .hint{
+      margin-top:18px;
+      padding:12px 14px;
+      border-radius:12px;
+      background:var(--green-light);
+      color:#5f6b66;
+      font-size:11px;
+      line-height:1.8;
+      text-align:center;
     }
 
-
-    .code-wrapper {
-
-      position:
-        relative;
+    .footer-note{
+      text-align:center;
+      color:#8a938e;
+      font-size:10px;
+      margin-top:16px;
     }
 
-
-    .code-wrapper .main-icon {
-
-      position:
-        absolute;
-
-      right:
-        14px;
-
-      top:
-        50%;
-
-      transform:
-        translateY(-50%);
-
-      color:
-        #97a19c;
-
-      font-size:
-        14px;
-
-      pointer-events:
-        none;
-
-      transition:
-        .2s;
-    }
-
-
-    #teacherCode {
-
-      width:
-        100%;
-
-      height:
-        52px;
-
-      border:
-        1px solid
-        var(--border);
-
-      border-radius:
-        13px;
-
-      outline:
-        none;
-
-      background:
-        #fafcfb;
-
-      color:
-        var(--text);
-
-      font-size:
-        17px;
-
-      font-weight:
-        bold;
-
-      letter-spacing:
-        5px;
-
-      text-align:
-        center;
-
-      padding:
-        0 48px 0 48px;
-
-      transition:
-        .2s;
-    }
-
-
-    #teacherCode::placeholder {
-
-      color:
-        #a5ada8;
-
-      font-size:
-        11px;
-
-      font-weight:
-        normal;
-
-      letter-spacing:
-        0;
-    }
-
-
-    #teacherCode:focus {
-
-      background:
-        white;
-
-      border-color:
-        var(--gold);
-
-      box-shadow:
-        0 0 0 4px
-        rgba(178,139,24,.08);
-    }
-
-
-    #teacherCode:focus
-    + .show-code {
-
-      border-color:
-        #d8d0ae;
-    }
-
-
-    .show-code {
-
-      position:
-        absolute;
-
-      left:
-        8px;
-
-      top:
-        8px;
-
-      width:
-        36px;
-
-      height:
-        36px;
-
-      border:
-        1px solid
-        transparent;
-
-      border-radius:
-        9px;
-
-      background:
-        #f0f3f1;
-
-      color:
-        #66736d;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      transition:
-        .2s;
-    }
-
-
-    .show-code:hover {
-
-      background:
-        var(--green-soft);
-
-      color:
-        var(--green);
-    }
-
-
-    /* =====================================================
-       BUTTON
-    ====================================================== */
-
-    .login-button {
-
-      width:
-        100%;
-
-      height:
-        50px;
-
-      margin-top:
-        17px;
-
-      border:
-        none;
-
-      border-radius:
-        12px;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      gap:
-        8px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-mid)
-        );
-
-      color:
-        white;
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      box-shadow:
-        0 10px 22px
-        rgba(23,77,58,.15);
-
-      transition:
-        .25s;
-    }
-
-
-    .login-button:hover {
-
-      transform:
-        translateY(-2px);
-
-      box-shadow:
-        0 14px 28px
-        rgba(23,77,58,.20);
-    }
-
-
-    .login-button:active {
-
-      transform:
-        translateY(0);
-    }
-
-
-    .login-button:disabled {
-
-      cursor:
-        default;
-
-      opacity:
-        .85;
-
-      transform:
-        none;
-    }
-
-
-    /* =====================================================
-       MESSAGE
-    ====================================================== */
-
-    .message {
-
-      min-height:
-        20px;
-
-      margin-top:
-        12px;
-
-      text-align:
-        center;
-
-      font-size:
-        10px;
-
-      font-weight:
-        bold;
-    }
-
-
-    .message.error {
-
-      color:
-        var(--danger);
-    }
-
-
-    .message.success {
-
-      color:
-        var(--success);
-    }
-
-
-    /* =====================================================
-       INFO BOX
-    ====================================================== */
-
-    .info-box {
-
-      position:
-        relative;
-
-      z-index:
-        2;
-
-      display:
-        flex;
-
-      align-items:
-        flex-start;
-
-      gap:
-        10px;
-
-      margin-top:
-        17px;
-
-      padding:
-        12px 13px;
-
-      border:
-        1px solid
-        #dcebe4;
-
-      border-radius:
-        12px;
-
-      background:
-        var(--green-soft);
-
-      color:
-        #5f6b66;
-
-      font-size:
-        10px;
-
-      line-height:
-        1.9;
-    }
-
-
-    .info-box i {
-
-      margin-top:
-        2px;
-
-      color:
-        var(--green);
-
-      font-size:
-        13px;
-    }
-
-
-    /* =====================================================
-       FOOTER
-    ====================================================== */
-
-    .footer {
-
-      text-align:
-        center;
-
-      margin-top:
-        17px;
-
-      color:
-        #929b96;
-
-      font-size:
-        9px;
-    }
-
-
-    .demo-badge {
-
-      position:
-        fixed;
-
-      left:
-        12px;
-
-      bottom:
-        12px;
-
-      z-index:
-        10;
-
-      padding:
-        7px 12px;
-
-      border-radius:
-        20px;
-
-      background:
-        var(--green);
-
-      color:
-        white;
-
-      font-size:
-        9px;
-
-      box-shadow:
-        0 7px 18px
-        rgba(23,77,58,.12);
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ====================================================== */
-
-    @media(max-width:550px) {
-
-      body {
-
-        padding:
-          16px;
+    @media(max-width:480px){
+      .card{
+        padding:23px;
       }
 
-
-      .brand h1 {
-
-        font-size:
-          20px;
-      }
-
-
-      .brand-logo {
-
-        width:
-          76px;
-
-        height:
-          76px;
-      }
-
-
-      .login-card {
-
-        padding:
-          23px;
-
-        border-radius:
-          19px;
-      }
-
-
-      .card-head h2 {
-
-        font-size:
-          18px;
-      }
-
-
-      .info-box {
-
-        font-size:
-          9px;
-      }
-
-
-      .demo-badge {
-
-        left:
-          8px;
-
-        bottom:
-          8px;
+      .brand h1{
+        font-size:20px;
       }
     }
-
   </style>
-
 </head>
-
 
 <body>
 
-  <!-- زخارف الخلفية -->
-
-  <div class="bg-circle one"></div>
-  <div class="bg-circle two"></div>
-  <div class="bg-circle three"></div>
-
-
-  <div class="login-wrapper">
-
-
-    <!-- ================= BRAND ================= -->
+  <div class="login-wrap">
 
     <div class="brand">
 
-      <div class="brand-logo">
-
-        <img
-          src="logo.png"
-          alt="شعار مركز حردان طارق القرآني">
-
+      <div class="logo">
+        <i class="fa-solid fa-book-quran"></i>
       </div>
 
       <h1>
@@ -1082,137 +235,88 @@
     </div>
 
 
-    <!-- ================= CARD ================= -->
-
-    <div class="login-card">
-
+    <div class="card">
 
       <div class="card-head">
 
-        <div class="card-icon">
+        <h2>
+          دخول المعلمين
+        </h2>
 
-          <i class="fa-solid fa-user-tie"></i>
-
-        </div>
-
-        <div>
-
-          <h2>
-            دخول المعلمين
-          </h2>
-
-          <p>
-            أدخل كود الدخول للانتقال إلى لوحة المتابعة
-          </p>
-
-        </div>
+        <p>
+          أدخل كود المعلمين الموحد للوصول إلى لوحة المتابعة.
+        </p>
 
       </div>
 
 
-      <div class="form-content">
+      <form id="teacherLoginForm">
 
-        <form
-          id="teacherLoginForm">
-
-
-          <label
-            class="input-label"
-            for="teacherCode">
-
-            كود المعلمين
-
-          </label>
+        <label for="teacherCode">
+          كود الدخول
+        </label>
 
 
-          <div class="code-wrapper">
+        <div class="input-wrap">
 
-            <i
-              class="fa-solid fa-key main-icon">
-            </i>
+          <i class="fa-solid fa-key"></i>
 
-
-            <input
-              id="teacherCode"
-              type="password"
-              inputmode="numeric"
-              pattern="[0-9]*"
-              autocomplete="off"
-              maxlength="5"
-              placeholder="أدخل الكود الموحد"
-              required>
-
-
-            <button
-              class="show-code"
-              id="showCode"
-              type="button"
-              aria-label="إظهار أو إخفاء الكود">
-
-              <i
-                class="fa-solid fa-eye">
-              </i>
-
-            </button>
-
-          </div>
-
+          <input
+            id="teacherCode"
+            type="password"
+            inputmode="text"
+            autocomplete="off"
+            autocapitalize="characters"
+            spellcheck="false"
+            maxlength="32"
+            placeholder="أدخل الكود الموحد"
+            required
+          >
 
           <button
-            class="login-button"
-            id="loginButton"
-            type="submit">
+            class="show-code"
+            id="showCode"
+            type="button"
+            aria-label="إظهار الكود">
 
-            <i
-              class="fa-solid fa-right-to-bracket">
-            </i>
-
-            دخول إلى لوحة المعلم
+            <i class="fa-solid fa-eye"></i>
 
           </button>
 
-
-          <div
-            class="message"
-            id="message">
-          </div>
-
-
-        </form>
-
-
-        <div class="info-box">
-
-          <i
-            class="fa-solid fa-circle-info">
-          </i>
-
-          <span>
-            يستخدم جميع المعلمين نفس كود الدخول الموحّد
-            للوصول إلى البوابة الإدارية.
-          </span>
-
         </div>
 
+
+        <button
+          class="submit"
+          id="loginButton"
+          type="submit">
+
+          <i class="fa-solid fa-right-to-bracket"></i>
+
+          دخول إلى لوحة المعلم
+
+        </button>
+
+
+        <div
+          class="message"
+          id="message">
+        </div>
+
+      </form>
+
+
+      <div class="hint">
+        الكود موحّد لجميع المعلمين، ولا حاجة لإدخال البريد الإلكتروني.
       </div>
 
     </div>
 
 
-    <!-- ================= FOOTER ================= -->
-
-    <div class="footer">
-
+    <div class="footer-note">
       © 2026 مركز حردان طارق القرآني
-      — البوابة الإدارية
-
     </div>
 
-  </div>
-
-
-  <div class="demo-badge">
-    النسخة التجريبية
   </div>
 
 
@@ -1220,6 +324,7 @@
 
     /* =====================================================
        كود المعلمين الموحد
+       غيّر هذه القيمة فقط لتغيير كود الدخول
     ====================================================== */
 
     const TEACHER_ACCESS_CODE =
@@ -1256,10 +361,7 @@
       );
 
 
-    /* =====================================================
-       إذا كان المعلم قد دخل مسبقًا
-    ====================================================== */
-
+    /* إذا كان مسجّل دخول بالفعل */
     if (
       localStorage.getItem(
         'teacherAccess'
@@ -1268,44 +370,36 @@
 
       window.location.href =
         'teacher-dashboard.html';
+
     }
 
 
-    /* =====================================================
-       إظهار / إخفاء الكود
-    ====================================================== */
-
+    /* إظهار / إخفاء الكود */
     showCode.addEventListener(
       'click',
-      function() {
+      () => {
 
-        const isVisible =
+        const visible =
           codeInput.type === 'text';
 
-
         codeInput.type =
-          isVisible
+          visible
             ? 'password'
             : 'text';
 
-
         showCode.innerHTML =
-          isVisible
-
+          visible
             ? '<i class="fa-solid fa-eye"></i>'
-
             : '<i class="fa-solid fa-eye-slash"></i>';
+
       }
     );
 
 
-    /* =====================================================
-       تسجيل الدخول
-    ====================================================== */
-
+    /* تسجيل الدخول */
     form.addEventListener(
       'submit',
-      function(event) {
+      (event) => {
 
         event.preventDefault();
 
@@ -1313,8 +407,6 @@
         const enteredCode =
           codeInput.value.trim();
 
-
-        /* نجاح */
 
         if (
           enteredCode ===
@@ -1330,7 +422,6 @@
           message.className =
             'message success';
 
-
           message.textContent =
             'تم التحقق بنجاح، جارٍ فتح لوحة المعلم...';
 
@@ -1344,28 +435,27 @@
 
 
           setTimeout(
-            function() {
+            () => {
 
               window.location.href =
                 'teacher-dashboard.html';
 
             },
-            450
+            350
           );
 
 
           return;
+
         }
 
-
-        /* خطأ */
 
         message.className =
           'message error';
 
 
         message.textContent =
-          'كود الدخول غير صحيح. حاول مرة أخرى.';
+          'كود الدخول غير صحيح.';
 
 
         codeInput.value =
@@ -1380,5 +470,4 @@
   </script>
 
 </body>
-
 </html>
