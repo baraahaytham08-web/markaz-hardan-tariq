@@ -133,17 +133,6 @@
       margin-bottom: 15px;
     }
 
-    .code-badge {
-      display: inline-block;
-      background: var(--cream);
-      color: var(--green);
-      border: 1px solid #e4d5aa;
-      border-radius: 10px;
-      padding: 8px 13px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
     .details {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -435,13 +424,15 @@ async function loadStudent() {
 
   try {
 
-    const { data: profileData, error } =
-      await supabaseClient.rpc(
-        'get_student_profile',
-        {
-          p_student_id: String(session.id)
-        }
-      );
+    const {
+      data: profileData,
+      error
+    } = await supabaseClient.rpc(
+      'get_student_profile',
+      {
+        p_student_id: String(session.id)
+      }
+    );
 
     if (error) {
       console.error(error);
@@ -449,11 +440,15 @@ async function loadStudent() {
     }
 
     const profile =
-      profileData && typeof profileData === 'object'
+      profileData &&
+      typeof profileData === 'object'
         ? profileData
         : {};
 
-    renderStudent(session, profile);
+    renderStudent(
+      session,
+      profile
+    );
 
   } catch (error) {
 
@@ -462,6 +457,7 @@ async function loadStudent() {
     document.getElementById('app').innerHTML = `
       <div class="error">
         <h2>تعذر تحميل الملف</h2>
+
         <p style="margin-top:10px">
           حدثت مشكلة أثناء تحميل بيانات الطالب.
         </p>
@@ -487,42 +483,35 @@ function renderStudent(student, profile) {
     profile.photo_url ||
     '';
 
-
   const weeklyGoal =
     profile.weeklyGoal ||
     profile.weekly_goal ||
     'غير محدد';
-
 
   const points =
     profile.totalPoints ??
     profile.total_points ??
     '0';
 
-
   const weeklyProgress =
     profile.weeklyProgress ??
     profile.weekly_progress ??
     0;
-
 
   const attendance =
     Array.isArray(profile.attendance)
       ? profile.attendance
       : [];
 
-
   const weeklyPlan =
     Array.isArray(profile.weeklyPlan)
       ? profile.weeklyPlan
       : [];
 
-
   const tests =
     Array.isArray(profile.tests)
       ? profile.tests
       : [];
-
 
   const hifzProgress =
     Number(
@@ -531,7 +520,6 @@ function renderStudent(student, profile) {
       0
     );
 
-
   const reviewProgress =
     Number(
       profile.reviewProgress ??
@@ -539,36 +527,30 @@ function renderStudent(student, profile) {
       0
     );
 
-
   const completedPages =
     profile.completedPages ??
     profile.completed_pages ??
     '0';
-
 
   const requiredPages =
     profile.requiredPages ??
     profile.required_pages ??
     '0';
 
-
   const generalEvaluation =
     profile.generalEvaluation ??
     profile.general_evaluation ??
     'غير محدد';
-
 
   const equivalentRecitation =
     profile.equivalentRecitation ??
     profile.equivalent_recitation ??
     'غير محدد';
 
-
   const nextExam =
     profile.nextExam ??
     profile.next_exam ??
     'غير محدد';
-
 
   const nextExamDate =
     profile.nextExamDate ??
@@ -627,10 +609,6 @@ function renderStudent(student, profile) {
 
         <div class="section">
           ${escapeHtml(student.section || 'غير محدد')}
-        </div>
-
-        <div class="code-badge">
-          ${escapeHtml(student.login_code || '—')}
         </div>
 
       </div>
