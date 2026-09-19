@@ -100,22 +100,6 @@
       margin-bottom: 7px;
     }
 
-    .code-box {
-      margin-top: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--cream);
-      border: 1px solid #e5d7ad;
-      padding: 9px 13px;
-      border-radius: 10px;
-    }
-
-    .code-box strong {
-      letter-spacing: 2px;
-      color: var(--green);
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -420,15 +404,19 @@ function defaultProfile() {
 
     joiningDate: '',
 
-    completedQuranParts: '0 أجزاء من القرآن الكريم',
+    completedQuranParts:
+      '0 أجزاء من القرآن الكريم',
 
     residence: '',
 
-    bus: 'لم يتم التعيين لحافلة بعد',
+    bus:
+      'لم يتم التعيين لحافلة بعد',
 
-    homeLocation: 'غير محدد',
+    homeLocation:
+      'غير محدد',
 
-    weeklyGoal: 'حفظ 2 صفحة / مراجعة 2 صفحة',
+    weeklyGoal:
+      'حفظ 2 صفحة / مراجعة 2 صفحة',
 
     totalPoints: 0,
 
@@ -438,11 +426,14 @@ function defaultProfile() {
 
     reviewProgress: 0,
 
-    completedPages: '0 صفحة',
+    completedPages:
+      '0 صفحة',
 
-    requiredPages: '2 صفحة',
+    requiredPages:
+      '2 صفحة',
 
-    generalEvaluation: 'ملتزم جزئياً',
+    generalEvaluation:
+      'ملتزم جزئياً',
 
     equivalentRecitation: '',
 
@@ -480,8 +471,12 @@ async function checkTeacher() {
   } = await supabaseClient.auth.getUser();
 
   if (!user) {
-    window.location.href = 'teacher-login.html';
+
+    window.location.href =
+      'teacher-login.html';
+
     return false;
+
   }
 
   if (
@@ -493,9 +488,11 @@ async function checkTeacher() {
 
     await supabaseClient.auth.signOut();
 
-    window.location.href = 'teacher-login.html';
+    window.location.href =
+      'teacher-login.html';
 
     return false;
+
   }
 
   return true;
@@ -508,7 +505,9 @@ async function loadStudent() {
   if (!(await checkTeacher())) return;
 
   const params =
-    new URLSearchParams(window.location.search);
+    new URLSearchParams(
+      window.location.search
+    );
 
   studentId =
     params.get('id');
@@ -522,6 +521,7 @@ async function loadStudent() {
     `;
 
     return;
+
   }
 
 
@@ -546,6 +546,7 @@ async function loadStudent() {
     `;
 
     return;
+
   }
 
 
@@ -557,7 +558,10 @@ async function loadStudent() {
   } = await supabaseClient
     .from('student_profiles')
     .select('data')
-    .eq('student_id', String(studentId))
+    .eq(
+      'student_id',
+      String(studentId)
+    )
     .maybeSingle();
 
 
@@ -615,15 +619,10 @@ function render() {
         </h2>
 
         <p style="color:#777">
-          ${escapeHtml(student.section || 'غير محدد')}
+          ${escapeHtml(
+            student.section || 'غير محدد'
+          )}
         </p>
-
-        <div class="code-box">
-          <span>رمز دخول الطالب:</span>
-          <strong>
-            ${escapeHtml(student.login_code || 'غير محدد')}
-          </strong>
-        </div>
 
       </div>
 
@@ -642,65 +641,66 @@ function render() {
 
           <div class="field">
             <label>اسم الطالب</label>
+
             <input
               id="name"
-              value="${escapeHtml(student.name || '')}"
+              value="${escapeHtml(
+                student.name || ''
+              )}"
             >
           </div>
 
           <div class="field">
             <label>الشعبة</label>
+
             <input
               id="section"
-              value="${escapeHtml(student.section || '')}"
+              value="${escapeHtml(
+                student.section || ''
+              )}"
             >
           </div>
 
           <div class="field">
             <label>الحفظ الحالي</label>
+
             <input
               id="memorization"
-              value="${escapeHtml(student.memorization || '')}"
+              value="${escapeHtml(
+                student.memorization || ''
+              )}"
             >
           </div>
 
           <div class="field">
+
             <label>الحالة</label>
 
             <select id="status">
 
               <option
                 value="active"
-                ${student.status === 'active' ? 'selected' : ''}
+                ${
+                  student.status === 'active'
+                    ? 'selected'
+                    : ''
+                }
               >
                 فعال
               </option>
 
               <option
                 value="inactive"
-                ${student.status === 'inactive' ? 'selected' : ''}
+                ${
+                  student.status === 'inactive'
+                    ? 'selected'
+                    : ''
+                }
               >
                 غير فعال
               </option>
 
             </select>
-
-          </div>
-
-          <div class="field full-field">
-
-            <label>
-              رمز دخول الطالب
-            </label>
-
-            <input
-              id="login_code"
-              type="text"
-              inputmode="numeric"
-              maxlength="10"
-              value="${escapeHtml(student.login_code || '')}"
-              placeholder="مثال: 26001"
-            >
 
           </div>
 
@@ -719,59 +719,82 @@ function render() {
 
           <div class="field">
             <label>رابط صورة الطالب</label>
+
             <input
               id="photoUrl"
-              value="${escapeHtml(profile.photoUrl)}"
+              value="${escapeHtml(
+                profile.photoUrl
+              )}"
               placeholder="رابط الصورة"
             >
           </div>
 
           <div class="field">
             <label>رقم ولي الأمر</label>
+
             <input
               id="guardianPhone"
-              value="${escapeHtml(profile.guardianPhone)}"
+              value="${escapeHtml(
+                profile.guardianPhone
+              )}"
             >
           </div>
 
           <div class="field">
             <label>تاريخ الالتحاق</label>
+
             <input
               id="joiningDate"
-              value="${escapeHtml(profile.joiningDate)}"
+              value="${escapeHtml(
+                profile.joiningDate
+              )}"
             >
           </div>
 
           <div class="field">
             <label>أجزاء القرآن المكتملة</label>
+
             <input
               id="completedQuranParts"
-              value="${escapeHtml(profile.completedQuranParts)}"
+              value="${escapeHtml(
+                profile.completedQuranParts
+              )}"
             >
           </div>
 
           <div class="field">
             <label>مكان السكن</label>
+
             <input
               id="residence"
-              value="${escapeHtml(profile.residence)}"
+              value="${escapeHtml(
+                profile.residence
+              )}"
             >
           </div>
 
           <div class="field">
             <label>الحافلة</label>
+
             <input
               id="bus"
-              value="${escapeHtml(profile.bus)}"
+              value="${escapeHtml(
+                profile.bus
+              )}"
             >
           </div>
 
           <div class="field full-field">
+
             <label>موقع المنزل</label>
+
             <input
               id="homeLocation"
-              value="${escapeHtml(profile.homeLocation)}"
+              value="${escapeHtml(
+                profile.homeLocation
+              )}"
             >
+
           </div>
 
         </div>
@@ -789,100 +812,133 @@ function render() {
 
           <div class="field">
             <label>الهدف الأسبوعي</label>
+
             <input
               id="weeklyGoal"
-              value="${escapeHtml(profile.weeklyGoal)}"
+              value="${escapeHtml(
+                profile.weeklyGoal
+              )}"
             >
           </div>
 
           <div class="field">
             <label>مجموع النقاط</label>
+
             <input
               id="totalPoints"
               type="number"
-              value="${profile.totalPoints ?? 0}"
+              value="${
+                profile.totalPoints ?? 0
+              }"
             >
           </div>
 
           <div class="field">
             <label>التقدم الأسبوعي %</label>
+
             <input
               id="weeklyProgress"
               type="number"
               min="0"
               max="100"
-              value="${profile.weeklyProgress ?? 0}"
+              value="${
+                profile.weeklyProgress ?? 0
+              }"
             >
           </div>
 
           <div class="field">
             <label>تقدم الحفظ %</label>
+
             <input
               id="hifzProgress"
               type="number"
               min="0"
               max="100"
-              value="${profile.hifzProgress ?? 0}"
+              value="${
+                profile.hifzProgress ?? 0
+              }"
             >
           </div>
 
           <div class="field">
             <label>تقدم المراجعة %</label>
+
             <input
               id="reviewProgress"
               type="number"
               min="0"
               max="100"
-              value="${profile.reviewProgress ?? 0}"
+              value="${
+                profile.reviewProgress ?? 0
+              }"
             >
           </div>
 
           <div class="field">
             <label>الصفحات المنجزة</label>
+
             <input
               id="completedPages"
-              value="${escapeHtml(profile.completedPages)}"
+              value="${escapeHtml(
+                profile.completedPages
+              )}"
             >
           </div>
 
           <div class="field">
             <label>الصفحات المطلوبة</label>
+
             <input
               id="requiredPages"
-              value="${escapeHtml(profile.requiredPages)}"
+              value="${escapeHtml(
+                profile.requiredPages
+              )}"
             >
           </div>
 
           <div class="field">
             <label>التقييم العام</label>
+
             <input
               id="generalEvaluation"
-              value="${escapeHtml(profile.generalEvaluation)}"
+              value="${escapeHtml(
+                profile.generalEvaluation
+              )}"
             >
           </div>
 
           <div class="field">
             <label>التسميع المكافئ</label>
+
             <input
               id="equivalentRecitation"
-              value="${escapeHtml(profile.equivalentRecitation)}"
+              value="${escapeHtml(
+                profile.equivalentRecitation
+              )}"
             >
           </div>
 
           <div class="field">
             <label>الاختبار القادم</label>
+
             <input
               id="nextExam"
-              value="${escapeHtml(profile.nextExam)}"
+              value="${escapeHtml(
+                profile.nextExam
+              )}"
             >
           </div>
 
           <div class="field">
             <label>تاريخ الاختبار القادم</label>
+
             <input
               id="nextExamDate"
               type="date"
-              value="${escapeHtml(profile.nextExamDate)}"
+              value="${escapeHtml(
+                profile.nextExamDate
+              )}"
             >
           </div>
 
@@ -994,7 +1050,9 @@ renderTests();
 function renderAttendance() {
 
 const box =
-document.getElementById('attendanceEditor');
+document.getElementById(
+'attendanceEditor'
+);
 
 const items =
 Array.isArray(profile.attendance)
@@ -1011,13 +1069,17 @@ items.map((item, index) => `
 
       <input
         placeholder="التاريخ"
-        value="${escapeHtml(item.date || '')}"
+        value="${escapeHtml(
+          item.date || ''
+        )}"
         data-attendance-date="${index}"
       >
 
       <input
         placeholder="الحالة"
-        value="${escapeHtml(item.status || 'حاضر')}"
+        value="${escapeHtml(
+          item.status || 'حاضر'
+        )}"
         data-attendance-status="${index}"
       >
 
@@ -1063,26 +1125,29 @@ function collectAttendance() {
 
 const result = [];
 
-profile.attendance.forEach((item, index) => {
+profile.attendance.forEach(
+(item, index) => {
 
 ```
-const date =
-  document.querySelector(
-    `[data-attendance-date="${index}"]`
-  )?.value || '';
+  const date =
+    document.querySelector(
+      `[data-attendance-date="${index}"]`
+    )?.value || '';
 
-const status =
-  document.querySelector(
-    `[data-attendance-status="${index}"]`
-  )?.value || '';
+  const status =
+    document.querySelector(
+      `[data-attendance-status="${index}"]`
+    )?.value || '';
 
-result.push({
-  date,
-  status
-});
+  result.push({
+    date,
+    status
+  });
+
+}
 ```
 
-});
+);
 
 return result;
 
@@ -1091,7 +1156,9 @@ return result;
 function renderPlan() {
 
 const box =
-document.getElementById('planEditor');
+document.getElementById(
+'planEditor'
+);
 
 const items =
 Array.isArray(profile.weeklyPlan)
@@ -1108,25 +1175,33 @@ items.map((item, index) => `
 
       <input
         placeholder="التاريخ"
-        value="${escapeHtml(item.date || '')}"
+        value="${escapeHtml(
+          item.date || ''
+        )}"
         data-plan-date="${index}"
       >
 
       <input
         placeholder="الجزء"
-        value="${escapeHtml(item.juz || '')}"
+        value="${escapeHtml(
+          item.juz || ''
+        )}"
         data-plan-juz="${index}"
       >
 
       <input
         placeholder="الصفحات"
-        value="${escapeHtml(item.pages || '')}"
+        value="${escapeHtml(
+          item.pages || ''
+        )}"
         data-plan-pages="${index}"
       >
 
       <input
         placeholder="الاختبار / المطلوب"
-        value="${escapeHtml(item.exam || '')}"
+        value="${escapeHtml(
+          item.exam || ''
+        )}"
         data-plan-exam="${index}"
       >
 
@@ -1135,7 +1210,9 @@ items.map((item, index) => `
     <input
       style="margin-top:8px"
       placeholder="الحالة"
-      value="${escapeHtml(item.status || 'قيد الانتظار')}"
+      value="${escapeHtml(
+        item.status || 'قيد الانتظار'
+      )}"
       data-plan-status="${index}"
     >
 
@@ -1180,47 +1257,52 @@ renderPlan();
 
 function collectPlan() {
 
-return profile.weeklyPlan.map((item, index) => {
+return profile.weeklyPlan.map(
+(item, index) => {
 
 ```
-return {
+  return {
 
-  date:
-    document.querySelector(
-      `[data-plan-date="${index}"]`
-    )?.value || '',
+    date:
+      document.querySelector(
+        `[data-plan-date="${index}"]`
+      )?.value || '',
 
-  juz:
-    document.querySelector(
-      `[data-plan-juz="${index}"]`
-    )?.value || '',
+    juz:
+      document.querySelector(
+        `[data-plan-juz="${index}"]`
+      )?.value || '',
 
-  pages:
-    document.querySelector(
-      `[data-plan-pages="${index}"]`
-    )?.value || '',
+    pages:
+      document.querySelector(
+        `[data-plan-pages="${index}"]`
+      )?.value || '',
 
-  exam:
-    document.querySelector(
-      `[data-plan-exam="${index}"]`
-    )?.value || '',
+    exam:
+      document.querySelector(
+        `[data-plan-exam="${index}"]`
+      )?.value || '',
 
-  status:
-    document.querySelector(
-      `[data-plan-status="${index}"]`
-    )?.value || ''
+    status:
+      document.querySelector(
+        `[data-plan-status="${index}"]`
+      )?.value || ''
 
-};
+  };
+
+}
 ```
 
-});
+);
 
 }
 
 function renderTests() {
 
 const box =
-document.getElementById('testsEditor');
+document.getElementById(
+'testsEditor'
+);
 
 const items =
 Array.isArray(profile.tests)
@@ -1237,26 +1319,34 @@ items.map((item, index) => `
 
       <input
         placeholder="اسم الاختبار"
-        value="${escapeHtml(item.name || '')}"
+        value="${escapeHtml(
+          item.name || ''
+        )}"
         data-test-name="${index}"
       >
 
       <input
         type="date"
-        value="${escapeHtml(item.date || '')}"
+        value="${escapeHtml(
+          item.date || ''
+        )}"
         data-test-date="${index}"
       >
 
       <input
         placeholder="النتيجة"
-        value="${escapeHtml(item.result || '')}"
+        value="${escapeHtml(
+          item.result || ''
+        )}"
         data-test-result="${index}"
       >
 
       <input
         type="number"
         placeholder="النقاط"
-        value="${escapeHtml(item.points || '')}"
+        value="${escapeHtml(
+          item.points || ''
+        )}"
         data-test-points="${index}"
       >
 
@@ -1302,35 +1392,38 @@ renderTests();
 
 function collectTests() {
 
-return profile.tests.map((item, index) => {
+return profile.tests.map(
+(item, index) => {
 
 ```
-return {
+  return {
 
-  name:
-    document.querySelector(
-      `[data-test-name="${index}"]`
-    )?.value || '',
+    name:
+      document.querySelector(
+        `[data-test-name="${index}"]`
+      )?.value || '',
 
-  date:
-    document.querySelector(
-      `[data-test-date="${index}"]`
-    )?.value || '',
+    date:
+      document.querySelector(
+        `[data-test-date="${index}"]`
+      )?.value || '',
 
-  result:
-    document.querySelector(
-      `[data-test-result="${index}"]`
-    )?.value || '',
+    result:
+      document.querySelector(
+        `[data-test-result="${index}"]`
+      )?.value || '',
 
-  points:
-    document.querySelector(
-      `[data-test-points="${index}"]`
-    )?.value || ''
+    points:
+      document.querySelector(
+        `[data-test-points="${index}"]`
+      )?.value || ''
 
-};
+  };
+
+}
 ```
 
-});
+);
 
 }
 
@@ -1339,67 +1432,45 @@ async function saveProfile() {
 hideMessage();
 
 const button =
-document.getElementById('saveButton');
+document.getElementById(
+'saveButton'
+);
 
 button.disabled = true;
-button.textContent = 'جاري الحفظ...';
+button.textContent =
+'جاري الحفظ...';
 
 try {
 
 ```
-const loginCode =
-  document.getElementById('login_code')
-    .value
-    .trim();
-
-
-if (!loginCode) {
-
-  throw new Error(
-    'يجب وضع رمز دخول للطالب.'
-  );
-
-}
-
-
-if (!/^[0-9]+$/.test(loginCode)) {
-
-  throw new Error(
-    'رمز الدخول يجب أن يحتوي على أرقام فقط.'
-  );
-
-}
-
-
-if (loginCode.length < 4) {
-
-  throw new Error(
-    'رمز الدخول يجب أن يكون 4 أرقام على الأقل.'
-  );
-
-}
-
-
 /*
-  تحديث بيانات الطلاب الأساسية
+  تحديث بيانات الطالب الأساسية
 */
 
 const studentUpdate = {
 
   name:
-    document.getElementById('name').value.trim(),
+    document
+      .getElementById('name')
+      .value
+      .trim(),
 
   section:
-    document.getElementById('section').value.trim(),
+    document
+      .getElementById('section')
+      .value
+      .trim(),
 
   memorization:
-    document.getElementById('memorization').value.trim(),
+    document
+      .getElementById('memorization')
+      .value
+      .trim(),
 
   status:
-    document.getElementById('status').value,
-
-  login_code:
-    loginCode
+    document
+      .getElementById('status')
+      .value
 
 };
 
@@ -1413,19 +1484,7 @@ const {
 
 
 if (studentError) {
-
-  if (
-    studentError.code === '23505'
-  ) {
-
-    throw new Error(
-      'رمز الدخول هذا مستخدم لطالب آخر. اختر رمزًا مختلفًا.'
-    );
-
-  }
-
   throw studentError;
-
 }
 
 
@@ -1436,69 +1495,137 @@ if (studentError) {
 const newProfile = {
 
   photoUrl:
-    document.getElementById('photoUrl').value.trim(),
+    document
+      .getElementById('photoUrl')
+      .value
+      .trim(),
 
   guardianPhone:
-    document.getElementById('guardianPhone').value.trim(),
+    document
+      .getElementById('guardianPhone')
+      .value
+      .trim(),
 
   joiningDate:
-    document.getElementById('joiningDate').value.trim(),
+    document
+      .getElementById('joiningDate')
+      .value
+      .trim(),
 
   completedQuranParts:
-    document.getElementById('completedQuranParts').value.trim(),
+    document
+      .getElementById(
+        'completedQuranParts'
+      )
+      .value
+      .trim(),
 
   residence:
-    document.getElementById('residence').value.trim(),
+    document
+      .getElementById('residence')
+      .value
+      .trim(),
 
   bus:
-    document.getElementById('bus').value.trim(),
+    document
+      .getElementById('bus')
+      .value
+      .trim(),
 
   homeLocation:
-    document.getElementById('homeLocation').value.trim(),
+    document
+      .getElementById('homeLocation')
+      .value
+      .trim(),
 
   weeklyGoal:
-    document.getElementById('weeklyGoal').value.trim(),
+    document
+      .getElementById('weeklyGoal')
+      .value
+      .trim(),
 
   totalPoints:
     Number(
-      document.getElementById('totalPoints').value
+      document
+        .getElementById('totalPoints')
+        .value
     ) || 0,
 
   weeklyProgress:
     Number(
-      document.getElementById('weeklyProgress').value
+      document
+        .getElementById(
+          'weeklyProgress'
+        )
+        .value
     ) || 0,
 
   hifzProgress:
     Number(
-      document.getElementById('hifzProgress').value
+      document
+        .getElementById('hifzProgress')
+        .value
     ) || 0,
 
   reviewProgress:
     Number(
-      document.getElementById('reviewProgress').value
+      document
+        .getElementById(
+          'reviewProgress'
+        )
+        .value
     ) || 0,
 
   completedPages:
-    document.getElementById('completedPages').value.trim(),
+    document
+      .getElementById(
+        'completedPages'
+      )
+      .value
+      .trim(),
 
   requiredPages:
-    document.getElementById('requiredPages').value.trim(),
+    document
+      .getElementById(
+        'requiredPages'
+      )
+      .value
+      .trim(),
 
   generalEvaluation:
-    document.getElementById('generalEvaluation').value.trim(),
+    document
+      .getElementById(
+        'generalEvaluation'
+      )
+      .value
+      .trim(),
 
   equivalentRecitation:
-    document.getElementById('equivalentRecitation').value.trim(),
+    document
+      .getElementById(
+        'equivalentRecitation'
+      )
+      .value
+      .trim(),
 
   nextExam:
-    document.getElementById('nextExam').value.trim(),
+    document
+      .getElementById('nextExam')
+      .value
+      .trim(),
 
   nextExamDate:
-    document.getElementById('nextExamDate').value,
+    document
+      .getElementById(
+        'nextExamDate'
+      )
+      .value,
 
   notes:
-    document.getElementById('notes').value.trim(),
+    document
+      .getElementById('notes')
+      .value
+      .trim(),
 
   attendance:
     collectAttendance(),
@@ -1522,9 +1649,11 @@ const {
   .from('student_profiles')
   .upsert({
 
-    student_id: String(studentId),
+    student_id:
+      String(studentId),
 
-    data: newProfile,
+    data:
+      newProfile,
 
     updated_at:
       new Date().toISOString()
@@ -1537,7 +1666,8 @@ if (profileError) {
 }
 
 
-profile = newProfile;
+profile =
+  newProfile;
 
 student = {
   ...student,
@@ -1570,6 +1700,7 @@ showMessage(
 
 ```
 button.disabled = false;
+
 button.textContent =
   '💾 حفظ جميع التعديلات';
 ```
