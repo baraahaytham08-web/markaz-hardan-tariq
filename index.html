@@ -72,11 +72,223 @@
       box-sizing: border-box;
     }
 
+
     .feature {
       width: 100%;
       box-sizing: border-box;
       text-align: center;
       margin: 0 !important;
+    }
+
+
+    /* =====================================================
+       بوابات المركز الإلكترونية
+    ===================================================== */
+
+    .portal-section {
+      width: min(1150px, 92%);
+      margin: 30px auto 45px;
+      padding: 34px 30px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.96),
+          rgba(250,248,240,.92)
+        );
+      border: 1px solid rgba(178,139,24,.16);
+      border-radius: 25px;
+      box-shadow:
+        0 15px 45px rgba(23,77,58,.09);
+      position: relative;
+      overflow: hidden;
+    }
+
+
+    .portal-section::before {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      top: -100px;
+      right: -65px;
+      border-radius: 50%;
+      background: rgba(23,77,58,.045);
+    }
+
+
+    .portal-section::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      bottom: -95px;
+      left: -55px;
+      border-radius: 50%;
+      background: rgba(178,139,24,.055);
+    }
+
+
+    .portal-heading {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+
+    .portal-heading .section-kicker {
+      display: inline-block;
+      margin-bottom: 7px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+
+    .portal-heading h2 {
+      color: var(--green);
+      font-size: 28px;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+
+    .portal-heading p {
+      color: #6f7a75;
+      font-size: 13px;
+      line-height: 1.9;
+      margin: 0 auto;
+      max-width: 650px;
+    }
+
+
+    .portal-cards {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+
+    .portal-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 145px;
+      padding: 24px 22px;
+      border-radius: 19px;
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid rgba(23,77,58,.09);
+      box-shadow: 0 8px 25px rgba(23,77,58,.07);
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+    }
+
+
+    .portal-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 5px;
+      background:
+        linear-gradient(
+          180deg,
+          var(--green),
+          var(--gold)
+        );
+    }
+
+
+    .portal-card:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 18px 38px rgba(23,77,58,.13);
+      border-color: rgba(178,139,24,.28);
+    }
+
+
+    .portal-card.teacher .portal-icon {
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+
+    .portal-card.student .portal-icon {
+      background: #fff8df;
+      color: var(--gold);
+    }
+
+
+    .portal-icon {
+      width: 68px;
+      height: 68px;
+      min-width: 68px;
+      border-radius: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 31px;
+      border: 1px solid rgba(178,139,24,.12);
+    }
+
+
+    .portal-content {
+      flex: 1;
+    }
+
+
+    .portal-content h3 {
+      color: var(--green);
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+
+    .portal-content p {
+      color: #707b76;
+      font-size: 11px;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+
+    .portal-arrow {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 15px;
+      transition: .25s ease;
+    }
+
+
+    .portal-card:hover .portal-arrow {
+      transform: translateX(-4px);
+      background: var(--green);
+      color: #fff;
+    }
+
+
+    .portal-note {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-top: 18px;
+      color: #8b9690;
+      font-size: 10px;
     }
 
 
@@ -162,6 +374,75 @@
 
       .features {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .portal-section {
+        width: 92%;
+        padding: 27px 17px;
+        margin: 25px auto 38px;
+        border-radius: 21px;
+      }
+
+
+      .portal-heading {
+        margin-bottom: 21px;
+      }
+
+
+      .portal-heading h2 {
+        font-size: 22px;
+      }
+
+
+      .portal-heading p {
+        font-size: 12px;
+        line-height: 1.8;
+      }
+
+
+      .portal-cards {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+
+      .portal-card {
+        min-height: 125px;
+        padding: 19px 16px;
+        gap: 13px;
+        border-radius: 17px;
+      }
+
+
+      .portal-icon {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        border-radius: 16px;
+        font-size: 25px;
+      }
+
+
+      .portal-content h3 {
+        font-size: 15px;
+      }
+
+
+      .portal-content p {
+        font-size: 10px;
+        line-height: 1.8;
+      }
+
+
+      .portal-arrow {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
       }
 
     }
@@ -576,6 +857,26 @@
         height: 52px;
       }
 
+      .portal-card {
+        gap: 10px;
+        padding: 17px 13px;
+      }
+
+      .portal-icon {
+        width: 51px;
+        height: 51px;
+        min-width: 51px;
+        font-size: 22px;
+      }
+
+      .portal-content h3 {
+        font-size: 14px;
+      }
+
+      .portal-content p {
+        font-size: 9px;
+      }
+
     }
 
   </style>
@@ -731,6 +1032,112 @@
           </div>
 
         </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         البوابات الإلكترونية
+    ===================================================== -->
+
+    <section class="portal-section">
+
+      <div class="portal-heading">
+
+        <span class="section-kicker">
+          البوابات الإلكترونية
+        </span>
+
+        <h2>
+          الدخول إلى بوابات المركز
+        </h2>
+
+        <p>
+          اختر البوابة المناسبة للوصول إلى نظام المتابعة والخدمات الإلكترونية للمركز.
+        </p>
+
+      </div>
+
+
+      <div class="portal-cards">
+
+
+        <!-- ================= بوابة المعلمين ================= -->
+
+        <a
+          href="teacher-login.html"
+          class="portal-card teacher"
+        >
+
+          <div class="portal-icon">
+            👨‍🏫
+          </div>
+
+
+          <div class="portal-content">
+
+            <h3>
+              بوابة المعلمين
+            </h3>
+
+            <p>
+              إدارة الطلاب ومتابعة الحفظ والحضور
+              ومتابعة تقدم الطلاب في الحلقات والشعب.
+            </p>
+
+          </div>
+
+
+          <div class="portal-arrow">
+            ←
+          </div>
+
+        </a>
+
+
+        <!-- ================= صفحة الطالب ================= -->
+
+        <a
+          href="student-login.html"
+          class="portal-card student"
+        >
+
+          <div class="portal-icon">
+            👨‍🎓
+          </div>
+
+
+          <div class="portal-content">
+
+            <h3>
+              صفحة الطالب الشخصية
+            </h3>
+
+            <p>
+              ادخل إلى صفحتك الشخصية للاطلاع على بياناتك
+              ومتابعة تقدمك ومستوى حفظك.
+            </p>
+
+          </div>
+
+
+          <div class="portal-arrow">
+            ←
+          </div>
+
+        </a>
+
+
+      </div>
+
+
+      <div class="portal-note">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        بوابات المركز مخصصة للطلاب والمعلمين
 
       </div>
 
@@ -1041,7 +1448,7 @@
         <div>
 
           <a
-            href="https://maps.app.goo.gl/22hyWWJtPrH8UpAr9"
+            href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
             target="_blank"
             rel="noopener"
             aria-label="موقع المركز"
