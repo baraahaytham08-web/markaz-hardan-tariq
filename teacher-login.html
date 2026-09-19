@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
   <title>بوابة المعلمين | مركز حردان طارق القرآني</title>
 
@@ -10,188 +15,349 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
+
     * {
       box-sizing: border-box;
+    }
+
+    :root {
+      --green: #174d3a;
+      --green-dark: #103b2c;
+      --green-light: #edf5f1;
+      --gold: #b28b18;
+      --gold-light: #d4b44c;
+      --cream: #faf8f0;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #111, #252525);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--cream) 0%,
+          #ffffff 45%,
+          var(--green-light) 100%
+        );
+
       display: flex;
       justify-content: center;
       align-items: center;
+
       padding: 20px;
-      color: white;
+      color: #222;
     }
 
     .login-box {
+      position: relative;
+
       width: 100%;
       max-width: 430px;
+
       background: white;
-      color: #222;
+
       border-radius: 24px;
+
       padding: 35px 30px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+
+      box-shadow:
+        0 20px 60px rgba(23,77,58,.15);
+
       text-align: center;
+
+      border: 1px solid rgba(178,139,24,.18);
+
+      overflow: hidden;
+    }
+
+    .login-box::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      right: 0;
+      left: 0;
+
+      height: 5px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--green),
+          var(--gold),
+          var(--green)
+        );
     }
 
     .logo {
-      width: 85px;
-      height: 85px;
+      width: 90px;
+      height: 90px;
+
       object-fit: contain;
+
       border-radius: 50%;
+
       margin-bottom: 15px;
+
+      border: 2px solid rgba(178,139,24,.25);
+
+      padding: 5px;
+
+      background: #fff;
+
+      box-shadow:
+        0 8px 25px rgba(23,77,58,.10);
     }
 
     h1 {
       margin: 5px 0 8px;
-      font-size: 26px;
+
+      font-size: 27px;
+
+      color: var(--green);
     }
 
     .subtitle {
       color: #777;
+
       margin-bottom: 30px;
+
       line-height: 1.7;
     }
 
     .input-group {
       text-align: right;
+
       margin-bottom: 18px;
     }
 
     label {
       display: block;
+
       margin-bottom: 8px;
+
       font-weight: bold;
+
+      color: var(--green);
     }
 
     input {
       width: 100%;
+
       padding: 14px;
+
       border: 1px solid #ddd;
+
       border-radius: 12px;
+
       font-size: 16px;
+
       outline: none;
+
+      transition: .2s;
+
+      background: #fff;
     }
 
     input:focus {
-      border-color: #222;
+      border-color: var(--gold);
+
+      box-shadow:
+        0 0 0 3px rgba(178,139,24,.10);
     }
 
     button {
       width: 100%;
+
       padding: 15px;
+
       border: none;
+
       border-radius: 12px;
-      background: #111;
+
+      background: var(--green);
+
       color: white;
+
       font-size: 17px;
+
       font-weight: bold;
+
       cursor: pointer;
+
       transition: .2s;
+
+      box-shadow:
+        0 7px 18px rgba(23,77,58,.18);
     }
 
     button:hover {
       transform: translateY(-2px);
-      opacity: .9;
+
+      background: var(--green-dark);
+
+      box-shadow:
+        0 10px 24px rgba(23,77,58,.25);
     }
 
     button:disabled {
       opacity: .6;
+
       cursor: wait;
+
       transform: none;
     }
 
     #message {
       margin-top: 18px;
+
       min-height: 24px;
+
       font-weight: bold;
+
       line-height: 1.6;
     }
 
     .back {
       display: inline-block;
+
       margin-top: 20px;
-      color: #555;
+
+      color: var(--green);
+
       text-decoration: none;
+
+      font-weight: bold;
+
+      transition: .2s;
     }
 
     .back:hover {
+      color: var(--gold);
+
       text-decoration: underline;
     }
 
     .badge {
       position: fixed;
+
       top: 12px;
+
       left: 12px;
-      background: #111;
+
+      background: var(--green);
+
       color: white;
+
       padding: 7px 12px;
+
       border-radius: 20px;
+
       font-size: 12px;
+
+      box-shadow:
+        0 5px 15px rgba(23,77,58,.15);
     }
+
   </style>
+
 </head>
 
 <body>
 
-  <div class="badge">النسخة التجريبية</div>
+  <div class="badge">
+    النسخة التجريبية
+  </div>
+
 
   <div class="login-box">
 
-    <img src="logo.png" class="logo" alt="شعار المركز">
+    <img
+      src="logo.png"
+      class="logo"
+      alt="شعار المركز">
 
-    <h1>بوابة المعلمين</h1>
+
+    <h1>
+      بوابة المعلمين
+    </h1>
+
 
     <div class="subtitle">
+
       مركز حردان طارق القرآني<br>
+
       الدخول مخصص للمستخدمين المصرح لهم
+
     </div>
+
 
     <form id="loginForm">
 
       <div class="input-group">
-        <label for="email">البريد الإلكتروني</label>
+
+        <label for="email">
+          البريد الإلكتروني
+        </label>
 
         <input
           type="email"
           id="email"
           placeholder="أدخل البريد الإلكتروني"
           required
-          autocomplete="email"
-        >
+          autocomplete="email">
+
       </div>
 
+
       <div class="input-group">
-        <label for="password">كلمة المرور</label>
+
+        <label for="password">
+          كلمة المرور
+        </label>
 
         <input
           type="password"
           id="password"
           placeholder="أدخل كلمة المرور"
           required
-          autocomplete="current-password"
-        >
+          autocomplete="current-password">
+
       </div>
 
-      <button type="submit" id="loginButton">
+
+      <button
+        type="submit"
+        id="loginButton">
+
         <i class="fa-solid fa-right-to-bracket"></i>
+
         دخول البوابة
+
       </button>
 
     </form>
 
+
     <div id="message"></div>
 
-    <a href="index.html" class="back">
+
+    <a
+      href="index.html"
+      class="back">
+
       ← العودة إلى الموقع
+
     </a>
 
   </div>
 
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
   <script>
 
@@ -201,83 +367,121 @@
     const SUPABASE_PUBLISHABLE_KEY =
       'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
-    const supabaseClient = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_PUBLISHABLE_KEY
-    );
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
 
-    const allowedEmail = 'baraahaytham08@gmail.com';
 
-    const form = document.getElementById('loginForm');
-    const button = document.getElementById('loginButton');
-    const message = document.getElementById('message');
+    const allowedEmail =
+      'baraahaytham08@gmail.com';
 
-    form.addEventListener('submit', async function(event) {
 
-      event.preventDefault();
+    const form =
+      document.getElementById('loginForm');
 
-      const email =
-        document.getElementById('email').value.trim().toLowerCase();
+    const button =
+      document.getElementById('loginButton');
 
-      const password =
-        document.getElementById('password').value;
+    const message =
+      document.getElementById('message');
 
-      message.textContent = '';
 
-      button.disabled = true;
+    form.addEventListener(
+      'submit',
+      async function(event) {
 
-      button.innerHTML = 'جارٍ تسجيل الدخول...';
+        event.preventDefault();
 
-      if (email !== allowedEmail) {
 
-        message.textContent =
-          'هذا الحساب غير مصرح له بالدخول.';
+        const email =
+          document
+            .getElementById('email')
+            .value
+            .trim()
+            .toLowerCase();
 
-        button.disabled = false;
 
-        button.innerHTML =
-          '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+        const password =
+          document
+            .getElementById('password')
+            .value;
 
-        return;
-      }
 
-      const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
-          email: email,
-          password: password
-        });
+        message.textContent = '';
 
-      if (error) {
-
-        message.textContent =
-          'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
-
-        button.disabled = false;
+        button.disabled = true;
 
         button.innerHTML =
-          '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+          'جارٍ تسجيل الدخول...';
 
-        return;
-      }
 
-      if (data.user) {
+        if (email !== allowedEmail) {
 
-        window.location.href = 'teacher-dashboard.html';
+          message.textContent =
+            'هذا الحساب غير مصرح له بالدخول.';
 
-      } else {
+          button.disabled = false;
 
-        message.textContent =
-          'حدث خطأ أثناء تسجيل الدخول.';
+          button.innerHTML =
+            '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
 
-        button.disabled = false;
+          return;
 
-        button.innerHTML =
-          '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
-      }
+        }
 
-    });
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient.auth
+            .signInWithPassword({
+
+              email: email,
+
+              password: password
+
+            });
+
+
+        if (error) {
+
+          message.textContent =
+            'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+
+          button.disabled = false;
+
+          button.innerHTML =
+            '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+
+          return;
+
+        }
+
+
+        if (data.user) {
+
+          window.location.href =
+            'teacher-dashboard.html';
+
+        } else {
+
+          message.textContent =
+            'حدث خطأ أثناء تسجيل الدخول.';
+
+          button.disabled = false;
+
+          button.innerHTML =
+            '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+
+        }
+
+      });
 
   </script>
 
 </body>
+
 </html>
