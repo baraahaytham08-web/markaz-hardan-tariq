@@ -15,6 +15,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -1606,7 +1607,8 @@
       color:
         var(--green);
 
-      font-size: 18px;
+      font-size:
+        18px;
 
       margin-bottom:
         4px;
@@ -2090,6 +2092,7 @@
           0;
       }
     }
+
   </style>
 </head>
 
@@ -2836,6 +2839,10 @@
 
   <script>
 
+    /* =====================================================
+       SUPABASE
+    ====================================================== */
+
     const SUPABASE_URL =
       'https://lsbbcybpiulusdgfhepf.supabase.co';
 
@@ -2848,7 +2855,10 @@
         SUPABASE_PUBLISHABLE_KEY
       );
 
-    /* ================= ELEMENTS ================= */
+
+    /* =====================================================
+       ELEMENTS
+    ====================================================== */
 
     const tableBody =
       document.getElementById(
@@ -2960,15 +2970,67 @@
         'pendingCount'
       );
 
+
+    /* =====================================================
+       STATE
+    ====================================================== */
+
     let students = [];
 
-    let editingStudentId = null;
+    let editingStudentId =
+      null;
 
     let profileMap = {};
 
+
     /* =====================================================
-       TOAST
+       HELPERS
     ====================================================== */
+
+    function normalizeValue(
+      value
+    ) {
+
+      return String(
+        value ?? ''
+      )
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, ' ');
+
+    }
+
+
+    function escapeHtml(
+      text
+    ) {
+
+      return String(
+        text ?? ''
+      )
+        .replaceAll(
+          '&',
+          '&amp;'
+        )
+        .replaceAll(
+          '<',
+          '&lt;'
+        )
+        .replaceAll(
+          '>',
+          '&gt;'
+        )
+        .replaceAll(
+          '"',
+          '&quot;'
+        )
+        .replaceAll(
+          "'",
+          '&#039;'
+        );
+
+    }
+
 
     function showToast(
       text,
@@ -2979,26 +3041,32 @@
         text;
 
       toast.className =
-        'toast show ' + type;
+        'toast show ' +
+        type;
 
       toastIcon.className =
         type === 'success'
           ? 'fa-solid fa-circle-check'
           : 'fa-solid fa-circle-exclamation';
 
-      setTimeout(() => {
 
-        toast.classList.remove(
-          'show'
-        );
+      setTimeout(
+        () => {
 
-      }, 3000);
+          toast.classList.remove(
+            'show'
+          );
+
+        },
+        3000
+      );
+
     }
+
 
     /* =====================================================
        AUTH
-       الدخول أصبح عن طريق الكود الموحد فقط
-       ولا يوجد أي اعتماد على الإيميل
+       الدخول بالكود الموحد
     ====================================================== */
 
     function checkUser() {
@@ -3009,12 +3077,15 @@
         ) === 'granted';
 
 
-      if (!accessGranted) {
+      if (
+        !accessGranted
+      ) {
 
         window.location.href =
           'teacher-login.html';
 
         return false;
+
       }
 
 
@@ -3031,66 +3102,99 @@
 
 
       return true;
+
     }
+
 
     /* =====================================================
        SAFE NUMBER
     ====================================================== */
 
-    function toNumber(value) {
+    function toNumber(
+      value
+    ) {
 
       const n =
         Number(
-          String(value ?? '')
-            .replace(',', '.')
-            .replace(/[^\d.-]/g, '')
+          String(
+            value ?? ''
+          )
+            .replace(
+              ',',
+              '.'
+            )
+            .replace(
+              /[^\d.-]/g,
+              ''
+            )
         );
 
-      return Number.isFinite(n)
+
+      return Number.isFinite(
+        n
+      )
         ? n
         : 0;
+
     }
+
 
     /* =====================================================
        ATTENDANCE POINTS
     ====================================================== */
 
-    function attendancePoint(status) {
+    function attendancePoint(
+      status
+    ) {
 
       const value =
-        String(status || '')
-          .trim()
-          .toLowerCase();
+        normalizeValue(
+          status
+        );
+
 
       if (
         value === 'حاضر' ||
         value === 'present'
       ) {
+
         return 2;
+
       }
+
 
       if (
         value === 'متأخر' ||
         value === 'late'
       ) {
+
         return 1;
+
       }
+
 
       if (
         value === 'معتذر' ||
         value === 'excused'
       ) {
+
         return .5;
+
       }
 
+
       return 0;
+
     }
+
 
     /* =====================================================
        RECITATION POINTS
     ====================================================== */
 
-    function recitationPoint(item) {
+    function recitationPoint(
+      item
+    ) {
 
       const raw =
         item?.grade ??
@@ -3101,79 +3205,149 @@
         item?.result ??
         '';
 
+
       const type =
-        String(
-          item?.type || ''
-        )
-          .trim()
-          .toLowerCase();
+        normalizeValue(
+          item?.type
+        );
+
 
       const isReview =
         type === 'review' ||
         type === 'مراجعة';
 
+
       const numeric =
-        toNumber(raw);
+        toNumber(
+          raw
+        );
 
-      if (numeric > 0) {
 
-        if (numeric >= 97) {
-          return isReview ? 3 : 6;
+      if (
+        numeric > 0
+      ) {
+
+        if (
+          numeric >= 97
+        ) {
+
+          return isReview
+            ? 3
+            : 6;
+
         }
 
-        if (numeric >= 95) {
-          return isReview ? 2.5 : 5;
+
+        if (
+          numeric >= 95
+        ) {
+
+          return isReview
+            ? 2.5
+            : 5;
+
         }
 
-        if (numeric >= 92) {
-          return isReview ? 2 : 4;
+
+        if (
+          numeric >= 92
+        ) {
+
+          return isReview
+            ? 2
+            : 4;
+
         }
 
-        if (numeric >= 90) {
-          return isReview ? 1 : 2;
+
+        if (
+          numeric >= 90
+        ) {
+
+          return isReview
+            ? 1
+            : 2;
+
         }
+
 
         return 0;
+
       }
+
 
       const label =
-        String(raw)
-          .trim()
-          .toLowerCase();
+        normalizeValue(
+          raw
+        );
+
 
       if (
-        label.includes('ممتاز')
+        label.includes(
+          'ممتاز'
+        )
       ) {
-        return isReview ? 3 : 6;
+
+        return isReview
+          ? 3
+          : 6;
+
       }
 
-      if (
-        label.includes('جيد جداً') ||
-        label.includes('جيد جدا')
-      ) {
-        return isReview ? 2.5 : 5;
-      }
 
       if (
-        label === 'جيد'
+        label.includes(
+          'جيد جداً'
+        ) ||
+        label.includes(
+          'جيد جدا'
+        )
       ) {
-        return isReview ? 2 : 4;
+
+        return isReview
+          ? 2.5
+          : 5;
+
       }
 
+
       if (
-        label.includes('مقبول')
+        label ===
+        'جيد'
       ) {
-        return isReview ? 1 : 2;
+
+        return isReview
+          ? 2
+          : 4;
+
       }
+
+
+      if (
+        label.includes(
+          'مقبول'
+        )
+      ) {
+
+        return isReview
+          ? 1
+          : 2;
+
+      }
+
 
       return 0;
+
     }
+
 
     /* =====================================================
        TEST POINTS
     ====================================================== */
 
-    function testPoint(item) {
+    function testPoint(
+      item
+    ) {
 
       const raw =
         item?.grade ??
@@ -3183,66 +3357,105 @@
         item?.score ??
         '';
 
-      const numeric =
-        toNumber(raw);
 
-      if (numeric > 0) {
+      const numeric =
+        toNumber(
+          raw
+        );
+
+
+      if (
+        numeric > 0
+      ) {
 
         const percentage =
           numeric <= 12
+
             ? (
                 numeric /
                 12
               ) * 100
+
             : numeric;
+
 
         if (
           percentage >= 97
         ) {
+
           return 12;
+
         }
+
 
         if (
           percentage >= 90
         ) {
+
           return 8;
+
         }
+
 
         if (
           percentage >= 80
         ) {
+
           return 4;
+
         }
 
+
         return 0;
+
       }
+
 
       const label =
-        String(raw)
-          .trim()
-          .toLowerCase();
+        normalizeValue(
+          raw
+        );
+
 
       if (
-        label.includes('ممتاز')
+        label.includes(
+          'ممتاز'
+        )
       ) {
+
         return 12;
+
       }
 
+
       if (
-        label.includes('جيد جداً') ||
-        label.includes('جيد جدا')
+        label.includes(
+          'جيد جداً'
+        ) ||
+        label.includes(
+          'جيد جدا'
+        )
       ) {
+
         return 8;
+
       }
 
+
       if (
-        label === 'جيد'
+        label ===
+        'جيد'
       ) {
+
         return 4;
+
       }
+
 
       return 0;
+
     }
+
 
     /* =====================================================
        STUDENT PERFORMANCE
@@ -3255,12 +3468,14 @@
       const profile =
         profileData || {};
 
+
       const attendance =
         Array.isArray(
           profile.attendance
         )
           ? profile.attendance
           : [];
+
 
       const recitations =
         Array.isArray(
@@ -3269,12 +3484,14 @@
           ? profile.recitations
           : [];
 
+
       const tests =
         Array.isArray(
           profile.tests
         )
           ? profile.tests
           : [];
+
 
       /* ===== الحضور ===== */
 
@@ -3283,18 +3500,25 @@
           (
             sum,
             item
-          ) =>
-            sum +
-            attendancePoint(
-              item?.status ??
-              item?.state ??
-              item?.attendance
-            ),
+          ) => {
+
+            return (
+              sum +
+              attendancePoint(
+                item?.status ??
+                item?.state ??
+                item?.attendance
+              )
+            );
+
+          },
           0
         );
 
+
       const attendanceScore =
         attendance.length
+
           ? Math.min(
               100,
               (
@@ -3305,7 +3529,9 @@
                 )
               ) * 100
             )
+
           : 0;
+
 
       /* ===== الحفظ ===== */
 
@@ -3314,18 +3540,19 @@
           item => {
 
             const type =
-              String(
-                item?.type || ''
-              )
-                .trim()
-                .toLowerCase();
+              normalizeValue(
+                item?.type
+              );
+
 
             return (
               type !== 'review' &&
               type !== 'مراجعة'
             );
+
           }
         );
+
 
       /* ===== المراجعة ===== */
 
@@ -3334,47 +3561,61 @@
           item => {
 
             const type =
-              String(
-                item?.type || ''
-              )
-                .trim()
-                .toLowerCase();
+              normalizeValue(
+                item?.type
+              );
+
 
             return (
               type === 'review' ||
               type === 'مراجعة'
             );
+
           }
         );
+
 
       const hifzPoints =
         hifz.reduce(
           (
             sum,
             item
-          ) =>
-            sum +
-            recitationPoint(
-              item
-            ),
+          ) => {
+
+            return (
+              sum +
+              recitationPoint(
+                item
+              )
+            );
+
+          },
           0
         );
+
 
       const reviewPoints =
         review.reduce(
           (
             sum,
             item
-          ) =>
-            sum +
-            recitationPoint(
-              item
-            ),
+          ) => {
+
+            return (
+              sum +
+              recitationPoint(
+                item
+              )
+            );
+
+          },
           0
         );
 
+
       const hifzScore =
         hifz.length
+
           ? Math.min(
               100,
               (
@@ -3385,10 +3626,13 @@
                 )
               ) * 100
             )
+
           : 0;
+
 
       const reviewScore =
         review.length
+
           ? Math.min(
               100,
               (
@@ -3399,7 +3643,9 @@
                 )
               ) * 100
             )
+
           : 0;
+
 
       /* ===== الاختبارات ===== */
 
@@ -3408,14 +3654,23 @@
           (
             sum,
             item
-          ) =>
-            sum +
-            testPoint(item),
+          ) => {
+
+            return (
+              sum +
+              testPoint(
+                item
+              )
+            );
+
+          },
           0
         );
 
+
       const testsScore =
         tests.length
+
           ? Math.min(
               100,
               (
@@ -3426,7 +3681,9 @@
                 )
               ) * 100
             )
+
           : 0;
+
 
       /* ===== التقييم من 100 ===== */
 
@@ -3448,6 +3705,7 @@
           .20
         );
 
+
       /* ===== النقاط الكلية ===== */
 
       const recitationPointsTotal =
@@ -3455,18 +3713,25 @@
           (
             sum,
             item
-          ) =>
-            sum +
-            recitationPoint(
-              item
-            ),
+          ) => {
+
+            return (
+              sum +
+              recitationPoint(
+                item
+              )
+            );
+
+          },
           0
         );
+
 
       const totalPoints =
         attendancePoints +
         recitationPointsTotal +
         testPoints;
+
 
       return {
 
@@ -3488,7 +3753,9 @@
           ) / 10
 
       };
+
     }
+
 
     /* =====================================================
        LOAD PROFILES
@@ -3496,44 +3763,72 @@
 
     async function loadProfiles() {
 
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
-          .from('student_profiles')
-          .select(
-            'student_id, data'
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from(
+              'student_profiles'
+            )
+            .select(
+              'student_id, data'
+            );
+
+
+        if (
+          error
+        ) {
+
+          console.warn(
+            'تعذر تحميل ملفات الطلاب:',
+            error
           );
 
-      if (error) {
+          profileMap = {};
 
-        console.warn(
-          'تعذر تحميل ملفات الطلاب:',
+          return;
+
+        }
+
+
+        profileMap = {};
+
+
+        (
+          data || []
+        ).forEach(
+          row => {
+
+            profileMap[
+              String(
+                row.student_id
+              )
+            ] =
+              row.data || {};
+
+          }
+        );
+
+      }
+
+      catch (
+        error
+      ) {
+
+        console.error(
+          'PROFILE LOAD ERROR:',
           error
         );
 
         profileMap = {};
 
-        return;
       }
 
-      profileMap = {};
-
-      (
-        data || []
-      ).forEach(
-        row => {
-
-          profileMap[
-            String(
-              row.student_id
-            )
-          ] =
-            row.data || {};
-        }
-      );
     }
+
 
     function getStudentPerformance(
       student
@@ -3541,10 +3836,14 @@
 
       return calculateStudentPerformance(
         profileMap[
-          String(student.id)
+          String(
+            student.id
+          )
         ] || {}
       );
+
     }
+
 
     function formatPoints(
       points
@@ -3555,12 +3854,15 @@
           points || 0
         );
 
+
       return Number.isInteger(
         value
       )
         ? `${value} نقطة`
         : `${value.toFixed(1)} نقطة`;
+
     }
+
 
     /* =====================================================
        STATUS INFO
@@ -3570,37 +3872,72 @@
       status
     ) {
 
+      const normalized =
+        normalizeValue(
+          status
+        );
+
+
       const map = {
 
         active: {
-          text: 'مستمر',
-          className: 'active'
+          text:
+            'مستمر',
+
+          className:
+            'active'
         },
 
         inactive: {
-          text: 'متوقف',
-          className: 'inactive'
+          text:
+            'متوقف',
+
+          className:
+            'inactive'
         },
 
         rejected: {
-          text: 'غير مقبول',
-          className: 'rejected'
+          text:
+            'غير مقبول',
+
+          className:
+            'rejected'
         },
 
         expelled: {
-          text: 'مفصول',
-          className: 'expelled'
+          text:
+            'مفصول',
+
+          className:
+            'expelled'
+        },
+
+        pending: {
+          text:
+            'قيد المراجعة',
+
+          className:
+            'inactive'
         }
 
       };
 
+
       return (
-        map[status] || {
-          text: 'غير محدد',
-          className: 'inactive'
+        map[
+          normalized
+        ] || {
+
+          text:
+            'غير محدد',
+
+          className:
+            'inactive'
         }
       );
+
     }
+
 
     /* =====================================================
        LOAD STUDENTS
@@ -3608,51 +3945,133 @@
 
     async function loadStudents() {
 
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
-          .from('students')
-          .select('*')
-          .order(
-            'created_at',
-            {
-              ascending: false
-            }
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from(
+              'students'
+            )
+            .select('*')
+            .order(
+              'created_at',
+              {
+                ascending:
+                  false
+              }
+            );
+
+
+        if (
+          error
+        ) {
+
+          console.error(
+            'LOAD STUDENTS ERROR:',
+            error
           );
 
-      if (error) {
+
+          students =
+            [];
+
+
+          emptyMessage.style.display =
+            'block';
+
+
+          emptyMessage.querySelector(
+            'strong'
+          ).textContent =
+            'تعذر تحميل البيانات';
+
+
+          emptyMessage.querySelector(
+            'p'
+          ).textContent =
+            'حدث خطأ أثناء جلب الطلاب من قاعدة البيانات.';
+
+
+          return;
+
+        }
+
+
+        /*
+          نتأكد أن البيانات التي رجعت
+          من Supabase هي مصفوفة فعلًا.
+        */
+
+        students =
+          Array.isArray(
+            data
+          )
+            ? data
+            : [];
+
+
+        /*
+          تحميل ملفات الطلاب بعد نجاح
+          تحميل جدول students.
+        */
+
+        await loadProfiles();
+
+
+        /*
+          نرسم القائمة بعد اكتمال جميع البيانات.
+        */
+
+        renderStudents();
+
+        updateStats();
+
+
+        /*
+          فحص داخلي لبراء.
+          لا يؤثر على الموقع.
+        */
+
+        const baraa =
+          students.find(
+            student =>
+              normalizeValue(
+                student.name
+              ).includes(
+                'براء'
+              )
+          );
+
+
+        console.log(
+          'عدد الطلاب المحمّلين:',
+          students.length
+        );
+
+
+        console.log(
+          'براء:',
+          baraa || 'لم يتم تحميل براء من Supabase'
+        );
+
+      }
+
+      catch (
+        error
+      ) {
 
         console.error(
+          'UNEXPECTED LOAD ERROR:',
           error
         );
 
-        emptyMessage.style.display =
-          'block';
-
-        emptyMessage.querySelector(
-          'strong'
-        ).textContent =
-          'تعذر تحميل البيانات';
-
-        emptyMessage.querySelector(
-          'p'
-        ).textContent =
-          'تأكد من إعداد قاعدة البيانات والصلاحيات.';
-
-        return;
       }
 
-      students =
-        data || [];
-
-      await loadProfiles();
-
-      renderStudents();
-
-      updateStats();
     }
+
 
     /* =====================================================
        LOAD PENDING REQUESTS
@@ -3660,160 +4079,199 @@
 
     async function loadPendingRequests() {
 
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
-          .from('students')
-          .select('*')
-          .eq(
-            'status',
-            'pending'
-          )
-          .order(
-            'created_at',
-            {
-              ascending: false
-            }
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabaseClient
+            .from(
+              'students'
+            )
+            .select('*')
+            .eq(
+              'status',
+              'pending'
+            )
+            .order(
+              'created_at',
+              {
+                ascending:
+                  false
+              }
+            );
+
+
+        if (
+          error
+        ) {
+
+          console.error(
+            'REQUESTS ERROR:',
+            error
           );
 
-      if (error) {
+          return;
+
+        }
+
+
+        const requests =
+          Array.isArray(
+            data
+          )
+            ? data
+            : [];
+
+
+        pendingCount.textContent =
+          `${requests.length} طلب`;
+
+
+        if (
+          requests.length ===
+          0
+        ) {
+
+          requestsList.innerHTML = `
+
+            <div class="requests-empty">
+
+              <i class="fa-solid fa-inbox"></i>
+
+              <strong>
+                لا توجد طلبات جديدة
+              </strong>
+
+              <span>
+                ستظهر هنا طلبات الطلاب الجدد بعد التسجيل.
+              </span>
+
+            </div>
+
+          `;
+
+          return;
+
+        }
+
+
+        requestsList.innerHTML =
+          requests
+            .map(
+              student => {
+
+                return `
+
+                  <div class="request-card">
+
+                    <div class="request-content">
+
+                      <div>
+
+                        <div class="request-name">
+
+                          ${escapeHtml(
+                            student.name || ''
+                          )}
+
+                        </div>
+
+                        <div class="request-details">
+
+                          العمر:
+                          ${
+                            student.age ||
+                            'غير محدد'
+                          }
+
+                          <br>
+
+                          الشعبة:
+                          ${escapeHtml(
+                            student.section ||
+                            '-'
+                          )}
+
+                          <br>
+
+                          هاتف ولي الأمر:
+                          ${escapeHtml(
+                            student.guardian_phone ||
+                            '-'
+                          )}
+
+                          ${
+                            student.notes
+                              ? `
+                                <br>
+                                الملاحظات:
+                                ${escapeHtml(
+                                  student.notes
+                                )}
+                              `
+                              : ''
+                          }
+
+                        </div>
+
+                      </div>
+
+                      <div class="request-actions">
+
+                        <button
+                          type="button"
+                          class="approve-btn"
+                          onclick="approveStudent('${student.id}')">
+
+                          <i class="fa-solid fa-check"></i>
+
+                          قبول
+
+                        </button>
+
+                        <button
+                          type="button"
+                          class="reject-btn"
+                          onclick="rejectStudent('${student.id}')">
+
+                          <i class="fa-solid fa-xmark"></i>
+
+                          رفض
+
+                        </button>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                `;
+
+              }
+            )
+            .join('');
+
+      }
+
+      catch (
+        error
+      ) {
 
         console.error(
-          'خطأ في تحميل طلبات الانضمام:',
+          'UNEXPECTED REQUEST ERROR:',
           error
         );
 
-        return;
       }
 
-      const requests =
-        data || [];
-
-      pendingCount.textContent =
-        `${requests.length} طلب`;
-
-      if (
-        requests.length === 0
-      ) {
-
-        requestsList.innerHTML = `
-
-          <div class="requests-empty">
-
-            <i class="fa-solid fa-inbox"></i>
-
-            <strong>
-              لا توجد طلبات جديدة
-            </strong>
-
-            <span>
-              ستظهر هنا طلبات الطلاب الجدد بعد التسجيل.
-            </span>
-
-          </div>
-
-        `;
-
-        return;
-      }
-
-      requestsList.innerHTML =
-        requests.map(
-          student => {
-
-            return `
-
-              <div class="request-card">
-
-                <div class="request-content">
-
-                  <div>
-
-                    <div class="request-name">
-
-                      ${escapeHtml(
-                        student.name || ''
-                      )}
-
-                    </div>
-
-                    <div class="request-details">
-
-                      العمر:
-                      ${
-                        student.age ||
-                        'غير محدد'
-                      }
-
-                      <br>
-
-                      الشعبة:
-                      ${escapeHtml(
-                        student.section || '-'
-                      )}
-
-                      <br>
-
-                      هاتف ولي الأمر:
-                      ${escapeHtml(
-                        student.guardian_phone || '-'
-                      )}
-
-                      ${
-                        student.notes
-                          ? `
-                            <br>
-                            الملاحظات:
-                            ${escapeHtml(
-                              student.notes
-                            )}
-                          `
-                          : ''
-                      }
-
-                    </div>
-
-                  </div>
-
-                  <div class="request-actions">
-
-                    <button
-                      type="button"
-                      class="approve-btn"
-                      onclick="approveStudent('${student.id}')">
-
-                      <i class="fa-solid fa-check"></i>
-
-                      قبول
-
-                    </button>
-
-                    <button
-                      type="button"
-                      class="reject-btn"
-                      onclick="rejectStudent('${student.id}')">
-
-                      <i class="fa-solid fa-xmark"></i>
-
-                      رفض
-
-                    </button>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            `;
-          }
-        ).join('');
     }
 
+
     /* =====================================================
-       APPROVE
+       APPROVE REQUEST
     ====================================================== */
 
     window.approveStudent =
@@ -3826,13 +4284,23 @@
             'هل تريد قبول هذا الطالب وإضافته إلى قائمة الطلاب؟'
           );
 
-        if (!confirmed) return;
+
+        if (
+          !confirmed
+        ) {
+
+          return;
+
+        }
+
 
         const {
           error
         } =
           await supabaseClient
-            .from('students')
+            .from(
+              'students'
+            )
             .update({
               status:
                 'active'
@@ -3846,31 +4314,41 @@
               'pending'
             );
 
-        if (error) {
+
+        if (
+          error
+        ) {
 
           console.error(
             error
           );
+
 
           showToast(
             'حدث خطأ أثناء قبول الطلب.',
             'error'
           );
 
+
           return;
+
         }
+
 
         showToast(
           'تم قبول الطالب وإضافته إلى النظام.'
         );
 
+
         await loadStudents();
 
         await loadPendingRequests();
+
       };
 
+
     /* =====================================================
-       REJECT
+       REJECT REQUEST
     ====================================================== */
 
     window.rejectStudent =
@@ -3883,13 +4361,23 @@
             'هل أنت متأكد من رفض طلب الانضمام؟'
           );
 
-        if (!confirmed) return;
+
+        if (
+          !confirmed
+        ) {
+
+          return;
+
+        }
+
 
         const {
           error
         } =
           await supabaseClient
-            .from('students')
+            .from(
+              'students'
+            )
             .update({
               status:
                 'rejected'
@@ -3903,33 +4391,45 @@
               'pending'
             );
 
-        if (error) {
+
+        if (
+          error
+        ) {
 
           console.error(
             error
           );
+
 
           showToast(
             'حدث خطأ أثناء رفض الطلب.',
             'error'
           );
 
+
           return;
+
         }
+
 
         showToast(
           'تم رفض طلب الانضمام.'
         );
 
+
         await loadStudents();
 
         await loadPendingRequests();
 
+
         statusFilter.value =
           'rejected';
 
+
         renderStudents();
+
       };
+
 
     /* =====================================================
        FILTER + SORT
@@ -3938,18 +4438,26 @@
     function getFilteredStudents() {
 
       const search =
-        searchInput.value
-          .trim()
-          .toLowerCase();
+        normalizeValue(
+          searchInput.value
+        );
+
 
       const selectedSection =
-        sectionFilter.value;
+        normalizeValue(
+          sectionFilter.value
+        );
+
 
       const selectedStatus =
-        statusFilter.value;
+        normalizeValue(
+          statusFilter.value
+        );
+
 
       const selectedSort =
         sortFilter.value;
+
 
       let filtered =
         students
@@ -3960,6 +4468,7 @@
                 getStudentPerformance(
                   student
                 );
+
 
               return {
 
@@ -3972,28 +4481,61 @@
                   performance.totalPoints
 
               };
+
             }
           )
           .filter(
             student => {
 
+              /*
+                توحيد قيم البيانات قبل المقارنة.
+              */
+
+              const studentName =
+                normalizeValue(
+                  student.name
+                );
+
+
+              const studentSection =
+                normalizeValue(
+                  student.section
+                );
+
+
+              const studentStatus =
+                normalizeValue(
+                  student.status
+                );
+
+
+              /* ===== SEARCH ===== */
+
               const matchesSearch =
-                String(
-                  student.name ||
-                  ''
-                )
-                  .toLowerCase()
-                  .includes(
-                    search
-                  );
+                !search ||
+                studentName.includes(
+                  search
+                );
+
+
+              /* ===== SECTION ===== */
 
               const matchesSection =
                 !selectedSection ||
-                student.section ===
-                selectedSection;
+                studentSection ===
+                  selectedSection;
+
+
+              /* ===== STATUS ===== */
 
               let matchesStatus =
                 true;
+
+
+              /*
+                المقبولون:
+                active + inactive
+              */
 
               if (
                 selectedStatus ===
@@ -4001,12 +4543,17 @@
               ) {
 
                 matchesStatus =
-                  student.status ===
+                  studentStatus ===
                     'active' ||
-                  student.status ===
+                  studentStatus ===
                     'inactive';
 
               }
+
+
+              /*
+                جميع الطلاب
+              */
 
               else if (
                 selectedStatus ===
@@ -4018,22 +4565,33 @@
 
               }
 
+
+              /*
+                حالة محددة
+              */
+
               else {
 
                 matchesStatus =
-                  student.status ===
+                  studentStatus ===
                   selectedStatus;
+
               }
+
 
               return (
                 matchesSearch &&
                 matchesSection &&
                 matchesStatus
               );
+
             }
           );
 
-      /* ===== SORT ===== */
+
+      /* =================================================
+         SORT
+      ================================================== */
 
       filtered.sort(
         (
@@ -4048,19 +4606,28 @@
 
             const pointsDiff =
               (
-                b._points || 0
+                Number(
+                  b._points
+                ) || 0
               ) -
               (
-                a._points || 0
+                Number(
+                  a._points
+                ) || 0
               );
 
+
             if (
-              pointsDiff !== 0
+              pointsDiff !==
+              0
             ) {
 
               return pointsDiff;
+
             }
+
           }
+
 
           if (
             selectedSort ===
@@ -4077,13 +4644,18 @@
                 'ar'
               );
 
+
             if (
-              sectionCompare !== 0
+              sectionCompare !==
+              0
             ) {
 
               return sectionCompare;
+
             }
+
           }
+
 
           return String(
             a.name || ''
@@ -4093,11 +4665,15 @@
             ),
             'ar'
           );
+
         }
       );
 
+
       return filtered;
+
     }
+
 
     /* =====================================================
        RENDER STUDENTS
@@ -4108,8 +4684,10 @@
       const filtered =
         getFilteredStudents();
 
+
       tableBody.innerHTML =
         '';
+
 
       if (
         filtered.length ===
@@ -4119,13 +4697,21 @@
         emptyMessage.style.display =
           'block';
 
+
         const title =
           emptyMessage.querySelector(
             'strong'
           );
 
+
+        const selectedStatus =
+          normalizeValue(
+            statusFilter.value
+          );
+
+
         if (
-          statusFilter.value ===
+          selectedStatus ===
           'rejected'
         ) {
 
@@ -4135,7 +4721,7 @@
         }
 
         else if (
-          statusFilter.value ===
+          selectedStatus ===
           'expelled'
         ) {
 
@@ -4144,17 +4730,42 @@
 
         }
 
+        else if (
+          selectedStatus ===
+          'active'
+        ) {
+
+          title.textContent =
+            'لا يوجد طلاب مستمرون';
+
+        }
+
+        else if (
+          selectedStatus ===
+          'inactive'
+        ) {
+
+          title.textContent =
+            'لا يوجد طلاب متوقفون';
+
+        }
+
         else {
 
           title.textContent =
             'لا يوجد طلاب';
+
         }
 
+
         return;
+
       }
+
 
       emptyMessage.style.display =
         'none';
+
 
       filtered.forEach(
         student => {
@@ -4164,29 +4775,40 @@
               'tr'
             );
 
+
           const statusInfo =
             getStatusInfo(
               student.status
             );
 
+
           const firstLetter =
-            (
+            String(
               student.name ||
               '?'
             )
               .trim()
               .charAt(0);
 
+
           const pointsText =
             formatPoints(
               student._points
             );
 
+
+          const normalizedStatus =
+            normalizeValue(
+              student.status
+            );
+
+
           const permanentDelete =
-            student.status ===
+            normalizedStatus ===
               'rejected' ||
-            student.status ===
+            normalizedStatus ===
               'expelled';
+
 
           row.innerHTML = `
 
@@ -4220,6 +4842,7 @@
                   <div class="student-subinfo">
 
                     التقييم:
+
                     <strong>
                       ${student._score}
                       / 100
@@ -4228,6 +4851,7 @@
                     ·
 
                     النقاط:
+
                     <strong>
                       ${escapeHtml(
                         pointsText
@@ -4242,6 +4866,7 @@
 
             </td>
 
+
             <td>
 
               <span class="section-badge">
@@ -4255,10 +4880,12 @@
 
             </td>
 
+
             <td>
 
               ${
                 student.memorization
+
                   ? `
 
                     <span class="memorization">
@@ -4270,6 +4897,7 @@
                     </span>
 
                   `
+
                   : `
 
                     <span class="no-data">
@@ -4283,6 +4911,7 @@
 
             </td>
 
+
             <td>
 
               <span class="status ${statusInfo.className}">
@@ -4292,6 +4921,7 @@
               </span>
 
             </td>
+
 
             <td>
 
@@ -4304,6 +4934,7 @@
 
             </td>
 
+
             <td>
 
               <span class="points-badge">
@@ -4315,6 +4946,7 @@
               </span>
 
             </td>
+
 
             <td>
 
@@ -4332,6 +4964,7 @@
 
                 ${
                   permanentDelete
+
                     ? `
 
                       <button
@@ -4345,6 +4978,7 @@
                       </button>
 
                     `
+
                     : `
 
                       <button
@@ -4366,12 +5000,16 @@
 
           `;
 
+
           tableBody.appendChild(
             row
           );
+
         }
       );
+
     }
+
 
     /* =====================================================
        STATS
@@ -4382,60 +5020,75 @@
       totalStudents.textContent =
         students.length;
 
+
       activeStudents.textContent =
         students.filter(
           student =>
-            student.status ===
+            normalizeValue(
+              student.status
+            ) ===
             'active'
         ).length;
+
 
       memorizedStudents.textContent =
         students.filter(
           student =>
             student.memorization &&
-            String(
+            normalizeValue(
               student.memorization
-            ).trim() !== ''
+            ) !== ''
         ).length;
+
     }
+
 
     /* =====================================================
        ADD MODAL
     ====================================================== */
 
-    function openAddModal() {
+    function openAddModalHandler() {
 
       editingStudentId =
         null;
 
+
       modalTitle.textContent =
         'إضافة طالب جديد';
+
 
       saveButton.innerHTML =
         '<i class="fa-solid fa-check"></i> حفظ الطالب';
 
+
       studentForm.reset();
+
 
       document.getElementById(
         'studentStatus'
       ).value =
         'active';
 
+
       message.textContent =
         '';
+
 
       modal.classList.add(
         'show'
       );
+
     }
+
 
     openModal.addEventListener(
       'click',
-      openAddModal
+      openAddModalHandler
     );
 
+
     /* =====================================================
-       EDIT
+       EDIT STUDENT
     ====================================================== */
 
     window.editStudent =
@@ -4449,19 +5102,38 @@
               String(
                 item.id
               ) ===
-              String(id)
+              String(
+                id
+              )
           );
 
-        if (!student) return;
+
+        if (
+          !student
+        ) {
+
+          showToast(
+            'تعذر العثور على الطالب.',
+            'error'
+          );
+
+
+          return;
+
+        }
+
 
         editingStudentId =
           id;
 
+
         modalTitle.textContent =
           'تعديل بيانات الطالب';
 
+
         saveButton.innerHTML =
           '<i class="fa-solid fa-check"></i> حفظ التعديلات';
+
 
         document.getElementById(
           'studentName'
@@ -4469,11 +5141,13 @@
           student.name ||
           '';
 
+
         document.getElementById(
           'studentSection'
         ).value =
           student.section ||
           '';
+
 
         document.getElementById(
           'memorization'
@@ -4481,19 +5155,26 @@
           student.memorization ||
           '';
 
+
         document.getElementById(
           'studentStatus'
         ).value =
-          student.status ||
+          normalizeValue(
+            student.status
+          ) ||
           'active';
+
 
         message.textContent =
           '';
 
+
         modal.classList.add(
           'show'
         );
+
       };
+
 
     /* =====================================================
        SAVE STUDENT
@@ -4507,25 +5188,30 @@
 
         event.preventDefault();
 
+
         const name =
           document.getElementById(
             'studentName'
           ).value.trim();
+
 
         const section =
           document.getElementById(
             'studentSection'
           ).value;
 
+
         const memorization =
           document.getElementById(
             'memorization'
           ).value.trim();
 
+
         const status =
           document.getElementById(
             'studentStatus'
           ).value;
+
 
         if (
           !name ||
@@ -4535,19 +5221,27 @@
           message.style.color =
             'var(--danger)';
 
+
           message.textContent =
             'يرجى تعبئة البيانات المطلوبة.';
 
+
           return;
+
         }
+
 
         saveButton.disabled =
           true;
 
+
         saveButton.innerHTML =
           '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الحفظ...';
 
+
         try {
+
+          /* ===== تعديل ===== */
 
           if (
             editingStudentId
@@ -4574,9 +5268,15 @@
                 .select()
                 .single();
 
-            if (error) {
+
+            if (
+              error
+            ) {
+
               throw error;
+
             }
+
 
             students =
               students.map(
@@ -4591,11 +5291,15 @@
                     : student
               );
 
+
             showToast(
               'تم تعديل بيانات الطالب بنجاح.'
             );
 
           }
+
+
+          /* ===== إضافة ===== */
 
           else {
 
@@ -4618,47 +5322,65 @@
                 .select()
                 .single();
 
-            if (error) {
+
+            if (
+              error
+            ) {
+
               throw error;
+
             }
+
 
             students.unshift(
               data
             );
 
+
             showToast(
               'تمت إضافة الطالب بنجاح.'
             );
+
           }
 
+
           await loadProfiles();
+
 
           renderStudents();
 
           updateStats();
 
+
           closeStudentModal();
 
         }
 
-        catch (error) {
+        catch (
+          error
+        ) {
 
           console.error(
+            'SAVE STUDENT ERROR:',
             error
           );
+
 
           message.style.color =
             'var(--danger)';
 
+
           message.textContent =
-            'حدث خطأ أثناء حفظ الطالب.';
+            'حدث خطأ أثناء حفظ بيانات الطالب.';
 
         }
+
 
         finally {
 
           saveButton.disabled =
             false;
+
 
           saveButton.innerHTML =
             '<i class="fa-solid fa-check"></i> حفظ الطالب';
@@ -4668,14 +5390,9 @@
       }
     );
 
+
     /* =====================================================
        DELETE / EXPEL
-
-       مهم:
-       - الطالب المستمر/المتوقف:
-         زر "فصل" ينقله إلى expelled.
-       - الطالب غير المقبول/المفصول:
-         زر "سلة المهملات" يحذفه نهائيًا.
     ====================================================== */
 
     window.deleteStudent =
@@ -4689,16 +5406,33 @@
               String(
                 item.id
               ) ===
-              String(id)
+              String(
+                id
+              )
           );
 
-        if (!student) return;
+
+        if (
+          !student
+        ) {
+
+          return;
+
+        }
+
+
+        const studentStatus =
+          normalizeValue(
+            student.status
+          );
+
 
         const isPermanentDelete =
-          student.status ===
+          studentStatus ===
             'rejected' ||
-          student.status ===
+          studentStatus ===
             'expelled';
+
 
         /* ===== حذف نهائي ===== */
 
@@ -4711,7 +5445,15 @@
               `سيتم حذف الطالب "${student.name}" نهائيًا من قاعدة البيانات. لا يمكن التراجع عن هذه العملية. هل تريد المتابعة؟`
             );
 
-          if (!confirmed) return;
+
+          if (
+            !confirmed
+          ) {
+
+            return;
+
+          }
+
 
           const {
             error
@@ -4726,19 +5468,26 @@
                 id
               );
 
-          if (error) {
+
+          if (
+            error
+          ) {
 
             console.error(
               error
             );
+
 
             showToast(
               'حدث خطأ أثناء الحذف النهائي للطالب.',
               'error'
             );
 
+
             return;
+
           }
+
 
           students =
             students.filter(
@@ -4746,23 +5495,33 @@
                 String(
                   item.id
                 ) !==
-                String(id)
+                String(
+                  id
+                )
             );
 
+
           delete profileMap[
-            String(id)
+            String(
+              id
+            )
           ];
+
 
           renderStudents();
 
           updateStats();
 
+
           showToast(
             'تم حذف الطالب نهائيًا.'
           );
 
+
           return;
+
         }
+
 
         /* ===== فصل ===== */
 
@@ -4771,7 +5530,15 @@
             `سيتم فصل الطالب "${student.name}" ونقله إلى قائمة المفصولين. لن تُحذف بياناته. هل تريد المتابعة؟`
           );
 
-        if (!confirmed) return;
+
+        if (
+          !confirmed
+        ) {
+
+          return;
+
+        }
+
 
         const {
           data,
@@ -4792,19 +5559,26 @@
             .select()
             .single();
 
-        if (error) {
+
+        if (
+          error
+        ) {
 
           console.error(
             error
           );
+
 
           showToast(
             'حدث خطأ أثناء فصل الطالب.',
             'error'
           );
 
+
           return;
+
         }
+
 
         students =
           students.map(
@@ -4812,19 +5586,25 @@
               String(
                 item.id
               ) ===
-              String(id)
+              String(
+                id
+              )
                 ? data
                 : item
           );
+
 
         renderStudents();
 
         updateStats();
 
+
         showToast(
           'تم فصل الطالب ونقله إلى قائمة المفصولين.'
         );
+
       };
+
 
     /* =====================================================
        CLOSE MODAL
@@ -4836,30 +5616,39 @@
         'show'
       );
 
+
       studentForm.reset();
+
 
       message.textContent =
         '';
 
+
       editingStudentId =
         null;
+
 
       saveButton.disabled =
         false;
 
+
       saveButton.innerHTML =
         '<i class="fa-solid fa-check"></i> حفظ الطالب';
+
     }
+
 
     closeModal.addEventListener(
       'click',
       closeStudentModal
     );
 
+
     cancelButton.addEventListener(
       'click',
       closeStudentModal
     );
+
 
     modal.addEventListener(
       'click',
@@ -4875,8 +5664,10 @@
           closeStudentModal();
 
         }
+
       }
     );
+
 
     /* =====================================================
        FILTER EVENTS
@@ -4887,24 +5678,27 @@
       renderStudents
     );
 
+
     sectionFilter.addEventListener(
       'change',
       renderStudents
     );
+
 
     statusFilter.addEventListener(
       'change',
       renderStudents
     );
 
+
     sortFilter.addEventListener(
       'change',
       renderStudents
     );
 
+
     /* =====================================================
        LOGOUT
-       تسجيل الخروج الآن يعتمد على حذف صلاحية الكود فقط
     ====================================================== */
 
     document
@@ -4916,15 +5710,19 @@
         logout
       );
 
+
     function logout() {
 
       localStorage.removeItem(
         'teacherAccess'
       );
 
+
       window.location.href =
         'teacher-login.html';
+
     }
+
 
     /* =====================================================
        MOBILE SIDEBAR
@@ -4934,6 +5732,7 @@
       document.getElementById(
         'sidebar'
       );
+
 
     document
       .getElementById(
@@ -4950,6 +5749,7 @@
         }
       );
 
+
     document
       .getElementById(
         'closeSidebar'
@@ -4965,6 +5765,7 @@
         }
       );
 
+
     document
       .querySelector(
         '.sidebar-brand'
@@ -4979,6 +5780,7 @@
 
         }
       );
+
 
     document
       .getElementById(
@@ -4997,11 +5799,14 @@
                 'smooth'
             });
 
+
           sidebar.classList.remove(
             'open'
           );
+
         }
       );
+
 
     document
       .getElementById(
@@ -5020,11 +5825,14 @@
                 'smooth'
             });
 
+
           sidebar.classList.remove(
             'open'
           );
+
         }
       );
+
 
     document
       .getElementById(
@@ -5043,44 +5851,14 @@
                 'smooth'
             });
 
+
           sidebar.classList.remove(
             'open'
           );
+
         }
       );
 
-    /* =====================================================
-       ESCAPE HTML
-    ====================================================== */
-
-    function escapeHtml(
-      text
-    ) {
-
-      return String(
-        text
-      )
-        .replaceAll(
-          '&',
-          '&amp;'
-        )
-        .replaceAll(
-          '<',
-          '&lt;'
-        )
-        .replaceAll(
-          '>',
-          '&gt;'
-        )
-        .replaceAll(
-          '"',
-          '&quot;'
-        )
-        .replaceAll(
-          "'",
-          '&#039;'
-        );
-    }
 
     /* =====================================================
        START
@@ -5091,9 +5869,31 @@
       const loggedIn =
         checkUser();
 
-      if (!loggedIn) {
+
+      if (
+        !loggedIn
+      ) {
+
         return;
+
       }
+
+
+      /*
+        نضمن أن الفلاتر تبدأ بالقيم المطلوبة.
+      */
+
+      statusFilter.value =
+        'accepted';
+
+
+      sortFilter.value =
+        'alphabetical';
+
+
+      /*
+        تحميل الطلاب وطلبات الانضمام.
+      */
 
       await loadStudents();
 
