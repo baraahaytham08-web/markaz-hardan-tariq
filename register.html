@@ -7,8 +7,11 @@
 
   <title>التسجيل الإلكتروني | مركز حردان طارق القرآني</title>
 
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="shortcut icon" href="favicon.svg">
+  <!-- أيقونة الموقع في Chrome -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
+
   <link rel="stylesheet" href="style.css">
 
   <style>
@@ -42,8 +45,6 @@
       position: relative;
       overflow: hidden;
     }
-
-    /* زخارف الخلفية */
 
     .registration-page::before,
     .registration-page::after {
@@ -133,29 +134,40 @@
       margin-bottom: 35px;
     }
 
+    /*
+      شعار المركز الدائري
+    */
+
     .logo-wrapper {
-      width: 105px;
-      height: 105px;
-      margin: 0 auto 18px;
-      padding: 8px;
+      width: 115px;
+      height: 115px;
+      margin: 0 auto 20px;
+
       border-radius: 50%;
-      background: linear-gradient(
-        145deg,
-        var(--gold-light),
-        #ffffff
-      );
-      border: 1px solid rgba(184, 148, 61, 0.20);
-      box-shadow: 0 10px 28px rgba(184, 148, 61, 0.13);
+      overflow: hidden;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      background: var(--green);
+
+      border: 4px solid var(--gold);
+
+      box-shadow:
+        0 10px 28px rgba(23, 77, 58, 0.18),
+        0 0 0 7px rgba(184, 148, 61, 0.08);
+
       animation: logoFloat 3.5s ease-in-out infinite;
     }
 
     .logo-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      display: block;
+
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     @keyframes logoFloat {
@@ -487,8 +499,9 @@
       }
 
       .logo-wrapper {
-        width: 88px;
-        height: 88px;
+        width: 92px;
+        height: 92px;
+        border-width: 3px;
       }
 
       .registration-header h1 {
@@ -547,6 +560,8 @@
       <div class="registration-box">
 
         <div class="registration-header">
+
+          <!-- شعار المركز الدائري -->
 
           <div class="logo-wrapper">
             <img
@@ -618,49 +633,17 @@
                   اختر الصف
                 </option>
 
-                <option value="الأول">
-                  الصف الأول
-                </option>
-
-                <option value="الثاني">
-                  الصف الثاني
-                </option>
-
-                <option value="الثالث">
-                  الصف الثالث
-                </option>
-
-                <option value="الرابع">
-                  الصف الرابع
-                </option>
-
-                <option value="الخامس">
-                  الصف الخامس
-                </option>
-
-                <option value="السادس">
-                  الصف السادس
-                </option>
-
-                <option value="السابع">
-                  الصف السابع
-                </option>
-
-                <option value="الثامن">
-                  الصف الثامن
-                </option>
-
-                <option value="التاسع">
-                  الصف التاسع
-                </option>
-
-                <option value="العاشر">
-                  الصف العاشر
-                </option>
-
-                <option value="الحادي عشر">
-                  الصف الحادي عشر
-                </option>
+                <option value="الأول">الصف الأول</option>
+                <option value="الثاني">الصف الثاني</option>
+                <option value="الثالث">الصف الثالث</option>
+                <option value="الرابع">الصف الرابع</option>
+                <option value="الخامس">الصف الخامس</option>
+                <option value="السادس">الصف السادس</option>
+                <option value="السابع">الصف السابع</option>
+                <option value="الثامن">الصف الثامن</option>
+                <option value="التاسع">الصف التاسع</option>
+                <option value="العاشر">الصف العاشر</option>
+                <option value="الحادي عشر">الصف الحادي عشر</option>
 
               </select>
 
@@ -930,16 +913,13 @@
           return;
         }
 
-
         const data =
           getFormData();
-
 
         directRegisterButton.disabled = true;
 
         directRegisterButton.textContent =
           'جاري إرسال طلب الانضمام...';
-
 
         successMessage.style.display =
           'none';
@@ -1026,7 +1006,6 @@
         if (!validateForm()) {
           return;
         }
-
 
         const data =
           getFormData();
