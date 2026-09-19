@@ -33,10 +33,6 @@
 
   <style>
 
-    /* =========================================================
-       VARIABLES
-    ========================================================= */
-
     :root {
 
       --green: #174d3a;
@@ -57,15 +53,13 @@
 
       --danger: #b3261e;
 
+      --success: #237a31;
+
       --shadow:
         0 25px 80px rgba(23,77,58,.13);
 
     }
 
-
-    /* =========================================================
-       RESET
-    ========================================================= */
 
     * {
 
@@ -94,7 +88,8 @@
         "Tahoma",
         sans-serif;
 
-      color: var(--text);
+      color:
+        var(--text);
 
       background:
 
@@ -138,7 +133,7 @@
 
 
     /* =========================================================
-       BACKGROUND DECORATION
+       BACKGROUND
     ========================================================= */
 
     .background-shape {
@@ -150,8 +145,6 @@
       pointer-events: none;
 
       z-index: 0;
-
-      filter: blur(1px);
 
     }
 
@@ -230,7 +223,7 @@
 
 
     /* =========================================================
-       LEFT SIDE
+       WELCOME SIDE
     ========================================================= */
 
     .welcome-side {
@@ -289,7 +282,8 @@
 
       display: block;
 
-      color: var(--green);
+      color:
+        var(--green);
 
       font-size: 16px;
 
@@ -300,7 +294,8 @@
 
     .brand-text span {
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
       font-size: 11px;
 
@@ -315,7 +310,8 @@
 
       gap: 7px;
 
-      color: var(--gold);
+      color:
+        var(--gold);
 
       font-size: 12px;
 
@@ -336,9 +332,11 @@
 
     .welcome-side h1 {
 
-      color: var(--green);
+      color:
+        var(--green);
 
-      font-size: clamp(30px, 4vw, 48px);
+      font-size:
+        clamp(30px, 4vw, 48px);
 
       line-height: 1.25;
 
@@ -351,14 +349,16 @@
 
     .welcome-side h1 span {
 
-      color: var(--gold);
+      color:
+        var(--gold);
 
     }
 
 
     .welcome-description {
 
-      color: #65716c;
+      color:
+        #65716c;
 
       font-size: 14px;
 
@@ -380,7 +380,7 @@
       display: grid;
 
       grid-template-columns:
-        repeat(2, 1fr);
+        repeat(2,1fr);
 
       gap: 12px;
 
@@ -445,7 +445,8 @@
 
       display: block;
 
-      color: var(--green);
+      color:
+        var(--green);
 
       font-size: 11px;
 
@@ -458,7 +459,8 @@
 
       display: block;
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
       font-size: 9px;
 
@@ -466,7 +468,7 @@
 
 
     /* =========================================================
-       LOGIN CARD
+       LOGIN AREA
     ========================================================= */
 
     .login-area {
@@ -479,7 +481,7 @@
     .login-card {
 
       background:
-        rgba(255,255,255,.92);
+        rgba(255,255,255,.94);
 
       backdrop-filter:
         blur(18px);
@@ -488,9 +490,11 @@
         1px solid
         rgba(255,255,255,.9);
 
-      border-radius: 28px;
+      border-radius:
+        28px;
 
-      padding: 34px;
+      padding:
+        34px;
 
       box-shadow:
         var(--shadow);
@@ -587,14 +591,13 @@
         1px solid
         rgba(178,139,24,.25);
 
-      pointer-events: none;
-
     }
 
 
     .card-top h2 {
 
-      color: var(--green);
+      color:
+        var(--green);
 
       font-size: 23px;
 
@@ -605,7 +608,8 @@
 
     .card-top p {
 
-      color: var(--muted);
+      color:
+        var(--muted);
 
       font-size: 12px;
 
@@ -620,7 +624,7 @@
 
     .form-group {
 
-      margin-bottom: 17px;
+      margin-bottom: 18px;
 
     }
 
@@ -629,7 +633,8 @@
 
       display: block;
 
-      color: #46534d;
+      color:
+        #46534d;
 
       font-size: 12px;
 
@@ -647,7 +652,7 @@
     }
 
 
-    .input-wrap > i {
+    .input-icon {
 
       position: absolute;
 
@@ -663,18 +668,16 @@
 
       font-size: 14px;
 
-      transition: .2s;
-
       z-index: 2;
 
     }
 
 
-    .input-wrap input {
+    .student-input {
 
       width: 100%;
 
-      height: 53px;
+      height: 54px;
 
       border:
         1px solid
@@ -687,26 +690,28 @@
       background:
         #fbfdfc;
 
-      color: var(--text);
+      color:
+        var(--text);
 
-      font-size: 13px;
+      font-size: 14px;
 
       padding:
-        0 45px 0 45px;
+        0 45px 0 15px;
 
       transition: .25s;
 
     }
 
 
-    .input-wrap input::placeholder {
+    .student-input::placeholder {
 
-      color: #a0aaa5;
+      color:
+        #a0aaa5;
 
     }
 
 
-    .input-wrap input:focus {
+    .student-input:focus {
 
       border-color:
         var(--gold);
@@ -720,68 +725,15 @@
     }
 
 
-    .input-wrap input:focus ~ i {
-
-      color: var(--gold);
-
-    }
-
-
-    .password-toggle {
-
-      position: absolute;
-
-      left: 13px;
-
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      border: none;
-
-      background: transparent;
-
-      color: #98a39e;
-
-      width: 30px;
-
-      height: 30px;
-
-      border-radius: 8px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      transition: .2s;
-
-      z-index: 3;
-
-    }
-
-
-    .password-toggle:hover {
-
-      background:
-        var(--green-soft);
-
-      color: var(--green);
-
-    }
-
-
     /* =========================================================
-       LOGIN BUTTON
+       BUTTON
     ========================================================= */
 
     .login-button {
 
       width: 100%;
 
-      height: 54px;
+      height: 55px;
 
       border: none;
 
@@ -810,45 +762,6 @@
         transform .2s ease,
         box-shadow .2s ease;
 
-      position: relative;
-
-      overflow: hidden;
-
-    }
-
-
-    .login-button::before {
-
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-
-      right: -120%;
-
-      width: 100%;
-
-      height: 100%;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,.18),
-          transparent
-        );
-
-      transition:
-        right .55s ease;
-
-    }
-
-
-    .login-button:hover::before {
-
-      right: 120%;
-
     }
 
 
@@ -866,7 +779,8 @@
 
     .login-button:disabled {
 
-      cursor: not-allowed;
+      cursor:
+        not-allowed;
 
       opacity: .75;
 
@@ -875,11 +789,7 @@
     }
 
 
-    .login-button-content {
-
-      position: relative;
-
-      z-index: 2;
+    .button-content {
 
       display: flex;
 
@@ -945,16 +855,16 @@
         #cce8d1;
 
       color:
-        #237a31;
+        var(--success);
 
     }
 
 
     /* =========================================================
-       BOTTOM AREA
+       NOTE
     ========================================================= */
 
-    .security-note {
+    .login-note {
 
       display: flex;
 
@@ -964,18 +874,22 @@
 
       gap: 7px;
 
-      color: #8b9690;
+      color:
+        #8b9690;
 
       font-size: 10px;
 
-      margin-top: 18px;
+      margin-top: 17px;
+
+      text-align: center;
 
     }
 
 
-    .security-note i {
+    .login-note i {
 
-      color: var(--green);
+      color:
+        var(--green);
 
     }
 
@@ -994,7 +908,8 @@
 
       text-decoration: none;
 
-      color: var(--green);
+      color:
+        var(--green);
 
       font-size: 11px;
 
@@ -1007,7 +922,8 @@
 
     .back-link:hover {
 
-      color: var(--gold);
+      color:
+        var(--gold);
 
     }
 
@@ -1016,7 +932,8 @@
 
       text-align: center;
 
-      color: #909a95;
+      color:
+        #909a95;
 
       font-size: 9px;
 
@@ -1122,13 +1039,6 @@
 
       }
 
-
-      .login-button {
-
-        height: 52px;
-
-      }
-
     }
 
   </style>
@@ -1151,7 +1061,7 @@
 
 
       <!-- =====================================================
-           WELCOME SIDE
+           الجانب التعريفي
       ====================================================== -->
 
       <section class="welcome-side">
@@ -1183,7 +1093,7 @@
 
         <div class="welcome-label">
 
-          <i class="fa-solid fa-sparkles"></i>
+          <i class="fa-solid fa-star"></i>
 
           بوابتك التعليمية
 
@@ -1202,8 +1112,8 @@
 
         <p class="welcome-description">
 
-          مكانك الخاص لمتابعة رحلتك في مركز حردان طارق القرآني،
-          والاطلاع على بياناتك ومستوى تقدمك وإنجازاتك.
+          سجّل دخولك بسهولة للوصول إلى معلوماتك،
+          ومتابعة تقدمك ورحلتك في المركز.
 
         </p>
 
@@ -1226,7 +1136,7 @@
               </strong>
 
               <span>
-                بياناتك محفوظة ومخصصة لك
+                معلوماتك الخاصة في المركز
               </span>
 
             </div>
@@ -1249,7 +1159,7 @@
               </strong>
 
               <span>
-                راقب رحلتك التعليمية
+                تابع تطور مستواك باستمرار
               </span>
 
             </div>
@@ -1272,7 +1182,7 @@
               </strong>
 
               <span>
-                سجل إنجازاتك في الحفظ
+                اطّلع على مستوى حفظك
               </span>
 
             </div>
@@ -1284,7 +1194,7 @@
 
             <div class="mini-feature-icon">
 
-              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-medal"></i>
 
             </div>
 
@@ -1295,7 +1205,7 @@
               </strong>
 
               <span>
-                تقدّمك يستحق أن نفتخر به
+                كل خطوة تقرّبك من هدفك
               </span>
 
             </div>
@@ -1310,7 +1220,7 @@
 
 
       <!-- =====================================================
-           LOGIN AREA
+           تسجيل الدخول
       ====================================================== -->
 
       <section class="login-area">
@@ -1330,31 +1240,27 @@
 
 
             <h2>
-              تسجيل دخول الطالب
+              دخول الطالب
             </h2>
 
 
             <p>
-              أدخل بياناتك للوصول إلى صفحتك الشخصية
+              اكتب اسمك للانتقال إلى صفحتك الشخصية
             </p>
-
 
           </div>
 
 
-          <form id="studentLoginForm">
+          <form
+            id="studentLoginForm">
 
-
-            <!-- =================================================
-                 STUDENT CODE
-            ================================================== -->
 
             <div class="form-group">
 
 
-              <label for="studentCode">
+              <label for="studentName">
 
-                رمز الطالب
+                اسم الطالب
 
               </label>
 
@@ -1362,14 +1268,17 @@
               <div class="input-wrap">
 
 
-                <i class="fa-solid fa-id-card"></i>
+                <i
+                  class="fa-solid fa-user input-icon">
+                </i>
 
 
                 <input
+                  class="student-input"
                   type="text"
-                  id="studentCode"
-                  placeholder="أدخل رمز الطالب"
-                  autocomplete="username"
+                  id="studentName"
+                  placeholder="اكتب اسمك الكامل"
+                  autocomplete="name"
                   required>
 
 
@@ -1377,54 +1286,6 @@
 
             </div>
 
-
-            <!-- =================================================
-                 PASSWORD
-            ================================================== -->
-
-            <div class="form-group">
-
-
-              <label for="studentPassword">
-
-                كلمة المرور
-
-              </label>
-
-
-              <div class="input-wrap">
-
-
-                <i class="fa-solid fa-lock"></i>
-
-
-                <input
-                  type="password"
-                  id="studentPassword"
-                  placeholder="أدخل كلمة المرور"
-                  autocomplete="current-password"
-                  required>
-
-
-                <button
-                  type="button"
-                  class="password-toggle"
-                  id="passwordToggle"
-                  aria-label="إظهار كلمة المرور">
-
-                  <i class="fa-solid fa-eye"></i>
-
-                </button>
-
-
-              </div>
-
-            </div>
-
-
-            <!-- =================================================
-                 LOGIN BUTTON
-            ================================================== -->
 
             <button
               type="submit"
@@ -1432,21 +1293,20 @@
               id="loginButton">
 
 
-              <span class="login-button-content">
+              <span
+                class="button-content">
 
-                <i class="fa-solid fa-right-to-bracket"></i>
+                <i
+                  class="fa-solid fa-arrow-left">
+                </i>
 
-                دخول إلى صفحتي
+                الدخول إلى صفحتي
 
               </span>
 
 
             </button>
 
-
-            <!-- =================================================
-                 MESSAGE
-            ================================================== -->
 
             <div
               id="message"
@@ -1457,11 +1317,11 @@
           </form>
 
 
-          <div class="security-note">
+          <div class="login-note">
 
-            <i class="fa-solid fa-shield-halved"></i>
+            <i class="fa-solid fa-circle-info"></i>
 
-            بياناتك الشخصية محمية ومخصصة لحسابك
+            اكتب اسمك كما هو مسجل لدى المركز
 
           </div>
 
@@ -1470,9 +1330,11 @@
             href="followup.html"
             class="back-link">
 
-            <i class="fa-solid fa-arrow-right"></i>
+            <i
+              class="fa-solid fa-arrow-right">
+            </i>
 
-            العودة إلى صفحة متابعة الطلاب
+            العودة إلى متابعة الطلاب
 
           </a>
 
@@ -1483,7 +1345,9 @@
         <div class="footer">
 
           © 2026 مركز حردان طارق القرآني
+
           ·
+
           منارةٌ للقرآن .. وبناءٌ للأجيال
 
         </div>
@@ -1498,10 +1362,39 @@
 
 
   <!-- =========================================================
-       JAVASCRIPT
+       SUPABASE
   ========================================================= -->
 
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+  </script>
+
+
   <script>
+
+
+    /* =========================================================
+       SUPABASE
+    ========================================================= */
+
+    const SUPABASE_URL =
+      'https://lsbbcybpiulusdgfhepf.supabase.co';
+
+
+    const SUPABASE_PUBLISHABLE_KEY =
+      'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
+
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+
+    /* =========================================================
+       ELEMENTS
+    ========================================================= */
 
     const form =
       document.getElementById(
@@ -1509,21 +1402,9 @@
       );
 
 
-    const codeInput =
+    const studentNameInput =
       document.getElementById(
-        'studentCode'
-      );
-
-
-    const passwordInput =
-      document.getElementById(
-        'studentPassword'
-      );
-
-
-    const passwordToggle =
-      document.getElementById(
-        'passwordToggle'
+        'studentName'
       );
 
 
@@ -1540,49 +1421,19 @@
 
 
     /* =========================================================
-       SHOW / HIDE PASSWORD
-    ========================================================= */
-
-    passwordToggle.addEventListener(
-      'click',
-      function() {
-
-        const isPassword =
-          passwordInput.type === 'password';
-
-
-        passwordInput.type =
-          isPassword
-            ? 'text'
-            : 'password';
-
-
-        passwordToggle.innerHTML =
-          isPassword
-            ? '<i class="fa-solid fa-eye-slash"></i>'
-            : '<i class="fa-solid fa-eye"></i>';
-
-      }
-    );
-
-
-    /* =========================================================
        LOGIN
     ========================================================= */
 
     form.addEventListener(
       'submit',
-      function(event) {
+      async function(event) {
 
         event.preventDefault();
 
 
-        const code =
-          codeInput.value.trim();
-
-
-        const password =
-          passwordInput.value;
+        const studentName =
+          studentNameInput.value
+            .trim();
 
 
         message.className =
@@ -1593,15 +1444,13 @@
           '';
 
 
-        if (!code || !password) {
+        if (!studentName) {
 
           message.className =
             'message error';
 
-
           message.innerHTML =
-            '<i class="fa-solid fa-circle-exclamation"></i> يرجى إدخال رمز الطالب وكلمة المرور.';
-
+            '<i class="fa-solid fa-circle-exclamation"></i> يرجى كتابة اسم الطالب.';
 
           return;
 
@@ -1614,60 +1463,185 @@
 
         loginButton.innerHTML =
 
-          '<span class="login-button-content">' +
+          '<span class="button-content">' +
 
           '<i class="fa-solid fa-spinner fa-spin"></i>' +
 
-          'جارٍ التحقق من البيانات...' +
+          'جارٍ البحث عن الطالب...' +
 
           '</span>';
 
 
-        /*
-          =======================================================
-          المرحلة الحالية
-
-          الواجهة أصبحت جاهزة بالكامل.
-
-          سيتم في المرحلة القادمة ربط هذا النموذج
-          بقاعدة بيانات Supabase للتحقق الفعلي من الطالب.
-          =======================================================
-        */
+        try {
 
 
-        setTimeout(
-          function() {
+          /* ==============================================
+             البحث عن الطالب في جدول students
+          ============================================== */
 
+          const {
+            data,
+            error
+          } = await supabaseClient
+
+            .from('students')
+
+            .select(
+              'id,name,section,memorization,status'
+            )
+
+            .ilike(
+              'name',
+              studentName
+            )
+
+            .limit(1);
+
+
+          if (error) {
+
+            console.error(error);
 
             message.className =
               'message error';
 
+            message.innerHTML =
+              '<i class="fa-solid fa-circle-exclamation"></i> حدث خطأ أثناء الاتصال ببيانات الطلاب.';
+
+            return;
+
+          }
+
+
+          /* ==============================================
+             الطالب غير موجود
+          ============================================== */
+
+          if (!data || data.length === 0) {
+
+            message.className =
+              'message error';
 
             message.innerHTML =
-              '<i class="fa-solid fa-circle-info"></i> صفحة تسجيل الدخول جاهزة، وباقي فقط ربطها بقاعدة بيانات الطلاب.';
+              '<i class="fa-solid fa-user-xmark"></i> لم يتم العثور على طالب بهذا الاسم.';
+
+            return;
+
+          }
 
 
-            loginButton.disabled =
-              false;
+          const student =
+            data[0];
 
 
-            loginButton.innerHTML =
+          /* ==============================================
+             الطالب موجود ولكن متوقف
+          ============================================== */
 
-              '<span class="login-button-content">' +
+          if (
+            student.status &&
+            student.status !== 'active'
+          ) {
 
-              '<i class="fa-solid fa-right-to-bracket"></i>' +
+            message.className =
+              'message error';
 
-              'دخول إلى صفحتي' +
+            message.innerHTML =
+              '<i class="fa-solid fa-circle-pause"></i> هذا الحساب غير متاح حاليًا.';
 
-              '</span>';
+            return;
+
+          }
 
 
-          },
-          850
-        );
+          /* ==============================================
+             حفظ بيانات الطالب مؤقتًا
+          ============================================== */
+
+          sessionStorage.setItem(
+            'studentSession',
+            JSON.stringify({
+
+              id:
+                student.id,
+
+              name:
+                student.name,
+
+              section:
+                student.section,
+
+              memorization:
+                student.memorization,
+
+              status:
+                student.status
+
+            })
+          );
+
+
+          /* ==============================================
+             رسالة نجاح
+          ============================================== */
+
+          message.className =
+            'message success';
+
+          message.innerHTML =
+            '<i class="fa-solid fa-circle-check"></i> تم العثور على حسابك، جارٍ فتح صفحتك...';
+
+
+          /* ==============================================
+             الانتقال
+          ============================================== */
+
+          setTimeout(
+            function() {
+
+              window.location.href =
+                'student-dashboard.html';
+
+            },
+            500
+          );
+
+
+        }
+
+        catch (error) {
+
+          console.error(error);
+
+          message.className =
+            'message error';
+
+          message.innerHTML =
+            '<i class="fa-solid fa-triangle-exclamation"></i> حدث خطأ غير متوقع. حاول مرة أخرى.';
+
+        }
+
+
+        finally {
+
+          loginButton.disabled =
+            false;
+
+          loginButton.innerHTML =
+
+            '<span class="button-content">' +
+
+            '<i class="fa-solid fa-arrow-left"></i>' +
+
+            'الدخول إلى صفحتي' +
+
+            '</span>';
+
+        }
 
       }
     );
+
 
   </script>
 
@@ -1676,4 +1650,3 @@
 
 </html>
 ```
-
