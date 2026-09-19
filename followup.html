@@ -15,9 +15,24 @@
 
   <style>
 
+    :root {
+      --green: #174d3a;
+      --green-dark: #103b2c;
+      --green-light: #edf5f1;
+      --gold: #b28b18;
+      --gold-light: #d4b44c;
+      --cream: #faf8f0;
+    }
+
     body {
       min-height: 100vh;
-      background: #f7f7f7;
+      background:
+        linear-gradient(
+          135deg,
+          var(--cream) 0%,
+          #ffffff 45%,
+          var(--green-light) 100%
+        );
     }
 
     .followup-page {
@@ -39,20 +54,24 @@
     }
 
     .followup-header .icon {
-      width: 75px;
-      height: 75px;
+      width: 82px;
+      height: 82px;
       margin: 0 auto 18px;
       border-radius: 50%;
       background: white;
+      color: var(--gold);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 38px;
-      box-shadow: 0 8px 25px rgba(0,0,0,.08);
+      border: 2px solid rgba(178,139,24,.25);
+      box-shadow:
+        0 10px 30px rgba(23,77,58,.12);
     }
 
     .followup-header h1 {
       margin-bottom: 10px;
+      color: var(--green);
     }
 
     .followup-header p {
@@ -67,27 +86,56 @@
     }
 
     .followup-card {
+      position: relative;
+      overflow: hidden;
       background: white;
       border-radius: 22px;
       padding: 35px 28px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,.08);
-      border: 1px solid #eee;
+      box-shadow:
+        0 10px 30px rgba(23,77,58,.10);
+      border: 1px solid rgba(178,139,24,.18);
       transition: .25s ease;
+    }
+
+    .followup-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 5px;
+      background: linear-gradient(
+        90deg,
+        var(--green),
+        var(--gold),
+        var(--green)
+      );
     }
 
     .followup-card:hover {
       transform: translateY(-7px);
-      box-shadow: 0 16px 38px rgba(0,0,0,.13);
+      box-shadow:
+        0 18px 40px rgba(23,77,58,.16);
+      border-color: rgba(178,139,24,.40);
     }
 
     .followup-card-icon {
-      font-size: 55px;
-      margin-bottom: 15px;
+      width: 85px;
+      height: 85px;
+      margin: 5px auto 18px;
+      border-radius: 50%;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      border: 2px solid rgba(178,139,24,.20);
     }
 
     .followup-card h2 {
       margin: 0 0 12px;
+      color: var(--green);
     }
 
     .followup-card p {
@@ -102,28 +150,32 @@
       padding: 14px 20px;
       border-radius: 12px;
       text-decoration: none;
-      background: #222;
+      background: var(--green);
       color: white;
       font-weight: bold;
       transition: .2s;
+      box-shadow: 0 5px 15px rgba(23,77,58,.15);
     }
 
     .followup-card a:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,.15);
+      background: var(--green-dark);
+      box-shadow:
+        0 8px 20px rgba(23,77,58,.25);
     }
 
     .back-home {
       display: block;
       width: fit-content;
       margin: 30px auto 0;
-      color: #555;
+      color: var(--green);
       text-decoration: none;
       font-weight: bold;
+      transition: .2s;
     }
 
     .back-home:hover {
-      color: #b28b18;
+      color: var(--gold);
     }
 
     @media (max-width: 700px) {
@@ -134,6 +186,10 @@
 
       .followup-page {
         padding: 50px 18px;
+      }
+
+      .followup-header {
+        margin-bottom: 30px;
       }
 
     }
@@ -184,9 +240,6 @@
             الدخول إلى نظام متابعة الطلاب وإدارة بياناتهم
             ومتابعة تقدمهم في الشعب والحلقات.
           </p>
-
-          <!-- المسار الصحيح:
-               followup → teacher-login -->
 
           <a href="teacher-login.html">
             دخول بوابة المعلمين ←
