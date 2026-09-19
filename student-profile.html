@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
 
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ملف الطالب | مركز حردان طارق القرآني</title>
+  <title>ملفي | مركز حردان طارق القرآني</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -24,7 +24,6 @@
       --text: #17352b;
       --muted: #777;
       --white: #fff;
-      --danger: #a22;
     }
 
     body {
@@ -37,7 +36,7 @@
       background: linear-gradient(135deg, var(--green), #063626);
       color: white;
       padding: 22px 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, .12);
+      box-shadow: 0 5px 20px rgba(0,0,0,.12);
     }
 
     .header-inner {
@@ -59,26 +58,14 @@
       opacity: .8;
     }
 
-    .header-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .header-btn {
-      border: 1px solid rgba(255, 255, 255, .3);
+    .logout {
+      border: 1px solid rgba(255,255,255,.3);
       background: transparent;
       color: white;
       padding: 10px 15px;
       border-radius: 10px;
       cursor: pointer;
       font-weight: bold;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .header-btn:hover {
-      background: rgba(255, 255, 255, .1);
     }
 
     .container {
@@ -92,7 +79,7 @@
       border-radius: 22px;
       padding: 25px;
       margin-bottom: 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
       border-right: 5px solid var(--gold);
     }
 
@@ -117,7 +104,7 @@
       background: white;
       border-radius: 22px;
       padding: 22px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, .06);
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
     }
 
     .student-card {
@@ -168,7 +155,6 @@
     .detail strong {
       color: var(--text);
       line-height: 1.5;
-      word-break: break-word;
     }
 
     .section-title {
@@ -211,8 +197,7 @@
       min-width: 650px;
     }
 
-    th,
-    td {
+    th, td {
       padding: 13px;
       text-align: right;
       border-bottom: 1px solid #eee;
@@ -265,23 +250,14 @@
     }
 
     .error {
-      max-width: 650px;
+      max-width: 600px;
       margin: 60px auto;
       background: white;
       padding: 30px;
       border-radius: 20px;
       text-align: center;
-      color: var(--danger);
-      box-shadow: 0 5px 25px rgba(0, 0, 0, .08);
-    }
-
-    .error h2 {
-      margin-bottom: 10px;
-    }
-
-    .error p {
-      color: #666;
-      line-height: 1.8;
+      color: #a22;
+      box-shadow: 0 5px 25px rgba(0,0,0,.08);
     }
 
     .error button {
@@ -292,18 +268,6 @@
       padding: 11px 20px;
       border-radius: 10px;
       cursor: pointer;
-      font-weight: bold;
-    }
-
-    .id-box {
-      margin-top: 12px;
-      background: #f7f7f7;
-      border-radius: 10px;
-      padding: 10px;
-      color: #555;
-      font-size: 12px;
-      direction: ltr;
-      word-break: break-all;
     }
 
     @media (max-width: 750px) {
@@ -327,20 +291,6 @@
       .welcome {
         padding: 20px;
       }
-
-      .header-actions {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .header-inner {
-        flex-direction: column;
-      }
-
-      .header-btn {
-        width: 100%;
-        text-align: center;
-      }
     }
   </style>
 
@@ -351,16 +301,16 @@
 <header>
   <div class="header-inner">
 
-    <div class="brand">
-      <h1>مركز حردان طارق القرآني</h1>
-      <p>ملف متابعة الطالب</p>
-    </div>
+```
+<div class="brand">
+  <h1>مركز حردان طارق القرآني</h1>
+  <p>بوابة الطالب</p>
+</div>
 
-    <div class="header-actions">
-      <a class="header-btn" href="./teacher-dashboard.html">
-        ← لوحة المعلم
-      </a>
-    </div>
+<button class="logout" onclick="logout()">
+  تسجيل الخروج
+</button>
+```
 
   </div>
 </header>
@@ -368,1148 +318,658 @@
 <main class="container" id="app">
 
   <div class="loading">
-    جاري تحميل ملف الطالب...
+    جاري تحميل ملفك...
   </div>
 
 </main>
 
 <script>
 
-  /* =========================
-     إعدادات Supabase
-  ========================= */
+const SUPABASE_URL =
+  'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-  const SUPABASE_URL =
-    'https://lsbbcybpiulusdgfhepf.supabase.co';
+const SUPABASE_KEY =
+  'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
-  const SUPABASE_KEY =
-    'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
-
-
-  /* =========================
-     التحقق من Supabase
-  ========================= */
-
-  if (!window.supabase) {
-
-    document.getElementById('app').innerHTML = `
-      <div class="error">
-        <h2>تعذر تشغيل الصفحة</h2>
-
-        <p>
-          لم يتم تحميل مكتبة Supabase.
-          تأكد من اتصال الإنترنت ثم أعد تحميل الصفحة.
-        </p>
-
-        <button onclick="location.reload()">
-          إعادة المحاولة
-        </button>
-      </div>
-    `;
-
-    throw new Error('Supabase library not loaded');
-
-  }
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 
-  const supabaseClient =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
+function escapeHtml(value) {
+
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+}
+
+
+function logout() {
+
+  sessionStorage.removeItem('studentSession');
+
+  window.location.href =
+    'student-login.html';
+
+}
+
+
+function getSession() {
+
+  try {
+
+    return JSON.parse(
+      sessionStorage.getItem('studentSession')
     );
 
+  } catch {
 
-  /* =========================
-     أدوات مساعدة
-  ========================= */
-
-  function escapeHtml(value) {
-
-    return String(value ?? '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
+    return null;
 
   }
 
+}
 
-  function getStudentIdFromUrl() {
 
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
+function progressBar(value) {
 
-    const id =
-      params.get('id') ||
-      params.get('student_id') ||
-      params.get('studentId');
+  let number = Number(value);
 
-    return id ? String(id).trim() : '';
+  if (isNaN(number)) number = 0;
+
+  number = Math.max(0, Math.min(100, number));
+
+  return `
+    <div class="progress">
+      <div
+        class="progress-bar"
+        style="width:${number}%"
+      ></div>
+    </div>
+  `;
+
+}
+
+
+function detail(label, value) {
+
+  return `
+    <div class="detail">
+      <small>${escapeHtml(label)}</small>
+      <strong>${escapeHtml(value || 'غير محدد')}</strong>
+    </div>
+  `;
+
+}
+
+
+async function loadStudent() {
+
+  const session = getSession();
+
+  if (!session || !session.id) {
+
+    window.location.href =
+      'student-login.html';
+
+    return;
 
   }
 
+  try {
 
-  function detail(label, value) {
+    const {
+      data: profileData,
+      error
+    } = await supabaseClient.rpc(
+      'get_student_profile',
+      {
+        p_student_id: String(session.id)
+      }
+    );
 
-    const finalValue =
-      value === undefined ||
-      value === null ||
-      String(value).trim() === ''
-        ? 'غير محدد'
-        : value;
-
-    return `
-      <div class="detail">
-
-        <small>
-          ${escapeHtml(label)}
-        </small>
-
-        <strong>
-          ${escapeHtml(finalValue)}
-        </strong>
-
-      </div>
-    `;
-
-  }
-
-
-  function progressBar(value) {
-
-    let number =
-      Number(value);
-
-    if (isNaN(number)) {
-      number = 0;
+    if (error) {
+      console.error(error);
+      throw error;
     }
 
-    number =
-      Math.max(
-        0,
-        Math.min(100, number)
-      );
+    const profile =
+      profileData &&
+      typeof profileData === 'object'
+        ? profileData
+        : {};
 
-    return `
-      <div class="progress">
+    renderStudent(
+      session,
+      profile
+    );
 
-        <div
-          class="progress-bar"
-          style="width:${number}%"
-        ></div>
+  } catch (error) {
 
-      </div>
-    `;
-
-  }
-
-
-  function showError(title, message, studentId = '') {
+    console.error(error);
 
     document.getElementById('app').innerHTML = `
-
       <div class="error">
+        <h2>تعذر تحميل الملف</h2>
 
-        <h2>
-          ${escapeHtml(title)}
-        </h2>
-
-        <p>
-          ${escapeHtml(message)}
+        <p style="margin-top:10px">
+          حدثت مشكلة أثناء تحميل بيانات الطالب.
         </p>
-
-        ${
-          studentId
-            ? `
-              <div class="id-box">
-                ID: ${escapeHtml(studentId)}
-              </div>
-            `
-            : ''
-        }
 
         <button onclick="location.reload()">
           المحاولة مرة أخرى
         </button>
-
-        <button
-          onclick="window.location.href='./teacher-dashboard.html'"
-          style="
-            background:#777;
-            margin-right:8px;
-          "
-        >
-          العودة للوحة المعلم
-        </button>
-
       </div>
-
     `;
 
   }
 
+}
+
+
+function renderStudent(student, profile) {
 
-  /* =========================
-     تحميل الطالب
-  ========================= */
+  const app =
+    document.getElementById('app');
 
-  async function loadStudent() {
+  const photo =
+    profile.photoUrl ||
+    profile.photo_url ||
+    '';
 
-    const app =
-      document.getElementById('app');
-
-    const studentId =
-      getStudentIdFromUrl();
-
-
-    /* لا يوجد ID */
-
-    if (!studentId) {
-
-      showError(
-        'لم يتم تحديد الطالب',
-        'رابط صفحة الطالب لا يحتوي على رقم الطالب.'
-      );
-
-      return;
-
-    }
-
-
-    try {
-
-      /* =========================
-         جلب بيانات الطالب
-      ========================= */
-
-      const {
-        data: student,
-        error: studentError
-      } = await supabaseClient
-
-        .from('students')
-
-        .select('*')
-
-        .eq('id', studentId)
-
-        .single();
-
-
-      if (studentError) {
-
-        console.error(
-          'Student error:',
-          studentError
-        );
-
-        throw new Error(
-          studentError.message ||
-          'تعذر جلب بيانات الطالب'
-        );
-
-      }
-
-
-      if (!student) {
-
-        throw new Error(
-          'لم يتم العثور على الطالب'
-        );
-
-      }
-
-
-      /* =========================
-         جلب ملف الطالب
-      ========================= */
-
-      const {
-        data: profileRow,
-        error: profileError
-      } = await supabaseClient
-
-        .from('student_profiles')
-
-        .select('data')
-
-        .eq(
-          'student_id',
-          String(studentId)
-        )
-
-        .maybeSingle();
-
-
-      if (profileError) {
-
-        console.error(
-          'Profile error:',
-          profileError
-        );
-
-        throw new Error(
-          profileError.message ||
-          'تعذر جلب ملف الطالب'
-        );
-
-      }
-
-
-      const profile =
-        profileRow &&
-        profileRow.data &&
-        typeof profileRow.data === 'object'
-
-          ? profileRow.data
-
-          : {};
-
-
-      renderStudent(
-        student,
-        profile,
-        studentId
-      );
-
-
-    } catch (error) {
-
-      console.error(
-        'Load student error:',
-        error
-      );
-
-
-      showError(
-        'تعذر تحميل ملف الطالب',
-        error.message ||
-        'حدث خطأ غير معروف أثناء تحميل البيانات.',
-        studentId
-      );
-
-    }
-
-  }
-
-
-  /* =========================
-     عرض الطالب
-  ========================= */
-
-  function renderStudent(
-    student,
-    profile,
-    studentId
-  ) {
-
-    const app =
-      document.getElementById('app');
-
-
-    /* الصورة */
-
-    const photo =
-      profile.photoUrl ||
-      profile.photo_url ||
-      '';
-
-
-    /* البيانات */
-
-    const weeklyGoal =
-      profile.weeklyGoal ??
-      profile.weekly_goal ??
-      'غير محدد';
-
-
-    const points =
-      profile.totalPoints ??
-      profile.total_points ??
-      '0';
-
-
-    const weeklyProgress =
-      profile.weeklyProgress ??
-      profile.weekly_progress ??
-      0;
-
-
-    const attendance =
-      Array.isArray(profile.attendance)
-        ? profile.attendance
-        : [];
-
-
-    const weeklyPlan =
-      Array.isArray(profile.weeklyPlan)
-        ? profile.weeklyPlan
-        : [];
-
-
-    const tests =
-      Array.isArray(profile.tests)
-        ? profile.tests
-        : [];
-
-
-    const recitations =
-      Array.isArray(profile.recitations)
-        ? profile.recitations
-        : [];
-
-
-    const hifzProgress =
-      Number(
-        profile.hifzProgress ??
-        profile.hifz_progress ??
-        0
-      );
-
-
-    const reviewProgress =
-      Number(
-        profile.reviewProgress ??
-        profile.review_progress ??
-        0
-      );
-
-
-    const completedPages =
-      profile.completedPages ??
-      profile.completed_pages ??
-      '0';
-
-
-    const requiredPages =
-      profile.requiredPages ??
-      profile.required_pages ??
-      '0';
-
-
-    const generalEvaluation =
-      profile.generalEvaluation ??
-      profile.general_evaluation ??
-      'غير محدد';
-
-
-    const equivalentRecitation =
-      profile.equivalentRecitation ??
-      profile.equivalent_recitation ??
-      'غير محدد';
-
-
-    const nextExam =
-      profile.nextExam ??
-      profile.next_exam ??
-      'غير محدد';
-
-
-    const nextExamDate =
-      profile.nextExamDate ??
-      profile.next_exam_date ??
-      'غير محدد';
-
-
-    /* =========================
-       عرض الصفحة
-    ========================= */
-
-    app.innerHTML = `
-
-      <!-- الترحيب -->
-
-      <section class="welcome">
+  const weeklyGoal =
+    profile.weeklyGoal ||
+    profile.weekly_goal ||
+    'غير محدد';
+
+  const points =
+    profile.totalPoints ??
+    profile.total_points ??
+    '0';
+
+  const weeklyProgress =
+    profile.weeklyProgress ??
+    profile.weekly_progress ??
+    0;
+
+  const attendance =
+    Array.isArray(profile.attendance)
+      ? profile.attendance
+      : [];
+
+  const weeklyPlan =
+    Array.isArray(profile.weeklyPlan)
+      ? profile.weeklyPlan
+      : [];
+
+  const tests =
+    Array.isArray(profile.tests)
+      ? profile.tests
+      : [];
+
+  const hifzProgress =
+    Number(
+      profile.hifzProgress ??
+      profile.hifz_progress ??
+      0
+    );
+
+  const reviewProgress =
+    Number(
+      profile.reviewProgress ??
+      profile.review_progress ??
+      0
+    );
+
+  const completedPages =
+    profile.completedPages ??
+    profile.completed_pages ??
+    '0';
+
+  const requiredPages =
+    profile.requiredPages ??
+    profile.required_pages ??
+    '0';
+
+  const generalEvaluation =
+    profile.generalEvaluation ??
+    profile.general_evaluation ??
+    'غير محدد';
+
+  const equivalentRecitation =
+    profile.equivalentRecitation ??
+    profile.equivalent_recitation ??
+    'غير محدد';
+
+  const nextExam =
+    profile.nextExam ??
+    profile.next_exam ??
+    'غير محدد';
+
+  const nextExamDate =
+    profile.nextExamDate ??
+    profile.next_exam_date ??
+    'غير محدد';
+
+
+  app.innerHTML = `
+
+    <section class="welcome">
+
+      <h2>
+        أهلاً بك، ${escapeHtml(student.name)}
+      </h2>
+
+      <p>
+        هذه صفحتك الشخصية في المركز.
+        المعلومات الظاهرة هنا يتم تسجيلها وتحديثها من قبل المعلم.
+      </p>
+
+    </section>
+
+
+    <section class="profile">
+
+      <div class="card student-card">
+
+        ${
+          photo
+            ? `
+              <img
+                class="photo"
+                src="${escapeHtml(photo)}"
+                alt="صورة الطالب"
+              >
+            `
+            : `
+              <div
+                class="photo"
+                style="
+                  display:inline-flex;
+                  align-items:center;
+                  justify-content:center;
+                  font-size:40px;
+                  color:#07563c;
+                "
+              >
+                👤
+              </div>
+            `
+        }
 
         <h2>
-          ملف الطالب:
           ${escapeHtml(student.name)}
         </h2>
 
-        <p>
-          هذه صفحة متابعة الطالب في مركز حردان طارق القرآني.
-          يتم تحديث المعلومات من لوحة المعلم.
-        </p>
-
-      </section>
-
-
-      <!-- معلومات الطالب -->
-
-      <section class="profile">
-
-        <div class="card student-card">
-
-          ${
-            photo
-
-              ? `
-
-                <img
-                  class="photo"
-                  src="${escapeHtml(photo)}"
-                  alt="صورة الطالب"
-                >
-
-              `
-
-              : `
-
-                <div
-                  class="photo"
-                  style="
-                    display:inline-flex;
-                    align-items:center;
-                    justify-content:center;
-                    font-size:40px;
-                    color:#07563c;
-                  "
-                >
-                  👤
-                </div>
-
-              `
-          }
-
-
-          <h2>
-            ${escapeHtml(student.name)}
-          </h2>
-
-
-          <div class="section">
-
-            ${escapeHtml(
-              student.section ||
-              'غير محدد'
-            )}
-
-          </div>
-
-
-          <div style="
-            color:#777;
-            font-size:12px;
-            direction:ltr;
-            word-break:break-all;
-          ">
-
-            ID:
-            ${escapeHtml(studentId)}
-
-          </div>
-
+        <div class="section">
+          ${escapeHtml(student.section || 'غير محدد')}
         </div>
 
-
-        <div class="card">
-
-          <h2 class="section-title">
-            معلومات الطالب
-          </h2>
+      </div>
 
 
-          <div class="details">
-
-            ${detail(
-              'الشعبة',
-              student.section
-            )}
-
-
-            ${detail(
-              'الحفظ الحالي',
-              student.memorization
-            )}
-
-
-            ${detail(
-              'الحالة',
-              student.status === 'active'
-                ? 'فعال'
-                : student.status
-            )}
-
-
-            ${detail(
-              'الهدف الأسبوعي',
-              weeklyGoal
-            )}
-
-
-            ${detail(
-              'مجموع النقاط',
-              points
-            )}
-
-
-            ${detail(
-              'التقدم الأسبوعي',
-              weeklyProgress + '%'
-            )}
-
-
-            ${detail(
-              'تاريخ الالتحاق',
-              profile.joiningDate ||
-              profile.joining_date
-            )}
-
-
-            ${detail(
-              'مكان السكن',
-              profile.residence
-            )}
-
-
-            ${detail(
-              'الحافلة',
-              profile.bus
-            )}
-
-
-            ${detail(
-              'موقع المنزل',
-              profile.homeLocation ||
-              profile.home_location
-            )}
-
-
-            ${detail(
-              'رقم ولي الأمر',
-              profile.guardianPhone ||
-              profile.guardian_phone
-            )}
-
-
-            ${detail(
-              'أجزاء القرآن المكتملة',
-              profile.completedQuranParts ||
-              profile.completed_quran_parts
-            )}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- التقدم -->
-
-      <section
-        class="card"
-        style="margin-bottom:20px"
-      >
+      <div class="card">
 
         <h2 class="section-title">
-          التقدم الأسبوعي
+          معلومات الطالب
         </h2>
-
-
-        <div class="progress-box">
-
-          <div class="progress-head">
-
-            <span>
-              الحفظ
-            </span>
-
-            <span>
-              ${hifzProgress}%
-            </span>
-
-          </div>
-
-
-          ${progressBar(hifzProgress)}
-
-
-          <p style="
-            margin-top:8px;
-            color:#777;
-          ">
-
-            تم إنجاز
-            ${escapeHtml(completedPages)}
-            من
-            ${escapeHtml(requiredPages)}
-
-          </p>
-
-        </div>
-
-
-        <div class="progress-box">
-
-          <div class="progress-head">
-
-            <span>
-              المراجعة
-            </span>
-
-            <span>
-              ${reviewProgress}%
-            </span>
-
-          </div>
-
-
-          ${progressBar(reviewProgress)}
-
-        </div>
-
 
         <div class="details">
 
           ${detail(
-            'التقييم العام',
-            generalEvaluation
+            'الشعبة',
+            student.section
           )}
-
 
           ${detail(
-            'التسميع المكافئ',
-            equivalentRecitation
+            'الحفظ الحالي',
+            student.memorization
           )}
 
+          ${detail(
+            'الحالة',
+            student.status === 'active'
+              ? 'فعال'
+              : student.status
+          )}
 
           ${detail(
             'الهدف الأسبوعي',
             weeklyGoal
           )}
 
-
           ${detail(
-            'الاختبار القادم',
-            nextExam
+            'مجموع النقاط',
+            points
           )}
 
+          ${detail(
+            'التقدم الأسبوعي',
+            weeklyProgress + '%'
+          )}
 
           ${detail(
-            'تاريخ الاختبار',
-            nextExamDate
+            'تاريخ الالتحاق',
+            profile.joiningDate ||
+            profile.joining_date
+          )}
+
+          ${detail(
+            'مكان السكن',
+            profile.residence
+          )}
+
+          ${detail(
+            'الحافلة',
+            profile.bus
+          )}
+
+          ${detail(
+            'موقع المنزل',
+            profile.homeLocation ||
+            profile.home_location
+          )}
+
+          ${detail(
+            'رقم ولي الأمر',
+            profile.guardianPhone ||
+            profile.guardian_phone
+          )}
+
+          ${detail(
+            'أجزاء القرآن المكتملة',
+            profile.completedQuranParts ||
+            profile.completed_quran_parts
           )}
 
         </div>
 
-      </section>
+      </div>
 
+    </section>
 
-      <!-- الحضور -->
 
-      <section
-        class="card"
-        style="margin-bottom:20px"
-      >
+    <section class="card" style="margin-bottom:20px">
 
-        <h2 class="section-title">
-          الحضور
-        </h2>
+      <h2 class="section-title">
+        التقدم الأسبوعي
+      </h2>
 
+      <div class="progress-box">
 
-        ${
-          attendance.length
+        <div class="progress-head">
+          <span>الحفظ</span>
+          <span>${hifzProgress}%</span>
+        </div>
 
-            ? `
+        ${progressBar(hifzProgress)}
 
-              <div class="attendance">
-
-                ${attendance.map(item => `
-
-                  <div class="attendance-item">
-
-                    <strong>
-                      ${escapeHtml(
-                        item.date ||
-                        item.day ||
-                        ''
-                      )}
-                    </strong>
-
-                    <div class="present">
-
-                      ${escapeHtml(
-                        item.status ||
-                        'حاضر'
-                      )}
-
-                    </div>
-
-                  </div>
-
-                `).join('')}
-
-              </div>
-
-            `
-
-            : `
-
-              <div class="empty">
-                لا يوجد سجل حضور مسجل حاليًا.
-              </div>
-
-            `
-        }
-
-      </section>
-
-
-      <!-- الخطة الأسبوعية -->
-
-      <section
-        class="card"
-        style="margin-bottom:20px"
-      >
-
-        <h2 class="section-title">
-          الخطة الأسبوعية
-        </h2>
-
-
-        ${
-          weeklyPlan.length
-
-            ? `
-
-              <div class="table-wrap">
-
-                <table>
-
-                  <thead>
-
-                    <tr>
-
-                      <th>
-                        التاريخ
-                      </th>
-
-                      <th>
-                        الجزء
-                      </th>
-
-                      <th>
-                        الصفحات
-                      </th>
-
-                      <th>
-                        المطلوب
-                      </th>
-
-                      <th>
-                        الحالة
-                      </th>
-
-                    </tr>
-
-                  </thead>
-
-
-                  <tbody>
-
-                    ${weeklyPlan.map(item => `
-
-                      <tr>
-
-                        <td>
-                          ${escapeHtml(item.date)}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(item.juz)}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(item.pages)}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(
-                            item.exam ||
-                            'لا يوجد'
-                          )}
-                        </td>
-
-                        <td>
-
-                          <span class="status">
-
-                            ${escapeHtml(
-                              item.status ||
-                              'قيد الانتظار'
-                            )}
-
-                          </span>
-
-                        </td>
-
-                      </tr>
-
-                    `).join('')}
-
-                  </tbody>
-
-                </table>
-
-              </div>
-
-            `
-
-            : `
-
-              <div class="empty">
-                لم يتم تسجيل خطة أسبوعية بعد.
-              </div>
-
-            `
-        }
-
-      </section>
-
-
-      <!-- الاختبارات -->
-
-      <section
-        class="card"
-        style="margin-bottom:20px"
-      >
-
-        <h2 class="section-title">
-          الاختبارات
-        </h2>
-
-
-        ${
-          tests.length
-
-            ? `
-
-              <div class="table-wrap">
-
-                <table>
-
-                  <thead>
-
-                    <tr>
-
-                      <th>
-                        الاختبار
-                      </th>
-
-                      <th>
-                        التاريخ
-                      </th>
-
-                      <th>
-                        النتيجة
-                      </th>
-
-                      <th>
-                        النقاط
-                      </th>
-
-                    </tr>
-
-                  </thead>
-
-
-                  <tbody>
-
-                    ${tests.map(test => `
-
-                      <tr>
-
-                        <td>
-                          ${escapeHtml(test.name)}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(test.date)}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(test.result)}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(test.points)}
-                        </td>
-
-                      </tr>
-
-                    `).join('')}
-
-                  </tbody>
-
-                </table>
-
-              </div>
-
-            `
-
-            : `
-
-              <div class="empty">
-                لا توجد اختبارات مسجلة حاليًا.
-              </div>
-
-            `
-        }
-
-      </section>
-
-
-      <!-- التسميع -->
-
-      <section
-        class="card"
-        style="margin-bottom:20px"
-      >
-
-        <h2 class="section-title">
-          سجل التسميع
-        </h2>
-
-
-        ${
-          recitations.length
-
-            ? `
-
-              <div class="table-wrap">
-
-                <table>
-
-                  <thead>
-
-                    <tr>
-
-                      <th>
-                        الصفحة
-                      </th>
-
-                      <th>
-                        النوع
-                      </th>
-
-                      <th>
-                        العلامة
-                      </th>
-
-                      <th>
-                        التقييم
-                      </th>
-
-                      <th>
-                        التاريخ
-                      </th>
-
-                    </tr>
-
-                  </thead>
-
-
-                  <tbody>
-
-                    ${recitations.map(item => `
-
-                      <tr>
-
-                        <td>
-                          ${escapeHtml(item.page)}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(
-                            item.type === 'hifz'
-                              ? 'حفظ'
-                              : item.type === 'review'
-                                ? 'مراجعة'
-                                : item.type || '-'
-                          )}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(item.score)}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(
-                            item.grade ||
-                            '-'
-                          )}
-                        </td>
-
-                        <td>
-                          ${escapeHtml(
-                            item.date ||
-                            '-'
-                          )}
-                        </td>
-
-                      </tr>
-
-                    `).join('')}
-
-                  </tbody>
-
-                </table>
-
-              </div>
-
-            `
-
-            : `
-
-              <div class="empty">
-                لا يوجد تسميع مسجل حاليًا.
-              </div>
-
-            `
-        }
-
-      </section>
-
-
-      <!-- الملاحظات -->
-
-      <section class="card">
-
-        <h2 class="section-title">
-          ملاحظات المعلم
-        </h2>
-
-
-        <p style="
-          line-height:2;
-          color:#555;
-        ">
-
-          ${escapeHtml(
-            profile.notes ||
-            profile.generalNotes ||
-            profile.general_notes ||
-            'لا يوجد ملاحظات عامة مسجلة للطالب في الوقت الحالي.'
-          )}
-
+        <p style="margin-top:8px;color:#777">
+          تم إنجاز
+          ${escapeHtml(completedPages)}
+          من
+          ${escapeHtml(requiredPages)}
         </p>
 
-      </section>
-
-    `;
-
-  }
+      </div>
 
 
-  /* =========================
-     تشغيل الصفحة
-  ========================= */
+      <div class="progress-box">
 
-  loadStudent();
+        <div class="progress-head">
+          <span>المراجعة</span>
+          <span>${reviewProgress}%</span>
+        </div>
+
+        ${progressBar(reviewProgress)}
+
+      </div>
+
+      <div class="details">
+
+        ${detail(
+          'التقييم العام',
+          generalEvaluation
+        )}
+
+        ${detail(
+          'التسميع المكافئ',
+          equivalentRecitation
+        )}
+
+        ${detail(
+          'الهدف الأسبوعي',
+          weeklyGoal
+        )}
+
+        ${detail(
+          'الاختبار القادم',
+          nextExam
+        )}
+
+        ${detail(
+          'تاريخ الاختبار',
+          nextExamDate
+        )}
+
+      </div>
+
+    </section>
+
+
+    <section class="card" style="margin-bottom:20px">
+
+      <h2 class="section-title">
+        الحضور
+      </h2>
+
+      ${
+        attendance.length
+          ? `
+            <div class="attendance">
+
+              ${attendance.map(item => `
+
+                <div class="attendance-item">
+
+                  <strong>
+                    ${escapeHtml(
+                      item.date ||
+                      item.day ||
+                      ''
+                    )}
+                  </strong>
+
+                  <div class="present">
+                    ${escapeHtml(
+                      item.status || 'حاضر'
+                    )}
+                  </div>
+
+                </div>
+
+              `).join('')}
+
+            </div>
+          `
+          : `
+            <div class="empty">
+              لا يوجد سجل حضور مسجل حاليًا.
+            </div>
+          `
+      }
+
+    </section>
+
+
+    <section class="card" style="margin-bottom:20px">
+
+      <h2 class="section-title">
+        الخطة الأسبوعية
+      </h2>
+
+      ${
+        weeklyPlan.length
+          ? `
+            <div class="table-wrap">
+
+              <table>
+
+                <thead>
+                  <tr>
+                    <th>التاريخ</th>
+                    <th>الجزء</th>
+                    <th>الصفحات</th>
+                    <th>المطلوب</th>
+                    <th>الحالة</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  ${weeklyPlan.map(item => `
+
+                    <tr>
+
+                      <td>
+                        ${escapeHtml(item.date)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(item.juz)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(item.pages)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(item.exam || 'لا يوجد')}
+                      </td>
+
+                      <td>
+                        <span class="status">
+                          ${escapeHtml(
+                            item.status || 'قيد الانتظار'
+                          )}
+                        </span>
+                      </td>
+
+                    </tr>
+
+                  `).join('')}
+
+                </tbody>
+
+              </table>
+
+            </div>
+          `
+          : `
+            <div class="empty">
+              لم يتم تسجيل خطة أسبوعية بعد.
+            </div>
+          `
+      }
+
+    </section>
+
+
+    <section class="card" style="margin-bottom:20px">
+
+      <h2 class="section-title">
+        الاختبارات
+      </h2>
+
+      ${
+        tests.length
+          ? `
+            <div class="table-wrap">
+
+              <table>
+
+                <thead>
+                  <tr>
+                    <th>الاختبار</th>
+                    <th>التاريخ</th>
+                    <th>النتيجة</th>
+                    <th>النقاط</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  ${tests.map(test => `
+
+                    <tr>
+
+                      <td>
+                        ${escapeHtml(test.name)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(test.date)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(test.result)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(test.points)}
+                      </td>
+
+                    </tr>
+
+                  `).join('')}
+
+                </tbody>
+
+              </table>
+
+            </div>
+          `
+          : `
+            <div class="empty">
+              لا توجد اختبارات مسجلة حاليًا.
+            </div>
+          `
+      }
+
+    </section>
+
+
+    <section class="card">
+
+      <h2 class="section-title">
+        ملاحظات المعلم
+      </h2>
+
+      <p style="line-height:2;color:#555">
+
+        ${escapeHtml(
+          profile.notes ||
+          profile.generalNotes ||
+          profile.general_notes ||
+          'لا يوجد ملاحظات عامة مسجلة للطالب في الوقت الحالي.'
+        )}
+
+      </p>
+
+    </section>
+
+  `;
+
+}
+
+
+loadStudent();
 
 </script>
 
