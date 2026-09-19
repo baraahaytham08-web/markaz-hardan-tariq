@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* شريط النسخة التجريبية */
+    /* ================= النسخة التجريبية ================= */
+
     .demo-badge {
       position: fixed;
       top: 12px;
@@ -35,7 +36,7 @@
     .contact-buttons,
     .register-buttons {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
       margin-top: 20px;
     }
@@ -76,6 +77,15 @@
       font-family: inherit;
       font-size: 15px;
       box-sizing: border-box;
+      outline: none;
+      transition: .2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #c9a227;
+      box-shadow: 0 0 0 3px rgba(201,162,39,.12);
     }
 
     .form-group textarea {
@@ -90,16 +100,29 @@
       color: #666;
     }
 
-    /* ================= الشعب القابلة للضغط ================= */
+    /* ================= الشعب ================= */
 
     .program-clickable {
       cursor: pointer;
-      transition: transform .2s ease, box-shadow .2s ease;
+      transition: transform .25s ease, box-shadow .25s ease;
     }
 
     .program-clickable:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,.12);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.13);
+    }
+
+    .program-clickable:focus {
+      outline: 3px solid rgba(201,162,39,.35);
+      outline-offset: 3px;
+    }
+
+    .program-more {
+      display: inline-block;
+      margin-top: 12px;
+      font-weight: bold;
+      color: #b28b18;
+      font-size: 14px;
     }
 
     /* ================= نافذة معلومات الشعبة ================= */
@@ -108,58 +131,151 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,.65);
+      background: rgba(0,0,0,.68);
       z-index: 10000;
       align-items: center;
       justify-content: center;
       padding: 20px;
+      backdrop-filter: blur(4px);
     }
 
     .program-modal.active {
       display: flex;
+      animation: modalFade .2s ease;
+    }
+
+    @keyframes modalFade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     .program-modal-content {
       background: white;
       width: 100%;
-      max-width: 650px;
-      max-height: 85vh;
+      max-width: 680px;
+      max-height: 88vh;
       overflow-y: auto;
-      border-radius: 20px;
-      padding: 30px;
+      border-radius: 24px;
+      padding: 0;
       position: relative;
       box-sizing: border-box;
+      box-shadow: 0 25px 70px rgba(0,0,0,.28);
+      animation: modalUp .25s ease;
+    }
+
+    @keyframes modalUp {
+      from {
+        transform: translateY(25px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .program-modal-header {
+      padding: 35px 30px 28px;
+      text-align: center;
+      background: linear-gradient(135deg, #f8f1d8, #fff);
+      border-bottom: 1px solid #eee;
+    }
+
+    .program-modal-icon {
+      width: 75px;
+      height: 75px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      box-shadow: 0 7px 20px rgba(0,0,0,.09);
+    }
+
+    .program-modal-header h2 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .program-modal-body {
+      padding: 28px 30px 32px;
+    }
+
+    .program-detail {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 15px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
+
+    .program-detail h3 {
+      margin: 0 0 9px;
+      font-size: 17px;
+    }
+
+    .program-detail p {
+      margin: 0;
+      line-height: 1.9;
+      color: #555;
+    }
+
+    .student-follow-btn {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      text-decoration: none;
+      background: #222;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      margin-top: 22px;
+      transition: .2s;
+    }
+
+    .student-follow-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.15);
     }
 
     .program-modal-close {
       position: absolute;
-      top: 12px;
-      left: 15px;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
       border: none;
-      background: #eee;
-      width: 35px;
-      height: 35px;
+      background: rgba(255,255,255,.9);
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 22px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.12);
+      transition: .2s;
     }
 
-    .program-modal-icon {
-      font-size: 45px;
-      margin-bottom: 10px;
+    .program-modal-close:hover {
+      transform: rotate(90deg);
     }
 
-    .program-modal h2 {
-      margin-top: 0;
+    /* ================= زر التسجيل ================= */
+
+    .register-buttons .btn-gold {
+      min-width: 190px;
+      text-align: center;
     }
 
-    .program-modal h3 {
-      margin-top: 25px;
-    }
-
-    .program-modal p {
-      line-height: 1.9;
-    }
+    /* ================= الجوال ================= */
 
     @media (max-width: 600px) {
 
@@ -167,19 +283,42 @@
         padding: 20px;
       }
 
-      .program-modal-content {
-        padding: 25px 20px;
+      .program-modal {
+        padding: 12px;
       }
 
+      .program-modal-content {
+        max-height: 92vh;
+        border-radius: 20px;
+      }
+
+      .program-modal-header {
+        padding: 32px 20px 22px;
+      }
+
+      .program-modal-body {
+        padding: 22px 18px 25px;
+      }
+
+      .program-modal-header h2 {
+        font-size: 22px;
+      }
+
+      .register-buttons {
+        flex-direction: column;
+      }
+
+      .register-buttons .btn {
+        width: 100%;
+        box-sizing: border-box;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- النسخة التجريبية -->
   <div class="demo-badge">النسخة التجريبية</div>
-
 
   <!-- ================= HEADER ================= -->
 
@@ -200,31 +339,19 @@
 
       </a>
 
-
       <nav>
 
-        <a class="active" href="#home">
-          الرئيسية
-        </a>
+        <a class="active" href="#home">الرئيسية</a>
 
-        <a href="#about">
-          عن المركز
-        </a>
+        <a href="#about">عن المركز</a>
 
-        <a href="#programs">
-          الشعب والحلقات
-        </a>
+        <a href="#programs">الشعب والحلقات</a>
 
-        <a href="#schedule">
-          أوقات الدوام
-        </a>
+        <a href="#schedule">أوقات الدوام</a>
 
-        <a href="#contact">
-          تواصل معنا
-        </a>
+        <a href="#contact">تواصل معنا</a>
 
       </nav>
-
 
       <div class="actions">
 
@@ -232,17 +359,17 @@
           التسجيل
         </a>
 
-        <a class="btn btn-gold"
-           href="https://wa.me/962780791622"
-           target="_blank"
-           rel="noopener">
+        <a
+          class="btn btn-gold"
+          href="https://wa.me/962780791622"
+          target="_blank"
+          rel="noopener">
 
           واتساب
 
         </a>
 
       </div>
-
 
       <button class="menu-btn" aria-label="فتح القائمة">
         ☰
@@ -256,7 +383,6 @@
   <!-- ================= MAIN ================= -->
 
   <main>
-
 
     <!-- ================= HERO ================= -->
 
@@ -290,7 +416,6 @@
 
         </div>
 
-
         <div class="hero-art">
 
           <div class="arch">
@@ -312,12 +437,9 @@
 
     <section class="features container">
 
-
       <article class="feature">
 
-        <div class="icon">
-          📖
-        </div>
+        <div class="icon">📖</div>
 
         <h3>
           تحفيظ القرآن الكريم
@@ -329,12 +451,9 @@
 
       </article>
 
-
       <article class="feature">
 
-        <div class="icon">
-          ✨
-        </div>
+        <div class="icon">✨</div>
 
         <h3>
           تعليم التجويد
@@ -346,12 +465,9 @@
 
       </article>
 
-
       <article class="feature">
 
-        <div class="icon">
-          🌱
-        </div>
+        <div class="icon">🌱</div>
 
         <h3>
           بناء الأجيال
@@ -363,12 +479,9 @@
 
       </article>
 
-
       <article class="feature">
 
-        <div class="icon">
-          📅
-        </div>
+        <div class="icon">📅</div>
 
         <h3>
           مواعيد منظمة
@@ -380,14 +493,12 @@
 
       </article>
 
-
     </section>
 
 
     <!-- ================= ABOUT ================= -->
 
     <section id="about" class="about container">
-
 
       <div class="quote-card">
 
@@ -404,7 +515,6 @@
         </small>
 
       </div>
-
 
       <div class="about-text">
 
@@ -437,7 +547,6 @@
 
       <div class="container">
 
-
         <div class="section-title">
 
           <span></span>
@@ -450,11 +559,9 @@
 
         </div>
 
-
         <div class="cards">
 
-
-          <!-- شعبة الحفاظ -->
+          <!-- الحفاظ -->
 
           <article
             class="program program-clickable"
@@ -475,10 +582,14 @@
               عناية بحفظ القرآن الكريم ومراجعته.
             </p>
 
+            <span class="program-more">
+              اضغط لمعرفة التفاصيل ←
+            </span>
+
           </article>
 
 
-          <!-- شعبة تجويد -->
+          <!-- التجويد -->
 
           <article
             class="program program-clickable"
@@ -499,10 +610,14 @@
               تعليم أحكام التجويد وتصحيح التلاوة.
             </p>
 
+            <span class="program-more">
+              اضغط لمعرفة التفاصيل ←
+            </span>
+
           </article>
 
 
-          <!-- شعبة إجازة -->
+          <!-- الإجازة -->
 
           <article
             class="program program-clickable"
@@ -523,10 +638,14 @@
               مسار متخصص للطلاب في برنامج الإجازة.
             </p>
 
+            <span class="program-more">
+              اضغط لمعرفة التفاصيل ←
+            </span>
+
           </article>
 
 
-          <!-- شعبة فرسان -->
+          <!-- فرسان -->
 
           <article
             class="program program-clickable"
@@ -547,8 +666,11 @@
               شعبة قرآنية وتربوية للناشئة.
             </p>
 
-          </article>
+            <span class="program-more">
+              اضغط لمعرفة التفاصيل ←
+            </span>
 
+          </article>
 
         </div>
 
@@ -560,7 +682,6 @@
     <!-- ================= SCHEDULE ================= -->
 
     <section id="schedule" class="schedule container">
-
 
       <div>
 
@@ -579,9 +700,7 @@
 
       </div>
 
-
       <div class="schedule-box">
-
 
         <div>
 
@@ -595,7 +714,6 @@
 
         </div>
 
-
         <div>
 
           <strong>
@@ -608,7 +726,6 @@
 
         </div>
 
-
       </div>
 
     </section>
@@ -619,7 +736,6 @@
     <section id="register" class="register">
 
       <div class="container register-inner">
-
 
         <div>
 
@@ -637,9 +753,7 @@
 
         </div>
 
-
         <div class="register-buttons">
-
 
           <!-- التسجيل الإلكتروني -->
 
@@ -655,7 +769,7 @@
           <!-- التسجيل عبر واتساب -->
 
           <a
-            class="btn btn-outline big"
+            class="btn btn-gold big"
             href="https://wa.me/962780791622"
             target="_blank"
             rel="noopener">
@@ -664,9 +778,7 @@
 
           </a>
 
-
         </div>
-
 
       </div>
 
@@ -678,7 +790,6 @@
     <section id="online-register" class="online-register">
 
       <div class="container">
-
 
         <div class="section-title">
 
@@ -692,11 +803,9 @@
 
         </div>
 
-
         <form
           class="registration-form"
           id="registrationForm">
-
 
           <div class="form-group">
 
@@ -712,7 +821,6 @@
               required>
 
           </div>
-
 
           <div class="form-group">
 
@@ -731,7 +839,6 @@
 
           </div>
 
-
           <div class="form-group">
 
             <label for="guardianPhone">
@@ -746,7 +853,6 @@
               required>
 
           </div>
-
 
           <div class="form-group">
 
@@ -783,7 +889,6 @@
 
           </div>
 
-
           <div class="form-group">
 
             <label for="notes">
@@ -797,7 +902,6 @@
 
           </div>
 
-
           <button
             type="submit"
             class="btn btn-gold big">
@@ -806,12 +910,10 @@
 
           </button>
 
-
           <p class="form-note">
             عند الضغط على إرسال، سيتم فتح واتساب وإرسال بيانات التسجيل
             إلى رقم المركز لمراجعة الطلب والتواصل مع ولي الأمر.
           </p>
-
 
         </form>
 
@@ -823,7 +925,6 @@
     <!-- ================= CONTACT ================= -->
 
     <section id="contact" class="contact container">
-
 
       <div>
 
@@ -840,9 +941,7 @@
           يمكنكم التواصل معنا.
         </p>
 
-
         <div class="contact-buttons">
-
 
           <a
             class="btn btn-gold"
@@ -854,7 +953,6 @@
 
           </a>
 
-
           <a
             class="btn btn-outline"
             href="https://maps.app.goo.gl/22hyWWJtPr8HUpAr9"
@@ -864,7 +962,6 @@
             موقع المركز 📍
 
           </a>
-
 
           <a
             class="btn btn-outline"
@@ -876,14 +973,11 @@
 
           </a>
 
-
         </div>
 
       </div>
 
-
       <div class="contact-list">
-
 
         <div>
 
@@ -898,7 +992,6 @@
           </a>
 
         </div>
-
 
         <div>
 
@@ -917,7 +1010,6 @@
 
         </div>
 
-
         <div>
 
           📍
@@ -935,11 +1027,9 @@
 
         </div>
 
-
       </div>
 
     </section>
-
 
   </main>
 
@@ -955,7 +1045,6 @@
       class="program-modal-content"
       onclick="event.stopPropagation()">
 
-
       <button
         class="program-modal-close"
         onclick="closeProgram()"
@@ -965,32 +1054,58 @@
 
       </button>
 
+      <div class="program-modal-header">
 
-      <div
-        class="program-modal-icon"
-        id="modalIcon">
+        <div
+          class="program-modal-icon"
+          id="modalIcon">
+        </div>
+
+        <h2 id="modalTitle"></h2>
+
       </div>
 
+      <div class="program-modal-body">
 
-      <h2 id="modalTitle"></h2>
+        <div class="program-detail">
 
+          <h3>
+            📌 عن الشعبة
+          </h3>
 
-      <p id="modalDescription"></p>
+          <p id="modalDescription"></p>
 
+        </div>
 
-      <h3>
-        ماذا تهتم به الشعبة؟
-      </h3>
+        <div class="program-detail">
 
-      <p id="modalFocus"></p>
+          <h3>
+            🎯 ماذا تهتم به الشعبة؟
+          </h3>
 
+          <p id="modalFocus"></p>
 
-      <h3>
-        متابعة الطلاب
-      </h3>
+        </div>
 
-      <p id="modalFollow"></p>
+        <div class="program-detail">
 
+          <h3>
+            📊 متابعة الطلاب
+          </h3>
+
+          <p id="modalFollow"></p>
+
+        </div>
+
+        <a
+          href="followup.html"
+          class="student-follow-btn">
+
+          الدخول إلى متابعة الطلاب ←
+
+        </a>
+
+      </div>
 
     </div>
 
@@ -1055,7 +1170,6 @@
 
       },
 
-
       tajweed: {
 
         icon: '📖',
@@ -1073,7 +1187,6 @@
 
       },
 
-
       ijazah: {
 
         icon: '🏅',
@@ -1090,7 +1203,6 @@
           'متابعة تقدم الطالب في الحفظ والمراجعة والتلاوة ضمن متطلبات البرنامج.'
 
       },
-
 
       fursan: {
 
@@ -1164,7 +1276,7 @@
     }
 
 
-    /* ================= زر ESC ================= */
+    /* ================= ESC ================= */
 
     document.addEventListener('keydown', function(event) {
 
@@ -1185,13 +1297,11 @@
     const registrationForm =
       document.getElementById('registrationForm');
 
-
     if (registrationForm) {
 
       registrationForm.addEventListener('submit', function(event) {
 
         event.preventDefault();
-
 
         const studentName =
           document.getElementById('studentName').value.trim();
@@ -1208,35 +1318,36 @@
         const notes =
           document.getElementById('notes').value.trim();
 
+        const message = [
 
-        const message =
-          'السلام عليكم، أرغب بتسجيل طالب في مركز حردان طارق القرآني.%0A%0A' +
+          'السلام عليكم، أرغب بتسجيل طالب في مركز حردان طارق القرآني.',
 
-          'اسم الطالب: ' +
-          encodeURIComponent(studentName) +
+          '',
 
-          '%0Aالعمر: ' +
-          encodeURIComponent(studentAge) +
+          `اسم الطالب: ${studentName}`,
 
-          '%0Aرقم ولي الأمر: ' +
-          encodeURIComponent(guardianPhone) +
+          `العمر: ${studentAge}`,
 
-          '%0Aالشعبة المطلوبة: ' +
-          encodeURIComponent(program) +
+          `رقم ولي الأمر: ${guardianPhone}`,
 
-          '%0Aملاحظات إضافية: ' +
-          encodeURIComponent(notes || 'لا يوجد') +
+          `الشعبة المطلوبة: ${program}`,
 
-          '%0A%0Aتم إرسال الطلب من الموقع الإلكتروني للمركز.';
+          `ملاحظات إضافية: ${notes || 'لا يوجد'}`,
 
+          '',
+
+          'تم إرسال الطلب من الموقع الإلكتروني للمركز.'
+
+        ].join('\n');
 
         const whatsappURL =
-          'https://wa.me/962780791622?text=' + message;
-
+          'https://wa.me/962780791622?text=' +
+          encodeURIComponent(message);
 
         window.open(
           whatsappURL,
-          '_blank'
+          '_blank',
+          'noopener'
         );
 
       });
