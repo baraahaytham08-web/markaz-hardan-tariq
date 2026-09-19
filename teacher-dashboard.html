@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -1277,6 +1278,30 @@
     }
 
 
+    .student-name-link {
+
+      color: var(--green);
+
+      font-weight: bold;
+
+      text-decoration: none;
+
+      cursor: pointer;
+
+      transition: .2s;
+
+    }
+
+
+    .student-name-link:hover {
+
+      color: var(--gold);
+
+      text-decoration: underline;
+
+    }
+
+
     .student-avatar {
 
       width: 36px;
@@ -2285,14 +2310,12 @@
 
   <!-- =====================================================
        SIDEBAR
-  ====================================================== -->
+  ===================================================== -->
 
   <aside
     class="sidebar"
     id="sidebar">
 
-
-    <!-- زر إغلاق القائمة على الموبايل -->
 
     <button
       class="close-sidebar"
@@ -2619,9 +2642,7 @@
       </section>
 
 
-      <!-- =====================================================
-           REQUESTS PANEL
-      ====================================================== -->
+      <!-- REQUESTS -->
 
       <section
         class="panel requests-panel"
@@ -2676,9 +2697,7 @@
       </section>
 
 
-      <!-- =====================================================
-           STUDENTS PANEL
-      ====================================================== -->
+      <!-- STUDENTS -->
 
       <section
         class="panel"
@@ -2850,9 +2869,7 @@
   </div>
 
 
-  <!-- =====================================================
-       MODAL
-  ====================================================== -->
+  <!-- MODAL -->
 
   <div
     class="modal"
@@ -3016,9 +3033,7 @@
   </div>
 
 
-  <!-- =====================================================
-       TOAST
-  ====================================================== -->
+  <!-- TOAST -->
 
   <div
     class="toast"
@@ -3742,13 +3757,18 @@
 
               </div>
 
-              <span>
+
+              <a
+                class="student-name-link"
+                href="student-profile.html?id=${encodeURIComponent(student.id)}"
+                title="فتح ملف الطالب"
+              >
 
                 ${escapeHtml(
                   student.name || ''
                 )}
 
-              </span>
+              </a>
 
             </div>
 
@@ -4070,8 +4090,7 @@
             message.textContent =
               'حدث خطأ أثناء تعديل الطالب.';
 
-            saveButton.disabled =
-              false;
+            saveButton.disabled = false;
 
             saveButton.innerHTML =
               '<i class="fa-solid fa-check"></i> حفظ التعديلات';
@@ -4127,8 +4146,7 @@
             message.textContent =
               'حدث خطأ أثناء حفظ الطالب.';
 
-            saveButton.disabled =
-              false;
+            saveButton.disabled = false;
 
             saveButton.innerHTML =
               '<i class="fa-solid fa-check"></i> حفظ الطالب';
@@ -4368,6 +4386,20 @@
 
 
     document
+      .querySelector('.home-link')
+      .addEventListener(
+        'click',
+        function() {
+
+          sidebar.classList.remove(
+            'open'
+          );
+
+        }
+      );
+
+
+    document
       .getElementById(
         'studentsNav'
       )
@@ -4418,7 +4450,7 @@
 
 
     /* =====================================================
-       ESCAPE HTML
+       ESCAPE
     ===================================================== */
 
     function escapeHtml(text) {
@@ -4478,3 +4510,4 @@
 </body>
 
 </html>
+```
