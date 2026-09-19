@@ -1,6 +1,13 @@
-<!DOCTYPE html>
 
+مدخّلة داخل الـHTML والـJavaScript، وهذا بكسر تشغيل السكربت كامل، لذلك الصفحة تظل على **«جاري تحميل ملف الطالب...»**.
+
+استبدل **ملف `student-profile.html` كاملًا** بالنسخة التالية. شلت علامات الـMarkdown الغلط، وشلت أي شيء متعلق برمز الدخول، وحافظت على نفس التصميم والوظائف:
+
+:::writing{variant="document" title="student-profile.html — النسخة المصححة" id="73164"}
+```html
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 
   <meta charset="UTF-8">
@@ -301,19 +308,17 @@
 
   <div class="header-inner">
 
-```
-<div class="brand">
-  <h1>مركز حردان طارق القرآني</h1>
-  <p>إدارة ملف الطالب</p>
-</div>
+    <div class="brand">
+      <h1>مركز حردان طارق القرآني</h1>
+      <p>إدارة ملف الطالب</p>
+    </div>
 
-<a
-  class="back"
-  href="teacher-dashboard.html"
->
-  ← لوحة المعلم
-</a>
-```
+    <a
+      class="back"
+      href="teacher-dashboard.html"
+    >
+      ← لوحة المعلم
+    </a>
 
   </div>
 
@@ -466,11 +471,46 @@ function mergeProfile(data) {
 
 async function checkTeacher() {
 
-  const {
-    data: { user }
-  } = await supabaseClient.auth.getUser();
+  try {
 
-  if (!user) {
+    const {
+      data: { user },
+      error
+    } = await supabaseClient.auth.getUser();
+
+    if (
+      error ||
+      !user
+    ) {
+
+      window.location.href =
+        'teacher-login.html';
+
+      return false;
+
+    }
+
+    if (
+      String(user.email || '').toLowerCase() !==
+      TEACHER_EMAIL.toLowerCase()
+    ) {
+
+      alert('هذا القسم مخصص للمعلم فقط.');
+
+      await supabaseClient.auth.signOut();
+
+      window.location.href =
+        'teacher-login.html';
+
+      return false;
+
+    }
+
+    return true;
+
+  } catch (error) {
+
+    console.error('Teacher check error:', error);
 
     window.location.href =
       'teacher-login.html';
@@ -478,100 +518,132 @@ async function checkTeacher() {
     return false;
 
   }
-
-  if (
-    String(user.email || '').toLowerCase() !==
-    TEACHER_EMAIL.toLowerCase()
-  ) {
-
-    alert('هذا القسم مخصص للمعلم فقط.');
-
-    await supabaseClient.auth.signOut();
-
-    window.location.href =
-      'teacher-login.html';
-
-    return false;
-
-  }
-
-  return true;
 
 }
 
 
 async function loadStudent() {
 
-  if (!(await checkTeacher())) return;
+  try {
 
-  const params =
-    new URLSearchParams(
-      window.location.search
+    if (!(await checkTeacher())) return;
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    studentId =
+      params.get('id');
+
+    if (!studentId) {
+
+      document.getElementById('app').innerHTML = `
+        <div class="card">
+          لم يتم تحديد الطالب.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from('students')
+      .select('*')
+      .eq('id', studentId)
+      .maybeSingle();
+
+
+    if (error) {
+
+      console.error('Student loading error:', error);
+
+      document.getElementById('app').innerHTML = `
+        <div class="card">
+          تعذر تحميل بيانات الطالب.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    if (!data) {
+
+      document.getElementById('app').innerHTML = `
+        <div class="card">
+          تعذر العثور على الطالب.
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    student = data;
+
+
+    const {
+      data: profileRow,
+      error: profileError
+    } = await supabaseClient
+      .from('student_profiles')
+      .select('data')
+      .eq(
+        'student_id',
+        String(studentId)
+      )
+      .maybeSingle();
+
+
+    if (profileError) {
+
+      console.error(
+        'Profile loading error:',
+        profileError
+      );
+
+      profile = defaultProfile();
+
+    } else {
+
+      profile =
+        mergeProfile(
+          profileRow?.data || {}
+        );
+
+    }
+
+
+    render();
+
+  } catch (error) {
+
+    console.error(
+      'LOAD STUDENT ERROR:',
+      error
     );
-
-  studentId =
-    params.get('id');
-
-  if (!studentId) {
 
     document.getElementById('app').innerHTML = `
       <div class="card">
-        لم يتم تحديد الطالب.
+        <h2 style="color:#b42318;margin-bottom:10px;">
+          تعذر تحميل ملف الطالب
+        </h2>
+
+        <p style="color:#777;">
+          حدث خطأ أثناء تحميل البيانات. حاول تحديث الصفحة.
+        </p>
       </div>
     `;
 
-    return;
-
   }
-
-
-  const {
-    data,
-    error
-  } = await supabaseClient
-    .from('students')
-    .select('*')
-    .eq('id', studentId)
-    .single();
-
-
-  if (error || !data) {
-
-    console.error(error);
-
-    document.getElementById('app').innerHTML = `
-      <div class="card">
-        تعذر العثور على الطالب.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  student = data;
-
-
-  const {
-    data: profileRow
-  } = await supabaseClient
-    .from('student_profiles')
-    .select('data')
-    .eq(
-      'student_id',
-      String(studentId)
-    )
-    .maybeSingle();
-
-
-  profile =
-    mergeProfile(
-      profileRow?.data || {}
-    );
-
-
-  render();
 
 }
 
@@ -827,9 +899,7 @@ function render() {
             <input
               id="totalPoints"
               type="number"
-              value="${
-                profile.totalPoints ?? 0
-              }"
+              value="${profile.totalPoints ?? 0}"
             >
           </div>
 
@@ -841,9 +911,7 @@ function render() {
               type="number"
               min="0"
               max="100"
-              value="${
-                profile.weeklyProgress ?? 0
-              }"
+              value="${profile.weeklyProgress ?? 0}"
             >
           </div>
 
@@ -855,9 +923,7 @@ function render() {
               type="number"
               min="0"
               max="100"
-              value="${
-                profile.hifzProgress ?? 0
-              }"
+              value="${profile.hifzProgress ?? 0}"
             >
           </div>
 
@@ -869,9 +935,7 @@ function render() {
               type="number"
               min="0"
               max="100"
-              value="${
-                profile.reviewProgress ?? 0
-              }"
+              value="${profile.reviewProgress ?? 0}"
             >
           </div>
 
@@ -1020,694 +1084,674 @@ function render() {
           profile.notes || ''
         )}</textarea>
 
-```
-  </section>
+      </section>
 
-</div>
+    </div>
 
 
-<div class="actions">
+    <div class="actions">
 
-  <button
-    id="saveButton"
-    class="save"
-    onclick="saveProfile()"
-  >
-    💾 حفظ جميع التعديلات
-  </button>
+      <button
+        id="saveButton"
+        class="save"
+        onclick="saveProfile()"
+      >
+        💾 حفظ جميع التعديلات
+      </button>
 
-</div>
-```
+    </div>
 
-`;
+  `;
 
-renderAttendance();
-renderPlan();
-renderTests();
+  renderAttendance();
+  renderPlan();
+  renderTests();
 
 }
+
 
 function renderAttendance() {
 
-const box =
-document.getElementById(
-'attendanceEditor'
-);
+  const box =
+    document.getElementById(
+      'attendanceEditor'
+    );
 
-const items =
-Array.isArray(profile.attendance)
-? profile.attendance
-: [];
+  const items =
+    Array.isArray(profile.attendance)
+      ? profile.attendance
+      : [];
 
-box.innerHTML =
-items.map((item, index) => `
+  box.innerHTML =
+    items.map((item, index) => `
 
-```
-  <div class="array-row">
+      <div class="array-row">
 
-    <div class="array-row-grid">
+        <div class="array-row-grid">
 
-      <input
-        placeholder="التاريخ"
-        value="${escapeHtml(
-          item.date || ''
-        )}"
-        data-attendance-date="${index}"
-      >
+          <input
+            placeholder="التاريخ"
+            value="${escapeHtml(
+              item.date || ''
+            )}"
+            data-attendance-date="${index}"
+          >
 
-      <input
-        placeholder="الحالة"
-        value="${escapeHtml(
-          item.status || 'حاضر'
-        )}"
-        data-attendance-status="${index}"
-      >
+          <input
+            placeholder="الحالة"
+            value="${escapeHtml(
+              item.status || 'حاضر'
+            )}"
+            data-attendance-status="${index}"
+          >
 
-    </div>
+        </div>
 
-    <button
-      class="remove"
-      onclick="removeAttendance(${index})"
-    >
-      حذف
-    </button>
+        <button
+          class="remove"
+          onclick="removeAttendance(${index})"
+        >
+          حذف
+        </button>
 
-  </div>
+      </div>
 
-`).join('');
-```
+    `).join('');
 
 }
+
 
 function addAttendance() {
 
-if (!Array.isArray(profile.attendance))
-profile.attendance = [];
+  if (!Array.isArray(profile.attendance))
+    profile.attendance = [];
 
-profile.attendance.push({
-date: '',
-status: 'حاضر'
-});
+  profile.attendance.push({
+    date: '',
+    status: 'حاضر'
+  });
 
-renderAttendance();
+  renderAttendance();
 
 }
+
 
 function removeAttendance(index) {
 
-profile.attendance.splice(index, 1);
+  profile.attendance.splice(index, 1);
 
-renderAttendance();
+  renderAttendance();
 
 }
+
 
 function collectAttendance() {
 
-const result = [];
+  const result = [];
 
-profile.attendance.forEach(
-(item, index) => {
+  profile.attendance.forEach(
+    (item, index) => {
 
-```
-  const date =
-    document.querySelector(
-      `[data-attendance-date="${index}"]`
-    )?.value || '';
+      const date =
+        document.querySelector(
+          `[data-attendance-date="${index}"]`
+        )?.value || '';
 
-  const status =
-    document.querySelector(
-      `[data-attendance-status="${index}"]`
-    )?.value || '';
+      const status =
+        document.querySelector(
+          `[data-attendance-status="${index}"]`
+        )?.value || '';
 
-  result.push({
-    date,
-    status
-  });
+      result.push({
+        date,
+        status
+      });
 
-}
-```
+    }
+  );
 
-);
-
-return result;
+  return result;
 
 }
+
 
 function renderPlan() {
 
-const box =
-document.getElementById(
-'planEditor'
-);
+  const box =
+    document.getElementById(
+      'planEditor'
+    );
 
-const items =
-Array.isArray(profile.weeklyPlan)
-? profile.weeklyPlan
-: [];
+  const items =
+    Array.isArray(profile.weeklyPlan)
+      ? profile.weeklyPlan
+      : [];
 
-box.innerHTML =
-items.map((item, index) => `
+  box.innerHTML =
+    items.map((item, index) => `
 
-```
-  <div class="array-row">
+      <div class="array-row">
 
-    <div class="array-row-grid">
+        <div class="array-row-grid">
 
-      <input
-        placeholder="التاريخ"
-        value="${escapeHtml(
-          item.date || ''
-        )}"
-        data-plan-date="${index}"
-      >
+          <input
+            placeholder="التاريخ"
+            value="${escapeHtml(
+              item.date || ''
+            )}"
+            data-plan-date="${index}"
+          >
 
-      <input
-        placeholder="الجزء"
-        value="${escapeHtml(
-          item.juz || ''
-        )}"
-        data-plan-juz="${index}"
-      >
+          <input
+            placeholder="الجزء"
+            value="${escapeHtml(
+              item.juz || ''
+            )}"
+            data-plan-juz="${index}"
+          >
 
-      <input
-        placeholder="الصفحات"
-        value="${escapeHtml(
-          item.pages || ''
-        )}"
-        data-plan-pages="${index}"
-      >
+          <input
+            placeholder="الصفحات"
+            value="${escapeHtml(
+              item.pages || ''
+            )}"
+            data-plan-pages="${index}"
+          >
 
-      <input
-        placeholder="الاختبار / المطلوب"
-        value="${escapeHtml(
-          item.exam || ''
-        )}"
-        data-plan-exam="${index}"
-      >
+          <input
+            placeholder="الاختبار / المطلوب"
+            value="${escapeHtml(
+              item.exam || ''
+            )}"
+            data-plan-exam="${index}"
+          >
 
-    </div>
+        </div>
 
-    <input
-      style="margin-top:8px"
-      placeholder="الحالة"
-      value="${escapeHtml(
-        item.status || 'قيد الانتظار'
-      )}"
-      data-plan-status="${index}"
-    >
+        <input
+          style="margin-top:8px"
+          placeholder="الحالة"
+          value="${escapeHtml(
+            item.status || 'قيد الانتظار'
+          )}"
+          data-plan-status="${index}"
+        >
 
-    <button
-      class="remove"
-      onclick="removePlan(${index})"
-    >
-      حذف
-    </button>
+        <button
+          class="remove"
+          onclick="removePlan(${index})"
+        >
+          حذف
+        </button>
 
-  </div>
+      </div>
 
-`).join('');
-```
+    `).join('');
 
 }
+
 
 function addPlan() {
 
-if (!Array.isArray(profile.weeklyPlan))
-profile.weeklyPlan = [];
+  if (!Array.isArray(profile.weeklyPlan))
+    profile.weeklyPlan = [];
 
-profile.weeklyPlan.push({
-date: '',
-juz: '',
-pages: '',
-exam: 'لا يوجد',
-status: 'قيد الانتظار'
-});
+  profile.weeklyPlan.push({
+    date: '',
+    juz: '',
+    pages: '',
+    exam: 'لا يوجد',
+    status: 'قيد الانتظار'
+  });
 
-renderPlan();
+  renderPlan();
 
 }
+
 
 function removePlan(index) {
 
-profile.weeklyPlan.splice(index, 1);
+  profile.weeklyPlan.splice(index, 1);
 
-renderPlan();
+  renderPlan();
 
 }
+
 
 function collectPlan() {
 
-return profile.weeklyPlan.map(
-(item, index) => {
+  return profile.weeklyPlan.map(
+    (item, index) => {
 
-```
-  return {
+      return {
 
-    date:
-      document.querySelector(
-        `[data-plan-date="${index}"]`
-      )?.value || '',
+        date:
+          document.querySelector(
+            `[data-plan-date="${index}"]`
+          )?.value || '',
 
-    juz:
-      document.querySelector(
-        `[data-plan-juz="${index}"]`
-      )?.value || '',
+        juz:
+          document.querySelector(
+            `[data-plan-juz="${index}"]`
+          )?.value || '',
 
-    pages:
-      document.querySelector(
-        `[data-plan-pages="${index}"]`
-      )?.value || '',
+        pages:
+          document.querySelector(
+            `[data-plan-pages="${index}"]`
+          )?.value || '',
 
-    exam:
-      document.querySelector(
-        `[data-plan-exam="${index}"]`
-      )?.value || '',
+        exam:
+          document.querySelector(
+            `[data-plan-exam="${index}"]`
+          )?.value || '',
 
-    status:
-      document.querySelector(
-        `[data-plan-status="${index}"]`
-      )?.value || ''
+        status:
+          document.querySelector(
+            `[data-plan-status="${index}"]`
+          )?.value || ''
 
-  };
+      };
 
-}
-```
-
-);
+    }
+  );
 
 }
+
 
 function renderTests() {
 
-const box =
-document.getElementById(
-'testsEditor'
-);
+  const box =
+    document.getElementById(
+      'testsEditor'
+    );
 
-const items =
-Array.isArray(profile.tests)
-? profile.tests
-: [];
+  const items =
+    Array.isArray(profile.tests)
+      ? profile.tests
+      : [];
 
-box.innerHTML =
-items.map((item, index) => `
+  box.innerHTML =
+    items.map((item, index) => `
 
-```
-  <div class="array-row">
+      <div class="array-row">
 
-    <div class="array-row-grid">
+        <div class="array-row-grid">
 
-      <input
-        placeholder="اسم الاختبار"
-        value="${escapeHtml(
-          item.name || ''
-        )}"
-        data-test-name="${index}"
-      >
+          <input
+            placeholder="اسم الاختبار"
+            value="${escapeHtml(
+              item.name || ''
+            )}"
+            data-test-name="${index}"
+          >
 
-      <input
-        type="date"
-        value="${escapeHtml(
-          item.date || ''
-        )}"
-        data-test-date="${index}"
-      >
+          <input
+            type="date"
+            value="${escapeHtml(
+              item.date || ''
+            )}"
+            data-test-date="${index}"
+          >
 
-      <input
-        placeholder="النتيجة"
-        value="${escapeHtml(
-          item.result || ''
-        )}"
-        data-test-result="${index}"
-      >
+          <input
+            placeholder="النتيجة"
+            value="${escapeHtml(
+              item.result || ''
+            )}"
+            data-test-result="${index}"
+          >
 
-      <input
-        type="number"
-        placeholder="النقاط"
-        value="${escapeHtml(
-          item.points || ''
-        )}"
-        data-test-points="${index}"
-      >
+          <input
+            type="number"
+            placeholder="النقاط"
+            value="${escapeHtml(
+              item.points || ''
+            )}"
+            data-test-points="${index}"
+          >
 
-    </div>
+        </div>
 
-    <button
-      class="remove"
-      onclick="removeTest(${index})"
-    >
-      حذف
-    </button>
+        <button
+          class="remove"
+          onclick="removeTest(${index})"
+        >
+          حذف
+        </button>
 
-  </div>
+      </div>
 
-`).join('');
-```
+    `).join('');
 
 }
+
 
 function addTest() {
 
-if (!Array.isArray(profile.tests))
-profile.tests = [];
+  if (!Array.isArray(profile.tests))
+    profile.tests = [];
 
-profile.tests.push({
-name: '',
-date: '',
-result: '',
-points: ''
-});
+  profile.tests.push({
+    name: '',
+    date: '',
+    result: '',
+    points: ''
+  });
 
-renderTests();
+  renderTests();
 
 }
+
 
 function removeTest(index) {
 
-profile.tests.splice(index, 1);
+  profile.tests.splice(index, 1);
 
-renderTests();
+  renderTests();
 
 }
+
 
 function collectTests() {
 
-return profile.tests.map(
-(item, index) => {
+  return profile.tests.map(
+    (item, index) => {
 
-```
-  return {
+      return {
 
-    name:
-      document.querySelector(
-        `[data-test-name="${index}"]`
-      )?.value || '',
+        name:
+          document.querySelector(
+            `[data-test-name="${index}"]`
+          )?.value || '',
 
-    date:
-      document.querySelector(
-        `[data-test-date="${index}"]`
-      )?.value || '',
+        date:
+          document.querySelector(
+            `[data-test-date="${index}"]`
+          )?.value || '',
 
-    result:
-      document.querySelector(
-        `[data-test-result="${index}"]`
-      )?.value || '',
+        result:
+          document.querySelector(
+            `[data-test-result="${index}"]`
+          )?.value || '',
 
-    points:
-      document.querySelector(
-        `[data-test-points="${index}"]`
-      )?.value || ''
+        points:
+          document.querySelector(
+            `[data-test-points="${index}"]`
+          )?.value || ''
 
-  };
+      };
 
-}
-```
-
-);
+    }
+  );
 
 }
+
 
 async function saveProfile() {
 
-hideMessage();
+  hideMessage();
 
-const button =
-document.getElementById(
-'saveButton'
-);
+  const button =
+    document.getElementById(
+      'saveButton'
+    );
 
-button.disabled = true;
-button.textContent =
-'جاري الحفظ...';
+  button.disabled = true;
 
-try {
+  button.textContent =
+    'جاري الحفظ...';
 
-```
-/*
-  تحديث بيانات الطالب الأساسية
-*/
+  try {
 
-const studentUpdate = {
+    const studentUpdate = {
 
-  name:
-    document
-      .getElementById('name')
-      .value
-      .trim(),
+      name:
+        document
+          .getElementById('name')
+          .value
+          .trim(),
 
-  section:
-    document
-      .getElementById('section')
-      .value
-      .trim(),
+      section:
+        document
+          .getElementById('section')
+          .value
+          .trim(),
 
-  memorization:
-    document
-      .getElementById('memorization')
-      .value
-      .trim(),
+      memorization:
+        document
+          .getElementById('memorization')
+          .value
+          .trim(),
 
-  status:
-    document
-      .getElementById('status')
-      .value
+      status:
+        document
+          .getElementById('status')
+          .value
 
-};
+    };
 
 
-const {
-  error: studentError
-} = await supabaseClient
-  .from('students')
-  .update(studentUpdate)
-  .eq('id', studentId);
+    const {
+      error: studentError
+    } = await supabaseClient
+      .from('students')
+      .update(studentUpdate)
+      .eq('id', studentId);
 
 
-if (studentError) {
-  throw studentError;
-}
+    if (studentError) {
+      throw studentError;
+    }
 
 
-/*
-  جمع البيانات التفصيلية
-*/
+    const newProfile = {
 
-const newProfile = {
+      photoUrl:
+        document
+          .getElementById('photoUrl')
+          .value
+          .trim(),
 
-  photoUrl:
-    document
-      .getElementById('photoUrl')
-      .value
-      .trim(),
+      guardianPhone:
+        document
+          .getElementById('guardianPhone')
+          .value
+          .trim(),
 
-  guardianPhone:
-    document
-      .getElementById('guardianPhone')
-      .value
-      .trim(),
+      joiningDate:
+        document
+          .getElementById('joiningDate')
+          .value
+          .trim(),
 
-  joiningDate:
-    document
-      .getElementById('joiningDate')
-      .value
-      .trim(),
+      completedQuranParts:
+        document
+          .getElementById(
+            'completedQuranParts'
+          )
+          .value
+          .trim(),
 
-  completedQuranParts:
-    document
-      .getElementById(
-        'completedQuranParts'
-      )
-      .value
-      .trim(),
+      residence:
+        document
+          .getElementById('residence')
+          .value
+          .trim(),
 
-  residence:
-    document
-      .getElementById('residence')
-      .value
-      .trim(),
+      bus:
+        document
+          .getElementById('bus')
+          .value
+          .trim(),
 
-  bus:
-    document
-      .getElementById('bus')
-      .value
-      .trim(),
+      homeLocation:
+        document
+          .getElementById('homeLocation')
+          .value
+          .trim(),
 
-  homeLocation:
-    document
-      .getElementById('homeLocation')
-      .value
-      .trim(),
+      weeklyGoal:
+        document
+          .getElementById('weeklyGoal')
+          .value
+          .trim(),
 
-  weeklyGoal:
-    document
-      .getElementById('weeklyGoal')
-      .value
-      .trim(),
+      totalPoints:
+        Number(
+          document
+            .getElementById('totalPoints')
+            .value
+        ) || 0,
 
-  totalPoints:
-    Number(
-      document
-        .getElementById('totalPoints')
-        .value
-    ) || 0,
+      weeklyProgress:
+        Number(
+          document
+            .getElementById(
+              'weeklyProgress'
+            )
+            .value
+        ) || 0,
 
-  weeklyProgress:
-    Number(
-      document
-        .getElementById(
-          'weeklyProgress'
-        )
-        .value
-    ) || 0,
+      hifzProgress:
+        Number(
+          document
+            .getElementById('hifzProgress')
+            .value
+        ) || 0,
 
-  hifzProgress:
-    Number(
-      document
-        .getElementById('hifzProgress')
-        .value
-    ) || 0,
+      reviewProgress:
+        Number(
+          document
+            .getElementById(
+              'reviewProgress'
+            )
+            .value
+        ) || 0,
 
-  reviewProgress:
-    Number(
-      document
-        .getElementById(
-          'reviewProgress'
-        )
-        .value
-    ) || 0,
+      completedPages:
+        document
+          .getElementById(
+            'completedPages'
+          )
+          .value
+          .trim(),
 
-  completedPages:
-    document
-      .getElementById(
-        'completedPages'
-      )
-      .value
-      .trim(),
+      requiredPages:
+        document
+          .getElementById(
+            'requiredPages'
+          )
+          .value
+          .trim(),
 
-  requiredPages:
-    document
-      .getElementById(
-        'requiredPages'
-      )
-      .value
-      .trim(),
+      generalEvaluation:
+        document
+          .getElementById(
+            'generalEvaluation'
+          )
+          .value
+          .trim(),
 
-  generalEvaluation:
-    document
-      .getElementById(
-        'generalEvaluation'
-      )
-      .value
-      .trim(),
+      equivalentRecitation:
+        document
+          .getElementById(
+            'equivalentRecitation'
+          )
+          .value
+          .trim(),
 
-  equivalentRecitation:
-    document
-      .getElementById(
-        'equivalentRecitation'
-      )
-      .value
-      .trim(),
+      nextExam:
+        document
+          .getElementById('nextExam')
+          .value
+          .trim(),
 
-  nextExam:
-    document
-      .getElementById('nextExam')
-      .value
-      .trim(),
+      nextExamDate:
+        document
+          .getElementById(
+            'nextExamDate'
+          )
+          .value,
 
-  nextExamDate:
-    document
-      .getElementById(
-        'nextExamDate'
-      )
-      .value,
+      notes:
+        document
+          .getElementById('notes')
+          .value
+          .trim(),
 
-  notes:
-    document
-      .getElementById('notes')
-      .value
-      .trim(),
+      attendance:
+        collectAttendance(),
 
-  attendance:
-    collectAttendance(),
+      weeklyPlan:
+        collectPlan(),
 
-  weeklyPlan:
-    collectPlan(),
+      tests:
+        collectTests()
 
-  tests:
-    collectTests()
-
-};
+    };
 
 
-/*
-  حفظ ملف الطالب
-*/
+    const {
+      error: profileError
+    } = await supabaseClient
+      .from('student_profiles')
+      .upsert({
 
-const {
-  error: profileError
-} = await supabaseClient
-  .from('student_profiles')
-  .upsert({
+        student_id:
+          String(studentId),
 
-    student_id:
-      String(studentId),
+        data:
+          newProfile,
 
-    data:
-      newProfile,
+        updated_at:
+          new Date().toISOString()
 
-    updated_at:
-      new Date().toISOString()
-
-  });
+      });
 
 
-if (profileError) {
-  throw profileError;
-}
+    if (profileError) {
+      throw profileError;
+    }
 
 
-profile =
-  newProfile;
+    profile =
+      newProfile;
 
-student = {
-  ...student,
-  ...studentUpdate
-};
-
-
-showMessage(
-  'تم حفظ جميع بيانات الطالب بنجاح، وسيظهر التحديث للطالب عند دخوله القادم.',
-  'success'
-);
+    student = {
+      ...student,
+      ...studentUpdate
+    };
 
 
-render();
-```
+    showMessage(
+      'تم حفظ جميع بيانات الطالب بنجاح، وسيظهر التحديث للطالب عند دخوله القادم.',
+      'success'
+    );
 
-} catch (error) {
 
-```
-console.error(error);
+    render();
 
-showMessage(
-  error.message ||
-  'حدث خطأ أثناء حفظ البيانات.',
-  'error'
-);
-```
+  } catch (error) {
 
-} finally {
+    console.error(error);
 
-```
-button.disabled = false;
+    showMessage(
+      error.message ||
+      'حدث خطأ أثناء حفظ البيانات.',
+      'error'
+    );
 
-button.textContent =
-  '💾 حفظ جميع التعديلات';
-```
+  } finally {
+
+    button.disabled = false;
+
+    button.textContent =
+      '💾 حفظ جميع التعديلات';
+
+  }
 
 }
 
-}
 
 loadStudent();
 
