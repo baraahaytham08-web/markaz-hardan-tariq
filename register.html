@@ -1,64 +1,224 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>التسجيل الإلكتروني | مركز حردان طارق القرآني</title>
-  <link rel="icon" type="image/png" href="logo.png">
 
+  <title>التسجيل الإلكتروني | مركز حردان طارق القرآني</title>
+
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
 
   <style>
+    :root {
+      --green: #174d3a;
+      --green-dark: #103b2c;
+      --green-light: #edf7f2;
+      --gold: #b8943d;
+      --gold-light: #f8f1df;
+      --text: #24332d;
+      --muted: #718078;
+      --border: #dfe7e2;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(184, 148, 61, 0.10), transparent 28%),
+        radial-gradient(circle at 90% 85%, rgba(23, 77, 58, 0.10), transparent 30%),
+        #f7faf8;
     }
 
     .registration-page {
-      padding: 60px 20px 80px;
+      min-height: 100vh;
+      padding: 45px 20px 70px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .registration-box {
-      max-width: 760px;
-      margin: 0 auto;
-      background: #fff;
-      border-radius: 22px;
-      padding: 35px;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    /* زخارف الخلفية */
+
+    .registration-page::before,
+    .registration-page::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
     }
+
+    .registration-page::before {
+      width: 300px;
+      height: 300px;
+      background: rgba(23, 77, 58, 0.045);
+      top: -120px;
+      right: -100px;
+    }
+
+    .registration-page::after {
+      width: 260px;
+      height: 260px;
+      background: rgba(184, 148, 61, 0.06);
+      bottom: -100px;
+      left: -80px;
+    }
+
+    .registration-page .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* زر العودة */
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      padding: 10px 16px;
+      color: var(--green);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(23, 77, 58, 0.10);
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+      transition: 0.25s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(4px);
+      background: var(--white);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+    }
+
+    /* الصندوق الرئيسي */
+
+    .registration-box {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(23, 77, 58, 0.08);
+      border-radius: 28px;
+      padding: 42px;
+      box-shadow:
+        0 25px 70px rgba(23, 77, 58, 0.10),
+        0 5px 20px rgba(0, 0, 0, 0.04);
+      animation: pageAppear 0.65s ease both;
+    }
+
+    @keyframes pageAppear {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* رأس الصفحة */
 
     .registration-header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
-    .registration-header img {
-      width: 90px;
-      height: 90px;
+    .logo-wrapper {
+      width: 105px;
+      height: 105px;
+      margin: 0 auto 18px;
+      padding: 8px;
+      border-radius: 50%;
+      background: linear-gradient(
+        145deg,
+        var(--gold-light),
+        #ffffff
+      );
+      border: 1px solid rgba(184, 148, 61, 0.20);
+      box-shadow: 0 10px 28px rgba(184, 148, 61, 0.13);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: logoFloat 3.5s ease-in-out infinite;
+    }
+
+    .logo-wrapper img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
-      margin-bottom: 15px;
+    }
+
+    @keyframes logoFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
     }
 
     .registration-header h1 {
       margin: 0 0 10px;
+      color: var(--green);
       font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .registration-header h1 span {
+      color: var(--gold);
     }
 
     .registration-header p {
-      margin: 0;
-      line-height: 1.8;
-      opacity: 0.8;
+      max-width: 560px;
+      margin: 0 auto;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 15px;
     }
 
-    .back-link {
-      display: inline-block;
-      margin-bottom: 20px;
-      text-decoration: none;
+    .required-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 16px;
+      padding: 8px 13px;
+      border-radius: 10px;
+      background: var(--green-light);
+      color: var(--green);
+      font-size: 13px;
       font-weight: bold;
     }
+
+    .required-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    /* النموذج */
 
     .registration-form {
       display: grid;
       gap: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
 
     .form-group {
@@ -68,76 +228,150 @@
     }
 
     .form-group label {
-      font-weight: bold;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .required-star {
+      color: #c34d4d;
+      margin-right: 3px;
+    }
+
+    .field-icon {
+      color: var(--gold);
+      margin-left: 5px;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
-      box-sizing: border-box;
+      border: 1px solid var(--border);
+      border-radius: 14px;
       padding: 14px 16px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
+      background: #fbfdfc;
+      color: var(--text);
       font-family: inherit;
       font-size: 16px;
-      background: #fff;
+      outline: none;
+      transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        transform 0.2s ease;
+    }
+
+    .form-group input,
+    .form-group select {
+      min-height: 52px;
     }
 
     .form-group textarea {
-      min-height: 120px;
+      min-height: 125px;
       resize: vertical;
+      line-height: 1.7;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #a0aaa5;
+    }
+
+    .form-group input:hover,
+    .form-group select:hover,
+    .form-group textarea:hover {
+      border-color: #c5d5ce;
+      background: #ffffff;
     }
 
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      outline: none;
-      border-color: #b8943d;
-      box-shadow: 0 0 0 3px rgba(184, 148, 61, 0.12);
+      border-color: var(--gold);
+      background: #ffffff;
+      box-shadow:
+        0 0 0 4px rgba(184, 148, 61, 0.10),
+        0 5px 15px rgba(23, 77, 58, 0.04);
+      transform: translateY(-1px);
     }
 
+    /* الأزرار */
+
     .submit-button {
-      border: none;
-      cursor: pointer;
       width: 100%;
+      min-height: 55px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
       font-family: inherit;
       font-size: 17px;
-      padding: 15px 20px;
-      border-radius: 12px;
-      transition: 0.2s;
+      font-weight: 800;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        opacity 0.25s ease;
+    }
+
+    .submit-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+    }
+
+    .submit-button:active:not(:disabled) {
+      transform: translateY(0) scale(0.99);
     }
 
     .submit-button:disabled {
-      opacity: 0.7;
+      opacity: 0.65;
       cursor: not-allowed;
     }
 
     .direct-button {
-      background: #174d3a;
-      color: white;
+      background: linear-gradient(
+        135deg,
+        var(--green),
+        #20664c
+      );
+      color: #ffffff;
+      box-shadow:
+        0 10px 25px rgba(23, 77, 58, 0.18);
     }
 
-    .direct-button:hover {
-      background: #103b2c;
+    .direct-button:hover:not(:disabled) {
+      background: linear-gradient(
+        135deg,
+        var(--green-dark),
+        var(--green)
+      );
+      box-shadow:
+        0 14px 30px rgba(23, 77, 58, 0.23);
     }
 
     .whatsapp-button {
-      background: #b8943d;
-      color: white;
+      background: linear-gradient(
+        135deg,
+        var(--gold),
+        #c9a753
+      );
+      color: #ffffff;
+      box-shadow:
+        0 10px 25px rgba(184, 148, 61, 0.17);
     }
 
-    .whatsapp-button:hover {
-      opacity: 0.92;
+    .whatsapp-button:hover:not(:disabled) {
+      box-shadow:
+        0 14px 30px rgba(184, 148, 61, 0.24);
     }
 
     .button-divider {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin: 2px 0;
-      color: #888;
-      font-size: 14px;
+      gap: 14px;
+      margin: 1px 0;
+      color: #9aa49f;
+      font-size: 13px;
+      font-weight: bold;
     }
 
     .button-divider::before,
@@ -145,58 +379,52 @@
       content: "";
       flex: 1;
       height: 1px;
-      background: #ddd;
+      background: #e1e7e4;
     }
 
-    .form-note {
-      text-align: center;
-      font-size: 14px;
-      opacity: 0.7;
-      line-height: 1.7;
-      margin-top: 5px;
-    }
+    /* الرسائل */
 
-    /* رسالة النجاح */
     .success-message {
       display: none;
-      background: linear-gradient(
-        135deg,
-        #edf8f2,
-        #f8fcf9
-      );
-      border: 1px solid #b9dfca;
-      border-radius: 18px;
-      padding: 25px 20px;
+      padding: 28px 22px;
       text-align: center;
-      color: #174d3a;
+      background:
+        linear-gradient(
+          135deg,
+          #edf8f2,
+          #fbfefc
+        );
+      border: 1px solid #b9dfca;
+      border-radius: 20px;
       animation: successAppear 0.45s ease;
     }
 
     .success-icon {
-      width: 62px;
-      height: 62px;
+      width: 64px;
+      height: 64px;
       margin: 0 auto 14px;
       border-radius: 50%;
-      background: #174d3a;
-      color: white;
+      background: var(--green);
+      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 30px;
       font-weight: bold;
-      box-shadow: 0 8px 20px rgba(23, 77, 58, 0.18);
+      box-shadow: 0 9px 22px rgba(23, 77, 58, 0.18);
     }
 
     .success-message h3 {
       margin: 0 0 8px;
+      color: var(--green);
       font-size: 23px;
     }
 
     .success-message p {
       margin: 0;
+      color: #53685f;
       line-height: 1.8;
       font-size: 15px;
-      color: #456057;
     }
 
     .success-subtext {
@@ -208,7 +436,7 @@
     @keyframes successAppear {
       from {
         opacity: 0;
-        transform: translateY(10px) scale(0.98);
+        transform: translateY(12px) scale(0.98);
       }
 
       to {
@@ -217,35 +445,89 @@
       }
     }
 
-    /* رسالة الخطأ */
     .error-message {
       display: none;
+      padding: 15px;
+      text-align: center;
       background: #fff3f3;
       border: 1px solid #efc1c1;
       border-radius: 14px;
-      padding: 15px;
-      text-align: center;
       color: #a33;
       line-height: 1.7;
       font-weight: bold;
     }
 
-    @media (max-width: 600px) {
+    .form-note {
+      padding: 14px 16px;
+      text-align: center;
+      color: #738079;
+      background: #f6f9f7;
+      border: 1px solid #e7ece9;
+      border-radius: 13px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* موبايل */
+
+    @media (max-width: 650px) {
 
       .registration-page {
-        padding: 35px 15px 60px;
+        padding: 25px 13px 50px;
       }
 
       .registration-box {
-        padding: 25px 18px;
+        padding: 27px 17px;
+        border-radius: 22px;
+      }
+
+      .registration-header {
+        margin-bottom: 28px;
+      }
+
+      .logo-wrapper {
+        width: 88px;
+        height: 88px;
       }
 
       .registration-header h1 {
         font-size: 26px;
       }
 
+      .registration-header p {
+        font-size: 14px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        font-size: 16px;
+      }
+
+      .submit-button {
+        min-height: 53px;
+        font-size: 16px;
+      }
+
       .success-message {
         padding: 22px 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -265,16 +547,26 @@
 
         <div class="registration-header">
 
-          <img
-            src="logo.png"
-            alt="شعار مركز حردان طارق القرآني"
-          >
+          <div class="logo-wrapper">
+            <img
+              src="logo.png"
+              alt="شعار مركز حردان طارق القرآني"
+            >
+          </div>
 
-          <h1>التسجيل الإلكتروني 📝</h1>
+          <h1>
+            التسجيل الإلكتروني <span>📝</span>
+          </h1>
 
           <p>
-            أدخل بيانات الطالب المطلوبة واختر طريقة إرسال طلب التسجيل.
+            يسعدنا انضمام أبنائنا إلى مركز حردان طارق القرآني.
+            يرجى تعبئة البيانات التالية لإرسال طلب التسجيل.
           </p>
+
+          <div class="required-note">
+            <span class="required-dot"></span>
+            الحقول التي تحمل علامة * مطلوبة
+          </div>
 
         </div>
 
@@ -284,46 +576,106 @@
           class="registration-form"
         >
 
-          <div class="form-group">
+          <!-- الاسم + الصف -->
 
-            <label for="studentName">
-              اسم الطالب
-            </label>
+          <div class="form-row">
 
-            <input
-              type="text"
-              id="studentName"
-              name="studentName"
-              placeholder="أدخل اسم الطالب"
-              required
-            >
+            <div class="form-group">
+
+              <label for="studentName">
+                <span class="field-icon">👤</span>
+                اسم الطالب
+                <span class="required-star">*</span>
+              </label>
+
+              <input
+                type="text"
+                id="studentName"
+                name="studentName"
+                placeholder="أدخل اسم الطالب كاملًا"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="studentGrade">
+                <span class="field-icon">🎓</span>
+                الصف
+                <span class="required-star">*</span>
+              </label>
+
+              <select
+                id="studentGrade"
+                name="studentGrade"
+                required
+              >
+
+                <option value="">
+                  اختر الصف
+                </option>
+
+                <option value="الأول">
+                  الصف الأول
+                </option>
+
+                <option value="الثاني">
+                  الصف الثاني
+                </option>
+
+                <option value="الثالث">
+                  الصف الثالث
+                </option>
+
+                <option value="الرابع">
+                  الصف الرابع
+                </option>
+
+                <option value="الخامس">
+                  الصف الخامس
+                </option>
+
+                <option value="السادس">
+                  الصف السادس
+                </option>
+
+                <option value="السابع">
+                  الصف السابع
+                </option>
+
+                <option value="الثامن">
+                  الصف الثامن
+                </option>
+
+                <option value="التاسع">
+                  الصف التاسع
+                </option>
+
+                <option value="العاشر">
+                  الصف العاشر
+                </option>
+
+                <option value="الحادي عشر">
+                  الصف الحادي عشر
+                </option>
+
+              </select>
+
+            </div>
 
           </div>
 
 
-          <div class="form-group">
-
-            <label for="studentAge">
-              العمر
-            </label>
-
-            <input
-              type="number"
-              id="studentAge"
-              name="studentAge"
-              placeholder="أدخل عمر الطالب"
-              min="1"
-              max="100"
-              required
-            >
-
-          </div>
-
+          <!-- رقم الهاتف -->
 
           <div class="form-group">
 
             <label for="guardianPhone">
-              رقم ولي الأمر
+              <span class="field-icon">📱</span>
+              رقم الهاتف
+              <span class="required-star">*</span>
             </label>
 
             <input
@@ -331,59 +683,64 @@
               id="guardianPhone"
               name="guardianPhone"
               placeholder="مثال: 07XXXXXXXX"
+              inputmode="tel"
               required
             >
 
           </div>
 
+
+          <!-- نسبة الحفظ -->
 
           <div class="form-group">
 
-            <label for="program">
-              الشعبة المطلوبة
+            <label for="memorization">
+              <span class="field-icon">📖</span>
+              نسبة حفظه من القرآن
             </label>
 
-            <select
-              id="program"
-              name="program"
-              required
+            <input
+              type="text"
+              id="memorization"
+              name="memorization"
+              placeholder="مثال: جزء عم، 5 أجزاء، نصف القرآن..."
             >
-
-              <option value="">
-                اختر الشعبة
-              </option>
-
-              <option value="شعبة الحفاظ">
-                شعبة الحفاظ
-              </option>
-
-              <option value="شعبة تجويد">
-                شعبة تجويد
-              </option>
-
-              <option value="شعبة إجازة">
-                شعبة إجازة
-              </option>
-
-              <option value="شعبة فرسان">
-                شعبة فرسان
-              </option>
-
-            </select>
 
           </div>
 
+
+          <!-- موقع السكن -->
+
+          <div class="form-group">
+
+            <label for="residence">
+              <span class="field-icon">📍</span>
+              موقع السكن
+            </label>
+
+            <input
+              type="text"
+              id="residence"
+              name="residence"
+              placeholder="مثال: الرصيفة - حي الرشيد"
+            >
+
+          </div>
+
+
+          <!-- ملاحظات -->
 
           <div class="form-group">
 
             <label for="notes">
+              <span class="field-icon">📝</span>
               ملاحظات إضافية
             </label>
 
             <textarea
               id="notes"
               name="notes"
-              placeholder="اكتب أي ملاحظات أو معلومات إضافية إن وجدت"
+              placeholder="اكتب أي معلومات أو ملاحظات إضافية ترغب بإبلاغ إدارة المركز بها..."
             ></textarea>
 
           </div>
@@ -455,7 +812,7 @@
 
 
           <div class="form-note">
-            بعد إرسال الطلب، تتم مراجعته من إدارة المركز،
+            بعد إرسال الطلب، تتم مراجعة البيانات من إدارة المركز،
             ولا تتم إضافة الطالب إلى قائمة الطلاب إلا بعد الموافقة.
           </div>
 
@@ -471,7 +828,6 @@
   <!-- Supabase -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 
   <script>
 
@@ -489,29 +845,19 @@
 
 
     const form =
-      document.getElementById(
-        'registrationForm'
-      );
+      document.getElementById('registrationForm');
 
     const directRegisterButton =
-      document.getElementById(
-        'directRegisterButton'
-      );
+      document.getElementById('directRegisterButton');
 
     const whatsappButton =
-      document.getElementById(
-        'whatsappButton'
-      );
+      document.getElementById('whatsappButton');
 
     const successMessage =
-      document.getElementById(
-        'successMessage'
-      );
+      document.getElementById('successMessage');
 
     const errorMessage =
-      document.getElementById(
-        'errorMessage'
-      );
+      document.getElementById('errorMessage');
 
 
     function getFormData() {
@@ -524,11 +870,10 @@
             .value
             .trim(),
 
-        studentAge:
+        studentGrade:
           document
-            .getElementById('studentAge')
-            .value
-            .trim(),
+            .getElementById('studentGrade')
+            .value,
 
         guardianPhone:
           document
@@ -536,10 +881,17 @@
             .value
             .trim(),
 
-        program:
+        memorization:
           document
-            .getElementById('program')
-            .value,
+            .getElementById('memorization')
+            .value
+            .trim(),
+
+        residence:
+          document
+            .getElementById('residence')
+            .value
+            .trim(),
 
         notes:
           document
@@ -567,7 +919,7 @@
     }
 
 
-    // إرسال طلب الانضمام
+    // إرسال الطلب مباشرة إلى النظام
 
     directRegisterButton.addEventListener(
       'click',
@@ -601,28 +953,27 @@
             .insert([
 
               {
+
                 name:
                   data.studentName,
 
-                age:
-                  Number(data.studentAge),
+                section:
+                  data.studentGrade,
 
                 guardian_phone:
                   data.guardianPhone,
 
-                section:
-                  data.program,
-
                 memorization:
-                  '',
+                  data.memorization || '',
 
-                // مهم:
-                // الطالب يبقى بانتظار الموافقة
                 status:
                   'pending',
 
                 notes:
-                  data.notes || ''
+                  data.notes || '',
+
+                residence:
+                  data.residence || ''
 
               }
 
@@ -650,8 +1001,6 @@
 
         }
 
-
-        // نجاح إرسال الطلب
 
         successMessage.style.display =
           'block';
@@ -690,11 +1039,13 @@
 
           `اسم الطالب: ${data.studentName}`,
 
-          `العمر: ${data.studentAge}`,
+          `الصف: ${data.studentGrade}`,
 
-          `رقم ولي الأمر: ${data.guardianPhone}`,
+          `رقم الهاتف: ${data.guardianPhone}`,
 
-          `الشعبة المطلوبة: ${data.program}`,
+          `نسبة الحفظ: ${data.memorization || 'غير محددة'}`,
+
+          `موقع السكن: ${data.residence || 'غير محدد'}`,
 
           `ملاحظات إضافية: ${data.notes || 'لا يوجد'}`,
 
@@ -732,3 +1083,4 @@
 
 </body>
 </html>
+```
