@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -3290,7 +3289,7 @@
        RESPONSIVE
     ========================================================= */
 
-    @media(max-width:1100px) {
+    @media (max-width:1100px) {
 
       :root {
         --sidebar-width:
@@ -3306,6 +3305,7 @@
 
 
       .filters .sort-placeholder {
+
         display:
           none;
       }
@@ -3326,7 +3326,7 @@
     }
 
 
-    @media(max-width:850px) {
+    @media (max-width:850px) {
 
       :root {
         --sidebar-width:
@@ -3382,7 +3382,7 @@
     }
 
 
-    @media(max-width:750px) {
+    @media (max-width:750px) {
 
       .sidebar {
 
@@ -3631,7 +3631,7 @@
     }
 
 
-    @media(max-width:480px) {
+    @media (max-width:480px) {
 
       .topbar {
 
@@ -4681,7 +4681,6 @@
 
           </button>
 
-
         </div>
 
 
@@ -4718,7 +4717,6 @@
 
   <!-- =======================================================
        JAVASCRIPT
-       نفس نظام البيانات والطلاب والطلبات
   ======================================================== -->
 
   <script>
@@ -4749,86 +4747,114 @@
     const tableBody =
       document.getElementById('studentsTable');
 
+
     const emptyMessage =
       document.getElementById('emptyMessage');
+
 
     const emptyTitle =
       document.getElementById('emptyTitle');
 
+
     const emptyText =
       document.getElementById('emptyText');
+
 
     const totalStudents =
       document.getElementById('totalStudents');
 
+
     const activeStudents =
       document.getElementById('activeStudents');
+
 
     const pendingStudents =
       document.getElementById('pendingStudents');
 
+
     const requestCount =
       document.getElementById('requestCount');
+
 
     const requestSideBadge =
       document.getElementById('requestSideBadge');
 
+
     const requestList =
       document.getElementById('requestList');
+
 
     const requestsEmpty =
       document.getElementById('requestsEmpty');
 
+
     const requestsError =
       document.getElementById('requestsError');
+
 
     const requestsStatusText =
       document.getElementById('requestsStatusText');
 
+
     const searchInput =
       document.getElementById('searchInput');
+
 
     const sectionFilter =
       document.getElementById('sectionFilter');
 
+
     const statusFilter =
       document.getElementById('statusFilter');
+
 
     const sortFilter =
       document.getElementById('sortFilter');
 
+
     const modal =
       document.getElementById('studentModal');
+
 
     const openModalButton =
       document.getElementById('openModal');
 
+
     const closeModalButton =
       document.getElementById('closeModal');
+
 
     const cancelButton =
       document.getElementById('cancelButton');
 
+
     const studentForm =
       document.getElementById('studentForm');
+
 
     const message =
       document.getElementById('message');
 
+
     const modalTitle =
       document.getElementById('modalTitle');
+
 
     const saveButton =
       document.getElementById('saveButton');
 
+
     const toast =
       document.getElementById('toast');
+
 
     const toastText =
       document.getElementById('toastText');
 
+
     const toastIcon =
       document.getElementById('toastIcon');
+
 
     const sidebar =
       document.getElementById('sidebar');
@@ -5858,10 +5884,14 @@
 
                 <div>
 
+                  <!-- =================================================
+                       رابط صفحة متابعة الطالب
+                  ================================================== -->
+
                   <a
                     class="student-name-link"
-                    href="student-profile.html?id=${encodeURIComponent(student.id)}"
-                    title="فتح ملف الطالب"
+                    href="./student-profile.html?id=${encodeURIComponent(String(student.id))}"
+                    title="فتح صفحة متابعة الطالب"
                   >
                     ${escapeHtml(student.name || '')}
                   </a>
@@ -7701,6 +7731,33 @@
       );
 
 
+    /*
+      تصحيح مهم:
+      كان الكود يبحث عن .home-link
+      بينما الرابط الحقيقي عندك اسمه .sidebar-logo
+    */
+
+    const homeLink =
+      document.querySelector(
+        '.sidebar-logo'
+      );
+
+    if (homeLink) {
+
+      homeLink.addEventListener(
+        'click',
+        function() {
+
+          sidebar.classList.remove(
+            'open'
+          );
+
+        }
+      );
+
+    }
+
+
     /* =====================================================
        REQUEST REFRESH
     ====================================================== */
@@ -7797,4 +7854,3 @@
 </body>
 
 </html>
-```
