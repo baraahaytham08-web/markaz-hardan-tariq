@@ -2,17 +2,36 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>لوحة المعلم | مركز حردان طارق القرآني</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="shortcut icon" type="image/png" href="logo.png">
+  <title>
+    لوحة المعلم | مركز حردان طارق القرآني
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
+
+  <link
+    rel="shortcut icon"
+    type="image/png"
+    href="logo.png"
+  >
 
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
 
@@ -23,35 +42,38 @@
     }
 
     :root {
+
       --green: #174d3a;
-      --green-dark: #0c3023;
-      --green-mid: #21664b;
-      --green-soft: #eaf4ef;
+      --green-dark: #103b2c;
+      --green-light: #edf5f1;
 
       --gold: #b28b18;
-      --gold-light: #d9bc5c;
-      --gold-soft: #fff8df;
+      --gold-light: #d4b44c;
 
       --cream: #faf8f0;
-      --white: #fff;
 
-      --text: #1d2924;
-      --muted: #78837e;
-      --border: #e5ebe7;
+      --white: #ffffff;
 
-      --success: #237a31;
-      --success-soft: #eaf7ec;
+      --text: #1f2933;
+      --muted: #74808a;
+
+      --border: #e8ebe8;
 
       --danger: #b3261e;
-      --danger-soft: #fff0ef;
+      --danger-light: #fff0ef;
+
+      --success: #237a31;
+      --success-light: #e9f7eb;
 
       --purple: #6653a6;
-      --purple-soft: #f1edff;
+      --purple-light: #f1edff;
 
-      --gray: #68736e;
-      --gray-soft: #f1f3f2;
+      --orange: #ad5b18;
+      --orange-light: #fff1e7;
 
-      --shadow: 0 12px 35px rgba(23,77,58,.07);
+      --shadow:
+        0 10px 35px rgba(23,77,58,.08);
+
     }
 
     html {
@@ -59,1129 +81,1169 @@
     }
 
     body {
-      font-family: Arial, Tahoma, sans-serif;
-      color: var(--text);
-      min-height: 100vh;
+
+      font-family:
+        Arial,
+        Tahoma,
+        sans-serif;
 
       background:
-        radial-gradient(
-          circle at 8% 8%,
-          rgba(178,139,24,.10),
-          transparent 23%
-        ),
-        radial-gradient(
-          circle at 90% 80%,
-          rgba(23,77,58,.10),
-          transparent 28%
-        ),
         linear-gradient(
           135deg,
-          #faf8f0,
-          #ffffff 48%,
-          #edf5f1
+          #faf8f0 0%,
+          #ffffff 45%,
+          #edf5f1 100%
         );
 
-      overflow-x: hidden;
+      color:
+        var(--text);
+
+      min-height: 100vh;
+
     }
 
     button,
     input,
     select {
-      font-family: inherit;
+
+      font-family:
+        inherit;
+
     }
 
     button {
       cursor: pointer;
     }
 
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
     /* =====================================================
        SIDEBAR
-    ====================================================== */
+    ===================================================== */
 
     .sidebar {
+
       position: fixed;
+
       top: 0;
       right: 0;
       bottom: 0;
-      width: 275px;
+
+      width: 260px;
+
+      background:
+        linear-gradient(
+          180deg,
+          var(--green),
+          var(--green-dark)
+        );
+
+      color: white;
+
+      padding:
+        25px 18px;
 
       z-index: 50;
 
-      padding: 22px 17px;
-
-      color: white;
-
-      background:
-        radial-gradient(
-          circle at 80% 10%,
-          rgba(212,180,76,.12),
-          transparent 25%
-        ),
-        linear-gradient(
-          160deg,
-          #174d3a,
-          #0c3023
-        );
-
       box-shadow:
-        -12px 0 40px rgba(0,0,0,.10);
+        -8px 0 30px rgba(0,0,0,.08);
 
-      overflow: hidden;
     }
 
-    .sidebar::before {
-      content: "";
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      left: -130px;
-      bottom: -100px;
-      background: rgba(255,255,255,.035);
-      pointer-events: none;
+    .close-sidebar {
+
+      display: none;
+
     }
 
-    .sidebar-brand {
-      position: relative;
+    .sidebar-logo {
 
       display: flex;
+
       align-items: center;
+
       gap: 12px;
 
-      padding: 7px 8px 23px;
-      margin-bottom: 24px;
-
-      text-decoration: none;
-      color: white;
+      padding:
+        5px 8px 25px;
 
       border-bottom:
         1px solid rgba(255,255,255,.12);
 
-      transition: .25s;
+      margin-bottom:
+        25px;
+
     }
 
-    .sidebar-brand:hover {
-      transform: translateX(-3px);
-    }
+    .logo-icon {
 
-    .sidebar-logo {
-      width: 55px;
-      height: 55px;
-      min-width: 55px;
+      width: 48px;
+      height: 48px;
 
-      border-radius: 50%;
-      overflow: hidden;
-
-      background: white;
-
-      border:
-        3px solid rgba(217,188,92,.75);
-
-      box-shadow:
-        0 8px 22px rgba(0,0,0,.20);
-    }
-
-    .sidebar-logo img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 3px;
-    }
-
-    .brand-text span {
-      color: rgba(255,255,255,.58);
-      font-size: 10px;
-    }
-
-    .sidebar-heading {
-      color: rgba(255,255,255,.40);
-      font-size: 10px;
-      font-weight: bold;
-      margin: 0 10px 10px;
-      letter-spacing: .4px;
-    }
-
-    .side-link {
-      width: 100%;
-      min-height: 48px;
+      border-radius: 14px;
 
       display: flex;
+
       align-items: center;
-      gap: 12px;
+      justify-content: center;
 
-      border: none;
-      border-right: 3px solid transparent;
-      border-radius: 12px;
-
-      margin-bottom: 5px;
-      padding: 11px 13px;
-
-      background: transparent;
-      color: rgba(255,255,255,.70);
-
-      font-size: 13px;
-      text-align: right;
-      text-decoration: none;
-
-      transition: .25s;
-    }
-
-    .side-link i {
-      width: 21px;
-      text-align: center;
-      font-size: 15px;
-    }
-
-    .side-link:hover {
-      background: rgba(255,255,255,.08);
-      color: white;
-      transform: translateX(-2px);
-    }
-
-    .side-link.active {
       background:
         linear-gradient(
-          90deg,
-          rgba(255,255,255,.13),
-          rgba(255,255,255,.05)
+          135deg,
+          var(--gold),
+          var(--gold-light)
         );
-
-      color: white;
-      border-right-color: var(--gold-light);
-    }
-
-    .side-link.active i {
-      color: var(--gold-light);
-    }
-
-    .sidebar-bottom {
-      position: absolute;
-      right: 17px;
-      left: 17px;
-      bottom: 18px;
-    }
-
-    .sidebar-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      margin-bottom: 10px;
-      padding: 10px 12px;
-
-      border-radius: 11px;
-
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.62);
-
-      font-size: 10px;
-    }
-
-    .online-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-
-      background: #6ee27d;
-
-      box-shadow:
-        0 0 0 4px rgba(110,226,125,.10);
-    }
-
-    .logout-side {
-      width: 100%;
-      padding: 12px;
-
-      border:
-        1px solid rgba(255,255,255,.13);
-
-      border-radius: 11px;
-
-      background:
-        rgba(255,255,255,.06);
-
-      color: white;
-
-      font-weight: bold;
-      font-size: 12px;
-
-      transition: .25s;
-    }
-
-    .logout-side:hover {
-      background: rgba(179,38,30,.20);
-      border-color: rgba(255,130,130,.30);
-      transform: translateY(-2px);
-    }
-
-    .close-sidebar {
-      display: none;
-
-      position: absolute;
-
-      top: 14px;
-      left: 14px;
-
-      width: 38px;
-      height: 38px;
-
-      border:
-        1px solid rgba(255,255,255,.16);
-
-      border-radius: 10px;
-
-      background:
-        rgba(255,255,255,.08);
 
       color: white;
 
       font-size: 22px;
 
-      z-index: 5;
+      box-shadow:
+        0 8px 20px rgba(0,0,0,.15);
+
+    }
+
+    .logo-text strong {
+
+      display: block;
+
+      font-size: 15px;
+
+      margin-bottom:
+        4px;
+
+    }
+
+    .logo-text span {
+
+      font-size: 11px;
+
+      color:
+        rgba(255,255,255,.65);
+
+    }
+
+    .sidebar-title {
+
+      color:
+        rgba(255,255,255,.45);
+
+      font-size: 11px;
+
+      font-weight:
+        bold;
+
+      margin:
+        0 10px 10px;
+
+    }
+
+    .side-link {
+
+      width: 100%;
+
+      border: none;
+
+      background:
+        transparent;
+
+      color:
+        rgba(255,255,255,.75);
+
+      padding:
+        13px 14px;
+
+      border-radius:
+        11px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        12px;
+
+      font-size:
+        14px;
+
+      text-align:
+        right;
+
+      margin-bottom:
+        5px;
+
+      transition:
+        .2s;
+
+      text-decoration:
+        none;
+
+    }
+
+    .side-link i {
+
+      width:
+        20px;
+
+      text-align:
+        center;
+
+    }
+
+    .side-link:hover,
+    .side-link.active {
+
+      background:
+        rgba(255,255,255,.11);
+
+      color:
+        white;
+
+    }
+
+    .side-link.active {
+
+      border-right:
+        3px solid
+        var(--gold);
+
+    }
+
+    .sidebar-bottom {
+
+      position:
+        absolute;
+
+      right:
+        18px;
+
+      left:
+        18px;
+
+      bottom:
+        20px;
+
+    }
+
+    .logout-side {
+
+      width:
+        100%;
+
+      border:
+        1px solid
+        rgba(255,255,255,.15);
+
+      background:
+        rgba(255,255,255,.07);
+
+      color:
+        white;
+
+      padding:
+        12px;
+
+      border-radius:
+        11px;
+
+      font-weight:
+        bold;
+
+    }
+
+    .logout-side:hover {
+
+      background:
+        rgba(178,139,24,.25);
+
     }
 
     /* =====================================================
        MAIN
-    ====================================================== */
+    ===================================================== */
 
     .main {
-      margin-right: 275px;
-      min-height: 100vh;
+
+      margin-right:
+        260px;
+
+      min-height:
+        100vh;
+
     }
 
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 30;
 
-      min-height: 78px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 20px;
-
-      padding: 12px 38px;
+      height:
+        78px;
 
       background:
-        rgba(255,255,255,.84);
+        rgba(255,255,255,.90);
 
-      backdrop-filter: blur(18px);
+      backdrop-filter:
+        blur(12px);
 
       border-bottom:
-        1px solid rgba(229,235,231,.85);
+        1px solid
+        var(--border);
 
-      box-shadow:
-        0 5px 25px rgba(23,77,58,.035);
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      padding:
+        0 35px;
+
+      position:
+        sticky;
+
+      top:
+        0;
+
+      z-index:
+        30;
+
     }
 
-    .page-heading {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-    }
+    .topbar-left {
 
-    .page-heading-icon {
-      width: 44px;
-      height: 44px;
+      display:
+        flex;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items:
+        center;
 
-      border-radius: 13px;
+      gap:
+        12px;
 
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-mid)
-        );
-
-      color: white;
-
-      box-shadow:
-        0 7px 18px rgba(23,77,58,.15);
     }
 
     .page-title h1 {
-      color: var(--green);
-      font-size: 20px;
-      margin-bottom: 3px;
+
+      color:
+        var(--green);
+
+      font-size:
+        21px;
+
+      margin-bottom:
+        4px;
+
     }
 
     .page-title p {
-      color: var(--muted);
-      font-size: 11px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+
     }
 
     .teacher-info {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
 
-    .teacher-details {
-      text-align: left;
-    }
+      display:
+        flex;
 
-    .teacher-name {
-      display: block;
+      align-items:
+        center;
 
-      color: var(--green);
+      gap:
+        12px;
 
-      font-size: 12px;
-      font-weight: bold;
-
-      margin-bottom: 3px;
-    }
-
-    .teacher-email {
-      color: var(--muted);
-      font-size: 10px;
-      direction: ltr;
     }
 
     .teacher-avatar {
-      width: 44px;
-      height: 44px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width:
+        42px;
 
-      border-radius: 50%;
+      height:
+        42px;
+
+      border-radius:
+        50%;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
 
       background:
-        var(--green-soft);
+        var(--green-light);
 
-      color: var(--green);
+      color:
+        var(--green);
 
       border:
-        1px solid #dcebe4;
+        1px solid
+        #dcebe4;
+
+    }
+
+    .teacher-name {
+
+      font-size:
+        12px;
+
+      font-weight:
+        bold;
+
+      color:
+        var(--green);
+
+      text-align:
+        left;
+
+    }
+
+    .teacher-email {
+
+      font-size:
+        11px;
+
+      color:
+        var(--muted);
+
+      text-align:
+        left;
+
     }
 
     .mobile-menu {
-      display: none;
 
-      width: 42px;
-      height: 42px;
+      display:
+        none;
 
-      border: none;
-      border-radius: 11px;
+      width:
+        40px;
+
+      height:
+        40px;
+
+      border:
+        none;
+
+      border-radius:
+        10px;
 
       background:
-        var(--green-soft);
+        var(--green-light);
 
-      color: var(--green);
+      color:
+        var(--green);
 
-      font-size: 17px;
+      font-size:
+        18px;
+
     }
 
     /* =====================================================
        CONTENT
-    ====================================================== */
+    ===================================================== */
 
     .content {
-      width: min(1320px, 94%);
-      margin: 28px auto 55px;
+
+      width:
+        min(1250px,94%);
+
+      margin:
+        30px auto 50px;
+
     }
 
-    /* =====================================================
-       WELCOME
-    ====================================================== */
-
     .welcome-card {
-      position: relative;
-      overflow: hidden;
 
-      min-height: 190px;
+      position:
+        relative;
 
-      display: flex;
-      align-items: center;
-
-      margin-bottom: 22px;
-      padding: 31px 35px;
-
-      border-radius: 24px;
-
-      color: white;
+      overflow:
+        hidden;
 
       background:
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(217,188,92,.18),
-          transparent 24%
-        ),
         linear-gradient(
           120deg,
-          #123f2f,
-          #1d6549 58%,
-          #174d3a
+          var(--green),
+          #21644b
         );
 
+      color:
+        white;
+
+      border-radius:
+        20px;
+
+      padding:
+        28px 32px;
+
+      margin-bottom:
+        25px;
+
       box-shadow:
-        0 20px 45px rgba(23,77,58,.16);
+        0 15px 40px
+        rgba(23,77,58,.15);
+
     }
 
     .welcome-card::before {
-      content: "";
 
-      position: absolute;
+      content:
+        "";
 
-      width: 260px;
-      height: 260px;
+      position:
+        absolute;
 
-      border:
-        1px solid rgba(255,255,255,.07);
+      width:
+        220px;
 
-      border-radius: 50%;
+      height:
+        220px;
 
-      left: -100px;
-      top: -135px;
+      border-radius:
+        50%;
+
+      left:
+        -80px;
+
+      top:
+        -110px;
+
+      background:
+        rgba(255,255,255,.04);
+
     }
 
     .welcome-card::after {
-      content: "";
 
-      position: absolute;
+      content:
+        "";
 
-      width: 310px;
-      height: 310px;
+      position:
+        absolute;
 
-      border:
-        1px solid rgba(217,188,92,.10);
+      width:
+        160px;
 
-      border-radius: 50%;
+      height:
+        160px;
 
-      left: 42%;
-      bottom: -240px;
+      border-radius:
+        50%;
+
+      right:
+        25%;
+
+      bottom:
+        -110px;
+
+      background:
+        rgba(212,180,76,.08);
+
     }
 
     .welcome-content {
-      position: relative;
-      z-index: 2;
+
+      position:
+        relative;
+
+      z-index:
+        2;
+
     }
 
     .welcome-small {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
 
-      margin-bottom: 9px;
+      font-size:
+        12px;
 
       color:
-        rgba(255,255,255,.66);
+        rgba(255,255,255,.65);
 
-      font-size: 11px;
-    }
+      margin-bottom:
+        7px;
 
-    .welcome-small::before {
-      content: "";
-
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background:
-        var(--gold-light);
-
-      box-shadow:
-        0 0 0 5px rgba(217,188,92,.10);
     }
 
     .welcome-card h2 {
-      font-size: 29px;
-      line-height: 1.4;
-      margin-bottom: 7px;
+
+      font-size:
+        27px;
+
+      margin-bottom:
+        8px;
+
     }
 
     .welcome-card p {
-      max-width: 620px;
 
       color:
-        rgba(255,255,255,.72);
+        rgba(255,255,255,.78);
 
-      font-size: 13px;
-      line-height: 1.9;
-    }
+      font-size:
+        14px;
 
-    .hero-decoration {
-      position: absolute;
+      line-height:
+        1.8;
 
-      left: 50px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      width: 110px;
-      height: 110px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border:
-        1px solid rgba(255,255,255,.10);
-
-      border-radius: 50%;
-
-      color:
-        rgba(255,255,255,.13);
-
-      font-size: 55px;
-    }
-
-    .hero-decoration::before {
-      content: "";
-
-      position: absolute;
-
-      inset: -14px;
-
-      border:
-        1px solid rgba(217,188,92,.08);
-
-      border-radius: 50%;
     }
 
     /* =====================================================
        STATS
-    ====================================================== */
+    ===================================================== */
 
     .stats {
-      display: grid;
+
+      display:
+        grid;
 
       grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-      gap: 17px;
+      gap:
+        18px;
 
-      margin-bottom: 23px;
+      margin-bottom:
+        25px;
+
     }
 
     .stat-card {
-      position: relative;
-      overflow: hidden;
-
-      display: flex;
-      align-items: center;
-
-      gap: 15px;
-
-      min-height: 110px;
-
-      padding:
-        20px 21px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 18px;
 
       background:
-        rgba(255,255,255,.94);
+        white;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        18px;
+
+      padding:
+        21px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        16px;
 
       box-shadow:
         var(--shadow);
 
-      transition: .25s;
+      transition:
+        .2s;
+
     }
 
     .stat-card:hover {
-      transform:
-        translateY(-4px);
 
-      box-shadow:
-        0 17px 40px
-        rgba(23,77,58,.11);
+      transform:
+        translateY(-3px);
+
     }
 
     .stat-icon {
-      width: 57px;
-      height: 57px;
-      min-width: 57px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width:
+        55px;
 
-      border-radius: 16px;
+      height:
+        55px;
+
+      min-width:
+        55px;
+
+      border-radius:
+        15px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
 
       background:
-        var(--green-soft);
+        var(--green-light);
 
-      color: var(--green);
+      color:
+        var(--green);
 
-      font-size: 21px;
+      font-size:
+        22px;
+
     }
 
-    .stat-card:nth-child(2) .stat-icon {
+    .stat-card:nth-child(2)
+    .stat-icon {
+
       background:
-        var(--gold-soft);
+        #fff8df;
 
       color:
         var(--gold);
+
     }
 
-    .stat-card:nth-child(3) .stat-icon {
+    .stat-card:nth-child(3)
+    .stat-icon {
+
       background:
-        var(--purple-soft);
+        var(--purple-light);
 
       color:
         var(--purple);
+
     }
 
     .stat-number {
-      display: block;
 
-      color: var(--green);
+      display:
+        block;
 
-      font-size: 28px;
-      font-weight: 800;
+      color:
+        var(--green);
 
-      margin-bottom: 4px;
+      font-size:
+        28px;
+
+      font-weight:
+        bold;
+
+      margin-bottom:
+        3px;
+
     }
 
     .stat-label {
-      color: var(--muted);
-      font-size: 11px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+
     }
 
     /* =====================================================
-       PANELS
-    ====================================================== */
+       PANEL
+    ===================================================== */
 
     .panel {
-      overflow: hidden;
-
-      margin-bottom: 23px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 20px;
 
       background:
-        rgba(255,255,255,.96);
+        white;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius:
+        20px;
 
       box-shadow:
         var(--shadow);
+
+      overflow:
+        hidden;
+
     }
 
     .panel-top {
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 15px;
 
       padding:
-        21px 24px;
+        23px 25px;
 
       border-bottom:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
-      flex-wrap: wrap;
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        15px;
+
+      flex-wrap:
+        wrap;
+
     }
 
     .panel-title {
-      display: flex;
-      align-items: center;
-      gap: 11px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        11px;
+
     }
 
     .panel-title-icon {
-      width: 42px;
-      height: 42px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width:
+        40px;
 
-      border-radius: 12px;
+      height:
+        40px;
+
+      border-radius:
+        11px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
 
       background:
-        var(--green-soft);
+        var(--green-light);
 
       color:
         var(--green);
+
     }
 
     .panel-title h2 {
-      color: var(--green);
-      font-size: 17px;
-      margin-bottom: 3px;
+
+      color:
+        var(--green);
+
+      font-size:
+        18px;
+
     }
 
     .panel-title span {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-    }
 
-    .pending-count {
-      padding: 7px 12px;
-
-      border-radius: 20px;
-
-      background:
-        var(--gold-soft);
+      display:
+        block;
 
       color:
-        #806711;
+        var(--muted);
 
-      font-size: 11px;
-      font-weight: bold;
+      font-size:
+        11px;
+
+      margin-top:
+        3px;
+
     }
 
-    /* =====================================================
-       REQUESTS
-    ====================================================== */
-
-    .requests-list {
-      padding: 17px;
-    }
-
-    .request-card {
-      padding: 17px;
-      margin-bottom: 10px;
+    .add-btn {
 
       border:
-        1px solid var(--border);
+        none;
 
-      border-radius: 14px;
-
-      background: #fff;
-
-      transition: .25s;
-    }
-
-    .request-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .request-card:hover {
-      border-color: #d2e0d8;
-
-      box-shadow:
-        0 8px 22px
-        rgba(23,77,58,.055);
-
-      transform:
-        translateY(-1px);
-    }
-
-    .request-content {
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 18px;
-
-      flex-wrap: wrap;
-    }
-
-    .request-name {
-      color: var(--green);
-
-      font-size: 15px;
-      font-weight: bold;
-
-      margin-bottom: 6px;
-    }
-
-    .request-details {
-      color: var(--muted);
-
-      font-size: 11px;
-      line-height: 2;
-    }
-
-    .request-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .approve-btn,
-    .reject-btn {
-      padding:
-        10px 15px;
-
-      border: none;
-      border-radius: 9px;
-
-      font-size: 11px;
-      font-weight: bold;
-
-      transition: .2s;
-    }
-
-    .approve-btn {
       background:
         var(--green);
 
-      color: white;
+      color:
+        white;
+
+      padding:
+        11px 17px;
+
+      border-radius:
+        10px;
+
+      font-weight:
+        bold;
+
+      transition:
+        .2s;
+
+      box-shadow:
+        0 6px 15px
+        rgba(23,77,58,.15);
+
     }
 
-    .approve-btn:hover {
+    .add-btn:hover {
+
       background:
         var(--green-dark);
 
       transform:
         translateY(-2px);
-    }
 
-    .reject-btn {
-      background:
-        var(--danger-soft);
-
-      color:
-        var(--danger);
-    }
-
-    .reject-btn:hover {
-      background:
-        var(--danger);
-
-      color: white;
-
-      transform:
-        translateY(-2px);
-    }
-
-    .requests-empty {
-      padding:
-        35px 15px;
-
-      text-align: center;
-
-      color: var(--muted);
-    }
-
-    .requests-empty i {
-      display: block;
-
-      margin-bottom: 11px;
-
-      color:
-        var(--green);
-
-      font-size: 32px;
-    }
-
-    .requests-empty strong {
-      display: block;
-
-      margin-bottom: 5px;
-
-      color:
-        var(--green);
-
-      font-size: 13px;
-    }
-
-    .requests-empty span {
-      font-size: 11px;
     }
 
     /* =====================================================
        FILTERS
-    ====================================================== */
+    ===================================================== */
 
     .filters {
-      display: grid;
-
-      grid-template-columns:
-        minmax(180px, 1fr)
-        145px
-        150px
-        165px;
-
-      gap: 8px;
 
       padding:
-        14px 24px;
+        15px 20px;
+
+      display:
+        grid;
+
+      grid-template-columns:
+        minmax(180px,1fr)
+        170px
+        165px
+        165px;
+
+      gap:
+        8px;
 
       border-bottom:
-        1px solid var(--border);
+        1px solid
+        var(--border);
+
     }
 
     .search-box {
-      position: relative;
+
+      position:
+        relative;
+
     }
 
     .search-box i {
-      position: absolute;
 
-      right: 12px;
-      top: 50%;
+      position:
+        absolute;
+
+      right:
+        13px;
+
+      top:
+        50%;
 
       transform:
         translateY(-50%);
 
       color:
-        #9aa49f;
+        #9aa3a9;
 
-      font-size: 12px;
+      font-size:
+        13px;
 
-      pointer-events: none;
     }
 
     .search-input,
     .filter-select {
-      width: 100%;
 
-      height: 38px;
+      width:
+        100%;
+
+      height:
+        40px;
 
       border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
-      border-radius: 9px;
+      border-radius:
+        10px;
 
-      outline: none;
+      outline:
+        none;
+
+      background:
+        #fcfdfc;
+
+      color:
+        var(--text);
+
+      font-size:
+        12px;
+
+    }
+
+    .search-input {
+
+      padding:
+        0 38px 0 12px;
+
+    }
+
+    .filter-select {
+
+      padding:
+        0 10px;
+
+    }
+
+    .search-input:focus,
+    .filter-select:focus {
+
+      border-color:
+        var(--gold);
+
+      background:
+        white;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(178,139,24,.08);
+
+    }
+
+    /* =====================================================
+       TABLE
+    ===================================================== */
+
+    .table-wrapper {
+
+      overflow-x:
+        auto;
+
+    }
+
+    table {
+
+      width:
+        100%;
+
+      border-collapse:
+        collapse;
+
+      min-width:
+        850px;
+
+    }
+
+    th {
+
+      padding:
+        14px 17px;
 
       background:
         #fafcfb;
 
       color:
-        var(--text);
+        #65716c;
 
-      font-size: 11px;
-
-      transition: .2s;
-    }
-
-    .search-input {
-      padding:
-        0 36px 0 12px;
-    }
-
-    .filter-select {
-      padding:
-        0 10px;
-    }
-
-    .search-input:focus,
-    .filter-select:focus {
-      background: white;
-
-      border-color:
-        var(--gold);
-
-      box-shadow:
-        0 0 0 3px
-        rgba(178,139,24,.08);
-    }
-
-    /* =====================================================
-       TABLE
-    ====================================================== */
-
-    .table-wrapper {
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-
-      min-width: 980px;
-
-      border-collapse:
-        collapse;
-    }
-
-    th {
-      padding:
-        13px 18px;
-
-      background:
-        #f8faf9;
-
-      color:
-        #68736e;
-
-      font-size: 10px;
+      font-size:
+        11px;
 
       text-align:
         right;
 
       border-bottom:
-        1px solid var(--border);
+        1px solid
+        var(--border);
+
     }
 
     td {
+
       padding:
-        14px 18px;
+        14px 17px;
 
       border-bottom:
-        1px solid #f0f3f1;
+        1px solid
+        #f0f2f1;
 
-      font-size: 12px;
+      font-size:
+        12px;
 
       vertical-align:
         middle;
-    }
 
-    tbody tr {
-      transition: .2s;
     }
 
     tbody tr:hover {
-      background:
-        #fbfdfc;
-    }
 
-    tbody tr:last-child td {
-      border-bottom:
-        none;
+      background:
+        #fcfdfc;
+
     }
 
     .student-name {
-      display: flex;
-      align-items: center;
-      gap: 10px;
 
-      min-width: 230px;
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        10px;
+
+      font-weight:
+        bold;
+
     }
 
     .student-avatar {
-      width: 37px;
-      height: 37px;
-      min-width: 37px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width:
+        38px;
 
-      border-radius: 11px;
+      height:
+        38px;
+
+      min-width:
+        38px;
+
+      border-radius:
+        11px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
 
       background:
-        var(--green-soft);
+        var(--green-light);
 
       color:
         var(--green);
 
-      font-size: 13px;
-      font-weight: bold;
+      font-size:
+        14px;
+
+      font-weight:
+        bold;
+
     }
 
     .student-name-link {
+
       color:
-        var(--green);
+        var(--text);
 
       text-decoration:
         none;
@@ -1189,387 +1251,461 @@
       font-weight:
         bold;
 
-      transition: .2s;
     }
 
     .student-name-link:hover {
+
       color:
-        var(--gold);
+        var(--green);
 
       text-decoration:
         underline;
+
     }
 
-    .student-subinfo {
-      margin-top: 5px;
+    .student-sub {
+
+      margin-top:
+        3px;
 
       color:
-        var(--muted);
+        #8a938f;
 
-      font-size: 9px;
+      font-size:
+        9px;
 
-      line-height: 1.7;
-    }
+      font-weight:
+        normal;
 
-    .student-subinfo strong {
-      color:
-        var(--green);
     }
 
     .section-badge {
-      display: inline-block;
+
+      display:
+        inline-block;
 
       padding:
         6px 9px;
 
-      border-radius: 8px;
+      border-radius:
+        8px;
 
       background:
         #f7f4e8;
 
       color:
-        #806711;
+        #866b13;
 
-      font-size: 10px;
-      font-weight: bold;
+      font-size:
+        10px;
+
+      font-weight:
+        bold;
+
     }
 
     .memorization {
+
       color:
-        #5c6762;
+        #59645f;
+
     }
 
     .no-data {
+
       color:
-        #a3aba7;
+        #a2aaa6;
+
     }
 
     .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+
+      display:
+        inline-flex;
+
+      align-items:
+        center;
+
+      gap:
+        6px;
 
       padding:
-        6px 10px;
+        6px 9px;
 
-      border-radius: 20px;
+      border-radius:
+        20px;
 
-      font-size: 10px;
-      font-weight: bold;
+      font-size:
+        10px;
+
+      font-weight:
+        bold;
 
       white-space:
         nowrap;
+
     }
 
     .status::before {
-      content: "";
 
-      width: 6px;
-      height: 6px;
+      content:
+        "";
 
-      border-radius: 50%;
+      width:
+        6px;
+
+      height:
+        6px;
+
+      border-radius:
+        50%;
+
     }
 
     .status.active {
+
       background:
-        var(--success-soft);
+        var(--success-light);
 
       color:
         var(--success);
+
     }
 
     .status.active::before {
+
       background:
         var(--success);
+
     }
 
     .status.inactive {
+
       background:
-        var(--danger-soft);
+        var(--danger-light);
 
       color:
         var(--danger);
+
     }
 
     .status.inactive::before {
+
       background:
         var(--danger);
+
     }
 
     .status.rejected {
+
       background:
-        var(--purple-soft);
+        var(--purple-light);
 
       color:
         var(--purple);
+
     }
 
     .status.rejected::before {
+
       background:
         var(--purple);
+
     }
 
     .status.expelled {
+
       background:
-        var(--gray-soft);
+        #f1f3f2;
 
       color:
-        #66716c;
+        #5f6964;
+
     }
 
     .status.expelled::before {
+
       background:
         #7b8580;
+
     }
 
     .score-badge,
     .points-badge {
-      display: inline-flex;
 
-      align-items: center;
-      justify-content: center;
+      display:
+        inline-flex;
 
-      min-width: 75px;
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      min-width:
+        72px;
 
       padding:
-        7px 10px;
+        6px 9px;
 
-      border-radius: 9px;
+      border-radius:
+        9px;
 
-      font-size: 10px;
-      font-weight: 800;
+      font-size:
+        10px;
+
+      font-weight:
+        800;
 
       white-space:
         nowrap;
+
     }
 
     .score-badge {
+
       background:
-        var(--green-soft);
+        var(--green-light);
 
       color:
         var(--green);
 
       border:
-        1px solid #dcebe4;
+        1px solid
+        #dcebe4;
+
     }
 
     .points-badge {
+
       background:
-        var(--gold-soft);
+        #fff8df;
 
       color:
         #806711;
 
       border:
-        1px solid #f0e4b7;
+        1px solid
+        #f0e4b7;
+
     }
 
     .actions {
-      display: flex;
-      gap: 6px;
+
+      display:
+        flex;
+
+      gap:
+        6px;
+
     }
 
     .action-btn {
-      width: 34px;
-      height: 34px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width:
+        34px;
 
-      border: none;
+      height:
+        34px;
 
-      border-radius: 9px;
+      border:
+        none;
 
-      transition: .2s;
+      border-radius:
+        9px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      transition:
+        .2s;
+
     }
 
     .edit-btn {
+
       background:
-        var(--gold-soft);
+        #fff8df;
 
       color:
         var(--gold);
+
     }
 
     .edit-btn:hover {
+
       background:
         var(--gold);
 
       color:
         white;
 
-      transform:
-        translateY(-2px);
     }
 
     .expel-btn {
+
       background:
-        var(--danger-soft);
+        var(--orange-light);
 
       color:
-        var(--danger);
+        var(--orange);
+
     }
 
     .expel-btn:hover {
+
+      background:
+        var(--orange);
+
+      color:
+        white;
+
+    }
+
+    .delete-btn {
+
+      background:
+        var(--danger-light);
+
+      color:
+        var(--danger);
+
+    }
+
+    .delete-btn:hover {
+
       background:
         var(--danger);
 
       color:
         white;
 
-      transform:
-        translateY(-2px);
-    }
-
-    .delete-btn {
-      background:
-        #ecefee;
-
-      color:
-        #56615c;
-    }
-
-    .delete-btn:hover {
-      background:
-        #4f5a55;
-
-      color:
-        white;
-
-      transform:
-        translateY(-2px);
-    }
-
-    /* =====================================================
-       ADD BUTTON
-    ====================================================== */
-
-    .add-btn {
-      display: inline-flex;
-
-      align-items: center;
-      gap: 7px;
-
-      padding:
-        11px 16px;
-
-      border: none;
-
-      border-radius: 10px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-mid)
-        );
-
-      color:
-        white;
-
-      font-size: 11px;
-      font-weight: bold;
-
-      box-shadow:
-        0 7px 16px
-        rgba(23,77,58,.14);
-
-      transition: .25s;
-    }
-
-    .add-btn:hover {
-      transform:
-        translateY(-2px);
-
-      box-shadow:
-        0 11px 23px
-        rgba(23,77,58,.20);
     }
 
     /* =====================================================
        EMPTY
-    ====================================================== */
+    ===================================================== */
 
     .empty {
-      display: none;
+
+      text-align:
+        center;
 
       padding:
         55px 20px;
 
-      text-align: center;
-
       color:
         var(--muted);
+
+      display:
+        none;
+
     }
 
     .empty-icon {
-      width: 65px;
-      height: 65px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width:
+        65px;
+
+      height:
+        65px;
 
       margin:
-        0 auto 13px;
+        0 auto 14px;
 
-      border-radius: 50%;
+      border-radius:
+        50%;
 
       background:
-        var(--green-soft);
+        var(--green-light);
 
       color:
         var(--green);
 
-      font-size: 24px;
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      font-size:
+        25px;
+
     }
 
     .empty strong {
-      display: block;
 
-      margin-bottom: 5px;
+      display:
+        block;
 
       color:
         var(--green);
 
-      font-size: 13px;
+      margin-bottom:
+        5px;
+
     }
 
     .empty p {
-      font-size: 11px;
+
+      font-size:
+        12px;
+
     }
 
     /* =====================================================
        MODAL
-    ====================================================== */
+    ===================================================== */
 
     .modal {
-      position: fixed;
-      inset: 0;
 
-      z-index: 100;
+      position:
+        fixed;
 
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
+      inset:
+        0;
 
       background:
-        rgba(12,48,35,.70);
+        rgba(16,59,44,.68);
 
       backdrop-filter:
-        blur(7px);
+        blur(5px);
+
+      display:
+        none;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        20px;
+
+      z-index:
+        100;
+
     }
 
     .modal.show {
-      display: flex;
+
+      display:
+        flex;
+
     }
 
     .modal-box {
+
       width:
         min(520px,100%);
 
@@ -1583,98 +1719,130 @@
         white;
 
       border-radius:
-        21px;
+        20px;
 
       box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.25);
+        0 25px 70px
+        rgba(0,0,0,.22);
+
+      overflow:
+        hidden;
+
     }
 
     .modal-header {
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
 
       padding:
-        21px 24px;
+        22px 25px;
 
       border-bottom:
-        1px solid var(--border);
+        1px solid
+        var(--border);
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
     }
 
     .modal-header h2 {
+
       color:
         var(--green);
 
       font-size:
-        18px;
+        19px;
 
-      margin-bottom:
-        4px;
     }
 
     .modal-header p {
+
       color:
         var(--muted);
 
       font-size:
-        10px;
+        11px;
+
+      margin-top:
+        4px;
+
     }
 
     .close-modal {
-      width: 35px;
-      height: 35px;
 
-      border: none;
+      width:
+        34px;
+
+      height:
+        34px;
+
+      border:
+        none;
 
       border-radius:
         9px;
 
       background:
-        #f3f5f4;
+        #f4f5f4;
 
       color:
         #68736e;
+
     }
 
     .form {
+
       padding:
-        24px;
+        25px;
+
     }
 
     .form-group {
+
       margin-bottom:
-        16px;
+        17px;
+
     }
 
     .form-group label {
-      display: block;
 
-      margin-bottom:
-        7px;
+      display:
+        block;
 
       color:
         var(--green);
 
       font-size:
-        11px;
+        12px;
 
       font-weight:
         bold;
+
+      margin-bottom:
+        7px;
+
     }
 
     .form-group input,
     .form-group select {
-      width: 100%;
 
-      height: 44px;
+      width:
+        100%;
+
+      height:
+        45px;
 
       padding:
         0 13px;
 
       border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
       border-radius:
         10px;
@@ -1683,31 +1851,51 @@
         none;
 
       background:
-        #fafcfb;
+        #fcfdfc;
+
+      font-size:
+        13px;
 
       color:
         var(--text);
 
-      font-size:
-        12px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+
+      border-color:
+        var(--gold);
+
+      background:
+        white;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(178,139,24,.08);
+
     }
 
     .modal-buttons {
-      display: grid;
+
+      display:
+        grid;
 
       grid-template-columns:
         1fr 1fr;
 
       gap:
-        9px;
+        10px;
 
       margin-top:
-        21px;
+        22px;
+
     }
 
     .modal-buttons button {
+
       height:
-        44px;
+        45px;
 
       border:
         none;
@@ -1717,56 +1905,94 @@
 
       font-weight:
         bold;
+
     }
 
     .save-btn {
+
       background:
         var(--green);
 
       color:
         white;
+
+    }
+
+    .save-btn:hover {
+
+      background:
+        var(--green-dark);
+
     }
 
     .cancel-btn {
+
       background:
-        #eef1ef;
+        #f0f2f1;
 
       color:
-        #4d5853;
+        #49534f;
+
     }
 
     #message {
+
       min-height:
         20px;
-
-      margin-top:
-        11px;
 
       text-align:
         center;
 
       font-size:
-        11px;
+        12px;
 
       font-weight:
         bold;
+
+      margin-top:
+        12px;
+
+      line-height:
+        1.7;
+
     }
 
     /* =====================================================
        TOAST
-    ====================================================== */
+    ===================================================== */
 
     .toast {
-      position: fixed;
+
+      position:
+        fixed;
 
       left:
-        24px;
+        25px;
 
       bottom:
-        24px;
+        25px;
 
-      z-index:
-        200;
+      min-width:
+        270px;
+
+      max-width:
+        420px;
+
+      background:
+        var(--green-dark);
+
+      color:
+        white;
+
+      padding:
+        14px 17px;
+
+      border-radius:
+        12px;
+
+      box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.18);
 
       display:
         flex;
@@ -1775,32 +2001,13 @@
         center;
 
       gap:
-        9px;
+        10px;
 
-      min-width:
-        250px;
+      z-index:
+        200;
 
-      max-width:
-        370px;
-
-      padding:
-        13px 16px;
-
-      border-radius:
-        12px;
-
-      background:
-        var(--green-dark);
-
-      color:
-        white;
-
-      box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.18);
-
-      font-size:
-        11px;
+      transform:
+        translateY(20px);
 
       opacity:
         0;
@@ -1808,329 +2015,362 @@
       pointer-events:
         none;
 
-      transform:
-        translateY(18px);
-
       transition:
-        .3s;
+        .25s;
+
+      font-size:
+        12px;
+
     }
 
     .toast.show {
-      opacity:
-        1;
 
       transform:
         translateY(0);
+
+      opacity:
+        1;
+
     }
 
     .toast.success i {
+
       color:
-        #72d883;
+        #71d584;
+
     }
 
     .toast.error i {
+
       color:
-        #ff8585;
+        #ff8d8d;
+
     }
 
     /* =====================================================
-       RESPONSIVE
-    ====================================================== */
+       BADGE
+    ===================================================== */
 
-    @media (max-width: 1050px) {
+    .badge {
+
+      position:
+        fixed;
+
+      left:
+        12px;
+
+      bottom:
+        12px;
+
+      background:
+        var(--green);
+
+      color:
+        white;
+
+      padding:
+        7px 12px;
+
+      border-radius:
+        20px;
+
+      font-size:
+        10px;
+
+      z-index:
+        250;
+
+    }
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media(max-width:950px) {
 
       .sidebar {
-        width: 235px;
+
+        width:
+          220px;
+
       }
 
       .main {
-        margin-right: 235px;
+
+        margin-right:
+          220px;
+
       }
 
       .filters {
+
         grid-template-columns:
-          minmax(160px,1fr)
-          135px
-          140px
-          145px;
+          1fr 150px;
+
       }
+
     }
 
-    @media (max-width: 850px) {
+    @media(max-width:750px) {
 
       .sidebar {
+
         transform:
           translateX(100%);
 
         transition:
-          transform .3s ease;
+          .25s;
 
-        width:
-          285px;
-
-        padding-top:
-          65px;
       }
 
       .sidebar.open {
+
         transform:
           translateX(0);
+
       }
 
       .close-sidebar {
+
         display:
           flex;
 
+        position:
+          absolute;
+
+        top:
+          14px;
+
+        left:
+          14px;
+
+        width:
+          38px;
+
+        height:
+          38px;
+
         align-items:
           center;
 
         justify-content:
           center;
+
+        border:
+          none;
+
+        border-radius:
+          10px;
+
+        background:
+          rgba(255,255,255,.10);
+
+        color:
+          white;
+
+        font-size:
+          20px;
+
       }
 
       .main {
+
         margin-right:
           0;
+
       }
 
       .mobile-menu {
+
         display:
           block;
+
       }
 
       .teacher-email {
+
         display:
           none;
+
       }
 
       .topbar {
+
         padding:
-          12px 18px;
+          0 17px;
+
       }
 
       .content {
+
         width:
           94%;
-      }
-    }
 
-    @media (max-width: 680px) {
+        margin-top:
+          20px;
+
+      }
 
       .stats {
+
         grid-template-columns:
           1fr;
+
       }
 
       .filters {
+
         grid-template-columns:
           1fr;
-      }
 
-      .welcome-card {
-        min-height:
-          175px;
-
-        padding:
-          25px 22px;
-      }
-
-      .welcome-card h2 {
-        font-size:
-          24px;
-      }
-
-      .hero-decoration {
-        width:
-          80px;
-
-        height:
-          80px;
-
-        font-size:
-          38px;
-
-        left:
-          12px;
-
-        opacity:
-          .35;
-      }
-
-      .request-content {
-        align-items:
-          stretch;
-      }
-
-      .request-actions {
-        width:
-          100%;
-      }
-
-      .approve-btn,
-      .reject-btn {
-        flex:
-          1;
       }
 
       .panel-top {
+
         align-items:
           stretch;
+
       }
 
       .add-btn {
+
         width:
           100%;
 
-        justify-content:
-          center;
-      }
-    }
-
-    @media (max-width: 480px) {
-
-      .topbar {
-        min-height:
-          68px;
-      }
-
-      .page-heading-icon {
-        width:
-          39px;
-
-        height:
-          39px;
-
-        min-width:
-          39px;
-      }
-
-      .page-title h1 {
-        font-size:
-          16px;
-      }
-
-      .page-title p {
-        display:
-          none;
-      }
-
-      .teacher-avatar {
-        width:
-          38px;
-
-        height:
-          38px;
-      }
-
-      .teacher-name {
-        font-size:
-          10px;
-      }
-
-      .content {
-        width:
-          92%;
-
-        margin-top:
-          19px;
       }
 
       .welcome-card {
+
+        padding:
+          23px;
+
+      }
+
+      .welcome-card h2 {
+
+        font-size:
+          23px;
+
+      }
+
+    }
+
+    @media(max-width:480px) {
+
+      .topbar {
+
+        height:
+          70px;
+
+      }
+
+      .page-title h1 {
+
+        font-size:
+          17px;
+
+      }
+
+      .page-title p {
+
+        display:
+          none;
+
+      }
+
+      .teacher-avatar {
+
+        width:
+          37px;
+
+        height:
+          37px;
+
+      }
+
+      .content {
+
+        width:
+          92%;
+
+      }
+
+      .welcome-card {
+
         border-radius:
-          18px;
+          16px;
+
       }
 
       .panel {
+
         border-radius:
-          17px;
-      }
+          16px;
 
-      .panel-top {
-        padding:
-          18px 17px;
-      }
-
-      .filters {
-        padding:
-          14px 17px;
-      }
-
-      .requests-list {
-        padding:
-          13px;
-      }
-
-      .request-card {
-        padding:
-          14px;
       }
 
       .stat-card {
-        min-height:
-          96px;
 
         padding:
           17px;
-      }
 
-      .stat-number {
-        font-size:
-          25px;
       }
 
       .toast {
+
         left:
-          12px;
+          10px;
 
         right:
-          12px;
-
-        bottom:
-          12px;
+          10px;
 
         min-width:
           0;
+
+        max-width:
+          none;
+
+        bottom:
+          55px;
+
       }
+
     }
 
   </style>
+
 </head>
 
 <body>
 
-  <!-- ================= SIDEBAR ================= -->
+  <!-- =====================================================
+       SIDEBAR
+  ====================================================== -->
 
   <aside
     class="sidebar"
-    id="sidebar">
+    id="sidebar"
+  >
 
     <button
       class="close-sidebar"
       id="closeSidebar"
       type="button"
-      aria-label="إغلاق القائمة">
-
-      ×
-
+      aria-label="إغلاق القائمة"
+    >
+      <i class="fa-solid fa-xmark"></i>
     </button>
 
-    <a
-      href="index.html"
-      class="sidebar-brand"
-      title="العودة إلى الصفحة الرئيسية">
+    <div class="sidebar-logo">
 
-      <div class="sidebar-logo">
-
-        <img
-          src="logo.png"
-          alt="شعار مركز حردان طارق القرآني">
-
+      <div class="logo-icon">
+        <i class="fa-solid fa-book-quran"></i>
       </div>
 
-      <div class="brand-text">
+      <div class="logo-text">
 
         <strong>
-          مركز حردان طارق القرآني
+          مركز حردان طارق
         </strong>
 
         <span>
@@ -2139,17 +2379,18 @@
 
       </div>
 
-    </a>
+    </div>
 
-    <div class="sidebar-heading">
-      إدارة المركز
+    <div class="sidebar-title">
+      القائمة الرئيسية
     </div>
 
     <button
       class="side-link active"
-      type="button">
+      type="button"
+    >
 
-      <i class="fa-solid fa-chart-pie"></i>
+      <i class="fa-solid fa-chart-line"></i>
 
       لوحة المتابعة
 
@@ -2158,7 +2399,8 @@
     <button
       class="side-link"
       id="studentsNav"
-      type="button">
+      type="button"
+    >
 
       <i class="fa-solid fa-users"></i>
 
@@ -2168,40 +2410,34 @@
 
     <button
       class="side-link"
-      id="requestsNav"
-      type="button">
+      type="button"
+      onclick="scrollToStudents()"
+    >
 
-      <i class="fa-solid fa-user-clock"></i>
-
-      طلبات الانضمام
-
-    </button>
-
-    <button
-      class="side-link"
-      id="memorizationNav"
-      type="button">
-
-      <i class="fa-solid fa-book-quran"></i>
+      <i class="fa-solid fa-book-open"></i>
 
       متابعة الحفظ
 
     </button>
 
+    <a
+      href="index.html"
+      class="side-link home-link"
+    >
+
+      <i class="fa-solid fa-house"></i>
+
+      الرئيسية
+
+    </a>
+
     <div class="sidebar-bottom">
-
-      <div class="sidebar-status">
-
-        <span class="online-dot"></span>
-
-        النظام يعمل بشكل طبيعي
-
-      </div>
 
       <button
         class="logout-side"
         id="logoutButton"
-        type="button">
+        type="button"
+      >
 
         <i class="fa-solid fa-right-from-bracket"></i>
 
@@ -2215,29 +2451,25 @@
 
   </aside>
 
-  <!-- ================= MAIN ================= -->
+
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
 
   <div class="main">
 
     <header class="topbar">
 
-      <div class="page-heading">
+      <div class="topbar-left">
 
         <button
           class="mobile-menu"
           id="mobileMenu"
           type="button"
-          aria-label="فتح القائمة">
-
+          aria-label="فتح القائمة"
+        >
           <i class="fa-solid fa-bars"></i>
-
         </button>
-
-        <div class="page-heading-icon">
-
-          <i class="fa-solid fa-chart-line"></i>
-
-        </div>
 
         <div class="page-title">
 
@@ -2246,7 +2478,7 @@
           </h1>
 
           <p>
-            إدارة ومتابعة طلاب المركز بسهولة
+            إدارة ومتابعة طلاب المركز
           </p>
 
         </div>
@@ -2255,48 +2487,43 @@
 
       <div class="teacher-info">
 
-        <div class="teacher-details">
+        <div>
 
-          <span
+          <div
             class="teacher-name"
-            id="teacherName">
-
+            id="teacherName"
+          >
             المعلم
+          </div>
 
-          </span>
-
-          <span
+          <div
             class="teacher-email"
-            id="teacherEmail">
-
+            id="teacherEmail"
+          >
             بوابة المعلمين
-
-          </span>
+          </div>
 
         </div>
 
         <div class="teacher-avatar">
-
-          <i class="fa-solid fa-user-tie"></i>
-
+          <i class="fa-solid fa-user"></i>
         </div>
 
       </div>
 
     </header>
 
+
     <main class="content">
 
-      <!-- ================= WELCOME ================= -->
+      <!-- WELCOME -->
 
       <section class="welcome-card">
 
         <div class="welcome-content">
 
           <div class="welcome-small">
-
             مركز حردان طارق القرآني
-
           </div>
 
           <h2>
@@ -2304,41 +2531,32 @@
           </h2>
 
           <p>
-            من هنا تقدر تتابع طلاب المركز،
-            تشوف طلبات الانضمام، وتدير بيانات الطلاب
-            بكل سهولة ومن مكان واحد.
+            من هنا يمكنك متابعة طلاب المركز،
+            إضافة الطلاب وإدارة بياناتهم بسهولة.
           </p>
-
-        </div>
-
-        <div class="hero-decoration">
-
-          <i class="fa-solid fa-book-quran"></i>
 
         </div>
 
       </section>
 
-      <!-- ================= STATS ================= -->
+
+      <!-- STATS -->
 
       <section class="stats">
 
         <div class="stat-card">
 
           <div class="stat-icon">
-
             <i class="fa-solid fa-users"></i>
-
           </div>
 
           <div>
 
             <span
               class="stat-number"
-              id="totalStudents">
-
+              id="totalStudents"
+            >
               0
-
             </span>
 
             <span class="stat-label">
@@ -2349,22 +2567,20 @@
 
         </div>
 
+
         <div class="stat-card">
 
           <div class="stat-icon">
-
             <i class="fa-solid fa-user-check"></i>
-
           </div>
 
           <div>
 
             <span
               class="stat-number"
-              id="activeStudents">
-
+              id="activeStudents"
+            >
               0
-
             </span>
 
             <span class="stat-label">
@@ -2375,22 +2591,20 @@
 
         </div>
 
+
         <div class="stat-card">
 
           <div class="stat-icon">
-
             <i class="fa-solid fa-book-quran"></i>
-
           </div>
 
           <div>
 
             <span
               class="stat-number"
-              id="memorizedStudents">
-
+              id="memorizedStudents"
+            >
               0
-
             </span>
 
             <span class="stat-label">
@@ -2403,68 +2617,20 @@
 
       </section>
 
-      <!-- ================= REQUESTS ================= -->
 
-      <section
-        class="panel requests-panel"
-        id="requestsPanel">
-
-        <div class="panel-top">
-
-          <div class="panel-title">
-
-            <div class="panel-title-icon">
-
-              <i class="fa-solid fa-user-clock"></i>
-
-            </div>
-
-            <div>
-
-              <h2>
-                طلبات الانضمام
-              </h2>
-
-              <span>
-                الطلاب الذين ينتظرون موافقتك
-              </span>
-
-            </div>
-
-          </div>
-
-          <span
-            class="pending-count"
-            id="pendingCount">
-
-            0 طلب
-
-          </span>
-
-        </div>
-
-        <div
-          class="requests-list"
-          id="requestsList">
-
-        </div>
-
-      </section>
-
-      <!-- ================= STUDENTS ================= -->
+      <!-- STUDENTS PANEL -->
 
       <section
         class="panel"
-        id="studentsPanel">
+        id="studentsPanel"
+      >
 
         <div class="panel-top">
 
           <div class="panel-title">
 
             <div class="panel-title-icon">
-
               <i class="fa-solid fa-users"></i>
-
             </div>
 
             <div>
@@ -2481,12 +2647,14 @@
 
           </div>
 
+
           <button
             class="add-btn"
             id="openModal"
-            type="button">
+            type="button"
+          >
 
-            <i class="fa-solid fa-user-plus"></i>
+            <i class="fa-solid fa-plus"></i>
 
             إضافة طالب جديد
 
@@ -2494,7 +2662,8 @@
 
         </div>
 
-        <!-- ================= FILTERS ================= -->
+
+        <!-- FILTERS -->
 
         <div class="filters">
 
@@ -2506,13 +2675,16 @@
               type="text"
               id="searchInput"
               class="search-input"
-              placeholder="ابحث باسم الطالب...">
+              placeholder="ابحث باسم الطالب..."
+            >
 
           </div>
 
+
           <select
             id="sectionFilter"
-            class="filter-select">
+            class="filter-select"
+          >
 
             <option value="">
               جميع الشعب
@@ -2536,9 +2708,11 @@
 
           </select>
 
+
           <select
             id="statusFilter"
-            class="filter-select">
+            class="filter-select"
+          >
 
             <option value="accepted">
               الطلاب المقبولون
@@ -2566,9 +2740,11 @@
 
           </select>
 
+
           <select
             id="sortFilter"
-            class="filter-select">
+            class="filter-select"
+          >
 
             <option value="alphabetical">
               ترتيب: أبجدي
@@ -2579,14 +2755,15 @@
             </option>
 
             <option value="section">
-              ترتيب: حسب الصف / الشعبة
+              ترتيب: حسب الشعبة
             </option>
 
           </select>
 
         </div>
 
-        <!-- ================= TABLE ================= -->
+
+        <!-- TABLE -->
 
         <div class="table-wrapper">
 
@@ -2617,7 +2794,7 @@
                 </th>
 
                 <th>
-                  النقاط الكلية
+                  النقاط
                 </th>
 
                 <th>
@@ -2628,29 +2805,29 @@
 
             </thead>
 
-            <tbody id="studentsTable">
-
-            </tbody>
+            <tbody id="studentsTable"></tbody>
 
           </table>
 
         </div>
 
+
+        <!-- EMPTY -->
+
         <div
           id="emptyMessage"
-          class="empty">
+          class="empty"
+        >
 
           <div class="empty-icon">
-
             <i class="fa-solid fa-users-slash"></i>
-
           </div>
 
-          <strong>
+          <strong id="emptyTitle">
             لا يوجد طلاب
           </strong>
 
-          <p>
+          <p id="emptyText">
             لم يتم العثور على طلاب مطابقين للفلاتر الحالية.
           </p>
 
@@ -2662,11 +2839,15 @@
 
   </div>
 
-  <!-- ================= MODAL ================= -->
+
+  <!-- =====================================================
+       MODAL
+  ====================================================== -->
 
   <div
     class="modal"
-    id="studentModal">
+    id="studentModal"
+  >
 
     <div class="modal-box">
 
@@ -2687,17 +2868,18 @@
         <button
           class="close-modal"
           id="closeModal"
-          type="button">
-
+          type="button"
+        >
           <i class="fa-solid fa-xmark"></i>
-
         </button>
 
       </div>
 
+
       <form
         id="studentForm"
-        class="form">
+        class="form"
+      >
 
         <div class="form-group">
 
@@ -2709,9 +2891,12 @@
             type="text"
             id="studentName"
             required
-            placeholder="مثال: أحمد محمد">
+            autocomplete="off"
+            placeholder="مثال: أحمد محمد"
+          >
 
         </div>
+
 
         <div class="form-group">
 
@@ -2721,7 +2906,8 @@
 
           <select
             id="studentSection"
-            required>
+            required
+          >
 
             <option value="">
               اختر الشعبة
@@ -2747,6 +2933,7 @@
 
         </div>
 
+
         <div class="form-group">
 
           <label for="memorization">
@@ -2756,9 +2943,12 @@
           <input
             type="text"
             id="memorization"
-            placeholder="مثال: سورة البقرة">
+            autocomplete="off"
+            placeholder="مثال: سورة البقرة"
+          >
 
         </div>
+
 
         <div class="form-group">
 
@@ -2767,7 +2957,8 @@
           </label>
 
           <select
-            id="studentStatus">
+            id="studentStatus"
+          >
 
             <option value="active">
               مستمر
@@ -2777,24 +2968,18 @@
               متوقف
             </option>
 
-            <option value="rejected">
-              غير مقبول
-            </option>
-
-            <option value="expelled">
-              مفصول
-            </option>
-
           </select>
 
         </div>
+
 
         <div class="modal-buttons">
 
           <button
             type="submit"
             class="save-btn"
-            id="saveButton">
+            id="saveButton"
+          >
 
             <i class="fa-solid fa-check"></i>
 
@@ -2802,16 +2987,19 @@
 
           </button>
 
+
           <button
             type="button"
             class="cancel-btn"
-            id="cancelButton">
+            id="cancelButton"
+          >
 
             إلغاء
 
           </button>
 
         </div>
+
 
         <div id="message"></div>
 
@@ -2821,11 +3009,13 @@
 
   </div>
 
-  <!-- ================= TOAST ================= -->
+
+  <!-- TOAST -->
 
   <div
     class="toast"
-    id="toast">
+    id="toast"
+  >
 
     <i id="toastIcon"></i>
 
@@ -2833,9 +3023,11 @@
 
   </div>
 
-  <!-- ================= SUPABASE ================= -->
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <div class="badge">
+    النسخة التجريبية
+  </div>
+
 
   <script>
 
@@ -2868,6 +3060,16 @@
     const emptyMessage =
       document.getElementById(
         'emptyMessage'
+      );
+
+    const emptyTitle =
+      document.getElementById(
+        'emptyTitle'
+      );
+
+    const emptyText =
+      document.getElementById(
+        'emptyText'
       );
 
     const totalStudents =
@@ -2910,12 +3112,12 @@
         'studentModal'
       );
 
-    const openModal =
+    const openModalButton =
       document.getElementById(
         'openModal'
       );
 
-    const closeModal =
+    const closeModalButton =
       document.getElementById(
         'closeModal'
       );
@@ -2960,14 +3162,9 @@
         'toastIcon'
       );
 
-    const requestsList =
+    const sidebar =
       document.getElementById(
-        'requestsList'
-      );
-
-    const pendingCount =
-      document.getElementById(
-        'pendingCount'
+        'sidebar'
       );
 
 
@@ -2982,91 +3179,107 @@
 
     let profileMap = {};
 
+    let toastTimer =
+      null;
+
 
     /* =====================================================
-       HELPERS
+       GENERAL
     ====================================================== */
 
-    function normalizeValue(
-      value
-    ) {
+    function escapeHtml(value) {
 
       return String(
         value ?? ''
       )
-        .trim()
-        .toLowerCase()
-        .replace(/\s+/g, ' ');
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#039;');
 
     }
 
 
-    function escapeHtml(
-      text
-    ) {
+    function numberValue(value) {
 
-      return String(
-        text ?? ''
-      )
-        .replaceAll(
-          '&',
-          '&amp;'
-        )
-        .replaceAll(
-          '<',
-          '&lt;'
-        )
-        .replaceAll(
-          '>',
-          '&gt;'
-        )
-        .replaceAll(
-          '"',
-          '&quot;'
-        )
-        .replaceAll(
-          "'",
-          '&#039;'
-        );
+      const n =
+        Number(value);
+
+      return Number.isFinite(n)
+        ? n
+        : 0;
 
     }
 
+
+    /* =====================================================
+       TOAST
+    ====================================================== */
 
     function showToast(
       text,
       type = 'success'
     ) {
 
+      clearTimeout(
+        toastTimer
+      );
+
       toastText.textContent =
         text;
 
       toast.className =
-        'toast show ' +
-        type;
+        `toast show ${type}`;
 
       toastIcon.className =
         type === 'success'
           ? 'fa-solid fa-circle-check'
           : 'fa-solid fa-circle-exclamation';
 
+      toastTimer =
+        setTimeout(
+          () => {
 
-      setTimeout(
-        () => {
+            toast.classList.remove(
+              'show'
+            );
 
-          toast.classList.remove(
-            'show'
-          );
-
-        },
-        3000
-      );
+          },
+          3500
+        );
 
     }
 
 
     /* =====================================================
-       AUTH
-       الدخول بالكود الموحد
+       MESSAGE
+    ====================================================== */
+
+    function showMessage(
+      text,
+      color = 'var(--danger)'
+    ) {
+
+      message.textContent =
+        text;
+
+      message.style.color =
+        color;
+
+    }
+
+
+    function clearMessage() {
+
+      message.textContent =
+        '';
+
+    }
+
+
+    /* =====================================================
+       USER ACCESS
     ====================================================== */
 
     function checkUser() {
@@ -3074,12 +3287,10 @@
       const accessGranted =
         localStorage.getItem(
           'teacherAccess'
-        ) === 'granted';
+        ) ===
+        'granted';
 
-
-      if (
-        !accessGranted
-      ) {
+      if (!accessGranted) {
 
         window.location.href =
           'teacher-login.html';
@@ -3088,853 +3299,17 @@
 
       }
 
-
       document.getElementById(
         'teacherName'
       ).textContent =
         'المعلم';
-
 
       document.getElementById(
         'teacherEmail'
       ).textContent =
         'بوابة المعلمين';
 
-
       return true;
-
-    }
-
-
-    /* =====================================================
-       SAFE NUMBER
-    ====================================================== */
-
-    function toNumber(
-      value
-    ) {
-
-      const n =
-        Number(
-          String(
-            value ?? ''
-          )
-            .replace(
-              ',',
-              '.'
-            )
-            .replace(
-              /[^\d.-]/g,
-              ''
-            )
-        );
-
-
-      return Number.isFinite(
-        n
-      )
-        ? n
-        : 0;
-
-    }
-
-
-    /* =====================================================
-       ATTENDANCE POINTS
-    ====================================================== */
-
-    function attendancePoint(
-      status
-    ) {
-
-      const value =
-        normalizeValue(
-          status
-        );
-
-
-      if (
-        value === 'حاضر' ||
-        value === 'present'
-      ) {
-
-        return 2;
-
-      }
-
-
-      if (
-        value === 'متأخر' ||
-        value === 'late'
-      ) {
-
-        return 1;
-
-      }
-
-
-      if (
-        value === 'معتذر' ||
-        value === 'excused'
-      ) {
-
-        return .5;
-
-      }
-
-
-      return 0;
-
-    }
-
-
-    /* =====================================================
-       RECITATION POINTS
-    ====================================================== */
-
-    function recitationPoint(
-      item
-    ) {
-
-      const raw =
-        item?.grade ??
-        item?.score ??
-        item?.mark ??
-        item?.rating ??
-        item?.status ??
-        item?.result ??
-        '';
-
-
-      const type =
-        normalizeValue(
-          item?.type
-        );
-
-
-      const isReview =
-        type === 'review' ||
-        type === 'مراجعة';
-
-
-      const numeric =
-        toNumber(
-          raw
-        );
-
-
-      if (
-        numeric > 0
-      ) {
-
-        if (
-          numeric >= 97
-        ) {
-
-          return isReview
-            ? 3
-            : 6;
-
-        }
-
-
-        if (
-          numeric >= 95
-        ) {
-
-          return isReview
-            ? 2.5
-            : 5;
-
-        }
-
-
-        if (
-          numeric >= 92
-        ) {
-
-          return isReview
-            ? 2
-            : 4;
-
-        }
-
-
-        if (
-          numeric >= 90
-        ) {
-
-          return isReview
-            ? 1
-            : 2;
-
-        }
-
-
-        return 0;
-
-      }
-
-
-      const label =
-        normalizeValue(
-          raw
-        );
-
-
-      if (
-        label.includes(
-          'ممتاز'
-        )
-      ) {
-
-        return isReview
-          ? 3
-          : 6;
-
-      }
-
-
-      if (
-        label.includes(
-          'جيد جداً'
-        ) ||
-        label.includes(
-          'جيد جدا'
-        )
-      ) {
-
-        return isReview
-          ? 2.5
-          : 5;
-
-      }
-
-
-      if (
-        label ===
-        'جيد'
-      ) {
-
-        return isReview
-          ? 2
-          : 4;
-
-      }
-
-
-      if (
-        label.includes(
-          'مقبول'
-        )
-      ) {
-
-        return isReview
-          ? 1
-          : 2;
-
-      }
-
-
-      return 0;
-
-    }
-
-
-    /* =====================================================
-       TEST POINTS
-    ====================================================== */
-
-    function testPoint(
-      item
-    ) {
-
-      const raw =
-        item?.grade ??
-        item?.result ??
-        item?.status ??
-        item?.rating ??
-        item?.score ??
-        '';
-
-
-      const numeric =
-        toNumber(
-          raw
-        );
-
-
-      if (
-        numeric > 0
-      ) {
-
-        const percentage =
-          numeric <= 12
-
-            ? (
-                numeric /
-                12
-              ) * 100
-
-            : numeric;
-
-
-        if (
-          percentage >= 97
-        ) {
-
-          return 12;
-
-        }
-
-
-        if (
-          percentage >= 90
-        ) {
-
-          return 8;
-
-        }
-
-
-        if (
-          percentage >= 80
-        ) {
-
-          return 4;
-
-        }
-
-
-        return 0;
-
-      }
-
-
-      const label =
-        normalizeValue(
-          raw
-        );
-
-
-      if (
-        label.includes(
-          'ممتاز'
-        )
-      ) {
-
-        return 12;
-
-      }
-
-
-      if (
-        label.includes(
-          'جيد جداً'
-        ) ||
-        label.includes(
-          'جيد جدا'
-        )
-      ) {
-
-        return 8;
-
-      }
-
-
-      if (
-        label ===
-        'جيد'
-      ) {
-
-        return 4;
-
-      }
-
-
-      return 0;
-
-    }
-
-
-    /* =====================================================
-       STUDENT PERFORMANCE
-    ====================================================== */
-
-    function calculateStudentPerformance(
-      profileData
-    ) {
-
-      const profile =
-        profileData || {};
-
-
-      const attendance =
-        Array.isArray(
-          profile.attendance
-        )
-          ? profile.attendance
-          : [];
-
-
-      const recitations =
-        Array.isArray(
-          profile.recitations
-        )
-          ? profile.recitations
-          : [];
-
-
-      const tests =
-        Array.isArray(
-          profile.tests
-        )
-          ? profile.tests
-          : [];
-
-
-      /* ===== الحضور ===== */
-
-      const attendancePoints =
-        attendance.reduce(
-          (
-            sum,
-            item
-          ) => {
-
-            return (
-              sum +
-              attendancePoint(
-                item?.status ??
-                item?.state ??
-                item?.attendance
-              )
-            );
-
-          },
-          0
-        );
-
-
-      const attendanceScore =
-        attendance.length
-
-          ? Math.min(
-              100,
-              (
-                attendancePoints /
-                (
-                  attendance.length *
-                  2
-                )
-              ) * 100
-            )
-
-          : 0;
-
-
-      /* ===== الحفظ ===== */
-
-      const hifz =
-        recitations.filter(
-          item => {
-
-            const type =
-              normalizeValue(
-                item?.type
-              );
-
-
-            return (
-              type !== 'review' &&
-              type !== 'مراجعة'
-            );
-
-          }
-        );
-
-
-      /* ===== المراجعة ===== */
-
-      const review =
-        recitations.filter(
-          item => {
-
-            const type =
-              normalizeValue(
-                item?.type
-              );
-
-
-            return (
-              type === 'review' ||
-              type === 'مراجعة'
-            );
-
-          }
-        );
-
-
-      const hifzPoints =
-        hifz.reduce(
-          (
-            sum,
-            item
-          ) => {
-
-            return (
-              sum +
-              recitationPoint(
-                item
-              )
-            );
-
-          },
-          0
-        );
-
-
-      const reviewPoints =
-        review.reduce(
-          (
-            sum,
-            item
-          ) => {
-
-            return (
-              sum +
-              recitationPoint(
-                item
-              )
-            );
-
-          },
-          0
-        );
-
-
-      const hifzScore =
-        hifz.length
-
-          ? Math.min(
-              100,
-              (
-                hifzPoints /
-                (
-                  hifz.length *
-                  6
-                )
-              ) * 100
-            )
-
-          : 0;
-
-
-      const reviewScore =
-        review.length
-
-          ? Math.min(
-              100,
-              (
-                reviewPoints /
-                (
-                  review.length *
-                  3
-                )
-              ) * 100
-            )
-
-          : 0;
-
-
-      /* ===== الاختبارات ===== */
-
-      const testPoints =
-        tests.reduce(
-          (
-            sum,
-            item
-          ) => {
-
-            return (
-              sum +
-              testPoint(
-                item
-              )
-            );
-
-          },
-          0
-        );
-
-
-      const testsScore =
-        tests.length
-
-          ? Math.min(
-              100,
-              (
-                testPoints /
-                (
-                  tests.length *
-                  12
-                )
-              ) * 100
-            )
-
-          : 0;
-
-
-      /* ===== التقييم من 100 ===== */
-
-      const score =
-        (
-          attendanceScore *
-          .20
-        ) +
-        (
-          hifzScore *
-          .35
-        ) +
-        (
-          reviewScore *
-          .25
-        ) +
-        (
-          testsScore *
-          .20
-        );
-
-
-      /* ===== النقاط الكلية ===== */
-
-      const recitationPointsTotal =
-        recitations.reduce(
-          (
-            sum,
-            item
-          ) => {
-
-            return (
-              sum +
-              recitationPoint(
-                item
-              )
-            );
-
-          },
-          0
-        );
-
-
-      const totalPoints =
-        attendancePoints +
-        recitationPointsTotal +
-        testPoints;
-
-
-      return {
-
-        score:
-          Math.round(
-            Math.max(
-              0,
-              Math.min(
-                100,
-                score
-              )
-            )
-          ),
-
-        totalPoints:
-          Math.round(
-            totalPoints *
-            10
-          ) / 10
-
-      };
-
-    }
-
-
-    /* =====================================================
-       LOAD PROFILES
-    ====================================================== */
-
-    async function loadProfiles() {
-
-      try {
-
-        const {
-          data,
-          error
-        } =
-          await supabaseClient
-            .from(
-              'student_profiles'
-            )
-            .select(
-              'student_id, data'
-            );
-
-
-        if (
-          error
-        ) {
-
-          console.warn(
-            'تعذر تحميل ملفات الطلاب:',
-            error
-          );
-
-          profileMap = {};
-
-          return;
-
-        }
-
-
-        profileMap = {};
-
-
-        (
-          data || []
-        ).forEach(
-          row => {
-
-            profileMap[
-              String(
-                row.student_id
-              )
-            ] =
-              row.data || {};
-
-          }
-        );
-
-      }
-
-      catch (
-        error
-      ) {
-
-        console.error(
-          'PROFILE LOAD ERROR:',
-          error
-        );
-
-        profileMap = {};
-
-      }
-
-    }
-
-
-    function getStudentPerformance(
-      student
-    ) {
-
-      return calculateStudentPerformance(
-        profileMap[
-          String(
-            student.id
-          )
-        ] || {}
-      );
-
-    }
-
-
-    function formatPoints(
-      points
-    ) {
-
-      const value =
-        Number(
-          points || 0
-        );
-
-
-      return Number.isInteger(
-        value
-      )
-        ? `${value} نقطة`
-        : `${value.toFixed(1)} نقطة`;
-
-    }
-
-
-    /* =====================================================
-       STATUS INFO
-    ====================================================== */
-
-    function getStatusInfo(
-      status
-    ) {
-
-      const normalized =
-        normalizeValue(
-          status
-        );
-
-
-      const map = {
-
-        active: {
-          text:
-            'مستمر',
-
-          className:
-            'active'
-        },
-
-        inactive: {
-          text:
-            'متوقف',
-
-          className:
-            'inactive'
-        },
-
-        rejected: {
-          text:
-            'غير مقبول',
-
-          className:
-            'rejected'
-        },
-
-        expelled: {
-          text:
-            'مفصول',
-
-          className:
-            'expelled'
-        },
-
-        pending: {
-          text:
-            'قيد المراجعة',
-
-          className:
-            'inactive'
-        }
-
-      };
-
-
-      return (
-        map[
-          normalized
-        ] || {
-
-          text:
-            'غير محدد',
-
-          className:
-            'inactive'
-        }
-      );
 
     }
 
@@ -3952,110 +3327,48 @@
           error
         } =
           await supabaseClient
-            .from(
-              'students'
-            )
+            .from('students')
             .select('*')
             .order(
               'created_at',
               {
-                ascending:
-                  false
+                ascending: false
               }
             );
 
-
-        if (
-          error
-        ) {
+        if (error) {
 
           console.error(
             'LOAD STUDENTS ERROR:',
             error
           );
 
-
           students =
             [];
 
+          updateStats();
 
-          emptyMessage.style.display =
-            'block';
+          showEmpty(
+            'تعذر تحميل البيانات',
+            error.message ||
+            'تأكد من إعداد قاعدة البيانات والصلاحيات.'
+          );
 
-
-          emptyMessage.querySelector(
-            'strong'
-          ).textContent =
-            'تعذر تحميل البيانات';
-
-
-          emptyMessage.querySelector(
-            'p'
-          ).textContent =
-            'حدث خطأ أثناء جلب الطلاب من قاعدة البيانات.';
-
-
-          return;
+          return false;
 
         }
 
-
-        /*
-          نتأكد أن البيانات التي رجعت
-          من Supabase هي مصفوفة فعلًا.
-        */
-
         students =
-          Array.isArray(
-            data
-          )
-            ? data
-            : [];
-
-
-        /*
-          تحميل ملفات الطلاب بعد نجاح
-          تحميل جدول students.
-        */
+          data ||
+          [];
 
         await loadProfiles();
-
-
-        /*
-          نرسم القائمة بعد اكتمال جميع البيانات.
-        */
 
         renderStudents();
 
         updateStats();
 
-
-        /*
-          فحص داخلي لبراء.
-          لا يؤثر على الموقع.
-        */
-
-        const baraa =
-          students.find(
-            student =>
-              normalizeValue(
-                student.name
-              ).includes(
-                'براء'
-              )
-          );
-
-
-        console.log(
-          'عدد الطلاب المحمّلين:',
-          students.length
-        );
-
-
-        console.log(
-          'براء:',
-          baraa || 'لم يتم تحميل براء من Supabase'
-        );
+        return true;
 
       }
 
@@ -4064,9 +3377,17 @@
       ) {
 
         console.error(
-          'UNEXPECTED LOAD ERROR:',
+          'LOAD STUDENTS EXCEPTION:',
           error
         );
+
+        showEmpty(
+          'تعذر تحميل البيانات',
+          error.message ||
+          'حدث خطأ غير متوقع أثناء تحميل الطلاب.'
+        );
+
+        return false;
 
       }
 
@@ -4074,10 +3395,10 @@
 
 
     /* =====================================================
-       LOAD PENDING REQUESTS
+       LOAD PROFILES
     ====================================================== */
 
-    async function loadPendingRequests() {
+    async function loadProfiles() {
 
       try {
 
@@ -4086,173 +3407,42 @@
           error
         } =
           await supabaseClient
-            .from(
-              'students'
-            )
-            .select('*')
-            .eq(
-              'status',
-              'pending'
-            )
-            .order(
-              'created_at',
-              {
-                ascending:
-                  false
-              }
+            .from('student_profiles')
+            .select(
+              'student_id,data'
             );
 
+        if (error) {
 
-        if (
-          error
-        ) {
-
-          console.error(
-            'REQUESTS ERROR:',
+          console.warn(
+            'PROFILE LOAD WARNING:',
             error
           );
 
-          return;
-
-        }
-
-
-        const requests =
-          Array.isArray(
-            data
-          )
-            ? data
-            : [];
-
-
-        pendingCount.textContent =
-          `${requests.length} طلب`;
-
-
-        if (
-          requests.length ===
-          0
-        ) {
-
-          requestsList.innerHTML = `
-
-            <div class="requests-empty">
-
-              <i class="fa-solid fa-inbox"></i>
-
-              <strong>
-                لا توجد طلبات جديدة
-              </strong>
-
-              <span>
-                ستظهر هنا طلبات الطلاب الجدد بعد التسجيل.
-              </span>
-
-            </div>
-
-          `;
+          profileMap =
+            {};
 
           return;
 
         }
 
+        profileMap =
+          {};
 
-        requestsList.innerHTML =
-          requests
-            .map(
-              student => {
+        (
+          data ||
+          []
+        ).forEach(
+          row => {
 
-                return `
+            profileMap[
+              String(row.student_id)
+            ] =
+              row.data ||
+              {};
 
-                  <div class="request-card">
-
-                    <div class="request-content">
-
-                      <div>
-
-                        <div class="request-name">
-
-                          ${escapeHtml(
-                            student.name || ''
-                          )}
-
-                        </div>
-
-                        <div class="request-details">
-
-                          العمر:
-                          ${
-                            student.age ||
-                            'غير محدد'
-                          }
-
-                          <br>
-
-                          الشعبة:
-                          ${escapeHtml(
-                            student.section ||
-                            '-'
-                          )}
-
-                          <br>
-
-                          هاتف ولي الأمر:
-                          ${escapeHtml(
-                            student.guardian_phone ||
-                            '-'
-                          )}
-
-                          ${
-                            student.notes
-                              ? `
-                                <br>
-                                الملاحظات:
-                                ${escapeHtml(
-                                  student.notes
-                                )}
-                              `
-                              : ''
-                          }
-
-                        </div>
-
-                      </div>
-
-                      <div class="request-actions">
-
-                        <button
-                          type="button"
-                          class="approve-btn"
-                          onclick="approveStudent('${student.id}')">
-
-                          <i class="fa-solid fa-check"></i>
-
-                          قبول
-
-                        </button>
-
-                        <button
-                          type="button"
-                          class="reject-btn"
-                          onclick="rejectStudent('${student.id}')">
-
-                          <i class="fa-solid fa-xmark"></i>
-
-                          رفض
-
-                        </button>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                `;
-
-              }
-            )
-            .join('');
+          }
+        );
 
       }
 
@@ -4260,10 +3450,13 @@
         error
       ) {
 
-        console.error(
-          'UNEXPECTED REQUEST ERROR:',
+        console.warn(
+          'PROFILE LOAD EXCEPTION:',
           error
         );
+
+        profileMap =
+          {};
 
       }
 
@@ -4271,193 +3464,470 @@
 
 
     /* =====================================================
-       APPROVE REQUEST
+       PERFORMANCE
     ====================================================== */
 
-    window.approveStudent =
-      async function(
-        id
+    function attendancePoint(
+      status
+    ) {
+
+      const value =
+        String(
+          status ||
+          ''
+        ).trim();
+
+      if (
+        value === 'حاضر' ||
+        value.toLowerCase() === 'present'
       ) {
+        return 2;
+      }
 
-        const confirmed =
-          confirm(
-            'هل تريد قبول هذا الطالب وإضافته إلى قائمة الطلاب؟'
-          );
+      if (
+        value === 'متأخر' ||
+        value.toLowerCase() === 'late'
+      ) {
+        return 1;
+      }
 
+      if (
+        value === 'معتذر' ||
+        value.toLowerCase() === 'excused'
+      ) {
+        return .5;
+      }
 
-        if (
-          !confirmed
-        ) {
+      return 0;
 
-          return;
-
-        }
-
-
-        const {
-          error
-        } =
-          await supabaseClient
-            .from(
-              'students'
-            )
-            .update({
-              status:
-                'active'
-            })
-            .eq(
-              'id',
-              id
-            )
-            .eq(
-              'status',
-              'pending'
-            );
+    }
 
 
-        if (
-          error
-        ) {
+    function recitationPoint(
+      item
+    ) {
 
-          console.error(
-            error
-          );
-
-
-          showToast(
-            'حدث خطأ أثناء قبول الطلب.',
-            'error'
-          );
-
-
-          return;
-
-        }
-
-
-        showToast(
-          'تم قبول الطالب وإضافته إلى النظام.'
+      const score =
+        numberValue(
+          item?.score ??
+          item?.mark ??
+          0
         );
 
+      const type =
+        String(
+          item?.type ||
+          ''
+        ).trim();
 
-        await loadStudents();
+      const review =
+        type === 'review' ||
+        type === 'مراجعة';
 
-        await loadPendingRequests();
+      if (
+        score >= 97
+      ) {
+        return review
+          ? 3
+          : 6;
+      }
+
+      if (
+        score >= 95
+      ) {
+        return review
+          ? 2.5
+          : 5;
+      }
+
+      if (
+        score >= 92
+      ) {
+        return review
+          ? 2
+          : 4;
+      }
+
+      if (
+        score >= 90
+      ) {
+        return review
+          ? 1
+          : 2;
+      }
+
+      return 0;
+
+    }
+
+
+    function testPoint(
+      item
+    ) {
+
+      const result =
+        String(
+          item?.result ||
+          ''
+        ).trim();
+
+      if (
+        result.includes(
+          'ممتاز'
+        )
+      ) {
+        return 12;
+      }
+
+      if (
+        result.includes(
+          'جيد جداً'
+        ) ||
+        result.includes(
+          'جيد جدًا'
+        )
+      ) {
+        return 8;
+      }
+
+      if (
+        result ===
+        'جيد'
+      ) {
+        return 4;
+      }
+
+      return 0;
+
+    }
+
+
+    function calculatePerformance(
+      profile
+    ) {
+
+      const p =
+        profile ||
+        {};
+
+      const attendance =
+        Array.isArray(
+          p.attendance
+        )
+          ? p.attendance
+          : [];
+
+      const recitations =
+        Array.isArray(
+          p.recitations
+        )
+          ? p.recitations
+          : [];
+
+      const tests =
+        Array.isArray(
+          p.tests
+        )
+          ? p.tests
+          : [];
+
+      let attendancePoints =
+        attendance.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            attendancePoint(
+              item?.status
+            ),
+          0
+        );
+
+      const attendanceScore =
+        attendance.length
+          ? Math.min(
+              100,
+              (
+                attendancePoints /
+                (
+                  attendance.length *
+                  2
+                )
+              ) *
+              100
+            )
+          : 0;
+
+      const hifz =
+        recitations.filter(
+          item =>
+            String(
+              item?.type ||
+              ''
+            ).trim() !==
+            'review' &&
+            String(
+              item?.type ||
+              ''
+            ).trim() !==
+            'مراجعة'
+        );
+
+      const review =
+        recitations.filter(
+          item =>
+            String(
+              item?.type ||
+              ''
+            ).trim() ===
+            'review' ||
+            String(
+              item?.type ||
+              ''
+            ).trim() ===
+            'مراجعة'
+        );
+
+      const hifzPoints =
+        hifz.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            recitationPoint(
+              item
+            ),
+          0
+        );
+
+      const reviewPoints =
+        review.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            recitationPoint(
+              item
+            ),
+          0
+        );
+
+      const hifzScore =
+        hifz.length
+          ? Math.min(
+              100,
+              (
+                hifzPoints /
+                (
+                  hifz.length *
+                  6
+                )
+              ) *
+              100
+            )
+          : 0;
+
+      const reviewScore =
+        review.length
+          ? Math.min(
+              100,
+              (
+                reviewPoints /
+                (
+                  review.length *
+                  3
+                )
+              ) *
+              100
+            )
+          : 0;
+
+      const testsPoints =
+        tests.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            testPoint(
+              item
+            ),
+          0
+        );
+
+      const testsScore =
+        tests.length
+          ? Math.min(
+              100,
+              (
+                testsPoints /
+                (
+                  tests.length *
+                  12
+                )
+              ) *
+              100
+            )
+          : 0;
+
+      const score =
+        (
+          attendanceScore * .20
+        ) +
+        (
+          hifzScore * .35
+        ) +
+        (
+          reviewScore * .25
+        ) +
+        (
+          testsScore * .20
+        );
+
+      const recitationPoints =
+        recitations.reduce(
+          (
+            sum,
+            item
+          ) =>
+            sum +
+            recitationPoint(
+              item
+            ),
+          0
+        );
+
+      const totalPoints =
+        attendancePoints +
+        recitationPoints +
+        testsPoints;
+
+      return {
+
+        score:
+          Math.round(
+            Math.max(
+              0,
+              Math.min(
+                100,
+                score
+              )
+            )
+          ),
+
+        totalPoints:
+          Math.round(
+            totalPoints * 10
+          ) / 10
 
       };
 
-
-    /* =====================================================
-       REJECT REQUEST
-    ====================================================== */
-
-    window.rejectStudent =
-      async function(
-        id
-      ) {
-
-        const confirmed =
-          confirm(
-            'هل أنت متأكد من رفض طلب الانضمام؟'
-          );
+    }
 
 
-        if (
-          !confirmed
-        ) {
+    function getStudentPerformance(
+      student
+    ) {
 
-          return;
+      return calculatePerformance(
+        profileMap[
+          String(
+            student.id
+          )
+        ] ||
+        {}
+      );
 
-        }
-
-
-        const {
-          error
-        } =
-          await supabaseClient
-            .from(
-              'students'
-            )
-            .update({
-              status:
-                'rejected'
-            })
-            .eq(
-              'id',
-              id
-            )
-            .eq(
-              'status',
-              'pending'
-            );
+    }
 
 
-        if (
-          error
-        ) {
+    function formatPoints(
+      value
+    ) {
 
-          console.error(
-            error
-          );
-
-
-          showToast(
-            'حدث خطأ أثناء رفض الطلب.',
-            'error'
-          );
-
-
-          return;
-
-        }
-
-
-        showToast(
-          'تم رفض طلب الانضمام.'
+      const n =
+        numberValue(
+          value
         );
 
+      return Number.isInteger(n)
+        ? `${n} نقطة`
+        : `${n.toFixed(1)} نقطة`;
 
-        await loadStudents();
-
-        await loadPendingRequests();
-
-
-        statusFilter.value =
-          'rejected';
+    }
 
 
-        renderStudents();
+    function getStatusInfo(
+      status
+    ) {
+
+      const map = {
+
+        active: {
+          text:
+            'مستمر',
+          className:
+            'active'
+        },
+
+        inactive: {
+          text:
+            'متوقف',
+          className:
+            'inactive'
+        },
+
+        rejected: {
+          text:
+            'غير مقبول',
+          className:
+            'rejected'
+        },
+
+        expelled: {
+          text:
+            'مفصول',
+          className:
+            'expelled'
+        }
 
       };
 
+      return (
+        map[status] ||
+        {
+          text:
+            'غير محدد',
+          className:
+            'inactive'
+        }
+      );
+
+    }
+
 
     /* =====================================================
-       FILTER + SORT
+       RENDER STUDENTS
     ====================================================== */
 
-    function getFilteredStudents() {
+    function renderStudents() {
 
       const search =
-        normalizeValue(
-          searchInput.value
-        );
-
+        searchInput.value
+          .trim()
+          .toLowerCase();
 
       const selectedSection =
-        normalizeValue(
-          sectionFilter.value
-        );
-
+        sectionFilter.value;
 
       const selectedStatus =
-        normalizeValue(
-          statusFilter.value
-        );
-
+        statusFilter.value;
 
       const selectedSort =
         sortFilter.value;
-
 
       let filtered =
         students
@@ -4468,7 +3938,6 @@
                 getStudentPerformance(
                   student
                 );
-
 
               return {
 
@@ -4487,55 +3956,23 @@
           .filter(
             student => {
 
-              /*
-                توحيد قيم البيانات قبل المقارنة.
-              */
-
-              const studentName =
-                normalizeValue(
-                  student.name
-                );
-
-
-              const studentSection =
-                normalizeValue(
-                  student.section
-                );
-
-
-              const studentStatus =
-                normalizeValue(
-                  student.status
-                );
-
-
-              /* ===== SEARCH ===== */
-
               const matchesSearch =
-                !search ||
-                studentName.includes(
+                String(
+                  student.name ||
+                  ''
+                )
+                .toLowerCase()
+                .includes(
                   search
                 );
 
-
-              /* ===== SECTION ===== */
-
               const matchesSection =
                 !selectedSection ||
-                studentSection ===
-                  selectedSection;
-
-
-              /* ===== STATUS ===== */
+                student.section ===
+                selectedSection;
 
               let matchesStatus =
                 true;
-
-
-              /*
-                المقبولون:
-                active + inactive
-              */
 
               if (
                 selectedStatus ===
@@ -4543,41 +3980,23 @@
               ) {
 
                 matchesStatus =
-                  studentStatus ===
+                  student.status ===
                     'active' ||
-                  studentStatus ===
+                  student.status ===
                     'inactive';
 
               }
 
-
-              /*
-                جميع الطلاب
-              */
-
               else if (
-                selectedStatus ===
+                selectedStatus !==
                 'all'
               ) {
 
                 matchesStatus =
-                  true;
-
-              }
-
-
-              /*
-                حالة محددة
-              */
-
-              else {
-
-                matchesStatus =
-                  studentStatus ===
+                  student.status ===
                   selectedStatus;
 
               }
-
 
               return (
                 matchesSearch &&
@@ -4589,61 +4008,50 @@
           );
 
 
-      /* =================================================
-         SORT
-      ================================================== */
+      if (
+        selectedSort ===
+        'points'
+      ) {
 
-      filtered.sort(
-        (
-          a,
-          b
-        ) => {
-
-          if (
-            selectedSort ===
-            'points'
-          ) {
-
-            const pointsDiff =
-              (
-                Number(
-                  b._points
-                ) || 0
-              ) -
-              (
-                Number(
-                  a._points
-                ) || 0
-              );
-
-
-            if (
-              pointsDiff !==
+        filtered.sort(
+          (
+            a,
+            b
+          ) =>
+            (
+              b._points ||
               0
-            ) {
+            ) -
+            (
+              a._points ||
+              0
+            )
+        );
 
-              return pointsDiff;
+      }
 
-            }
+      else if (
+        selectedSort ===
+        'section'
+      ) {
 
-          }
-
-
-          if (
-            selectedSort ===
-            'section'
-          ) {
+        filtered.sort(
+          (
+            a,
+            b
+          ) => {
 
             const sectionCompare =
               String(
-                a.section || ''
+                a.section ||
+                ''
               ).localeCompare(
                 String(
-                  b.section || ''
+                  b.section ||
+                  ''
                 ),
                 'ar'
               );
-
 
             if (
               sectionCompare !==
@@ -4654,35 +4062,42 @@
 
             }
 
+            return String(
+              a.name ||
+              ''
+            ).localeCompare(
+              String(
+                b.name ||
+                ''
+              ),
+              'ar'
+            );
+
           }
+        );
 
+      }
 
-          return String(
-            a.name || ''
-          ).localeCompare(
+      else {
+
+        filtered.sort(
+          (
+            a,
+            b
+          ) =>
             String(
-              b.name || ''
-            ),
-            'ar'
-          );
+              a.name ||
+              ''
+            ).localeCompare(
+              String(
+                b.name ||
+                ''
+              ),
+              'ar'
+            )
+        );
 
-        }
-      );
-
-
-      return filtered;
-
-    }
-
-
-    /* =====================================================
-       RENDER STUDENTS
-    ====================================================== */
-
-    function renderStudents() {
-
-      const filtered =
-        getFilteredStudents();
+      }
 
 
       tableBody.innerHTML =
@@ -4694,69 +4109,16 @@
         0
       ) {
 
-        emptyMessage.style.display =
-          'block';
-
-
-        const title =
-          emptyMessage.querySelector(
-            'strong'
-          );
-
-
-        const selectedStatus =
-          normalizeValue(
-            statusFilter.value
-          );
-
-
-        if (
+        showEmpty(
           selectedStatus ===
-          'rejected'
-        ) {
-
-          title.textContent =
-            'لا يوجد طلاب غير مقبولين';
-
-        }
-
-        else if (
-          selectedStatus ===
-          'expelled'
-        ) {
-
-          title.textContent =
-            'لا يوجد طلاب مفصولون';
-
-        }
-
-        else if (
-          selectedStatus ===
-          'active'
-        ) {
-
-          title.textContent =
-            'لا يوجد طلاب مستمرون';
-
-        }
-
-        else if (
-          selectedStatus ===
-          'inactive'
-        ) {
-
-          title.textContent =
-            'لا يوجد طلاب متوقفون';
-
-        }
-
-        else {
-
-          title.textContent =
-            'لا يوجد طلاب';
-
-        }
-
+            'rejected'
+            ? 'لا يوجد طلاب غير مقبولين'
+            : selectedStatus ===
+              'expelled'
+              ? 'لا يوجد طلاب مفصولون'
+              : 'لا يوجد طلاب',
+          'لم يتم العثور على طلاب مطابقين للفلاتر الحالية.'
+        );
 
         return;
 
@@ -4775,12 +4137,10 @@
               'tr'
             );
 
-
           const statusInfo =
             getStatusInfo(
               student.status
             );
-
 
           const firstLetter =
             String(
@@ -4788,27 +4148,13 @@
               '?'
             )
               .trim()
-              .charAt(0);
-
+              .charAt(0) ||
+            '?';
 
           const pointsText =
             formatPoints(
               student._points
             );
-
-
-          const normalizedStatus =
-            normalizeValue(
-              student.status
-            );
-
-
-          const permanentDelete =
-            normalizedStatus ===
-              'rejected' ||
-            normalizedStatus ===
-              'expelled';
-
 
           row.innerHTML = `
 
@@ -4817,11 +4163,9 @@
               <div class="student-name">
 
                 <div class="student-avatar">
-
                   ${escapeHtml(
                     firstLetter
                   )}
-
                 </div>
 
                 <div>
@@ -4831,32 +4175,19 @@
                     href="student-profile.html?id=${encodeURIComponent(
                       student.id
                     )}"
-                    title="فتح ملف الطالب">
-
+                    title="فتح ملف الطالب"
+                  >
                     ${escapeHtml(
-                      student.name || ''
+                      student.name ||
+                      ''
                     )}
-
                   </a>
 
-                  <div class="student-subinfo">
+                  <div class="student-sub">
 
                     التقييم:
-
-                    <strong>
-                      ${student._score}
-                      / 100
-                    </strong>
-
-                    ·
-
-                    النقاط:
-
-                    <strong>
-                      ${escapeHtml(
-                        pointsText
-                      )}
-                    </strong>
+                    ${student._score}
+                    / 100
 
                   </div>
 
@@ -4885,27 +4216,17 @@
 
               ${
                 student.memorization
-
                   ? `
-
                     <span class="memorization">
-
                       ${escapeHtml(
                         student.memorization
                       )}
-
                     </span>
-
                   `
-
                   : `
-
                     <span class="no-data">
-
                       لم يحدد
-
                     </span>
-
                   `
               }
 
@@ -4914,7 +4235,12 @@
 
             <td>
 
-              <span class="status ${statusInfo.className}">
+              <span
+                class="
+                  status
+                  ${statusInfo.className}
+                "
+              >
 
                 ${statusInfo.text}
 
@@ -4954,44 +4280,81 @@
 
                 <button
                   class="action-btn edit-btn"
-                  title="تعديل"
                   type="button"
-                  onclick="editStudent('${student.id}')">
+                  title="تعديل"
+                  onclick="
+                    editStudent(
+                      '${escapeHtml(
+                        String(
+                          student.id
+                        )
+                      )}'
+                    )
+                  "
+                >
 
                   <i class="fa-solid fa-pen"></i>
 
                 </button>
 
+
                 ${
-                  permanentDelete
+                  student.status ===
+                    'rejected' ||
+                  student.status ===
+                    'expelled'
 
-                    ? `
+                  ? `
 
-                      <button
-                        class="action-btn delete-btn"
-                        title="حذف نهائي"
-                        type="button"
-                        onclick="deleteStudent('${student.id}')">
+                    <button
+                      class="
+                        action-btn
+                        delete-btn
+                      "
+                      type="button"
+                      title="حذف نهائي"
+                      onclick="
+                        deleteStudent(
+                          '${escapeHtml(
+                            String(
+                              student.id
+                            )
+                          )}'
+                        )
+                      "
+                    >
 
-                        <i class="fa-solid fa-trash"></i>
+                      <i class="fa-solid fa-trash"></i>
 
-                      </button>
+                    </button>
 
-                    `
+                  `
 
-                    : `
+                  : `
 
-                      <button
-                        class="action-btn expel-btn"
-                        title="فصل الطالب"
-                        type="button"
-                        onclick="deleteStudent('${student.id}')">
+                    <button
+                      class="
+                        action-btn
+                        expel-btn
+                      "
+                      type="button"
+                      title="فصل الطالب"
+                      onclick="
+                        expelStudent(
+                          '${escapeHtml(
+                            String(
+                              student.id
+                            )
+                          )}'
+                        )
+                      "
+                    >
 
-                        <i class="fa-solid fa-user-slash"></i>
+                      <i class="fa-solid fa-user-slash"></i>
 
-                      </button>
+                    </button>
 
-                    `
+                  `
                 }
 
               </div>
@@ -5000,13 +4363,29 @@
 
           `;
 
-
           tableBody.appendChild(
             row
           );
 
         }
       );
+
+    }
+
+
+    function showEmpty(
+      title,
+      text
+    ) {
+
+      emptyMessage.style.display =
+        'block';
+
+      emptyTitle.textContent =
+        title;
+
+      emptyText.textContent =
+        text;
 
     }
 
@@ -5020,71 +4399,61 @@
       totalStudents.textContent =
         students.length;
 
-
       activeStudents.textContent =
         students.filter(
           student =>
-            normalizeValue(
-              student.status
-            ) ===
+            student.status ===
             'active'
         ).length;
-
 
       memorizedStudents.textContent =
         students.filter(
           student =>
-            student.memorization &&
-            normalizeValue(
-              student.memorization
-            ) !== ''
+            String(
+              student.memorization ||
+              ''
+            ).trim() !==
+            ''
         ).length;
 
     }
 
 
     /* =====================================================
-       ADD MODAL
+       OPEN ADD MODAL
     ====================================================== */
 
-    function openAddModalHandler() {
+    function openAddModal() {
 
       editingStudentId =
         null;
 
-
       modalTitle.textContent =
         'إضافة طالب جديد';
-
 
       saveButton.innerHTML =
         '<i class="fa-solid fa-check"></i> حفظ الطالب';
 
-
       studentForm.reset();
 
-
-      document.getElementById(
-        'studentStatus'
-      ).value =
-        'active';
-
-
-      message.textContent =
-        '';
-
+      clearMessage();
 
       modal.classList.add(
         'show'
       );
 
+      setTimeout(
+        () => {
+
+          document.getElementById(
+            'studentName'
+          )?.focus();
+
+        },
+        100
+      );
+
     }
-
-
-    openModal.addEventListener(
-      'click',
-      openAddModalHandler
-    );
 
 
     /* =====================================================
@@ -5092,9 +4461,7 @@
     ====================================================== */
 
     window.editStudent =
-      function(
-        id
-      ) {
+      function(id) {
 
         const student =
           students.find(
@@ -5102,38 +4469,28 @@
               String(
                 item.id
               ) ===
-              String(
-                id
-              )
+              String(id)
           );
 
-
-        if (
-          !student
-        ) {
+        if (!student) {
 
           showToast(
             'تعذر العثور على الطالب.',
             'error'
           );
 
-
           return;
 
         }
 
-
         editingStudentId =
-          id;
-
+          student.id;
 
         modalTitle.textContent =
           'تعديل بيانات الطالب';
 
-
         saveButton.innerHTML =
           '<i class="fa-solid fa-check"></i> حفظ التعديلات';
-
 
         document.getElementById(
           'studentName'
@@ -5141,13 +4498,11 @@
           student.name ||
           '';
 
-
         document.getElementById(
           'studentSection'
         ).value =
           student.section ||
           '';
-
 
         document.getElementById(
           'memorization'
@@ -5155,19 +4510,13 @@
           student.memorization ||
           '';
 
-
         document.getElementById(
           'studentStatus'
         ).value =
-          normalizeValue(
-            student.status
-          ) ||
+          student.status ||
           'active';
 
-
-        message.textContent =
-          '';
-
+        clearMessage();
 
         modal.classList.add(
           'show'
@@ -5178,53 +4527,69 @@
 
     /* =====================================================
        SAVE STUDENT
+       هذا هو الإصلاح الأساسي
     ====================================================== */
 
     studentForm.addEventListener(
       'submit',
-      async function(
-        event
-      ) {
+      async function(event) {
 
         event.preventDefault();
 
 
         const name =
-          document.getElementById(
-            'studentName'
-          ).value.trim();
-
+          document
+            .getElementById(
+              'studentName'
+            )
+            .value
+            .trim();
 
         const section =
-          document.getElementById(
-            'studentSection'
-          ).value;
-
+          document
+            .getElementById(
+              'studentSection'
+            )
+            .value
+            .trim();
 
         const memorization =
-          document.getElementById(
-            'memorization'
-          ).value.trim();
-
+          document
+            .getElementById(
+              'memorization'
+            )
+            .value
+            .trim();
 
         const status =
-          document.getElementById(
-            'studentStatus'
-          ).value;
+          document
+            .getElementById(
+              'studentStatus'
+            )
+            .value ||
+          'active';
 
 
         if (
-          !name ||
+          !name
+        ) {
+
+          showMessage(
+            'اسم الطالب مطلوب.'
+          );
+
+          return;
+
+        }
+
+
+        if (
           !section
         ) {
 
-          message.style.color =
-            'var(--danger)';
-
-
-          message.textContent =
-            'يرجى تعبئة البيانات المطلوبة.';
-
+          showMessage(
+            'يرجى اختيار الشعبة.'
+          );
 
           return;
 
@@ -5234,14 +4599,17 @@
         saveButton.disabled =
           true;
 
-
         saveButton.innerHTML =
           '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الحفظ...';
+
+        clearMessage();
 
 
         try {
 
-          /* ===== تعديل ===== */
+          /* =================================================
+             تعديل طالب موجود
+          ================================================= */
 
           if (
             editingStudentId
@@ -5252,14 +4620,14 @@
               error
             } =
               await supabaseClient
-                .from(
-                  'students'
-                )
+                .from('students')
                 .update({
+
                   name,
                   section,
                   memorization,
                   status
+
                 })
                 .eq(
                   'id',
@@ -5292,67 +4660,83 @@
               );
 
 
+            await loadProfiles();
+
+            renderStudents();
+
+            updateStats();
+
+            closeStudentModal();
+
             showToast(
-              'تم تعديل بيانات الطالب بنجاح.'
+              '✅ تم تعديل بيانات الطالب بنجاح.'
             );
+
+            return;
 
           }
 
 
-          /* ===== إضافة ===== */
+          /* =================================================
+             إضافة طالب جديد
+             
+             مهم:
+             لا نستخدم select().single()
+             بعد INSERT.
+          ================================================= */
 
-          else {
+          const {
+            error
+          } =
+            await supabaseClient
+              .from('students')
+              .insert({
 
-            const {
-              data,
+                name,
+                section,
+                memorization,
+                status
+
+              });
+
+
+          if (
+            error
+          ) {
+
+            console.error(
+              'ADD STUDENT ERROR:',
               error
-            } =
-              await supabaseClient
-                .from(
-                  'students'
-                )
-                .insert([
-                  {
-                    name,
-                    section,
-                    memorization,
-                    status
-                  }
-                ])
-                .select()
-                .single();
-
-
-            if (
-              error
-            ) {
-
-              throw error;
-
-            }
-
-
-            students.unshift(
-              data
             );
 
-
-            showToast(
-              'تمت إضافة الطالب بنجاح.'
-            );
+            throw error;
 
           }
 
 
-          await loadProfiles();
+          /*
+            نعيد تحميل القائمة من قاعدة البيانات
+            بعد نجاح الإضافة.
+          */
+
+          const loaded =
+            await loadStudents();
 
 
-          renderStudents();
+          if (!loaded) {
 
-          updateStats();
+            throw new Error(
+              'تم تنفيذ الإضافة، لكن تعذر إعادة تحميل قائمة الطلاب.'
+            );
+
+          }
 
 
           closeStudentModal();
+
+          showToast(
+            '✅ تمت إضافة الطالب بنجاح.'
+          );
 
         }
 
@@ -5365,25 +4749,27 @@
             error
           );
 
+          const details =
+            error?.message ||
+            error?.details ||
+            error?.hint ||
+            'خطأ غير معروف';
 
-          message.style.color =
-            'var(--danger)';
-
-
-          message.textContent =
-            'حدث خطأ أثناء حفظ بيانات الطالب.';
+          showMessage(
+            `❌ حدث خطأ أثناء حفظ بيانات الطالب: ${details}`
+          );
 
         }
-
 
         finally {
 
           saveButton.disabled =
             false;
 
-
           saveButton.innerHTML =
-            '<i class="fa-solid fa-check"></i> حفظ الطالب';
+            editingStudentId
+              ? '<i class="fa-solid fa-check"></i> حفظ التعديلات'
+              : '<i class="fa-solid fa-check"></i> حفظ الطالب';
 
         }
 
@@ -5395,10 +4781,8 @@
        DELETE / EXPEL
     ====================================================== */
 
-    window.deleteStudent =
-      async function(
-        id
-      ) {
+    window.expelStudent =
+      async function(id) {
 
         const student =
           students.find(
@@ -5406,62 +4790,127 @@
               String(
                 item.id
               ) ===
-              String(
-                id
-              )
+              String(id)
           );
 
-
-        if (
-          !student
-        ) {
-
+        if (!student)
           return;
 
-        }
 
-
-        const studentStatus =
-          normalizeValue(
-            student.status
+        const confirmed =
+          confirm(
+            `سيتم فصل الطالب "${student.name}" ونقله إلى قائمة المفصولين، ولن تُحذف بياناته. هل تريد المتابعة؟`
           );
 
-
-        const isPermanentDelete =
-          studentStatus ===
-            'rejected' ||
-          studentStatus ===
-            'expelled';
+        if (!confirmed)
+          return;
 
 
-        /* ===== حذف نهائي ===== */
+        try {
 
-        if (
-          isPermanentDelete
-        ) {
-
-          const confirmed =
-            confirm(
-              `سيتم حذف الطالب "${student.name}" نهائيًا من قاعدة البيانات. لا يمكن التراجع عن هذه العملية. هل تريد المتابعة؟`
-            );
+          const {
+            data,
+            error
+          } =
+            await supabaseClient
+              .from('students')
+              .update({
+                status:
+                  'expelled'
+              })
+              .eq(
+                'id',
+                id
+              )
+              .select()
+              .single();
 
 
           if (
-            !confirmed
+            error
           ) {
 
-            return;
+            throw error;
 
           }
 
+
+          students =
+            students.map(
+              item =>
+                String(
+                  item.id
+                ) ===
+                String(id)
+                  ? data
+                  : item
+            );
+
+
+          renderStudents();
+
+          updateStats();
+
+          showToast(
+            '✅ تم فصل الطالب ونقله إلى قائمة المفصولين.'
+          );
+
+        }
+
+        catch (
+          error
+        ) {
+
+          console.error(
+            'EXPEL ERROR:',
+            error
+          );
+
+          showToast(
+            `❌ تعذر فصل الطالب: ${
+              error?.message ||
+              'خطأ غير معروف'
+            }`,
+            'error'
+          );
+
+        }
+
+      };
+
+
+    window.deleteStudent =
+      async function(id) {
+
+        const student =
+          students.find(
+            item =>
+              String(
+                item.id
+              ) ===
+              String(id)
+          );
+
+        if (!student)
+          return;
+
+
+        const confirmed =
+          confirm(
+            `سيتم حذف الطالب "${student.name}" نهائيًا من قاعدة البيانات. لا يمكن التراجع عن العملية. هل تريد المتابعة؟`
+          );
+
+        if (!confirmed)
+          return;
+
+
+        try {
 
           const {
             error
           } =
             await supabaseClient
-              .from(
-                'students'
-              )
+              .from('students')
               .delete()
               .eq(
                 'id',
@@ -5473,18 +4922,7 @@
             error
           ) {
 
-            console.error(
-              error
-            );
-
-
-            showToast(
-              'حدث خطأ أثناء الحذف النهائي للطالب.',
-              'error'
-            );
-
-
-            return;
+            throw error;
 
           }
 
@@ -5495,16 +4933,12 @@
                 String(
                   item.id
                 ) !==
-                String(
-                  id
-                )
+                String(id)
             );
 
 
           delete profileMap[
-            String(
-              id
-            )
+            String(id)
           ];
 
 
@@ -5512,102 +4946,36 @@
 
           updateStats();
 
-
           showToast(
-            'تم حذف الطالب نهائيًا.'
+            '✅ تم حذف الطالب نهائيًا.'
           );
-
-
-          return;
 
         }
 
-
-        /* ===== فصل ===== */
-
-        const confirmed =
-          confirm(
-            `سيتم فصل الطالب "${student.name}" ونقله إلى قائمة المفصولين. لن تُحذف بياناته. هل تريد المتابعة؟`
-          );
-
-
-        if (
-          !confirmed
-        ) {
-
-          return;
-
-        }
-
-
-        const {
-          data,
-          error
-        } =
-          await supabaseClient
-            .from(
-              'students'
-            )
-            .update({
-              status:
-                'expelled'
-            })
-            .eq(
-              'id',
-              id
-            )
-            .select()
-            .single();
-
-
-        if (
+        catch (
           error
         ) {
 
           console.error(
+            'DELETE ERROR:',
             error
           );
 
-
           showToast(
-            'حدث خطأ أثناء فصل الطالب.',
+            `❌ تعذر حذف الطالب: ${
+              error?.message ||
+              'خطأ غير معروف'
+            }`,
             'error'
           );
 
-
-          return;
-
         }
-
-
-        students =
-          students.map(
-            item =>
-              String(
-                item.id
-              ) ===
-              String(
-                id
-              )
-                ? data
-                : item
-          );
-
-
-        renderStudents();
-
-        updateStats();
-
-
-        showToast(
-          'تم فصل الطالب ونقله إلى قائمة المفصولين.'
-        );
 
       };
 
 
     /* =====================================================
-       CLOSE MODAL
+       MODAL
     ====================================================== */
 
     function closeStudentModal() {
@@ -5616,21 +4984,15 @@
         'show'
       );
 
-
       studentForm.reset();
 
-
-      message.textContent =
-        '';
-
+      clearMessage();
 
       editingStudentId =
         null;
 
-
       saveButton.disabled =
         false;
-
 
       saveButton.innerHTML =
         '<i class="fa-solid fa-check"></i> حفظ الطالب';
@@ -5638,7 +5000,13 @@
     }
 
 
-    closeModal.addEventListener(
+    openModalButton.addEventListener(
+      'click',
+      openAddModal
+    );
+
+
+    closeModalButton.addEventListener(
       'click',
       closeStudentModal
     );
@@ -5652,9 +5020,7 @@
 
     modal.addEventListener(
       'click',
-      function(
-        event
-      ) {
+      function(event) {
 
         if (
           event.target ===
@@ -5670,7 +5036,7 @@
 
 
     /* =====================================================
-       FILTER EVENTS
+       FILTERS
     ====================================================== */
 
     searchInput.addEventListener(
@@ -5678,18 +5044,15 @@
       renderStudents
     );
 
-
     sectionFilter.addEventListener(
       'change',
       renderStudents
     );
 
-
     statusFilter.addEventListener(
       'change',
       renderStudents
     );
-
 
     sortFilter.addEventListener(
       'change',
@@ -5698,41 +5061,40 @@
 
 
     /* =====================================================
-       LOGOUT
+       NAVIGATION
     ====================================================== */
 
-    document
-      .getElementById(
-        'logoutButton'
-      )
-      .addEventListener(
-        'click',
-        logout
+    function scrollToStudents() {
+
+      document
+        .getElementById(
+          'studentsPanel'
+        )
+        ?.scrollIntoView({
+          behavior:
+            'smooth'
+        });
+
+      sidebar.classList.remove(
+        'open'
       );
-
-
-    function logout() {
-
-      localStorage.removeItem(
-        'teacherAccess'
-      );
-
-
-      window.location.href =
-        'teacher-login.html';
 
     }
 
 
-    /* =====================================================
-       MOBILE SIDEBAR
-    ====================================================== */
-
-    const sidebar =
-      document.getElementById(
-        'sidebar'
+    document
+      .getElementById(
+        'studentsNav'
+      )
+      .addEventListener(
+        'click',
+        scrollToStudents
       );
 
+
+    /* =====================================================
+       MOBILE MENU
+    ====================================================== */
 
     document
       .getElementById(
@@ -5742,7 +5104,7 @@
         'click',
         function() {
 
-          sidebar.classList.add(
+          sidebar.classList.toggle(
             'open'
           );
 
@@ -5766,95 +5128,24 @@
       );
 
 
-    document
-      .querySelector(
-        '.sidebar-brand'
-      )
-      .addEventListener(
-        'click',
-        function() {
-
-          sidebar.classList.remove(
-            'open'
-          );
-
-        }
-      );
-
+    /* =====================================================
+       LOGOUT
+    ====================================================== */
 
     document
       .getElementById(
-        'studentsNav'
+        'logoutButton'
       )
       .addEventListener(
         'click',
         function() {
 
-          document
-            .getElementById(
-              'studentsPanel'
-            )
-            .scrollIntoView({
-              behavior:
-                'smooth'
-            });
-
-
-          sidebar.classList.remove(
-            'open'
+          localStorage.removeItem(
+            'teacherAccess'
           );
 
-        }
-      );
-
-
-    document
-      .getElementById(
-        'requestsNav'
-      )
-      .addEventListener(
-        'click',
-        function() {
-
-          document
-            .getElementById(
-              'requestsPanel'
-            )
-            .scrollIntoView({
-              behavior:
-                'smooth'
-            });
-
-
-          sidebar.classList.remove(
-            'open'
-          );
-
-        }
-      );
-
-
-    document
-      .getElementById(
-        'memorizationNav'
-      )
-      .addEventListener(
-        'click',
-        function() {
-
-          document
-            .getElementById(
-              'studentsPanel'
-            )
-            .scrollIntoView({
-              behavior:
-                'smooth'
-            });
-
-
-          sidebar.classList.remove(
-            'open'
-          );
+          window.location.href =
+            'teacher-login.html';
 
         }
       );
@@ -5869,39 +5160,17 @@
       const loggedIn =
         checkUser();
 
-
       if (
         !loggedIn
-      ) {
-
+      )
         return;
 
-      }
-
-
-      /*
-        نضمن أن الفلاتر تبدأ بالقيم المطلوبة.
-      */
-
-      statusFilter.value =
-        'accepted';
-
-
-      sortFilter.value =
-        'alphabetical';
-
-
-      /*
-        تحميل الطلاب وطلبات الانضمام.
-      */
-
       await loadStudents();
-
-      await loadPendingRequests();
 
     })();
 
   </script>
 
 </body>
+
 </html>
