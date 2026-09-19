@@ -1,776 +1,999 @@
-```html
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0f5132" />
-  <meta
-    name="description"
-    content="الصفحة الشخصية للطالب - مركز حردان طارق القرآني"
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>صفحتي الشخصية | مركز حردان طارق القرآني</title>
+  <title>ملفي | مركز حردان طارق القرآني</title>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
-    :root {
-      --green-dark: #0f5132;
-      --green: #177245;
-      --green-light: #eaf5ee;
-      --gold: #c8a951;
-      --gold-light: #f6f0da;
-      --cream: #fbfaf6;
-      --white: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --border: #e8e8e8;
-      --danger: #b42318;
-      --shadow: 0 12px 35px rgba(15, 81, 50, 0.08);
-      --radius: 22px;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    :root {
+      --green: #07563c;
+      --green2: #0b7450;
+      --gold: #c29d45;
+      --cream: #f8f4e8;
+      --text: #17352b;
+      --muted: #777;
+      --white: #fff;
+    }
+
     body {
-      font-family: "Cairo", sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(200, 169, 81, 0.08), transparent 28%),
-        linear-gradient(180deg, #fdfcf9 0%, #f5f8f4 100%);
+      background: #f4f6f2;
       color: var(--text);
-      min-height: 100vh;
+      font-family: Arial, Tahoma, sans-serif;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    header {
+      background: linear-gradient(135deg, var(--green), #063626);
+      color: white;
+      padding: 22px 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.12);
     }
 
-    button {
-      font: inherit;
-      border: none;
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand h1 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .brand p {
+      font-size: 13px;
+      opacity: .8;
+    }
+
+    .logout {
+      border: 1px solid rgba(255,255,255,.3);
+      background: transparent;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 10px;
       cursor: pointer;
-    }
-
-    .page {
-      min-height: 100vh;
-      padding: 20px;
+      font-weight: bold;
     }
 
     .container {
-      width: min(1150px, 100%);
-      margin: 0 auto;
+      width: calc(100% - 30px);
+      max-width: 1100px;
+      margin: 25px auto 50px;
     }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    .topbar {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(232, 232, 232, 0.9);
-      box-shadow: var(--shadow);
-      border-radius: 24px;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 22px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      border-radius: 14px;
-    }
-
-    .brand-text h1 {
-      color: var(--green-dark);
-      font-size: 17px;
-      font-weight: 800;
-      line-height: 1.3;
-    }
-
-    .brand-text p {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .btn {
-      padding: 10px 16px;
-      border-radius: 13px;
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn-outline {
-      color: var(--green-dark);
-      background: var(--green-light);
-    }
-
-    .btn-danger {
-      color: var(--danger);
-      background: #fff1f0;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
 
     .welcome {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, var(--green-dark), #17683f 60%, #24784d);
-      color: white;
-      border-radius: 28px;
-      padding: 32px;
-      box-shadow: 0 18px 45px rgba(15, 81, 50, 0.18);
-      margin-bottom: 22px;
-    }
-
-    .welcome::before {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 50%;
-      left: -65px;
-      top: -80px;
-    }
-
-    .welcome::after {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 50%;
-      right: -60px;
-      bottom: -80px;
-    }
-
-    .welcome-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .welcome-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.14);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      margin-bottom: 15px;
+      background: white;
+      border-radius: 22px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+      border-right: 5px solid var(--gold);
     }
 
     .welcome h2 {
-      font-size: clamp(27px, 5vw, 40px);
-      line-height: 1.25;
-      margin-bottom: 9px;
-      font-weight: 800;
+      color: var(--green);
+      margin-bottom: 8px;
     }
 
     .welcome p {
-      color: rgba(255,255,255,0.86);
-      font-size: 15px;
-      line-height: 1.9;
-      max-width: 750px;
-    }
-
-    /* =========================
-       CARDS
-    ========================= */
-
-    .section-title {
-      margin: 30px 2px 14px;
-    }
-
-    .section-title h3 {
-      font-size: 21px;
-      color: var(--green-dark);
-      font-weight: 800;
-    }
-
-    .section-title p {
-      font-size: 13px;
       color: var(--muted);
-      margin-top: 3px;
+      line-height: 1.7;
     }
 
-    .info-grid {
+    .profile {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
+      grid-template-columns: 280px 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
     }
 
-    .info-card {
-      background: rgba(255,255,255,0.94);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      min-height: 145px;
+    .card {
+      background: white;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
     }
 
-    .info-icon {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      background: var(--green-light);
-      border-radius: 14px;
-      font-size: 20px;
-      margin-bottom: 13px;
+    .student-card {
+      text-align: center;
     }
 
-    .info-label {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 3px;
-    }
-
-    .info-value {
-      color: var(--green-dark);
-      font-size: 17px;
-      font-weight: 800;
-      word-break: break-word;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-top: 3px;
-      color: #157347;
-      background: #eaf8ef;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
+    .photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
       border-radius: 50%;
-      background: #18a558;
-    }
-
-    /* =========================
-       FEATURE BOXES
-    ========================= */
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .feature-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 23px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 70px;
-      height: 70px;
-      background: var(--gold-light);
-      border-radius: 0 0 0 70px;
-    }
-
-    .feature-icon {
-      position: relative;
-      z-index: 1;
-      width: 50px;
-      height: 50px;
-      display: grid;
-      place-items: center;
-      background: var(--gold-light);
-      border-radius: 15px;
-      font-size: 23px;
+      border: 4px solid var(--gold);
+      background: var(--cream);
       margin-bottom: 15px;
     }
 
-    .feature-card h4 {
-      color: var(--green-dark);
-      font-size: 17px;
-      margin-bottom: 7px;
-      font-weight: 800;
+    .student-card h2 {
+      color: var(--green);
+      margin-bottom: 8px;
+      font-size: 21px;
     }
 
-    .feature-card p {
+    .section {
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.9;
+      font-size: 14px;
+      margin-bottom: 15px;
     }
 
-    .coming-soon {
+    .code-badge {
       display: inline-block;
-      margin-top: 12px;
-      color: #8a6e1d;
-      background: var(--gold-light);
-      padding: 5px 9px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 700;
+      background: var(--cream);
+      color: var(--green);
+      border: 1px solid #e4d5aa;
+      border-radius: 10px;
+      padding: 8px 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
     }
 
-    /* =========================
-       MESSAGE
-    ========================= */
-
-    .message-card {
-      margin-top: 22px;
-      background: linear-gradient(135deg, #fffdf4, #fff9e8);
-      border: 1px solid #eee3bd;
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: var(--shadow);
-      text-align: center;
+    .details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 13px;
     }
 
-    .message-card .icon {
-      font-size: 28px;
-      margin-bottom: 7px;
-    }
-
-    .message-card h4 {
-      color: var(--green-dark);
-      font-size: 18px;
-      margin-bottom: 6px;
-      font-weight: 800;
-    }
-
-    .message-card p {
-      color: #6b644f;
-      line-height: 1.9;
-      font-size: 13px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    .footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 12px;
-      padding: 28px 8px 10px;
-    }
-
-    /* =========================
-       TOAST
-    ========================= */
-
-    .toast {
-      position: fixed;
-      left: 20px;
-      bottom: 20px;
-      background: #1f2937;
-      color: white;
-      padding: 12px 16px;
+    .detail {
+      background: #fafafa;
       border-radius: 13px;
+      padding: 15px;
+      border: 1px solid #eee;
+    }
+
+    .detail small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .detail strong {
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .section-title {
+      color: var(--green);
+      margin-bottom: 18px;
+      font-size: 21px;
+    }
+
+    .progress-box {
+      margin-bottom: 18px;
+    }
+
+    .progress-head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .progress {
+      height: 13px;
+      background: #e9ece8;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      border-radius: inherit;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+    }
+
+    th, td {
+      padding: 13px;
+      text-align: right;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: var(--cream);
+      color: var(--green);
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: #fff5d8;
+      color: #856404;
       font-size: 13px;
-      opacity: 0;
-      transform: translateY(15px);
-      pointer-events: none;
-      transition: 0.25s ease;
-      z-index: 999;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
+    .attendance {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
+    .attendance-item {
+      background: #f8fbf8;
+      border: 1px solid #dce9df;
+      padding: 15px;
+      border-radius: 14px;
+      text-align: center;
+    }
 
-    @media (max-width: 900px) {
-      .info-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .present {
+      color: #087443;
+      font-weight: bold;
+      margin-top: 7px;
+    }
 
-      .feature-grid {
+    .empty {
+      color: var(--muted);
+      padding: 20px 0;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .error {
+      max-width: 600px;
+      margin: 60px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      color: #a22;
+      box-shadow: 0 5px 25px rgba(0,0,0,.08);
+    }
+
+    .error button {
+      margin-top: 18px;
+      border: none;
+      background: var(--green);
+      color: white;
+      padding: 11px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 750px) {
+
+      .profile {
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (max-width: 650px) {
-      .page {
-        padding: 11px;
+      .details {
+        grid-template-columns: 1fr;
       }
 
-      .topbar {
-        border-radius: 19px;
-        padding: 12px;
+      .header-inner {
+        align-items: flex-start;
       }
 
-      .brand-text h1 {
-        font-size: 14px;
-      }
-
-      .brand-text p {
-        font-size: 10px;
-      }
-
-      .brand img {
-        width: 42px;
-        height: 42px;
-      }
-
-      .header-actions {
-        gap: 6px;
-      }
-
-      .btn {
-        padding: 8px 10px;
-        font-size: 11px;
-      }
-
-      .btn-outline {
-        display: none;
+      .brand h1 {
+        font-size: 18px;
       }
 
       .welcome {
-        border-radius: 22px;
-        padding: 24px 20px;
-      }
-
-      .welcome h2 {
-        font-size: 27px;
-      }
-
-      .welcome p {
-        font-size: 13px;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-
-      .info-card {
-        padding: 16px;
-        min-height: 135px;
-        border-radius: 18px;
-      }
-
-      .info-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 10px;
-      }
-
-      .info-value {
-        font-size: 14px;
-      }
-
-      .feature-card {
-        border-radius: 18px;
-        padding: 19px;
-      }
-
-      .section-title {
-        margin-top: 24px;
-      }
-    }
-
-    @media (max-width: 390px) {
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .welcome h2 {
-        font-size: 24px;
+        padding: 20px;
       }
     }
   </style>
+
 </head>
 
 <body>
-  <div class="page">
-    <div class="container">
 
-      <!-- HEADER -->
-      <header class="topbar">
-        <div class="brand">
-          <img src="logo.png" alt="شعار المركز" />
+<header>
+  <div class="header-inner">
 
-          <div class="brand-text">
-            <h1>مركز حردان طارق القرآني</h1>
-            <p>الصفحة الشخصية للطالب</p>
-          </div>
-        </div>
+```
+<div class="brand">
+  <h1>مركز حردان طارق القرآني</h1>
+  <p>بوابة الطالب</p>
+</div>
 
-        <div class="header-actions">
-          <a href="index.html" class="btn btn-outline">
-            الرئيسية
-          </a>
+<button class="logout" onclick="logout()">
+  تسجيل الخروج
+</button>
+```
 
-          <button type="button" class="btn btn-danger" id="logoutBtn">
-            تسجيل الخروج
-          </button>
-        </div>
-      </header>
+  </div>
+</header>
 
-      <!-- WELCOME -->
-      <section class="welcome">
-        <div class="welcome-content">
-          <div class="welcome-badge">
-            <span>📖</span>
-            <span>البوابة الطلابية</span>
-          </div>
+<main class="container" id="app">
 
-          <h2>
-            أهلاً وسهلاً بك،
-            <span id="studentName">الطالب</span> 🌿
-          </h2>
-
-          <p>
-            هذه صفحتك الشخصية في مركز حردان طارق القرآني،
-            ومن خلالها يمكنك الاطلاع على معلوماتك ومتابعتك التعليمية.
-          </p>
-        </div>
-      </section>
-
-      <!-- STUDENT INFO -->
-      <div class="section-title">
-        <h3>معلوماتي</h3>
-        <p>بياناتك المسجلة لدى المركز</p>
-      </div>
-
-      <section class="info-grid">
-
-        <article class="info-card">
-          <div class="info-icon">👤</div>
-          <div class="info-label">اسم الطالب</div>
-          <div class="info-value" id="infoName">—</div>
-        </article>
-
-        <article class="info-card">
-          <div class="info-icon">🏫</div>
-          <div class="info-label">الشعبة / الحلقة</div>
-          <div class="info-value" id="infoSection">—</div>
-        </article>
-
-        <article class="info-card">
-          <div class="info-icon">📖</div>
-          <div class="info-label">مقدار الحفظ</div>
-          <div class="info-value" id="infoMemorization">—</div>
-        </article>
-
-        <article class="info-card">
-          <div class="info-icon">✅</div>
-          <div class="info-label">الحالة</div>
-
-          <div id="infoStatus">
-            <span class="status">
-              <span class="status-dot"></span>
-              مستمر
-            </span>
-          </div>
-        </article>
-
-      </section>
-
-      <!-- FOLLOW-UP -->
-      <div class="section-title">
-        <h3>متابعتي في المركز</h3>
-        <p>الأقسام التي ستتوسع مع تطوير البوابة</p>
-      </div>
-
-      <section class="feature-grid">
-
-        <article class="feature-card">
-          <div class="feature-icon">📚</div>
-          <h4>متابعة الحفظ</h4>
-          <p>
-            سيتم عرض السور والأجزاء المحفوظة وآخر ما تم تسميعه
-            بطريقة مرتبة وسهلة.
-          </p>
-          <span class="coming-soon">قريبًا</span>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">📅</div>
-          <h4>الحضور والغياب</h4>
-          <p>
-            سيتمكن الطالب من متابعة سجل حضوره وغيابه
-            في حلقته بشكل واضح.
-          </p>
-          <span class="coming-soon">قريبًا</span>
-        </article>
-
-        <article class="feature-card">
-          <div class="feature-icon">📝</div>
-          <h4>ملاحظات المعلم</h4>
-          <p>
-            مكان مخصص لملاحظات المعلم وتوجيهاته وتشجيعه
-            للطالب خلال رحلته مع القرآن.
-          </p>
-          <span class="coming-soon">قريبًا</span>
-        </article>
-
-      </section>
-
-      <!-- ENCOURAGEMENT -->
-      <section class="message-card">
-        <div class="icon">🌙</div>
-        <h4>رحلتك مع القرآن مستمرة</h4>
-        <p>
-          كل آية تحفظها هي خطوة جديدة، وكل مراجعة هي تثبيت لطريقك.
-          نسأل الله أن يجعل القرآن نورًا في قلبك وأن يبارك في جهدك.
-        </p>
-      </section>
-
-      <footer class="footer">
-        © 2026 مركز حردان طارق القرآني — جميع الحقوق محفوظة
-      </footer>
-
-    </div>
+  <div class="loading">
+    جاري تحميل ملفك...
   </div>
 
-  <div class="toast" id="toast"></div>
+</main>
 
-  <script>
-    const sessionKey = "studentSession";
+<script>
 
-    function showToast(message) {
-      const toast = document.getElementById("toast");
+const SUPABASE_URL =
+  'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-      toast.textContent = message;
-      toast.classList.add("show");
+const SUPABASE_KEY =
+  'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2500);
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+function escapeHtml(value) {
+
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+}
+
+
+function logout() {
+
+  sessionStorage.removeItem('studentSession');
+
+  window.location.href =
+    'student-login.html';
+
+}
+
+
+function getSession() {
+
+  try {
+
+    return JSON.parse(
+      sessionStorage.getItem('studentSession')
+    );
+
+  } catch {
+
+    return null;
+
+  }
+
+}
+
+
+function progressBar(value) {
+
+  let number = Number(value);
+
+  if (isNaN(number)) number = 0;
+
+  number = Math.max(0, Math.min(100, number));
+
+  return `
+    <div class="progress">
+      <div
+        class="progress-bar"
+        style="width:${number}%"
+      ></div>
+    </div>
+  `;
+
+}
+
+
+function detail(label, value) {
+
+  return `
+    <div class="detail">
+      <small>${escapeHtml(label)}</small>
+      <strong>${escapeHtml(value || 'غير محدد')}</strong>
+    </div>
+  `;
+
+}
+
+
+async function loadStudent() {
+
+  const session = getSession();
+
+  if (!session || !session.id) {
+
+    window.location.href =
+      'student-login.html';
+
+    return;
+
+  }
+
+  try {
+
+    const { data: profileData, error } =
+      await supabaseClient.rpc(
+        'get_student_profile',
+        {
+          p_student_id: String(session.id)
+        }
+      );
+
+    if (error) {
+      console.error(error);
+      throw error;
     }
 
-    function getStudentSession() {
-      const rawSession = sessionStorage.getItem(sessionKey);
+    const profile =
+      profileData && typeof profileData === 'object'
+        ? profileData
+        : {};
 
-      if (!rawSession) {
-        window.location.href = "student-login.html";
-        return null;
+    renderStudent(session, profile);
+
+  } catch (error) {
+
+    console.error(error);
+
+    document.getElementById('app').innerHTML = `
+      <div class="error">
+        <h2>تعذر تحميل الملف</h2>
+        <p style="margin-top:10px">
+          حدثت مشكلة أثناء تحميل بيانات الطالب.
+        </p>
+
+        <button onclick="location.reload()">
+          المحاولة مرة أخرى
+        </button>
+      </div>
+    `;
+
+  }
+
+}
+
+
+function renderStudent(student, profile) {
+
+  const app =
+    document.getElementById('app');
+
+  const photo =
+    profile.photoUrl ||
+    profile.photo_url ||
+    '';
+
+
+  const weeklyGoal =
+    profile.weeklyGoal ||
+    profile.weekly_goal ||
+    'غير محدد';
+
+
+  const points =
+    profile.totalPoints ??
+    profile.total_points ??
+    '0';
+
+
+  const weeklyProgress =
+    profile.weeklyProgress ??
+    profile.weekly_progress ??
+    0;
+
+
+  const attendance =
+    Array.isArray(profile.attendance)
+      ? profile.attendance
+      : [];
+
+
+  const weeklyPlan =
+    Array.isArray(profile.weeklyPlan)
+      ? profile.weeklyPlan
+      : [];
+
+
+  const tests =
+    Array.isArray(profile.tests)
+      ? profile.tests
+      : [];
+
+
+  const hifzProgress =
+    Number(
+      profile.hifzProgress ??
+      profile.hifz_progress ??
+      0
+    );
+
+
+  const reviewProgress =
+    Number(
+      profile.reviewProgress ??
+      profile.review_progress ??
+      0
+    );
+
+
+  const completedPages =
+    profile.completedPages ??
+    profile.completed_pages ??
+    '0';
+
+
+  const requiredPages =
+    profile.requiredPages ??
+    profile.required_pages ??
+    '0';
+
+
+  const generalEvaluation =
+    profile.generalEvaluation ??
+    profile.general_evaluation ??
+    'غير محدد';
+
+
+  const equivalentRecitation =
+    profile.equivalentRecitation ??
+    profile.equivalent_recitation ??
+    'غير محدد';
+
+
+  const nextExam =
+    profile.nextExam ??
+    profile.next_exam ??
+    'غير محدد';
+
+
+  const nextExamDate =
+    profile.nextExamDate ??
+    profile.next_exam_date ??
+    'غير محدد';
+
+
+  app.innerHTML = `
+
+    <section class="welcome">
+
+      <h2>
+        أهلاً بك، ${escapeHtml(student.name)}
+      </h2>
+
+      <p>
+        هذه صفحتك الشخصية في المركز.
+        المعلومات الظاهرة هنا يتم تسجيلها وتحديثها من قبل المعلم.
+      </p>
+
+    </section>
+
+
+    <section class="profile">
+
+      <div class="card student-card">
+
+        ${
+          photo
+            ? `
+              <img
+                class="photo"
+                src="${escapeHtml(photo)}"
+                alt="صورة الطالب"
+              >
+            `
+            : `
+              <div
+                class="photo"
+                style="
+                  display:inline-flex;
+                  align-items:center;
+                  justify-content:center;
+                  font-size:40px;
+                  color:#07563c;
+                "
+              >
+                👤
+              </div>
+            `
+        }
+
+        <h2>
+          ${escapeHtml(student.name)}
+        </h2>
+
+        <div class="section">
+          ${escapeHtml(student.section || 'غير محدد')}
+        </div>
+
+        <div class="code-badge">
+          ${escapeHtml(student.login_code || '—')}
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <h2 class="section-title">
+          معلومات الطالب
+        </h2>
+
+        <div class="details">
+
+          ${detail(
+            'الشعبة',
+            student.section
+          )}
+
+          ${detail(
+            'الحفظ الحالي',
+            student.memorization
+          )}
+
+          ${detail(
+            'الحالة',
+            student.status === 'active'
+              ? 'فعال'
+              : student.status
+          )}
+
+          ${detail(
+            'الهدف الأسبوعي',
+            weeklyGoal
+          )}
+
+          ${detail(
+            'مجموع النقاط',
+            points
+          )}
+
+          ${detail(
+            'التقدم الأسبوعي',
+            weeklyProgress + '%'
+          )}
+
+          ${detail(
+            'تاريخ الالتحاق',
+            profile.joiningDate ||
+            profile.joining_date
+          )}
+
+          ${detail(
+            'مكان السكن',
+            profile.residence
+          )}
+
+          ${detail(
+            'الحافلة',
+            profile.bus
+          )}
+
+          ${detail(
+            'موقع المنزل',
+            profile.homeLocation ||
+            profile.home_location
+          )}
+
+          ${detail(
+            'رقم ولي الأمر',
+            profile.guardianPhone ||
+            profile.guardian_phone
+          )}
+
+          ${detail(
+            'أجزاء القرآن المكتملة',
+            profile.completedQuranParts ||
+            profile.completed_quran_parts
+          )}
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="card" style="margin-bottom:20px">
+
+      <h2 class="section-title">
+        التقدم الأسبوعي
+      </h2>
+
+      <div class="progress-box">
+
+        <div class="progress-head">
+          <span>الحفظ</span>
+          <span>${hifzProgress}%</span>
+        </div>
+
+        ${progressBar(hifzProgress)}
+
+        <p style="margin-top:8px;color:#777">
+          تم إنجاز
+          ${escapeHtml(completedPages)}
+          من
+          ${escapeHtml(requiredPages)}
+        </p>
+
+      </div>
+
+
+      <div class="progress-box">
+
+        <div class="progress-head">
+          <span>المراجعة</span>
+          <span>${reviewProgress}%</span>
+        </div>
+
+        ${progressBar(reviewProgress)}
+
+      </div>
+
+      <div class="details">
+
+        ${detail(
+          'التقييم العام',
+          generalEvaluation
+        )}
+
+        ${detail(
+          'التسميع المكافئ',
+          equivalentRecitation
+        )}
+
+        ${detail(
+          'الهدف الأسبوعي',
+          weeklyGoal
+        )}
+
+        ${detail(
+          'الاختبار القادم',
+          nextExam
+        )}
+
+        ${detail(
+          'تاريخ الاختبار',
+          nextExamDate
+        )}
+
+      </div>
+
+    </section>
+
+
+    <section class="card" style="margin-bottom:20px">
+
+      <h2 class="section-title">
+        الحضور
+      </h2>
+
+      ${
+        attendance.length
+          ? `
+            <div class="attendance">
+
+              ${attendance.map(item => `
+
+                <div class="attendance-item">
+
+                  <strong>
+                    ${escapeHtml(
+                      item.date ||
+                      item.day ||
+                      ''
+                    )}
+                  </strong>
+
+                  <div class="present">
+                    ${escapeHtml(
+                      item.status || 'حاضر'
+                    )}
+                  </div>
+
+                </div>
+
+              `).join('')}
+
+            </div>
+          `
+          : `
+            <div class="empty">
+              لا يوجد سجل حضور مسجل حاليًا.
+            </div>
+          `
       }
 
-      try {
-        return JSON.parse(rawSession);
-      } catch (error) {
-        sessionStorage.removeItem(sessionKey);
-        window.location.href = "student-login.html";
-        return null;
+    </section>
+
+
+    <section class="card" style="margin-bottom:20px">
+
+      <h2 class="section-title">
+        الخطة الأسبوعية
+      </h2>
+
+      ${
+        weeklyPlan.length
+          ? `
+            <div class="table-wrap">
+
+              <table>
+
+                <thead>
+                  <tr>
+                    <th>التاريخ</th>
+                    <th>الجزء</th>
+                    <th>الصفحات</th>
+                    <th>المطلوب</th>
+                    <th>الحالة</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  ${weeklyPlan.map(item => `
+
+                    <tr>
+
+                      <td>
+                        ${escapeHtml(item.date)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(item.juz)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(item.pages)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(item.exam || 'لا يوجد')}
+                      </td>
+
+                      <td>
+                        <span class="status">
+                          ${escapeHtml(
+                            item.status || 'قيد الانتظار'
+                          )}
+                        </span>
+                      </td>
+
+                    </tr>
+
+                  `).join('')}
+
+                </tbody>
+
+              </table>
+
+            </div>
+          `
+          : `
+            <div class="empty">
+              لم يتم تسجيل خطة أسبوعية بعد.
+            </div>
+          `
       }
-    }
 
-    function formatStatus(status) {
-      if (status === "active") {
-        return `
-          <span class="status">
-            <span class="status-dot"></span>
-            مستمر
-          </span>
-        `;
+    </section>
+
+
+    <section class="card" style="margin-bottom:20px">
+
+      <h2 class="section-title">
+        الاختبارات
+      </h2>
+
+      ${
+        tests.length
+          ? `
+            <div class="table-wrap">
+
+              <table>
+
+                <thead>
+                  <tr>
+                    <th>الاختبار</th>
+                    <th>التاريخ</th>
+                    <th>النتيجة</th>
+                    <th>النقاط</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  ${tests.map(test => `
+
+                    <tr>
+
+                      <td>
+                        ${escapeHtml(test.name)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(test.date)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(test.result)}
+                      </td>
+
+                      <td>
+                        ${escapeHtml(test.points)}
+                      </td>
+
+                    </tr>
+
+                  `).join('')}
+
+                </tbody>
+
+              </table>
+
+            </div>
+          `
+          : `
+            <div class="empty">
+              لا توجد اختبارات مسجلة حاليًا.
+            </div>
+          `
       }
 
-      if (status === "inactive") {
-        return `
-          <span
-            class="status"
-            style="color:#b42318;background:#fff1f0;"
-          >
-            <span
-              class="status-dot"
-              style="background:#d92d20;"
-            ></span>
-            متوقف
-          </span>
-        `;
-      }
+    </section>
 
-      return `
-        <span
-          class="status"
-          style="color:#6b7280;background:#f3f4f6;"
-        >
-          ${status || "غير محدد"}
-        </span>
-      `;
-    }
 
-    function loadStudent() {
-      const student = getStudentSession();
+    <section class="card">
 
-      if (!student) return;
+      <h2 class="section-title">
+        ملاحظات المعلم
+      </h2>
 
-      const studentName = student.name || "الطالب";
-      const section = student.section || "غير محددة";
-      const memorization = student.memorization || "غير محدد";
+      <p style="line-height:2;color:#555">
 
-      document.getElementById("studentName").textContent = studentName;
-      document.getElementById("infoName").textContent = studentName;
-      document.getElementById("infoSection").textContent = section;
-      document.getElementById("infoMemorization").textContent = memorization;
-      document.getElementById("infoStatus").innerHTML =
-        formatStatus(student.status);
-    }
+        ${escapeHtml(
+          profile.notes ||
+          profile.generalNotes ||
+          profile.general_notes ||
+          'لا يوجد ملاحظات عامة مسجلة للطالب في الوقت الحالي.'
+        )}
 
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-      sessionStorage.removeItem(sessionKey);
+      </p>
 
-      showToast("تم تسجيل الخروج بنجاح");
+    </section>
 
-      setTimeout(() => {
-        window.location.href = "student-login.html";
-      }, 500);
-    });
+  `;
 
-    loadStudent();
-  </script>
+}
+
+
+loadStudent();
+
+</script>
+
 </body>
 </html>
-```
