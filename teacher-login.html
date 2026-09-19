@@ -1,994 +1,448 @@
 <!DOCTYPE html>
-
 <html lang="ar" dir="rtl">
-
 <head>
-
   <meta charset="UTF-8">
-
-<meta
- name="viewport"
- content="width=device-width, initial-scale=1.0">
-
-  <title>بوابة المعلمين | مركز حردان طارق القرآني</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دخول المعلمين | مركز حردان طارق القرآني</title>
   <link rel="icon" type="image/png" href="logo.png">
-  <link rel="shortcut icon" type="image/png" href="logo.png">
-
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
+    *{box-sizing:border-box;margin:0;padding:0}
 
-    * {
-      box-sizing: border-box;
+    :root{
+      --green:#174d3a;
+      --green-dark:#103b2c;
+      --green-light:#edf5f1;
+      --gold:#b28b18;
+      --gold-light:#d4b44c;
+      --cream:#faf8f0;
+      --text:#1f2933;
+      --muted:#74808a;
+      --border:#e5e9e6;
+      --danger:#b3261e;
     }
 
-    :root {
-      --green: #174d3a;
-      --green-dark: #0e3528;
-      --green-soft: #1f624a;
-      --green-light: #edf5f1;
-
-      --gold: #b28b18;
-      --gold-light: #d4b44c;
-
-      --cream: #faf8f0;
-      --white: #ffffff;
-
-      --text: #202722;
-      --muted: #737a76;
+    body{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      font-family:Arial,"Tahoma",sans-serif;
+      background:linear-gradient(135deg,#faf8f0 0%,#fff 48%,#edf5f1 100%);
+      color:var(--text);
     }
 
-
-    html {
-      scroll-behavior: smooth;
+    .login-wrap{
+      width:min(440px,100%);
     }
 
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-
-      font-family:
-        Arial,
-        "Tahoma",
-        sans-serif;
-
-      color: var(--text);
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 25px;
-
-      overflow-x: hidden;
-
-      background:
-        radial-gradient(
-          circle at 15% 20%,
-          rgba(178,139,24,.10),
-          transparent 28%
-        ),
-
-        radial-gradient(
-          circle at 85% 80%,
-          rgba(23,77,58,.13),
-          transparent 30%
-        ),
-
-        linear-gradient(
-          135deg,
-          #f9f7ef 0%,
-          #ffffff 48%,
-          #edf5f1 100%
-        );
-
-      position: relative;
+    .brand{
+      text-align:center;
+      margin-bottom:18px;
     }
 
-
-    /* زخارف الخلفية */
-
-    body::before,
-    body::after {
-      content: "";
-
-      position: fixed;
-
-      width: 280px;
-      height: 280px;
-
-      border-radius: 50%;
-
-      pointer-events: none;
-
-      z-index: 0;
-
-      opacity: .35;
-
-      filter: blur(2px);
+    .logo{
+      width:74px;
+      height:74px;
+      margin:0 auto 14px;
+      border-radius:22px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      color:#fff;
+      font-size:31px;
+      box-shadow:0 15px 30px rgba(23,77,58,.14);
     }
 
-
-    body::before {
-      top: -120px;
-      right: -90px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(178,139,24,.20),
-          transparent 68%
-        );
+    .brand h1{
+      color:var(--green);
+      font-size:23px;
+      margin-bottom:6px;
     }
 
-
-    body::after {
-      bottom: -130px;
-      left: -100px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(23,77,58,.18),
-          transparent 68%
-        );
+    .brand p{
+      color:var(--muted);
+      font-size:12px;
     }
 
-
-    /* زخرفة هندسية خفيفة */
-
-    .pattern {
-      position: fixed;
-
-      inset: 0;
-
-      pointer-events: none;
-
-      opacity: .035;
-
-      z-index: 0;
-
-      background-image:
-        linear-gradient(
-          45deg,
-          var(--green) 25%,
-          transparent 25%
-        ),
-        linear-gradient(
-          -45deg,
-          var(--green) 25%,
-          transparent 25%
-        );
-
-      background-size: 80px 80px;
-
-      background-position:
-        0 0,
-        40px 40px;
+    .card{
+      background:rgba(255,255,255,.95);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:0 20px 55px rgba(23,77,58,.10);
     }
 
-
-    /* البطاقة */
-
-    .login-box {
-      position: relative;
-
-      z-index: 2;
-
-      width: 100%;
-      max-width: 455px;
-
-      padding: 42px 35px 32px;
-
-      background:
-        rgba(255,255,255,.94);
-
-      border:
-        1px solid rgba(178,139,24,.18);
-
-      border-radius: 30px;
-
-      box-shadow:
-        0 25px 70px rgba(23,77,58,.13),
-        0 5px 18px rgba(0,0,0,.04);
-
-      text-align: center;
-
-      overflow: hidden;
-
-      animation:
-        cardEnter .75s ease both;
+    .card-head{
+      margin-bottom:23px;
     }
 
+    .card-head h2{
+      color:var(--green);
+      font-size:21px;
+      margin-bottom:7px;
+    }
 
-    @keyframes cardEnter {
+    .card-head p{
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.8;
+    }
 
-      from {
-        opacity: 0;
-        transform:
-          translateY(28px)
-          scale(.97);
+    label{
+      display:block;
+      color:var(--green);
+      font-size:12px;
+      font-weight:bold;
+      margin-bottom:8px;
+    }
+
+    .input-wrap{
+      position:relative;
+    }
+
+    .input-wrap i{
+      position:absolute;
+      right:14px;
+      top:50%;
+      transform:translateY(-50%);
+      color:#98a29d;
+      font-size:14px;
+      pointer-events:none;
+    }
+
+    input{
+      width:100%;
+      height:50px;
+      border:1px solid var(--border);
+      border-radius:13px;
+      outline:none;
+      background:#fcfdfc;
+      color:var(--text);
+      font-size:18px;
+      letter-spacing:3px;
+      text-align:center;
+      padding:0 45px 0 45px;
+      transition:.2s;
+    }
+
+    input:focus{
+      border-color:var(--gold);
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(178,139,24,.08);
+    }
+
+    .show-code{
+      position:absolute;
+      left:9px;
+      top:7px;
+      width:36px;
+      height:36px;
+      border:0;
+      border-radius:9px;
+      background:#f1f4f2;
+      color:#62706a;
+      cursor:pointer;
+    }
+
+    .submit{
+      width:100%;
+      height:50px;
+      margin-top:18px;
+      border:0;
+      border-radius:13px;
+      background:linear-gradient(135deg,var(--green),#21644b);
+      color:#fff;
+      font-weight:bold;
+      font-size:14px;
+      cursor:pointer;
+      transition:.2s;
+      box-shadow:0 9px 20px rgba(23,77,58,.14);
+    }
+
+    .submit:hover{
+      transform:translateY(-2px);
+      background:linear-gradient(135deg,var(--green-dark),var(--green));
+    }
+
+    .message{
+      min-height:22px;
+      margin-top:13px;
+      text-align:center;
+      font-size:12px;
+      font-weight:bold;
+    }
+
+    .message.error{
+      color:var(--danger);
+    }
+
+    .message.success{
+      color:#237a31;
+    }
+
+    .hint{
+      margin-top:18px;
+      padding:12px 14px;
+      border-radius:12px;
+      background:var(--green-light);
+      color:#5f6b66;
+      font-size:11px;
+      line-height:1.8;
+      text-align:center;
+    }
+
+    .footer-note{
+      text-align:center;
+      color:#8a938e;
+      font-size:10px;
+      margin-top:16px;
+    }
+
+    @media(max-width:480px){
+      .card{
+        padding:23px;
       }
 
-      to {
-        opacity: 1;
-        transform:
-          translateY(0)
-          scale(1);
+      .brand h1{
+        font-size:20px;
       }
-
     }
-
-
-    /* الخط العلوي */
-
-    .login-box::before {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      right: 0;
-      left: 0;
-
-      height: 5px;
-
-      background:
-        linear-gradient(
-          90deg,
-          var(--green),
-          var(--gold-light),
-          var(--gold),
-          var(--green)
-        );
-    }
-
-
-    /* وهج داخلي */
-
-    .login-box::after {
-      content: "";
-
-      position: absolute;
-
-      width: 190px;
-      height: 190px;
-
-      top: -110px;
-      left: -90px;
-
-      border-radius: 50%;
-
-      background:
-        rgba(178,139,24,.08);
-
-      pointer-events: none;
-    }
-
-
-    /* الشعار */
-
-    .logo-wrap {
-      position: relative;
-
-      width: 108px;
-      height: 108px;
-
-      margin:
-        0 auto 20px;
-
-      border-radius: 50%;
-
-      overflow: hidden;
-
-      background: #fff;
-
-      border:
-        3px solid rgba(178,139,24,.35);
-
-      box-shadow:
-        0 12px 30px rgba(23,77,58,.14);
-
-      animation:
-        logoEnter .8s .15s ease both;
-    }
-
-
-    @keyframes logoEnter {
-
-      from {
-        opacity: 0;
-        transform:
-          scale(.75)
-          rotate(-8deg);
-      }
-
-      to {
-        opacity: 1;
-        transform:
-          scale(1)
-          rotate(0);
-      }
-
-    }
-
-
-    .logo-wrap img {
-      width: 100%;
-      height: 100%;
-
-      display: block;
-
-      object-fit: cover;
-
-      border-radius: 50%;
-    }
-
-
-    /* عنوان الصفحة */
-
-    .title-icon {
-      width: 43px;
-      height: 43px;
-
-      margin:
-        0 auto 11px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 13px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-soft)
-        );
-
-      color: white;
-
-      box-shadow:
-        0 8px 18px rgba(23,77,58,.16);
-
-      font-size: 18px;
-    }
-
-
-    h1 {
-      margin: 0 0 9px;
-
-      color: var(--green);
-
-      font-size: 29px;
-
-      font-weight: 800;
-
-      letter-spacing: -.4px;
-    }
-
-
-    .subtitle {
-      margin:
-        0 auto 30px;
-
-      max-width: 340px;
-
-      color: var(--muted);
-
-      line-height: 1.8;
-
-      font-size: 14px;
-    }
-
-
-    .subtitle strong {
-      color: var(--green);
-
-      font-size: 15px;
-    }
-
-
-    /* الحقول */
-
-    .input-group {
-      text-align: right;
-
-      margin-bottom: 19px;
-    }
-
-
-    label {
-      display: flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      margin-bottom: 8px;
-
-      color: var(--green);
-
-      font-size: 14px;
-
-      font-weight: 700;
-    }
-
-
-    label i {
-      color: var(--gold);
-
-      font-size: 13px;
-    }
-
-
-    .input-wrap {
-      position: relative;
-    }
-
-
-    .input-wrap > i {
-      position: absolute;
-
-      right: 15px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      color: #9aa19d;
-
-      pointer-events: none;
-
-      transition: .25s;
-    }
-
-
-    input {
-      width: 100%;
-
-      padding:
-        14px 45px 14px 15px;
-
-      border:
-        1.5px solid #e0e4e1;
-
-      border-radius: 14px;
-
-      outline: none;
-
-      background:
-        #fbfcfb;
-
-      color: var(--text);
-
-      font-size: 16px;
-
-      transition:
-        border-color .25s,
-        box-shadow .25s,
-        background .25s,
-        transform .25s;
-    }
-
-
-    input::placeholder {
-      color: #a5aaa7;
-    }
-
-
-    input:hover {
-      border-color:
-        rgba(23,77,58,.35);
-
-      background: #fff;
-    }
-
-
-    input:focus {
-      border-color:
-        var(--green);
-
-      background: #fff;
-
-      box-shadow:
-        0 0 0 4px rgba(23,77,58,.08);
-
-      transform:
-        translateY(-1px);
-    }
-
-
-    .input-wrap:focus-within > i {
-      color: var(--gold);
-    }
-
-
-    /* زر الدخول */
-
-    button {
-      position: relative;
-
-      width: 100%;
-
-      margin-top: 5px;
-
-      padding: 15px 18px;
-
-      border: none;
-
-      border-radius: 14px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-soft)
-        );
-
-      color: white;
-
-      font-size: 17px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-
-      overflow: hidden;
-
-      box-shadow:
-        0 10px 25px rgba(23,77,58,.20);
-
-      transition:
-        transform .25s,
-        box-shadow .25s,
-        filter .25s;
-    }
-
-
-    button::before {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      left: -100%;
-
-      width: 70%;
-      height: 100%;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,.20),
-          transparent
-        );
-
-      transform:
-        skewX(-20deg);
-
-      transition:
-        left .6s ease;
-    }
-
-
-    button:hover {
-      transform:
-        translateY(-3px);
-
-      box-shadow:
-        0 15px 30px rgba(23,77,58,.26);
-
-      filter:
-        brightness(1.04);
-    }
-
-
-    button:hover::before {
-      left: 140%;
-    }
-
-
-    button:active {
-      transform:
-        translateY(-1px)
-        scale(.99);
-    }
-
-
-    button:disabled {
-      opacity: .65;
-
-      cursor: wait;
-
-      transform: none;
-
-      box-shadow:
-        0 7px 16px rgba(23,77,58,.12);
-    }
-
-
-    button i {
-      margin-left: 7px;
-    }
-
-
-    /* الرسالة */
-
-    #message {
-      min-height: 25px;
-
-      margin-top: 17px;
-
-      padding: 0 4px;
-
-      font-size: 14px;
-
-      font-weight: 700;
-
-      line-height: 1.7;
-
-      color: #b33b3b;
-    }
-
-
-    /* العودة */
-
-    .back {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      margin-top: 18px;
-
-      padding: 9px 14px;
-
-      border-radius: 10px;
-
-      color: var(--green);
-
-      text-decoration: none;
-
-      font-size: 14px;
-
-      font-weight: 700;
-
-      transition:
-        background .25s,
-        color .25s,
-        transform .25s;
-    }
-
-
-    .back:hover {
-      background:
-        var(--green-light);
-
-      color:
-        var(--green-dark);
-
-      transform:
-        translateX(3px);
-    }
-
-
-    /* خط سفلي */
-
-    .footer-note {
-      margin-top: 25px;
-
-      padding-top: 18px;
-
-      border-top:
-        1px solid #edf0ee;
-
-      color: #999f9b;
-
-      font-size: 12px;
-
-      line-height: 1.7;
-    }
-
-
-    .footer-note i {
-      color: var(--gold);
-
-      margin-left: 4px;
-    }
-
-
-    /* الهاتف */
-
-    @media (max-width: 520px) {
-
-      body {
-        padding: 16px;
-      }
-
-
-      .login-box {
-        padding:
-          36px 22px 25px;
-
-        border-radius: 25px;
-      }
-
-
-      .logo-wrap {
-        width: 94px;
-        height: 94px;
-
-        margin-bottom: 17px;
-      }
-
-
-      h1 {
-        font-size: 25px;
-      }
-
-
-      .subtitle {
-        font-size: 13px;
-
-        margin-bottom: 25px;
-      }
-
-
-      input {
-        padding:
-          13px 43px 13px 13px;
-
-        font-size: 15px;
-      }
-
-
-      button {
-        padding: 14px;
-      }
-
-    }
-
-
-    /* تقليل الحركة لمن يفضل ذلك */
-
-    @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-      }
-
-    }
-
   </style>
-
 </head>
 
 <body>
 
-  <div class="pattern"></div>
+  <div class="login-wrap">
 
-  <main class="login-box">
+    <div class="brand">
 
-```
-<div class="logo-wrap">
+      <div class="logo">
+        <i class="fa-solid fa-book-quran"></i>
+      </div>
 
-  <img
-    src="logo.png"
-    alt="شعار مركز حردان طارق القرآني">
+      <h1>
+        مركز حردان طارق القرآني
+      </h1>
 
-</div>
+      <p>
+        البوابة الإدارية للمعلمين
+      </p>
 
-
-<div class="title-icon">
-
-  <i class="fa-solid fa-chalkboard-user"></i>
-
-</div>
+    </div>
 
 
-<h1>
-  بوابة المعلمين
-</h1>
+    <div class="card">
+
+      <div class="card-head">
+
+        <h2>
+          دخول المعلمين
+        </h2>
+
+        <p>
+          أدخل كود المعلمين الموحد للوصول إلى لوحة المتابعة.
+        </p>
+
+      </div>
 
 
-<div class="subtitle">
+      <form id="teacherLoginForm">
 
-  <strong>
-    مركز حردان طارق القرآني
-  </strong>
-
-  <br>
-
-  الدخول مخصص للمستخدمين المصرح لهم
-
-</div>
+        <label for="teacherCode">
+          كود الدخول
+        </label>
 
 
-<form id="loginForm">
+        <div class="input-wrap">
 
-  <div class="input-group">
+          <i class="fa-solid fa-key"></i>
 
-    <label for="email">
+          <input
+            id="teacherCode"
+            type="password"
+            inputmode="text"
+            autocomplete="off"
+            autocapitalize="characters"
+            spellcheck="false"
+            maxlength="32"
+            placeholder="أدخل الكود الموحد"
+            required
+          >
 
-      <i class="fa-solid fa-envelope"></i>
+          <button
+            class="show-code"
+            id="showCode"
+            type="button"
+            aria-label="إظهار الكود">
 
-      البريد الإلكتروني
+            <i class="fa-solid fa-eye"></i>
 
-    </label>
+          </button>
+
+        </div>
 
 
-    <div class="input-wrap">
+        <button
+          class="submit"
+          id="loginButton"
+          type="submit">
 
-      <i class="fa-solid fa-envelope"></i>
+          <i class="fa-solid fa-right-to-bracket"></i>
 
-      <input
-        type="email"
-        id="email"
-        placeholder="أدخل البريد الإلكتروني"
-        required
-        autocomplete="email">
+          دخول إلى لوحة المعلم
 
+        </button>
+
+
+        <div
+          class="message"
+          id="message">
+        </div>
+
+      </form>
+
+
+      <div class="hint">
+        الكود موحّد لجميع المعلمين، ولا حاجة لإدخال البريد الإلكتروني.
+      </div>
+
+    </div>
+
+
+    <div class="footer-note">
+      © 2026 مركز حردان طارق القرآني
     </div>
 
   </div>
 
-
-  <div class="input-group">
-
-    <label for="password">
-
-      <i class="fa-solid fa-lock"></i>
-
-      كلمة المرور
-
-    </label>
-
-
-    <div class="input-wrap">
-
-      <i class="fa-solid fa-lock"></i>
-
-      <input
-        type="password"
-        id="password"
-        placeholder="أدخل كلمة المرور"
-        required
-        autocomplete="current-password">
-
-    </div>
-
-  </div>
-
-
-  <button
-    type="submit"
-    id="loginButton">
-
-    <i class="fa-solid fa-right-to-bracket"></i>
-
-    دخول البوابة
-
-  </button>
-
-</form>
-
-
-<div id="message"></div>
-
-
-<a
-  href="index.html"
-  class="back">
-
-  <i class="fa-solid fa-arrow-right"></i>
-
-  العودة إلى الموقع
-
-</a>
-
-
-<div class="footer-note">
-
-  <i class="fa-solid fa-shield-halved"></i>
-
-  هذه البوابة مخصصة لإدارة ومتابعة الطلاب
-  من قبل المعلمين المصرح لهم.
-
-</div>
-```
-
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
 
-    const SUPABASE_URL =
-      'https://lsbbcybpiulusdgfhepf.supabase.co';
+    /* =====================================================
+       كود المعلمين الموحد
+       غيّر هذه القيمة فقط لتغيير كود الدخول
+    ====================================================== */
 
-
-    const SUPABASE_PUBLISHABLE_KEY =
-      'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
-
-
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-      );
-
-
-    const allowedEmail =
-      'baraahaytham08@gmail.com';
+    const TEACHER_ACCESS_CODE =
+      '20269';
 
 
     const form =
-      document.getElementById('loginForm');
+      document.getElementById(
+        'teacherLoginForm'
+      );
 
 
-    const button =
-      document.getElementById('loginButton');
+    const codeInput =
+      document.getElementById(
+        'teacherCode'
+      );
 
 
     const message =
-      document.getElementById('message');
+      document.getElementById(
+        'message'
+      );
 
 
+    const loginButton =
+      document.getElementById(
+        'loginButton'
+      );
+
+
+    const showCode =
+      document.getElementById(
+        'showCode'
+      );
+
+
+    /* إذا كان مسجّل دخول بالفعل */
+    if (
+      localStorage.getItem(
+        'teacherAccess'
+      ) === 'granted'
+    ) {
+
+      window.location.href =
+        'teacher-dashboard.html';
+
+    }
+
+
+    /* إظهار / إخفاء الكود */
+    showCode.addEventListener(
+      'click',
+      () => {
+
+        const visible =
+          codeInput.type === 'text';
+
+        codeInput.type =
+          visible
+            ? 'password'
+            : 'text';
+
+        showCode.innerHTML =
+          visible
+            ? '<i class="fa-solid fa-eye"></i>'
+            : '<i class="fa-solid fa-eye-slash"></i>';
+
+      }
+    );
+
+
+    /* تسجيل الدخول */
     form.addEventListener(
       'submit',
-      async function(event) {
+      (event) => {
 
         event.preventDefault();
 
 
-        const email =
-          document
-            .getElementById('email')
-            .value
-            .trim()
-            .toLowerCase();
+        const enteredCode =
+          codeInput.value.trim();
 
 
-        const password =
-          document
-            .getElementById('password')
-            .value;
+        if (
+          enteredCode ===
+          TEACHER_ACCESS_CODE
+        ) {
+
+          localStorage.setItem(
+            'teacherAccess',
+            'granted'
+          );
 
 
-        message.textContent = '';
-
-
-        button.disabled = true;
-
-
-        button.innerHTML =
-          '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ تسجيل الدخول...';
-
-
-        if (email !== allowedEmail) {
+          message.className =
+            'message success';
 
           message.textContent =
-            'هذا الحساب غير مصرح له بالدخول.';
+            'تم التحقق بنجاح، جارٍ فتح لوحة المعلم...';
 
 
-          button.disabled = false;
+          loginButton.disabled =
+            true;
 
 
-          button.innerHTML =
-            '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+          loginButton.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الدخول...';
+
+
+          setTimeout(
+            () => {
+
+              window.location.href =
+                'teacher-dashboard.html';
+
+            },
+            350
+          );
 
 
           return;
@@ -996,60 +450,24 @@
         }
 
 
-        const {
-          data,
-          error
-        } =
-          await supabaseClient.auth.signInWithPassword({
-
-            email: email,
-
-            password: password
-
-          });
+        message.className =
+          'message error';
 
 
-        if (error) {
-
-          message.textContent =
-            'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+        message.textContent =
+          'كود الدخول غير صحيح.';
 
 
-          button.disabled = false;
+        codeInput.value =
+          '';
 
 
-          button.innerHTML =
-            '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
+        codeInput.focus();
 
-
-          return;
-
-        }
-
-
-        if (data.user) {
-
-          window.location.href =
-            'teacher-dashboard.html';
-
-        } else {
-
-          message.textContent =
-            'حدث خطأ أثناء تسجيل الدخول.';
-
-
-          button.disabled = false;
-
-
-          button.innerHTML =
-            '<i class="fa-solid fa-right-to-bracket"></i> دخول البوابة';
-
-        }
-
-      });
+      }
+    );
 
   </script>
 
 </body>
-
 </html>
