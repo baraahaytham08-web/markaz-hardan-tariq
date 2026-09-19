@@ -17,7 +17,6 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-
   <style>
 
     /* ================= النسخة التجريبية ================= */
@@ -35,7 +34,6 @@
       box-shadow: 0 3px 10px rgba(0,0,0,.18);
     }
 
-
     /* ================= صفحة الشعب ================= */
 
     .programs-page {
@@ -43,25 +41,21 @@
       min-height: 70vh;
     }
 
-
     .programs-page-title {
       text-align: center;
       max-width: 750px;
       margin: 0 auto 50px;
     }
 
-
     .programs-page-title .section-kicker {
       display: inline-block;
       margin-bottom: 8px;
     }
 
-
     .programs-page-title h1 {
       margin: 0 0 15px;
       font-size: 38px;
     }
-
 
     .programs-page-title p {
       margin: 0;
@@ -69,7 +63,6 @@
       color: #666;
       font-size: 17px;
     }
-
 
     /* ================= البطاقات ================= */
 
@@ -80,7 +73,6 @@
       max-width: 1000px;
       margin: auto;
     }
-
 
     .program-page-card {
       background: white;
@@ -93,18 +85,15 @@
       transition: .25s ease;
     }
 
-
     .program-page-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 14px 32px rgba(0,0,0,.12);
     }
 
-
     .program-page-card:focus {
       outline: 3px solid rgba(201,162,39,.35);
       outline-offset: 3px;
     }
-
 
     .program-page-icon {
       width: 82px;
@@ -118,19 +107,16 @@
       font-size: 42px;
     }
 
-
     .program-page-card h2 {
       margin: 0 0 12px;
       font-size: 23px;
     }
-
 
     .program-page-card p {
       margin: 0;
       color: #666;
       line-height: 1.8;
     }
-
 
     .program-more {
       display: inline-block;
@@ -140,7 +126,6 @@
       font-size: 14px;
     }
 
-
     /* ================= زر العودة ================= */
 
     .programs-back {
@@ -148,11 +133,9 @@
       margin-top: 45px;
     }
 
-
     .programs-back .btn {
       display: inline-block;
     }
-
 
     /* ================= نافذة معلومات الشعبة ================= */
 
@@ -168,15 +151,12 @@
       backdrop-filter: blur(4px);
     }
 
-
     .program-modal.active {
       display: flex;
       animation: modalFade .2s ease;
     }
 
-
     @keyframes modalFade {
-
       from {
         opacity: 0;
       }
@@ -184,9 +164,7 @@
       to {
         opacity: 1;
       }
-
     }
-
 
     .program-modal-content {
       background: white;
@@ -202,9 +180,7 @@
       animation: modalUp .25s ease;
     }
 
-
     @keyframes modalUp {
-
       from {
         transform: translateY(25px);
         opacity: 0;
@@ -214,9 +190,7 @@
         transform: translateY(0);
         opacity: 1;
       }
-
     }
-
 
     .program-modal-header {
       padding: 35px 30px 28px;
@@ -224,7 +198,6 @@
       background: linear-gradient(135deg, #f8f1d8, #fff);
       border-bottom: 1px solid #eee;
     }
-
 
     .program-modal-icon {
       width: 75px;
@@ -239,17 +212,14 @@
       box-shadow: 0 7px 20px rgba(0,0,0,.09);
     }
 
-
     .program-modal-header h2 {
       margin: 0;
       font-size: 26px;
     }
 
-
     .program-modal-body {
       padding: 28px 30px 32px;
     }
-
 
     .program-detail {
       background: #fafafa;
@@ -259,19 +229,16 @@
       margin-bottom: 15px;
     }
 
-
     .program-detail h3 {
       margin: 0 0 9px;
       font-size: 17px;
     }
-
 
     .program-detail p {
       margin: 0;
       line-height: 1.9;
       color: #555;
     }
-
 
     .student-follow-btn {
       display: block;
@@ -288,12 +255,10 @@
       transition: .2s;
     }
 
-
     .student-follow-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(0,0,0,.15);
     }
-
 
     .program-modal-close {
       position: absolute;
@@ -311,11 +276,9 @@
       transition: .2s;
     }
 
-
     .program-modal-close:hover {
       transform: rotate(90deg);
     }
-
 
     /* ================= الجوال ================= */
 
@@ -325,53 +288,43 @@
         padding: 105px 15px 60px;
       }
 
-
       .programs-page-title {
         margin-bottom: 35px;
       }
-
 
       .programs-page-title h1 {
         font-size: 29px;
       }
 
-
       .programs-page-title p {
         font-size: 15px;
       }
-
 
       .programs-page-cards {
         grid-template-columns: 1fr;
         gap: 18px;
       }
 
-
       .program-page-card {
         padding: 28px 22px;
       }
 
-
       .program-modal {
         padding: 12px;
       }
-
 
       .program-modal-content {
         max-height: 92vh;
         border-radius: 20px;
       }
 
-
       .program-modal-header {
         padding: 32px 20px 22px;
       }
 
-
       .program-modal-body {
         padding: 22px 18px 25px;
       }
-
 
       .program-modal-header h2 {
         font-size: 22px;
@@ -383,7 +336,6 @@
 
 </head>
 
-
 <body>
 
   <!-- ================= النسخة التجريبية ================= -->
@@ -392,13 +344,11 @@
     النسخة التجريبية
   </div>
 
-
   <!-- ================= HEADER ================= -->
 
   <header class="header">
 
     <div class="container nav">
-
 
       <a class="brand" href="index.html">
 
@@ -412,7 +362,6 @@
         </span>
 
       </a>
-
 
       <nav>
 
@@ -438,7 +387,6 @@
 
       </nav>
 
-
       <div class="actions">
 
         <a
@@ -448,7 +396,6 @@
           التسجيل
 
         </a>
-
 
         <a
           class="btn btn-gold"
@@ -462,7 +409,6 @@
 
       </div>
 
-
       <button
         class="menu-btn"
         aria-label="فتح القائمة">
@@ -475,13 +421,11 @@
 
   </header>
 
-
   <!-- ================= MAIN ================= -->
 
   <main>
 
     <section class="programs-page">
-
 
       <!-- ================= عنوان الصفحة ================= -->
 
@@ -502,11 +446,9 @@
 
       </div>
 
-
       <!-- ================= الشعب ================= -->
 
       <div class="programs-page-cards">
-
 
         <!-- الحفاظ -->
 
@@ -535,7 +477,6 @@
 
         </article>
 
-
         <!-- التجويد -->
 
         <article
@@ -563,7 +504,6 @@
 
         </article>
 
-
         <!-- الإجازة -->
 
         <article
@@ -590,7 +530,6 @@
           </span>
 
         </article>
-
 
         <!-- فرسان -->
 
@@ -621,7 +560,6 @@
 
       </div>
 
-
       <!-- ================= العودة للرئيسية ================= -->
 
       <div class="programs-back">
@@ -640,7 +578,6 @@
 
   </main>
 
-
   <!-- ================= PROGRAM MODAL ================= -->
 
   <div
@@ -648,11 +585,9 @@
     id="programModal"
     onclick="closeProgram(event)">
 
-
     <div
       class="program-modal-content"
       onclick="event.stopPropagation()">
-
 
       <button
         class="program-modal-close"
@@ -662,7 +597,6 @@
         ×
 
       </button>
-
 
       <div class="program-modal-header">
 
@@ -675,9 +609,7 @@
 
       </div>
 
-
       <div class="program-modal-body">
-
 
         <div class="program-detail">
 
@@ -689,7 +621,6 @@
 
         </div>
 
-
         <div class="program-detail">
 
           <h3>
@@ -699,7 +630,6 @@
           <p id="modalFocus"></p>
 
         </div>
-
 
         <div class="program-detail">
 
@@ -711,9 +641,9 @@
 
         </div>
 
-
+        <!-- تم تعديل الرابط هنا -->
         <a
-          href="followup.html"
+          href="access.html"
           class="student-follow-btn">
 
           الدخول إلى متابعة الطلاب ←
@@ -725,7 +655,6 @@
     </div>
 
   </div>
-
 
   <!-- ================= FOOTER ================= -->
 
@@ -745,7 +674,6 @@
 
   </footer>
 
-
   <!-- ================= JAVASCRIPT ================= -->
 
   <script>
@@ -762,7 +690,6 @@
       });
 
     }
-
 
     /* ================= معلومات الشعب ================= */
 
@@ -785,7 +712,6 @@
 
       },
 
-
       tajweed: {
 
         icon: '📖',
@@ -803,7 +729,6 @@
 
       },
 
-
       ijazah: {
 
         icon: '🏅',
@@ -820,7 +745,6 @@
           'متابعة تقدم الطالب في الحفظ والمراجعة والتلاوة ضمن متطلبات البرنامج.'
 
       },
-
 
       fursan: {
 
@@ -841,7 +765,6 @@
 
     };
 
-
     /* ================= فتح معلومات الشعبة ================= */
 
     function openProgram(programId) {
@@ -852,35 +775,27 @@
         return;
       }
 
-
       document.getElementById('modalIcon').textContent =
         program.icon;
-
 
       document.getElementById('modalTitle').textContent =
         program.title;
 
-
       document.getElementById('modalDescription').textContent =
         program.description;
-
 
       document.getElementById('modalFocus').textContent =
         program.focus;
 
-
       document.getElementById('modalFollow').textContent =
         program.follow;
-
 
       document.getElementById('programModal')
         .classList.add('active');
 
-
       document.body.style.overflow = 'hidden';
 
     }
-
 
     /* ================= إغلاق معلومات الشعبة ================= */
 
@@ -893,15 +808,12 @@
         return;
       }
 
-
       document.getElementById('programModal')
         .classList.remove('active');
-
 
       document.body.style.overflow = '';
 
     }
-
 
     /* ================= ESC ================= */
 
