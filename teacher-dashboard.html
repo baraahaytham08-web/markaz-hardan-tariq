@@ -10,8 +10,9 @@
     content="width=device-width, initial-scale=1.0">
 
   <title>لوحة المعلم | مركز حردان طارق القرآني</title>
-<link rel="icon" type="image/png" href="logo.png">
-  
+
+  <link rel="icon" type="image/png" href="logo.png">
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -269,6 +270,13 @@
     }
 
 
+    .home-link {
+
+      text-decoration: none;
+
+    }
+
+
     .sidebar-bottom {
 
       position: absolute;
@@ -310,6 +318,25 @@
 
       border-color:
         rgba(212,180,76,.5);
+
+    }
+
+
+    /* =====================================================
+       CLOSE SIDEBAR
+    ===================================================== */
+
+    .close-sidebar {
+
+      display: none;
+
+      border: none;
+
+      background: transparent;
+
+      color: white;
+
+      cursor: pointer;
 
     }
 
@@ -823,7 +850,7 @@
       display: grid;
 
       grid-template-columns:
-        1fr 190px 170px;
+        1fr 190px;
 
       gap: 10px;
 
@@ -1326,8 +1353,6 @@
         0 25px 70px
         rgba(0,0,0,.22);
 
-      overflow: hidden;
-
       animation:
         modalIn .2s ease;
 
@@ -1338,12 +1363,16 @@
 
       from {
         opacity: 0;
-        transform: translateY(12px) scale(.98);
+        transform:
+          translateY(12px)
+          scale(.98);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform:
+          translateY(0)
+          scale(1);
       }
 
     }
@@ -1679,7 +1708,7 @@
 
 
     /* =====================================================
-       MOBILE
+       MOBILE MENU
     ===================================================== */
 
     .mobile-menu {
@@ -1703,6 +1732,10 @@
     }
 
 
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
     @media (max-width: 950px) {
 
       .sidebar {
@@ -1711,11 +1744,13 @@
 
       }
 
+
       .main {
 
         margin-right: 220px;
 
       }
+
 
       .filters {
 
@@ -1724,15 +1759,12 @@
 
       }
 
-      .filters .filter-status {
-
-        grid-column:
-          span 1;
-
-      }
-
     }
 
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
 
     @media (max-width: 750px) {
 
@@ -1743,6 +1775,10 @@
 
         transition: .25s;
 
+        width: 280px;
+
+        padding-top: 65px;
+
       }
 
 
@@ -1750,6 +1786,51 @@
 
         transform:
           translateX(0);
+
+      }
+
+
+      .close-sidebar {
+
+        display: flex;
+
+        position: absolute;
+
+        top: 15px;
+
+        left: 15px;
+
+        width: 40px;
+
+        height: 40px;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border:
+          1px solid rgba(255,255,255,.18);
+
+        border-radius: 10px;
+
+        background:
+          rgba(255,255,255,.10);
+
+        color: white;
+
+        font-size: 28px;
+
+        line-height: 1;
+
+        z-index: 100;
+
+      }
+
+
+      .close-sidebar:hover {
+
+        background:
+          rgba(255,255,255,.20);
 
       }
 
@@ -1808,14 +1889,6 @@
       }
 
 
-      .filters .filter-status {
-
-        grid-column:
-          auto;
-
-      }
-
-
       .welcome-card {
 
         padding: 23px;
@@ -1854,6 +1927,10 @@
 
     }
 
+
+    /* =====================================================
+       SMALL MOBILE
+    ===================================================== */
 
     @media (max-width: 480px) {
 
@@ -1913,6 +1990,15 @@
 
       }
 
+
+      .sidebar {
+
+        width: 85%;
+
+        max-width: 300px;
+
+      }
+
     }
 
   </style>
@@ -1927,7 +2013,23 @@
        SIDEBAR
   ====================================================== -->
 
-  <aside class="sidebar" id="sidebar">
+  <aside
+    class="sidebar"
+    id="sidebar">
+
+
+    <!-- زر إغلاق القائمة على الموبايل -->
+
+    <button
+      class="close-sidebar"
+      id="closeSidebar"
+      type="button"
+      aria-label="إغلاق القائمة">
+
+      ×
+
+    </button>
+
 
     <div class="sidebar-logo">
 
@@ -1957,7 +2059,9 @@
     </div>
 
 
-    <button class="side-link active">
+    <button
+      class="side-link active"
+      type="button">
 
       <i class="fa-solid fa-chart-line"></i>
 
@@ -1966,7 +2070,10 @@
     </button>
 
 
-    <button class="side-link" id="studentsNav">
+    <button
+      class="side-link"
+      id="studentsNav"
+      type="button">
 
       <i class="fa-solid fa-users"></i>
 
@@ -1975,7 +2082,9 @@
     </button>
 
 
-    <button class="side-link">
+    <button
+      class="side-link"
+      type="button">
 
       <i class="fa-solid fa-book-open"></i>
 
@@ -1984,11 +2093,25 @@
     </button>
 
 
+    <!-- الرئيسية -->
+
+    <a
+      href="index.html"
+      class="side-link home-link">
+
+      <i class="fa-solid fa-house"></i>
+
+      الرئيسية
+
+    </a>
+
+
     <div class="sidebar-bottom">
 
       <button
         class="logout-side"
-        id="logoutButton">
+        id="logoutButton"
+        type="button">
 
         <i class="fa-solid fa-right-from-bracket"></i>
 
@@ -2015,11 +2138,18 @@
     <header class="topbar">
 
       <div
-        style="display:flex;align-items:center;gap:12px;">
+        style="
+          display:flex;
+          align-items:center;
+          gap:12px;
+        ">
+
 
         <button
           class="mobile-menu"
-          id="mobileMenu">
+          id="mobileMenu"
+          type="button"
+          aria-label="فتح القائمة">
 
           <i class="fa-solid fa-bars"></i>
 
@@ -2057,6 +2187,7 @@
             المعلم
 
           </div>
+
 
           <div
             class="teacher-email"
@@ -2127,11 +2258,15 @@
             <span
               class="stat-number"
               id="totalStudents">
+
               0
+
             </span>
 
             <span class="stat-label">
+
               إجمالي الطلاب
+
             </span>
 
           </div>
@@ -2152,11 +2287,15 @@
             <span
               class="stat-number"
               id="activeStudents">
+
               0
+
             </span>
 
             <span class="stat-label">
+
               الطلاب المستمرون
+
             </span>
 
           </div>
@@ -2177,11 +2316,15 @@
             <span
               class="stat-number"
               id="memorizedStudents">
+
               0
+
             </span>
 
             <span class="stat-label">
+
               لديهم متابعة حفظ
+
             </span>
 
           </div>
@@ -2227,7 +2370,8 @@
 
           <button
             class="add-btn"
-            id="openModal">
+            id="openModal"
+            type="button">
 
             <i class="fa-solid fa-plus"></i>
 
@@ -2284,25 +2428,6 @@
           </select>
 
 
-          <select
-            id="statusFilter"
-            class="filter-select filter-status">
-
-            <option value="">
-              جميع الحالات
-            </option>
-
-            <option value="active">
-              مستمر
-            </option>
-
-            <option value="inactive">
-              متوقف
-            </option>
-
-          </select>
-
-
         </div>
 
 
@@ -2343,6 +2468,7 @@
 
             <tbody
               id="studentsTable">
+
             </tbody>
 
           </table>
@@ -2410,7 +2536,8 @@
 
         <button
           class="close-modal"
-          id="closeModal">
+          id="closeModal"
+          type="button">
 
           <i class="fa-solid fa-xmark"></i>
 
@@ -2575,7 +2702,7 @@
 
     /* =====================================================
        SUPABASE
-    ====================================================== */
+    ===================================================== */
 
     const SUPABASE_URL =
       'https://lsbbcybpiulusdgfhepf.supabase.co';
@@ -2594,82 +2721,114 @@
 
     /* =====================================================
        ELEMENTS
-    ====================================================== */
+    ===================================================== */
 
     const tableBody =
-      document.getElementById('studentsTable');
+      document.getElementById(
+        'studentsTable'
+      );
 
 
     const emptyMessage =
-      document.getElementById('emptyMessage');
+      document.getElementById(
+        'emptyMessage'
+      );
 
 
     const totalStudents =
-      document.getElementById('totalStudents');
+      document.getElementById(
+        'totalStudents'
+      );
 
 
     const activeStudents =
-      document.getElementById('activeStudents');
+      document.getElementById(
+        'activeStudents'
+      );
 
 
     const memorizedStudents =
-      document.getElementById('memorizedStudents');
+      document.getElementById(
+        'memorizedStudents'
+      );
 
 
     const searchInput =
-      document.getElementById('searchInput');
+      document.getElementById(
+        'searchInput'
+      );
 
 
     const sectionFilter =
-      document.getElementById('sectionFilter');
-
-
-    const statusFilter =
-      document.getElementById('statusFilter');
+      document.getElementById(
+        'sectionFilter'
+      );
 
 
     const modal =
-      document.getElementById('studentModal');
+      document.getElementById(
+        'studentModal'
+      );
 
 
     const openModal =
-      document.getElementById('openModal');
+      document.getElementById(
+        'openModal'
+      );
 
 
     const closeModal =
-      document.getElementById('closeModal');
+      document.getElementById(
+        'closeModal'
+      );
 
 
     const cancelButton =
-      document.getElementById('cancelButton');
+      document.getElementById(
+        'cancelButton'
+      );
 
 
     const studentForm =
-      document.getElementById('studentForm');
+      document.getElementById(
+        'studentForm'
+      );
 
 
     const message =
-      document.getElementById('message');
+      document.getElementById(
+        'message'
+      );
 
 
     const modalTitle =
-      document.getElementById('modalTitle');
+      document.getElementById(
+        'modalTitle'
+      );
 
 
     const saveButton =
-      document.getElementById('saveButton');
+      document.getElementById(
+        'saveButton'
+      );
 
 
     const toast =
-      document.getElementById('toast');
+      document.getElementById(
+        'toast'
+      );
 
 
     const toastText =
-      document.getElementById('toastText');
+      document.getElementById(
+        'toastText'
+      );
 
 
     const toastIcon =
-      document.getElementById('toastIcon');
+      document.getElementById(
+        'toastIcon'
+      );
 
 
     let students = [];
@@ -2679,7 +2838,7 @@
 
     /* =====================================================
        TOAST
-    ====================================================== */
+    ===================================================== */
 
     function showToast(
       text,
@@ -2700,7 +2859,9 @@
 
       setTimeout(() => {
 
-        toast.classList.remove('show');
+        toast.classList.remove(
+          'show'
+        );
 
       }, 3000);
 
@@ -2709,7 +2870,7 @@
 
     /* =====================================================
        CHECK USER
-    ====================================================== */
+    ===================================================== */
 
     async function checkUser() {
 
@@ -2757,7 +2918,7 @@
 
     /* =====================================================
        LOAD STUDENTS
-    ====================================================== */
+    ===================================================== */
 
     async function loadStudents() {
 
@@ -2783,12 +2944,14 @@
         emptyMessage.style.display =
           'block';
 
-        emptyMessage.querySelector('strong')
-          .textContent =
+        emptyMessage.querySelector(
+          'strong'
+        ).textContent =
           'تعذر تحميل البيانات';
 
-        emptyMessage.querySelector('p')
-          .textContent =
+        emptyMessage.querySelector(
+          'p'
+        ).textContent =
           'تأكد من إعداد قاعدة البيانات والصلاحيات.';
 
         return;
@@ -2809,7 +2972,7 @@
 
     /* =====================================================
        RENDER
-    ====================================================== */
+    ===================================================== */
 
     function renderStudents() {
 
@@ -2821,10 +2984,6 @@
 
       const selectedSection =
         sectionFilter.value;
-
-
-      const selectedStatus =
-        statusFilter.value;
 
 
       const filtered =
@@ -2842,16 +3001,9 @@
             selectedSection;
 
 
-          const matchesStatus =
-            !selectedStatus ||
-            student.status ===
-            selectedStatus;
-
-
           return (
             matchesSearch &&
-            matchesSection &&
-            matchesStatus
+            matchesSection
           );
 
         });
@@ -2906,12 +3058,18 @@
 
               <div class="student-avatar">
 
-                ${escapeHtml(firstLetter)}
+                ${escapeHtml(
+                  firstLetter
+                )}
 
               </div>
 
               <span>
-                ${escapeHtml(student.name)}
+
+                ${escapeHtml(
+                  student.name || ''
+                )}
+
               </span>
 
             </div>
@@ -2955,7 +3113,8 @@
 
           <td>
 
-            <span class="status ${statusClass}">
+            <span
+              class="status ${statusClass}">
 
               ${statusText}
 
@@ -2972,6 +3131,7 @@
               <button
                 class="action-btn edit-btn"
                 title="تعديل"
+                type="button"
                 onclick="editStudent('${student.id}')">
 
                 <i class="fa-solid fa-pen"></i>
@@ -2982,6 +3142,7 @@
               <button
                 class="action-btn delete-btn"
                 title="حذف"
+                type="button"
                 onclick="deleteStudent('${student.id}')">
 
                 <i class="fa-solid fa-trash"></i>
@@ -3005,7 +3166,7 @@
 
     /* =====================================================
        STATS
-    ====================================================== */
+    ===================================================== */
 
     function updateStats() {
 
@@ -3033,7 +3194,7 @@
 
     /* =====================================================
        OPEN ADD MODAL
-    ====================================================== */
+    ===================================================== */
 
     function openAddModal() {
 
@@ -3064,7 +3225,7 @@
 
     /* =====================================================
        EDIT STUDENT
-    ====================================================== */
+    ===================================================== */
 
     window.editStudent =
       function(id) {
@@ -3124,7 +3285,7 @@
 
     /* =====================================================
        SAVE STUDENT
-    ====================================================== */
+    ===================================================== */
 
     studentForm.addEventListener(
       'submit',
@@ -3135,27 +3296,35 @@
 
         const name =
           document
-            .getElementById('studentName')
+            .getElementById(
+              'studentName'
+            )
             .value
             .trim();
 
 
         const section =
           document
-            .getElementById('studentSection')
+            .getElementById(
+              'studentSection'
+            )
             .value;
 
 
         const memorization =
           document
-            .getElementById('memorization')
+            .getElementById(
+              'memorization'
+            )
             .value
             .trim();
 
 
         const status =
           document
-            .getElementById('studentStatus')
+            .getElementById(
+              'studentStatus'
+            )
             .value;
 
 
@@ -3210,7 +3379,8 @@
             message.textContent =
               'حدث خطأ أثناء تعديل الطالب.';
 
-            saveButton.disabled = false;
+            saveButton.disabled =
+              false;
 
             saveButton.innerHTML =
               '<i class="fa-solid fa-check"></i> حفظ التعديلات';
@@ -3265,7 +3435,8 @@
             message.textContent =
               'حدث خطأ أثناء حفظ الطالب.';
 
-            saveButton.disabled = false;
+            saveButton.disabled =
+              false;
 
             saveButton.innerHTML =
               '<i class="fa-solid fa-check"></i> حفظ الطالب';
@@ -3297,7 +3468,7 @@
 
     /* =====================================================
        DELETE
-    ====================================================== */
+    ===================================================== */
 
     window.deleteStudent =
       async function(id) {
@@ -3368,11 +3539,13 @@
 
     /* =====================================================
        CLOSE MODAL
-    ====================================================== */
+    ===================================================== */
 
     function closeStudentModal() {
 
-      modal.classList.remove('show');
+      modal.classList.remove(
+        'show'
+      );
 
       studentForm.reset();
 
@@ -3380,7 +3553,8 @@
 
       editingStudentId = null;
 
-      saveButton.disabled = false;
+      saveButton.disabled =
+        false;
 
       saveButton.innerHTML =
         '<i class="fa-solid fa-check"></i> حفظ الطالب';
@@ -3418,7 +3592,7 @@
 
     /* =====================================================
        FILTERS
-    ====================================================== */
+    ===================================================== */
 
     searchInput.addEventListener(
       'input',
@@ -3432,18 +3606,14 @@
     );
 
 
-    statusFilter.addEventListener(
-      'change',
-      renderStudents
-    );
-
-
     /* =====================================================
        LOGOUT
-    ====================================================== */
+    ===================================================== */
 
     document
-      .getElementById('logoutButton')
+      .getElementById(
+        'logoutButton'
+      )
       .addEventListener(
         'click',
         logout
@@ -3465,7 +3635,7 @@
 
     /* =====================================================
        MOBILE SIDEBAR
-    ====================================================== */
+    ===================================================== */
 
     const sidebar =
       document.getElementById(
@@ -3474,12 +3644,32 @@
 
 
     document
-      .getElementById('mobileMenu')
+      .getElementById(
+        'mobileMenu'
+      )
       .addEventListener(
         'click',
         function() {
 
-          sidebar.classList.toggle(
+          sidebar.classList.add(
+            'open'
+          );
+
+        }
+      );
+
+
+    /* زر إغلاق القائمة */
+
+    document
+      .getElementById(
+        'closeSidebar'
+      )
+      .addEventListener(
+        'click',
+        function() {
+
+          sidebar.classList.remove(
             'open'
           );
 
@@ -3488,13 +3678,17 @@
 
 
     document
-      .getElementById('studentsNav')
+      .getElementById(
+        'studentsNav'
+      )
       .addEventListener(
         'click',
         function() {
 
           document
-            .getElementById('studentsPanel')
+            .getElementById(
+              'studentsPanel'
+            )
             .scrollIntoView({
               behavior: 'smooth'
             });
@@ -3510,7 +3704,7 @@
 
     /* =====================================================
        ESCAPE
-    ====================================================== */
+    ===================================================== */
 
     function escapeHtml(text) {
 
@@ -3546,7 +3740,7 @@
 
     /* =====================================================
        START
-    ====================================================== */
+    ===================================================== */
 
     (async function() {
 
