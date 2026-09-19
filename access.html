@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>متابعة الطلاب | مركز حردان طارق القرآني</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+
+    .demo-badge {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 9999;
+      background: #222;
+      color: white;
+      padding: 6px 13px;
+      border-radius: 20px;
+      font-size: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.18);
+    }
+
+    .access-page {
+      min-height: 75vh;
+      padding: 130px 20px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .access-box {
+      width: 100%;
+      max-width: 850px;
+      text-align: center;
+    }
+
+    .access-title {
+      margin-bottom: 45px;
+    }
+
+    .access-title .section-kicker {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .access-title h1 {
+      margin: 0 0 12px;
+      font-size: 36px;
+    }
+
+    .access-title p {
+      margin: 0;
+      color: #666;
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    .access-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .access-card {
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 22px;
+      padding: 40px 28px;
+      text-decoration: none;
+      color: #222;
+      box-shadow: 0 8px 25px rgba(0,0,0,.06);
+      transition: .25s ease;
+    }
+
+    .access-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.12);
+    }
+
+    .access-icon {
+      width: 85px;
+      height: 85px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: #faf7ea;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+    }
+
+    .access-card h2 {
+      margin: 0 0 12px;
+      font-size: 23px;
+    }
+
+    .access-card p {
+      margin: 0;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .access-arrow {
+      display: block;
+      margin-top: 20px;
+      color: #b28b18;
+      font-weight: bold;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 35px;
+    }
+
+    @media (max-width: 700px) {
+
+      .access-page {
+        padding: 110px 15px 60px;
+      }
+
+      .access-title h1 {
+        font-size: 29px;
+      }
+
+      .access-title p {
+        font-size: 15px;
+      }
+
+      .access-options {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="demo-badge">
+    النسخة التجريبية
+  </div>
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <div class="container nav">
+
+      <a class="brand" href="index.html">
+
+        <img
+          src="logo.png"
+          alt="شعار مركز حردان طارق القرآني"
+        >
+
+        <span>
+          مركز حردان طارق القرآني
+        </span>
+
+      </a>
+
+
+      <nav>
+
+        <a href="index.html">
+          الرئيسية
+        </a>
+
+        <a href="index.html#about">
+          عن المركز
+        </a>
+
+        <a href="programs.html">
+          الشعب والحلقات
+        </a>
+
+        <a href="index.html#schedule">
+          أوقات الدوام
+        </a>
+
+        <a href="index.html#contact">
+          تواصل معنا
+        </a>
+
+      </nav>
+
+
+      <div class="actions">
+
+        <a
+          class="btn btn-outline"
+          href="register.html">
+
+          التسجيل
+
+        </a>
+
+
+        <a
+          class="btn btn-gold"
+          href="https://wa.me/962780791622"
+          target="_blank"
+          rel="noopener">
+
+          واتساب
+
+        </a>
+
+      </div>
+
+
+      <button
+        class="menu-btn"
+        aria-label="فتح القائمة">
+
+        ☰
+
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+    <section class="access-page">
+
+      <div class="access-box">
+
+
+        <div class="access-title">
+
+          <span class="section-kicker">
+            متابعة الطلاب
+          </span>
+
+          <h1>
+            اختر طريقة الدخول
+          </h1>
+
+          <p>
+            اختر الصفحة المناسبة لك للوصول إلى متابعة الطلاب.
+          </p>
+
+        </div>
+
+
+        <div class="access-options">
+
+
+          <!-- الصفحة الشخصية -->
+
+          <a
+            href="followup.html"
+            class="access-card">
+
+            <div class="access-icon">
+              👤
+            </div>
+
+            <h2>
+              الصفحة الشخصية
+            </h2>
+
+            <p>
+              الدخول إلى صفحة الطالب ومتابعة المعلومات الخاصة به.
+            </p>
+
+            <span class="access-arrow">
+              الدخول إلى الصفحة ←
+            </span>
+
+          </a>
+
+
+          <!-- بوابة المعلمين -->
+
+          <a
+            href="teacher-login.html"
+            class="access-card">
+
+            <div class="access-icon">
+              🔐
+            </div>
+
+            <h2>
+              بوابة المعلمين
+            </h2>
+
+            <p>
+              دخول مخصص للمعلمين والمستخدمين المصرح لهم.
+            </p>
+
+            <span class="access-arrow">
+              دخول بوابة المعلمين ←
+            </span>
+
+          </a>
+
+
+        </div>
+
+
+        <a
+          href="programs.html"
+          class="btn btn-outline back-button">
+
+          ← العودة إلى الشعب
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-inner">
+
+      <span>
+        © 2026 مركز حردان طارق القرآني
+      </span>
+
+      <span>
+        منارةٌ للقرآن .. وبناءٌ للأجيال
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    const menuButton = document.querySelector('.menu-btn');
+    const nav = document.querySelector('nav');
+
+    if (menuButton && nav) {
+
+      menuButton.addEventListener('click', () => {
+        nav.classList.toggle('open');
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>
