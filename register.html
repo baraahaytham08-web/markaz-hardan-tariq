@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>التسجيل الإلكتروني | مركز حردان طارق القرآني</title>
-<link rel="icon" type="image/png" href="logo.png">
-  
+  <link rel="icon" type="image/png" href="logo.png">
+
   <link rel="stylesheet" href="style.css">
 
   <style>
@@ -396,7 +396,7 @@
             id="directRegisterButton"
             class="submit-button direct-button"
           >
-            التسجيل مباشرة داخل الموقع ✅
+            إرسال طلب الانضمام ✅
           </button>
 
 
@@ -428,17 +428,17 @@
             </div>
 
             <h3>
-              تم تسجيل الطالب بنجاح
+              تم إرسال طلب الانضمام بنجاح
             </h3>
 
             <p>
               شكرًا لتسجيلكم في مركز حردان طارق القرآني.
               <br>
-              تم استلام بيانات الطالب بنجاح.
+              تم استلام بيانات الطالب وسيتم مراجعة الطلب من إدارة المركز.
             </p>
 
             <p class="success-subtext">
-              سيتم التواصل معكم من المركز عند الحاجة.
+              سيتم اعتماد الطالب وإضافته إلى النظام بعد الموافقة على الطلب.
             </p>
 
           </div>
@@ -450,13 +450,13 @@
             id="errorMessage"
             class="error-message"
           >
-            حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى.
+            حدث خطأ أثناء إرسال الطلب، يرجى المحاولة مرة أخرى.
           </div>
 
 
           <div class="form-note">
-            التسجيل المباشر يحفظ بيانات الطالب في نظام المركز،
-            أما التسجيل عبر واتساب فيرسل الطلب مباشرة إلى المركز.
+            بعد إرسال الطلب، تتم مراجعته من إدارة المركز،
+            ولا تتم إضافة الطالب إلى قائمة الطلاب إلا بعد الموافقة.
           </div>
 
         </form>
@@ -567,7 +567,7 @@
     }
 
 
-    // التسجيل المباشر
+    // إرسال طلب الانضمام
 
     directRegisterButton.addEventListener(
       'click',
@@ -585,7 +585,7 @@
         directRegisterButton.disabled = true;
 
         directRegisterButton.textContent =
-          'جاري تسجيل الطالب...';
+          'جاري إرسال طلب الانضمام...';
 
 
         successMessage.style.display =
@@ -616,8 +616,10 @@
                 memorization:
                   '',
 
+                // مهم:
+                // الطالب يبقى بانتظار الموافقة
                 status:
-                  'active',
+                  'pending',
 
                 notes:
                   data.notes || ''
@@ -631,7 +633,7 @@
           false;
 
         directRegisterButton.textContent =
-          'التسجيل مباشرة داخل الموقع ✅';
+          'إرسال طلب الانضمام ✅';
 
 
         if (error) {
@@ -639,7 +641,7 @@
           console.error(error);
 
           errorMessage.textContent =
-            'تعذر إكمال التسجيل حاليًا. يرجى المحاولة مرة أخرى.';
+            'تعذر إرسال الطلب حاليًا. يرجى المحاولة مرة أخرى.';
 
           errorMessage.style.display =
             'block';
@@ -649,7 +651,7 @@
         }
 
 
-        // نجاح التسجيل
+        // نجاح إرسال الطلب
 
         successMessage.style.display =
           'block';
