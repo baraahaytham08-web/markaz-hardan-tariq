@@ -1,67 +1,179 @@
+```html
 <!doctype html>
 <html lang="ar" dir="rtl">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>مركز حردان طارق القرآني</title>
 
-  <link
-    rel="icon"
-    type="image/png"
-    href="logo.png"
-  >
+  <link rel="icon" type="image/png" href="logo.png">
 
   <meta
     name="description"
     content="مركز حردان طارق القرآني - منارة للقرآن وبناء للأجيال"
   >
 
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
+  <link rel="stylesheet" href="style.css">
 
-  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
   >
 
-
   <style>
 
     /* =====================================================
-       النسخة التجريبية
+       إعدادات عامة
     ===================================================== */
 
-    .demo-badge {
-      position: fixed;
-      top: 12px;
-      left: 12px;
-      z-index: 9999;
-      background: #222;
-      color: white;
-      padding: 6px 13px;
-      border-radius: 20px;
-      font-size: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,.18);
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--green);
+      color: #fff;
     }
 
 
     /* =====================================================
-       ترتيب المعلومات العامة
+       حركات الظهور
+    ===================================================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity .75s ease,
+        transform .75s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .08s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .16s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .24s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: .32s;
+    }
+
+
+    /* =====================================================
+       الهيدر
+    ===================================================== */
+
+    .header {
+      transition:
+        background .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+    }
+
+    .header.scrolled {
+      box-shadow:
+        0 8px 30px rgba(0,0,0,.08);
+    }
+
+
+    /* =====================================================
+       الأزرار
+    ===================================================== */
+
+    .btn {
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease,
+        color .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(.97);
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero-content {
+      animation: heroContentIn .9s ease both;
+    }
+
+    .hero-art {
+      animation: heroArtIn 1s .15s ease both;
+    }
+
+    @keyframes heroContentIn {
+      from {
+        opacity: 0;
+        transform: translateX(35px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes heroArtIn {
+      from {
+        opacity: 0;
+        transform: translateX(-35px) scale(.94);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    .arch {
+      animation:
+        archFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes archFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+
+    /* =====================================================
+       FEATURES
     ===================================================== */
 
     .features {
       display: grid !important;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
       gap: 20px;
       align-items: stretch;
       justify-content: center;
@@ -72,17 +184,33 @@
       box-sizing: border-box;
     }
 
-
     .feature {
       width: 100%;
       box-sizing: border-box;
       text-align: center;
       margin: 0 !important;
+
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-7px);
+    }
+
+    .feature .icon {
+      transition:
+        transform .35s ease;
+    }
+
+    .feature:hover .icon {
+      transform: scale(1.12) rotate(-3deg);
     }
 
 
     /* =====================================================
-       بوابات المركز الإلكترونية
+       البوابات الإلكترونية
     ===================================================== */
 
     .portal-section {
@@ -93,191 +221,125 @@
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,.97),
+          rgba(255,255,255,.98),
           rgba(250,248,240,.94)
         );
 
       border:
-        1px solid
-        rgba(178,139,24,.16);
+        1px solid rgba(178,139,24,.16);
 
       border-radius: 25px;
 
       box-shadow:
-        0 15px 45px
-        rgba(23,77,58,.09);
+        0 15px 45px rgba(23,77,58,.09);
 
       position: relative;
-
       overflow: hidden;
     }
 
-
     .portal-section::before {
-
       content: "";
-
       position: absolute;
-
       width: 190px;
       height: 190px;
-
       top: -100px;
       right: -65px;
-
       border-radius: 50%;
-
-      background:
-        rgba(23,77,58,.045);
-
+      background: rgba(23,77,58,.045);
+      animation: portalCircle 8s ease-in-out infinite;
     }
-
 
     .portal-section::after {
-
       content: "";
-
       position: absolute;
-
       width: 160px;
       height: 160px;
-
       bottom: -95px;
       left: -55px;
-
       border-radius: 50%;
-
-      background:
-        rgba(178,139,24,.055);
-
+      background: rgba(178,139,24,.055);
+      animation: portalCircle 9s 1s ease-in-out infinite reverse;
     }
 
+    @keyframes portalCircle {
+      50% {
+        transform: scale(1.12);
+      }
+    }
 
     .portal-heading {
-
       position: relative;
-
       z-index: 2;
-
       text-align: center;
-
       margin-bottom: 26px;
-
     }
-
 
     .portal-heading .section-kicker {
-
       display: inline-block;
-
       margin-bottom: 7px;
-
-      color:
-        var(--gold);
-
+      color: var(--gold);
       font-size: 12px;
-
       font-weight: bold;
-
     }
-
 
     .portal-heading h2 {
-
-      color:
-        var(--green);
-
+      color: var(--green);
       font-size: 28px;
-
       margin-bottom: 8px;
-
       line-height: 1.4;
-
     }
-
 
     .portal-heading p {
-
-      color:
-        #6f7a75;
-
+      color: #6f7a75;
       font-size: 13px;
-
       line-height: 1.9;
-
       margin: 0 auto;
-
       max-width: 650px;
-
     }
-
 
     .portal-cards {
-
       position: relative;
-
       z-index: 2;
-
       display: grid;
-
       grid-template-columns:
         repeat(2, minmax(0, 1fr));
-
       gap: 20px;
-
     }
 
-
     .portal-card {
-
       position: relative;
-
       overflow: hidden;
 
       display: flex;
-
       align-items: center;
-
       gap: 18px;
 
       min-height: 145px;
-
       padding: 24px 22px;
 
       border-radius: 19px;
-
       text-decoration: none;
 
       background: #fff;
 
       border:
-        1px solid
-        rgba(23,77,58,.09);
+        1px solid rgba(23,77,58,.09);
 
       box-shadow:
-        0 8px 25px
-        rgba(23,77,58,.07);
+        0 8px 25px rgba(23,77,58,.07);
 
       transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        border-color .25s ease;
-
+        transform .3s cubic-bezier(.2,.8,.2,1),
+        box-shadow .3s ease,
+        border-color .3s ease;
     }
 
-
     .portal-card::before {
-
       content: "";
-
       position: absolute;
-
       top: 0;
-
       right: 0;
-
       bottom: 0;
-
       width: 5px;
 
       background:
@@ -287,249 +349,186 @@
           var(--gold)
         );
 
+      transform: scaleY(.35);
+      transform-origin: center;
+      transition: transform .35s ease;
     }
-
 
     .portal-card:hover {
-
-      transform:
-        translateY(-6px);
-
+      transform: translateY(-7px);
       box-shadow:
-        0 18px 38px
-        rgba(23,77,58,.13);
-
+        0 20px 42px rgba(23,77,58,.14);
       border-color:
         rgba(178,139,24,.28);
-
     }
 
+    .portal-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .portal-card:active {
+      transform: translateY(-2px) scale(.985);
+    }
 
     .portal-card.teacher .portal-icon {
-
-      background:
-        var(--green-light);
-
-      color:
-        var(--green);
-
+      background: var(--green-light);
+      color: var(--green);
     }
-
 
     .portal-card.student .portal-icon {
-
-      background:
-        #fff8df;
-
-      color:
-        var(--gold);
-
+      background: #fff8df;
+      color: var(--gold);
     }
 
-
     .portal-icon {
-
       width: 68px;
-
       height: 68px;
-
       min-width: 68px;
 
       border-radius: 19px;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       font-size: 31px;
 
       border:
-        1px solid
-        rgba(178,139,24,.12);
+        1px solid rgba(178,139,24,.12);
 
+      transition:
+        transform .35s ease;
     }
 
+    .portal-card:hover .portal-icon {
+      transform:
+        rotate(-5deg) scale(1.08);
+    }
 
     .portal-content {
-
       flex: 1;
-
     }
-
 
     .portal-content h3 {
-
-      color:
-        var(--green);
-
+      color: var(--green);
       font-size: 18px;
-
       margin-bottom: 7px;
-
     }
-
 
     .portal-content p {
-
-      color:
-        #707b76;
-
+      color: #707b76;
       font-size: 11px;
-
       line-height: 1.9;
-
       margin: 0;
-
     }
 
-
     .portal-arrow {
-
       width: 40px;
-
       height: 40px;
-
       min-width: 40px;
 
       border-radius: 50%;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
-      background:
-        var(--green-light);
-
-      color:
-        var(--green);
+      background: var(--green-light);
+      color: var(--green);
 
       font-size: 15px;
 
       transition:
-        .25s ease;
-
+        .3s ease;
     }
-
 
     .portal-card:hover .portal-arrow {
-
       transform:
-        translateX(-4px);
+        translateX(-5px) rotate(5deg);
 
-      background:
-        var(--green);
-
-      color:
-        #fff;
-
+      background: var(--green);
+      color: #fff;
     }
-
 
     .portal-note {
-
       position: relative;
-
       z-index: 2;
-
       text-align: center;
-
       margin-top: 18px;
-
-      color:
-        #8b9690;
-
+      color: #8b9690;
       font-size: 10px;
-
     }
 
 
     /* =====================================================
-       أزرار التسجيل
+       ABOUT / SCHEDULE / REGISTER
     ===================================================== */
 
-    .register-buttons {
-
-      display: flex;
-
-      gap: 12px;
-
-      flex-wrap: wrap;
-
-      margin-top: 20px;
-
+    .about,
+    .schedule,
+    .register,
+    .contact {
+      position: relative;
     }
 
+    .quote-card,
+    .schedule-box {
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .quote-card:hover,
+    .schedule-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .register-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
 
     .register-buttons .btn-gold {
-
       min-width: 190px;
-
       text-align: center;
-
     }
 
 
     /* =====================================================
-       التواصل
+       CONTACT
     ===================================================== */
 
     .contact {
-
       align-items: center;
-
     }
-
 
     .contact-list {
-
       display: flex;
-
       flex-wrap: wrap;
-
       justify-content: center;
-
       align-items: center;
-
       gap: 18px;
-
       padding: 10px;
-
     }
-
 
     .contact-list > div {
-
       margin: 0 !important;
-
       padding: 0 !important;
-
       border: none !important;
-
       background: transparent !important;
-
       box-shadow: none !important;
-
       font-size: 0;
-
     }
 
-
     .contact-list a {
-
       width: 64px;
-
       height: 64px;
-
       border-radius: 50%;
 
       display: flex;
-
       align-items: center;
-
       justify-content: center;
 
       text-decoration: none;
@@ -537,62 +536,81 @@
       background: #fff;
 
       border:
-        1px solid
-        #eee;
+        1px solid #eee;
 
       box-shadow:
-        0 8px 22px
-        rgba(0,0,0,.08);
+        0 8px 22px rgba(0,0,0,.08);
 
       transition:
-        .25s ease;
+        transform .25s ease,
+        box-shadow .25s ease;
 
       position: relative;
-
       color: #222;
-
     }
-
 
     .contact-list a:hover {
-
       transform:
-        translateY(-5px);
+        translateY(-6px) scale(1.05);
 
       box-shadow:
-        0 12px 28px
-        rgba(0,0,0,.14);
-
+        0 14px 30px rgba(0,0,0,.14);
     }
 
+    .contact-list a:active {
+      transform:
+        scale(.93);
+    }
 
     .contact-list a i {
-
       font-size: 27px;
-
       line-height: 1;
-
     }
 
-
     .contact-list a span {
-
       display: none;
-
     }
 
 
     /* =====================================================
-       تحسينات عامة للموبايل
+       تأثير الضغط
+    ===================================================== */
+
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .click-effect {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      background: rgba(178,139,24,.35);
+      transform: translate(-50%, -50%) scale(0);
+      animation: clickRipple .55s ease-out forwards;
+    }
+
+    @keyframes clickRipple {
+      to {
+        transform:
+          translate(-50%, -50%) scale(7);
+        opacity: 0;
+      }
+    }
+
+
+    /* =====================================================
+       تحسينات الموبايل
     ===================================================== */
 
     @media (max-width: 900px) {
 
       .features {
-
         grid-template-columns:
           repeat(2, minmax(0, 1fr));
-
       }
 
     }
@@ -601,111 +619,58 @@
     @media (max-width: 700px) {
 
       .portal-section {
-
         width: 92%;
-
-        padding:
-          27px 17px;
-
-        margin:
-          25px auto 38px;
-
-        border-radius:
-          21px;
-
+        padding: 27px 17px;
+        margin: 25px auto 38px;
+        border-radius: 21px;
       }
-
 
       .portal-heading {
-
-        margin-bottom:
-          21px;
-
+        margin-bottom: 21px;
       }
-
 
       .portal-heading h2 {
-
         font-size: 22px;
-
       }
-
 
       .portal-heading p {
-
         font-size: 12px;
-
         line-height: 1.8;
-
       }
-
 
       .portal-cards {
-
-        grid-template-columns:
-          1fr;
-
+        grid-template-columns: 1fr;
         gap: 13px;
-
       }
-
 
       .portal-card {
-
-        min-height:
-          125px;
-
-        padding:
-          19px 16px;
-
+        min-height: 125px;
+        padding: 19px 16px;
         gap: 13px;
-
-        border-radius:
-          17px;
-
+        border-radius: 17px;
       }
-
 
       .portal-icon {
-
         width: 56px;
-
         height: 56px;
-
         min-width: 56px;
-
-        border-radius:
-          16px;
-
+        border-radius: 16px;
         font-size: 25px;
-
       }
-
 
       .portal-content h3 {
-
         font-size: 15px;
-
       }
-
 
       .portal-content p {
-
         font-size: 10px;
-
         line-height: 1.8;
-
       }
 
-
       .portal-arrow {
-
         width: 35px;
-
         height: 35px;
-
         min-width: 35px;
-
       }
 
     }
@@ -713,844 +678,447 @@
 
     @media (max-width: 600px) {
 
-      /* منع أي خروج أفقي */
-
       html,
       body {
-
         width: 100%;
-
         max-width: 100%;
-
         overflow-x: hidden;
-
       }
-
-
-      /* النسخة التجريبية */
-
-      .demo-badge {
-
-        top: 8px;
-
-        left: 8px;
-
-        padding:
-          5px 10px;
-
-        font-size: 10px;
-
-      }
-
-
-      /* =================================================
-         HEADER
-      ================================================= */
 
       .header {
-
         position: sticky;
-
         top: 0;
-
         z-index: 999;
-
       }
-
 
       .header .container {
-
-        min-height:
-          70px;
-
+        min-height: 70px;
       }
-
 
       .brand {
-
         max-width:
           calc(100% - 55px);
-
       }
-
 
       .brand img {
-
-        width:
-          42px !important;
-
-        height:
-          42px !important;
-
+        width: 42px !important;
+        height: 42px !important;
       }
-
 
       .brand span {
-
-        font-size:
-          13px !important;
-
-        line-height:
-          1.4;
-
+        font-size: 13px !important;
+        line-height: 1.4;
       }
-
-
-      /* إخفاء أزرار الهيدر على الهاتف */
 
       .header .actions {
-
-        display:
-          none !important;
-
+        display: none !important;
       }
-
-
-      /* زر القائمة */
 
       .menu-btn {
-
-        display:
-          flex !important;
-
-        align-items:
-          center;
-
-        justify-content:
-          center;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
 
         width: 44px;
-
         height: 44px;
-
         min-width: 44px;
 
-        border-radius:
-          12px;
+        border-radius: 12px;
+        font-size: 23px;
+        cursor: pointer;
 
-        font-size:
-          23px;
-
-        cursor:
-          pointer;
-
+        transition:
+          transform .2s ease,
+          background .2s ease;
       }
 
-
-      /* =================================================
-         القائمة
-      ================================================= */
+      .menu-btn:active {
+        transform: scale(.9);
+      }
 
       .header nav {
+        position: absolute !important;
+        top: calc(100% + 8px);
+        right: 12px;
+        left: 12px;
 
-        position:
-          absolute !important;
-
-        top:
-          calc(100% + 8px);
-
-        right:
-          12px;
-
-        left:
-          12px;
-
-        display:
-          none !important;
-
-        flex-direction:
-          column;
-
+        display: none !important;
+        flex-direction: column;
         gap: 4px;
 
-        padding:
-          10px;
+        padding: 10px;
 
         background:
           rgba(255,255,255,.98);
 
-        border-radius:
-          18px;
+        border-radius: 18px;
 
         box-shadow:
-          0 15px 40px
-          rgba(0,0,0,.14);
+          0 15px 40px rgba(0,0,0,.14);
 
         border:
           1px solid #eee;
 
+        transform-origin: top center;
       }
-
 
       .header nav.open {
-
-        display:
-          flex !important;
-
+        display: flex !important;
+        animation:
+          menuOpen .25s ease both;
       }
 
+      @keyframes menuOpen {
+        from {
+          opacity: 0;
+          transform:
+            translateY(-8px) scale(.97);
+        }
+
+        to {
+          opacity: 1;
+          transform:
+            translateY(0) scale(1);
+        }
+      }
 
       .header nav a {
-
         width: 100%;
+        box-sizing: border-box;
 
-        box-sizing:
-          border-box;
+        padding: 13px 15px;
+        border-radius: 12px;
 
-        padding:
-          13px 15px;
+        font-size: 15px;
+        text-align: right;
 
-        border-radius:
-          12px;
-
-        font-size:
-          15px;
-
-        text-align:
-          right;
-
+        transition:
+          background .2s ease,
+          transform .2s ease;
       }
-
 
       .header nav a:hover,
       .header nav a.active {
+        background: #f4f1e7;
+      }
 
-        background:
-          #f4f1e7;
-
+      .header nav a:active {
+        transform: scale(.98);
       }
 
 
-      /* =================================================
-         HERO
-      ================================================= */
+      /* HERO */
 
       .hero {
-
-        padding-top:
-          55px !important;
-
-        padding-bottom:
-          45px !important;
-
+        padding-top: 55px !important;
+        padding-bottom: 45px !important;
       }
-
 
       .hero-inner {
-
-        display:
-          flex !important;
-
-        flex-direction:
-          column;
-
-        gap:
-          30px;
-
-        text-align:
-          center;
-
+        display: flex !important;
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
       }
-
 
       .hero-content {
-
-        width:
-          100%;
-
-        max-width:
-          100%;
-
+        width: 100%;
+        max-width: 100%;
       }
-
 
       .hero-content .eyebrow {
-
-        font-size:
-          14px;
-
-        margin-bottom:
-          8px;
-
+        font-size: 14px;
+        margin-bottom: 8px;
       }
-
 
       .hero-content h1 {
-
-        font-size:
-          31px !important;
-
-        line-height:
-          1.35;
-
-        margin-bottom:
-          12px;
-
+        font-size: 31px !important;
+        line-height: 1.35;
+        margin-bottom: 12px;
       }
-
 
       .hero-content h2 {
-
-        font-size:
-          19px !important;
-
-        line-height:
-          1.6;
-
+        font-size: 19px !important;
+        line-height: 1.6;
       }
-
 
       .hero-text {
-
-        font-size:
-          15px !important;
-
-        line-height:
-          1.9;
-
-        margin-top:
-          15px;
-
+        font-size: 15px !important;
+        line-height: 1.9;
+        margin-top: 15px;
       }
-
-
-      /* الرسم في الهيرو */
 
       .hero-art {
-
-        width:
-          100%;
-
-        display:
-          flex;
-
-        justify-content:
-          center;
-
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
-
 
       .arch {
-
-        max-width:
-          250px;
-
-        width:
-          75%;
-
+        max-width: 250px;
+        width: 75%;
       }
 
 
-      /* =================================================
-         FEATURES
-      ================================================= */
+      /* FEATURES */
 
       .features {
-
-        grid-template-columns:
-          1fr !important;
-
-        gap:
-          14px;
-
-        padding-left:
-          15px;
-
-        padding-right:
-          15px;
-
+        grid-template-columns: 1fr !important;
+        gap: 14px;
+        padding-left: 15px;
+        padding-right: 15px;
       }
-
 
       .feature {
-
-        padding:
-          24px 18px !important;
-
-        border-radius:
-          18px;
-
+        padding: 24px 18px !important;
+        border-radius: 18px;
       }
-
 
       .feature .icon {
-
-        font-size:
-          30px;
-
+        font-size: 30px;
       }
-
 
       .feature h3 {
-
-        font-size:
-          18px;
-
+        font-size: 18px;
       }
-
 
       .feature p {
-
-        font-size:
-          14px;
-
-        line-height:
-          1.8;
-
+        font-size: 14px;
+        line-height: 1.8;
       }
 
 
-      /* =================================================
-         ABOUT
-      ================================================= */
+      /* ABOUT */
 
       .about {
-
-        display:
-          flex !important;
-
-        flex-direction:
-          column;
-
-        gap:
-          25px;
-
-        padding-left:
-          18px;
-
-        padding-right:
-          18px;
-
+        display: flex !important;
+        flex-direction: column;
+        gap: 25px;
+        padding-left: 18px;
+        padding-right: 18px;
       }
-
 
       .quote-card {
-
-        width:
-          100%;
-
-        box-sizing:
-          border-box;
-
-        padding:
-          25px 18px !important;
-
-        text-align:
-          center;
-
+        width: 100%;
+        box-sizing: border-box;
+        padding: 25px 18px !important;
+        text-align: center;
       }
-
 
       .quote-card blockquote {
-
-        font-size:
-          19px !important;
-
-        line-height:
-          1.9;
-
+        font-size: 19px !important;
+        line-height: 1.9;
       }
-
 
       .about-text {
-
-        text-align:
-          center;
-
+        text-align: center;
       }
-
 
       .about-text h2 {
-
-        font-size:
-          27px !important;
-
+        font-size: 27px !important;
       }
-
 
       .about-text p {
-
-        font-size:
-          15px;
-
-        line-height:
-          1.9;
-
+        font-size: 15px;
+        line-height: 1.9;
       }
-
 
       .about-text .btn {
-
-        width:
-          100%;
-
-        box-sizing:
-          border-box;
-
+        width: 100%;
+        box-sizing: border-box;
       }
 
 
-      /* =================================================
-         SCHEDULE
-      ================================================= */
+      /* SCHEDULE */
 
       .schedule {
+        display: flex !important;
+        flex-direction: column;
+        gap: 25px;
 
-        display:
-          flex !important;
+        padding-left: 18px;
+        padding-right: 18px;
 
-        flex-direction:
-          column;
-
-        gap:
-          25px;
-
-        padding-left:
-          18px;
-
-        padding-right:
-          18px;
-
-        text-align:
-          center;
-
+        text-align: center;
       }
-
 
       .schedule h2 {
-
-        font-size:
-          27px !important;
-
+        font-size: 27px !important;
       }
-
 
       .schedule p {
-
-        font-size:
-          15px;
-
-        line-height:
-          1.9;
-
+        font-size: 15px;
+        line-height: 1.9;
       }
-
 
       .schedule-box {
-
-        width:
-          100%;
-
-        box-sizing:
-          border-box;
-
+        width: 100%;
+        box-sizing: border-box;
       }
-
 
       .schedule-box > div {
-
-        padding:
-          18px 15px !important;
-
+        padding: 18px 15px !important;
       }
-
 
       .schedule-box strong {
-
-        font-size:
-          17px;
-
+        font-size: 17px;
       }
-
 
       .schedule-box span {
-
-        font-size:
-          14px;
-
+        font-size: 14px;
       }
 
 
-      /* =================================================
-         REGISTER
-      ================================================= */
+      /* REGISTER */
 
       .register {
-
-        padding-left:
-          18px;
-
-        padding-right:
-          18px;
-
+        padding-left: 18px;
+        padding-right: 18px;
       }
-
 
       .register-inner {
-
-        display:
-          flex !important;
-
-        flex-direction:
-          column;
-
-        gap:
-          20px;
-
-        text-align:
-          center;
-
+        display: flex !important;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
       }
-
 
       .register-inner h2 {
-
-        font-size:
-          26px !important;
-
-        line-height:
-          1.5;
-
+        font-size: 26px !important;
+        line-height: 1.5;
       }
-
 
       .register-inner p {
-
-        font-size:
-          14px;
-
-        line-height:
-          1.8;
-
+        font-size: 14px;
+        line-height: 1.8;
       }
-
 
       .register-buttons {
-
-        flex-direction:
-          column;
-
-        width:
-          100%;
-
-        gap:
-          10px;
-
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
       }
-
 
       .register-buttons .btn {
-
-        width:
-          100%;
-
-        min-width:
-          0 !important;
-
-        box-sizing:
-          border-box;
-
-        padding:
-          14px 15px;
-
+        width: 100%;
+        min-width: 0 !important;
+        box-sizing: border-box;
+        padding: 14px 15px;
       }
 
 
-      /* =================================================
-         CONTACT
-      ================================================= */
+      /* CONTACT */
 
       .contact {
+        display: flex !important;
+        flex-direction: column;
+        gap: 20px;
 
-        display:
-          flex !important;
+        padding-left: 18px;
+        padding-right: 18px;
 
-        flex-direction:
-          column;
-
-        gap:
-          20px;
-
-        padding-left:
-          18px;
-
-        padding-right:
-          18px;
-
-        text-align:
-          center;
-
+        text-align: center;
       }
-
 
       .contact h2 {
-
-        font-size:
-          27px !important;
-
+        font-size: 27px !important;
       }
-
 
       .contact p {
-
-        font-size:
-          14px;
-
-        line-height:
-          1.9;
-
+        font-size: 14px;
+        line-height: 1.9;
       }
-
 
       .contact-list {
-
-        gap:
-          13px;
-
-        padding:
-          5px;
-
+        gap: 13px;
+        padding: 5px;
       }
-
 
       .contact-list a {
-
-        width:
-          56px;
-
-        height:
-          56px;
-
+        width: 56px;
+        height: 56px;
       }
-
 
       .contact-list a i {
-
-        font-size:
-          22px;
-
+        font-size: 22px;
       }
 
 
-      /* =================================================
-         FOOTER
-      ================================================= */
+      /* FOOTER */
 
       footer {
-
-        padding:
-          25px 15px !important;
-
+        padding: 25px 15px !important;
       }
 
-
       .footer-inner {
+        display: flex !important;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
 
-        display:
-          flex !important;
-
-        flex-direction:
-          column;
-
-        gap:
-          8px;
-
-        text-align:
-          center;
-
-        font-size:
-          13px;
-
-        line-height:
-          1.7;
-
+        font-size: 13px;
+        line-height: 1.7;
       }
 
     }
 
 
-    /* =====================================================
-       شاشات صغيرة جدًا
-    ===================================================== */
-
     @media (max-width: 380px) {
 
       .hero-content h1 {
-
-        font-size:
-          27px !important;
-
+        font-size: 27px !important;
       }
-
 
       .hero-content h2 {
-
-        font-size:
-          17px !important;
-
+        font-size: 17px !important;
       }
-
 
       .brand span {
-
-        font-size:
-          12px !important;
-
+        font-size: 12px !important;
       }
-
 
       .contact-list a {
-
-        width:
-          52px;
-
-        height:
-          52px;
-
+        width: 52px;
+        height: 52px;
       }
-
 
       .portal-card {
-
-        gap:
-          10px;
-
-        padding:
-          17px 13px;
-
+        gap: 10px;
+        padding: 17px 13px;
       }
-
 
       .portal-icon {
-
-        width:
-          51px;
-
-        height:
-          51px;
-
-        min-width:
-          51px;
-
-        font-size:
-          22px;
-
+        width: 51px;
+        height: 51px;
+        min-width: 51px;
+        font-size: 22px;
       }
-
 
       .portal-content h3 {
-
-        font-size:
-          14px;
-
+        font-size: 14px;
       }
 
-
       .portal-content p {
+        font-size: 9px;
+      }
 
-        font-size:
-          9px;
+    }
 
+
+    /* تقليل الحركة لمن يفضل ذلك */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
       }
 
     }
@@ -1563,13 +1131,6 @@
 <body>
 
 
-  <!-- النسخة التجريبية -->
-
-  <div class="demo-badge">
-    النسخة التجريبية
-  </div>
-
-
   <!-- =====================================================
        HEADER
   ===================================================== -->
@@ -1578,10 +1139,7 @@
 
     <div class="container nav">
 
-      <a
-        class="brand"
-        href="#home"
-      >
+      <a class="brand" href="#home">
 
         <img
           src="logo.png"
@@ -1597,10 +1155,7 @@
 
       <nav>
 
-        <a
-          class="active"
-          href="#home"
-        >
+        <a class="active" href="#home">
           الرئيسية
         </a>
 
@@ -1627,7 +1182,7 @@
 
         <a
           class="btn btn-outline"
-          href="#register"
+          href="register.html"
         >
           التسجيل
         </a>
@@ -1658,19 +1213,12 @@
   </header>
 
 
-  <!-- =====================================================
-       MAIN
-  ===================================================== -->
-
   <main>
 
 
     <!-- HERO -->
 
-    <section
-      id="home"
-      class="hero"
-    >
+    <section id="home" class="hero">
 
       <div class="container hero-inner">
 
@@ -1714,13 +1262,11 @@
     </section>
 
 
-    <!-- =====================================================
-         FEATURES
-    ===================================================== -->
+    <!-- FEATURES -->
 
     <section class="features container">
 
-      <article class="feature">
+      <article class="feature reveal reveal-delay-1">
 
         <div class="icon">
           📖
@@ -1737,7 +1283,7 @@
       </article>
 
 
-      <article class="feature">
+      <article class="feature reveal reveal-delay-2">
 
         <div class="icon">
           ✨
@@ -1754,7 +1300,7 @@
       </article>
 
 
-      <article class="feature">
+      <article class="feature reveal reveal-delay-3">
 
         <div class="icon">
           🌱
@@ -1771,7 +1317,7 @@
       </article>
 
 
-      <article class="feature">
+      <article class="feature reveal reveal-delay-4">
 
         <div class="icon">
           📅
@@ -1790,12 +1336,9 @@
     </section>
 
 
-    <!-- =====================================================
-         البوابات الإلكترونية
-         تحت الخانات الأربع مباشرة
-    ===================================================== -->
+    <!-- البوابات الإلكترونية -->
 
-    <section class="portal-section">
+    <section class="portal-section reveal">
 
       <div class="portal-heading">
 
@@ -1816,9 +1359,6 @@
 
       <div class="portal-cards">
 
-
-        <!-- ================= بوابة المعلمين ================= -->
-
         <a
           href="teacher-login.html"
           class="portal-card teacher"
@@ -1827,7 +1367,6 @@
           <div class="portal-icon">
             👨‍🏫
           </div>
-
 
           <div class="portal-content">
 
@@ -1842,15 +1381,12 @@
 
           </div>
 
-
           <div class="portal-arrow">
             ←
           </div>
 
         </a>
 
-
-        <!-- ================= صفحة الطالب ================= -->
 
         <a
           href="student-login.html"
@@ -1860,7 +1396,6 @@
           <div class="portal-icon">
             👨‍🎓
           </div>
-
 
           <div class="portal-content">
 
@@ -1875,13 +1410,11 @@
 
           </div>
 
-
           <div class="portal-arrow">
             ←
           </div>
 
         </a>
-
 
       </div>
 
@@ -1899,10 +1432,7 @@
 
     <!-- ABOUT -->
 
-    <section
-      id="about"
-      class="about container"
-    >
+    <section id="about" class="about container reveal">
 
       <div class="quote-card">
 
@@ -1951,10 +1481,7 @@
 
     <!-- SCHEDULE -->
 
-    <section
-      id="schedule"
-      class="schedule container"
-    >
+    <section id="schedule" class="schedule container reveal">
 
       <div>
 
@@ -2008,10 +1535,7 @@
 
     <!-- REGISTER -->
 
-    <section
-      id="register"
-      class="register"
-    >
+    <section id="register" class="register reveal">
 
       <div class="container register-inner">
 
@@ -2060,10 +1584,7 @@
 
     <!-- CONTACT -->
 
-    <section
-      id="contact"
-      class="contact container"
-    >
+    <section id="contact" class="contact container reveal">
 
       <div>
 
@@ -2085,9 +1606,6 @@
 
       <div class="contact-list">
 
-
-        <!-- اتصال -->
-
         <div>
 
           <a
@@ -2102,8 +1620,6 @@
 
         </div>
 
-
-        <!-- واتساب -->
 
         <div>
 
@@ -2122,8 +1638,6 @@
         </div>
 
 
-        <!-- الموقع -->
-
         <div>
 
           <a
@@ -2140,8 +1654,6 @@
 
         </div>
 
-
-        <!-- فيسبوك -->
 
         <div>
 
@@ -2166,9 +1678,7 @@
   </main>
 
 
-  <!-- =====================================================
-       FOOTER
-  ===================================================== -->
+  <!-- FOOTER -->
 
   <footer>
 
@@ -2187,11 +1697,11 @@
   </footer>
 
 
-  <!-- =====================================================
-       JAVASCRIPT
-  ===================================================== -->
-
   <script>
+
+    /* =====================================================
+       القائمة في الهاتف
+    ===================================================== */
 
     const menuButton =
       document.querySelector('.menu-btn');
@@ -2241,6 +1751,113 @@
       );
 
     }
+
+
+    /* =====================================================
+       ظهور العناصر عند النزول
+    ===================================================== */
+
+    const revealElements =
+      document.querySelectorAll('.reveal');
+
+
+    const revealObserver =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add('show');
+
+              revealObserver.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(
+      element => {
+        revealObserver.observe(element);
+      }
+    );
+
+
+    /* =====================================================
+       تأثير الهيدر عند النزول
+    ===================================================== */
+
+    const header =
+      document.querySelector('.header');
+
+
+    function updateHeader() {
+
+      if (!header) return;
+
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+    }
+
+
+    window.addEventListener(
+      'scroll',
+      updateHeader,
+      { passive: true }
+    );
+
+
+    updateHeader();
+
+
+    /* =====================================================
+       تأثير الضغط
+    ===================================================== */
+
+    document.addEventListener(
+      'click',
+      event => {
+
+        const target =
+          event.target.closest('a, button');
+
+        if (!target) return;
+
+        const effect =
+          document.createElement('span');
+
+        effect.className =
+          'click-effect';
+
+        effect.style.left =
+          `${event.clientX}px`;
+
+        effect.style.top =
+          `${event.clientY}px`;
+
+        document.body.appendChild(effect);
+
+        setTimeout(
+          () => effect.remove(),
+          600
+        );
+
+      }
+    );
 
   </script>
 
