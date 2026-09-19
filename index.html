@@ -9,6 +9,7 @@
   <title>مركز حردان طارق القرآني</title>
 
   <link rel="icon" type="image/png" href="logo.png">
+  <link rel="shortcut icon" type="image/png" href="logo.png">
 
   <meta
     name="description"
@@ -24,10 +25,6 @@
 
   <style>
 
-    /* =====================================================
-       إعدادات عامة
-    ===================================================== */
-
     html {
       scroll-behavior: smooth;
     }
@@ -41,6 +38,16 @@
       color: #fff;
     }
 
+    /* =====================================================
+       شعار المركز — دائري ومقصوص
+    ===================================================== */
+
+    .brand img {
+      border-radius: 50% !important;
+      object-fit: cover !important;
+      overflow: hidden;
+      display: block;
+    }
 
     /* =====================================================
        حركات الظهور
@@ -75,7 +82,6 @@
       transition-delay: .32s;
     }
 
-
     /* =====================================================
        الهيدر
     ===================================================== */
@@ -91,7 +97,6 @@
       box-shadow:
         0 8px 30px rgba(0,0,0,.08);
     }
-
 
     /* =====================================================
        الأزرار
@@ -112,7 +117,6 @@
     .btn:active {
       transform: translateY(1px) scale(.97);
     }
-
 
     /* =====================================================
        HERO
@@ -165,7 +169,6 @@
       }
     }
 
-
     /* =====================================================
        FEATURES
     ===================================================== */
@@ -207,7 +210,6 @@
     .feature:hover .icon {
       transform: scale(1.12) rotate(-3deg);
     }
-
 
     /* =====================================================
        البوابات الإلكترونية
@@ -459,7 +461,6 @@
       font-size: 10px;
     }
 
-
     /* =====================================================
        ABOUT / SCHEDULE / REGISTER
     ===================================================== */
@@ -494,7 +495,6 @@
       min-width: 190px;
       text-align: center;
     }
-
 
     /* =====================================================
        CONTACT
@@ -571,7 +571,6 @@
       display: none;
     }
 
-
     /* =====================================================
        تأثير الضغط
     ===================================================== */
@@ -601,7 +600,6 @@
       }
     }
 
-
     /* =====================================================
        تحسينات الموبايل
     ===================================================== */
@@ -614,7 +612,6 @@
       }
 
     }
-
 
     @media (max-width: 700px) {
 
@@ -675,7 +672,6 @@
 
     }
 
-
     @media (max-width: 600px) {
 
       html,
@@ -703,6 +699,8 @@
       .brand img {
         width: 42px !important;
         height: 42px !important;
+        border-radius: 50% !important;
+        object-fit: cover !important;
       }
 
       .brand span {
@@ -806,7 +804,6 @@
         transform: scale(.98);
       }
 
-
       /* HERO */
 
       .hero {
@@ -859,7 +856,6 @@
         width: 75%;
       }
 
-
       /* FEATURES */
 
       .features {
@@ -886,7 +882,6 @@
         font-size: 14px;
         line-height: 1.8;
       }
-
 
       /* ABOUT */
 
@@ -928,7 +923,6 @@
         box-sizing: border-box;
       }
 
-
       /* SCHEDULE */
 
       .schedule {
@@ -968,7 +962,6 @@
         font-size: 14px;
       }
 
-
       /* REGISTER */
 
       .register {
@@ -1006,7 +999,6 @@
         padding: 14px 15px;
       }
 
-
       /* CONTACT */
 
       .contact {
@@ -1043,7 +1035,6 @@
         font-size: 22px;
       }
 
-
       /* FOOTER */
 
       footer {
@@ -1061,7 +1052,6 @@
       }
 
     }
-
 
     @media (max-width: 380px) {
 
@@ -1104,7 +1094,6 @@
 
     }
 
-
     /* تقليل الحركة لمن يفضل ذلك */
 
     @media (prefers-reduced-motion: reduce) {
@@ -1127,13 +1116,9 @@
 
 </head>
 
-
 <body>
 
-
-  <!-- =====================================================
-       HEADER
-  ===================================================== -->
+  <!-- HEADER -->
 
   <header class="header">
 
@@ -1151,7 +1136,6 @@
         </span>
 
       </a>
-
 
       <nav>
 
@@ -1177,7 +1161,6 @@
 
       </nav>
 
-
       <div class="actions">
 
         <a
@@ -1198,7 +1181,6 @@
 
       </div>
 
-
       <button
         class="menu-btn"
         aria-label="فتح القائمة"
@@ -1212,9 +1194,7 @@
 
   </header>
 
-
   <main>
-
 
     <!-- HERO -->
 
@@ -1244,7 +1224,6 @@
 
         </div>
 
-
         <div class="hero-art">
 
           <div class="arch">
@@ -1260,7 +1239,6 @@
       </div>
 
     </section>
-
 
     <!-- FEATURES -->
 
@@ -1282,7 +1260,6 @@
 
       </article>
 
-
       <article class="feature reveal reveal-delay-2">
 
         <div class="icon">
@@ -1299,7 +1276,6 @@
 
       </article>
 
-
       <article class="feature reveal reveal-delay-3">
 
         <div class="icon">
@@ -1315,7 +1291,6 @@
         </p>
 
       </article>
-
 
       <article class="feature reveal reveal-delay-4">
 
@@ -1334,7 +1309,6 @@
       </article>
 
     </section>
-
 
     <!-- البوابات الإلكترونية -->
 
@@ -1355,7 +1329,6 @@
         </p>
 
       </div>
-
 
       <div class="portal-cards">
 
@@ -1387,7 +1360,6 @@
 
         </a>
 
-
         <a
           href="student-login.html"
           class="portal-card student"
@@ -1418,7 +1390,6 @@
 
       </div>
 
-
       <div class="portal-note">
 
         <i class="fa-solid fa-shield-halved"></i>
@@ -1428,7 +1399,6 @@
       </div>
 
     </section>
-
 
     <!-- ABOUT -->
 
@@ -1449,7 +1419,6 @@
         </small>
 
       </div>
-
 
       <div class="about-text">
 
@@ -1478,7 +1447,6 @@
 
     </section>
 
-
     <!-- SCHEDULE -->
 
     <section id="schedule" class="schedule container reveal">
@@ -1500,7 +1468,6 @@
 
       </div>
 
-
       <div class="schedule-box">
 
         <div>
@@ -1514,7 +1481,6 @@
           </span>
 
         </div>
-
 
         <div>
 
@@ -1531,7 +1497,6 @@
       </div>
 
     </section>
-
 
     <!-- REGISTER -->
 
@@ -1555,7 +1520,6 @@
 
         </div>
 
-
         <div class="register-buttons">
 
           <a
@@ -1564,7 +1528,6 @@
           >
             التسجيل الإلكتروني 📝
           </a>
-
 
           <a
             class="btn btn-gold big"
@@ -1580,7 +1543,6 @@
       </div>
 
     </section>
-
 
     <!-- CONTACT -->
 
@@ -1603,7 +1565,6 @@
 
       </div>
 
-
       <div class="contact-list">
 
         <div>
@@ -1619,7 +1580,6 @@
           </a>
 
         </div>
-
 
         <div>
 
@@ -1637,7 +1597,6 @@
 
         </div>
 
-
         <div>
 
           <a
@@ -1653,7 +1612,6 @@
           </a>
 
         </div>
-
 
         <div>
 
@@ -1677,7 +1635,6 @@
 
   </main>
 
-
   <!-- FOOTER -->
 
   <footer>
@@ -1696,19 +1653,15 @@
 
   </footer>
 
-
   <script>
 
-    /* =====================================================
-       القائمة في الهاتف
-    ===================================================== */
+    /* القائمة في الهاتف */
 
     const menuButton =
       document.querySelector('.menu-btn');
 
     const nav =
       document.querySelector('nav');
-
 
     if (menuButton && nav) {
 
@@ -1728,7 +1681,6 @@
 
         }
       );
-
 
       nav.querySelectorAll('a').forEach(
         link => {
@@ -1752,14 +1704,10 @@
 
     }
 
-
-    /* =====================================================
-       ظهور العناصر عند النزول
-    ===================================================== */
+    /* ظهور العناصر عند النزول */
 
     const revealElements =
       document.querySelectorAll('.reveal');
-
 
     const revealObserver =
       new IntersectionObserver(
@@ -1785,21 +1733,16 @@
         }
       );
 
-
     revealElements.forEach(
       element => {
         revealObserver.observe(element);
       }
     );
 
-
-    /* =====================================================
-       تأثير الهيدر عند النزول
-    ===================================================== */
+    /* تأثير الهيدر عند النزول */
 
     const header =
       document.querySelector('.header');
-
 
     function updateHeader() {
 
@@ -1813,20 +1756,15 @@
 
     }
 
-
     window.addEventListener(
       'scroll',
       updateHeader,
       { passive: true }
     );
 
-
     updateHeader();
 
-
-    /* =====================================================
-       تأثير الضغط
-    ===================================================== */
+    /* تأثير الضغط */
 
     document.addEventListener(
       'click',
@@ -1860,7 +1798,6 @@
     );
 
   </script>
-
 
 </body>
 
