@@ -2266,7 +2266,7 @@
             class="teacher-email"
             id="teacherEmail">
 
-            -
+            بوابة المعلمين
 
           </span>
 
@@ -2997,23 +2997,19 @@
 
     /* =====================================================
        AUTH
+       الدخول أصبح عن طريق الكود الموحد فقط
+       ولا يوجد أي اعتماد على الإيميل
     ====================================================== */
 
-    async function checkUser() {
+    function checkUser() {
 
-      const {
-        data,
-        error
-      } =
-        await supabaseClient.auth.getUser();
+      const accessGranted =
+        localStorage.getItem(
+          'teacherAccess'
+        ) === 'granted';
 
-      if (
-        error ||
-        !data.user ||
-        !data.user.email ||
-        data.user.email.toLowerCase() !==
-        'baraahaytham08@gmail.com'
-      ) {
+
+      if (!accessGranted) {
 
         window.location.href =
           'teacher-login.html';
@@ -3021,15 +3017,18 @@
         return false;
       }
 
-      document.getElementById(
-        'teacherEmail'
-      ).textContent =
-        data.user.email;
 
       document.getElementById(
         'teacherName'
       ).textContent =
         'المعلم';
+
+
+      document.getElementById(
+        'teacherEmail'
+      ).textContent =
+        'بوابة المعلمين';
+
 
       return true;
     }
@@ -4671,7 +4670,7 @@
 
     /* =====================================================
        DELETE / EXPEL
-       
+
        مهم:
        - الطالب المستمر/المتوقف:
          زر "فصل" ينقله إلى expelled.
@@ -4905,6 +4904,7 @@
 
     /* =====================================================
        LOGOUT
+       تسجيل الخروج الآن يعتمد على حذف صلاحية الكود فقط
     ====================================================== */
 
     document
@@ -4916,11 +4916,11 @@
         logout
       );
 
-    async function logout() {
+    function logout() {
 
-      await supabaseClient
-        .auth
-        .signOut();
+      localStorage.removeItem(
+        'teacherAccess'
+      );
 
       window.location.href =
         'teacher-login.html';
@@ -5089,7 +5089,7 @@
     (async function() {
 
       const loggedIn =
-        await checkUser();
+        checkUser();
 
       if (!loggedIn) {
         return;
