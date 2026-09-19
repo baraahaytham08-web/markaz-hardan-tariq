@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التسجيل الإلكتروني | مركز حردان طارق القرآني</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      min-height: 100vh;
+    }
+
+    .registration-page {
+      padding: 60px 20px 80px;
+    }
+
+    .registration-box {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 22px;
+      padding: 35px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .registration-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .registration-header img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .registration-header h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+
+    .registration-header p {
+      margin: 0;
+      line-height: 1.8;
+      opacity: 0.8;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .registration-form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px 16px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 16px;
+      background: #fff;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #b8943d;
+      box-shadow: 0 0 0 3px rgba(184, 148, 61, 0.12);
+    }
+
+    .submit-button {
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      font-family: inherit;
+      font-size: 17px;
+      padding: 15px 20px;
+      border-radius: 12px;
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 14px;
+      opacity: 0.7;
+      line-height: 1.7;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 600px) {
+      .registration-page {
+        padding: 35px 15px 60px;
+      }
+
+      .registration-box {
+        padding: 25px 18px;
+      }
+
+      .registration-header h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="registration-page">
+
+    <div class="container">
+
+      <a href="index.html#register" class="back-link">
+        ← العودة إلى الموقع
+      </a>
+
+      <div class="registration-box">
+
+        <div class="registration-header">
+
+          <img src="logo.png" alt="شعار مركز حردان طارق القرآني">
+
+          <h1>التسجيل الإلكتروني 📝</h1>
+
+          <p>
+            أدخل بيانات الطالب المطلوبة، وبعد الإرسال سيتم تحويلك إلى واتساب
+            لإرسال طلب التسجيل إلى المركز.
+          </p>
+
+        </div>
+
+        <form id="registrationForm" class="registration-form">
+
+          <div class="form-group">
+            <label for="studentName">اسم الطالب</label>
+
+            <input
+              type="text"
+              id="studentName"
+              name="studentName"
+              placeholder="أدخل اسم الطالب"
+              required
+            >
+          </div>
+
+
+          <div class="form-group">
+            <label for="studentAge">العمر</label>
+
+            <input
+              type="number"
+              id="studentAge"
+              name="studentAge"
+              placeholder="أدخل عمر الطالب"
+              min="1"
+              max="100"
+              required
+            >
+          </div>
+
+
+          <div class="form-group">
+            <label for="guardianPhone">رقم ولي الأمر</label>
+
+            <input
+              type="tel"
+              id="guardianPhone"
+              name="guardianPhone"
+              placeholder="مثال: 07XXXXXXXX"
+              required
+            >
+          </div>
+
+
+          <div class="form-group">
+            <label for="program">الشعبة المطلوبة</label>
+
+            <select id="program" name="program" required>
+
+              <option value="">اختر الشعبة</option>
+
+              <option value="شعبة الحفاظ">
+                شعبة الحفاظ
+              </option>
+
+              <option value="شعبة تجويد">
+                شعبة تجويد
+              </option>
+
+              <option value="شعبة إجازة">
+                شعبة إجازة
+              </option>
+
+              <option value="شعبة فرسان">
+                شعبة فرسان
+              </option>
+
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="notes">ملاحظات إضافية</label>
+
+            <textarea
+              id="notes"
+              name="notes"
+              placeholder="اكتب أي ملاحظات أو معلومات إضافية إن وجدت"
+            ></textarea>
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn btn-gold submit-button"
+          >
+            إرسال طلب التسجيل عبر واتساب 📝
+          </button>
+
+          <div class="form-note">
+            لن يتم حفظ البيانات داخل الموقع، وسيتم إرسالها مباشرة إلى المركز عبر واتساب.
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+
+      event.preventDefault();
+
+      const studentName =
+        document.getElementById('studentName').value.trim();
+
+      const studentAge =
+        document.getElementById('studentAge').value.trim();
+
+      const guardianPhone =
+        document.getElementById('guardianPhone').value.trim();
+
+      const program =
+        document.getElementById('program').value;
+
+      const notes =
+        document.getElementById('notes').value.trim();
+
+
+      const message = [
+        'السلام عليكم، أرغب بتسجيل طالب في مركز حردان طارق القرآني.',
+        '',
+        `اسم الطالب: ${studentName}`,
+        `العمر: ${studentAge}`,
+        `رقم ولي الأمر: ${guardianPhone}`,
+        `الشعبة المطلوبة: ${program}`,
+        `ملاحظات إضافية: ${notes || 'لا يوجد'}`,
+        '',
+        'تم إرسال الطلب من الموقع الإلكتروني للمركز.'
+      ].join('\n');
+
+
+      const whatsappURL =
+        'https://wa.me/962780791622?text=' +
+        encodeURIComponent(message);
+
+
+      const opened = window.open(
+        whatsappURL,
+        '_blank',
+        'noopener'
+      );
+
+      if (!opened) {
+        window.location.href = whatsappURL;
+      }
+
+    });
+  </script>
+
+</body>
+</html>
