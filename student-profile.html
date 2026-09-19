@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -9,84 +8,50 @@
   <title>ملف الطالب | مركز حردان طارق القرآني</title>
 
   <link rel="icon" type="image/png" href="logo.png">
-  <link rel="shortcut icon" type="image/png" href="logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  >
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     :root {
-      --green: #174d3a;
-      --green-dark: #0c3023;
-      --green-mid: #21664b;
-      --green-soft: #eaf4ef;
-
-      --gold: #b28b18;
-      --gold-light: #d9bc5c;
-      --gold-soft: #fff8df;
-
-      --cream: #faf8f0;
-      --white: #fff;
-
-      --text: #1d2924;
-      --muted: #78837e;
-      --border: #e5ebe7;
-
-      --success: #237a31;
-      --success-soft: #eaf7ec;
-
-      --danger: #b3261e;
-      --danger-soft: #fff0ef;
-
-      --purple: #6653a6;
-      --purple-soft: #f1edff;
-
-      --gray: #68736e;
-      --gray-soft: #f1f3f2;
-
-      --shadow: 0 12px 35px rgba(23,77,58,.07);
-    }
-
-    html {
-      scroll-behavior: smooth;
+      --green: #0d4d3a;
+      --green2: #218866;
+      --light-green: #eaf4ee;
+      --very-light: #f5f9f7;
+      --border: #dfe9e4;
+      --text: #18352c;
+      --muted: #71817a;
+      --danger: #b42318;
+      --warning: #a15c00;
+      --white: #ffffff;
+      --shadow: 0 10px 35px rgba(13, 77, 58, .08);
     }
 
     body {
-      font-family: Arial, Tahoma, sans-serif;
-      color: var(--text);
-      min-height: 100vh;
-
+      margin: 0;
       background:
-        radial-gradient(
-          circle at 8% 8%,
-          rgba(178,139,24,.10),
-          transparent 23%
-        ),
-        radial-gradient(
-          circle at 90% 80%,
-          rgba(23,77,58,.10),
-          transparent 28%
-        ),
-        linear-gradient(
-          135deg,
-          #faf8f0,
-          #ffffff 48%,
-          #edf5f1
-        );
-
-      overflow-x: hidden;
+        linear-gradient(135deg, #f5f9f7 0%, #eef6f2 100%);
+      color: var(--text);
+      font-family: "Cairo", sans-serif;
+      min-height: 100vh;
     }
 
     button,
-    input {
+    input,
+    select,
+    textarea {
       font-family: inherit;
     }
 
@@ -94,271 +59,154 @@
       cursor: pointer;
     }
 
-    /* ================= TOPBAR ================= */
+    /* =========================================================
+       TOP BAR
+    ========================================================= */
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 100;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,.04);
+    }
 
-      min-height: 78px;
+    .topbar-inner {
+      max-width: 1250px;
+      margin: auto;
+      padding: 15px 20px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       gap: 15px;
-
-      padding: 12px 38px;
-
-      background:
-        rgba(255,255,255,.88);
-
-      backdrop-filter: blur(18px);
-
-      border-bottom:
-        1px solid rgba(229,235,231,.85);
-
-      box-shadow:
-        0 5px 25px rgba(23,77,58,.035);
     }
 
-    .top-title {
+    .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-    }
-
-    .top-icon {
-      width: 44px;
-      height: 44px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 13px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-mid)
-        );
-
-      color: white;
-
-      box-shadow:
-        0 7px 18px rgba(23,77,58,.15);
-    }
-
-    .top-title h1 {
+      text-decoration: none;
       color: var(--green);
-      font-size: 19px;
-      margin-bottom: 3px;
+      font-weight: 900;
     }
 
-    .top-title p {
+    .brand img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .brand-text {
+      line-height: 1.3;
+    }
+
+    .brand-title {
+      font-size: 16px;
+    }
+
+    .brand-subtitle {
       color: var(--muted);
-      font-size: 10px;
+      font-size: 11px;
+      font-weight: 700;
     }
 
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 10px 15px;
-
-      border: none;
-      border-radius: 10px;
-
-      background: var(--green-soft);
+      border: 1px solid var(--border);
+      background: white;
       color: var(--green);
-
-      font-size: 11px;
-      font-weight: bold;
-
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 800;
       transition: .2s;
     }
 
     .back-btn:hover {
-      background: var(--green);
-      color: white;
-      transform: translateY(-2px);
+      background: var(--light-green);
+      transform: translateY(-1px);
     }
 
-    /* ================= CONTENT ================= */
+    /* =========================================================
+       MAIN
+    ========================================================= */
 
-    .content {
-      width: min(1200px, 94%);
-      margin: 28px auto 55px;
+    .page {
+      max-width: 1250px;
+      margin: auto;
+      padding: 28px 20px 50px;
     }
 
-    /* ================= PROFILE HERO ================= */
+    /* =========================================================
+       PROFILE HEADER
+    ========================================================= */
 
-    .profile-hero {
-      position: relative;
-      overflow: hidden;
+    .profile-header {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 25px;
 
       display: flex;
       align-items: center;
       gap: 25px;
 
-      min-height: 215px;
-
-      padding: 30px 35px;
-
-      margin-bottom: 20px;
-
-      border-radius: 24px;
-
-      color: white;
-
-      background:
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(217,188,92,.18),
-          transparent 24%
-        ),
-        linear-gradient(
-          120deg,
-          #123f2f,
-          #1d6549 58%,
-          #174d3a
-        );
-
-      box-shadow:
-        0 20px 45px rgba(23,77,58,.16);
+      margin-bottom: 22px;
     }
 
-    .profile-hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 300px;
-      height: 300px;
-
-      left: -130px;
-      bottom: -210px;
-
-      border:
-        1px solid rgba(255,255,255,.08);
-
-      border-radius: 50%;
-    }
-
-    .profile-photo-wrapper {
+    .photo-area {
       position: relative;
-      z-index: 2;
-
       flex-shrink: 0;
     }
 
-    .profile-photo {
+    .student-photo {
       width: 125px;
       height: 125px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      overflow: hidden;
-
-      border-radius: 50%;
-
-      background:
-        rgba(255,255,255,.12);
-
-      border:
-        4px solid rgba(217,188,92,.80);
-
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.20);
-    }
-
-    .profile-photo img {
-      width: 100%;
-      height: 100%;
-
-      display: none;
-
+      border-radius: 25px;
       object-fit: cover;
-    }
-
-    .profile-photo i {
-      color: rgba(255,255,255,.70);
-      font-size: 45px;
+      border: 4px solid var(--light-green);
+      background: #f0f4f2;
+      display: block;
     }
 
     .photo-button {
       position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
 
-      bottom: 2px;
-      left: 2px;
-
-      width: 37px;
-      height: 37px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border: 3px solid #174d3a;
-      border-radius: 50%;
-
-      background: var(--gold);
-
+      border: none;
+      background: var(--green);
       color: white;
 
-      font-size: 13px;
+      padding: 7px 13px;
+      border-radius: 10px;
 
-      cursor: pointer;
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
 
-      transition: .2s;
-    }
-
-    .photo-button:hover {
-      transform: scale(1.08);
-      background: var(--gold-light);
+      box-shadow: 0 5px 15px rgba(13,77,58,.2);
     }
 
     #photoInput {
       display: none;
     }
 
-    .profile-info {
-      position: relative;
-      z-index: 2;
+    .profile-main {
+      flex: 1;
+      min-width: 0;
     }
 
-    .profile-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-
-      margin-bottom: 8px;
-
-      color: rgba(255,255,255,.65);
-
-      font-size: 11px;
-    }
-
-    .profile-label::before {
-      content: "";
-
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
-
-      background: var(--gold-light);
-    }
-
-    .profile-info h2 {
-      font-size: 30px;
-      margin-bottom: 9px;
+    .profile-name {
+      font-size: 29px;
+      font-weight: 900;
+      color: var(--green);
+      margin: 0 0 8px;
+      word-break: break-word;
     }
 
     .profile-meta {
@@ -368,435 +216,487 @@
     }
 
     .meta-badge {
-      padding: 7px 11px;
-
-      border-radius: 9px;
-
-      background: rgba(255,255,255,.10);
-
-      color: rgba(255,255,255,.85);
-
-      border:
-        1px solid rgba(255,255,255,.10);
-
-      font-size: 10px;
+      background: var(--very-light);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    /* ================= CARDS ================= */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-    .grid {
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #18a05e;
+    }
+
+    /* =========================================================
+       STATS
+    ========================================================= */
+
+    .stats-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 15px;
-
-      margin-bottom: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 22px;
     }
 
     .stat-card {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      min-height: 100px;
-
-      padding: 18px;
-
-      border:
-        1px solid var(--border);
-
+      background: white;
+      border: 1px solid var(--border);
       border-radius: 17px;
-
-      background:
-        rgba(255,255,255,.95);
-
-      box-shadow:
-        var(--shadow);
-    }
-
-    .stat-icon {
-      width: 50px;
-      height: 50px;
-      min-width: 50px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 14px;
-
-      background: var(--green-soft);
-      color: var(--green);
-
-      font-size: 19px;
-    }
-
-    .stat-card:nth-child(2) .stat-icon {
-      background: var(--gold-soft);
-      color: var(--gold);
-    }
-
-    .stat-card:nth-child(3) .stat-icon {
-      background: var(--purple-soft);
-      color: var(--purple);
-    }
-
-    .stat-card:nth-child(4) .stat-icon {
-      background: var(--success-soft);
-      color: var(--success);
-    }
-
-    .stat-number {
-      display: block;
-
-      color: var(--green);
-
-      font-size: 23px;
-      font-weight: 800;
-
-      margin-bottom: 3px;
+      padding: 18px;
+      box-shadow: var(--shadow);
     }
 
     .stat-label {
       color: var(--muted);
-      font-size: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 6px;
     }
 
-    /* ================= PANELS ================= */
+    .stat-value {
+      color: var(--green);
+      font-size: 25px;
+      font-weight: 900;
+    }
 
-    .panel {
+    /* =========================================================
+       SECTIONS
+    ========================================================= */
+
+    .section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      margin-bottom: 15px;
       overflow: hidden;
-
-      margin-bottom: 20px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 20px;
-
-      background:
-        rgba(255,255,255,.96);
-
-      box-shadow:
-        var(--shadow);
+      transition: .2s;
     }
 
-    .panel-header {
+    .section.open {
+      border-color: #cfe0d8;
+      box-shadow: 0 12px 30px rgba(13,77,58,.08);
+    }
+
+    .section-head {
+      min-height: 62px;
+      padding: 12px 58px 12px 18px;
+
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+
       display: flex;
       align-items: center;
-      gap: 11px;
-
-      padding: 20px 23px;
-
-      border-bottom:
-        1px solid var(--border);
     }
 
-    .panel-icon {
-      width: 40px;
-      height: 40px;
+    .section-head::after {
+      content: "＋";
+
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      width: 36px;
+      height: 36px;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
-      border-radius: 11px;
+      border-radius: 10px;
 
-      background: var(--green-soft);
-
+      background: var(--very-light);
       color: var(--green);
+
+      font-size: 20px;
+      font-weight: 900;
     }
 
-    .panel-header h3 {
-      color: var(--green);
+    .section.open .section-head::after {
+      content: "−";
+      background: var(--light-green);
+    }
+
+    .section-title {
+      margin: 0;
       font-size: 16px;
-
-      margin-bottom: 3px;
-    }
-
-    .panel-header span {
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    /* ================= INFO GRID ================= */
-
-    .info-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 0;
-    }
-
-    .info-item {
-      padding: 17px 23px;
-
-      border-bottom:
-        1px solid #f0f3f1;
-    }
-
-    .info-item:nth-child(odd) {
-      border-left:
-        1px solid #f0f3f1;
-    }
-
-    .info-label {
-      display: block;
-
-      color: var(--muted);
-
-      font-size: 10px;
-
-      margin-bottom: 6px;
-    }
-
-    .info-value {
+      font-weight: 900;
       color: var(--green);
-
-      font-size: 13px;
-      font-weight: bold;
     }
 
-    /* ================= TABLE ================= */
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 2px;
+    }
 
-    .table-wrapper {
+    .section-body {
+      display: none;
+      padding: 0 20px 20px;
+    }
+
+    .section.open .section-body {
+      display: block;
+      animation: openSection .22s ease;
+    }
+
+    @keyframes openSection {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================================================
+       FORMS
+    ========================================================= */
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #496159;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fbfdfc;
+      color: var(--text);
+
+      border-radius: 11px;
+      padding: 11px 13px;
+
+      outline: none;
+      font-size: 13px;
+
+      transition: .2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--green2);
+      box-shadow: 0 0 0 3px rgba(33,136,102,.08);
+      background: white;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    /* =========================================================
+       TABLES
+    ========================================================= */
+
+    .table-wrap {
       overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 13px;
     }
 
     table {
       width: 100%;
-
-      min-width: 700px;
-
       border-collapse: collapse;
+      min-width: 650px;
+    }
+
+    th,
+    td {
+      padding: 11px 10px;
+      border-bottom: 1px solid #edf2ef;
+      text-align: center;
+      font-size: 12px;
     }
 
     th {
-      padding: 13px 18px;
-
-      background: #f8faf9;
-
-      color: #68736e;
-
-      font-size: 10px;
-
-      text-align: right;
-
-      border-bottom:
-        1px solid var(--border);
-    }
-
-    td {
-      padding: 14px 18px;
-
-      border-bottom:
-        1px solid #f0f3f1;
-
-      font-size: 11px;
+      background: var(--very-light);
+      color: var(--green);
+      font-weight: 900;
     }
 
     tr:last-child td {
       border-bottom: none;
     }
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
+    .table-input {
+      min-width: 100px;
+      padding: 8px 9px;
+      font-size: 12px;
+    }
 
-      padding: 6px 10px;
+    .small-input {
+      width: 100px;
+      margin: auto;
+    }
 
+    .add-row {
+      margin-top: 12px;
+      border: 1px dashed #b9ccc3;
+      background: #f8fbf9;
+      color: var(--green);
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-weight: 800;
+    }
+
+    .remove-row {
+      border: none;
+      background: #fff0ef;
+      color: var(--danger);
+      width: 32px;
+      height: 32px;
       border-radius: 8px;
-
-      font-size: 10px;
-      font-weight: bold;
+      font-weight: 900;
     }
 
-    .badge.green {
-      background: var(--green-soft);
-      color: var(--green);
-    }
+    /* =========================================================
+       SAVE
+    ========================================================= */
 
-    .badge.gold {
-      background: var(--gold-soft);
-      color: #806711;
-    }
-
-    .badge.purple {
-      background: var(--purple-soft);
-      color: var(--purple);
-    }
-
-    .empty {
-      padding: 35px 15px;
-
-      text-align: center;
-
-      color: var(--muted);
-
-      font-size: 11px;
-    }
-
-    .empty i {
-      display: block;
-
-      margin-bottom: 9px;
-
-      color: var(--green);
-
-      font-size: 27px;
-    }
-
-    /* ================= LOADING ================= */
-
-    .loading {
-      padding: 70px 20px;
-
-      text-align: center;
-
-      color: var(--muted);
-    }
-
-    .loading i {
-      color: var(--green);
-
-      font-size: 30px;
-
-      margin-bottom: 12px;
-    }
-
-    /* ================= TOAST ================= */
-
-    .toast {
-      position: fixed;
-
-      left: 24px;
-      bottom: 24px;
-
-      z-index: 100;
+    .save-wrap {
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid #e2e9e5;
 
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-      min-width: 250px;
-
-      padding: 13px 16px;
-
-      border-radius: 12px;
-
-      background: var(--green-dark);
-
+    .save-btn {
+      border: none;
+      background: linear-gradient(135deg, var(--green), var(--green2));
       color: white;
 
-      box-shadow:
-        0 15px 40px rgba(0,0,0,.18);
+      padding: 12px 20px;
+      border-radius: 12px;
 
-      font-size: 11px;
+      font-weight: 900;
+      font-size: 13px;
 
-      opacity: 0;
-      pointer-events: none;
-
-      transform: translateY(18px);
-
-      transition: .3s;
+      box-shadow: 0 7px 18px rgba(13,77,58,.16);
+      transition: .2s;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
+    .save-btn:hover {
+      transform: translateY(-2px);
     }
 
-    .toast i {
-      color: #72d883;
+    .save-btn:disabled {
+      opacity: .65;
+      cursor: wait;
+      transform: none;
     }
 
-    /* ================= RESPONSIVE ================= */
+    .save-message {
+      min-height: 20px;
+      font-size: 12px;
+      font-weight: 800;
+    }
 
-    @media (max-width: 900px) {
+    .save-message.success {
+      color: #13743f;
+    }
 
-      .grid {
-        grid-template-columns:
-          repeat(2, 1fr);
+    .save-message.error {
+      color: var(--danger);
+    }
+
+    /* =========================================================
+       LOADING / ERROR
+    ========================================================= */
+
+    .loading {
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .spinner {
+      width: 38px;
+      height: 38px;
+      border: 4px solid #dceae3;
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .error-box {
+      background: #fff4f3;
+      border: 1px solid #f1cbc7;
+      color: var(--danger);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    /* =========================================================
+       EMPTY
+    ========================================================= */
+
+    .empty {
+      text-align: center;
+      padding: 25px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .profile-header {
+        align-items: flex-start;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
       }
 
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 600px) {
 
-      .topbar {
-        padding: 11px 16px;
+      .topbar-inner {
+        padding: 11px 13px;
       }
 
-      .top-title h1 {
-        font-size: 16px;
+      .brand-title {
+        font-size: 13px;
       }
 
-      .top-title p {
+      .brand-subtitle {
         display: none;
       }
 
-      .top-icon {
+      .brand img {
         width: 39px;
         height: 39px;
       }
 
-      .content {
-        width: 92%;
-        margin-top: 18px;
+      .back-btn {
+        padding: 8px 11px;
+        font-size: 11px;
       }
 
-      .profile-hero {
+      .page {
+        padding: 15px 10px 35px;
+      }
+
+      .profile-header {
+        padding: 18px;
         flex-direction: column;
-
         align-items: center;
-
         text-align: center;
-
-        padding: 27px 20px;
-      }
-
-      .profile-info h2 {
-        font-size: 25px;
       }
 
       .profile-meta {
         justify-content: center;
       }
 
-      .grid {
-        grid-template-columns: 1fr;
+      .student-photo {
+        width: 110px;
+        height: 110px;
       }
 
-      .info-grid {
-        grid-template-columns: 1fr;
+      .profile-name {
+        font-size: 23px;
       }
 
-      .info-item:nth-child(odd) {
-        border-left: none;
+      .stats-grid {
+        gap: 9px;
       }
 
-      .back-btn span {
-        display: none;
+      .stat-card {
+        padding: 13px;
       }
 
-      .back-btn {
-        width: 40px;
-        height: 40px;
-
-        justify-content: center;
-
-        padding: 0;
+      .stat-value {
+        font-size: 20px;
       }
 
-      .toast {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        min-width: 0;
+      .section-head {
+        min-height: 56px;
+        padding: 10px 50px 10px 12px;
+      }
+
+      .section-head::after {
+        width: 31px;
+        height: 31px;
+        left: 10px;
+      }
+
+      .section-body {
+        padding: 0 12px 15px;
+      }
+
+      .save-wrap {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .save-btn {
+        width: 100%;
       }
 
     }
@@ -806,500 +706,116 @@
 
 <body>
 
-  <!-- ================= TOPBAR ================= -->
+  <!-- =========================================================
+       TOP BAR
+  ========================================================= -->
 
   <header class="topbar">
 
-    <div class="top-title">
+    <div class="topbar-inner">
 
-      <div class="top-icon">
+      <a href="teacher-dashboard.html" class="brand">
 
-        <i class="fa-solid fa-user-graduate"></i>
+        <img src="logo.png" alt="شعار المركز">
 
-      </div>
+        <div class="brand-text">
+          <div class="brand-title">
+            مركز حردان طارق القرآني
+          </div>
 
-      <div>
+          <div class="brand-subtitle">
+            ملف الطالب
+          </div>
+        </div>
 
-        <h1>
-          ملف الطالب
-        </h1>
+      </a>
 
-        <p>
-          مركز حردان طارق القرآني
-        </p>
-
-      </div>
+      <button
+        class="back-btn"
+        type="button"
+        onclick="goBack()"
+      >
+        ← العودة للطلاب
+      </button>
 
     </div>
-
-    <button
-      class="back-btn"
-      type="button"
-      onclick="goBack()">
-
-      <i class="fa-solid fa-arrow-right"></i>
-
-      <span>
-        العودة إلى لوحة المعلم
-      </span>
-
-    </button>
 
   </header>
 
-  <!-- ================= CONTENT ================= -->
 
-  <main class="content">
+  <!-- =========================================================
+       PAGE
+  ========================================================= -->
 
-    <!-- LOADING -->
+  <main class="page">
 
-    <div
-      id="loading"
-      class="loading">
+    <div id="app">
 
-      <i class="fa-solid fa-spinner fa-spin"></i>
+      <div class="loading">
 
-      <div>
-        جارٍ تحميل ملف الطالب...
+        <div class="spinner"></div>
+
+        <div>
+          جاري تحميل ملف الطالب...
+        </div>
+
       </div>
-
-    </div>
-
-    <!-- PROFILE -->
-
-    <div
-      id="profileContent"
-      style="display:none;">
-
-      <!-- ================= HERO ================= -->
-
-      <section class="profile-hero">
-
-        <div class="profile-photo-wrapper">
-
-          <div class="profile-photo">
-
-            <img
-              id="studentPhoto"
-              alt="صورة الطالب">
-
-            <i
-              id="defaultPhotoIcon"
-              class="fa-solid fa-user">
-            </i>
-
-          </div>
-
-          <label
-            class="photo-button"
-            for="photoInput"
-            title="اختيار صورة الطالب">
-
-            <i class="fa-solid fa-camera"></i>
-
-          </label>
-
-          <input
-            type="file"
-            id="photoInput"
-            accept="image/*">
-
-        </div>
-
-        <div class="profile-info">
-
-          <div class="profile-label">
-            ملف الطالب
-          </div>
-
-          <h2 id="studentName">
-            —
-          </h2>
-
-          <div class="profile-meta">
-
-            <span
-              class="meta-badge"
-              id="studentSection">
-              —
-            </span>
-
-            <span
-              class="meta-badge"
-              id="studentStatus">
-              —
-            </span>
-
-            <span
-              class="meta-badge"
-              id="studentAge">
-              —
-            </span>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ================= STATS ================= -->
-
-      <section class="grid">
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-star"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="score">
-              0
-            </span>
-
-            <span class="stat-label">
-              التقييم من 100
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-coins"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="points">
-              0
-            </span>
-
-            <span class="stat-label">
-              النقاط الكلية
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-calendar-check"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="attendanceCount">
-              0
-            </span>
-
-            <span class="stat-label">
-              سجلات الحضور
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-book-quran"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="recitationCount">
-              0
-            </span>
-
-            <span class="stat-label">
-              سجلات التسميع
-            </span>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ================= BASIC INFO ================= -->
-
-      <section class="panel">
-
-        <div class="panel-header">
-
-          <div class="panel-icon">
-
-            <i class="fa-solid fa-id-card"></i>
-
-          </div>
-
-          <div>
-
-            <h3>
-              البيانات الأساسية
-            </h3>
-
-            <span>
-              معلومات الطالب المسجلة في المركز
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="info-grid">
-
-          <div class="info-item">
-
-            <span class="info-label">
-              اسم الطالب
-            </span>
-
-            <span
-              class="info-value"
-              id="infoName">
-              —
-            </span>
-
-          </div>
-
-          <div class="info-item">
-
-            <span class="info-label">
-              الشعبة
-            </span>
-
-            <span
-              class="info-value"
-              id="infoSection">
-              —
-            </span>
-
-          </div>
-
-          <div class="info-item">
-
-            <span class="info-label">
-              العمر
-            </span>
-
-            <span
-              class="info-value"
-              id="infoAge">
-              —
-            </span>
-
-          </div>
-
-          <div class="info-item">
-
-            <span class="info-label">
-              هاتف ولي الأمر
-            </span>
-
-            <span
-              class="info-value"
-              id="infoPhone">
-              —
-            </span>
-
-          </div>
-
-          <div class="info-item">
-
-            <span class="info-label">
-              مستوى الحفظ
-            </span>
-
-            <span
-              class="info-value"
-              id="infoMemorization">
-              —
-            </span>
-
-          </div>
-
-          <div class="info-item">
-
-            <span class="info-label">
-              حالة الطالب
-            </span>
-
-            <span
-              class="info-value"
-              id="infoStatus">
-              —
-            </span>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <!-- ================= ATTENDANCE ================= -->
-
-      <section class="panel">
-
-        <div class="panel-header">
-
-          <div class="panel-icon">
-
-            <i class="fa-solid fa-calendar-check"></i>
-
-          </div>
-
-          <div>
-
-            <h3>
-              سجل الحضور
-            </h3>
-
-            <span>
-              متابعة حضور الطالب وتأخره واعتذاراته
-            </span>
-
-          </div>
-
-        </div>
-
-        <div
-          id="attendanceTable"
-          class="table-wrapper">
-        </div>
-
-      </section>
-
-      <!-- ================= RECITATIONS ================= -->
-
-      <section class="panel">
-
-        <div class="panel-header">
-
-          <div class="panel-icon">
-
-            <i class="fa-solid fa-book-quran"></i>
-
-          </div>
-
-          <div>
-
-            <h3>
-              سجل التسميع
-            </h3>
-
-            <span>
-              الحفظ والمراجعة ودرجات التسميع
-            </span>
-
-          </div>
-
-        </div>
-
-        <div
-          id="recitationsTable"
-          class="table-wrapper">
-        </div>
-
-      </section>
-
-      <!-- ================= TESTS ================= -->
-
-      <section class="panel">
-
-        <div class="panel-header">
-
-          <div class="panel-icon">
-
-            <i class="fa-solid fa-file-circle-check"></i>
-
-          </div>
-
-          <div>
-
-            <h3>
-              الاختبارات
-            </h3>
-
-            <span>
-              نتائج الاختبارات والتقييمات
-            </span>
-
-          </div>
-
-        </div>
-
-        <div
-          id="testsTable"
-          class="table-wrapper">
-        </div>
-
-      </section>
 
     </div>
 
   </main>
 
-  <!-- ================= TOAST ================= -->
-
-  <div
-    class="toast"
-    id="toast">
-
-    <i class="fa-solid fa-circle-check"></i>
-
-    <span id="toastText"></span>
-
-  </div>
-
-  <!-- ================= SUPABASE ================= -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
 
-    /* =====================================================
+    /* =========================================================
        SUPABASE
-    ====================================================== */
+    ========================================================= */
 
     const SUPABASE_URL =
       'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-    const SUPABASE_PUBLISHABLE_KEY =
+    const SUPABASE_KEY =
       'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
     const supabaseClient =
       window.supabase.createClient(
         SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
+        SUPABASE_KEY
       );
 
-    /* =====================================================
+
+    /* =========================================================
+       AUTH
+    ========================================================= */
+
+    function checkUser() {
+
+      const accessGranted =
+        localStorage.getItem('teacherAccess') === 'granted';
+
+      if (!accessGranted) {
+
+        window.location.href =
+          'teacher-login.html';
+
+        return false;
+
+      }
+
+      return true;
+
+    }
+
+
+    if (!checkUser()) {
+      throw new Error('Unauthorized');
+    }
+
+
+    /* =========================================================
        STUDENT ID
-    ====================================================== */
+    ========================================================= */
 
     const params =
       new URLSearchParams(
@@ -1309,645 +825,263 @@
     const studentId =
       params.get('id');
 
+
+    if (!studentId) {
+
+      document.getElementById('app').innerHTML = `
+
+        <div class="error-box">
+
+          لم يتم تحديد الطالب.
+
+          <br><br>
+
+          <button
+            class="back-btn"
+            onclick="goBack()"
+          >
+            العودة للوحة المعلم
+          </button>
+
+        </div>
+
+      `;
+
+      throw new Error('Student ID missing');
+
+    }
+
+
+    /* =========================================================
+       DATA
+    ========================================================= */
+
     let student = null;
+
     let profile = {};
 
-    /* =====================================================
-       ELEMENTS
-    ====================================================== */
 
-    const loading =
-      document.getElementById(
-        'loading'
-      );
+    /* =========================================================
+       DEFAULT PROFILE
+    ========================================================= */
 
-    const profileContent =
-      document.getElementById(
-        'profileContent'
-      );
+    function mergeProfile(data) {
 
-    const photoInput =
-      document.getElementById(
-        'photoInput'
-      );
-
-    const studentPhoto =
-      document.getElementById(
-        'studentPhoto'
-      );
-
-    const defaultPhotoIcon =
-      document.getElementById(
-        'defaultPhotoIcon'
-      );
-
-    /* =====================================================
-       AUTH
-    ====================================================== */
-
-    function checkUser() {
-
-      const accessGranted =
-        localStorage.getItem(
-          'teacherAccess'
-        ) === 'granted';
-
-      if (!accessGranted) {
-
-        window.location.href =
-          'teacher-login.html';
-
-        return false;
-      }
-
-      return true;
-    }
-
-    /* =====================================================
-       ESCAPE HTML
-    ====================================================== */
-
-    function escapeHtml(text) {
-
-      return String(
-        text ?? ''
-      )
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#039;');
-
-    }
-
-    /* =====================================================
-       NUMBER
-    ====================================================== */
-
-    function toNumber(value) {
-
-      const n =
-        Number(
-          String(value ?? '')
-            .replace(',', '.')
-            .replace(/[^\d.-]/g, '')
-        );
-
-      return Number.isFinite(n)
-        ? n
-        : 0;
-    }
-
-    /* =====================================================
-       POINTS
-    ====================================================== */
-
-    function attendancePoint(status) {
-
-      const value =
-        String(status || '')
-          .trim()
-          .toLowerCase();
-
-      if (
-        value === 'حاضر' ||
-        value === 'present'
-      ) {
-        return 2;
-      }
-
-      if (
-        value === 'متأخر' ||
-        value === 'late'
-      ) {
-        return 1;
-      }
-
-      if (
-        value === 'معتذر' ||
-        value === 'excused'
-      ) {
-        return .5;
-      }
-
-      return 0;
-    }
-
-    function recitationPoint(item) {
-
-      const raw =
-        item?.grade ??
-        item?.score ??
-        item?.mark ??
-        item?.rating ??
-        item?.status ??
-        item?.result ??
-        '';
-
-      const type =
-        String(
-          item?.type || ''
-        )
-          .trim()
-          .toLowerCase();
-
-      const isReview =
-        type === 'review' ||
-        type === 'مراجعة';
-
-      const numeric =
-        toNumber(raw);
-
-      if (numeric > 0) {
-
-        if (numeric >= 97) {
-          return isReview ? 3 : 6;
-        }
-
-        if (numeric >= 95) {
-          return isReview ? 2.5 : 5;
-        }
-
-        if (numeric >= 92) {
-          return isReview ? 2 : 4;
-        }
-
-        if (numeric >= 90) {
-          return isReview ? 1 : 2;
-        }
-
-        return 0;
-      }
-
-      const label =
-        String(raw)
-          .trim()
-          .toLowerCase();
-
-      if (label.includes('ممتاز')) {
-        return isReview ? 3 : 6;
-      }
-
-      if (
-        label.includes('جيد جداً') ||
-        label.includes('جيد جدا')
-      ) {
-        return isReview ? 2.5 : 5;
-      }
-
-      if (label === 'جيد') {
-        return isReview ? 2 : 4;
-      }
-
-      if (label.includes('مقبول')) {
-        return isReview ? 1 : 2;
-      }
-
-      return 0;
-    }
-
-    function testPoint(item) {
-
-      const raw =
-        item?.grade ??
-        item?.result ??
-        item?.status ??
-        item?.rating ??
-        item?.score ??
-        '';
-
-      const numeric =
-        toNumber(raw);
-
-      if (numeric > 0) {
-
-        const percentage =
-          numeric <= 12
-            ? (
-                numeric / 12
-              ) * 100
-            : numeric;
-
-        if (percentage >= 97) {
-          return 12;
-        }
-
-        if (percentage >= 90) {
-          return 8;
-        }
-
-        if (percentage >= 80) {
-          return 4;
-        }
-
-        return 0;
-      }
-
-      const label =
-        String(raw)
-          .trim()
-          .toLowerCase();
-
-      if (label.includes('ممتاز')) {
-        return 12;
-      }
-
-      if (
-        label.includes('جيد جداً') ||
-        label.includes('جيد جدا')
-      ) {
-        return 8;
-      }
-
-      if (label === 'جيد') {
-        return 4;
-      }
-
-      return 0;
-    }
-
-    /* =====================================================
-       PERFORMANCE
-    ====================================================== */
-
-    function calculatePerformance() {
-
-      const attendance =
-        Array.isArray(profile.attendance)
-          ? profile.attendance
-          : [];
-
-      const recitations =
-        Array.isArray(profile.recitations)
-          ? profile.recitations
-          : [];
-
-      const tests =
-        Array.isArray(profile.tests)
-          ? profile.tests
-          : [];
-
-      const attendancePoints =
-        attendance.reduce(
-          (sum, item) =>
-            sum +
-            attendancePoint(
-              item?.status ??
-              item?.state ??
-              item?.attendance
-            ),
-          0
-        );
-
-      const attendanceScore =
-        attendance.length
-          ? Math.min(
-              100,
-              (
-                attendancePoints /
-                (
-                  attendance.length * 2
-                )
-              ) * 100
-            )
-          : 0;
-
-      const hifz =
-        recitations.filter(
-          item => {
-
-            const type =
-              String(
-                item?.type || ''
-              )
-                .trim()
-                .toLowerCase();
-
-            return (
-              type !== 'review' &&
-              type !== 'مراجعة'
-            );
-          }
-        );
-
-      const review =
-        recitations.filter(
-          item => {
-
-            const type =
-              String(
-                item?.type || ''
-              )
-                .trim()
-                .toLowerCase();
-
-            return (
-              type === 'review' ||
-              type === 'مراجعة'
-            );
-          }
-        );
-
-      const hifzPoints =
-        hifz.reduce(
-          (sum, item) =>
-            sum +
-            recitationPoint(item),
-          0
-        );
-
-      const reviewPoints =
-        review.reduce(
-          (sum, item) =>
-            sum +
-            recitationPoint(item),
-          0
-        );
-
-      const hifzScore =
-        hifz.length
-          ? Math.min(
-              100,
-              (
-                hifzPoints /
-                (
-                  hifz.length * 6
-                )
-              ) * 100
-            )
-          : 0;
-
-      const reviewScore =
-        review.length
-          ? Math.min(
-              100,
-              (
-                reviewPoints /
-                (
-                  review.length * 3
-                )
-              ) * 100
-            )
-          : 0;
-
-      const testPoints =
-        tests.reduce(
-          (sum, item) =>
-            sum +
-            testPoint(item),
-          0
-        );
-
-      const testsScore =
-        tests.length
-          ? Math.min(
-              100,
-              (
-                testPoints /
-                (
-                  tests.length * 12
-                )
-              ) * 100
-            )
-          : 0;
-
-      const score =
-        (
-          attendanceScore * .20
-        ) +
-        (
-          hifzScore * .35
-        ) +
-        (
-          reviewScore * .25
-        ) +
-        (
-          testsScore * .20
-        );
-
-      const recitationPointsTotal =
-        recitations.reduce(
-          (sum, item) =>
-            sum +
-            recitationPoint(item),
-          0
-        );
-
-      const totalPoints =
-        attendancePoints +
-        recitationPointsTotal +
-        testPoints;
+      const source =
+        data && typeof data === 'object'
+          ? data
+          : {};
 
       return {
-        score:
-          Math.round(
-            Math.max(
-              0,
-              Math.min(
-                100,
-                score
-              )
-            )
-          ),
 
-        totalPoints:
-          Math.round(
-            totalPoints * 10
-          ) / 10
+        photoUrl:
+          source.photoUrl || '',
+
+        guardianPhone:
+          source.guardianPhone || '',
+
+        joiningDate:
+          source.joiningDate || '',
+
+        residence:
+          source.residence || '',
+
+        bus:
+          source.bus || '',
+
+        homeLocation:
+          source.homeLocation || '',
+
+        weeklyGoal:
+          source.weeklyGoal || {
+            hifz: '',
+            review: ''
+          },
+
+        attendance:
+          Array.isArray(source.attendance)
+            ? source.attendance
+            : [],
+
+        weeklyPlan:
+          Array.isArray(source.weeklyPlan)
+            ? source.weeklyPlan
+            : [],
+
+        tests:
+          Array.isArray(source.tests)
+            ? source.tests
+            : [],
+
+        recitations:
+          Array.isArray(source.recitations)
+            ? source.recitations
+            : [],
+
+        notes:
+          source.notes || ''
+
       };
+
     }
 
-    /* =====================================================
+
+    /* =========================================================
        LOAD STUDENT
-    ====================================================== */
+    ========================================================= */
 
     async function loadStudent() {
 
-      if (!studentId) {
+      try {
 
-        showError(
-          'لم يتم تحديد الطالب.'
+        const {
+          data: studentData,
+          error: studentError
+        } =
+          await supabaseClient
+
+            .from('students')
+
+            .select('*')
+
+            .eq(
+              'id',
+              studentId
+            )
+
+            .maybeSingle();
+
+
+        if (studentError)
+          throw studentError;
+
+
+        if (!studentData) {
+
+          throw new Error(
+            'لم يتم العثور على الطالب.'
+          );
+
+        }
+
+
+        student =
+          studentData;
+
+
+        const {
+          data: profileData,
+          error: profileError
+        } =
+          await supabaseClient
+
+            .from('student_profiles')
+
+            .select('data')
+
+            .eq(
+              'student_id',
+              String(studentId)
+            )
+
+            .maybeSingle();
+
+
+        if (profileError)
+          throw profileError;
+
+
+        profile =
+          mergeProfile(
+            profileData?.data || {}
+          );
+
+
+        render();
+
+      } catch (error) {
+
+        console.error(
+          'LOAD STUDENT ERROR:',
+          error
         );
 
-        return;
+        document.getElementById('app').innerHTML = `
+
+          <div class="error-box">
+
+            حدث خطأ أثناء تحميل بيانات الطالب.
+
+            <br><br>
+
+            ${escapeHtml(
+              error?.message ||
+              'خطأ غير معروف'
+            )}
+
+            <br><br>
+
+            <button
+              class="back-btn"
+              onclick="goBack()"
+            >
+              العودة للوحة المعلم
+            </button>
+
+          </div>
+
+        `;
+
       }
 
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
-          .from('students')
-          .select('*')
-          .eq('id', studentId)
-          .single();
+    }
 
-      if (error || !data) {
 
-        console.error(error);
+    /* =========================================================
+       ESCAPE
+    ========================================================= */
 
-        showError(
-          'تعذر العثور على ملف الطالب.'
-        );
+    function escapeHtml(value) {
 
-        return;
-      }
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
 
-      student = data;
+    }
 
-      const profileResult =
-        await supabaseClient
-          .from('student_profiles')
-          .select('data')
-          .eq(
-            'student_id',
-            studentId
-          )
-          .maybeSingle();
+
+    /* =========================================================
+       NUMBER
+    ========================================================= */
+
+    function number(value) {
 
       if (
-        profileResult.error
+        value === '' ||
+        value === null ||
+        value === undefined
       ) {
-
-        console.warn(
-          profileResult.error
-        );
-
+        return '';
       }
 
-      profile =
-        profileResult.data?.data || {};
+      const n =
+        Number(value);
 
-      renderStudent();
-
-    }
-
-    /* =====================================================
-       RENDER STUDENT
-    ====================================================== */
-
-    function renderStudent() {
-
-      loading.style.display =
-        'none';
-
-      profileContent.style.display =
-        'block';
-
-      document.getElementById(
-        'studentName'
-      ).textContent =
-        student.name || 'بدون اسم';
-
-      document.getElementById(
-        'studentSection'
-      ).textContent =
-        student.section || 'غير محددة';
-
-      document.getElementById(
-        'studentStatus'
-      ).textContent =
-        getStatusText(
-          student.status
-        );
-
-      document.getElementById(
-        'studentAge'
-      ).textContent =
-        student.age
-          ? `العمر: ${student.age}`
-          : 'العمر غير محدد';
-
-      document.getElementById(
-        'infoName'
-      ).textContent =
-        student.name || '—';
-
-      document.getElementById(
-        'infoSection'
-      ).textContent =
-        student.section || '—';
-
-      document.getElementById(
-        'infoAge'
-      ).textContent =
-        student.age
-          ? `${student.age} سنة`
-          : 'غير محدد';
-
-      document.getElementById(
-        'infoPhone'
-      ).textContent =
-        student.guardian_phone || 'غير مسجل';
-
-      document.getElementById(
-        'infoMemorization'
-      ).textContent =
-        student.memorization || 'لم يحدد';
-
-      document.getElementById(
-        'infoStatus'
-      ).textContent =
-        getStatusText(
-          student.status
-        );
-
-      const performance =
-        calculatePerformance();
-
-      document.getElementById(
-        'score'
-      ).textContent =
-        performance.score;
-
-      document.getElementById(
-        'points'
-      ).textContent =
-        performance.totalPoints;
-
-      const attendance =
-        Array.isArray(profile.attendance)
-          ? profile.attendance
-          : [];
-
-      const recitations =
-        Array.isArray(profile.recitations)
-          ? profile.recitations
-          : [];
-
-      document.getElementById(
-        'attendanceCount'
-      ).textContent =
-        attendance.length;
-
-      document.getElementById(
-        'recitationCount'
-      ).textContent =
-        recitations.length;
-
-      renderAttendance(
-        attendance
-      );
-
-      renderRecitations(
-        recitations
-      );
-
-      renderTests(
-        Array.isArray(profile.tests)
-          ? profile.tests
-          : []
-      );
-
-      loadSavedPhoto();
+      return Number.isFinite(n)
+        ? n
+        : '';
 
     }
 
-    /* =====================================================
+
+    /* =========================================================
        STATUS
-    ====================================================== */
+    ========================================================= */
 
-    function getStatusText(status) {
+    function statusText(status) {
 
       const map = {
 
@@ -1959,581 +1093,2680 @@
 
         expelled: 'مفصول',
 
-        pending: 'بانتظار الموافقة'
+        pending: 'طلب بانتظار الموافقة'
 
       };
 
       return (
         map[status] ||
+        status ||
         'غير محدد'
       );
 
     }
 
-    /* =====================================================
-       TABLE RENDER
-    ====================================================== */
 
-    function renderAttendance(items) {
+    function statusDot(status) {
 
-      const container =
-        document.getElementById(
-          'attendanceTable'
-        );
+      const colors = {
 
-      if (!items.length) {
+        active: '#18a05e',
 
-        container.innerHTML = `
+        inactive: '#999',
 
-          <div class="empty">
+        rejected: '#d83a31',
 
-            <i class="fa-solid fa-calendar-xmark"></i>
+        expelled: '#d83a31',
 
-            لا توجد سجلات حضور حتى الآن.
+        pending: '#d98a00'
+
+      };
+
+      return (
+        colors[status] ||
+        '#999'
+      );
+
+    }
+
+
+    /* =========================================================
+       RENDER
+    ========================================================= */
+
+    function render() {
+
+      const app =
+        document.getElementById('app');
+
+
+      app.innerHTML = `
+
+        <!-- ================= PROFILE HEADER ================= -->
+
+        <section class="profile-header">
+
+          <div class="photo-area">
+
+            <img
+              id="studentPhoto"
+              class="student-photo"
+              src="${escapeHtml(
+                getStudentPhoto()
+              )}"
+              alt="صورة الطالب"
+              onerror="this.src=''; this.style.background='#eef4f1';"
+            >
+
+            <button
+              type="button"
+              class="photo-button"
+              onclick="document.getElementById('photoInput').click()"
+            >
+              📷 تغيير الصورة
+            </button>
+
+            <input
+              id="photoInput"
+              type="file"
+              accept="image/*"
+              onchange="handlePhoto(event)"
+            >
 
           </div>
 
-        `;
 
-        return;
-      }
+          <div class="profile-main">
 
-      container.innerHTML = `
+            <h1 class="profile-name">
+              ${escapeHtml(
+                student.name || 'طالب'
+              )}
+            </h1>
 
-        <table>
+            <div class="profile-meta">
 
-          <thead>
+              <span class="meta-badge">
+                الصف:
+                ${escapeHtml(
+                  student.section || 'غير محدد'
+                )}
+              </span>
 
-            <tr>
+              <span class="meta-badge">
+                العمر:
+                ${escapeHtml(
+                  student.age || 'غير محدد'
+                )}
+              </span>
 
-              <th>التاريخ</th>
+              <span class="meta-badge status-badge">
 
-              <th>الحالة</th>
+                <span
+                  class="status-dot"
+                  style="background:${statusDot(
+                    student.status
+                  )}"
+                ></span>
 
-              <th>النقاط</th>
+                ${escapeHtml(
+                  statusText(student.status)
+                )}
 
-            </tr>
+              </span>
 
-          </thead>
-
-          <tbody>
-
-            ${
-              items.map(
-                item => {
-
-                  const status =
-                    item?.status ??
-                    item?.state ??
-                    item?.attendance ??
-                    'غير محدد';
-
-                  return `
-
-                    <tr>
-
-                      <td>
-                        ${escapeHtml(
-                          item?.date ||
-                          item?.created_at ||
-                          '—'
-                        )}
-                      </td>
-
-                      <td>
-
-                        <span class="badge green">
-
-                          ${escapeHtml(
-                            status
-                          )}
-
-                        </span>
-
-                      </td>
-
-                      <td>
-
-                        <span class="badge gold">
-
-                          ${attendancePoint(
-                            status
-                          )} نقطة
-
-                        </span>
-
-                      </td>
-
-                    </tr>
-
-                  `;
-
-                }
-              ).join('')
-            }
-
-          </tbody>
-
-        </table>
-
-      `;
-
-    }
-
-    function renderRecitations(items) {
-
-      const container =
-        document.getElementById(
-          'recitationsTable'
-        );
-
-      if (!items.length) {
-
-        container.innerHTML = `
-
-          <div class="empty">
-
-            <i class="fa-solid fa-book-open"></i>
-
-            لا توجد سجلات تسميع حتى الآن.
+            </div>
 
           </div>
 
-        `;
+        </section>
 
-        return;
-      }
 
-      container.innerHTML = `
+        <!-- ================= STATS ================= -->
 
-        <table>
+        <section class="stats-grid">
 
-          <thead>
+          <div class="stat-card">
 
-            <tr>
+            <div class="stat-label">
+              عدد أيام الحضور
+            </div>
 
-              <th>التاريخ</th>
-
-              <th>النوع</th>
-
-              <th>السورة / الجزء</th>
-
-              <th>الدرجة</th>
-
-              <th>النقاط</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody>
-
-            ${
-              items.map(
-                item => {
-
-                  const type =
-                    item?.type ||
-                    'حفظ';
-
-                  const raw =
-                    item?.grade ??
-                    item?.score ??
-                    item?.mark ??
-                    item?.rating ??
-                    item?.status ??
-                    item?.result ??
-                    '—';
-
-                  return `
-
-                    <tr>
-
-                      <td>
-                        ${escapeHtml(
-                          item?.date ||
-                          item?.created_at ||
-                          '—'
-                        )}
-                      </td>
-
-                      <td>
-
-                        <span class="badge purple">
-
-                          ${escapeHtml(
-                            type
-                          )}
-
-                        </span>
-
-                      </td>
-
-                      <td>
-                        ${escapeHtml(
-                          item?.surah ||
-                          item?.sura ||
-                          item?.page ||
-                          item?.lesson ||
-                          '—'
-                        )}
-                      </td>
-
-                      <td>
-
-                        <span class="badge green">
-
-                          ${escapeHtml(
-                            raw
-                          )}
-
-                        </span>
-
-                      </td>
-
-                      <td>
-
-                        <span class="badge gold">
-
-                          ${recitationPoint(
-                            item
-                          )} نقطة
-
-                        </span>
-
-                      </td>
-
-                    </tr>
-
-                  `;
-
-                }
-              ).join('')
-            }
-
-          </tbody>
-
-        </table>
-
-      `;
-
-    }
-
-    function renderTests(items) {
-
-      const container =
-        document.getElementById(
-          'testsTable'
-        );
-
-      if (!items.length) {
-
-        container.innerHTML = `
-
-          <div class="empty">
-
-            <i class="fa-solid fa-file-circle-xmark"></i>
-
-            لا توجد اختبارات مسجلة حتى الآن.
+            <div
+              class="stat-value"
+              id="attendanceCount"
+            >
+              0
+            </div>
 
           </div>
 
-        `;
 
-        return;
-      }
+          <div class="stat-card">
 
-      container.innerHTML = `
+            <div class="stat-label">
+              عدد التسميعات
+            </div>
 
-        <table>
+            <div
+              class="stat-value"
+              id="recitationCount"
+            >
+              0
+            </div>
 
-          <thead>
+          </div>
 
-            <tr>
 
-              <th>التاريخ</th>
+          <div class="stat-card">
 
-              <th>الاختبار</th>
+            <div class="stat-label">
+              عدد الاختبارات
+            </div>
 
-              <th>النتيجة</th>
+            <div
+              class="stat-value"
+              id="testCount"
+            >
+              0
+            </div>
 
-              <th>النقاط</th>
+          </div>
 
-            </tr>
 
-          </thead>
+          <div class="stat-card">
 
-          <tbody>
+            <div class="stat-label">
+              الصفحات المحفوظة
+            </div>
 
-            ${
-              items.map(
-                item => {
+            <div
+              class="stat-value"
+              id="memorizationValue"
+            >
+              ${escapeHtml(
+                student.memorization || '—'
+              )}
+            </div>
 
-                  const raw =
-                    item?.grade ??
-                    item?.result ??
-                    item?.status ??
-                    item?.rating ??
-                    item?.score ??
-                    '—';
+          </div>
 
-                  return `
+        </section>
 
-                    <tr>
 
-                      <td>
-                        ${escapeHtml(
-                          item?.date ||
-                          item?.created_at ||
-                          '—'
-                        )}
-                      </td>
+        <!-- ================= BASIC ================= -->
 
-                      <td>
-                        ${escapeHtml(
-                          item?.name ||
-                          item?.title ||
-                          item?.test ||
-                          'اختبار'
-                        )}
-                      </td>
+        <section
+          class="section accordion-section"
+          data-key="basic"
+        >
 
-                      <td>
+          <div
+            class="section-head"
+            onclick="toggleSection(this.parentElement)"
+          >
 
-                        <span class="badge green">
+            <div>
 
-                          ${escapeHtml(
-                            raw
-                          )}
+              <h2 class="section-title">
+                📋 البيانات الأساسية
+              </h2>
 
-                        </span>
+              <div class="section-subtitle">
+                معلومات الطالب الأساسية وبيانات التواصل
+              </div>
 
-                      </td>
+            </div>
 
-                      <td>
+          </div>
 
-                        <span class="badge gold">
 
-                          ${testPoint(
-                            item
-                          )} نقطة
+          <div class="section-body">
 
-                        </span>
+            <div class="form-grid">
 
-                      </td>
+              <div class="form-group">
 
-                    </tr>
+                <label class="form-label">
+                  اسم الطالب
+                </label>
 
-                  `;
+                <input
+                  id="name"
+                  type="text"
+                  value="${escapeHtml(
+                    student.name || ''
+                  )}"
+                >
 
-                }
-              ).join('')
-            }
+              </div>
 
-          </tbody>
 
-        </table>
+              <div class="form-group">
+
+                <label class="form-label">
+                  العمر
+                </label>
+
+                <input
+                  id="age"
+                  type="number"
+                  min="1"
+                  value="${escapeHtml(
+                    student.age ?? ''
+                  )}"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  الصف / الحلقة
+                </label>
+
+                <input
+                  id="section"
+                  type="text"
+                  value="${escapeHtml(
+                    student.section || ''
+                  )}"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  حالة الطالب
+                </label>
+
+                <select id="status">
+
+                  <option
+                    value="active"
+                    ${student.status === 'active' ? 'selected' : ''}
+                  >
+                    مستمر
+                  </option>
+
+                  <option
+                    value="inactive"
+                    ${student.status === 'inactive' ? 'selected' : ''}
+                  >
+                    متوقف
+                  </option>
+
+                  <option
+                    value="rejected"
+                    ${student.status === 'rejected' ? 'selected' : ''}
+                  >
+                    غير مقبول
+                  </option>
+
+                  <option
+                    value="expelled"
+                    ${student.status === 'expelled' ? 'selected' : ''}
+                  >
+                    مفصول
+                  </option>
+
+                  <option
+                    value="pending"
+                    ${student.status === 'pending' ? 'selected' : ''}
+                  >
+                    طلب بانتظار الموافقة
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  مقدار الحفظ
+                </label>
+
+                <input
+                  id="memorization"
+                  type="text"
+                  value="${escapeHtml(
+                    student.memorization || ''
+                  )}"
+                  placeholder="مثال: 5 أجزاء"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  رقم ولي الأمر
+                </label>
+
+                <input
+                  id="guardianPhone"
+                  type="tel"
+                  value="${escapeHtml(
+                    profile.guardianPhone ||
+                    student.guardian_phone ||
+                    ''
+                  )}"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  تاريخ الالتحاق
+                </label>
+
+                <input
+                  id="joiningDate"
+                  type="date"
+                  value="${escapeHtml(
+                    profile.joiningDate || ''
+                  )}"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  مكان السكن
+                </label>
+
+                <input
+                  id="residence"
+                  type="text"
+                  value="${escapeHtml(
+                    profile.residence || ''
+                  )}"
+                  placeholder="مثال: الرصيفة"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  الباص
+                </label>
+
+                <input
+                  id="bus"
+                  type="text"
+                  value="${escapeHtml(
+                    profile.bus || ''
+                  )}"
+                  placeholder="رقم أو اسم الباص"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  موقع المنزل
+                </label>
+
+                <input
+                  id="homeLocation"
+                  type="text"
+                  value="${escapeHtml(
+                    profile.homeLocation || ''
+                  )}"
+                  placeholder="وصف موقع المنزل"
+                >
+
+              </div>
+
+            </div>
+
+
+            ${saveButton(
+              'basic',
+              '💾 حفظ البيانات الأساسية'
+            )}
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= WEEKLY GOAL ================= -->
+
+        <section
+          class="section accordion-section"
+          data-key="weeklyGoal"
+        >
+
+          <div
+            class="section-head"
+            onclick="toggleSection(this.parentElement)"
+          >
+
+            <div>
+
+              <h2 class="section-title">
+                🎯 الهدف الأسبوعي
+              </h2>
+
+              <div class="section-subtitle">
+                تحديد هدف الحفظ والمراجعة للأسبوع
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="section-body">
+
+            <div class="form-grid">
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  هدف الحفظ (صفحات)
+                </label>
+
+                <input
+                  id="goalHifz"
+                  type="number"
+                  min="0"
+                  value="${escapeHtml(
+                    profile.weeklyGoal?.hifz ?? ''
+                  )}"
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label class="form-label">
+                  هدف المراجعة (صفحات)
+                </label>
+
+                <input
+                  id="goalReview"
+                  type="number"
+                  min="0"
+                  value="${escapeHtml(
+                    profile.weeklyGoal?.review ?? ''
+                  )}"
+                >
+
+              </div>
+
+            </div>
+
+
+            ${saveButton(
+              'weeklyGoal',
+              '💾 حفظ الهدف الأسبوعي'
+            )}
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= ATTENDANCE ================= -->
+
+        <section
+          class="section accordion-section"
+          data-key="attendance"
+        >
+
+          <div
+            class="section-head"
+            onclick="toggleSection(this.parentElement)"
+          >
+
+            <div>
+
+              <h2 class="section-title">
+                📅 سجل الحضور
+              </h2>
+
+              <div class="section-subtitle">
+                إضافة وتعديل حضور الطالب
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="section-body">
+
+            <div class="table-wrap">
+
+              <table>
+
+                <thead>
+
+                  <tr>
+
+                    <th>
+                      التاريخ
+                    </th>
+
+                    <th>
+                      الحالة
+                    </th>
+
+                    <th>
+                      ملاحظة
+                    </th>
+
+                    <th>
+                      حذف
+                    </th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody id="attendanceBody"></tbody>
+
+              </table>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="add-row"
+              onclick="addAttendanceRow()"
+            >
+              ＋ إضافة يوم
+            </button>
+
+
+            ${saveButton(
+              'attendance',
+              '💾 حفظ الحضور'
+            )}
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= WEEKLY PLAN ================= -->
+
+        <section
+          class="section accordion-section"
+          data-key="weeklyPlan"
+        >
+
+          <div
+            class="section-head"
+            onclick="toggleSection(this.parentElement)"
+          >
+
+            <div>
+
+              <h2 class="section-title">
+                📝 الخطة الأسبوعية
+              </h2>
+
+              <div class="section-subtitle">
+                تنظيم خطة الحفظ والمراجعة
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="section-body">
+
+            <div class="table-wrap">
+
+              <table>
+
+                <thead>
+
+                  <tr>
+
+                    <th>
+                      اليوم
+                    </th>
+
+                    <th>
+                      الحفظ
+                    </th>
+
+                    <th>
+                      المراجعة
+                    </th>
+
+                    <th>
+                      ملاحظات
+                    </th>
+
+                    <th>
+                      حذف
+                    </th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody id="planBody"></tbody>
+
+              </table>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="add-row"
+              onclick="addPlanRow()"
+            >
+              ＋ إضافة يوم
+            </button>
+
+
+            ${saveButton(
+              'weeklyPlan',
+              '💾 حفظ الخطة الأسبوعية'
+            )}
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= TESTS ================= -->
+
+        <section
+          class="section accordion-section"
+          data-key="tests"
+        >
+
+          <div
+            class="section-head"
+            onclick="toggleSection(this.parentElement)"
+          >
+
+            <div>
+
+              <h2 class="section-title">
+                🧪 الاختبارات
+              </h2>
+
+              <div class="section-subtitle">
+                تسجيل نتائج الاختبارات
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="section-body">
+
+            <div class="table-wrap">
+
+              <table>
+
+                <thead>
+
+                  <tr>
+
+                    <th>
+                      التاريخ
+                    </th>
+
+                    <th>
+                      اسم الاختبار
+                    </th>
+
+                    <th>
+                      العلامة
+                    </th>
+
+                    <th>
+                      من
+                    </th>
+
+                    <th>
+                      ملاحظات
+                    </th>
+
+                    <th>
+                      حذف
+                    </th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody id="testsBody"></tbody>
+
+              </table>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="add-row"
+              onclick="addTestRow()"
+            >
+              ＋ إضافة اختبار
+            </button>
+
+
+            ${saveButton(
+              'tests',
+              '💾 حفظ الاختبارات'
+            )}
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= RECITATIONS ================= -->
+
+        <section
+          class="section accordion-section"
+          data-key="recitations"
+        >
+
+          <div
+            class="section-head"
+            onclick="toggleSection(this.parentElement)"
+          >
+
+            <div>
+
+              <h2 class="section-title">
+                📖 سجل التسميع
+              </h2>
+
+              <div class="section-subtitle">
+                تسجيل تسميع الحفظ والمراجعة والدرجة
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="section-body">
+
+            <div class="table-wrap">
+
+              <table>
+
+                <thead>
+
+                  <tr>
+
+                    <th>
+                      التاريخ
+                    </th>
+
+                    <th>
+                      النوع
+                    </th>
+
+                    <th>
+                      من صفحة
+                    </th>
+
+                    <th>
+                      إلى صفحة
+                    </th>
+
+                    <th>
+                      الدرجة
+                    </th>
+
+                    <th>
+                      ملاحظات
+                    </th>
+
+                    <th>
+                      حذف
+                    </th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody id="recitationsBody"></tbody>
+
+              </table>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="add-row"
+              onclick="addRecitationRow()"
+            >
+              ＋ إضافة تسميع
+            </button>
+
+
+            ${saveButton(
+              'recitations',
+              '💾 حفظ التسميع'
+            )}
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= NOTES ================= -->
+
+        <section
+          class="section accordion-section"
+          data-key="notes"
+        >
+
+          <div
+            class="section-head"
+            onclick="toggleSection(this.parentElement)"
+          >
+
+            <div>
+
+              <h2 class="section-title">
+                🗒️ ملاحظات المعلم
+              </h2>
+
+              <div class="section-subtitle">
+                ملاحظات خاصة بالطالب
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="section-body">
+
+            <div class="form-group">
+
+              <label class="form-label">
+                الملاحظات
+              </label>
+
+              <textarea
+                id="notes"
+                placeholder="اكتب ملاحظاتك عن الطالب هنا..."
+              >${escapeHtml(
+                profile.notes || ''
+              )}</textarea>
+
+            </div>
+
+
+            ${saveButton(
+              'notes',
+              '💾 حفظ الملاحظات'
+            )}
+
+          </div>
+
+        </section>
 
       `;
 
-    }
 
-    /* =====================================================
-       PHOTO
-    ====================================================== */
+      renderAttendance();
+      renderPlan();
+      renderTests();
+      renderRecitations();
 
-    function getPhotoKey() {
-
-      return `studentPhoto_${studentId}`;
+      updateStats();
 
     }
 
-    function loadSavedPhoto() {
 
-      const saved =
-        localStorage.getItem(
-          getPhotoKey()
-        );
+    /* =========================================================
+       SAVE BUTTON
+    ========================================================= */
 
-      if (!saved) return;
-
-      studentPhoto.src =
-        saved;
-
-      studentPhoto.style.display =
-        'block';
-
-      defaultPhotoIcon.style.display =
-        'none';
-
-    }
-
-    photoInput.addEventListener(
-      'change',
-      function(event) {
-
-        const file =
-          event.target.files?.[0];
-
-        if (!file) return;
-
-        if (!file.type.startsWith('image/')) {
-
-          showToast(
-            'الملف المختار ليس صورة.',
-            'error'
-          );
-
-          return;
-        }
-
-        const reader =
-          new FileReader();
-
-        reader.onload =
-          function(e) {
-
-            const imageData =
-              e.target.result;
-
-            studentPhoto.src =
-              imageData;
-
-            studentPhoto.style.display =
-              'block';
-
-            defaultPhotoIcon.style.display =
-              'none';
-
-            localStorage.setItem(
-              getPhotoKey(),
-              imageData
-            );
-
-            showToast(
-              'تم حفظ صورة الطالب.'
-            );
-
-          };
-
-        reader.readAsDataURL(
-          file
-        );
-
-      }
-    );
-
-    /* =====================================================
-       BACK
-    ====================================================== */
-
-    function goBack() {
-
-      window.location.href =
-        'teacher-dashboard.html';
-
-    }
-
-    /* =====================================================
-       TOAST
-    ====================================================== */
-
-    function showToast(
-      text,
-      type = 'success'
+    function saveButton(
+      key,
+      text
     ) {
 
-      const toast =
-        document.getElementById(
-          'toast'
-        );
+      return `
 
-      const toastText =
-        document.getElementById(
-          'toastText'
-        );
+        <div class="save-wrap">
 
-      const icon =
-        toast.querySelector('i');
+          <button
+            type="button"
+            class="save-btn"
+            onclick="saveSection('${key}', this)"
+          >
+            ${text}
+          </button>
 
-      toastText.textContent =
-        text;
-
-      icon.className =
-        type === 'success'
-          ? 'fa-solid fa-circle-check'
-          : 'fa-solid fa-circle-exclamation';
-
-      toast.classList.add(
-        'show'
-      );
-
-      setTimeout(
-        () => {
-          toast.classList.remove(
-            'show'
-          );
-        },
-        3000
-      );
-
-    }
-
-    /* =====================================================
-       ERROR
-    ====================================================== */
-
-    function showError(text) {
-
-      loading.innerHTML = `
-
-        <i
-          class="fa-solid fa-circle-exclamation"
-          style="color:var(--danger);">
-        </i>
-
-        <div
-          style="
-            color:var(--danger);
-            font-weight:bold;
-            margin-bottom:8px;
-          ">
-
-          ${escapeHtml(text)}
+          <span
+            class="save-message"
+          ></span>
 
         </div>
 
-        <button
-          class="back-btn"
-          type="button"
-          onclick="goBack()">
-
-          <i class="fa-solid fa-arrow-right"></i>
-
-          العودة إلى لوحة المعلم
-
-        </button>
-
       `;
 
     }
 
-    /* =====================================================
-       START
-    ====================================================== */
 
-    (async function() {
+    /* =========================================================
+       GET PHOTO
+    ========================================================= */
 
-      if (!checkUser()) {
+    function getStudentPhoto() {
+
+      const localPhoto =
+        localStorage.getItem(
+          `studentPhoto_${studentId}`
+        );
+
+      if (localPhoto)
+        return localPhoto;
+
+
+      if (profile?.photoUrl)
+        return profile.photoUrl;
+
+
+      return '';
+
+    }
+
+
+    /* =========================================================
+       PHOTO
+    ========================================================= */
+
+    async function handlePhoto(event) {
+
+      const file =
+        event.target.files?.[0];
+
+      if (!file)
         return;
+
+
+      if (!file.type.startsWith('image/')) {
+
+        alert(
+          'الرجاء اختيار صورة صحيحة.'
+        );
+
+        return;
+
       }
 
-      await loadStudent();
 
-    })();
+      const reader =
+        new FileReader();
+
+
+      reader.onload = async function(e) {
+
+        const dataUrl =
+          e.target.result;
+
+
+        localStorage.setItem(
+          `studentPhoto_${studentId}`,
+          dataUrl
+        );
+
+
+        const img =
+          document.getElementById(
+            'studentPhoto'
+          );
+
+
+        if (img)
+          img.src = dataUrl;
+
+
+        try {
+
+          const fresh =
+            await readFreshProfile();
+
+
+          await saveProfilePatch({
+
+            photoUrl:
+              dataUrl
+
+          });
+
+
+          profile =
+            mergeProfile({
+
+              ...fresh,
+
+              photoUrl:
+                dataUrl
+
+            });
+
+
+          showGlobalMessage(
+            '✅ تم تغيير صورة الطالب وحفظها بنجاح.'
+          );
+
+        } catch (error) {
+
+          console.error(
+            'PHOTO SAVE ERROR:',
+            error
+          );
+
+          showGlobalMessage(
+            '⚠️ تم تغيير الصورة على الجهاز، لكن تعذر حفظها في قاعدة البيانات.'
+          );
+
+        }
+
+      };
+
+
+      reader.readAsDataURL(file);
+
+    }
+
+
+    /* =========================================================
+       READ FRESH PROFILE
+    ========================================================= */
+
+    async function readFreshProfile() {
+
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+
+          .from('student_profiles')
+
+          .select('data')
+
+          .eq(
+            'student_id',
+            String(studentId)
+          )
+
+          .maybeSingle();
+
+
+      if (error)
+        throw error;
+
+
+      return mergeProfile(
+        data?.data || {}
+      );
+
+    }
+
+
+    /* =========================================================
+       SAVE PROFILE PATCH
+    ========================================================= */
+
+    async function saveProfilePatch(
+      changes
+    ) {
+
+      const fresh =
+        await readFreshProfile();
+
+
+      const merged = {
+
+        ...fresh,
+
+        ...changes
+
+      };
+
+
+      const {
+        error
+      } =
+        await supabaseClient
+
+          .from('student_profiles')
+
+          .upsert({
+
+            student_id:
+              String(studentId),
+
+            data:
+              merged,
+
+            updated_at:
+              new Date().toISOString()
+
+          });
+
+
+      if (error)
+        throw error;
+
+
+      return merged;
+
+    }
+
+
+    /* =========================================================
+       SAVE SECTION
+    ========================================================= */
+
+    async function saveSection(
+      key,
+      button
+    ) {
+
+      if (
+        !student ||
+        !studentId
+      ) {
+
+        showSaveError(
+          button,
+          'لم يتم تحميل بيانات الطالب.'
+        );
+
+        return;
+
+      }
+
+
+      button.disabled =
+        true;
+
+
+      const oldText =
+        button.textContent;
+
+
+      button.textContent =
+        '⏳ جاري الحفظ...';
+
+
+      try {
+
+        switch (key) {
+
+          /* ================= BASIC ================= */
+
+          case 'basic': {
+
+            const name =
+              document
+                .getElementById('name')
+                ?.value
+                .trim() || '';
+
+
+            if (!name) {
+
+              throw new Error(
+                'اسم الطالب مطلوب.'
+              );
+
+            }
+
+
+            const studentUpdate = {
+
+              name,
+
+              age:
+                number(
+                  document
+                    .getElementById('age')
+                    ?.value
+                ),
+
+              section:
+                document
+                  .getElementById('section')
+                  ?.value
+                  .trim() || '',
+
+              memorization:
+                document
+                  .getElementById('memorization')
+                  ?.value
+                  .trim() || '',
+
+              status:
+                document
+                  .getElementById('status')
+                  ?.value ||
+                'active',
+
+              guardian_phone:
+                document
+                  .getElementById('guardianPhone')
+                  ?.value
+                  .trim() || ''
+
+            };
+
+
+            const {
+              error:
+                studentError
+            } =
+              await supabaseClient
+
+                .from('students')
+
+                .update(
+                  studentUpdate
+                )
+
+                .eq(
+                  'id',
+                  studentId
+                );
+
+
+            if (studentError)
+              throw studentError;
+
+
+            const profilePatch = {
+
+              photoUrl:
+                profile.photoUrl ||
+                '',
+
+              guardianPhone:
+                document
+                  .getElementById('guardianPhone')
+                  ?.value
+                  .trim() || '',
+
+              joiningDate:
+                document
+                  .getElementById('joiningDate')
+                  ?.value || '',
+
+              residence:
+                document
+                  .getElementById('residence')
+                  ?.value
+                  .trim() || '',
+
+              bus:
+                document
+                  .getElementById('bus')
+                  ?.value
+                  .trim() || '',
+
+              homeLocation:
+                document
+                  .getElementById('homeLocation')
+                  ?.value
+                  .trim() || ''
+
+            };
+
+
+            await saveProfilePatch(
+              profilePatch
+            );
+
+
+            student = {
+
+              ...student,
+
+              ...studentUpdate
+
+            };
+
+
+            profile =
+              mergeProfile({
+
+                ...profile,
+
+                ...profilePatch
+
+              });
+
+
+            break;
+
+          }
+
+
+          /* ================= GOAL ================= */
+
+          case 'weeklyGoal': {
+
+            const weeklyGoal = {
+
+              hifz:
+                number(
+                  document
+                    .getElementById('goalHifz')
+                    ?.value
+                ),
+
+              review:
+                number(
+                  document
+                    .getElementById('goalReview')
+                    ?.value
+                )
+
+            };
+
+
+            await saveProfilePatch({
+
+              weeklyGoal
+
+            });
+
+
+            profile.weeklyGoal =
+              weeklyGoal;
+
+
+            break;
+
+          }
+
+
+          /* ================= ATTENDANCE ================= */
+
+          case 'attendance': {
+
+            const attendance =
+              collectAttendance();
+
+
+            await saveProfilePatch({
+
+              attendance
+
+            });
+
+
+            profile.attendance =
+              attendance;
+
+
+            break;
+
+          }
+
+
+          /* ================= PLAN ================= */
+
+          case 'weeklyPlan': {
+
+            const weeklyPlan =
+              collectPlan();
+
+
+            await saveProfilePatch({
+
+              weeklyPlan
+
+            });
+
+
+            profile.weeklyPlan =
+              weeklyPlan;
+
+
+            break;
+
+          }
+
+
+          /* ================= TESTS ================= */
+
+          case 'tests': {
+
+            const tests =
+              collectTests();
+
+
+            await saveProfilePatch({
+
+              tests
+
+            });
+
+
+            profile.tests =
+              tests;
+
+
+            break;
+
+          }
+
+
+          /* ================= RECITATIONS ================= */
+
+          case 'recitations': {
+
+            const recitations =
+              collectRecitations();
+
+
+            await saveProfilePatch({
+
+              recitations
+
+            });
+
+
+            profile.recitations =
+              recitations;
+
+
+            break;
+
+          }
+
+
+          /* ================= NOTES ================= */
+
+          case 'notes': {
+
+            const notes =
+              document
+                .getElementById('notes')
+                ?.value
+                .trim() || '';
+
+
+            await saveProfilePatch({
+
+              notes
+
+            });
+
+
+            profile.notes =
+              notes;
+
+
+            break;
+
+          }
+
+
+          default:
+
+            throw new Error(
+              'الخانة غير معروفة.'
+            );
+
+        }
+
+
+        updateStats();
+
+
+        showSaveSuccess(
+          button,
+          '✅ تم حفظ هذه الخانة فقط بنجاح.'
+        );
+
+
+      } catch (error) {
+
+        console.error(
+          'SECTION SAVE ERROR:',
+          error
+        );
+
+
+        showSaveError(
+          button,
+          error?.message ||
+          'حدث خطأ أثناء الحفظ.'
+        );
+
+      } finally {
+
+        button.disabled =
+          false;
+
+        button.textContent =
+          oldText;
+
+      }
+
+    }
+
+
+    /* =========================================================
+       SAVE MESSAGES
+    ========================================================= */
+
+    function getSaveMessageBox(
+      button
+    ) {
+
+      return button
+        ?.closest('.save-wrap')
+        ?.querySelector('.save-message');
+
+    }
+
+
+    function showSaveSuccess(
+      button,
+      message
+    ) {
+
+      const box =
+        getSaveMessageBox(button);
+
+
+      if (!box)
+        return;
+
+
+      box.className =
+        'save-message success';
+
+
+      box.textContent =
+        message;
+
+    }
+
+
+    function showSaveError(
+      button,
+      message
+    ) {
+
+      const box =
+        getSaveMessageBox(button);
+
+
+      if (!box)
+        return;
+
+
+      box.className =
+        'save-message error';
+
+
+      box.textContent =
+        message;
+
+    }
+
+
+    function showGlobalMessage(
+      message
+    ) {
+
+      const old =
+        document.getElementById(
+          'globalMessage'
+        );
+
+
+      if (old)
+        old.remove();
+
+
+      const box =
+        document.createElement('div');
+
+
+      box.id =
+        'globalMessage';
+
+
+      box.textContent =
+        message;
+
+
+      Object.assign(
+        box.style,
+        {
+
+          position: 'fixed',
+
+          bottom: '20px',
+
+          left: '50%',
+
+          transform:
+            'translateX(-50%)',
+
+          zIndex: '9999',
+
+          background: '#0d4d3a',
+
+          color: 'white',
+
+          padding: '12px 20px',
+
+          borderRadius: '12px',
+
+          fontWeight: '800',
+
+          fontSize: '13px',
+
+          boxShadow:
+            '0 10px 30px rgba(0,0,0,.2)'
+
+        }
+      );
+
+
+      document.body.appendChild(box);
+
+
+      setTimeout(() => {
+
+        box.remove();
+
+      }, 3500);
+
+    }
+
+
+    /* =========================================================
+       ACCORDION
+    ========================================================= */
+
+    function toggleSection(
+      section
+    ) {
+
+      if (
+        section.classList.contains('open')
+      ) {
+
+        section.classList.remove('open');
+
+        return;
+
+      }
+
+
+      document
+        .querySelectorAll(
+          '.accordion-section.open'
+        )
+        .forEach(
+          other => {
+
+            if (
+              other !== section
+            ) {
+
+              other.classList.remove(
+                'open'
+              );
+
+            }
+
+          }
+        );
+
+
+      section.classList.add('open');
+
+    }
+
+
+    /* =========================================================
+       ATTENDANCE
+    ========================================================= */
+
+    function renderAttendance() {
+
+      const body =
+        document.getElementById(
+          'attendanceBody'
+        );
+
+
+      if (!body)
+        return;
+
+
+      body.innerHTML = '';
+
+
+      if (
+        !profile.attendance ||
+        !profile.attendance.length
+      ) {
+
+        return;
+
+      }
+
+
+      profile.attendance.forEach(
+        item => {
+
+          addAttendanceRow(
+            item,
+            false
+          );
+
+        }
+      );
+
+    }
+
+
+    function addAttendanceRow(
+      item = {},
+      redraw = true
+    ) {
+
+      const body =
+        document.getElementById(
+          'attendanceBody'
+        );
+
+
+      if (!body)
+        return;
+
+
+      const row =
+        document.createElement('tr');
+
+
+      row.innerHTML = `
+
+        <td>
+
+          <input
+            class="table-input attendance-date"
+            type="date"
+            value="${escapeHtml(
+              item.date || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <select
+            class="table-input attendance-status"
+          >
+
+            <option
+              value="present"
+              ${item.status === 'present' ? 'selected' : ''}
+            >
+              حاضر
+            </option>
+
+            <option
+              value="late"
+              ${item.status === 'late' ? 'selected' : ''}
+            >
+              متأخر
+            </option>
+
+            <option
+              value="excused"
+              ${item.status === 'excused' ? 'selected' : ''}
+            >
+              معتذر
+            </option>
+
+            <option
+              value="absent"
+              ${item.status === 'absent' ? 'selected' : ''}
+            >
+              غائب
+            </option>
+
+          </select>
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input attendance-note"
+            type="text"
+            placeholder="ملاحظة"
+            value="${escapeHtml(
+              item.note || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <button
+            type="button"
+            class="remove-row"
+            onclick="this.closest('tr').remove()"
+          >
+            ×
+          </button>
+
+        </td>
+
+      `;
+
+
+      body.appendChild(row);
+
+    }
+
+
+    function collectAttendance() {
+
+      return [
+        ...document.querySelectorAll(
+          '#attendanceBody tr'
+        )
+      ]
+        .map(row => ({
+
+          date:
+            row
+              .querySelector('.attendance-date')
+              ?.value || '',
+
+          status:
+            row
+              .querySelector('.attendance-status')
+              ?.value || 'present',
+
+          note:
+            row
+              .querySelector('.attendance-note')
+              ?.value
+              .trim() || ''
+
+        }))
+        .filter(
+          item =>
+            item.date ||
+            item.note
+        );
+
+    }
+
+
+    /* =========================================================
+       WEEKLY PLAN
+    ========================================================= */
+
+    function renderPlan() {
+
+      const body =
+        document.getElementById(
+          'planBody'
+        );
+
+
+      if (!body)
+        return;
+
+
+      body.innerHTML = '';
+
+
+      if (
+        !profile.weeklyPlan ||
+        !profile.weeklyPlan.length
+      ) {
+
+        return;
+
+      }
+
+
+      profile.weeklyPlan.forEach(
+        item => {
+
+          addPlanRow(
+            item
+          );
+
+        }
+      );
+
+    }
+
+
+    function addPlanRow(
+      item = {}
+    ) {
+
+      const body =
+        document.getElementById(
+          'planBody'
+        );
+
+
+      if (!body)
+        return;
+
+
+      const row =
+        document.createElement('tr');
+
+
+      row.innerHTML = `
+
+        <td>
+
+          <input
+            class="table-input plan-day"
+            type="text"
+            placeholder="السبت"
+            value="${escapeHtml(
+              item.day || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input plan-hifz"
+            type="text"
+            placeholder="مثال: ص 20-22"
+            value="${escapeHtml(
+              item.hifz || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input plan-review"
+            type="text"
+            placeholder="مثال: ص 10-19"
+            value="${escapeHtml(
+              item.review || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input plan-note"
+            type="text"
+            placeholder="ملاحظات"
+            value="${escapeHtml(
+              item.note || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <button
+            type="button"
+            class="remove-row"
+            onclick="this.closest('tr').remove()"
+          >
+            ×
+          </button>
+
+        </td>
+
+      `;
+
+
+      body.appendChild(row);
+
+    }
+
+
+    function collectPlan() {
+
+      return [
+        ...document.querySelectorAll(
+          '#planBody tr'
+        )
+      ]
+        .map(row => ({
+
+          day:
+            row
+              .querySelector('.plan-day')
+              ?.value
+              .trim() || '',
+
+          hifz:
+            row
+              .querySelector('.plan-hifz')
+              ?.value
+              .trim() || '',
+
+          review:
+            row
+              .querySelector('.plan-review')
+              ?.value
+              .trim() || '',
+
+          note:
+            row
+              .querySelector('.plan-note')
+              ?.value
+              .trim() || ''
+
+        }))
+        .filter(
+          item =>
+            item.day ||
+            item.hifz ||
+            item.review ||
+            item.note
+        );
+
+    }
+
+
+    /* =========================================================
+       TESTS
+    ========================================================= */
+
+    function renderTests() {
+
+      const body =
+        document.getElementById(
+          'testsBody'
+        );
+
+
+      if (!body)
+        return;
+
+
+      body.innerHTML = '';
+
+
+      if (
+        !profile.tests ||
+        !profile.tests.length
+      ) {
+
+        return;
+
+      }
+
+
+      profile.tests.forEach(
+        item => {
+
+          addTestRow(
+            item
+          );
+
+        }
+      );
+
+    }
+
+
+    function addTestRow(
+      item = {}
+    ) {
+
+      const body =
+        document.getElementById(
+          'testsBody'
+        );
+
+
+      if (!body)
+        return;
+
+
+      const row =
+        document.createElement('tr');
+
+
+      row.innerHTML = `
+
+        <td>
+
+          <input
+            class="table-input test-date"
+            type="date"
+            value="${escapeHtml(
+              item.date || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input test-name"
+            type="text"
+            placeholder="اسم الاختبار"
+            value="${escapeHtml(
+              item.name || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input test-score"
+            type="number"
+            step="0.1"
+            min="0"
+            value="${escapeHtml(
+              item.score ?? ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input test-outof"
+            type="number"
+            step="0.1"
+            min="1"
+            value="${escapeHtml(
+              item.outOf ?? 100
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input test-note"
+            type="text"
+            placeholder="ملاحظات"
+            value="${escapeHtml(
+              item.note || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <button
+            type="button"
+            class="remove-row"
+            onclick="this.closest('tr').remove()"
+          >
+            ×
+          </button>
+
+        </td>
+
+      `;
+
+
+      body.appendChild(row);
+
+    }
+
+
+    function collectTests() {
+
+      return [
+        ...document.querySelectorAll(
+          '#testsBody tr'
+        )
+      ]
+        .map(row => ({
+
+          date:
+            row
+              .querySelector('.test-date')
+              ?.value || '',
+
+          name:
+            row
+              .querySelector('.test-name')
+              ?.value
+              .trim() || '',
+
+          score:
+            number(
+              row
+                .querySelector('.test-score')
+                ?.value
+            ),
+
+          outOf:
+            number(
+              row
+                .querySelector('.test-outof')
+                ?.value
+            ) || 100,
+
+          note:
+            row
+              .querySelector('.test-note')
+              ?.value
+              .trim() || ''
+
+        }))
+        .filter(
+          item =>
+            item.date ||
+            item.name ||
+            item.score !== ''
+        );
+
+    }
+
+
+    /* =========================================================
+       RECITATIONS
+    ========================================================= */
+
+    function renderRecitations() {
+
+      const body =
+        document.getElementById(
+          'recitationsBody'
+        );
+
+
+      if (!body)
+        return;
+
+
+      body.innerHTML = '';
+
+
+      if (
+        !profile.recitations ||
+        !profile.recitations.length
+      ) {
+
+        return;
+
+      }
+
+
+      profile.recitations.forEach(
+        item => {
+
+          addRecitationRow(
+            item
+          );
+
+        }
+      );
+
+    }
+
+
+    function addRecitationRow(
+      item = {}
+    ) {
+
+      const body =
+        document.getElementById(
+          'recitationsBody'
+        );
+
+
+      if (!body)
+        return;
+
+
+      const row =
+        document.createElement('tr');
+
+
+      row.innerHTML = `
+
+        <td>
+
+          <input
+            class="table-input rec-date"
+            type="date"
+            value="${escapeHtml(
+              item.date || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <select
+            class="table-input rec-type"
+          >
+
+            <option
+              value="hifz"
+              ${item.type === 'hifz' ? 'selected' : ''}
+            >
+              حفظ
+            </option>
+
+            <option
+              value="review"
+              ${item.type === 'review' ? 'selected' : ''}
+            >
+              مراجعة
+            </option>
+
+          </select>
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input rec-from"
+            type="number"
+            min="1"
+            max="604"
+            placeholder="1"
+            value="${escapeHtml(
+              item.from ?? ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input rec-to"
+            type="number"
+            min="1"
+            max="604"
+            placeholder="604"
+            value="${escapeHtml(
+              item.to ?? ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input rec-score"
+            type="number"
+            min="0"
+            max="100"
+            step="0.1"
+            placeholder="100"
+            value="${escapeHtml(
+              item.score ?? ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <input
+            class="table-input rec-note"
+            type="text"
+            placeholder="ملاحظات"
+            value="${escapeHtml(
+              item.note || ''
+            )}"
+          >
+
+        </td>
+
+
+        <td>
+
+          <button
+            type="button"
+            class="remove-row"
+            onclick="this.closest('tr').remove()"
+          >
+            ×
+          </button>
+
+        </td>
+
+      `;
+
+
+      body.appendChild(row);
+
+    }
+
+
+    function collectRecitations() {
+
+      return [
+        ...document.querySelectorAll(
+          '#recitationsBody tr'
+        )
+      ]
+        .map(row => ({
+
+          date:
+            row
+              .querySelector('.rec-date')
+              ?.value || '',
+
+          type:
+            row
+              .querySelector('.rec-type')
+              ?.value || 'hifz',
+
+          from:
+            number(
+              row
+                .querySelector('.rec-from')
+                ?.value
+            ),
+
+          to:
+            number(
+              row
+                .querySelector('.rec-to')
+                ?.value
+            ),
+
+          score:
+            number(
+              row
+                .querySelector('.rec-score')
+                ?.value
+            ),
+
+          note:
+            row
+              .querySelector('.rec-note')
+              ?.value
+              .trim() || ''
+
+        }))
+        .filter(
+          item =>
+            item.date ||
+            item.from !== '' ||
+            item.to !== '' ||
+            item.score !== '' ||
+            item.note
+        );
+
+    }
+
+
+    /* =========================================================
+       STATS
+    ========================================================= */
+
+    function updateStats() {
+
+      const attendanceCount =
+        document.querySelectorAll(
+          '#attendanceBody tr'
+        ).length;
+
+
+      const recitationCount =
+        document.querySelectorAll(
+          '#recitationsBody tr'
+        ).length;
+
+
+      const testCount =
+        document.querySelectorAll(
+          '#testsBody tr'
+        ).length;
+
+
+      const attendanceElement =
+        document.getElementById(
+          'attendanceCount'
+        );
+
+
+      const recitationElement =
+        document.getElementById(
+          'recitationCount'
+        );
+
+
+      const testElement =
+        document.getElementById(
+          'testCount'
+        );
+
+
+      if (attendanceElement)
+        attendanceElement.textContent =
+          attendanceCount;
+
+
+      if (recitationElement)
+        recitationElement.textContent =
+          recitationCount;
+
+
+      if (testElement)
+        testElement.textContent =
+          testCount;
+
+    }
+
+
+    /* =========================================================
+       BACK
+    ========================================================= */
+
+    function goBack() {
+
+      if (
+        document.referrer &&
+        document.referrer.includes(
+          'teacher-dashboard'
+        )
+      ) {
+
+        history.back();
+
+      } else {
+
+        window.location.href =
+          'teacher-dashboard.html';
+
+      }
+
+    }
+
+
+    /* =========================================================
+       START
+    ========================================================= */
+
+    loadStudent();
 
   </script>
 
 </body>
+
 </html>
-```
