@@ -104,6 +104,12 @@
       font-size: 17px;
       padding: 15px 20px;
       border-radius: 12px;
+      transition: 0.2s;
+    }
+
+    .submit-button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
     }
 
     .direct-button {
@@ -149,27 +155,82 @@
       margin-top: 5px;
     }
 
-    .success-message,
+    /* رسالة النجاح */
+    .success-message {
+      display: none;
+      background: linear-gradient(
+        135deg,
+        #edf8f2,
+        #f8fcf9
+      );
+      border: 1px solid #b9dfca;
+      border-radius: 18px;
+      padding: 25px 20px;
+      text-align: center;
+      color: #174d3a;
+      animation: successAppear 0.45s ease;
+    }
+
+    .success-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: #174d3a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(23, 77, 58, 0.18);
+    }
+
+    .success-message h3 {
+      margin: 0 0 8px;
+      font-size: 23px;
+    }
+
+    .success-message p {
+      margin: 0;
+      line-height: 1.8;
+      font-size: 15px;
+      color: #456057;
+    }
+
+    .success-subtext {
+      margin-top: 12px !important;
+      font-size: 13px !important;
+      opacity: 0.75;
+    }
+
+    @keyframes successAppear {
+      from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* رسالة الخطأ */
     .error-message {
       display: none;
+      background: #fff3f3;
+      border: 1px solid #efc1c1;
+      border-radius: 14px;
+      padding: 15px;
       text-align: center;
-      padding: 14px;
-      border-radius: 12px;
+      color: #a33;
       line-height: 1.7;
       font-weight: bold;
     }
 
-    .success-message {
-      background: #edf5f1;
-      color: #174d3a;
-    }
-
-    .error-message {
-      background: #fff0f0;
-      color: #a33;
-    }
-
     @media (max-width: 600px) {
+
       .registration-page {
         padding: 35px 15px 60px;
       }
@@ -180,6 +241,10 @@
 
       .registration-header h1 {
         font-size: 26px;
+      }
+
+      .success-message {
+        padding: 22px 15px;
       }
     }
   </style>
@@ -199,7 +264,10 @@
 
         <div class="registration-header">
 
-          <img src="logo.png" alt="شعار مركز حردان طارق القرآني">
+          <img
+            src="logo.png"
+            alt="شعار مركز حردان طارق القرآني"
+          >
 
           <h1>التسجيل الإلكتروني 📝</h1>
 
@@ -209,10 +277,17 @@
 
         </div>
 
-        <form id="registrationForm" class="registration-form">
+
+        <form
+          id="registrationForm"
+          class="registration-form"
+        >
 
           <div class="form-group">
-            <label for="studentName">اسم الطالب</label>
+
+            <label for="studentName">
+              اسم الطالب
+            </label>
 
             <input
               type="text"
@@ -221,11 +296,15 @@
               placeholder="أدخل اسم الطالب"
               required
             >
+
           </div>
 
 
           <div class="form-group">
-            <label for="studentAge">العمر</label>
+
+            <label for="studentAge">
+              العمر
+            </label>
 
             <input
               type="number"
@@ -236,11 +315,15 @@
               max="100"
               required
             >
+
           </div>
 
 
           <div class="form-group">
-            <label for="guardianPhone">رقم ولي الأمر</label>
+
+            <label for="guardianPhone">
+              رقم ولي الأمر
+            </label>
 
             <input
               type="tel"
@@ -249,15 +332,25 @@
               placeholder="مثال: 07XXXXXXXX"
               required
             >
+
           </div>
 
 
           <div class="form-group">
-            <label for="program">الشعبة المطلوبة</label>
 
-            <select id="program" name="program" required>
+            <label for="program">
+              الشعبة المطلوبة
+            </label>
 
-              <option value="">اختر الشعبة</option>
+            <select
+              id="program"
+              name="program"
+              required
+            >
+
+              <option value="">
+                اختر الشعبة
+              </option>
 
               <option value="شعبة الحفاظ">
                 شعبة الحفاظ
@@ -276,21 +369,27 @@
               </option>
 
             </select>
+
           </div>
 
 
           <div class="form-group">
-            <label for="notes">ملاحظات إضافية</label>
+
+            <label for="notes">
+              ملاحظات إضافية
+            </label>
 
             <textarea
               id="notes"
               name="notes"
               placeholder="اكتب أي ملاحظات أو معلومات إضافية إن وجدت"
             ></textarea>
+
           </div>
 
 
           <!-- التسجيل المباشر -->
+
           <button
             type="button"
             id="directRegisterButton"
@@ -305,7 +404,8 @@
           </div>
 
 
-          <!-- التسجيل عبر واتساب -->
+          <!-- واتساب -->
+
           <button
             type="button"
             id="whatsappButton"
@@ -315,14 +415,40 @@
           </button>
 
 
-          <div id="successMessage" class="success-message">
-            تم تسجيل الطالب بنجاح ✅
-            <br>
-            شكرًا لتسجيلكم في مركز حردان طارق القرآني.
+          <!-- رسالة النجاح -->
+
+          <div
+            id="successMessage"
+            class="success-message"
+          >
+
+            <div class="success-icon">
+              ✓
+            </div>
+
+            <h3>
+              تم تسجيل الطالب بنجاح
+            </h3>
+
+            <p>
+              شكرًا لتسجيلكم في مركز حردان طارق القرآني.
+              <br>
+              تم استلام بيانات الطالب بنجاح.
+            </p>
+
+            <p class="success-subtext">
+              سيتم التواصل معكم من المركز عند الحاجة.
+            </p>
+
           </div>
 
 
-          <div id="errorMessage" class="error-message">
+          <!-- رسالة الخطأ -->
+
+          <div
+            id="errorMessage"
+            class="error-message"
+          >
             حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى.
           </div>
 
@@ -342,6 +468,7 @@
 
 
   <!-- Supabase -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
@@ -361,19 +488,29 @@
 
 
     const form =
-      document.getElementById('registrationForm');
+      document.getElementById(
+        'registrationForm'
+      );
 
     const directRegisterButton =
-      document.getElementById('directRegisterButton');
+      document.getElementById(
+        'directRegisterButton'
+      );
 
     const whatsappButton =
-      document.getElementById('whatsappButton');
+      document.getElementById(
+        'whatsappButton'
+      );
 
     const successMessage =
-      document.getElementById('successMessage');
+      document.getElementById(
+        'successMessage'
+      );
 
     const errorMessage =
-      document.getElementById('errorMessage');
+      document.getElementById(
+        'errorMessage'
+      );
 
 
     function getFormData() {
@@ -381,19 +518,33 @@
       return {
 
         studentName:
-          document.getElementById('studentName').value.trim(),
+          document
+            .getElementById('studentName')
+            .value
+            .trim(),
 
         studentAge:
-          document.getElementById('studentAge').value.trim(),
+          document
+            .getElementById('studentAge')
+            .value
+            .trim(),
 
         guardianPhone:
-          document.getElementById('guardianPhone').value.trim(),
+          document
+            .getElementById('guardianPhone')
+            .value
+            .trim(),
 
         program:
-          document.getElementById('program').value,
+          document
+            .getElementById('program')
+            .value,
 
         notes:
-          document.getElementById('notes').value.trim()
+          document
+            .getElementById('notes')
+            .value
+            .trim()
 
       };
 
@@ -415,7 +566,8 @@
     }
 
 
-    // التسجيل المباشر داخل الموقع
+    // التسجيل المباشر
+
     directRegisterButton.addEventListener(
       'click',
       async function() {
@@ -425,7 +577,8 @@
         }
 
 
-        const data = getFormData();
+        const data =
+          getFormData();
 
 
         directRegisterButton.disabled = true;
@@ -434,29 +587,47 @@
           'جاري تسجيل الطالب...';
 
 
-        successMessage.style.display = 'none';
+        successMessage.style.display =
+          'none';
 
-        errorMessage.style.display = 'none';
-
-
-        const { error } = await supabaseClient
-          .from('students')
-          .insert([
-
-            {
-              name: data.studentName,
-              age: Number(data.studentAge),
-              guardian_phone: data.guardianPhone,
-              section: data.program,
-              memorization: '',
-              status: 'active',
-              notes: data.notes || ''
-            }
-
-          ]);
+        errorMessage.style.display =
+          'none';
 
 
-        directRegisterButton.disabled = false;
+        const { error } =
+          await supabaseClient
+            .from('students')
+            .insert([
+
+              {
+                name:
+                  data.studentName,
+
+                age:
+                  Number(data.studentAge),
+
+                guardian_phone:
+                  data.guardianPhone,
+
+                section:
+                  data.program,
+
+                memorization:
+                  '',
+
+                status:
+                  'active',
+
+                notes:
+                  data.notes || ''
+
+              }
+
+            ]);
+
+
+        directRegisterButton.disabled =
+          false;
 
         directRegisterButton.textContent =
           'التسجيل مباشرة داخل الموقع ✅';
@@ -467,24 +638,34 @@
           console.error(error);
 
           errorMessage.textContent =
-            'حدث خطأ أثناء التسجيل. يرجى المحاولة مرة أخرى.';
+            'تعذر إكمال التسجيل حاليًا. يرجى المحاولة مرة أخرى.';
 
-          errorMessage.style.display = 'block';
+          errorMessage.style.display =
+            'block';
 
           return;
 
         }
 
 
-        successMessage.style.display = 'block';
+        // نجاح التسجيل
+
+        successMessage.style.display =
+          'block';
 
         form.reset();
+
+        successMessage.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
 
       }
     );
 
 
     // التسجيل عبر واتساب
+
     whatsappButton.addEventListener(
       'click',
       function() {
@@ -494,7 +675,8 @@
         }
 
 
-        const data = getFormData();
+        const data =
+          getFormData();
 
 
         const message = [
@@ -525,15 +707,19 @@
           encodeURIComponent(message);
 
 
-        const opened = window.open(
-          whatsappURL,
-          '_blank',
-          'noopener'
-        );
+        const opened =
+          window.open(
+            whatsappURL,
+            '_blank',
+            'noopener'
+          );
 
 
         if (!opened) {
-          window.location.href = whatsappURL;
+
+          window.location.href =
+            whatsappURL;
+
         }
 
       }
