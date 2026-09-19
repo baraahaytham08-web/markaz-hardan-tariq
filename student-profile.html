@@ -5,14 +5,30 @@
 <head>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <title>ملف الطالب | مركز حردان طارق القرآني</title>
+  <title>
+    ملف الطالب | مركز حردان طارق القرآني
+  </title>
 
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="shortcut icon" type="image/png" href="logo.png">
+  <link
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link
+    rel="shortcut icon"
+    type="image/png"
+    href="logo.png"
+  >
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
 
   <style>
 
@@ -27,19 +43,28 @@
       --green-2: #176b50;
       --green-3: #218866;
       --dark: #092f25;
+
       --gold: #c5a04a;
       --gold-2: #e0c36c;
+
       --cream: #f8f5eb;
+
       --bg: #f2f6f3;
-      --white: #fff;
+      --white: #ffffff;
+
       --text: #17362c;
       --muted: #718078;
+
       --border: #e2e9e5;
+
       --success: #16834b;
       --danger: #b42318;
+
       --blue: #2869a8;
       --orange: #b76a18;
-      --shadow: 0 12px 35px rgba(13, 77, 58, .08);
+
+      --shadow:
+        0 12px 35px rgba(13, 77, 58, .08);
     }
 
     html {
@@ -48,11 +73,25 @@
 
     body {
       background:
-        radial-gradient(circle at 10% 5%, rgba(197,160,74,.10), transparent 25%),
-        radial-gradient(circle at 90% 15%, rgba(23,107,80,.08), transparent 25%),
+        radial-gradient(
+          circle at 10% 5%,
+          rgba(197,160,74,.10),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 90% 15%,
+          rgba(23,107,80,.08),
+          transparent 25%
+        ),
         var(--bg);
+
       color: var(--text);
-      font-family: Tahoma, Arial, sans-serif;
+
+      font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
       min-height: 100vh;
     }
 
@@ -68,44 +107,72 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* HEADER */
+
+    /* =========================
+       HEADER
+    ========================= */
 
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(9,47,37,.96);
-      backdrop-filter: blur(16px);
+
+      background:
+        rgba(9,47,37,.96);
+
+      backdrop-filter:
+        blur(16px);
+
       color: white;
-      box-shadow: 0 8px 25px rgba(0,0,0,.10);
+
+      box-shadow:
+        0 8px 25px rgba(0,0,0,.10);
     }
 
     .header-inner {
-      width: min(1250px, calc(100% - 30px));
+      width:
+        min(
+          1250px,
+          calc(100% - 30px)
+        );
+
       min-height: 78px;
+
       margin: auto;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       gap: 18px;
     }
 
     .brand-link {
       color: white;
       text-decoration: none;
+
       display: flex;
       align-items: center;
+
       gap: 13px;
     }
 
     .brand-logo {
       width: 48px;
       height: 48px;
+
       border-radius: 50%;
+
       object-fit: cover;
+
       overflow: hidden;
-      border: 2px solid rgba(224,195,108,.8);
-      box-shadow: 0 5px 18px rgba(0,0,0,.2);
+
+      border:
+        2px solid
+        rgba(224,195,108,.8);
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,.2);
     }
 
     .brand h1 {
@@ -114,41 +181,74 @@
     }
 
     .brand p {
-      color: rgba(255,255,255,.68);
+      color:
+        rgba(255,255,255,.68);
+
       font-size: 12px;
     }
 
     .back {
       color: white;
+
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,.20);
-      background: rgba(255,255,255,.07);
-      padding: 11px 16px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.20);
+
+      background:
+        rgba(255,255,255,.07);
+
+      padding:
+        11px 16px;
+
       border-radius: 12px;
+
       transition: .2s;
+
       white-space: nowrap;
     }
 
     .back:hover {
-      background: rgba(255,255,255,.14);
-      transform: translateY(-2px);
+      background:
+        rgba(255,255,255,.14);
+
+      transform:
+        translateY(-2px);
     }
 
-    /* PAGE */
+
+    /* =========================
+       PAGE
+    ========================= */
 
     .container {
-      width: min(1250px, calc(100% - 30px));
-      margin: 28px auto 80px;
+      width:
+        min(
+          1250px,
+          calc(100% - 30px)
+        );
+
+      margin:
+        28px auto 80px;
     }
 
-    /* MESSAGE */
+
+    /* =========================
+       MESSAGE
+    ========================= */
 
     .message {
       display: none;
+
       padding: 15px 18px;
+
       border-radius: 15px;
+
       margin-bottom: 18px;
+
       font-weight: bold;
+
       box-shadow: var(--shadow);
     }
 
@@ -164,39 +264,73 @@
       border: 1px solid #f2cdca;
     }
 
-    /* HERO */
+
+    /* =========================
+       HERO
+    ========================= */
 
     .student-hero {
       position: relative;
+
       overflow: hidden;
+
       background:
-        radial-gradient(circle at 10% 10%, rgba(224,195,108,.18), transparent 28%),
-        linear-gradient(135deg, #0a382c, #14654b);
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(224,195,108,.18),
+          transparent 28%
+        ),
+        linear-gradient(
+          135deg,
+          #0a382c,
+          #14654b
+        );
+
       border-radius: 28px;
+
       padding: 28px;
+
       color: white;
+
       margin-bottom: 20px;
-      box-shadow: 0 18px 45px rgba(13,77,58,.18);
+
+      box-shadow:
+        0 18px 45px
+        rgba(13,77,58,.18);
     }
 
     .student-hero::before {
       content: "";
+
       position: absolute;
+
       width: 230px;
       height: 230px;
-      border: 1px solid rgba(255,255,255,.08);
+
+      border:
+        1px solid
+        rgba(255,255,255,.08);
+
       border-radius: 50%;
+
       left: -90px;
       top: -120px;
     }
 
     .student-hero::after {
       content: "";
+
       position: absolute;
+
       width: 280px;
       height: 280px;
-      border: 1px solid rgba(224,195,108,.12);
+
+      border:
+        1px solid
+        rgba(224,195,108,.12);
+
       border-radius: 50%;
+
       right: -130px;
       bottom: -170px;
     }
@@ -204,28 +338,36 @@
     .hero-content {
       position: relative;
       z-index: 2;
+
       display: flex;
+
       align-items: center;
+
       gap: 22px;
     }
 
-    .photo-preview {
+    .hero-photo {
       width: 105px;
       height: 105px;
-      border-radius: 50%;
-      object-fit: cover;
-      overflow: hidden;
-      border: 4px solid rgba(224,195,108,.95);
-      background: rgba(255,255,255,.10);
-      flex-shrink: 0;
-      box-shadow: 0 8px 28px rgba(0,0,0,.20);
-    }
 
-    .photo-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 38px;
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      overflow: hidden;
+
+      border:
+        4px solid
+        rgba(224,195,108,.95);
+
+      background:
+        rgba(255,255,255,.10);
+
+      flex-shrink: 0;
+
+      box-shadow:
+        0 8px 28px
+        rgba(0,0,0,.20);
     }
 
     .hero-info {
@@ -233,224 +375,388 @@
     }
 
     .hero-info h2 {
-      font-size: clamp(24px, 4vw, 34px);
+      font-size:
+        clamp(
+          24px,
+          4vw,
+          34px
+        );
+
       margin-bottom: 7px;
     }
 
     .hero-info p {
-      color: rgba(255,255,255,.75);
+      color:
+        rgba(255,255,255,.75);
+
       margin-bottom: 14px;
     }
 
     .hero-pills {
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 8px;
     }
 
     .hero-pill {
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.13);
-      padding: 8px 12px;
+      background:
+        rgba(255,255,255,.10);
+
+      border:
+        1px solid
+        rgba(255,255,255,.13);
+
+      padding:
+        8px 12px;
+
       border-radius: 999px;
+
       font-size: 12px;
     }
 
     .hero-side {
-      min-width: 180px;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.12);
+      min-width: 240px;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 9px;
+    }
+
+    .hero-stat {
+      background:
+        rgba(255,255,255,.08);
+
+      border:
+        1px solid
+        rgba(255,255,255,.12);
+
       border-radius: 18px;
-      padding: 16px;
+
+      padding: 15px 12px;
+
       text-align: center;
     }
 
-    .hero-side small {
+    .hero-stat small {
       display: block;
-      color: rgba(255,255,255,.65);
+
+      color:
+        rgba(255,255,255,.65);
+
       margin-bottom: 5px;
+
+      font-size: 11px;
     }
 
-    .hero-side strong {
-      font-size: 28px;
-      color: var(--gold-2);
+    .hero-stat strong {
+      font-size: 24px;
+
+      color:
+        var(--gold-2);
     }
 
-    /* SECTION */
+
+    /* =========================
+       SECTION
+    ========================= */
 
     .section {
       margin-top: 20px;
-      background: rgba(255,255,255,.94);
-      border: 1px solid rgba(226,233,229,.9);
+
+      background:
+        rgba(255,255,255,.94);
+
+      border:
+        1px solid
+        rgba(226,233,229,.9);
+
       border-radius: 22px;
+
       padding: 23px;
-      box-shadow: var(--shadow);
+
+      box-shadow:
+        var(--shadow);
     }
 
     .section-head {
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       gap: 15px;
+
       margin-bottom: 20px;
     }
 
     .section-title {
       display: flex;
+
       align-items: center;
+
       gap: 10px;
-      color: var(--green);
+
+      color:
+        var(--green);
+
       font-size: 20px;
     }
 
     .section-title::before {
       content: "";
+
       width: 5px;
       height: 25px;
+
       border-radius: 20px;
-      background: linear-gradient(var(--gold), var(--gold-2));
+
+      background:
+        linear-gradient(
+          var(--gold),
+          var(--gold-2)
+        );
     }
 
     .section-subtitle {
-      color: var(--muted);
+      color:
+        var(--muted);
+
       font-size: 12px;
+
       margin-top: 4px;
     }
 
-    /* STATS */
+
+    /* =========================
+       STATS
+    ========================= */
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       gap: 14px;
     }
 
     .stat {
       position: relative;
+
       overflow: hidden;
-      border: 1px solid var(--border);
-      background: linear-gradient(145deg, #fff, #f8fbf9);
+
+      border:
+        1px solid
+        var(--border);
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff,
+          #f8fbf9
+        );
+
       border-radius: 18px;
+
       padding: 18px;
+
       transition: .25s;
     }
 
     .stat:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(13,77,58,.10);
+      transform:
+        translateY(-4px);
+
+      box-shadow:
+        0 14px 30px
+        rgba(13,77,58,.10);
     }
 
     .stat::after {
       content: "";
+
       position: absolute;
+
       width: 70px;
       height: 70px;
+
       border-radius: 50%;
+
       left: -25px;
       bottom: -35px;
-      background: rgba(197,160,74,.08);
+
+      background:
+        rgba(197,160,74,.08);
     }
 
     .stat-icon {
       width: 42px;
       height: 42px;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
+
       border-radius: 13px;
-      background: var(--cream);
+
+      background:
+        var(--cream);
+
       margin-bottom: 12px;
+
       font-size: 20px;
     }
 
     .stat-label {
-      color: var(--muted);
+      color:
+        var(--muted);
+
       font-size: 12px;
+
       margin-bottom: 5px;
     }
 
     .stat-value {
-      color: var(--green);
+      color:
+        var(--green);
+
       font-size: 26px;
+
       font-weight: 900;
     }
 
     .stat-note {
-      color: var(--muted);
+      color:
+        var(--muted);
+
       font-size: 11px;
+
       margin-top: 5px;
     }
 
-    /* PROGRESS */
+
+    /* =========================
+       PROGRESS
+    ========================= */
 
     .progress-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 16px;
     }
 
     .progress-card {
-      border: 1px solid var(--border);
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 18px;
+
       padding: 18px;
+
       background: #fcfdfc;
     }
 
     .progress-top {
       display: flex;
+
       justify-content: space-between;
+
       gap: 12px;
+
       margin-bottom: 12px;
     }
 
     .progress-top strong {
-      color: var(--green);
+      color:
+        var(--green);
     }
 
     .percent {
       font-weight: 900;
-      color: var(--gold);
+
+      color:
+        var(--gold);
+
       font-size: 21px;
     }
 
     .bar {
       height: 11px;
-      background: #e8eee9;
+
+      background:
+        #e8eee9;
+
       border-radius: 999px;
+
       overflow: hidden;
     }
 
     .bar-fill {
       height: 100%;
+
       width: 0;
+
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--green), var(--green-3));
-      transition: width .5s ease;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--green),
+          var(--green-3)
+        );
+
+      transition:
+        width .5s ease;
     }
 
     .progress-note {
       margin-top: 10px;
-      color: var(--muted);
+
+      color:
+        var(--muted);
+
       font-size: 12px;
     }
 
-    /* FORM */
+
+    /* =========================
+       FORM
+    ========================= */
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 15px;
     }
 
     .field.full-field {
-      grid-column: 1 / -1;
+      grid-column:
+        1 / -1;
     }
 
     label {
       display: block;
-      color: #345248;
+
+      color:
+        #345248;
+
       font-weight: bold;
+
       font-size: 13px;
+
       margin-bottom: 7px;
     }
 
@@ -458,165 +764,384 @@
     textarea,
     select {
       width: 100%;
-      border: 1px solid #dce5df;
+
+      border:
+        1px solid
+        #dce5df;
+
       border-radius: 12px;
-      padding: 12px 13px;
+
+      padding:
+        12px 13px;
+
       background: white;
-      color: var(--text);
+
+      color:
+        var(--text);
+
       font-size: 14px;
+
       outline: none;
+
       transition: .2s;
     }
 
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: var(--green-2);
-      box-shadow: 0 0 0 4px rgba(23,107,80,.08);
+      border-color:
+        var(--green-2);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(23,107,80,.08);
     }
 
     textarea {
       min-height: 130px;
+
       resize: vertical;
     }
 
-    /* TABLE */
+    input[readonly] {
+      background:
+        #f7faf8;
+
+      cursor: default;
+    }
+
+
+    /* =========================
+       IMAGE PICKER
+    ========================= */
+
+    .image-upload {
+      border:
+        1px dashed
+        #bdcdc4;
+
+      background:
+        #f8fbf9;
+
+      border-radius: 15px;
+
+      padding: 15px;
+    }
+
+    .image-upload-row {
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+    }
+
+    .image-preview {
+      width: 75px;
+      height: 75px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      border:
+        2px solid
+        var(--gold);
+
+      background:
+        #eef3ef;
+    }
+
+    .file-button {
+      position: relative;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      padding:
+        11px 15px;
+
+      border-radius: 11px;
+
+      background:
+        var(--green);
+
+      color: white;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+      transition: .2s;
+    }
+
+    .file-button:hover {
+      transform:
+        translateY(-2px);
+
+      background:
+        var(--green-2);
+    }
+
+    .file-button input {
+      position: absolute;
+
+      opacity: 0;
+
+      inset: 0;
+
+      cursor: pointer;
+    }
+
+    .image-help {
+      margin-top: 8px;
+
+      font-size: 11px;
+
+      color:
+        var(--muted);
+    }
+
+
+    /* =========================
+       TABLE
+    ========================= */
 
     .table-wrap {
       overflow-x: auto;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 15px;
     }
 
     table {
       width: 100%;
-      border-collapse: collapse;
+
+      border-collapse:
+        collapse;
+
       min-width: 720px;
     }
 
     th {
-      background: #f3f7f4;
-      color: var(--green);
+      background:
+        #f3f7f4;
+
+      color:
+        var(--green);
+
       padding: 13px;
+
       text-align: right;
+
       font-size: 12px;
+
       white-space: nowrap;
     }
 
     td {
       padding: 12px;
-      border-top: 1px solid var(--border);
+
+      border-top:
+        1px solid
+        var(--border);
+
       font-size: 13px;
-      vertical-align: middle;
+
+      vertical-align:
+        middle;
     }
 
-    tr:hover td {
-      background: #fbfdfc;
-    }
 
-    /* EDITOR */
+    /* =========================
+       EDITOR
+    ========================= */
 
     .editor-list {
       display: flex;
+
       flex-direction: column;
+
       gap: 12px;
     }
 
     .editor-row {
-      border: 1px solid var(--border);
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 16px;
-      background: #fbfdfc;
+
+      background:
+        #fbfdfc;
+
       padding: 15px;
     }
 
     .editor-row-head {
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       margin-bottom: 12px;
+
       gap: 10px;
     }
 
     .editor-row-title {
       font-weight: 900;
-      color: var(--green);
+
+      color:
+        var(--green);
     }
 
     .editor-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       gap: 10px;
     }
 
     .remove {
       border: none;
-      background: #fff0ef;
-      color: var(--danger);
+
+      background:
+        #fff0ef;
+
+      color:
+        var(--danger);
+
       border-radius: 9px;
-      padding: 8px 11px;
+
+      padding:
+        8px 11px;
+
       cursor: pointer;
+
       font-weight: bold;
     }
 
     .remove:hover {
-      background: #ffe1df;
+      background:
+        #ffe1df;
     }
 
     .add {
       width: 100%;
+
       margin-top: 12px;
-      border: 1px dashed #b9c9c0;
-      background: #f8fbf9;
-      color: var(--green);
+
+      border:
+        1px dashed
+        #b9c9c0;
+
+      background:
+        #f8fbf9;
+
+      color:
+        var(--green);
+
       padding: 12px;
+
       border-radius: 12px;
+
       cursor: pointer;
+
       font-weight: bold;
+
       transition: .2s;
     }
 
     .add:hover {
-      background: #edf5f1;
-      border-color: var(--green-2);
+      background:
+        #edf5f1;
+
+      border-color:
+        var(--green-2);
     }
 
-    /* RECITATION */
+
+    /* =========================
+       RECITATION
+    ========================= */
 
     .recitation-summary {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       gap: 12px;
+
       margin-bottom: 16px;
     }
 
     .mini-stat {
       padding: 14px;
-      background: #f7faf8;
-      border: 1px solid var(--border);
+
+      background:
+        #f7faf8;
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 14px;
     }
 
     .mini-stat small {
       display: block;
-      color: var(--muted);
+
+      color:
+        var(--muted);
+
       margin-bottom: 5px;
     }
 
     .mini-stat strong {
-      color: var(--green);
+      color:
+        var(--green);
+
       font-size: 20px;
     }
 
-    .grade-badge,
-    .status-badge {
+
+    /* =========================
+       GRADE
+    ========================= */
+
+    .grade-preview {
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: bold;
-      white-space: nowrap;
+
+      width: 100%;
+
+      min-height: 45px;
+
+      padding: 8px 10px;
+
+      border-radius: 11px;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      text-align: center;
     }
 
     .grade-excellent {
@@ -634,226 +1159,519 @@
       color: #9b5c0d;
     }
 
-    .grade-other {
+    .grade-acceptable {
+      background: #f6f0dd;
+      color: #7b6634;
+    }
+
+    .grade-review {
+      background: #fff0ef;
+      color: #b42318;
+    }
+
+    .grade-empty {
       background: #f1f3f2;
       color: #63716b;
     }
 
-    /* QURAN MAP */
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    .status-badge {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        7px 11px;
+
+      border-radius: 999px;
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+      white-space: nowrap;
+    }
+
+    .status-complete {
+      background: #e7f7ed;
+      color: #13743f;
+    }
+
+    .status-partial {
+      background: #fff3df;
+      color: #9b5c0d;
+    }
+
+    .status-running {
+      background: #e8f1fb;
+      color: #2869a8;
+    }
+
+    .status-pending {
+      background: #f1f3f2;
+      color: #63716b;
+    }
+
+
+    /* =========================
+       QURAN MAP
+    ========================= */
 
     .quran-progress {
       margin-bottom: 20px;
+
       padding: 18px;
+
       border-radius: 17px;
-      background: linear-gradient(135deg, #f4f8f5, #fbfaf3);
-      border: 1px solid var(--border);
+
+      background:
+        linear-gradient(
+          135deg,
+          #f4f8f5,
+          #fbfaf3
+        );
+
+      border:
+        1px solid
+        var(--border);
     }
 
     .quran-progress-head {
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       margin-bottom: 10px;
     }
 
     .quran-progress-head strong {
-      color: var(--green);
+      color:
+        var(--green);
+
       font-size: 22px;
     }
 
     .juz-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 13px;
     }
 
     .juz-card {
-      border: 1px solid var(--border);
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 15px;
+
       padding: 13px;
+
       background: white;
     }
 
     .juz-head {
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       gap: 8px;
+
       margin-bottom: 10px;
     }
 
     .juz-title {
       font-weight: 900;
-      color: var(--green);
+
+      color:
+        var(--green);
+
       font-size: 13px;
     }
 
     .juz-count {
-      color: var(--muted);
+      color:
+        var(--muted);
+
       font-size: 11px;
+    }
+
+    .juz-range {
+      color:
+        #8a968f;
+
+      font-size: 10px;
+
+      margin-bottom: 8px;
     }
 
     .page-grid {
       display: grid;
-      grid-template-columns: repeat(10, 1fr);
+
+      grid-template-columns:
+        repeat(10, 1fr);
+
       gap: 4px;
     }
 
     .page-dot {
-      aspect-ratio: 1;
+      min-height: 26px;
+
       border-radius: 6px;
-      border: 1px solid #e2e8e4;
-      background: #f1f4f2;
+
+      border:
+        1px solid
+        #e2e8e4;
+
+      background:
+        #f1f4f2;
+
       cursor: pointer;
+
       transition: .15s;
+
       position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color:
+        #68756f;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      user-select: none;
     }
 
     .page-dot:hover {
-      transform: scale(1.12);
+      transform:
+        scale(1.12);
+
       z-index: 2;
+
+      box-shadow:
+        0 5px 12px
+        rgba(0,0,0,.10);
     }
 
     .page-dot.hifz {
-      background: #19764f;
-      border-color: #19764f;
+      background:
+        #19764f;
+
+      border-color:
+        #19764f;
+
+      color: white;
     }
 
     .page-dot.review {
-      background: #d5b24e;
-      border-color: #d5b24e;
+      background:
+        #d5b24e;
+
+      border-color:
+        #d5b24e;
+
+      color:
+        #3f3210;
     }
 
     .page-dot.both {
-      background: linear-gradient(135deg, #19764f 50%, #d5b24e 50%);
-      border-color: #19764f;
-    }
+      background:
+        linear-gradient(
+          135deg,
+          #19764f 50%,
+          #d5b24e 50%
+        );
 
-    .page-dot[title] {
-      cursor: help;
+      border-color:
+        #19764f;
+
+      color: white;
     }
 
     .map-legend {
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 15px;
+
       margin-top: 15px;
-      color: var(--muted);
+
+      color:
+        var(--muted);
+
       font-size: 12px;
     }
 
     .legend-item {
       display: flex;
+
       align-items: center;
+
       gap: 6px;
     }
 
     .legend-dot {
       width: 13px;
       height: 13px;
+
       border-radius: 4px;
-      background: #f1f4f2;
-      border: 1px solid #ddd;
+
+      background:
+        #f1f4f2;
+
+      border:
+        1px solid
+        #ddd;
     }
 
     .legend-dot.hifz {
-      background: #19764f;
-      border-color: #19764f;
+      background:
+        #19764f;
+
+      border-color:
+        #19764f;
     }
 
     .legend-dot.review {
-      background: #d5b24e;
-      border-color: #d5b24e;
+      background:
+        #d5b24e;
+
+      border-color:
+        #d5b24e;
     }
 
-    /* ACTIONS */
+
+    /* =========================
+       POINTS
+    ========================= */
+
+    .points-breakdown {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+
+      margin-bottom: 16px;
+    }
+
+    .points-card {
+      padding: 14px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f8fbf9,
+          #fffdf6
+        );
+
+      border:
+        1px solid
+        var(--border);
+    }
+
+    .points-card small {
+      display: block;
+
+      color:
+        var(--muted);
+
+      margin-bottom: 5px;
+    }
+
+    .points-card strong {
+      color:
+        var(--green);
+
+      font-size: 20px;
+    }
+
+
+    /* =========================
+       ACTIONS
+    ========================= */
 
     .actions {
       position: sticky;
+
       bottom: 15px;
+
       z-index: 20;
+
       margin-top: 22px;
-      background: rgba(255,255,255,.90);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(226,233,229,.9);
+
+      background:
+        rgba(255,255,255,.90);
+
+      backdrop-filter:
+        blur(15px);
+
+      border:
+        1px solid
+        rgba(226,233,229,.9);
+
       border-radius: 18px;
+
       padding: 13px;
-      box-shadow: 0 12px 35px rgba(0,0,0,.12);
+
+      box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.12);
+
       display: flex;
-      justify-content: flex-start;
+
+      justify-content:
+        flex-start;
+
       gap: 10px;
     }
 
     .save {
       border: none;
-      background: linear-gradient(135deg, var(--green), var(--green-3));
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--green-3)
+        );
+
       color: white;
-      padding: 14px 24px;
+
+      padding:
+        14px 24px;
+
       border-radius: 12px;
+
       cursor: pointer;
+
       font-weight: 900;
+
       font-size: 14px;
-      box-shadow: 0 8px 20px rgba(13,77,58,.18);
+
+      box-shadow:
+        0 8px 20px
+        rgba(13,77,58,.18);
+
       transition: .2s;
     }
 
     .save:hover {
-      transform: translateY(-2px);
+      transform:
+        translateY(-2px);
     }
 
     .save:disabled {
       opacity: .65;
+
       cursor: wait;
+
       transform: none;
     }
 
     .secondary {
-      border: 1px solid var(--border);
+      border:
+        1px solid
+        var(--border);
+
       background: white;
-      color: var(--green);
-      padding: 14px 18px;
+
+      color:
+        var(--green);
+
+      padding:
+        14px 18px;
+
       border-radius: 12px;
+
       cursor: pointer;
+
       font-weight: bold;
     }
 
-    /* LOADING */
+
+    /* =========================
+       LOADING
+    ========================= */
 
     .loading {
       background: white;
+
       border-radius: 22px;
-      padding: 90px 20px;
+
+      padding:
+        90px 20px;
+
       text-align: center;
-      color: var(--muted);
-      box-shadow: var(--shadow);
+
+      color:
+        var(--muted);
+
+      box-shadow:
+        var(--shadow);
     }
 
     .loading-icon {
       font-size: 40px;
+
       margin-bottom: 12px;
-      animation: pulse 1.2s infinite;
+
+      animation:
+        pulse 1.2s infinite;
     }
 
     @keyframes pulse {
+
       50% {
         opacity: .45;
-        transform: scale(.94);
+
+        transform:
+          scale(.94);
       }
+
     }
 
-    /* MOBILE */
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media(max-width: 1050px) {
 
       .stats,
-      .recitation-summary {
-        grid-template-columns: repeat(2, 1fr);
+      .recitation-summary,
+      .points-breakdown {
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
       .juz-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
     }
+
 
     @media(max-width: 750px) {
 
@@ -875,26 +1693,33 @@
       }
 
       .back {
-        padding: 9px 11px;
+        padding:
+          9px 11px;
+
         font-size: 12px;
       }
 
       .container {
-        width: calc(100% - 18px);
+        width:
+          calc(100% - 18px);
+
         margin-top: 14px;
       }
 
       .student-hero {
         padding: 20px;
+
         border-radius: 22px;
       }
 
       .hero-content {
-        align-items: flex-start;
+        align-items:
+          flex-start;
+
         flex-wrap: wrap;
       }
 
-      .photo-preview {
+      .hero-photo {
         width: 82px;
         height: 82px;
       }
@@ -905,6 +1730,7 @@
 
       .section {
         padding: 16px;
+
         border-radius: 18px;
       }
 
@@ -912,21 +1738,28 @@
       .progress-grid,
       .form-grid,
       .juz-grid,
-      .recitation-summary {
-        grid-template-columns: 1fr;
+      .recitation-summary,
+      .points-breakdown {
+        grid-template-columns:
+          1fr;
       }
 
       .editor-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+          1fr 1fr;
       }
 
       .page-grid {
-        grid-template-columns: repeat(10, 1fr);
+        grid-template-columns:
+          repeat(10, 1fr);
       }
 
       .section-head {
-        align-items: flex-start;
-        flex-direction: column;
+        align-items:
+          flex-start;
+
+        flex-direction:
+          column;
       }
 
       .actions {
@@ -940,10 +1773,12 @@
 
     }
 
+
     @media(max-width: 480px) {
 
       .editor-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
 
       .hero-info h2 {
@@ -955,7 +1790,19 @@
       }
 
       .page-dot {
+        min-height: 23px;
+
         border-radius: 4px;
+
+        font-size: 7px;
+      }
+
+      .image-upload-row {
+        align-items:
+          flex-start;
+
+        flex-direction:
+          column;
       }
 
     }
@@ -964,13 +1811,18 @@
 
 </head>
 
+
 <body>
+
 
 <header>
 
   <div class="header-inner">
 
-    <a href="index.html" class="brand-link">
+    <a
+      href="index.html"
+      class="brand-link"
+    >
 
       <img
         src="logo.png"
@@ -979,11 +1831,19 @@
       >
 
       <div class="brand">
-        <h1>مركز حردان طارق القرآني</h1>
-        <p>ملف الطالب والمتابعة الأكاديمية</p>
+
+        <h1>
+          مركز حردان طارق القرآني
+        </h1>
+
+        <p>
+          ملف الطالب والمتابعة الأكاديمية
+        </p>
+
       </div>
 
     </a>
+
 
     <a
       class="back"
@@ -997,15 +1857,25 @@
 </header>
 
 
+
 <main class="container">
 
-  <div id="message" class="message"></div>
+  <div
+    id="message"
+    class="message"
+  ></div>
+
 
   <div id="app">
 
     <div class="loading">
-      <div class="loading-icon">📖</div>
+
+      <div class="loading-icon">
+        📖
+      </div>
+
       جاري تحميل ملف الطالب...
+
     </div>
 
   </div>
@@ -1013,7 +1883,13 @@
 </main>
 
 
+
 <script>
+
+
+/* =========================================================
+   إعداد Supabase
+========================================================= */
 
 const SUPABASE_URL =
   'https://lsbbcybpiulusdgfhepf.supabase.co';
@@ -1026,7 +1902,13 @@ const TEACHER_EMAIL =
 
 const TOTAL_QURAN_PAGES = 604;
 
-const REVIEW_TO_HIFZ_RATIO = 5;
+
+/*
+  كل 3 صفحات مراجعة
+  = صفحة حفظ واحدة
+*/
+const REVIEW_TO_HIFZ_RATIO = 3;
+
 
 const supabaseClient =
   supabase.createClient(
@@ -1036,13 +1918,15 @@ const supabaseClient =
 
 
 let studentId = null;
+
 let student = null;
+
 let profile = {};
 
 
-/* =========================
+/* =========================================================
    أدوات عامة
-========================= */
+========================================================= */
 
 function escapeHtml(value) {
 
@@ -1058,30 +1942,49 @@ function escapeHtml(value) {
 
 function number(value) {
 
-  const n = Number(value);
+  const n =
+    Number(value);
 
-  return Number.isFinite(n) ? n : 0;
+  return Number.isFinite(n)
+    ? n
+    : 0;
 
 }
 
 
-function formatNumber(value, digits = 1) {
+function formatNumber(
+  value,
+  digits = 1
+) {
 
-  const n = number(value);
+  const n =
+    number(value);
 
-  if (Number.isInteger(n)) return String(n);
+  if (
+    Number.isInteger(n)
+  ) {
+    return String(n);
+  }
 
-  return n.toFixed(digits)
+  return n
+    .toFixed(digits)
     .replace(/\.0+$/, '');
 
 }
 
 
-function clamp(value, min, max) {
+function clamp(
+  value,
+  min,
+  max
+) {
 
   return Math.min(
     max,
-    Math.max(min, number(value))
+    Math.max(
+      min,
+      number(value)
+    )
   );
 
 }
@@ -1089,91 +1992,32 @@ function clamp(value, min, max) {
 
 function todayISO() {
 
-  const d = new Date();
+  const d =
+    new Date();
 
   const year =
     d.getFullYear();
 
   const month =
-    String(d.getMonth() + 1)
-      .padStart(2, '0');
+    String(
+      d.getMonth() + 1
+    ).padStart(2, '0');
 
   const day =
-    String(d.getDate())
-      .padStart(2, '0');
-
-  return `${year}-${month}-${day}`;
-
-}
-
-
-/*
-  المركز يعتمد الجمعة كبداية أسبوع.
-  لذلك:
-  الجمعة → الخميس
-*/
-
-function getCurrentWeekRange() {
-
-  const now = new Date();
-
-  const day =
-    now.getDay();
-
-  const daysSinceFriday =
-    (day + 2) % 7;
-
-  const start =
-    new Date(now);
-
-  start.setDate(
-    now.getDate() -
-    daysSinceFriday
-  );
-
-  start.setHours(0, 0, 0, 0);
-
-  const end =
-    new Date(start);
-
-  end.setDate(
-    start.getDate() + 6
-  );
-
-  end.setHours(23, 59, 59, 999);
-
-  return {
-    start,
-    end
-  };
-
-}
-
-
-function dateInCurrentWeek(dateValue) {
-
-  if (!dateValue) return false;
-
-  const d =
-    new Date(
-      `${dateValue}T12:00:00`
-    );
-
-  if (Number.isNaN(d.getTime()))
-    return false;
-
-  const range =
-    getCurrentWeekRange();
+    String(
+      d.getDate()
+    ).padStart(2, '0');
 
   return (
-    d >= range.start &&
-    d <= range.end
+    `${year}-${month}-${day}`
   );
 
 }
 
 
-function formatDate(dateValue) {
+function formatDate(
+  dateValue
+) {
 
   if (!dateValue)
     return '—';
@@ -1183,8 +2027,15 @@ function formatDate(dateValue) {
       `${dateValue}T12:00:00`
     );
 
-  if (Number.isNaN(d.getTime()))
-    return escapeHtml(dateValue);
+  if (
+    Number.isNaN(
+      d.getTime()
+    )
+  ) {
+    return escapeHtml(
+      dateValue
+    );
+  }
 
   return d.toLocaleDateString(
     'ar-JO',
@@ -1198,21 +2049,127 @@ function formatDate(dateValue) {
 }
 
 
-/* =========================
-   الرسائل
-========================= */
+/* =========================================================
+   الأسابيع
+   الجمعة → الخميس
+========================================================= */
 
-function showMessage(text, type) {
+function getWeekRangeForDate(
+  dateValue
+) {
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+  if (
+    Number.isNaN(
+      d.getTime()
+    )
+  ) {
+    return null;
+  }
+
+  const day =
+    d.getDay();
+
+  /*
+    JavaScript:
+    الأحد 0
+    الاثنين 1
+    ...
+    الجمعة 5
+    السبت 6
+  */
+
+  const daysSinceFriday =
+    (day + 2) % 7;
+
+
+  const start =
+    new Date(d);
+
+  start.setDate(
+    d.getDate() -
+    daysSinceFriday
+  );
+
+  start.setHours(
+    0, 0, 0, 0
+  );
+
+
+  const end =
+    new Date(start);
+
+  end.setDate(
+    start.getDate() + 6
+  );
+
+  end.setHours(
+    23, 59, 59, 999
+  );
+
+
+  return {
+    start,
+    end
+  };
+
+}
+
+
+function dateInCurrentWeek(
+  dateValue
+) {
+
+  if (!dateValue)
+    return false;
+
+  const range =
+    getWeekRangeForDate(
+      todayISO()
+    );
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+  if (!range)
+    return false;
+
+  return (
+    d >= range.start &&
+    d <= range.end
+  );
+
+}
+
+
+/* =========================================================
+   الرسائل
+========================================================= */
+
+function showMessage(
+  text,
+  type
+) {
 
   const box =
-    document.getElementById('message');
+    document.getElementById(
+      'message'
+    );
 
-  box.textContent = text;
+  box.textContent =
+    text;
 
   box.className =
-    'message ' + type;
+    `message ${type}`;
 
-  box.style.display = 'block';
+  box.style.display =
+    'block';
 
   window.scrollTo({
     top: 0,
@@ -1225,16 +2182,19 @@ function showMessage(text, type) {
 function hideMessage() {
 
   const box =
-    document.getElementById('message');
+    document.getElementById(
+      'message'
+    );
 
-  box.style.display = 'none';
+  box.style.display =
+    'none';
 
 }
 
 
-/* =========================
+/* =========================================================
    البيانات الافتراضية
-========================= */
+========================================================= */
 
 function defaultProfile() {
 
@@ -1245,8 +2205,6 @@ function defaultProfile() {
     guardianPhone: '',
 
     joiningDate: '',
-
-    completedQuranParts: 0,
 
     residence: '',
 
@@ -1274,15 +2232,22 @@ function defaultProfile() {
 }
 
 
-function mergeProfile(data) {
+function mergeProfile(
+  data
+) {
 
   const base =
     defaultProfile();
 
+
   const merged = {
+
     ...base,
+
     ...(data || {})
+
   };
+
 
   if (
     typeof merged.weeklyGoal !== 'object' ||
@@ -1290,38 +2255,310 @@ function mergeProfile(data) {
   ) {
 
     merged.weeklyGoal = {
+
       hifz: 4,
+
       review: 20
+
     };
 
   }
 
-  if (!Array.isArray(merged.attendance))
+
+  if (
+    !Array.isArray(
+      merged.attendance
+    )
+  ) {
     merged.attendance = [];
+  }
 
-  if (!Array.isArray(merged.weeklyPlan))
+
+  if (
+    !Array.isArray(
+      merged.weeklyPlan
+    )
+  ) {
     merged.weeklyPlan = [];
+  }
 
-  if (!Array.isArray(merged.tests))
+
+  if (
+    !Array.isArray(
+      merged.tests
+    )
+  ) {
     merged.tests = [];
+  }
 
-  if (!Array.isArray(merged.recitations))
+
+  if (
+    !Array.isArray(
+      merged.recitations
+    )
+  ) {
     merged.recitations = [];
+  }
+
 
   return merged;
 
 }
 
 
-/* =========================
-   الحسابات التلقائية
-========================= */
+/* =========================================================
+   نظام التقدير
+========================================================= */
+
+function getRecitationGrade(
+  score
+) {
+
+  const s =
+    number(score);
+
+
+  if (!score &&
+      score !== 0) {
+
+    return {
+      label: 'لم يتم التقييم',
+      className: 'grade-empty'
+    };
+
+  }
+
+
+  if (s >= 97) {
+
+    return {
+      label:
+        'ممتاز (متقن)',
+      className:
+        'grade-excellent'
+    };
+
+  }
+
+
+  if (s >= 95) {
+
+    return {
+      label:
+        'جيد جداً (أخطاء قليلة)',
+      className:
+        'grade-very-good'
+    };
+
+  }
+
+
+  if (s >= 92) {
+
+    return {
+      label:
+        'جيد (أخطاء متعددة)',
+      className:
+        'grade-good'
+    };
+
+  }
+
+
+  if (s >= 90) {
+
+    return {
+      label:
+        'مقبول (يحتاج تمكين)',
+      className:
+        'grade-acceptable'
+    };
+
+  }
+
+
+  return {
+
+    label:
+      'مراجعة الصفحة',
+
+    className:
+      'grade-review'
+
+  };
+
+}
+
+
+/* =========================================================
+   نظام نقاط التسميع
+========================================================= */
+
+function getRecitationPoints(
+  item
+) {
+
+  const score =
+    number(item.score);
+
+  if (
+    score <= 0
+  ) {
+    return 0;
+  }
+
+
+  /*
+    حفظ جديد:
+    ممتاز = 6
+    جيد جداً = 5
+    جيد = 4
+    مقبول = 2
+    مراجعة = 0
+  */
+
+  if (
+    item.type === 'hifz'
+  ) {
+
+    if (score >= 97)
+      return 6;
+
+    if (score >= 95)
+      return 5;
+
+    if (score >= 92)
+      return 4;
+
+    if (score >= 90)
+      return 2;
+
+    return 0;
+
+  }
+
+
+  /*
+    مراجعة:
+    ممتاز = 3
+    جيد جداً = 2.5
+    جيد = 2
+    مقبول = 1
+    مراجعة = 0
+  */
+
+  if (
+    item.type === 'review'
+  ) {
+
+    if (score >= 97)
+      return 3;
+
+    if (score >= 95)
+      return 2.5;
+
+    if (score >= 92)
+      return 2;
+
+    if (score >= 90)
+      return 1;
+
+    return 0;
+
+  }
+
+
+  return 0;
+
+}
+
+
+/* =========================================================
+   نقاط الاختبارات
+========================================================= */
+
+function getTestPointsByResult(
+  result
+) {
+
+  const r =
+    String(
+      result || ''
+    );
+
+  if (
+    r.includes('ممتاز+')
+  ) {
+    return 12;
+  }
+
+  if (
+    r.includes('ممتاز')
+  ) {
+    return 12;
+  }
+
+  if (
+    r.includes('جيد جداً') ||
+    r.includes('جيد جدًا')
+  ) {
+    return 8;
+  }
+
+  if (
+    r.includes('جيد')
+  ) {
+    return 4;
+  }
+
+  return 0;
+
+}
+
+
+/* =========================================================
+   نقاط الحضور
+========================================================= */
+
+function getAttendancePoints(
+  status
+) {
+
+  switch (
+    String(status || '')
+  ) {
+
+    case 'حاضر':
+      return 2;
+
+    case 'متأخر':
+      return 1;
+
+    case 'معتذر':
+      return 0.5;
+
+    case 'غائب':
+      return 0;
+
+    default:
+      return 0;
+
+  }
+
+}
+
+
+/* =========================================================
+   إحصائيات الأسبوع
+========================================================= */
 
 function getWeeklyRecitations() {
 
   return profile.recitations.filter(
     item =>
-      dateInCurrentWeek(item.date)
+      dateInCurrentWeek(
+        item.date
+      )
   );
 
 }
@@ -1339,42 +2576,46 @@ function getCurrentWeekStats() {
       profile.weeklyGoal?.review
     );
 
+
   const records =
     getWeeklyRecitations();
 
+
   const hifzPages =
-    records
-      .filter(
-        item =>
-          item.type === 'hifz'
-      )
-      .reduce(
-        (sum, item) =>
-          sum + number(item.pages),
-        0
-      );
+    records.filter(
+      item =>
+        item.type === 'hifz'
+    ).length;
+
 
   const reviewPages =
-    records
-      .filter(
-        item =>
-          item.type === 'review'
-      )
-      .reduce(
-        (sum, item) =>
-          sum + number(item.pages),
-        0
-      );
+    records.filter(
+      item =>
+        item.type === 'review'
+    ).length;
+
 
   const hifzProgress =
     goalHifz > 0
-      ? (hifzPages / goalHifz) * 100
+      ? (
+          hifzPages /
+          goalHifz
+        ) * 100
       : 0;
+
 
   const reviewProgress =
     goalReview > 0
-      ? (reviewPages / goalReview) * 100
+      ? (
+          reviewPages /
+          goalReview
+        ) * 100
       : 0;
+
+
+  /*
+    3 مراجعة = 1 حفظ
+  */
 
   const equivalent =
     hifzPages +
@@ -1383,12 +2624,14 @@ function getCurrentWeekStats() {
       REVIEW_TO_HIFZ_RATIO
     );
 
+
   const requiredEquivalent =
     goalHifz +
     (
       goalReview /
       REVIEW_TO_HIFZ_RATIO
     );
+
 
   const weeklyProgress =
     requiredEquivalent > 0
@@ -1397,6 +2640,7 @@ function getCurrentWeekStats() {
           requiredEquivalent
         ) * 100
       : 0;
+
 
   return {
 
@@ -1423,72 +2667,96 @@ function getCurrentWeekStats() {
 }
 
 
-function getAllHifzPages() {
+/* =========================================================
+   صفحات القرآن
+========================================================= */
 
-  return profile.recitations
-    .filter(
-      item =>
-        item.type === 'hifz'
-    )
-    .map(
-      item =>
-        number(item.page)
-    )
-    .filter(
-      page =>
-        page >= 1 &&
-        page <= TOTAL_QURAN_PAGES
-    );
+function getHifzPageSet() {
 
-}
-
-
-function getAllReviewPages() {
-
-  return profile.recitations
-    .filter(
-      item =>
-        item.type === 'review'
-    )
-    .map(
-      item =>
-        number(item.page)
-    )
-    .filter(
-      page =>
-        page >= 1 &&
-        page <= TOTAL_QURAN_PAGES
-    );
+  return new Set(
+    profile.recitations
+      .filter(
+        item =>
+          item.type === 'hifz'
+      )
+      .map(
+        item =>
+          number(item.page)
+      )
+      .filter(
+        page =>
+          page >= 1 &&
+          page <= 604
+      )
+  );
 
 }
 
 
-function getUniquePages() {
+function getReviewPageSet() {
 
-  const pages =
-    new Set([
-      ...getAllHifzPages(),
-      ...getAllReviewPages()
-    ]);
+  return new Set(
+    profile.recitations
+      .filter(
+        item =>
+          item.type === 'review'
+      )
+      .map(
+        item =>
+          number(item.page)
+      )
+      .filter(
+        page =>
+          page >= 1 &&
+          page <= 604
+      )
+  );
 
-  return pages;
+}
+
+
+function getUniqueRecitedPages() {
+
+  const set =
+    new Set();
+
+  profile.recitations.forEach(
+    item => {
+
+      const page =
+        number(item.page);
+
+      if (
+        page >= 1 &&
+        page <= 604
+      ) {
+
+        set.add(page);
+
+      }
+
+    }
+  );
+
+  return set;
 
 }
 
 
 function getQuranProgress() {
 
-  const unique =
-    getUniquePages();
+  const pages =
+    getUniqueRecitedPages();
+
 
   return {
 
     completed:
-      unique.size,
+      pages.size,
 
     percent:
       (
-        unique.size /
+        pages.size /
         TOTAL_QURAN_PAGES
       ) * 100
 
@@ -1497,16 +2765,80 @@ function getQuranProgress() {
 }
 
 
+/* =========================================================
+   تقسيم الأجزاء
+========================================================= */
+
+function getJuzInfo(
+  juz
+) {
+
+  /*
+    1 = 1 - 21
+    2 = 22 - 41
+    ...
+    29 = 562 - 581
+    30 = 582 - 604
+  */
+
+  let start = 1;
+
+
+  for (
+    let i = 1;
+    i < juz;
+    i++
+  ) {
+
+    if (i === 1) {
+
+      start += 21;
+
+    } else if (
+      i >= 2 &&
+      i <= 29
+    ) {
+
+      start += 20;
+
+    }
+
+  }
+
+
+  let length = 20;
+
+
+  if (juz === 1)
+    length = 21;
+
+
+  if (juz === 30)
+    length = 23;
+
+
+  return {
+
+    start,
+
+    end:
+      start + length - 1,
+
+    length
+
+  };
+
+}
+
+
 function getCompletedJuz() {
 
-  const hifzPages =
-    new Set(
-      getAllHifzPages()
-    );
+  const hifz =
+    getHifzPageSet();
+
 
   let completed = 0;
 
-  let start = 1;
 
   for (
     let juz = 1;
@@ -1514,85 +2846,454 @@ function getCompletedJuz() {
     juz++
   ) {
 
-    const length =
-      juz === 1 ||
-      juz === 2
-        ? 21
-        : (
-            juz === 30
-              ? 23
-              : 20
-          );
+    const info =
+      getJuzInfo(juz);
 
-    let all = true;
+
+    let all =
+      true;
+
 
     for (
-      let page = start;
-      page < start + length;
+      let page = info.start;
+      page <= info.end;
       page++
     ) {
 
-      if (!hifzPages.has(page)) {
+      if (
+        !hifz.has(page)
+      ) {
+
         all = false;
+
         break;
+
       }
 
     }
 
+
     if (all)
       completed++;
 
-    start += length;
-
   }
+
 
   return completed;
 
 }
 
 
-function getTestPoints() {
+/* =========================================================
+   النقاط
+========================================================= */
 
-  return profile.tests.reduce(
-    (sum, item) => {
+function getTotalRecitationPoints() {
 
-      if (
-        item.points !== '' &&
-        item.points !== null &&
-        item.points !== undefined
-      ) {
+  return profile.recitations.reduce(
+    (
+      total,
+      item
+    ) => {
 
-        return sum +
-          number(item.points);
-
-      }
-
-      const result =
-        String(
-          item.result || ''
-        ).trim();
-
-      if (
-        result.includes('ممتاز')
-      )
-        return sum + 12;
-
-      if (
-        result.includes('جيد جداً') ||
-        result.includes('جيد جدًا')
-      )
-        return sum + 8;
-
-      if (
-        result.includes('جيد')
-      )
-        return sum + 4;
-
-      return sum;
+      return (
+        total +
+        getRecitationPoints(
+          item
+        )
+      );
 
     },
     0
   );
+
+}
+
+
+function getWeeklyRecitationPoints() {
+
+  return profile.recitations
+    .filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    )
+    .reduce(
+      (
+        total,
+        item
+      ) =>
+        total +
+        getRecitationPoints(
+          item
+        ),
+      0
+    );
+
+}
+
+
+function getTotalAttendancePoints() {
+
+  return profile.attendance.reduce(
+    (
+      total,
+      item
+    ) =>
+      total +
+      getAttendancePoints(
+        item.status
+      ),
+    0
+  );
+
+}
+
+
+function getWeeklyAttendancePoints() {
+
+  return profile.attendance
+    .filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    )
+    .reduce(
+      (
+        total,
+        item
+      ) =>
+        total +
+        getAttendancePoints(
+          item.status
+        ),
+      0
+    );
+
+}
+
+
+function getTotalTestPoints() {
+
+  return profile.tests.reduce(
+    (
+      total,
+      item
+    ) =>
+      total +
+      getTestPointsByResult(
+        item.result
+      ),
+    0
+  );
+
+}
+
+
+function getWeeklyTestPoints() {
+
+  return profile.tests
+    .filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    )
+    .reduce(
+      (
+        total,
+        item
+      ) =>
+        total +
+        getTestPointsByResult(
+          item.result
+        ),
+      0
+    );
+
+}
+
+
+function getTotalPoints() {
+
+  return (
+    getTotalRecitationPoints() +
+    getTotalAttendancePoints() +
+    getTotalTestPoints()
+  );
+
+}
+
+
+function getWeeklyPoints() {
+
+  return (
+    getWeeklyRecitationPoints() +
+    getWeeklyAttendancePoints() +
+    getWeeklyTestPoints()
+  );
+
+}
+
+
+/* =========================================================
+   تقييم الالتزام
+========================================================= */
+
+function getAttendanceCommitment() {
+
+  const records =
+    profile.attendance.filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    );
+
+
+  /*
+    لا يوجد سجل حضور:
+    لا نعاقب الطالب تلقائياً.
+  */
+
+  if (!records.length)
+    return 100;
+
+
+  let score = 0;
+
+
+  records.forEach(
+    item => {
+
+      if (
+        item.status === 'حاضر'
+      ) {
+
+        score += 1;
+
+      } else if (
+        item.status === 'متأخر'
+      ) {
+
+        score += .5;
+
+      } else if (
+        item.status === 'معتذر'
+      ) {
+
+        score += .5;
+
+      }
+
+    }
+  );
+
+
+  return (
+    score /
+    records.length
+  ) * 100;
+
+}
+
+
+function getTestCommitment() {
+
+  const tests =
+    profile.tests.filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    );
+
+
+  /*
+    لا يوجد اختبار خلال الأسبوع:
+    لا يعتبر تقصيراً.
+  */
+
+  if (!tests.length)
+    return 100;
+
+
+  const passed =
+    tests.filter(
+      item =>
+        getTestPointsByResult(
+          item.result
+        ) > 0
+    ).length;
+
+
+  return (
+    passed /
+    tests.length
+  ) * 100;
+
+}
+
+
+function getCommitment() {
+
+  const weekly =
+    getCurrentWeekStats();
+
+
+  const attendance =
+    clamp(
+      getAttendanceCommitment(),
+      0,
+      100
+    );
+
+
+  const hifz =
+    clamp(
+      weekly.hifzProgress,
+      0,
+      100
+    );
+
+
+  const review =
+    clamp(
+      weekly.reviewProgress,
+      0,
+      100
+    );
+
+
+  const tests =
+    clamp(
+      getTestCommitment(),
+      0,
+      100
+    );
+
+
+  /*
+    التوزيع:
+
+    الحضور     20%
+    الحفظ      35%
+    المراجعة   25%
+    الاختبارات 20%
+  */
+
+  const total =
+    (
+      attendance * .20
+    ) +
+    (
+      hifz * .35
+    ) +
+    (
+      review * .25
+    ) +
+    (
+      tests * .20
+    );
+
+
+  let label =
+    'بحاجة للمتابعة';
+
+
+  if (total >= 90)
+    label = 'ممتاز الالتزام';
+
+  else if (total >= 80)
+    label = 'جيد جداً';
+
+  else if (total >= 70)
+    label = 'جيد';
+
+  else if (total >= 60)
+    label = 'مقبول';
+
+
+  return {
+
+    total,
+
+    label,
+
+    attendance,
+
+    hifz,
+
+    review,
+
+    tests
+
+  };
+
+}
+
+
+/* =========================================================
+   الاختبارات
+========================================================= */
+
+function getHighestGrade() {
+
+  const grades =
+    profile.recitations
+      .map(
+        item =>
+          getRecitationGrade(
+            item.score
+          )
+      )
+      .filter(
+        grade =>
+          grade.label !==
+          'لم يتم التقييم'
+      );
+
+
+  if (!grades.length)
+    return '—';
+
+
+  const order = [
+
+    'ممتاز (متقن)',
+
+    'جيد جداً (أخطاء قليلة)',
+
+    'جيد (أخطاء متعددة)',
+
+    'مقبول (يحتاج تمكين)',
+
+    'مراجعة الصفحة'
+
+  ];
+
+
+  for (
+    const wanted of order
+  ) {
+
+    if (
+      grades.some(
+        grade =>
+          grade.label === wanted
+      )
+    ) {
+
+      return wanted;
+
+    }
+
+  }
+
+
+  return '—';
 
 }
 
@@ -1602,14 +3303,8 @@ function getRecitationStats() {
   const records =
     profile.recitations;
 
-  const pages =
-    records.reduce(
-      (sum, item) =>
-        sum + number(item.pages || 1),
-      0
-    );
 
-  const graded =
+  const scores =
     records
       .map(
         item =>
@@ -1617,111 +3312,222 @@ function getRecitationStats() {
       )
       .filter(
         score =>
-          score > 0
+          score >= 0 &&
+          score <= 100
       );
 
+
   const average =
-    graded.length
+    scores.length
       ? (
-          graded.reduce(
-            (a,b) => a + b,
+          scores.reduce(
+            (a,b) =>
+              a + b,
             0
           ) /
-          graded.length
+          scores.length
         )
       : 0;
 
-  let highest = '—';
-
-  if (records.length) {
-
-    const grades =
-      records
-        .map(
-          item =>
-            item.grade || ''
-        )
-        .filter(Boolean);
-
-    const order = [
-      'ممتاز+',
-      'ممتاز',
-      'جيد جداً',
-      'جيد جدًا',
-      'جيد'
-    ];
-
-    for (
-      const wanted of order
-    ) {
-
-      if (
-        grades.some(
-          grade =>
-            grade === wanted
-        )
-      ) {
-
-        highest = wanted;
-        break;
-
-      }
-
-    }
-
-  }
 
   return {
 
     records:
       records.length,
 
-    pages,
+    pages:
+      records.length,
 
     average,
 
-    highest
+    highest:
+      getHighestGrade()
 
   };
 
 }
 
 
-function getGeneralEvaluation() {
+/* =========================================================
+   حالة الخطة الأسبوعية
+========================================================= */
 
-  const weekly =
-    getCurrentWeekStats();
+function getPlanStatus(
+  item
+) {
 
-  if (weekly.weeklyProgress >= 100)
-    return 'ملتزم ممتاز';
+  const targetHifz =
+    number(
+      item.hifzTarget ??
+      item.hifz ??
+      0
+    );
 
-  if (weekly.weeklyProgress >= 75)
-    return 'ملتزم جداً';
 
-  if (weekly.weeklyProgress >= 50)
-    return 'ملتزم';
+  const targetReview =
+    number(
+      item.reviewTarget ??
+      item.review ??
+      0
+    );
 
-  if (weekly.weeklyProgress > 0)
-    return 'ملتزم جزئياً';
 
-  return 'بحاجة للمتابعة';
+  if (
+    !item.date
+  ) {
+
+    return {
+      label:
+        'قيد الإدخال',
+
+      className:
+        'status-pending'
+    };
+
+  }
+
+
+  const range =
+    getWeekRangeForDate(
+      item.date
+    );
+
+
+  if (!range) {
+
+    return {
+      label:
+        'قيد الإدخال',
+
+      className:
+        'status-pending'
+    };
+
+  }
+
+
+  const hifz =
+    profile.recitations.filter(
+      rec =>
+        rec.type === 'hifz' &&
+        isDateInsideRange(
+          rec.date,
+          range
+        )
+    ).length;
+
+
+  const review =
+    profile.recitations.filter(
+      rec =>
+        rec.type === 'review' &&
+        isDateInsideRange(
+          rec.date,
+          range
+        )
+    ).length;
+
+
+  const hifzDone =
+    targetHifz <= 0
+      ? true
+      : hifz >= targetHifz;
+
+
+  const reviewDone =
+    targetReview <= 0
+      ? true
+      : review >= targetReview;
+
+
+  if (
+    hifzDone &&
+    reviewDone
+  ) {
+
+    return {
+
+      label:
+        'مكتملة ✅',
+
+      className:
+        'status-complete'
+
+    };
+
+  }
+
+
+  if (
+    hifz > 0 ||
+    review > 0
+  ) {
+
+    return {
+
+      label:
+        'جزئية',
+
+      className:
+        'status-partial'
+
+    };
+
+  }
+
+
+  return {
+
+    label:
+      'قيد التنفيذ',
+
+    className:
+      'status-running'
+
+  };
 
 }
 
 
-/* =========================
+function isDateInsideRange(
+  dateValue,
+  range
+) {
+
+  if (!dateValue)
+    return false;
+
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+
+  return (
+    d >= range.start &&
+    d <= range.end
+  );
+
+}
+
+
+/* =========================================================
    التحقق من المعلم
-========================= */
+========================================================= */
 
 async function checkTeacher() {
 
   try {
 
     const {
-      data: { user },
+      data: {
+        user
+      },
       error
     } =
       await supabaseClient.auth.getUser();
+
 
     if (
       error ||
@@ -1735,9 +3541,11 @@ async function checkTeacher() {
 
     }
 
+
     if (
-      String(user.email || '')
-        .toLowerCase() !==
+      String(
+        user.email || ''
+      ).toLowerCase() !==
       TEACHER_EMAIL.toLowerCase()
     ) {
 
@@ -1745,7 +3553,11 @@ async function checkTeacher() {
         'هذا القسم مخصص للمعلم فقط.'
       );
 
-      await supabaseClient.auth.signOut();
+
+      await supabaseClient
+        .auth
+        .signOut();
+
 
       window.location.href =
         'teacher-login.html';
@@ -1754,11 +3566,16 @@ async function checkTeacher() {
 
     }
 
+
     return true;
 
-  } catch (error) {
+  } catch (
+    error
+  ) {
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     window.location.href =
       'teacher-login.html';
@@ -1770,85 +3587,116 @@ async function checkTeacher() {
 }
 
 
-/* =========================
+/* =========================================================
    تحميل الطالب
-========================= */
+========================================================= */
 
 async function loadStudent() {
 
   try {
 
-    if (!(await checkTeacher()))
+    if (
+      !(await checkTeacher())
+    ) {
       return;
+    }
+
 
     const params =
       new URLSearchParams(
         window.location.search
       );
 
+
     studentId =
       params.get('id');
+
 
     if (!studentId) {
 
       document.getElementById(
         'app'
       ).innerHTML = `
+
         <div class="loading">
+
           لم يتم تحديد الطالب.
+
         </div>
+
       `;
 
       return;
 
     }
+
 
     const {
       data,
       error
     } =
       await supabaseClient
+
         .from('students')
+
         .select('*')
-        .eq('id', studentId)
+
+        .eq(
+          'id',
+          studentId
+        )
+
         .maybeSingle();
+
 
     if (error)
       throw error;
+
 
     if (!data) {
 
       document.getElementById(
         'app'
       ).innerHTML = `
+
         <div class="loading">
+
           تعذر العثور على الطالب.
+
         </div>
+
       `;
 
       return;
 
     }
 
-    student = data;
+
+    student =
+      data;
+
 
     const {
       data: profileRow,
       error: profileError
     } =
       await supabaseClient
+
         .from('student_profiles')
+
         .select('data')
+
         .eq(
           'student_id',
           String(studentId)
         )
+
         .maybeSingle();
+
 
     if (profileError) {
 
       console.error(
-        'Profile error:',
         profileError
       );
 
@@ -1864,27 +3712,40 @@ async function loadStudent() {
 
     }
 
+
     render();
 
-  } catch (error) {
+  } catch (
+    error
+  ) {
 
     console.error(
-      'LOAD STUDENT ERROR:',
+      'LOAD ERROR:',
       error
     );
+
 
     document.getElementById(
       'app'
     ).innerHTML = `
+
       <div class="loading">
-        <h2 style="color:#b42318;margin-bottom:10px;">
+
+        <h2
+          style="
+            color:#b42318;
+            margin-bottom:10px;
+          "
+        >
           تعذر تحميل ملف الطالب
         </h2>
 
         <p>
           حدث خطأ أثناء تحميل البيانات.
         </p>
+
       </div>
+
     `;
 
   }
@@ -1892,64 +3753,100 @@ async function loadStudent() {
 }
 
 
-/* =========================
-   الواجهة الرئيسية
-========================= */
+/* =========================================================
+   الواجهة
+========================================================= */
 
 function render() {
 
   const app =
-    document.getElementById('app');
+    document.getElementById(
+      'app'
+    );
+
 
   const weekly =
     getCurrentWeekStats();
 
+
   const quran =
     getQuranProgress();
+
 
   const recitation =
     getRecitationStats();
 
+
   const completedJuz =
     getCompletedJuz();
 
-  const testPoints =
-    getTestPoints();
 
-  const evaluation =
-    getGeneralEvaluation();
+  const totalPoints =
+    getTotalPoints();
+
+
+  const weeklyPoints =
+    getWeeklyPoints();
+
+
+  const commitment =
+    getCommitment();
+
 
   const photo =
     profile.photoUrl
-      ? `
-        <img
-          class="photo-preview"
-          src="${escapeHtml(profile.photoUrl)}"
-          alt="صورة الطالب"
-        >
-      `
-      : `
-        <div
-          class="photo-preview photo-placeholder"
-        >
-          👤
-        </div>
-      `;
+      ? profile.photoUrl
+      : '';
+
 
   app.innerHTML = `
 
-    <!-- بطاقة الطالب -->
+    <!-- =====================
+         بطاقة الطالب
+    ====================== -->
 
     <section class="student-hero">
 
       <div class="hero-content">
 
-        ${photo}
+        <img
+          id="heroPhoto"
+          class="hero-photo"
+          src="${
+            photo ||
+            'data:image/svg+xml;charset=UTF-8,' +
+            encodeURIComponent(`
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="200"
+                height="200"
+              >
+                <rect
+                  width="200"
+                  height="200"
+                  fill="#e8eee9"
+                />
+                <text
+                  x="100"
+                  y="112"
+                  text-anchor="middle"
+                  font-size="80"
+                >
+                  👤
+                </text>
+              </svg>
+            `)
+          }"
+          alt="صورة الطالب"
+        >
+
 
         <div class="hero-info">
 
           <h2>
-            ${escapeHtml(student.name)}
+            ${escapeHtml(
+              student.name
+            )}
           </h2>
 
           <p>
@@ -1963,37 +3860,102 @@ function render() {
           <div class="hero-pills">
 
             <span class="hero-pill">
-              📖 ${completedJuz} جزء مكتمل
+              📖
+              ${completedJuz}
+              جزء مكتمل
             </span>
 
             <span class="hero-pill">
-              📚 ${quran.completed} صفحة
+              📚
+              ${quran.completed}
+              صفحة مسجلة
             </span>
 
             <span class="hero-pill">
-              🏆 ${formatNumber(testPoints, 1)} نقطة اختبار
+              🏆
+              ${formatNumber(
+                totalPoints,
+                1
+              )}
+              نقطة
             </span>
 
             <span class="hero-pill">
-              👑 ${escapeHtml(evaluation)}
+              ⭐
+              ${escapeHtml(
+                commitment.label
+              )}
             </span>
 
           </div>
 
         </div>
 
+
         <div class="hero-side">
 
-          <small>
-            إنجاز الأسبوع
-          </small>
+          <div class="hero-stat">
 
-          <strong>
-            ${formatNumber(
-              weekly.weeklyProgress,
-              0
-            )}%
-          </strong>
+            <small>
+              إنجاز الأسبوع
+            </small>
+
+            <strong>
+              ${formatNumber(
+                weekly.weeklyProgress,
+                0
+              )}%
+            </strong>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <small>
+              نقاط الطالب
+            </small>
+
+            <strong>
+              ${formatNumber(
+                totalPoints,
+                1
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <small>
+              نقاط هذا الأسبوع
+            </small>
+
+            <strong>
+              ${formatNumber(
+                weeklyPoints,
+                1
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <small>
+              الالتزام
+            </small>
+
+            <strong>
+              ${formatNumber(
+                commitment.total,
+                0
+              )}%
+            </strong>
+
+          </div>
 
         </div>
 
@@ -2002,7 +3964,9 @@ function render() {
     </section>
 
 
-    <!-- الإحصائيات -->
+    <!-- =====================
+         الإحصائيات
+    ====================== -->
 
     <section class="section">
 
@@ -2015,12 +3979,13 @@ function render() {
           </h2>
 
           <p class="section-subtitle">
-            الإحصائيات التالية محسوبة تلقائياً من السجلات.
+            الإحصائيات التالية محسوبة تلقائياً من السجلات الفعلية.
           </p>
 
         </div>
 
       </div>
+
 
       <div class="stats">
 
@@ -2031,21 +3996,20 @@ function render() {
           </div>
 
           <div class="stat-label">
-            صفحات الحفظ هذا الأسبوع
+            حفظ هذا الأسبوع
           </div>
 
           <div class="stat-value">
-            ${formatNumber(
-              weekly.hifzPages,
-              1
-            )}
+            ${weekly.hifzPages}
           </div>
 
           <div class="stat-note">
-            من ${formatNumber(
+            من
+            ${formatNumber(
               weekly.goalHifz,
               1
-            )} مطلوبة
+            )}
+            صفحة مطلوبة
           </div>
 
         </div>
@@ -2058,21 +4022,20 @@ function render() {
           </div>
 
           <div class="stat-label">
-            صفحات المراجعة هذا الأسبوع
+            مراجعة هذا الأسبوع
           </div>
 
           <div class="stat-value">
-            ${formatNumber(
-              weekly.reviewPages,
-              1
-            )}
+            ${weekly.reviewPages}
           </div>
 
           <div class="stat-note">
-            من ${formatNumber(
+            من
+            ${formatNumber(
               weekly.goalReview,
               1
-            )} مطلوبة
+            )}
+            صفحة مطلوبة
           </div>
 
         </div>
@@ -2096,7 +4059,8 @@ function render() {
           </div>
 
           <div class="stat-note">
-            ${quran.completed} من 604 صفحة
+            ${quran.completed}
+            من 604 صفحة
           </div>
 
         </div>
@@ -2105,22 +4069,24 @@ function render() {
         <div class="stat">
 
           <div class="stat-icon">
-            🏆
+            ⭐
           </div>
 
           <div class="stat-label">
-            النقاط
+            تقييم الالتزام
           </div>
 
           <div class="stat-value">
             ${formatNumber(
-              testPoints,
-              1
-            )}
+              commitment.total,
+              0
+            )}%
           </div>
 
           <div class="stat-note">
-            من الاختبارات المسجلة
+            ${escapeHtml(
+              commitment.label
+            )}
           </div>
 
         </div>
@@ -2130,7 +4096,9 @@ function render() {
     </section>
 
 
-    <!-- نسب التقدم -->
+    <!-- =====================
+         نسب الأسبوع
+    ====================== -->
 
     <section class="section">
 
@@ -2143,7 +4111,7 @@ function render() {
           </h2>
 
           <p class="section-subtitle">
-            الأسبوع الحالي يبدأ من الجمعة وينتهي الخميس.
+            الأسبوع الحالي من الجمعة إلى الخميس.
           </p>
 
         </div>
@@ -2158,7 +4126,7 @@ function render() {
           <div class="progress-top">
 
             <strong>
-              📖 إنجاز الحفظ
+              📖 إنجاز الحفظ الجديد
             </strong>
 
             <span class="percent">
@@ -2170,31 +4138,40 @@ function render() {
 
           </div>
 
+
           <div class="bar">
 
             <div
               class="bar-fill"
-              style="width:${clamp(
-                weekly.hifzProgress,
-                0,
-                100
-              )}%"
+              style="
+                width:${clamp(
+                  weekly.hifzProgress,
+                  0,
+                  100
+                )}%
+              "
             ></div>
 
           </div>
 
+
           <div class="progress-note">
+
             تم إنجاز
-            <b>${formatNumber(
-              weekly.hifzPages,
-              1
-            )}</b>
+            <b>
+              ${weekly.hifzPages}
+            </b>
+
             من
-            <b>${formatNumber(
-              weekly.goalHifz,
-              1
-            )}</b>
-            صفحة
+
+            <b>
+              ${weekly.goalHifz}
+            </b>
+
+            صفحة.
+
+            النسبة لا تتوقف عند 100%؛ إذا أنجز 8 من 4 تظهر 200%.
+
           </div>
 
         </div>
@@ -2217,31 +4194,38 @@ function render() {
 
           </div>
 
+
           <div class="bar">
 
             <div
               class="bar-fill"
-              style="width:${clamp(
-                weekly.reviewProgress,
-                0,
-                100
-              )}%"
+              style="
+                width:${clamp(
+                  weekly.reviewProgress,
+                  0,
+                  100
+                )}%
+              "
             ></div>
 
           </div>
 
+
           <div class="progress-note">
+
             تم إنجاز
-            <b>${formatNumber(
-              weekly.reviewPages,
-              1
-            )}</b>
+            <b>
+              ${weekly.reviewPages}
+            </b>
+
             من
-            <b>${formatNumber(
-              weekly.goalReview,
-              1
-            )}</b>
-            صفحة
+
+            <b>
+              ${weekly.goalReview}
+            </b>
+
+            صفحة.
+
           </div>
 
         </div>
@@ -2252,7 +4236,7 @@ function render() {
       <div
         style="
           margin-top:15px;
-          padding:14px;
+          padding:15px;
           border-radius:14px;
           background:#f7faf8;
           color:#52645c;
@@ -2260,7 +4244,11 @@ function render() {
         "
       >
 
-        <b style="color:#0d4d3a;">
+        <b
+          style="
+            color:#0d4d3a;
+          "
+        >
           🧮 التسميع المكافئ:
         </b>
 
@@ -2268,15 +4256,22 @@ function render() {
           weekly.equivalent,
           1
         )}
-        صفحة من
+
+        صفحة حفظ مكافئة من
+
         ${formatNumber(
           weekly.requiredEquivalent,
           1
         )}
+
         مطلوبة.
 
-        <span style="color:#8a7650;">
-          كل 5 صفحات مراجعة = صفحة حفظ.
+        <span
+          style="
+            color:#8a7650;
+          "
+        >
+          كل 3 صفحات مراجعة = صفحة حفظ جديد.
         </span>
 
       </div>
@@ -2284,7 +4279,325 @@ function render() {
     </section>
 
 
-    <!-- البيانات الأساسية -->
+    <!-- =====================
+         نقاط الطالب
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            🏆 نظام النقاط
+          </h2>
+
+          <p class="section-subtitle">
+            النقاط تُحتسب تلقائياً حسب جودة التسميع والحضور والاختبارات.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="points-breakdown">
+
+        <div class="points-card">
+
+          <small>
+            نقاط الحفظ الجديد
+          </small>
+
+          <strong>
+            ${formatNumber(
+              getTotalRecitationPoints(),
+              1
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="points-card">
+
+          <small>
+            نقاط الحضور
+          </small>
+
+          <strong>
+            ${formatNumber(
+              getTotalAttendancePoints(),
+              1
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="points-card">
+
+          <small>
+            نقاط الاختبارات
+          </small>
+
+          <strong>
+            ${formatNumber(
+              getTotalTestPoints(),
+              1
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="points-card">
+
+          <small>
+            المجموع الكلي
+          </small>
+
+          <strong>
+            ${formatNumber(
+              totalPoints,
+              1
+            )}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div
+        style="
+          padding:15px;
+          border-radius:14px;
+          background:#fffdf6;
+          border:1px solid #eee4c5;
+          color:#675a37;
+          font-size:12px;
+          line-height:1.8;
+        "
+      >
+
+        <b>
+          توزيع النقاط:
+        </b>
+
+        الحفظ الجديد:
+        6 / 5 / 4 / 2 / 0
+
+        حسب جودة التسميع.
+
+        المراجعة:
+        3 / 2.5 / 2 / 1 / 0
+
+        حسب الجودة.
+
+        الحضور:
+        حاضر 2،
+        متأخر 1،
+        معتذر 0.5،
+        غائب 0.
+
+        الاختبارات:
+        ممتاز 12،
+        جيد جداً 8،
+        جيد 4،
+        غير مجتاز 0.
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================
+         تقييم الالتزام
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            ⭐ تقييم التزام الطالب
+          </h2>
+
+          <p class="section-subtitle">
+            يعتمد على الحضور والحفظ والمراجعة ونجاح الاختبارات خلال الأسبوع.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="stats">
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            📅
+          </div>
+
+          <div class="stat-label">
+            الحضور
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              commitment.attendance,
+              0
+            )}%
+          </div>
+
+          <div class="stat-note">
+            وزن التقييم: 20%
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            📖
+          </div>
+
+          <div class="stat-label">
+            الحفظ الجديد
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              clamp(
+                commitment.hifz,
+                0,
+                100
+              ),
+              0
+            )}%
+          </div>
+
+          <div class="stat-note">
+            وزن التقييم: 35%
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            🔄
+          </div>
+
+          <div class="stat-label">
+            المراجعة
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              clamp(
+                commitment.review,
+                0,
+                100
+              ),
+              0
+            )}%
+          </div>
+
+          <div class="stat-note">
+            وزن التقييم: 25%
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            🧪
+          </div>
+
+          <div class="stat-label">
+            الاختبارات
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              commitment.tests,
+              0
+            )}%
+          </div>
+
+          <div class="stat-note">
+            وزن التقييم: 20%
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        style="
+          margin-top:15px;
+          padding:18px;
+          border-radius:16px;
+          background:linear-gradient(135deg,#edf7f1,#fffaf0);
+          border:1px solid #dfe9e1;
+          text-align:center;
+        "
+      >
+
+        <div
+          style="
+            color:#718078;
+            font-size:12px;
+            margin-bottom:4px;
+          "
+        >
+          التقييم الأسبوعي النهائي
+        </div>
+
+        <div
+          style="
+            color:#0d4d3a;
+            font-size:30px;
+            font-weight:900;
+          "
+        >
+          ${formatNumber(
+            commitment.total,
+            0
+          )}%
+        </div>
+
+        <div
+          style="
+            margin-top:4px;
+            color:#8a7650;
+            font-weight:bold;
+          "
+        >
+          ${escapeHtml(
+            commitment.label
+          )}
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================
+         البيانات الأساسية
+    ====================== -->
 
     <section class="section">
 
@@ -2297,18 +4610,21 @@ function render() {
           </h2>
 
           <p class="section-subtitle">
-            المعلومات التي تخص الطالب مباشرة.
+            المعلومات الشخصية والإدارية للطالب.
           </p>
 
         </div>
 
       </div>
 
+
       <div class="form-grid">
 
         <div class="field">
 
-          <label>اسم الطالب</label>
+          <label>
+            اسم الطالب
+          </label>
 
           <input
             id="name"
@@ -2322,7 +4638,9 @@ function render() {
 
         <div class="field">
 
-          <label>الشعبة</label>
+          <label>
+            الشعبة
+          </label>
 
           <input
             id="section"
@@ -2336,7 +4654,9 @@ function render() {
 
         <div class="field">
 
-          <label>الحفظ الحالي</label>
+          <label>
+            الحفظ الحالي
+          </label>
 
           <input
             id="memorization"
@@ -2351,7 +4671,9 @@ function render() {
 
         <div class="field">
 
-          <label>حالة الطالب</label>
+          <label>
+            حالة الطالب
+          </label>
 
           <select id="status">
 
@@ -2382,24 +4704,85 @@ function render() {
         </div>
 
 
-        <div class="field">
+        <div class="field full-field">
 
-          <label>رابط صورة الطالب</label>
+          <label>
+            صورة الطالب
+          </label>
 
-          <input
-            id="photoUrl"
-            value="${escapeHtml(
-              profile.photoUrl
-            )}"
-            placeholder="رابط الصورة"
-          >
+
+          <div class="image-upload">
+
+            <div class="image-upload-row">
+
+              <img
+                id="photoPreview"
+                class="image-preview"
+                src="${
+                  photo ||
+                  'data:image/svg+xml;charset=UTF-8,' +
+                  encodeURIComponent(`
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="200"
+                      height="200"
+                    >
+                      <rect
+                        width="200"
+                        height="200"
+                        fill="#e8eee9"
+                      />
+                      <text
+                        x="100"
+                        y="112"
+                        text-anchor="middle"
+                        font-size="80"
+                      >
+                        👤
+                      </text>
+                    </svg>
+                  `)
+                }"
+                alt="معاينة صورة الطالب"
+              >
+
+
+              <div>
+
+                <label
+                  class="file-button"
+                >
+
+                  📷 اختيار صورة من الجهاز
+
+                  <input
+                    id="photoFile"
+                    type="file"
+                    accept="image/*"
+                    onchange="handlePhotoFile(this)"
+                  >
+
+                </label>
+
+
+                <div class="image-help">
+                  اختر صورة من ملفات الكمبيوتر، وسيتم تصغيرها تلقائياً للحفاظ على سرعة الموقع.
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
 
         <div class="field">
 
-          <label>رقم جوال ولي الأمر</label>
+          <label>
+            رقم جوال ولي الأمر
+          </label>
 
           <input
             id="guardianPhone"
@@ -2414,7 +4797,9 @@ function render() {
 
         <div class="field">
 
-          <label>تاريخ الالتحاق</label>
+          <label>
+            تاريخ الالتحاق
+          </label>
 
           <input
             id="joiningDate"
@@ -2429,14 +4814,16 @@ function render() {
 
         <div class="field">
 
-          <label>مكان السكن</label>
+          <label>
+            مكان السكن
+          </label>
 
           <input
             id="residence"
             value="${escapeHtml(
               profile.residence
             )}"
-            placeholder="مثال: القادسية"
+            placeholder="مثال: حي الرشيد"
           >
 
         </div>
@@ -2444,14 +4831,16 @@ function render() {
 
         <div class="field">
 
-          <label>الحافلة</label>
+          <label>
+            الحافلة
+          </label>
 
           <input
             id="bus"
             value="${escapeHtml(
               profile.bus
             )}"
-            placeholder="مثال: حافلة 1 - الرشيد"
+            placeholder="مثال: حافلة 1"
           >
 
         </div>
@@ -2459,7 +4848,9 @@ function render() {
 
         <div class="field">
 
-          <label>موقع المنزل</label>
+          <label>
+            موقع المنزل
+          </label>
 
           <input
             id="homeLocation"
@@ -2476,7 +4867,9 @@ function render() {
     </section>
 
 
-    <!-- الهدف الأسبوعي -->
+    <!-- =====================
+         الهدف الأسبوعي
+    ====================== -->
 
     <section class="section">
 
@@ -2489,26 +4882,27 @@ function render() {
           </h2>
 
           <p class="section-subtitle">
-            غيّر المطلوب فقط، والنظام يحسب النسب تلقائياً.
+            هذه الأرقام هي المطلوب من الطالب خلال الأسبوع الحالي.
           </p>
 
         </div>
 
       </div>
 
+
       <div class="form-grid">
 
         <div class="field">
 
           <label>
-            صفحات الحفظ المطلوبة أسبوعياً
+            صفحات الحفظ المطلوبة
           </label>
 
           <input
             id="goalHifz"
             type="number"
             min="0"
-            step="0.5"
+            step="1"
             value="${number(
               profile.weeklyGoal?.hifz
             )}"
@@ -2520,14 +4914,14 @@ function render() {
         <div class="field">
 
           <label>
-            صفحات المراجعة المطلوبة أسبوعياً
+            صفحات المراجعة المطلوبة
           </label>
 
           <input
             id="goalReview"
             type="number"
             min="0"
-            step="0.5"
+            step="1"
             value="${number(
               profile.weeklyGoal?.review
             )}"
@@ -2540,7 +4934,9 @@ function render() {
     </section>
 
 
-    <!-- الحضور -->
+    <!-- =====================
+         الحضور
+    ====================== -->
 
     <section class="section">
 
@@ -2553,17 +4949,19 @@ function render() {
           </h2>
 
           <p class="section-subtitle">
-            أضف حضور أيام الحلقة.
+            نقاط الحضور تحسب تلقائياً.
           </p>
 
         </div>
 
       </div>
 
+
       <div
         id="attendanceEditor"
         class="editor-list"
       ></div>
+
 
       <button
         class="add"
@@ -2575,7 +4973,9 @@ function render() {
     </section>
 
 
-    <!-- الخطة -->
+    <!-- =====================
+         الخطة الأسبوعية
+    ====================== -->
 
     <section class="section">
 
@@ -2588,29 +4988,33 @@ function render() {
           </h2>
 
           <p class="section-subtitle">
-            خطة الحفظ والمراجعة لكل أسبوع.
+            الحالة تتحدد تلقائياً من التسميع المسجل في نفس الأسبوع.
           </p>
 
         </div>
 
       </div>
 
+
       <div
         id="planEditor"
         class="editor-list"
       ></div>
 
+
       <button
         class="add"
         onclick="addPlan()"
       >
-        + إضافة أسبوع جديد
+        + إضافة خطة أسبوعية
       </button>
 
     </section>
 
 
-    <!-- الاختبارات -->
+    <!-- =====================
+         الاختبارات
+    ====================== -->
 
     <section class="section">
 
@@ -2619,35 +5023,40 @@ function render() {
         <div>
 
           <h2 class="section-title">
-            🧪 الاختبارات والنقاط
+            🧪 الاختبارات
           </h2>
 
           <p class="section-subtitle">
-            النقاط تحسب تلقائياً حسب النتيجة إذا تركت خانة النقاط فارغة.
+            النقاط تُحسب تلقائياً من نتيجة الاختبار.
           </p>
 
         </div>
 
       </div>
 
+
       <div class="recitation-summary">
 
         <div class="mini-stat">
 
           <small>
-            مجموع النقاط
+            مجموع نقاط الاختبارات
           </small>
 
           <strong>
-            ${formatNumber(testPoints, 1)}
+            ${formatNumber(
+              getTotalTestPoints(),
+              1
+            )}
           </strong>
 
         </div>
 
+
         <div class="mini-stat">
 
           <small>
-            الاختبارات
+            عدد الاختبارات
           </small>
 
           <strong>
@@ -2655,6 +5064,27 @@ function render() {
           </strong>
 
         </div>
+
+
+        <div class="mini-stat">
+
+          <small>
+            اختبارات هذا الأسبوع
+          </small>
+
+          <strong>
+            ${
+              profile.tests.filter(
+                item =>
+                  dateInCurrentWeek(
+                    item.date
+                  )
+              ).length
+            }
+          </strong>
+
+        </div>
+
 
         <div class="mini-stat">
 
@@ -2671,20 +5101,6 @@ function render() {
 
         </div>
 
-        <div class="mini-stat">
-
-          <small>
-            أعلى تقدير
-          </small>
-
-          <strong style="font-size:16px;">
-            ${escapeHtml(
-              recitation.highest
-            )}
-          </strong>
-
-        </div>
-
       </div>
 
 
@@ -2692,6 +5108,7 @@ function render() {
         id="testsEditor"
         class="editor-list"
       ></div>
+
 
       <button
         class="add"
@@ -2703,7 +5120,9 @@ function render() {
     </section>
 
 
-    <!-- التسميع -->
+    <!-- =====================
+         سجل التسميع
+    ====================== -->
 
     <section class="section">
 
@@ -2716,7 +5135,7 @@ function render() {
           </h2>
 
           <p class="section-subtitle">
-            هنا تسجل الصفحات التي سمعها الطالب، والنظام يحسب الإحصائيات تلقائياً.
+            سجّل كل صفحة سمعها الطالب، وسيظهر التقدير والنقاط تلقائياً.
           </p>
 
         </div>
@@ -2729,19 +5148,20 @@ function render() {
         <div class="mini-stat">
 
           <small>
-            الصفحات المسجلة
+            إجمالي جلسات التسميع
           </small>
 
           <strong>
-            ${recitation.pages}
+            ${recitation.records}
           </strong>
 
         </div>
 
+
         <div class="mini-stat">
 
           <small>
-            متوسط الدرجات
+            متوسط درجة التسميع
           </small>
 
           <strong>
@@ -2753,13 +5173,18 @@ function render() {
 
         </div>
 
+
         <div class="mini-stat">
 
           <small>
             أعلى تقدير
           </small>
 
-          <strong style="font-size:16px;">
+          <strong
+            style="
+              font-size:13px;
+            "
+          >
             ${escapeHtml(
               recitation.highest
             )}
@@ -2767,17 +5192,18 @@ function render() {
 
         </div>
 
+
         <div class="mini-stat">
 
           <small>
-            إنجاز القرآن
+            نقاط التسميع
           </small>
 
           <strong>
             ${formatNumber(
-              quran.percent,
+              getTotalRecitationPoints(),
               1
-            )}%
+            )}
           </strong>
 
         </div>
@@ -2790,17 +5216,20 @@ function render() {
         class="editor-list"
       ></div>
 
+
       <button
         class="add"
         onclick="addRecitation()"
       >
-        + تسجيل تسميع جديد
+        + تسجيل تسميع صفحة
       </button>
 
     </section>
 
 
-    <!-- خريطة القرآن -->
+    <!-- =====================
+         خريطة القرآن
+    ====================== -->
 
     <section class="section">
 
@@ -2813,7 +5242,7 @@ function render() {
           </h2>
 
           <p class="section-subtitle">
-            604 صفحة، وتتغير حالتها بناءً على سجلات التسميع الفعلية.
+            كل مربع يمثل صفحة حقيقية من 1 إلى 604.
           </p>
 
         </div>
@@ -2838,18 +5267,22 @@ function render() {
 
         </div>
 
+
         <div class="bar">
 
           <div
             class="bar-fill"
-            style="width:${clamp(
-              quran.percent,
-              0,
-              100
-            )}%"
+            style="
+              width:${clamp(
+                quran.percent,
+                0,
+                100
+              )}%
+            "
           ></div>
 
         </div>
+
 
         <div
           style="
@@ -2858,10 +5291,15 @@ function render() {
             font-size:12px;
           "
         >
+
           ${quran.completed}
-          صفحة من أصل
+
+          صفحة مسجلة من أصل
+
           ${TOTAL_QURAN_PAGES}
+
           صفحة
+
         </div>
 
       </div>
@@ -2876,18 +5314,29 @@ function render() {
       <div class="map-legend">
 
         <div class="legend-item">
+
           <span class="legend-dot hifz"></span>
+
           حفظ جديد
+
         </div>
 
+
         <div class="legend-item">
+
           <span class="legend-dot review"></span>
+
           مراجعة
+
         </div>
 
+
         <div class="legend-item">
+
           <span class="legend-dot"></span>
+
           غير مسجلة
+
         </div>
 
       </div>
@@ -2895,7 +5344,9 @@ function render() {
     </section>
 
 
-    <!-- ملاحظات -->
+    <!-- =====================
+         ملاحظات
+    ====================== -->
 
     <section class="section">
 
@@ -2908,21 +5359,26 @@ function render() {
           </h2>
 
           <p class="section-subtitle">
-            توجيهات تربوية وملاحظات المتابعة.
+            الملاحظات والتوجيهات الخاصة بالطالب.
           </p>
 
         </div>
 
       </div>
 
-      <textarea id="notes">${escapeHtml(
+
+      <textarea
+        id="notes"
+      >${escapeHtml(
         profile.notes || ''
       )}</textarea>
 
     </section>
 
 
-    <!-- الحفظ -->
+    <!-- =====================
+         أزرار الحفظ
+    ====================== -->
 
     <div class="actions">
 
@@ -2934,9 +5390,15 @@ function render() {
         💾 حفظ جميع التعديلات
       </button>
 
+
       <button
         class="secondary"
-        onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        onclick="
+          window.scrollTo({
+            top:0,
+            behavior:'smooth'
+          })
+        "
       >
         ↑ للأعلى
       </button>
@@ -2947,17 +5409,244 @@ function render() {
 
 
   renderAttendance();
+
   renderPlan();
+
   renderTests();
+
   renderRecitations();
+
   renderQuranMap();
 
 }
 
 
-/* =========================
+/* =========================================================
+   رفع الصورة من الجهاز
+========================================================= */
+
+async function handlePhotoFile(
+  input
+) {
+
+  const file =
+    input.files?.[0];
+
+
+  if (!file)
+    return;
+
+
+  if (
+    !file.type.startsWith(
+      'image/'
+    )
+  ) {
+
+    alert(
+      'الملف المحدد ليس صورة.'
+    );
+
+    input.value = '';
+
+    return;
+
+  }
+
+
+  try {
+
+    const compressed =
+      await compressImage(
+        file
+      );
+
+
+    profile.photoUrl =
+      compressed;
+
+
+    const preview =
+      document.getElementById(
+        'photoPreview'
+      );
+
+
+    const hero =
+      document.getElementById(
+        'heroPhoto'
+      );
+
+
+    if (preview)
+      preview.src =
+        compressed;
+
+
+    if (hero)
+      hero.src =
+        compressed;
+
+
+    showMessage(
+      'تم إدراج صورة الطالب بنجاح. اضغط حفظ لتثبيتها ✅',
+      'success'
+    );
+
+  } catch (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+    alert(
+      'تعذر تجهيز الصورة.'
+    );
+
+  }
+
+}
+
+
+function compressImage(
+  file
+) {
+
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload = () => {
+
+        const img =
+          new Image();
+
+
+        img.onload = () => {
+
+          const maxSize =
+            700;
+
+
+          let width =
+            img.width;
+
+          let height =
+            img.height;
+
+
+          if (
+            width > height &&
+            width > maxSize
+          ) {
+
+            height =
+              Math.round(
+                height *
+                maxSize /
+                width
+              );
+
+            width =
+              maxSize;
+
+          }
+
+          else if (
+            height >= width &&
+            height > maxSize
+          ) {
+
+            width =
+              Math.round(
+                width *
+                maxSize /
+                height
+              );
+
+            height =
+              maxSize;
+
+          }
+
+
+          const canvas =
+            document.createElement(
+              'canvas'
+            );
+
+
+          canvas.width =
+            width;
+
+          canvas.height =
+            height;
+
+
+          const ctx =
+            canvas.getContext(
+              '2d'
+            );
+
+
+          ctx.drawImage(
+            img,
+            0,
+            0,
+            width,
+            height
+          );
+
+
+          const result =
+            canvas.toDataURL(
+              'image/jpeg',
+              0.82
+            );
+
+
+          resolve(
+            result
+          );
+
+        };
+
+
+        img.onerror =
+          reject;
+
+
+        img.src =
+          reader.result;
+
+      };
+
+
+      reader.onerror =
+        reject;
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
    الحضور
-========================= */
+========================================================= */
 
 function renderAttendance() {
 
@@ -2966,12 +5655,16 @@ function renderAttendance() {
       'attendanceEditor'
     );
 
+
   const items =
-    profile.attendance || [];
+    profile.attendance ||
+    [];
+
 
   if (!items.length) {
 
     box.innerHTML = `
+
       <div
         style="
           padding:18px;
@@ -2983,36 +5676,57 @@ function renderAttendance() {
       >
         لا يوجد سجل حضور بعد.
       </div>
+
     `;
 
     return;
 
   }
 
+
   box.innerHTML =
     items.map(
-      (item, index) => `
+      (
+        item,
+        index
+      ) => `
 
-        <div class="editor-row">
+        <div
+          class="editor-row"
+        >
 
-          <div class="editor-row-head">
+          <div
+            class="editor-row-head"
+          >
 
-            <span class="editor-row-title">
+            <span
+              class="editor-row-title"
+            >
               حضور #${index + 1}
             </span>
 
+
             <button
               class="remove"
-              onclick="removeAttendance(${index})"
+              onclick="
+                removeAttendance(
+                  ${index}
+                )
+              "
             >
               حذف
             </button>
 
           </div>
 
-          <div class="editor-grid">
 
-            <div class="field">
+          <div
+            class="editor-grid"
+          >
+
+            <div
+              class="field"
+            >
 
               <label>
                 التاريخ
@@ -3028,7 +5742,10 @@ function renderAttendance() {
 
             </div>
 
-            <div class="field">
+
+            <div
+              class="field"
+            >
 
               <label>
                 الحالة
@@ -3050,12 +5767,12 @@ function renderAttendance() {
 
                 <option
                   ${
-                    item.status === 'غائب'
+                    item.status === 'متأخر'
                       ? 'selected'
                       : ''
                   }
                 >
-                  غائب
+                  متأخر
                 </option>
 
                 <option
@@ -3070,15 +5787,36 @@ function renderAttendance() {
 
                 <option
                   ${
-                    item.status === 'متأخر'
+                    item.status === 'غائب'
                       ? 'selected'
                       : ''
                   }
                 >
-                  متأخر
+                  غائب
                 </option>
 
               </select>
+
+            </div>
+
+
+            <div
+              class="field"
+            >
+
+              <label>
+                النقاط
+              </label>
+
+              <input
+                readonly
+                value="${formatNumber(
+                  getAttendancePoints(
+                    item.status
+                  ),
+                  1
+                )}"
+              >
 
             </div>
 
@@ -3097,23 +5835,29 @@ function addAttendance() {
 
   profile.attendance.push({
 
-    date: todayISO(),
+    date:
+      todayISO(),
 
-    status: 'حاضر'
+    status:
+      'حاضر'
 
   });
+
 
   renderAttendance();
 
 }
 
 
-function removeAttendance(index) {
+function removeAttendance(
+  index
+) {
 
   profile.attendance.splice(
     index,
     1
   );
+
 
   renderAttendance();
 
@@ -3123,7 +5867,10 @@ function removeAttendance(index) {
 function collectAttendance() {
 
   return profile.attendance.map(
-    (item, index) => ({
+    (
+      item,
+      index
+    ) => ({
 
       date:
         document.querySelector(
@@ -3141,9 +5888,9 @@ function collectAttendance() {
 }
 
 
-/* =========================
-   الخطة الأسبوعية
-========================= */
+/* =========================================================
+   الخطة
+========================================================= */
 
 function renderPlan() {
 
@@ -3152,12 +5899,16 @@ function renderPlan() {
       'planEditor'
     );
 
+
   const items =
-    profile.weeklyPlan || [];
+    profile.weeklyPlan ||
+    [];
+
 
   if (!items.length) {
 
     box.innerHTML = `
+
       <div
         style="
           padding:18px;
@@ -3169,149 +5920,272 @@ function renderPlan() {
       >
         لم تتم إضافة خطة أسبوعية بعد.
       </div>
+
     `;
 
     return;
 
   }
 
+
   box.innerHTML =
     items.map(
-      (item, index) => `
+      (
+        item,
+        index
+      ) => {
 
-        <div class="editor-row">
+        const status =
+          getPlanStatus(
+            item
+          );
 
-          <div class="editor-row-head">
 
-            <span class="editor-row-title">
-              أسبوع #${index + 1}
-            </span>
+        return `
 
-            <button
-              class="remove"
-              onclick="removePlan(${index})"
+          <div
+            class="editor-row"
+          >
+
+            <div
+              class="editor-row-head"
             >
-              حذف
-            </button>
+
+              <span
+                class="editor-row-title"
+              >
+                خطة أسبوع #${index + 1}
+              </span>
+
+
+              <button
+                class="remove"
+                onclick="
+                  removePlan(
+                    ${index}
+                  )
+                "
+              >
+                حذف
+              </button>
+
+            </div>
+
+
+            <div
+              class="editor-grid"
+            >
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  تاريخ بداية الأسبوع
+                </label>
+
+                <input
+                  type="date"
+                  value="${escapeHtml(
+                    item.date || ''
+                  )}"
+                  data-plan-date="${index}"
+                  onchange="
+                    refreshPlanStatus(
+                      ${index}
+                    )
+                  "
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  الجزء
+                </label>
+
+                <input
+                  value="${escapeHtml(
+                    item.juz || ''
+                  )}"
+                  placeholder="مثال: 20"
+                  data-plan-juz="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  عدد صفحات الحفظ
+                </label>
+
+                <input
+                  type="number"
+                  min="0"
+                  value="${number(
+                    item.hifzTarget ??
+                    (
+                      /^\d+$/.test(
+                        String(
+                          item.hifz || ''
+                        ).trim()
+                      )
+                        ? item.hifz
+                        : 0
+                    )
+                  )}"
+                  data-plan-hifz="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  عدد صفحات المراجعة
+                </label>
+
+                <input
+                  type="number"
+                  min="0"
+                  value="${number(
+                    item.reviewTarget ??
+                    (
+                      /^\d+$/.test(
+                        String(
+                          item.review || ''
+                        ).trim()
+                      )
+                        ? item.review
+                        : 0
+                    )
+                  )}"
+                  data-plan-review="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  حالة الخطة
+                </label>
+
+                <div
+                  id="plan-status-${index}"
+                  class="
+                    status-badge
+                    ${status.className}
+                  "
+                  style="
+                    width:100%;
+                    min-height:45px;
+                  "
+                >
+                  ${status.label}
+                </div>
+
+              </div>
+
+            </div>
 
           </div>
 
-          <div class="editor-grid">
+        `;
 
-            <div class="field">
-
-              <label>
-                تاريخ الأسبوع
-              </label>
-
-              <input
-                type="date"
-                value="${escapeHtml(
-                  item.date || ''
-                )}"
-                data-plan-date="${index}"
-              >
-
-            </div>
-
-            <div class="field">
-
-              <label>
-                الجزء
-              </label>
-
-              <input
-                value="${escapeHtml(
-                  item.juz || ''
-                )}"
-                placeholder="مثال: 20"
-                data-plan-juz="${index}"
-              >
-
-            </div>
-
-            <div class="field">
-
-              <label>
-                الحفظ الجديد
-              </label>
-
-              <input
-                value="${escapeHtml(
-                  item.hifz || item.pages || ''
-                )}"
-                placeholder="مثال: 385 - 389"
-                data-plan-hifz="${index}"
-              >
-
-            </div>
-
-            <div class="field">
-
-              <label>
-                المراجعة / الاختبار
-              </label>
-
-              <input
-                value="${escapeHtml(
-                  item.review || item.exam || ''
-                )}"
-                placeholder="مثال: 25 + 26"
-                data-plan-review="${index}"
-              >
-
-            </div>
-
-            <div class="field">
-
-              <label>
-                الحالة
-              </label>
-
-              <select data-plan-status="${index}">
-
-                <option
-                  ${
-                    item.status === 'مكتمل'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  مكتمل
-                </option>
-
-                <option
-                  ${
-                    item.status === 'جزئي'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  جزئي
-                </option>
-
-                <option
-                  ${
-                    item.status === 'قيد الانتظار'
-                      || !item.status
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  قيد الانتظار
-                </option>
-
-              </select>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      `
+      }
     )
     .join('');
+
+}
+
+
+function refreshPlanStatus(
+  index
+) {
+
+  const item =
+    profile.weeklyPlan[
+      index
+    ];
+
+
+  if (!item)
+    return;
+
+
+  const date =
+    document.querySelector(
+      `[data-plan-date="${index}"]`
+    )?.value || '';
+
+
+  const hifz =
+    number(
+      document.querySelector(
+        `[data-plan-hifz="${index}"]`
+      )?.value
+    );
+
+
+  const review =
+    number(
+      document.querySelector(
+        `[data-plan-review="${index}"]`
+      )?.value
+    );
+
+
+  const temporary = {
+
+    ...item,
+
+    date,
+
+    hifzTarget:
+      hifz,
+
+    reviewTarget:
+      review
+
+  };
+
+
+  const status =
+    getPlanStatus(
+      temporary
+    );
+
+
+  const element =
+    document.getElementById(
+      `plan-status-${index}`
+    );
+
+
+  if (element) {
+
+    element.className =
+      `status-badge ${status.className}`;
+
+    element.textContent =
+      status.label;
+
+  }
 
 }
 
@@ -3320,29 +6194,38 @@ function addPlan() {
 
   profile.weeklyPlan.push({
 
-    date: todayISO(),
+    date:
+      todayISO(),
 
     juz: '',
 
-    hifz: '',
+    hifzTarget:
+      number(
+        profile.weeklyGoal?.hifz
+      ),
 
-    review: '',
-
-    status: 'قيد الانتظار'
+    reviewTarget:
+      number(
+        profile.weeklyGoal?.review
+      )
 
   });
+
 
   renderPlan();
 
 }
 
 
-function removePlan(index) {
+function removePlan(
+  index
+) {
 
   profile.weeklyPlan.splice(
     index,
     1
   );
+
 
   renderPlan();
 
@@ -3352,42 +6235,48 @@ function removePlan(index) {
 function collectPlan() {
 
   return profile.weeklyPlan.map(
-    (item, index) => ({
+    (
+      item,
+      index
+    ) => {
 
-      date:
-        document.querySelector(
-          `[data-plan-date="${index}"]`
-        )?.value || '',
+      return {
 
-      juz:
-        document.querySelector(
-          `[data-plan-juz="${index}"]`
-        )?.value || '',
+        date:
+          document.querySelector(
+            `[data-plan-date="${index}"]`
+          )?.value || '',
 
-      hifz:
-        document.querySelector(
-          `[data-plan-hifz="${index}"]`
-        )?.value || '',
+        juz:
+          document.querySelector(
+            `[data-plan-juz="${index}"]`
+          )?.value || '',
 
-      review:
-        document.querySelector(
-          `[data-plan-review="${index}"]`
-        )?.value || '',
+        hifzTarget:
+          number(
+            document.querySelector(
+              `[data-plan-hifz="${index}"]`
+            )?.value
+          ),
 
-      status:
-        document.querySelector(
-          `[data-plan-status="${index}"]`
-        )?.value || ''
+        reviewTarget:
+          number(
+            document.querySelector(
+              `[data-plan-review="${index}"]`
+            )?.value
+          )
 
-    })
+      };
+
+    }
   );
 
 }
 
 
-/* =========================
+/* =========================================================
    الاختبارات
-========================= */
+========================================================= */
 
 function renderTests() {
 
@@ -3396,12 +6285,16 @@ function renderTests() {
       'testsEditor'
     );
 
+
   const items =
-    profile.tests || [];
+    profile.tests ||
+    [];
+
 
   if (!items.length) {
 
     box.innerHTML = `
+
       <div
         style="
           padding:18px;
@@ -3413,150 +6306,195 @@ function renderTests() {
       >
         لا يوجد اختبارات مسجلة بعد.
       </div>
+
     `;
 
     return;
 
   }
 
+
   box.innerHTML =
     items.map(
-      (item, index) => `
+      (
+        item,
+        index
+      ) => {
 
-        <div class="editor-row">
+        const points =
+          getTestPointsByResult(
+            item.result
+          );
 
-          <div class="editor-row-head">
 
-            <span class="editor-row-title">
-              ${escapeHtml(
-                item.name ||
-                `اختبار #${index + 1}`
-              )}
-            </span>
+        return `
 
-            <button
-              class="remove"
-              onclick="removeTest(${index})"
+          <div
+            class="editor-row"
+          >
+
+            <div
+              class="editor-row-head"
             >
-              حذف
-            </button>
+
+              <span
+                class="editor-row-title"
+              >
+                ${
+                  escapeHtml(
+                    item.name ||
+                    `اختبار #${index + 1}`
+                  )
+                }
+              </span>
+
+
+              <button
+                class="remove"
+                onclick="
+                  removeTest(
+                    ${index}
+                  )
+                "
+              >
+                حذف
+              </button>
+
+            </div>
+
+
+            <div
+              class="editor-grid"
+            >
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  اسم الاختبار
+                </label>
+
+                <input
+                  value="${escapeHtml(
+                    item.name || ''
+                  )}"
+                  placeholder="مثال: اختبار الجزء 20"
+                  data-test-name="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  التاريخ
+                </label>
+
+                <input
+                  type="date"
+                  value="${escapeHtml(
+                    item.date || ''
+                  )}"
+                  data-test-date="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  النتيجة
+                </label>
+
+                <select
+                  data-test-result="${index}"
+                >
+
+                  <option value="">
+                    اختر النتيجة
+                  </option>
+
+                  <option
+                    ${
+                      item.result === 'ممتاز'
+                      ||
+                      item.result === 'ممتاز+'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    ممتاز
+                  </option>
+
+                  <option
+                    ${
+                      item.result === 'جيد جداً'
+                      ||
+                      item.result === 'جيد جدًا'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    جيد جداً
+                  </option>
+
+                  <option
+                    ${
+                      item.result === 'جيد'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    جيد
+                  </option>
+
+                  <option
+                    ${
+                      item.result === 'غير مجتاز'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    غير مجتاز
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  النقاط
+                </label>
+
+                <input
+                  readonly
+                  value="${formatNumber(
+                    points,
+                    1
+                  )}"
+                >
+
+              </div>
+
+            </div>
 
           </div>
 
-          <div class="editor-grid">
+        `;
 
-            <div class="field">
-
-              <label>
-                اسم الاختبار
-              </label>
-
-              <input
-                value="${escapeHtml(
-                  item.name || ''
-                )}"
-                placeholder="مثال: اختبار آخر 6 أجزاء"
-                data-test-name="${index}"
-              >
-
-            </div>
-
-            <div class="field">
-
-              <label>
-                التاريخ
-              </label>
-
-              <input
-                type="date"
-                value="${escapeHtml(
-                  item.date || ''
-                )}"
-                data-test-date="${index}"
-              >
-
-            </div>
-
-            <div class="field">
-
-              <label>
-                النتيجة
-              </label>
-
-              <select data-test-result="${index}">
-
-                <option value="">
-                  اختر النتيجة
-                </option>
-
-                <option
-                  ${
-                    item.result === 'ممتاز+'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  ممتاز+
-                </option>
-
-                <option
-                  ${
-                    item.result === 'ممتاز'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  ممتاز
-                </option>
-
-                <option
-                  ${
-                    item.result === 'جيد جداً'
-                      || item.result === 'جيد جدًا'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  جيد جداً
-                </option>
-
-                <option
-                  ${
-                    item.result === 'جيد'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  جيد
-                </option>
-
-              </select>
-
-            </div>
-
-            <div class="field">
-
-              <label>
-                النقاط
-              </label>
-
-              <input
-                type="number"
-                min="0"
-                value="${escapeHtml(
-                  item.points ?? ''
-                )}"
-                placeholder="تلقائي"
-                data-test-points="${index}"
-              >
-
-            </div>
-
-          </div>
-
-        </div>
-
-      `
+      }
     )
     .join('');
 
@@ -3565,29 +6503,32 @@ function renderTests() {
 
 function addTest() {
 
-  profile.tests.push({
+  profile.tests.unshift({
 
     name: '',
 
-    date: todayISO(),
+    date:
+      todayISO(),
 
-    result: '',
-
-    points: ''
+    result: ''
 
   });
+
 
   renderTests();
 
 }
 
 
-function removeTest(index) {
+function removeTest(
+  index
+) {
 
   profile.tests.splice(
     index,
     1
   );
+
 
   renderTests();
 
@@ -3597,59 +6538,47 @@ function removeTest(index) {
 function collectTests() {
 
   return profile.tests.map(
-    (item, index) => ({
+    (
+      item,
+      index
+    ) => {
 
-      name:
-        document.querySelector(
-          `[data-test-name="${index}"]`
-        )?.value || '',
-
-      date:
-        document.querySelector(
-          `[data-test-date="${index}"]`
-        )?.value || '',
-
-      result:
+      const result =
         document.querySelector(
           `[data-test-result="${index}"]`
-        )?.value || '',
+        )?.value || '';
 
-      points:
-        document.querySelector(
-          `[data-test-points="${index}"]`
-        )?.value || ''
 
-    })
+      return {
+
+        name:
+          document.querySelector(
+            `[data-test-name="${index}"]`
+          )?.value || '',
+
+        date:
+          document.querySelector(
+            `[data-test-date="${index}"]`
+          )?.value || '',
+
+        result,
+
+        points:
+          getTestPointsByResult(
+            result
+          )
+
+      };
+
+    }
   );
 
 }
 
 
-/* =========================
+/* =========================================================
    التسميع
-========================= */
-
-function gradeClass(grade) {
-
-  if (
-    grade === 'ممتاز+' ||
-    grade === 'ممتاز'
-  )
-    return 'grade-excellent';
-
-  if (
-    grade === 'جيد جداً' ||
-    grade === 'جيد جدًا'
-  )
-    return 'grade-very-good';
-
-  if (grade === 'جيد')
-    return 'grade-good';
-
-  return 'grade-other';
-
-}
-
+========================================================= */
 
 function renderRecitations() {
 
@@ -3658,12 +6587,16 @@ function renderRecitations() {
       'recitationsEditor'
     );
 
+
   const items =
-    profile.recitations || [];
+    profile.recitations ||
+    [];
+
 
   if (!items.length) {
 
     box.innerHTML = `
+
       <div
         style="
           padding:18px;
@@ -3675,231 +6608,329 @@ function renderRecitations() {
       >
         لم يتم تسجيل أي تسميع بعد.
       </div>
+
     `;
 
     return;
 
   }
 
+
   box.innerHTML =
     items.map(
-      (item, index) => `
+      (
+        item,
+        index
+      ) => {
 
-        <div class="editor-row">
-
-          <div class="editor-row-head">
-
-            <span class="editor-row-title">
-              📖 صفحة
-              ${escapeHtml(
-                item.page || '—'
-              )}
-            </span>
-
-            <button
-              class="remove"
-              onclick="removeRecitation(${index})"
-            >
-              حذف
-            </button>
-
-          </div>
-
-          <div class="editor-grid">
-
-            <div class="field">
-
-              <label>
-                التاريخ
-              </label>
-
-              <input
-                type="date"
-                value="${escapeHtml(
-                  item.date || ''
-                )}"
-                data-rec-date="${index}"
-              >
-
-            </div>
+        const grade =
+          getRecitationGrade(
+            item.score
+          );
 
 
-            <div class="field">
-
-              <label>
-                رقم الصفحة
-              </label>
-
-              <input
-                type="number"
-                min="1"
-                max="604"
-                value="${escapeHtml(
-                  item.page || ''
-                )}"
-                placeholder="1 - 604"
-                data-rec-page="${index}"
-              >
-
-            </div>
+        const points =
+          getRecitationPoints(
+            item
+          );
 
 
-            <div class="field">
+        return `
 
-              <label>
-                النوع
-              </label>
-
-              <select data-rec-type="${index}">
-
-                <option
-                  value="hifz"
-                  ${
-                    item.type === 'hifz'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  حفظ جديد
-                </option>
-
-                <option
-                  value="review"
-                  ${
-                    item.type === 'review'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  مراجعة
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                الدرجة %
-              </label>
-
-              <input
-                type="number"
-                min="0"
-                max="100"
-                value="${escapeHtml(
-                  item.score ?? ''
-                )}"
-                placeholder="مثال: 95"
-                data-rec-score="${index}"
-              >
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                عدد الصفحات
-              </label>
-
-              <input
-                type="number"
-                min="1"
-                value="${escapeHtml(
-                  item.pages || 1
-                )}"
-                data-rec-pages="${index}"
-              >
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                التقدير
-              </label>
-
-              <select data-rec-grade="${index}">
-
-                <option value="">
-                  اختر التقدير
-                </option>
-
-                <option
-                  ${
-                    item.grade === 'ممتاز+'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  ممتاز+
-                </option>
-
-                <option
-                  ${
-                    item.grade === 'ممتاز'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  ممتاز
-                </option>
-
-                <option
-                  ${
-                    item.grade === 'جيد جداً'
-                      || item.grade === 'جيد جدًا'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  جيد جداً
-                </option>
-
-                <option
-                  ${
-                    item.grade === 'جيد'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  جيد
-                </option>
-
-              </select>
-
-            </div>
+          <div
+            class="editor-row"
+            id="recitation-row-${index}"
+          >
 
             <div
-              class="field"
-              style="grid-column:1 / -1;"
+              class="editor-row-head"
             >
 
-              <label>
-                ملاحظة
-              </label>
-
-              <input
-                value="${escapeHtml(
-                  item.note || ''
-                )}"
-                placeholder="مثال: يحتاج تثبيت بداية الصفحة"
-                data-rec-note="${index}"
+              <span
+                class="editor-row-title"
               >
+                📖 صفحة
+                ${
+                  escapeHtml(
+                    item.page || '—'
+                  )
+                }
+              </span>
+
+
+              <button
+                class="remove"
+                onclick="
+                  removeRecitation(
+                    ${index}
+                  )
+                "
+              >
+                حذف
+              </button>
+
+            </div>
+
+
+            <div
+              class="editor-grid"
+            >
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  التاريخ
+                </label>
+
+                <input
+                  type="date"
+                  value="${escapeHtml(
+                    item.date || ''
+                  )}"
+                  data-rec-date="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  رقم الصفحة
+                </label>
+
+                <input
+                  type="number"
+                  min="1"
+                  max="604"
+                  value="${escapeHtml(
+                    item.page || ''
+                  )}"
+                  placeholder="1 - 604"
+                  data-rec-page="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  النوع
+                </label>
+
+                <select
+                  data-rec-type="${index}"
+                  onchange="
+                    refreshRecitationPreview(
+                      ${index}
+                    )
+                  "
+                >
+
+                  <option
+                    value="hifz"
+                    ${
+                      item.type === 'hifz'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    حفظ جديد
+                  </option>
+
+                  <option
+                    value="review"
+                    ${
+                      item.type === 'review'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    مراجعة
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  الدرجة من 100
+                </label>
+
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="${escapeHtml(
+                    item.score ?? ''
+                  )}"
+                  placeholder="مثال: 97"
+                  data-rec-score="${index}"
+                  oninput="
+                    refreshRecitationPreview(
+                      ${index}
+                    )
+                  "
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  التقدير التلقائي
+                </label>
+
+                <div
+                  id="grade-preview-${index}"
+                  class="
+                    grade-preview
+                    ${grade.className}
+                  "
+                >
+                  ${escapeHtml(
+                    grade.label
+                  )}
+                </div>
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  نقاط التسميع
+                </label>
+
+                <input
+                  id="points-preview-${index}"
+                  readonly
+                  value="${formatNumber(
+                    points,
+                    1
+                  )}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+                style="
+                  grid-column:1 / -1;
+                "
+              >
+
+                <label>
+                  ملاحظة على الصفحة
+                </label>
+
+                <input
+                  value="${escapeHtml(
+                    item.note || ''
+                  )}"
+                  placeholder="مثال: أخطاء في بداية الصفحة"
+                  data-rec-note="${index}"
+                >
+
+              </div>
 
             </div>
 
           </div>
 
-        </div>
+        `;
 
-      `
+      }
     )
     .join('');
+
+}
+
+
+function refreshRecitationPreview(
+  index
+) {
+
+  const score =
+    document.querySelector(
+      `[data-rec-score="${index}"]`
+    )?.value;
+
+
+  const type =
+    document.querySelector(
+      `[data-rec-type="${index}"]`
+    )?.value ||
+    'hifz';
+
+
+  const grade =
+    getRecitationGrade(
+      score
+    );
+
+
+  const points =
+    getRecitationPoints({
+
+      type,
+
+      score
+
+    });
+
+
+  const gradeElement =
+    document.getElementById(
+      `grade-preview-${index}`
+    );
+
+
+  const pointsElement =
+    document.getElementById(
+      `points-preview-${index}`
+    );
+
+
+  if (gradeElement) {
+
+    gradeElement.className =
+      `grade-preview ${grade.className}`;
+
+    gradeElement.textContent =
+      grade.label;
+
+  }
+
+
+  if (pointsElement) {
+
+    pointsElement.value =
+      formatNumber(
+        points,
+        1
+      );
+
+  }
 
 }
 
@@ -3908,33 +6939,53 @@ function addRecitation() {
 
   profile.recitations.unshift({
 
-    date: todayISO(),
+    date:
+      todayISO(),
 
     page: '',
 
-    type: 'hifz',
+    type:
+      'hifz',
 
-    pages: 1,
+    score:
+      '',
 
-    score: '',
+    grade:
+      '',
 
-    grade: '',
-
-    note: ''
+    note:
+      ''
 
   });
 
+
   renderRecitations();
+
+
+  const firstPage =
+    document.querySelector(
+      '[data-rec-page="0"]'
+    );
+
+
+  if (firstPage) {
+
+    firstPage.focus();
+
+  }
 
 }
 
 
-function removeRecitation(index) {
+function removeRecitation(
+  index
+) {
 
   profile.recitations.splice(
     index,
     1
   );
+
 
   renderRecitations();
 
@@ -3944,127 +6995,118 @@ function removeRecitation(index) {
 function collectRecitations() {
 
   return profile.recitations.map(
-    (item, index) => ({
+    (
+      item,
+      index
+    ) => {
 
-      date:
-        document.querySelector(
-          `[data-rec-date="${index}"]`
-        )?.value || '',
-
-      page:
-        number(
-          document.querySelector(
-            `[data-rec-page="${index}"]`
-          )?.value
-        ),
-
-      type:
+      const type =
         document.querySelector(
           `[data-rec-type="${index}"]`
-        )?.value || 'hifz',
+        )?.value ||
+        'hifz';
 
-      score:
+
+      const scoreRaw =
         document.querySelector(
           `[data-rec-score="${index}"]`
-        )?.value || '',
+        )?.value;
 
-      grade:
-        document.querySelector(
-          `[data-rec-grade="${index}"]`
-        )?.value || '',
 
-      pages:
-        number(
+      const score =
+        scoreRaw === ''
+          ? ''
+          : clamp(
+              scoreRaw,
+              0,
+              100
+            );
+
+
+      const grade =
+        score === ''
+          ? ''
+          : getRecitationGrade(
+              score
+            ).label;
+
+
+      return {
+
+        date:
           document.querySelector(
-            `[data-rec-pages="${index}"]`
-          )?.value
-        ) || 1,
+            `[data-rec-date="${index}"]`
+          )?.value || '',
 
-      note:
-        document.querySelector(
-          `[data-rec-note="${index}"]`
-        )?.value || ''
+        page:
+          number(
+            document.querySelector(
+              `[data-rec-page="${index}"]`
+            )?.value
+          ),
 
-    })
+        type,
+
+        score,
+
+        grade,
+
+        note:
+          document.querySelector(
+            `[data-rec-note="${index}"]`
+          )?.value || ''
+
+      };
+
+    }
+  ).filter(
+    item =>
+      item.page >= 1 &&
+      item.page <= 604
   );
 
 }
 
 
-/* =========================
+/* =========================================================
    خريطة القرآن
-========================= */
+========================================================= */
 
-function getJuzInfo(juz) {
+function getPageState(
+  page
+) {
 
-  let start = 1;
-
-  for (
-    let i = 1;
-    i < juz;
-    i++
-  ) {
-
-    start +=
-      i === 1 ||
-      i === 2
-        ? 21
-        : (
-            i === 30
-              ? 23
-              : 20
-          );
-
-  }
-
-  const length =
-    juz === 1 ||
-    juz === 2
-      ? 21
-      : (
-          juz === 30
-            ? 23
-            : 20
-        );
-
-  return {
-
-    start,
-
-    end:
-      start + length - 1,
-
-    length
-
-  };
-
-}
+  const hifz =
+    getHifzPageSet();
 
 
-function getPageState(page) {
+  const review =
+    getReviewPageSet();
+
 
   const hasHifz =
-    profile.recitations.some(
-      item =>
-        item.type === 'hifz' &&
-        number(item.page) === page
-    );
+    hifz.has(page);
+
 
   const hasReview =
-    profile.recitations.some(
-      item =>
-        item.type === 'review' &&
-        number(item.page) === page
-    );
+    review.has(page);
 
-  if (hasHifz && hasReview)
+
+  if (
+    hasHifz &&
+    hasReview
+  ) {
     return 'both';
+  }
+
 
   if (hasHifz)
     return 'hifz';
 
+
   if (hasReview)
     return 'review';
+
 
   return '';
 
@@ -4078,9 +7120,14 @@ function renderQuranMap() {
       'quranMap'
     );
 
-  if (!box) return;
 
-  let html = '';
+  if (!box)
+    return;
+
+
+  let html =
+    '';
+
 
   for (
     let juz = 1;
@@ -4091,66 +7138,129 @@ function renderQuranMap() {
     const info =
       getJuzInfo(juz);
 
-    let completed = 0;
 
-    let pagesHtml = '';
+    let completed =
+      0;
+
+
+    let pagesHtml =
+      '';
+
 
     for (
-      let page = info.start;
+      let page =
+        info.start;
       page <= info.end;
       page++
     ) {
 
       const state =
-        getPageState(page);
+        getPageState(
+          page
+        );
+
 
       if (state)
         completed++;
 
-      let title =
-        `صفحة ${page}`;
 
-      if (state === 'hifz')
-        title += ' — حفظ جديد';
+      let stateText =
+        'غير مسجلة';
 
-      if (state === 'review')
-        title += ' — مراجعة';
 
-      if (state === 'both')
-        title += ' — حفظ + مراجعة';
+      if (
+        state === 'hifz'
+      ) {
+
+        stateText =
+          'حفظ جديد';
+
+      }
+
+      else if (
+        state === 'review'
+      ) {
+
+        stateText =
+          'مراجعة';
+
+      }
+
+      else if (
+        state === 'both'
+      ) {
+
+        stateText =
+          'حفظ + مراجعة';
+
+      }
+
 
       pagesHtml += `
 
         <div
-          class="page-dot ${state}"
-          title="${title}"
-          onclick="showPageInfo(${page})"
-        ></div>
+          class="
+            page-dot
+            ${state}
+          "
+          title="
+            صفحة ${page} —
+            ${stateText}
+          "
+          onclick="
+            showPageInfo(
+              ${page}
+            )
+          "
+        >
+          ${page}
+        </div>
 
       `;
 
     }
 
+
     html += `
 
-      <div class="juz-card">
+      <div
+        class="juz-card"
+      >
 
-        <div class="juz-head">
+        <div
+          class="juz-head"
+        >
 
-          <span class="juz-title">
+          <span
+            class="juz-title"
+          >
             الجزء ${juz}
           </span>
 
-          <span class="juz-count">
+
+          <span
+            class="juz-count"
+          >
             ${completed}/${info.length}
           </span>
 
         </div>
 
-        <div class="page-grid">
 
+        <div
+          class="juz-range"
+        >
+          الصفحات
+          ${info.start}
+          -
+          ${info.end}
+        </div>
+
+
+        <div
+          class="page-grid"
+        >
           ${pagesHtml}
-
         </div>
 
       </div>
@@ -4159,12 +7269,16 @@ function renderQuranMap() {
 
   }
 
-  box.innerHTML = html;
+
+  box.innerHTML =
+    html;
 
 }
 
 
-function showPageInfo(page) {
+function showPageInfo(
+  page
+) {
 
   const records =
     profile.recitations.filter(
@@ -4172,62 +7286,108 @@ function showPageInfo(page) {
         number(item.page) === page
     );
 
+
   if (!records.length) {
 
     alert(
-      `صفحة ${page}\n\nلا يوجد سجل تسميع لهذه الصفحة حتى الآن.`
+      `📖 صفحة ${page}\n\nلا يوجد سجل لهذه الصفحة حتى الآن.`
     );
 
     return;
 
   }
 
-  const text =
-    records
-      .map(
-        item => {
 
-          const type =
-            item.type === 'review'
-              ? 'مراجعة'
-              : 'حفظ جديد';
+  const details =
+    records.map(
+      item => {
 
-          return `
-${type}
-التاريخ: ${formatDate(item.date)}
-الدرجة: ${item.score || 'غير مسجلة'}%
-التقدير: ${item.grade || 'غير مسجل'}
-الملاحظة: ${item.note || 'لا توجد'}
-          `.trim();
+        const grade =
+          getRecitationGrade(
+            item.score
+          );
 
-        }
-      )
-      .join('\n\n----------------\n\n');
+
+        const points =
+          getRecitationPoints(
+            item
+          );
+
+
+        const type =
+          item.type === 'review'
+            ? 'مراجعة'
+            : 'حفظ جديد';
+
+
+        return [
+
+          `النوع: ${type}`,
+
+          `التاريخ: ${formatDate(
+            item.date
+          )}`,
+
+          `الدرجة: ${
+            item.score === ''
+              ? 'غير مسجلة'
+              : item.score + '%'
+          }`,
+
+          `التقدير: ${
+            grade.label
+          }`,
+
+          `النقاط: ${
+            formatNumber(
+              points,
+              1
+            )
+          }`,
+
+          `الملاحظة: ${
+            item.note ||
+            'لا توجد'
+          }`
+
+        ].join('\n');
+
+      }
+    )
+    .join(
+      '\n\n----------------\n\n'
+    );
+
 
   alert(
-    `📖 تفاصيل الصفحة ${page}\n\n${text}`
+    `📖 تفاصيل الصفحة ${page}\n\n${details}`
   );
 
 }
 
 
-/* =========================
-   الحفظ
-========================= */
+/* =========================================================
+   حفظ جميع البيانات
+========================================================= */
 
 async function saveProfile() {
 
   hideMessage();
+
 
   const button =
     document.getElementById(
       'saveButton'
     );
 
-  button.disabled = true;
+
+  button.disabled =
+    true;
+
 
   button.textContent =
     'جاري الحفظ...';
+
 
   try {
 
@@ -4235,137 +7395,203 @@ async function saveProfile() {
 
       name:
         document
-          .getElementById('name')
+          .getElementById(
+            'name'
+          )
           .value
           .trim(),
 
       section:
         document
-          .getElementById('section')
+          .getElementById(
+            'section'
+          )
           .value
           .trim(),
 
       memorization:
         document
-          .getElementById('memorization')
+          .getElementById(
+            'memorization'
+          )
           .value
           .trim(),
 
       status:
         document
-          .getElementById('status')
+          .getElementById(
+            'status'
+          )
           .value
 
     };
 
 
+    if (
+      !studentUpdate.name
+    ) {
+
+      throw new Error(
+        'اسم الطالب مطلوب.'
+      );
+
+    }
+
+
+    /*
+      أولاً تحديث جدول الطلاب
+    */
+
     const {
-      error: studentError
+      error:
+        studentError
     } =
       await supabaseClient
+
         .from('students')
-        .update(studentUpdate)
-        .eq('id', studentId);
+
+        .update(
+          studentUpdate
+        )
+
+        .eq(
+          'id',
+          studentId
+        );
 
 
     if (studentError)
       throw studentError;
 
 
+    /*
+      جمع البيانات
+    */
+
     const newProfile = {
 
       photoUrl:
-        document
-          .getElementById('photoUrl')
-          .value
-          .trim(),
+        profile.photoUrl ||
+        '',
 
       guardianPhone:
         document
-          .getElementById('guardianPhone')
+          .getElementById(
+            'guardianPhone'
+          )
           .value
           .trim(),
 
       joiningDate:
         document
-          .getElementById('joiningDate')
+          .getElementById(
+            'joiningDate'
+          )
           .value,
-
-      completedQuranParts:
-        getCompletedJuz(),
 
       residence:
         document
-          .getElementById('residence')
+          .getElementById(
+            'residence'
+          )
           .value
           .trim(),
 
       bus:
         document
-          .getElementById('bus')
+          .getElementById(
+            'bus'
+          )
           .value
           .trim(),
 
       homeLocation:
         document
-          .getElementById('homeLocation')
+          .getElementById(
+            'homeLocation'
+          )
           .value
           .trim(),
+
 
       weeklyGoal: {
 
         hifz:
           number(
             document
-              .getElementById('goalHifz')
+              .getElementById(
+                'goalHifz'
+              )
               .value
           ),
 
         review:
           number(
             document
-              .getElementById('goalReview')
+              .getElementById(
+                'goalReview'
+              )
               .value
           )
 
       },
 
+
       attendance:
         collectAttendance(),
+
 
       weeklyPlan:
         collectPlan(),
 
+
       tests:
         collectTests(),
+
 
       recitations:
         collectRecitations(),
 
+
       notes:
         document
-          .getElementById('notes')
+          .getElementById(
+            'notes'
+          )
           .value
           .trim()
 
     };
 
 
+    /*
+      حفظ profile داخل
+      student_profiles
+    */
+
     const {
-      error: profileError
+      error:
+        profileError
     } =
       await supabaseClient
-        .from('student_profiles')
+
+        .from(
+          'student_profiles'
+        )
+
         .upsert({
 
           student_id:
-            String(studentId),
+            String(
+              studentId
+            ),
 
           data:
             newProfile,
 
           updated_at:
-            new Date().toISOString()
+            new Date()
+              .toISOString()
 
         });
 
@@ -4374,31 +7600,43 @@ async function saveProfile() {
       throw profileError;
 
 
+    /*
+      تحديث البيانات الحالية
+    */
+
     profile =
       mergeProfile(
         newProfile
       );
 
+
     student = {
+
       ...student,
+
       ...studentUpdate
+
     };
 
 
     showMessage(
-      'تم حفظ بيانات الطالب وحساب الإحصائيات تلقائياً بنجاح ✅',
+      'تم حفظ جميع البيانات وإعادة احتساب النسب والنقاط وحالة الخطة تلقائياً ✅',
       'success'
     );
 
 
     render();
 
-  } catch (error) {
+
+  } catch (
+    error
+  ) {
 
     console.error(
       'SAVE ERROR:',
       error
     );
+
 
     showMessage(
       error.message ||
@@ -4406,21 +7644,33 @@ async function saveProfile() {
       'error'
     );
 
+
   } finally {
 
-    button.disabled = false;
+    button =
+      document.getElementById(
+        'saveButton'
+      );
 
-    button.textContent =
-      '💾 حفظ جميع التعديلات';
+
+    if (button) {
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        '💾 حفظ جميع التعديلات';
+
+    }
 
   }
 
 }
 
 
-/* =========================
-   تشغيل
-========================= */
+/* =========================================================
+   تشغيل الصفحة
+========================================================= */
 
 loadStudent();
 
