@@ -3,19 +3,35 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <title>لوحة المعلم | مركز حردان طارق القرآني</title>
-
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="shortcut icon" type="image/png" href="logo.png">
+  <title>
+    ملف الطالب | مركز حردان طارق القرآني
+  </title>
 
   <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
+
+  <link
+    rel="shortcut icon"
+    type="image/png"
+    href="logo.png"
+  >
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -23,35 +39,32 @@
     }
 
     :root {
-      --green: #174d3a;
-      --green-dark: #0c3023;
-      --green-mid: #21664b;
-      --green-soft: #eaf4ef;
+      --green: #0d4d3a;
+      --green-2: #176b50;
+      --green-3: #218866;
+      --dark: #092f25;
 
-      --gold: #b28b18;
-      --gold-light: #d9bc5c;
-      --gold-soft: #fff8df;
+      --gold: #c5a04a;
+      --gold-2: #e0c36c;
 
-      --cream: #faf8f0;
-      --white: #fff;
+      --cream: #f8f5eb;
 
-      --text: #1d2924;
-      --muted: #78837e;
-      --border: #e5ebe7;
+      --bg: #f2f6f3;
+      --white: #ffffff;
 
-      --success: #237a31;
-      --success-soft: #eaf7ec;
+      --text: #17362c;
+      --muted: #718078;
 
-      --danger: #b3261e;
-      --danger-soft: #fff0ef;
+      --border: #e2e9e5;
 
-      --purple: #6653a6;
-      --purple-soft: #f1edff;
+      --success: #16834b;
+      --danger: #b42318;
 
-      --gray: #68736e;
-      --gray-soft: #f1f3f2;
+      --blue: #2869a8;
+      --orange: #b76a18;
 
-      --shadow: 0 12px 35px rgba(23,77,58,.07);
+      --shadow:
+        0 12px 35px rgba(13, 77, 58, .08);
     }
 
     html {
@@ -59,4835 +72,7609 @@
     }
 
     body {
-      font-family: Arial, Tahoma, sans-serif;
-      color: var(--text);
-      min-height: 100vh;
-
       background:
         radial-gradient(
-          circle at 8% 8%,
-          rgba(178,139,24,.10),
-          transparent 23%
+          circle at 10% 5%,
+          rgba(197,160,74,.10),
+          transparent 25%
         ),
         radial-gradient(
-          circle at 90% 80%,
-          rgba(23,77,58,.10),
-          transparent 28%
+          circle at 90% 15%,
+          rgba(23,107,80,.08),
+          transparent 25%
         ),
-        linear-gradient(
-          135deg,
-          #faf8f0,
-          #ffffff 48%,
-          #edf5f1
-        );
+        var(--bg);
 
-      overflow-x: hidden;
+      color: var(--text);
+
+      font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+      min-height: 100vh;
     }
 
     button,
     input,
+    textarea,
     select {
       font-family: inherit;
     }
 
-    button {
-      cursor: pointer;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .sidebar {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 275px;
 
-      z-index: 50;
+    /* =========================
+       HEADER
+    ========================= */
 
-      padding: 22px 17px;
-
-      color: white;
-
-      background:
-        radial-gradient(
-          circle at 80% 10%,
-          rgba(212,180,76,.12),
-          transparent 25%
-        ),
-        linear-gradient(
-          160deg,
-          #174d3a,
-          #0c3023
-        );
-
-      box-shadow:
-        -12px 0 40px rgba(0,0,0,.10);
-
-      overflow: hidden;
-    }
-
-    .sidebar::before {
-      content: "";
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      left: -130px;
-      bottom: -100px;
-      background: rgba(255,255,255,.035);
-      pointer-events: none;
-    }
-
-    .sidebar-brand {
-      position: relative;
-
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      padding: 7px 8px 23px;
-      margin-bottom: 24px;
-
-      text-decoration: none;
-      color: white;
-
-      border-bottom:
-        1px solid rgba(255,255,255,.12);
-
-      transition: .25s;
-    }
-
-    .sidebar-brand:hover {
-      transform: translateX(-3px);
-    }
-
-    .sidebar-logo {
-      width: 55px;
-      height: 55px;
-      min-width: 55px;
-
-      border-radius: 50%;
-      overflow: hidden;
-
-      background: white;
-
-      border:
-        3px solid rgba(217,188,92,.75);
-
-      box-shadow:
-        0 8px 22px rgba(0,0,0,.20);
-    }
-
-    .sidebar-logo img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 14px;
-      line-height: 1.5;
-      margin-bottom: 3px;
-    }
-
-    .brand-text span {
-      color: rgba(255,255,255,.58);
-      font-size: 10px;
-    }
-
-    .sidebar-heading {
-      color: rgba(255,255,255,.40);
-      font-size: 10px;
-      font-weight: bold;
-      margin: 0 10px 10px;
-      letter-spacing: .4px;
-    }
-
-    .side-link {
-      width: 100%;
-      min-height: 48px;
-
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      border: none;
-      border-right: 3px solid transparent;
-      border-radius: 12px;
-
-      margin-bottom: 5px;
-      padding: 11px 13px;
-
-      background: transparent;
-      color: rgba(255,255,255,.70);
-
-      font-size: 13px;
-      text-align: right;
-      text-decoration: none;
-
-      transition: .25s;
-    }
-
-    .side-link i {
-      width: 21px;
-      text-align: center;
-      font-size: 15px;
-    }
-
-    .side-link:hover {
-      background: rgba(255,255,255,.08);
-      color: white;
-      transform: translateX(-2px);
-    }
-
-    .side-link.active {
-      background:
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.13),
-          rgba(255,255,255,.05)
-        );
-
-      color: white;
-      border-right-color: var(--gold-light);
-    }
-
-    .side-link.active i {
-      color: var(--gold-light);
-    }
-
-    .sidebar-bottom {
-      position: absolute;
-      right: 17px;
-      left: 17px;
-      bottom: 18px;
-    }
-
-    .sidebar-status {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      margin-bottom: 10px;
-      padding: 10px 12px;
-
-      border-radius: 11px;
-
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.62);
-
-      font-size: 10px;
-    }
-
-    .online-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-
-      background: #6ee27d;
-
-      box-shadow:
-        0 0 0 4px rgba(110,226,125,.10);
-    }
-
-    .logout-side {
-      width: 100%;
-      padding: 12px;
-
-      border:
-        1px solid rgba(255,255,255,.13);
-
-      border-radius: 11px;
-
-      background:
-        rgba(255,255,255,.06);
-
-      color: white;
-
-      font-weight: bold;
-      font-size: 12px;
-
-      transition: .25s;
-    }
-
-    .logout-side:hover {
-      background: rgba(179,38,30,.20);
-      border-color: rgba(255,130,130,.30);
-      transform: translateY(-2px);
-    }
-
-    .close-sidebar {
-      display: none;
-
-      position: absolute;
-
-      top: 14px;
-      left: 14px;
-
-      width: 38px;
-      height: 38px;
-
-      border:
-        1px solid rgba(255,255,255,.16);
-
-      border-radius: 10px;
-
-      background:
-        rgba(255,255,255,.08);
-
-      color: white;
-
-      font-size: 22px;
-
-      z-index: 5;
-    }
-
-    .main {
-      margin-right: 275px;
-      min-height: 100vh;
-    }
-
-    .topbar {
+    header {
       position: sticky;
       top: 0;
-      z-index: 30;
+      z-index: 100;
+
+      background:
+        rgba(9,47,37,.96);
+
+      backdrop-filter:
+        blur(16px);
+
+      color: white;
+
+      box-shadow:
+        0 8px 25px rgba(0,0,0,.10);
+    }
+
+    .header-inner {
+      width:
+        min(
+          1250px,
+          calc(100% - 30px)
+        );
 
       min-height: 78px;
 
+      margin: auto;
+
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
 
-      gap: 20px;
-
-      padding: 12px 38px;
-
-      background:
-        rgba(255,255,255,.84);
-
-      backdrop-filter: blur(18px);
-
-      border-bottom:
-        1px solid rgba(229,235,231,.85);
-
-      box-shadow:
-        0 5px 25px rgba(23,77,58,.035);
+      gap: 18px;
     }
 
-    .page-heading {
+    .brand-link {
+      color: white;
+      text-decoration: none;
+
       display: flex;
       align-items: center;
+
       gap: 13px;
     }
 
-    .page-heading-icon {
-      width: 44px;
-      height: 44px;
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      overflow: hidden;
+
+      border:
+        2px solid
+        rgba(224,195,108,.8);
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,.2);
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .brand p {
+      color:
+        rgba(255,255,255,.68);
+
+      font-size: 12px;
+    }
+
+    .back {
+      color: white;
+
+      text-decoration: none;
+
+      border:
+        1px solid
+        rgba(255,255,255,.20);
+
+      background:
+        rgba(255,255,255,.07);
+
+      padding:
+        11px 16px;
+
+      border-radius: 12px;
+
+      transition: .2s;
+
+      white-space: nowrap;
+    }
+
+    .back:hover {
+      background:
+        rgba(255,255,255,.14);
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================
+       PAGE
+    ========================= */
+
+    .container {
+      width:
+        min(
+          1250px,
+          calc(100% - 30px)
+        );
+
+      margin:
+        28px auto 80px;
+    }
+
+
+    /* =========================
+       MESSAGE
+    ========================= */
+
+    .message {
+      display: none;
+
+      padding: 15px 18px;
+
+      border-radius: 15px;
+
+      margin-bottom: 18px;
+
+      font-weight: bold;
+
+      box-shadow: var(--shadow);
+    }
+
+    .success {
+      background: #eaf8ef;
+      color: #13743f;
+      border: 1px solid #cbead6;
+    }
+
+    .error {
+      background: #fff0ef;
+      color: #a31d16;
+      border: 1px solid #f2cdca;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .student-hero {
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(224,195,108,.18),
+          transparent 28%
+        ),
+        linear-gradient(
+          135deg,
+          #0a382c,
+          #14654b
+        );
+
+      border-radius: 28px;
+
+      padding: 28px;
+
+      color: white;
+
+      margin-bottom: 20px;
+
+      box-shadow:
+        0 18px 45px
+        rgba(13,77,58,.18);
+    }
+
+    .student-hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 230px;
+      height: 230px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.08);
+
+      border-radius: 50%;
+
+      left: -90px;
+      top: -120px;
+    }
+
+    .student-hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 280px;
+      height: 280px;
+
+      border:
+        1px solid
+        rgba(224,195,108,.12);
+
+      border-radius: 50%;
+
+      right: -130px;
+      bottom: -170px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
 
       display: flex;
+
+      align-items: center;
+
+      gap: 22px;
+    }
+
+    .hero-photo {
+      width: 105px;
+      height: 105px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      overflow: hidden;
+
+      border:
+        4px solid
+        rgba(224,195,108,.95);
+
+      background:
+        rgba(255,255,255,.10);
+
+      flex-shrink: 0;
+
+      box-shadow:
+        0 8px 28px
+        rgba(0,0,0,.20);
+    }
+
+    .hero-info {
+      flex: 1;
+    }
+
+    .hero-info h2 {
+      font-size:
+        clamp(
+          24px,
+          4vw,
+          34px
+        );
+
+      margin-bottom: 7px;
+    }
+
+    .hero-info p {
+      color:
+        rgba(255,255,255,.75);
+
+      margin-bottom: 14px;
+    }
+
+    .hero-pills {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 8px;
+    }
+
+    .hero-pill {
+      background:
+        rgba(255,255,255,.10);
+
+      border:
+        1px solid
+        rgba(255,255,255,.13);
+
+      padding:
+        8px 12px;
+
+      border-radius: 999px;
+
+      font-size: 12px;
+    }
+
+    .hero-side {
+      min-width: 240px;
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 9px;
+    }
+
+    .hero-stat {
+      background:
+        rgba(255,255,255,.08);
+
+      border:
+        1px solid
+        rgba(255,255,255,.12);
+
+      border-radius: 18px;
+
+      padding: 15px 12px;
+
+      text-align: center;
+    }
+
+    .hero-stat small {
+      display: block;
+
+      color:
+        rgba(255,255,255,.65);
+
+      margin-bottom: 5px;
+
+      font-size: 11px;
+    }
+
+    .hero-stat strong {
+      font-size: 24px;
+
+      color:
+        var(--gold-2);
+    }
+
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    .section {
+      margin-top: 20px;
+
+      background:
+        rgba(255,255,255,.94);
+
+      border:
+        1px solid
+        rgba(226,233,229,.9);
+
+      border-radius: 22px;
+
+      padding: 23px;
+
+      box-shadow:
+        var(--shadow);
+    }
+
+    .section-head {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      display: flex;
+
+      align-items: center;
+
+      gap: 10px;
+
+      color:
+        var(--green);
+
+      font-size: 20px;
+    }
+
+    .section-title::before {
+      content: "";
+
+      width: 5px;
+      height: 25px;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          var(--gold),
+          var(--gold-2)
+        );
+    }
+
+    .section-subtitle {
+      color:
+        var(--muted);
+
+      font-size: 12px;
+
+      margin-top: 4px;
+    }
+
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 14px;
+    }
+
+    .stat {
+      position: relative;
+
+      overflow: hidden;
+
+      border:
+        1px solid
+        var(--border);
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff,
+          #f8fbf9
+        );
+
+      border-radius: 18px;
+
+      padding: 18px;
+
+      transition: .25s;
+    }
+
+    .stat:hover {
+      transform:
+        translateY(-4px);
+
+      box-shadow:
+        0 14px 30px
+        rgba(13,77,58,.10);
+    }
+
+    .stat::after {
+      content: "";
+
+      position: absolute;
+
+      width: 70px;
+      height: 70px;
+
+      border-radius: 50%;
+
+      left: -25px;
+      bottom: -35px;
+
+      background:
+        rgba(197,160,74,.08);
+    }
+
+    .stat-icon {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+
       align-items: center;
       justify-content: center;
 
       border-radius: 13px;
 
       background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green-mid)
-        );
+        var(--cream);
 
-      color: white;
+      margin-bottom: 12px;
 
-      box-shadow:
-        0 7px 18px rgba(23,77,58,.15);
-    }
-
-    .page-title h1 {
-      color: var(--green);
       font-size: 20px;
-      margin-bottom: 3px;
     }
 
-    .page-title p {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .teacher-info {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .teacher-details {
-      text-align: left;
-    }
-
-    .teacher-name {
-      display: block;
-
-      color: var(--green);
+    .stat-label {
+      color:
+        var(--muted);
 
       font-size: 12px;
-      font-weight: bold;
 
-      margin-bottom: 3px;
+      margin-bottom: 5px;
     }
 
-    .teacher-email {
-      color: var(--muted);
-      font-size: 10px;
-      direction: ltr;
-    }
-
-    .teacher-avatar {
-      width: 44px;
-      height: 44px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background:
-        var(--green-soft);
-
-      color: var(--green);
-
-      border:
-        1px solid #dcebe4;
-    }
-
-    .mobile-menu {
-      display: none;
-
-      width: 42px;
-      height: 42px;
-
-      border: none;
-      border-radius: 11px;
-
-      background:
-        var(--green-soft);
-
-      color: var(--green);
-
-      font-size: 17px;
-    }
-
-    .content {
-      width: min(1320px, 94%);
-      margin: 28px auto 55px;
-    }
-
-    .welcome-card {
-      position: relative;
-      overflow: hidden;
-
-      min-height: 190px;
-
-      display: flex;
-      align-items: center;
-
-      margin-bottom: 22px;
-      padding: 31px 35px;
-
-      border-radius: 24px;
-
-      color: white;
-
-      background:
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(217,188,92,.18),
-          transparent 24%
-        ),
-        linear-gradient(
-          120deg,
-          #123f2f,
-          #1d6549 58%,
-          #174d3a
-        );
-
-      box-shadow:
-        0 20px 45px rgba(23,77,58,.16);
-    }
-
-    .welcome-card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 260px;
-      height: 260px;
-
-      border:
-        1px solid rgba(255,255,255,.07);
-
-      border-radius: 50%;
-
-      left: -100px;
-      top: -135px;
-    }
-
-    .welcome-card::after {
-      content: "";
-
-      position: absolute;
-
-      width: 310px;
-      height: 310px;
-
-      border:
-        1px solid rgba(217,188,92,.10);
-
-      border-radius: 50%;
-
-      left: 42%;
-      bottom: -240px;
-    }
-
-    .welcome-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .welcome-small {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-
-      margin-bottom: 9px;
-
+    .stat-value {
       color:
-        rgba(255,255,255,.66);
+        var(--green);
+
+      font-size: 26px;
+
+      font-weight: 900;
+    }
+
+    .stat-note {
+      color:
+        var(--muted);
 
       font-size: 11px;
+
+      margin-top: 5px;
     }
 
-    .welcome-small::before {
-      content: "";
 
-      width: 7px;
-      height: 7px;
+    /* =========================
+       PROGRESS
+    ========================= */
 
-      border-radius: 50%;
-
-      background:
-        var(--gold-light);
-
-      box-shadow:
-        0 0 0 5px rgba(217,188,92,.10);
-    }
-
-    .welcome-card h2 {
-      font-size: 29px;
-      line-height: 1.4;
-      margin-bottom: 7px;
-    }
-
-    .welcome-card p {
-      max-width: 620px;
-
-      color:
-        rgba(255,255,255,.72);
-
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    .hero-decoration {
-      position: absolute;
-
-      left: 50px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      width: 110px;
-      height: 110px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border:
-        1px solid rgba(255,255,255,.10);
-
-      border-radius: 50%;
-
-      color:
-        rgba(255,255,255,.13);
-
-      font-size: 55px;
-    }
-
-    .hero-decoration::before {
-      content: "";
-
-      position: absolute;
-
-      inset: -14px;
-
-      border:
-        1px solid rgba(217,188,92,.08);
-
-      border-radius: 50%;
-    }
-
-    .stats {
+    .progress-grid {
       display: grid;
 
       grid-template-columns:
-        repeat(3, 1fr);
+        repeat(2, 1fr);
 
-      gap: 17px;
-
-      margin-bottom: 23px;
+      gap: 16px;
     }
 
-    .stat-card {
-      position: relative;
-      overflow: hidden;
-
-      display: flex;
-      align-items: center;
-
-      gap: 15px;
-
-      min-height: 110px;
-
-      padding:
-        20px 21px;
-
+    .progress-card {
       border:
-        1px solid var(--border);
+        1px solid
+        var(--border);
 
       border-radius: 18px;
 
-      background:
-        rgba(255,255,255,.94);
+      padding: 18px;
 
-      box-shadow:
-        var(--shadow);
-
-      transition: .25s;
+      background: #fcfdfc;
     }
 
-    .stat-card:hover {
-      transform:
-        translateY(-4px);
-
-      box-shadow:
-        0 17px 40px
-        rgba(23,77,58,.11);
-    }
-
-    .stat-icon {
-      width: 57px;
-      height: 57px;
-      min-width: 57px;
-
+    .progress-top {
       display: flex;
-      align-items: center;
-      justify-content: center;
 
-      border-radius: 16px;
+      justify-content: space-between;
 
-      background:
-        var(--green-soft);
+      gap: 12px;
 
-      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .progress-top strong {
+      color:
+        var(--green);
+    }
+
+    .percent {
+      font-weight: 900;
+
+      color:
+        var(--gold);
 
       font-size: 21px;
     }
 
-    .stat-card:nth-child(2) .stat-icon {
+    .bar {
+      height: 11px;
+
       background:
-        var(--gold-soft);
+        #e8eee9;
 
-      color:
-        var(--gold);
-    }
+      border-radius: 999px;
 
-    .stat-card:nth-child(3) .stat-icon {
-      background:
-        var(--purple-soft);
-
-      color:
-        var(--purple);
-    }
-
-    .stat-number {
-      display: block;
-
-      color: var(--green);
-
-      font-size: 28px;
-      font-weight: 800;
-
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .panel {
       overflow: hidden;
+    }
 
-      margin-bottom: 23px;
+    .bar-fill {
+      height: 100%;
 
-      border:
-        1px solid var(--border);
+      width: 0;
 
-      border-radius: 20px;
+      border-radius: inherit;
 
       background:
-        rgba(255,255,255,.96);
+        linear-gradient(
+          90deg,
+          var(--green),
+          var(--green-3)
+        );
 
-      box-shadow:
-        var(--shadow);
+      transition:
+        width .5s ease;
     }
 
-    .panel-top {
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 15px;
-
-      padding:
-        21px 24px;
-
-      border-bottom:
-        1px solid var(--border);
-
-      flex-wrap: wrap;
-    }
-
-    .panel-title {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .panel-title-icon {
-      width: 42px;
-      height: 42px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 12px;
-
-      background:
-        var(--green-soft);
+    .progress-note {
+      margin-top: 10px;
 
       color:
-        var(--green);
+        var(--muted);
+
+      font-size: 12px;
     }
 
-    .panel-title h2 {
-      color: var(--green);
-      font-size: 17px;
-      margin-bottom: 3px;
-    }
 
-    .panel-title span {
-      display: block;
-      color: var(--muted);
-      font-size: 10px;
-    }
+    /* =========================
+       FORM
+    ========================= */
 
-    .pending-count {
-      padding: 7px 12px;
-
-      border-radius: 20px;
-
-      background:
-        var(--gold-soft);
-
-      color:
-        #806711;
-
-      font-size: 11px;
-      font-weight: bold;
-    }
-
-    .requests-list {
-      padding: 17px;
-    }
-
-    .request-card {
-      padding: 17px;
-      margin-bottom: 10px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 14px;
-
-      background: #fff;
-
-      transition: .25s;
-    }
-
-    .request-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .request-card:hover {
-      border-color: #d2e0d8;
-
-      box-shadow:
-        0 8px 22px
-        rgba(23,77,58,.055);
-
-      transform:
-        translateY(-1px);
-    }
-
-    .request-content {
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 18px;
-
-      flex-wrap: wrap;
-    }
-
-    .request-name {
-      color: var(--green);
-
-      font-size: 15px;
-      font-weight: bold;
-
-      margin-bottom: 6px;
-    }
-
-    .request-details {
-      color: var(--muted);
-
-      font-size: 11px;
-      line-height: 2;
-    }
-
-    .request-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .approve-btn,
-    .reject-btn {
-      padding:
-        10px 15px;
-
-      border: none;
-      border-radius: 9px;
-
-      font-size: 11px;
-      font-weight: bold;
-
-      transition: .2s;
-    }
-
-    .approve-btn {
-      background:
-        var(--green);
-
-      color: white;
-    }
-
-    .approve-btn:hover {
-      background:
-        var(--green-dark);
-
-      transform:
-        translateY(-2px);
-    }
-
-    .reject-btn {
-      background:
-        var(--danger-soft);
-
-      color:
-        var(--danger);
-    }
-
-    .reject-btn:hover {
-      background:
-        var(--danger);
-
-      color: white;
-
-      transform:
-        translateY(-2px);
-    }
-
-    .requests-empty {
-      padding:
-        35px 15px;
-
-      text-align: center;
-
-      color: var(--muted);
-    }
-
-    .requests-empty i {
-      display: block;
-
-      margin-bottom: 11px;
-
-      color:
-        var(--green);
-
-      font-size: 32px;
-    }
-
-    .requests-empty strong {
-      display: block;
-
-      margin-bottom: 5px;
-
-      color:
-        var(--green);
-
-      font-size: 13px;
-    }
-
-    .requests-empty span {
-      font-size: 11px;
-    }
-
-    .filters {
+    .form-grid {
       display: grid;
 
       grid-template-columns:
-        minmax(180px, 1fr)
-        145px
-        150px
-        165px;
+        repeat(2, 1fr);
 
-      gap: 8px;
-
-      padding:
-        14px 24px;
-
-      border-bottom:
-        1px solid var(--border);
+      gap: 15px;
     }
 
-    .search-box {
-      position: relative;
+    .field.full-field {
+      grid-column:
+        1 / -1;
     }
 
-    .search-box i {
-      position: absolute;
-
-      right: 12px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
+    label {
+      display: block;
 
       color:
-        #9aa49f;
+        #345248;
 
-      font-size: 12px;
+      font-weight: bold;
 
-      pointer-events: none;
+      font-size: 13px;
+
+      margin-bottom: 7px;
     }
 
-    .search-input,
-    .filter-select {
+    input,
+    textarea,
+    select {
       width: 100%;
 
-      height: 38px;
-
       border:
-        1px solid var(--border);
+        1px solid
+        #dce5df;
 
-      border-radius: 9px;
+      border-radius: 12px;
 
-      outline: none;
+      padding:
+        12px 13px;
 
-      background:
-        #fafcfb;
+      background: white;
 
       color:
         var(--text);
 
-      font-size: 11px;
+      font-size: 14px;
+
+      outline: none;
 
       transition: .2s;
     }
 
-    .search-input {
-      padding:
-        0 36px 0 12px;
-    }
-
-    .filter-select {
-      padding:
-        0 10px;
-    }
-
-    .search-input:focus,
-    .filter-select:focus {
-      background: white;
-
+    input:focus,
+    textarea:focus,
+    select:focus {
       border-color:
-        var(--gold);
+        var(--green-2);
 
       box-shadow:
-        0 0 0 3px
-        rgba(178,139,24,.08);
+        0 0 0 4px
+        rgba(23,107,80,.08);
     }
 
-    .table-wrapper {
+    textarea {
+      min-height: 130px;
+
+      resize: vertical;
+    }
+
+    input[readonly] {
+      background:
+        #f7faf8;
+
+      cursor: default;
+    }
+
+
+    /* =========================
+       IMAGE PICKER
+    ========================= */
+
+    .image-upload {
+      border:
+        1px dashed
+        #bdcdc4;
+
+      background:
+        #f8fbf9;
+
+      border-radius: 15px;
+
+      padding: 15px;
+    }
+
+    .image-upload-row {
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+    }
+
+    .image-preview {
+      width: 75px;
+      height: 75px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      border:
+        2px solid
+        var(--gold);
+
+      background:
+        #eef3ef;
+    }
+
+    .file-button {
+      position: relative;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      padding:
+        11px 15px;
+
+      border-radius: 11px;
+
+      background:
+        var(--green);
+
+      color: white;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+      transition: .2s;
+    }
+
+    .file-button:hover {
+      transform:
+        translateY(-2px);
+
+      background:
+        var(--green-2);
+    }
+
+    .file-button input {
+      position: absolute;
+
+      opacity: 0;
+
+      inset: 0;
+
+      cursor: pointer;
+    }
+
+    .image-help {
+      margin-top: 8px;
+
+      font-size: 11px;
+
+      color:
+        var(--muted);
+    }
+
+
+    /* =========================
+       TABLE
+    ========================= */
+
+    .table-wrap {
       overflow-x: auto;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 15px;
     }
 
     table {
       width: 100%;
 
-      min-width: 980px;
-
       border-collapse:
         collapse;
+
+      min-width: 720px;
     }
 
     th {
-      padding:
-        13px 18px;
-
       background:
-        #f8faf9;
+        #f3f7f4;
 
       color:
-        #68736e;
+        var(--green);
 
-      font-size: 10px;
+      padding: 13px;
 
-      text-align:
-        right;
+      text-align: right;
 
-      border-bottom:
-        1px solid var(--border);
+      font-size: 12px;
+
+      white-space: nowrap;
     }
 
     td {
-      padding:
-        14px 18px;
+      padding: 12px;
 
-      border-bottom:
-        1px solid #f0f3f1;
+      border-top:
+        1px solid
+        var(--border);
 
-      font-size: 12px;
+      font-size: 13px;
 
       vertical-align:
         middle;
     }
 
-    tbody tr {
+
+    /* =========================
+       EDITOR
+    ========================= */
+
+    .editor-list {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+    }
+
+    .editor-row {
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 16px;
+
+      background:
+        #fbfdfc;
+
+      padding: 15px;
+    }
+
+    .editor-row-head {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 12px;
+
+      gap: 10px;
+    }
+
+    .editor-row-title {
+      font-weight: 900;
+
+      color:
+        var(--green);
+    }
+
+    .editor-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+    }
+
+    .remove {
+      border: none;
+
+      background:
+        #fff0ef;
+
+      color:
+        var(--danger);
+
+      border-radius: 9px;
+
+      padding:
+        8px 11px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+    }
+
+    .remove:hover {
+      background:
+        #ffe1df;
+    }
+
+    .add {
+      width: 100%;
+
+      margin-top: 12px;
+
+      border:
+        1px dashed
+        #b9c9c0;
+
+      background:
+        #f8fbf9;
+
+      color:
+        var(--green);
+
+      padding: 12px;
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
       transition: .2s;
     }
 
-    tbody tr:hover {
+    .add:hover {
       background:
-        #fbfdfc;
+        #edf5f1;
+
+      border-color:
+        var(--green-2);
     }
 
-    tbody tr:last-child td {
-      border-bottom:
-        none;
+
+    /* =========================
+       RECITATION
+    ========================= */
+
+    .recitation-summary {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 12px;
+
+      margin-bottom: 16px;
     }
 
-    .student-name {
-      display: flex;
+    .mini-stat {
+      padding: 14px;
+
+      background:
+        #f7faf8;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 14px;
+    }
+
+    .mini-stat small {
+      display: block;
+
+      color:
+        var(--muted);
+
+      margin-bottom: 5px;
+    }
+
+    .mini-stat strong {
+      color:
+        var(--green);
+
+      font-size: 20px;
+    }
+
+
+    /* =========================
+       GRADE
+    ========================= */
+
+    .grade-preview {
+      display: inline-flex;
+
       align-items: center;
-      gap: 10px;
 
-      min-width: 230px;
-    }
-
-    .student-avatar {
-      width: 37px;
-      height: 37px;
-      min-width: 37px;
-
-      display: flex;
-      align-items: center;
       justify-content: center;
+
+      width: 100%;
+
+      min-height: 45px;
+
+      padding: 8px 10px;
 
       border-radius: 11px;
 
+      font-size: 12px;
+
+      font-weight: 900;
+
+      text-align: center;
+    }
+
+    .grade-excellent {
+      background: #e7f7ed;
+      color: #13743f;
+    }
+
+    .grade-very-good {
+      background: #e8f1fb;
+      color: #2869a8;
+    }
+
+    .grade-good {
+      background: #fff3df;
+      color: #9b5c0d;
+    }
+
+    .grade-acceptable {
+      background: #f6f0dd;
+      color: #7b6634;
+    }
+
+    .grade-review {
+      background: #fff0ef;
+      color: #b42318;
+    }
+
+    .grade-empty {
+      background: #f1f3f2;
+      color: #63716b;
+    }
+
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    .status-badge {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        7px 11px;
+
+      border-radius: 999px;
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+      white-space: nowrap;
+    }
+
+    .status-complete {
+      background: #e7f7ed;
+      color: #13743f;
+    }
+
+    .status-partial {
+      background: #fff3df;
+      color: #9b5c0d;
+    }
+
+    .status-running {
+      background: #e8f1fb;
+      color: #2869a8;
+    }
+
+    .status-pending {
+      background: #f1f3f2;
+      color: #63716b;
+    }
+
+
+    /* =========================
+       QURAN MAP
+    ========================= */
+
+    .quran-progress {
+      margin-bottom: 20px;
+
+      padding: 18px;
+
+      border-radius: 17px;
+
       background:
-        var(--green-soft);
+        linear-gradient(
+          135deg,
+          #f4f8f5,
+          #fbfaf3
+        );
+
+      border:
+        1px solid
+        var(--border);
+    }
+
+    .quran-progress-head {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 10px;
+    }
+
+    .quran-progress-head strong {
+      color:
+        var(--green);
+
+      font-size: 22px;
+    }
+
+    .juz-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 13px;
+    }
+
+    .juz-card {
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 15px;
+
+      padding: 13px;
+
+      background: white;
+    }
+
+    .juz-head {
+      display: flex;
+
+      justify-content:
+        space-between;
+
+      gap: 8px;
+
+      margin-bottom: 10px;
+    }
+
+    .juz-title {
+      font-weight: 900;
 
       color:
         var(--green);
 
       font-size: 13px;
-      font-weight: bold;
     }
 
-    .student-name-link {
+    .juz-count {
       color:
-        var(--green);
+        var(--muted);
 
-      text-decoration:
-        none;
-
-      font-weight:
-        bold;
-
-      transition: .2s;
+      font-size: 11px;
     }
 
-    .student-name-link:hover {
+    .juz-range {
       color:
-        var(--gold);
+        #8a968f;
 
-      text-decoration:
-        underline;
+      font-size: 10px;
+
+      margin-bottom: 8px;
     }
 
-    .student-subinfo {
-      margin-top: 5px;
+    .page-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(10, 1fr);
+
+      gap: 4px;
+    }
+
+    .page-dot {
+      min-height: 26px;
+
+      border-radius: 6px;
+
+      border:
+        1px solid
+        #e2e8e4;
+
+      background:
+        #f1f4f2;
+
+      cursor: pointer;
+
+      transition: .15s;
+
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color:
+        #68756f;
+
+      font-size: 8px;
+
+      font-weight: 900;
+
+      user-select: none;
+    }
+
+    .page-dot:hover {
+      transform:
+        scale(1.12);
+
+      z-index: 2;
+
+      box-shadow:
+        0 5px 12px
+        rgba(0,0,0,.10);
+    }
+
+    .page-dot.hifz {
+      background:
+        #19764f;
+
+      border-color:
+        #19764f;
+
+      color: white;
+    }
+
+    .page-dot.review {
+      background:
+        #d5b24e;
+
+      border-color:
+        #d5b24e;
+
+      color:
+        #3f3210;
+    }
+
+    .page-dot.both {
+      background:
+        linear-gradient(
+          135deg,
+          #19764f 50%,
+          #d5b24e 50%
+        );
+
+      border-color:
+        #19764f;
+
+      color: white;
+    }
+
+    .map-legend {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 15px;
+
+      margin-top: 15px;
 
       color:
         var(--muted);
 
-      font-size: 9px;
-
-      line-height: 1.7;
+      font-size: 12px;
     }
 
-    .student-subinfo strong {
-      color:
-        var(--green);
-    }
+    .legend-item {
+      display: flex;
 
-    .section-badge {
-      display: inline-block;
-
-      padding:
-        6px 9px;
-
-      border-radius: 8px;
-
-      background:
-        #f7f4e8;
-
-      color:
-        #806711;
-
-      font-size: 10px;
-      font-weight: bold;
-    }
-
-    .memorization {
-      color:
-        #5c6762;
-    }
-
-    .no-data {
-      color:
-        #a3aba7;
-    }
-
-    .status {
-      display: inline-flex;
       align-items: center;
+
       gap: 6px;
-
-      padding:
-        6px 10px;
-
-      border-radius: 20px;
-
-      font-size: 10px;
-      font-weight: bold;
-
-      white-space:
-        nowrap;
     }
 
-    .status::before {
-      content: "";
+    .legend-dot {
+      width: 13px;
+      height: 13px;
 
-      width: 6px;
-      height: 6px;
+      border-radius: 4px;
 
-      border-radius: 50%;
-    }
-
-    .status.active {
       background:
-        var(--success-soft);
+        #f1f4f2;
+
+      border:
+        1px solid
+        #ddd;
+    }
+
+    .legend-dot.hifz {
+      background:
+        #19764f;
+
+      border-color:
+        #19764f;
+    }
+
+    .legend-dot.review {
+      background:
+        #d5b24e;
+
+      border-color:
+        #d5b24e;
+    }
+
+
+    /* =========================
+       POINTS
+    ========================= */
+
+    .points-breakdown {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 10px;
+
+      margin-bottom: 16px;
+    }
+
+    .points-card {
+      padding: 14px;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f8fbf9,
+          #fffdf6
+        );
+
+      border:
+        1px solid
+        var(--border);
+    }
+
+    .points-card small {
+      display: block;
 
       color:
-        var(--success);
+        var(--muted);
+
+      margin-bottom: 5px;
     }
 
-    .status.active::before {
-      background:
-        var(--success);
-    }
-
-    .status.inactive {
-      background:
-        var(--danger-soft);
-
-      color:
-        var(--danger);
-    }
-
-    .status.inactive::before {
-      background:
-        var(--danger);
-    }
-
-    .status.rejected {
-      background:
-        var(--purple-soft);
-
-      color:
-        var(--purple);
-    }
-
-    .status.rejected::before {
-      background:
-        var(--purple);
-    }
-
-    .status.expelled {
-      background:
-        var(--gray-soft);
-
-      color:
-        #66716c;
-    }
-
-    .status.expelled::before {
-      background:
-        #7b8580;
-    }
-
-    .score-badge,
-    .points-badge {
-      display: inline-flex;
-
-      align-items: center;
-      justify-content: center;
-
-      min-width: 75px;
-
-      padding:
-        7px 10px;
-
-      border-radius: 9px;
-
-      font-size: 10px;
-      font-weight: 800;
-
-      white-space:
-        nowrap;
-    }
-
-    .score-badge {
-      background:
-        var(--green-soft);
-
+    .points-card strong {
       color:
         var(--green);
 
-      border:
-        1px solid #dcebe4;
+      font-size: 20px;
     }
 
-    .points-badge {
-      background:
-        var(--gold-soft);
 
-      color:
-        #806711;
-
-      border:
-        1px solid #f0e4b7;
-    }
+    /* =========================
+       ACTIONS
+    ========================= */
 
     .actions {
+      position: sticky;
+
+      bottom: 15px;
+
+      z-index: 20;
+
+      margin-top: 22px;
+
+      background:
+        rgba(255,255,255,.90);
+
+      backdrop-filter:
+        blur(15px);
+
+      border:
+        1px solid
+        rgba(226,233,229,.9);
+
+      border-radius: 18px;
+
+      padding: 13px;
+
+      box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.12);
+
       display: flex;
-      gap: 6px;
+
+      justify-content:
+        flex-start;
+
+      gap: 10px;
     }
 
-    .action-btn {
-      width: 34px;
-      height: 34px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
+    .save {
       border: none;
-
-      border-radius: 9px;
-
-      transition: .2s;
-    }
-
-    .edit-btn {
-      background:
-        var(--gold-soft);
-
-      color:
-        var(--gold);
-    }
-
-    .edit-btn:hover {
-      background:
-        var(--gold);
-
-      color:
-        white;
-
-      transform:
-        translateY(-2px);
-    }
-
-    .expel-btn {
-      background:
-        var(--danger-soft);
-
-      color:
-        var(--danger);
-    }
-
-    .expel-btn:hover {
-      background:
-        var(--danger);
-
-      color:
-        white;
-
-      transform:
-        translateY(-2px);
-    }
-
-    .delete-btn {
-      background:
-        #ecefee;
-
-      color:
-        #56615c;
-    }
-
-    .delete-btn:hover {
-      background:
-        #4f5a55;
-
-      color:
-        white;
-
-      transform:
-        translateY(-2px);
-    }
-
-    .add-btn {
-      display: inline-flex;
-
-      align-items: center;
-      gap: 7px;
-
-      padding:
-        11px 16px;
-
-      border: none;
-
-      border-radius: 10px;
 
       background:
         linear-gradient(
           135deg,
           var(--green),
-          var(--green-mid)
+          var(--green-3)
         );
 
-      color:
-        white;
-
-      font-size: 11px;
-      font-weight: bold;
-
-      box-shadow:
-        0 7px 16px
-        rgba(23,77,58,.14);
-
-      transition: .25s;
-    }
-
-    .add-btn:hover {
-      transform:
-        translateY(-2px);
-
-      box-shadow:
-        0 11px 23px
-        rgba(23,77,58,.20);
-    }
-
-    .empty {
-      display: none;
+      color: white;
 
       padding:
-        55px 20px;
+        14px 24px;
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      font-weight: 900;
+
+      font-size: 14px;
+
+      box-shadow:
+        0 8px 20px
+        rgba(13,77,58,.18);
+
+      transition: .2s;
+    }
+
+    .save:hover {
+      transform:
+        translateY(-2px);
+    }
+
+    .save:disabled {
+      opacity: .65;
+
+      cursor: wait;
+
+      transform: none;
+    }
+
+    .secondary {
+      border:
+        1px solid
+        var(--border);
+
+      background: white;
+
+      color:
+        var(--green);
+
+      padding:
+        14px 18px;
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+    }
+
+
+    /* =========================
+       LOADING
+    ========================= */
+
+    .loading {
+      background: white;
+
+      border-radius: 22px;
+
+      padding:
+        90px 20px;
 
       text-align: center;
 
       color:
         var(--muted);
-    }
-
-    .empty-icon {
-      width: 65px;
-      height: 65px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      margin:
-        0 auto 13px;
-
-      border-radius: 50%;
-
-      background:
-        var(--green-soft);
-
-      color:
-        var(--green);
-
-      font-size: 24px;
-    }
-
-    .empty strong {
-      display: block;
-
-      margin-bottom: 5px;
-
-      color:
-        var(--green);
-
-      font-size: 13px;
-    }
-
-    .empty p {
-      font-size: 11px;
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-
-      z-index: 100;
-
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
-
-      background:
-        rgba(12,48,35,.70);
-
-      backdrop-filter:
-        blur(7px);
-    }
-
-    .modal.show {
-      display: flex;
-    }
-
-    .modal-box {
-      width:
-        min(520px,100%);
-
-      max-height:
-        90vh;
-
-      overflow-y:
-        auto;
-
-      background:
-        white;
-
-      border-radius:
-        21px;
 
       box-shadow:
-        0 30px 80px
-        rgba(0,0,0,.25);
+        var(--shadow);
     }
 
-    .modal-header {
-      display: flex;
+    .loading-icon {
+      font-size: 40px;
 
-      align-items: center;
-      justify-content: space-between;
+      margin-bottom: 12px;
 
-      padding:
-        21px 24px;
-
-      border-bottom:
-        1px solid var(--border);
+      animation:
+        pulse 1.2s infinite;
     }
 
-    .modal-header h2 {
-      color:
-        var(--green);
+    @keyframes pulse {
 
-      font-size: 18px;
+      50% {
+        opacity: .45;
 
-      margin-bottom:
-        4px;
-    }
-
-    .modal-header p {
-      color:
-        var(--muted);
-
-      font-size:
-        10px;
-    }
-
-    .close-modal {
-      width: 35px;
-      height: 35px;
-
-      border: none;
-
-      border-radius:
-        9px;
-
-      background:
-        #f3f5f4;
-
-      color:
-        #68736e;
-    }
-
-    .form {
-      padding:
-        24px;
-    }
-
-    .form-group {
-      margin-bottom:
-        16px;
-    }
-
-    .form-group label {
-      display: block;
-
-      margin-bottom:
-        7px;
-
-      color:
-        var(--green);
-
-      font-size:
-        11px;
-
-      font-weight:
-        bold;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-
-      height: 44px;
-
-      padding:
-        0 13px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius:
-        10px;
-
-      outline:
-        none;
-
-      background:
-        #fafcfb;
-
-      color:
-        var(--text);
-
-      font-size:
-        12px;
-    }
-
-    .modal-buttons {
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap:
-        9px;
-
-      margin-top:
-        21px;
-    }
-
-    .modal-buttons button {
-      height:
-        44px;
-
-      border:
-        none;
-
-      border-radius:
-        10px;
-
-      font-weight:
-        bold;
-    }
-
-    .save-btn {
-      background:
-        var(--green);
-
-      color:
-        white;
-    }
-
-    .cancel-btn {
-      background:
-        #eef1ef;
-
-      color:
-        #4d5853;
-    }
-
-    #message {
-      min-height:
-        20px;
-
-      margin-top:
-        11px;
-
-      text-align:
-        center;
-
-      font-size:
-        11px;
-
-      font-weight:
-        bold;
-    }
-
-    .toast {
-      position: fixed;
-
-      left:
-        24px;
-
-      bottom:
-        24px;
-
-      z-index:
-        200;
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      gap:
-        9px;
-
-      min-width:
-        250px;
-
-      max-width:
-        370px;
-
-      padding:
-        13px 16px;
-
-      border-radius:
-        12px;
-
-      background:
-        var(--green-dark);
-
-      color:
-        white;
-
-      box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.18);
-
-      font-size:
-        11px;
-
-      opacity:
-        0;
-
-      pointer-events:
-        none;
-
-      transform:
-        translateY(18px);
-
-      transition:
-        .3s;
-    }
-
-    .toast.show {
-      opacity:
-        1;
-
-      transform:
-        translateY(0);
-    }
-
-    .toast.success i {
-      color:
-        #72d883;
-    }
-
-    .toast.error i {
-      color:
-        #ff8585;
-    }
-
-    @media (max-width: 1050px) {
-
-      .sidebar {
-        width: 235px;
+        transform:
+          scale(.94);
       }
 
-      .main {
-        margin-right: 235px;
-      }
+    }
 
-      .filters {
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width: 1050px) {
+
+      .stats,
+      .recitation-summary,
+      .points-breakdown {
         grid-template-columns:
-          minmax(160px,1fr)
-          135px
-          140px
-          145px;
+          repeat(2, 1fr);
       }
+
+      .juz-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
     }
 
-    @media (max-width: 850px) {
 
-      .sidebar {
-        transform:
-          translateX(100%);
+    @media(max-width: 750px) {
 
-        transition:
-          transform .3s ease;
-
-        width:
-          285px;
-
-        padding-top:
-          65px;
+      .header-inner {
+        min-height: 70px;
       }
 
-      .sidebar.open {
-        transform:
-          translateX(0);
+      .brand h1 {
+        font-size: 15px;
       }
 
-      .close-sidebar {
-        display:
-          flex;
-
-        align-items:
-          center;
-
-        justify-content:
-          center;
+      .brand p {
+        font-size: 10px;
       }
 
-      .main {
-        margin-right:
-          0;
+      .brand-logo {
+        width: 42px;
+        height: 42px;
       }
 
-      .mobile-menu {
-        display:
-          block;
-      }
-
-      .teacher-email {
-        display:
-          none;
-      }
-
-      .topbar {
+      .back {
         padding:
-          12px 18px;
+          9px 11px;
+
+        font-size: 12px;
       }
 
-      .content {
+      .container {
         width:
-          94%;
+          calc(100% - 18px);
+
+        margin-top: 14px;
       }
-    }
 
-    @media (max-width: 680px) {
+      .student-hero {
+        padding: 20px;
 
-      .stats {
+        border-radius: 22px;
+      }
+
+      .hero-content {
+        align-items:
+          flex-start;
+
+        flex-wrap: wrap;
+      }
+
+      .hero-photo {
+        width: 82px;
+        height: 82px;
+      }
+
+      .hero-side {
+        width: 100%;
+      }
+
+      .section {
+        padding: 16px;
+
+        border-radius: 18px;
+      }
+
+      .stats,
+      .progress-grid,
+      .form-grid,
+      .juz-grid,
+      .recitation-summary,
+      .points-breakdown {
         grid-template-columns:
           1fr;
       }
 
-      .filters {
+      .editor-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .page-grid {
+        grid-template-columns:
+          repeat(10, 1fr);
+      }
+
+      .section-head {
+        align-items:
+          flex-start;
+
+        flex-direction:
+          column;
+      }
+
+      .actions {
+        bottom: 8px;
+      }
+
+      .save,
+      .secondary {
+        flex: 1;
+      }
+
+    }
+
+
+    @media(max-width: 480px) {
+
+      .editor-grid {
         grid-template-columns:
           1fr;
       }
 
-      .welcome-card {
-        min-height:
-          175px;
-
-        padding:
-          25px 22px;
+      .hero-info h2 {
+        font-size: 22px;
       }
 
-      .welcome-card h2 {
-        font-size:
-          24px;
+      .page-grid {
+        gap: 3px;
       }
 
-      .hero-decoration {
-        width:
-          80px;
+      .page-dot {
+        min-height: 23px;
 
-        height:
-          80px;
+        border-radius: 4px;
 
-        font-size:
-          38px;
-
-        left:
-          12px;
-
-        opacity:
-          .35;
+        font-size: 7px;
       }
 
-      .request-content {
+      .image-upload-row {
         align-items:
-          stretch;
+          flex-start;
+
+        flex-direction:
+          column;
       }
 
-      .request-actions {
-        width:
-          100%;
-      }
-
-      .approve-btn,
-      .reject-btn {
-        flex:
-          1;
-      }
-
-      .panel-top {
-        align-items:
-          stretch;
-      }
-
-      .add-btn {
-        width:
-          100%;
-
-        justify-content:
-          center;
-      }
     }
 
-    @media (max-width: 480px) {
-
-      .topbar {
-        min-height:
-          68px;
-      }
-
-      .page-heading-icon {
-        width:
-          39px;
-
-        height:
-          39px;
-
-        min-width:
-          39px;
-      }
-
-      .page-title h1 {
-        font-size:
-          16px;
-      }
-
-      .page-title p {
-        display:
-          none;
-      }
-
-      .teacher-avatar {
-        width:
-          38px;
-
-        height:
-          38px;
-      }
-
-      .teacher-name {
-        font-size:
-          10px;
-      }
-
-      .content {
-        width:
-          92%;
-
-        margin-top:
-          19px;
-      }
-
-      .welcome-card {
-        border-radius:
-          18px;
-      }
-
-      .panel {
-        border-radius:
-          17px;
-      }
-
-      .panel-top {
-        padding:
-          18px 17px;
-      }
-
-      .filters {
-        padding:
-          14px 17px;
-      }
-
-      .requests-list {
-        padding:
-          13px;
-      }
-
-      .request-card {
-        padding:
-          14px;
-      }
-
-      .stat-card {
-        min-height:
-          96px;
-
-        padding:
-          17px;
-      }
-
-      .stat-number {
-        font-size:
-          25px;
-      }
-
-      .toast {
-        left:
-          12px;
-
-        right:
-          12px;
-
-        bottom:
-          12px;
-
-        min-width:
-          0;
-      }
-    }
   </style>
+
 </head>
+
 
 <body>
 
-  <aside
-    class="sidebar"
-    id="sidebar">
 
-    <button
-      class="close-sidebar"
-      id="closeSidebar"
-      type="button"
-      aria-label="إغلاق القائمة">
+<header>
 
-      ×
-
-    </button>
+  <div class="header-inner">
 
     <a
       href="index.html"
-      class="sidebar-brand"
-      title="العودة إلى الصفحة الرئيسية">
+      class="brand-link"
+    >
 
-      <div class="sidebar-logo">
+      <img
+        src="logo.png"
+        class="brand-logo"
+        alt="شعار مركز حردان طارق القرآني"
+      >
 
-        <img
-          src="logo.png"
-          alt="شعار مركز حردان طارق القرآني">
+      <div class="brand">
 
-      </div>
-
-      <div class="brand-text">
-
-        <strong>
+        <h1>
           مركز حردان طارق القرآني
-        </strong>
+        </h1>
 
-        <span>
-          البوابة الإدارية
-        </span>
+        <p>
+          ملف الطالب والمتابعة الأكاديمية
+        </p>
 
       </div>
 
     </a>
 
-    <div class="sidebar-heading">
-      إدارة المركز
-    </div>
 
-    <button
-      class="side-link active"
-      type="button">
-
-      <i class="fa-solid fa-chart-pie"></i>
-
-      لوحة المتابعة
-
-    </button>
-
-    <button
-      class="side-link"
-      id="studentsNav"
-      type="button">
-
-      <i class="fa-solid fa-users"></i>
-
-      الطلاب
-
-    </button>
-
-    <button
-      class="side-link"
-      id="requestsNav"
-      type="button">
-
-      <i class="fa-solid fa-user-clock"></i>
-
-      طلبات الانضمام
-
-    </button>
-
-    <button
-      class="side-link"
-      id="memorizationNav"
-      type="button">
-
-      <i class="fa-solid fa-book-quran"></i>
-
-      متابعة الحفظ
-
-    </button>
-
-    <div class="sidebar-bottom">
-
-      <div class="sidebar-status">
-
-        <span class="online-dot"></span>
-
-        النظام يعمل بشكل طبيعي
-
-      </div>
-
-      <button
-        class="logout-side"
-        id="logoutButton"
-        type="button">
-
-        <i class="fa-solid fa-right-from-bracket"></i>
-
-        &nbsp;
-
-        تسجيل الخروج
-
-      </button>
-
-    </div>
-
-  </aside>
-
-  <div class="main">
-
-    <header class="topbar">
-
-      <div class="page-heading">
-
-        <button
-          class="mobile-menu"
-          id="mobileMenu"
-          type="button"
-          aria-label="فتح القائمة">
-
-          <i class="fa-solid fa-bars"></i>
-
-        </button>
-
-        <div class="page-heading-icon">
-
-          <i class="fa-solid fa-chart-line"></i>
-
-        </div>
-
-        <div class="page-title">
-
-          <h1>
-            لوحة متابعة الطلاب
-          </h1>
-
-          <p>
-            إدارة ومتابعة طلاب المركز بسهولة
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="teacher-info">
-
-        <div class="teacher-details">
-
-          <span
-            class="teacher-name"
-            id="teacherName">
-
-            المعلم
-
-          </span>
-
-          <span
-            class="teacher-email"
-            id="teacherEmail">
-
-            بوابة المعلمين
-
-          </span>
-
-        </div>
-
-        <div class="teacher-avatar">
-
-          <i class="fa-solid fa-user-tie"></i>
-
-        </div>
-
-      </div>
-
-    </header>
-
-    <main class="content">
-
-      <section class="welcome-card">
-
-        <div class="welcome-content">
-
-          <div class="welcome-small">
-
-            مركز حردان طارق القرآني
-
-          </div>
-
-          <h2>
-            أهلاً وسهلاً بك 👋
-          </h2>
-
-          <p>
-            من هنا تقدر تتابع طلاب المركز،
-            تشوف طلبات الانضمام، وتدير بيانات الطلاب
-            بكل سهولة ومن مكان واحد.
-          </p>
-
-        </div>
-
-        <div class="hero-decoration">
-
-          <i class="fa-solid fa-book-quran"></i>
-
-        </div>
-
-      </section>
-
-      <section class="stats">
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-users"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="totalStudents">
-
-              0
-
-            </span>
-
-            <span class="stat-label">
-              إجمالي الطلاب
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-user-check"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="activeStudents">
-
-              0
-
-            </span>
-
-            <span class="stat-label">
-              الطلاب المستمرون
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-book-quran"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="memorizedStudents">
-
-              0
-
-            </span>
-
-            <span class="stat-label">
-              لديهم متابعة حفظ
-            </span>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      <section
-        class="panel requests-panel"
-        id="requestsPanel">
-
-        <div class="panel-top">
-
-          <div class="panel-title">
-
-            <div class="panel-title-icon">
-
-              <i class="fa-solid fa-user-clock"></i>
-
-            </div>
-
-            <div>
-
-              <h2>
-                طلبات الانضمام
-              </h2>
-
-              <span>
-                الطلاب الذين ينتظرون موافقتك
-              </span>
-
-            </div>
-
-          </div>
-
-          <span
-            class="pending-count"
-            id="pendingCount">
-
-            0 طلب
-
-          </span>
-
-        </div>
-
-        <div
-          class="requests-list"
-          id="requestsList">
-
-        </div>
-
-      </section>
-
-      <section
-        class="panel"
-        id="studentsPanel">
-
-        <div class="panel-top">
-
-          <div class="panel-title">
-
-            <div class="panel-title-icon">
-
-              <i class="fa-solid fa-users"></i>
-
-            </div>
-
-            <div>
-
-              <h2>
-                قائمة الطلاب
-              </h2>
-
-              <span>
-                عرض وإدارة جميع الطلاب
-              </span>
-
-            </div>
-
-          </div>
-
-          <button
-            class="add-btn"
-            id="openModal"
-            type="button">
-
-            <i class="fa-solid fa-user-plus"></i>
-
-            إضافة طالب جديد
-
-          </button>
-
-        </div>
-
-        <div class="filters">
-
-          <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-              type="text"
-              id="searchInput"
-              class="search-input"
-              placeholder="ابحث باسم الطالب...">
-
-          </div>
-
-          <select
-            id="sectionFilter"
-            class="filter-select">
-
-            <option value="">
-              جميع الشعب
-            </option>
-
-            <option value="شعبة الحفاظ">
-              شعبة الحفاظ
-            </option>
-
-            <option value="شعبة تجويد">
-              شعبة تجويد
-            </option>
-
-            <option value="شعبة إجازة">
-              شعبة إجازة
-            </option>
-
-            <option value="شعبة فرسان">
-              شعبة فرسان
-            </option>
-
-          </select>
-
-          <select
-            id="statusFilter"
-            class="filter-select">
-
-            <option value="accepted">
-              الطلاب المقبولون
-            </option>
-
-            <option value="active">
-              الطلاب المستمرون
-            </option>
-
-            <option value="inactive">
-              الطلاب المتوقفون
-            </option>
-
-            <option value="rejected">
-              الطلاب غير المقبولين
-            </option>
-
-            <option value="expelled">
-              الطلاب المفصولون
-            </option>
-
-            <option value="all">
-              جميع الطلاب
-            </option>
-
-          </select>
-
-          <select
-            id="sortFilter"
-            class="filter-select">
-
-            <option value="alphabetical">
-              ترتيب: أبجدي
-            </option>
-
-            <option value="points">
-              ترتيب: الأكثر نقاطًا
-            </option>
-
-            <option value="section">
-              ترتيب: حسب الصف / الشعبة
-            </option>
-
-          </select>
-
-        </div>
-
-        <div class="table-wrapper">
-
-          <table>
-
-            <thead>
-
-              <tr>
-
-                <th>
-                  الطالب
-                </th>
-
-                <th>
-                  الشعبة
-                </th>
-
-                <th>
-                  مستوى الحفظ
-                </th>
-
-                <th>
-                  الحالة
-                </th>
-
-                <th>
-                  التقييم
-                </th>
-
-                <th>
-                  النقاط الكلية
-                </th>
-
-                <th>
-                  الإجراءات
-                </th>
-
-              </tr>
-
-            </thead>
-
-            <tbody id="studentsTable">
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-        <div
-          id="emptyMessage"
-          class="empty">
-
-          <div class="empty-icon">
-
-            <i class="fa-solid fa-users-slash"></i>
-
-          </div>
-
-          <strong>
-            لا يوجد طلاب
-          </strong>
-
-          <p>
-            لم يتم العثور على طلاب مطابقين للفلاتر الحالية.
-          </p>
-
-        </div>
-
-      </section>
-
-    </main>
+    <a
+      class="back"
+      href="teacher-dashboard.html"
+    >
+      ← لوحة المعلم
+    </a>
 
   </div>
 
+</header>
+
+
+
+<main class="container">
+
   <div
-    class="modal"
-    id="studentModal">
+    id="message"
+    class="message"
+  ></div>
 
-    <div class="modal-box">
 
-      <div class="modal-header">
+  <div id="app">
 
-        <div>
+    <div class="loading">
 
-          <h2 id="modalTitle">
-            إضافة طالب جديد
+      <div class="loading-icon">
+        📖
+      </div>
+
+      جاري تحميل ملف الطالب...
+
+    </div>
+
+  </div>
+
+</main>
+
+
+
+<script>
+
+
+/* =========================================================
+   إعداد Supabase
+========================================================= */
+
+const SUPABASE_URL =
+  'https://lsbbcybpiulusdgfhepf.supabase.co';
+
+const SUPABASE_KEY =
+  'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
+
+const TEACHER_EMAIL =
+  'baraahaytham08@gmail.com';
+
+const TOTAL_QURAN_PAGES = 604;
+
+
+/*
+  كل 3 صفحات مراجعة
+  = صفحة حفظ واحدة
+*/
+const REVIEW_TO_HIFZ_RATIO = 3;
+
+
+const supabaseClient =
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+let studentId = null;
+
+let student = null;
+
+let profile = {};
+
+
+/* =========================================================
+   أدوات عامة
+========================================================= */
+
+function escapeHtml(value) {
+
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+}
+
+
+function number(value) {
+
+  const n =
+    Number(value);
+
+  return Number.isFinite(n)
+    ? n
+    : 0;
+
+}
+
+
+function formatNumber(
+  value,
+  digits = 1
+) {
+
+  const n =
+    number(value);
+
+  if (
+    Number.isInteger(n)
+  ) {
+    return String(n);
+  }
+
+  return n
+    .toFixed(digits)
+    .replace(/\.0+$/, '');
+
+}
+
+
+function clamp(
+  value,
+  min,
+  max
+) {
+
+  return Math.min(
+    max,
+    Math.max(
+      min,
+      number(value)
+    )
+  );
+
+}
+
+
+function todayISO() {
+
+  const d =
+    new Date();
+
+  const year =
+    d.getFullYear();
+
+  const month =
+    String(
+      d.getMonth() + 1
+    ).padStart(2, '0');
+
+  const day =
+    String(
+      d.getDate()
+    ).padStart(2, '0');
+
+  return (
+    `${year}-${month}-${day}`
+  );
+
+}
+
+
+function formatDate(
+  dateValue
+) {
+
+  if (!dateValue)
+    return '—';
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+  if (
+    Number.isNaN(
+      d.getTime()
+    )
+  ) {
+    return escapeHtml(
+      dateValue
+    );
+  }
+
+  return d.toLocaleDateString(
+    'ar-JO',
+    {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }
+  );
+
+}
+
+
+/* =========================================================
+   الأسابيع
+   الجمعة → الخميس
+========================================================= */
+
+function getWeekRangeForDate(
+  dateValue
+) {
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+  if (
+    Number.isNaN(
+      d.getTime()
+    )
+  ) {
+    return null;
+  }
+
+  const day =
+    d.getDay();
+
+  /*
+    JavaScript:
+    الأحد 0
+    الاثنين 1
+    ...
+    الجمعة 5
+    السبت 6
+  */
+
+  const daysSinceFriday =
+    (day + 2) % 7;
+
+
+  const start =
+    new Date(d);
+
+  start.setDate(
+    d.getDate() -
+    daysSinceFriday
+  );
+
+  start.setHours(
+    0, 0, 0, 0
+  );
+
+
+  const end =
+    new Date(start);
+
+  end.setDate(
+    start.getDate() + 6
+  );
+
+  end.setHours(
+    23, 59, 59, 999
+  );
+
+
+  return {
+    start,
+    end
+  };
+
+}
+
+
+function dateInCurrentWeek(
+  dateValue
+) {
+
+  if (!dateValue)
+    return false;
+
+  const range =
+    getWeekRangeForDate(
+      todayISO()
+    );
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+  if (!range)
+    return false;
+
+  return (
+    d >= range.start &&
+    d <= range.end
+  );
+
+}
+
+
+/* =========================================================
+   الرسائل
+========================================================= */
+
+function showMessage(
+  text,
+  type
+) {
+
+  const box =
+    document.getElementById(
+      'message'
+    );
+
+  box.textContent =
+    text;
+
+  box.className =
+    `message ${type}`;
+
+  box.style.display =
+    'block';
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+}
+
+
+function hideMessage() {
+
+  const box =
+    document.getElementById(
+      'message'
+    );
+
+  box.style.display =
+    'none';
+
+}
+
+
+/* =========================================================
+   البيانات الافتراضية
+========================================================= */
+
+function defaultProfile() {
+
+  return {
+
+    photoUrl: '',
+
+    guardianPhone: '',
+
+    joiningDate: '',
+
+    residence: '',
+
+    bus: '',
+
+    homeLocation: '',
+
+    notes: '',
+
+    weeklyGoal: {
+      hifz: 4,
+      review: 20
+    },
+
+    attendance: [],
+
+    weeklyPlan: [],
+
+    tests: [],
+
+    recitations: []
+
+  };
+
+}
+
+
+function mergeProfile(
+  data
+) {
+
+  const base =
+    defaultProfile();
+
+
+  const merged = {
+
+    ...base,
+
+    ...(data || {})
+
+  };
+
+
+  if (
+    typeof merged.weeklyGoal !== 'object' ||
+    merged.weeklyGoal === null
+  ) {
+
+    merged.weeklyGoal = {
+
+      hifz: 4,
+
+      review: 20
+
+    };
+
+  }
+
+
+  if (
+    !Array.isArray(
+      merged.attendance
+    )
+  ) {
+    merged.attendance = [];
+  }
+
+
+  if (
+    !Array.isArray(
+      merged.weeklyPlan
+    )
+  ) {
+    merged.weeklyPlan = [];
+  }
+
+
+  if (
+    !Array.isArray(
+      merged.tests
+    )
+  ) {
+    merged.tests = [];
+  }
+
+
+  if (
+    !Array.isArray(
+      merged.recitations
+    )
+  ) {
+    merged.recitations = [];
+  }
+
+
+  return merged;
+
+}
+
+
+/* =========================================================
+   نظام التقدير
+========================================================= */
+
+function getRecitationGrade(
+  score
+) {
+
+  const s =
+    number(score);
+
+
+  if (!score &&
+      score !== 0) {
+
+    return {
+      label: 'لم يتم التقييم',
+      className: 'grade-empty'
+    };
+
+  }
+
+
+  if (s >= 97) {
+
+    return {
+      label:
+        'ممتاز (متقن)',
+      className:
+        'grade-excellent'
+    };
+
+  }
+
+
+  if (s >= 95) {
+
+    return {
+      label:
+        'جيد جداً (أخطاء قليلة)',
+      className:
+        'grade-very-good'
+    };
+
+  }
+
+
+  if (s >= 92) {
+
+    return {
+      label:
+        'جيد (أخطاء متعددة)',
+      className:
+        'grade-good'
+    };
+
+  }
+
+
+  if (s >= 90) {
+
+    return {
+      label:
+        'مقبول (يحتاج تمكين)',
+      className:
+        'grade-acceptable'
+    };
+
+  }
+
+
+  return {
+
+    label:
+      'مراجعة الصفحة',
+
+    className:
+      'grade-review'
+
+  };
+
+}
+
+
+/* =========================================================
+   نظام نقاط التسميع
+========================================================= */
+
+function getRecitationPoints(
+  item
+) {
+
+  const score =
+    number(item.score);
+
+  if (
+    score <= 0
+  ) {
+    return 0;
+  }
+
+
+  /*
+    حفظ جديد:
+    ممتاز = 6
+    جيد جداً = 5
+    جيد = 4
+    مقبول = 2
+    مراجعة = 0
+  */
+
+  if (
+    item.type === 'hifz'
+  ) {
+
+    if (score >= 97)
+      return 6;
+
+    if (score >= 95)
+      return 5;
+
+    if (score >= 92)
+      return 4;
+
+    if (score >= 90)
+      return 2;
+
+    return 0;
+
+  }
+
+
+  /*
+    مراجعة:
+    ممتاز = 3
+    جيد جداً = 2.5
+    جيد = 2
+    مقبول = 1
+    مراجعة = 0
+  */
+
+  if (
+    item.type === 'review'
+  ) {
+
+    if (score >= 97)
+      return 3;
+
+    if (score >= 95)
+      return 2.5;
+
+    if (score >= 92)
+      return 2;
+
+    if (score >= 90)
+      return 1;
+
+    return 0;
+
+  }
+
+
+  return 0;
+
+}
+
+
+/* =========================================================
+   نقاط الاختبارات
+========================================================= */
+
+function getTestPointsByResult(
+  result
+) {
+
+  const r =
+    String(
+      result || ''
+    );
+
+  if (
+    r.includes('ممتاز+')
+  ) {
+    return 12;
+  }
+
+  if (
+    r.includes('ممتاز')
+  ) {
+    return 12;
+  }
+
+  if (
+    r.includes('جيد جداً') ||
+    r.includes('جيد جدًا')
+  ) {
+    return 8;
+  }
+
+  if (
+    r.includes('جيد')
+  ) {
+    return 4;
+  }
+
+  return 0;
+
+}
+
+
+/* =========================================================
+   نقاط الحضور
+========================================================= */
+
+function getAttendancePoints(
+  status
+) {
+
+  switch (
+    String(status || '')
+  ) {
+
+    case 'حاضر':
+      return 2;
+
+    case 'متأخر':
+      return 1;
+
+    case 'معتذر':
+      return 0.5;
+
+    case 'غائب':
+      return 0;
+
+    default:
+      return 0;
+
+  }
+
+}
+
+
+/* =========================================================
+   إحصائيات الأسبوع
+========================================================= */
+
+function getWeeklyRecitations() {
+
+  return profile.recitations.filter(
+    item =>
+      dateInCurrentWeek(
+        item.date
+      )
+  );
+
+}
+
+
+function getCurrentWeekStats() {
+
+  const goalHifz =
+    number(
+      profile.weeklyGoal?.hifz
+    );
+
+  const goalReview =
+    number(
+      profile.weeklyGoal?.review
+    );
+
+
+  const records =
+    getWeeklyRecitations();
+
+
+  const hifzPages =
+    records.filter(
+      item =>
+        item.type === 'hifz'
+    ).length;
+
+
+  const reviewPages =
+    records.filter(
+      item =>
+        item.type === 'review'
+    ).length;
+
+
+  const hifzProgress =
+    goalHifz > 0
+      ? (
+          hifzPages /
+          goalHifz
+        ) * 100
+      : 0;
+
+
+  const reviewProgress =
+    goalReview > 0
+      ? (
+          reviewPages /
+          goalReview
+        ) * 100
+      : 0;
+
+
+  /*
+    3 مراجعة = 1 حفظ
+  */
+
+  const equivalent =
+    hifzPages +
+    (
+      reviewPages /
+      REVIEW_TO_HIFZ_RATIO
+    );
+
+
+  const requiredEquivalent =
+    goalHifz +
+    (
+      goalReview /
+      REVIEW_TO_HIFZ_RATIO
+    );
+
+
+  const weeklyProgress =
+    requiredEquivalent > 0
+      ? (
+          equivalent /
+          requiredEquivalent
+        ) * 100
+      : 0;
+
+
+  return {
+
+    goalHifz,
+
+    goalReview,
+
+    hifzPages,
+
+    reviewPages,
+
+    hifzProgress,
+
+    reviewProgress,
+
+    equivalent,
+
+    requiredEquivalent,
+
+    weeklyProgress
+
+  };
+
+}
+
+
+/* =========================================================
+   صفحات القرآن
+========================================================= */
+
+function getHifzPageSet() {
+
+  return new Set(
+    profile.recitations
+      .filter(
+        item =>
+          item.type === 'hifz'
+      )
+      .map(
+        item =>
+          number(item.page)
+      )
+      .filter(
+        page =>
+          page >= 1 &&
+          page <= 604
+      )
+  );
+
+}
+
+
+function getReviewPageSet() {
+
+  return new Set(
+    profile.recitations
+      .filter(
+        item =>
+          item.type === 'review'
+      )
+      .map(
+        item =>
+          number(item.page)
+      )
+      .filter(
+        page =>
+          page >= 1 &&
+          page <= 604
+      )
+  );
+
+}
+
+
+function getUniqueRecitedPages() {
+
+  const set =
+    new Set();
+
+  profile.recitations.forEach(
+    item => {
+
+      const page =
+        number(item.page);
+
+      if (
+        page >= 1 &&
+        page <= 604
+      ) {
+
+        set.add(page);
+
+      }
+
+    }
+  );
+
+  return set;
+
+}
+
+
+function getQuranProgress() {
+
+  const pages =
+    getUniqueRecitedPages();
+
+
+  return {
+
+    completed:
+      pages.size,
+
+    percent:
+      (
+        pages.size /
+        TOTAL_QURAN_PAGES
+      ) * 100
+
+  };
+
+}
+
+
+/* =========================================================
+   تقسيم الأجزاء
+========================================================= */
+
+function getJuzInfo(
+  juz
+) {
+
+  /*
+    1 = 1 - 21
+    2 = 22 - 41
+    ...
+    29 = 562 - 581
+    30 = 582 - 604
+  */
+
+  let start = 1;
+
+
+  for (
+    let i = 1;
+    i < juz;
+    i++
+  ) {
+
+    if (i === 1) {
+
+      start += 21;
+
+    } else if (
+      i >= 2 &&
+      i <= 29
+    ) {
+
+      start += 20;
+
+    }
+
+  }
+
+
+  let length = 20;
+
+
+  if (juz === 1)
+    length = 21;
+
+
+  if (juz === 30)
+    length = 23;
+
+
+  return {
+
+    start,
+
+    end:
+      start + length - 1,
+
+    length
+
+  };
+
+}
+
+
+function getCompletedJuz() {
+
+  const hifz =
+    getHifzPageSet();
+
+
+  let completed = 0;
+
+
+  for (
+    let juz = 1;
+    juz <= 30;
+    juz++
+  ) {
+
+    const info =
+      getJuzInfo(juz);
+
+
+    let all =
+      true;
+
+
+    for (
+      let page = info.start;
+      page <= info.end;
+      page++
+    ) {
+
+      if (
+        !hifz.has(page)
+      ) {
+
+        all = false;
+
+        break;
+
+      }
+
+    }
+
+
+    if (all)
+      completed++;
+
+  }
+
+
+  return completed;
+
+}
+
+
+/* =========================================================
+   النقاط
+========================================================= */
+
+function getTotalRecitationPoints() {
+
+  return profile.recitations.reduce(
+    (
+      total,
+      item
+    ) => {
+
+      return (
+        total +
+        getRecitationPoints(
+          item
+        )
+      );
+
+    },
+    0
+  );
+
+}
+
+
+function getWeeklyRecitationPoints() {
+
+  return profile.recitations
+    .filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    )
+    .reduce(
+      (
+        total,
+        item
+      ) =>
+        total +
+        getRecitationPoints(
+          item
+        ),
+      0
+    );
+
+}
+
+
+function getTotalAttendancePoints() {
+
+  return profile.attendance.reduce(
+    (
+      total,
+      item
+    ) =>
+      total +
+      getAttendancePoints(
+        item.status
+      ),
+    0
+  );
+
+}
+
+
+function getWeeklyAttendancePoints() {
+
+  return profile.attendance
+    .filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    )
+    .reduce(
+      (
+        total,
+        item
+      ) =>
+        total +
+        getAttendancePoints(
+          item.status
+        ),
+      0
+    );
+
+}
+
+
+function getTotalTestPoints() {
+
+  return profile.tests.reduce(
+    (
+      total,
+      item
+    ) =>
+      total +
+      getTestPointsByResult(
+        item.result
+      ),
+    0
+  );
+
+}
+
+
+function getWeeklyTestPoints() {
+
+  return profile.tests
+    .filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    )
+    .reduce(
+      (
+        total,
+        item
+      ) =>
+        total +
+        getTestPointsByResult(
+          item.result
+        ),
+      0
+    );
+
+}
+
+
+function getTotalPoints() {
+
+  return (
+    getTotalRecitationPoints() +
+    getTotalAttendancePoints() +
+    getTotalTestPoints()
+  );
+
+}
+
+
+function getWeeklyPoints() {
+
+  return (
+    getWeeklyRecitationPoints() +
+    getWeeklyAttendancePoints() +
+    getWeeklyTestPoints()
+  );
+
+}
+
+
+/* =========================================================
+   تقييم الالتزام
+========================================================= */
+
+function getAttendanceCommitment() {
+
+  const records =
+    profile.attendance.filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    );
+
+
+  /*
+    لا يوجد سجل حضور:
+    لا نعاقب الطالب تلقائياً.
+  */
+
+  if (!records.length)
+    return 100;
+
+
+  let score = 0;
+
+
+  records.forEach(
+    item => {
+
+      if (
+        item.status === 'حاضر'
+      ) {
+
+        score += 1;
+
+      } else if (
+        item.status === 'متأخر'
+      ) {
+
+        score += .5;
+
+      } else if (
+        item.status === 'معتذر'
+      ) {
+
+        score += .5;
+
+      }
+
+    }
+  );
+
+
+  return (
+    score /
+    records.length
+  ) * 100;
+
+}
+
+
+function getTestCommitment() {
+
+  const tests =
+    profile.tests.filter(
+      item =>
+        dateInCurrentWeek(
+          item.date
+        )
+    );
+
+
+  /*
+    لا يوجد اختبار خلال الأسبوع:
+    لا يعتبر تقصيراً.
+  */
+
+  if (!tests.length)
+    return 100;
+
+
+  const passed =
+    tests.filter(
+      item =>
+        getTestPointsByResult(
+          item.result
+        ) > 0
+    ).length;
+
+
+  return (
+    passed /
+    tests.length
+  ) * 100;
+
+}
+
+
+function getCommitment() {
+
+  const weekly =
+    getCurrentWeekStats();
+
+
+  const attendance =
+    clamp(
+      getAttendanceCommitment(),
+      0,
+      100
+    );
+
+
+  const hifz =
+    clamp(
+      weekly.hifzProgress,
+      0,
+      100
+    );
+
+
+  const review =
+    clamp(
+      weekly.reviewProgress,
+      0,
+      100
+    );
+
+
+  const tests =
+    clamp(
+      getTestCommitment(),
+      0,
+      100
+    );
+
+
+  /*
+    التوزيع:
+
+    الحضور     20%
+    الحفظ      35%
+    المراجعة   25%
+    الاختبارات 20%
+  */
+
+  const total =
+    (
+      attendance * .20
+    ) +
+    (
+      hifz * .35
+    ) +
+    (
+      review * .25
+    ) +
+    (
+      tests * .20
+    );
+
+
+  let label =
+    'بحاجة للمتابعة';
+
+
+  if (total >= 90)
+    label = 'ممتاز الالتزام';
+
+  else if (total >= 80)
+    label = 'جيد جداً';
+
+  else if (total >= 70)
+    label = 'جيد';
+
+  else if (total >= 60)
+    label = 'مقبول';
+
+
+  return {
+
+    total,
+
+    label,
+
+    attendance,
+
+    hifz,
+
+    review,
+
+    tests
+
+  };
+
+}
+
+
+/* =========================================================
+   الاختبارات
+========================================================= */
+
+function getHighestGrade() {
+
+  const grades =
+    profile.recitations
+      .map(
+        item =>
+          getRecitationGrade(
+            item.score
+          )
+      )
+      .filter(
+        grade =>
+          grade.label !==
+          'لم يتم التقييم'
+      );
+
+
+  if (!grades.length)
+    return '—';
+
+
+  const order = [
+
+    'ممتاز (متقن)',
+
+    'جيد جداً (أخطاء قليلة)',
+
+    'جيد (أخطاء متعددة)',
+
+    'مقبول (يحتاج تمكين)',
+
+    'مراجعة الصفحة'
+
+  ];
+
+
+  for (
+    const wanted of order
+  ) {
+
+    if (
+      grades.some(
+        grade =>
+          grade.label === wanted
+      )
+    ) {
+
+      return wanted;
+
+    }
+
+  }
+
+
+  return '—';
+
+}
+
+
+function getRecitationStats() {
+
+  const records =
+    profile.recitations;
+
+
+  const scores =
+    records
+      .map(
+        item =>
+          number(item.score)
+      )
+      .filter(
+        score =>
+          score >= 0 &&
+          score <= 100
+      );
+
+
+  const average =
+    scores.length
+      ? (
+          scores.reduce(
+            (a,b) =>
+              a + b,
+            0
+          ) /
+          scores.length
+        )
+      : 0;
+
+
+  return {
+
+    records:
+      records.length,
+
+    pages:
+      records.length,
+
+    average,
+
+    highest:
+      getHighestGrade()
+
+  };
+
+}
+
+
+/* =========================================================
+   حالة الخطة الأسبوعية
+========================================================= */
+
+function getPlanStatus(
+  item
+) {
+
+  const targetHifz =
+    number(
+      item.hifzTarget ??
+      item.hifz ??
+      0
+    );
+
+
+  const targetReview =
+    number(
+      item.reviewTarget ??
+      item.review ??
+      0
+    );
+
+
+  if (
+    !item.date
+  ) {
+
+    return {
+      label:
+        'قيد الإدخال',
+
+      className:
+        'status-pending'
+    };
+
+  }
+
+
+  const range =
+    getWeekRangeForDate(
+      item.date
+    );
+
+
+  if (!range) {
+
+    return {
+      label:
+        'قيد الإدخال',
+
+      className:
+        'status-pending'
+    };
+
+  }
+
+
+  const hifz =
+    profile.recitations.filter(
+      rec =>
+        rec.type === 'hifz' &&
+        isDateInsideRange(
+          rec.date,
+          range
+        )
+    ).length;
+
+
+  const review =
+    profile.recitations.filter(
+      rec =>
+        rec.type === 'review' &&
+        isDateInsideRange(
+          rec.date,
+          range
+        )
+    ).length;
+
+
+  const hifzDone =
+    targetHifz <= 0
+      ? true
+      : hifz >= targetHifz;
+
+
+  const reviewDone =
+    targetReview <= 0
+      ? true
+      : review >= targetReview;
+
+
+  if (
+    hifzDone &&
+    reviewDone
+  ) {
+
+    return {
+
+      label:
+        'مكتملة ✅',
+
+      className:
+        'status-complete'
+
+    };
+
+  }
+
+
+  if (
+    hifz > 0 ||
+    review > 0
+  ) {
+
+    return {
+
+      label:
+        'جزئية',
+
+      className:
+        'status-partial'
+
+    };
+
+  }
+
+
+  return {
+
+    label:
+      'قيد التنفيذ',
+
+    className:
+      'status-running'
+
+  };
+
+}
+
+
+function isDateInsideRange(
+  dateValue,
+  range
+) {
+
+  if (!dateValue)
+    return false;
+
+
+  const d =
+    new Date(
+      `${dateValue}T12:00:00`
+    );
+
+
+  return (
+    d >= range.start &&
+    d <= range.end
+  );
+
+}
+
+
+/* =========================================================
+   التحقق من المعلم
+========================================================= */
+
+async function checkTeacher() {
+
+  try {
+
+    const {
+      data: {
+        user
+      },
+      error
+    } =
+      await supabaseClient.auth.getUser();
+
+
+    if (
+      error ||
+      !user
+    ) {
+
+      window.location.href =
+        'teacher-login.html';
+
+      return false;
+
+    }
+
+
+    if (
+      String(
+        user.email || ''
+      ).toLowerCase() !==
+      TEACHER_EMAIL.toLowerCase()
+    ) {
+
+      alert(
+        'هذا القسم مخصص للمعلم فقط.'
+      );
+
+
+      await supabaseClient
+        .auth
+        .signOut();
+
+
+      window.location.href =
+        'teacher-login.html';
+
+      return false;
+
+    }
+
+
+    return true;
+
+  } catch (
+    error
+  ) {
+
+    console.error(
+      error
+    );
+
+    window.location.href =
+      'teacher-login.html';
+
+    return false;
+
+  }
+
+}
+
+
+/* =========================================================
+   تحميل الطالب
+========================================================= */
+
+async function loadStudent() {
+
+  try {
+
+    if (
+      !(await checkTeacher())
+    ) {
+      return;
+    }
+
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+
+    studentId =
+      params.get('id');
+
+
+    if (!studentId) {
+
+      document.getElementById(
+        'app'
+      ).innerHTML = `
+
+        <div class="loading">
+
+          لم يتم تحديد الطالب.
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+
+        .from('students')
+
+        .select('*')
+
+        .eq(
+          'id',
+          studentId
+        )
+
+        .maybeSingle();
+
+
+    if (error)
+      throw error;
+
+
+    if (!data) {
+
+      document.getElementById(
+        'app'
+      ).innerHTML = `
+
+        <div class="loading">
+
+          تعذر العثور على الطالب.
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    student =
+      data;
+
+
+    const {
+      data: profileRow,
+      error: profileError
+    } =
+      await supabaseClient
+
+        .from('student_profiles')
+
+        .select('data')
+
+        .eq(
+          'student_id',
+          String(studentId)
+        )
+
+        .maybeSingle();
+
+
+    if (profileError) {
+
+      console.error(
+        profileError
+      );
+
+      profile =
+        defaultProfile();
+
+    } else {
+
+      profile =
+        mergeProfile(
+          profileRow?.data || {}
+        );
+
+    }
+
+
+    render();
+
+  } catch (
+    error
+  ) {
+
+    console.error(
+      'LOAD ERROR:',
+      error
+    );
+
+
+    document.getElementById(
+      'app'
+    ).innerHTML = `
+
+      <div class="loading">
+
+        <h2
+          style="
+            color:#b42318;
+            margin-bottom:10px;
+          "
+        >
+          تعذر تحميل ملف الطالب
+        </h2>
+
+        <p>
+          حدث خطأ أثناء تحميل البيانات.
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================================================
+   الواجهة
+========================================================= */
+
+function render() {
+
+  const app =
+    document.getElementById(
+      'app'
+    );
+
+
+  const weekly =
+    getCurrentWeekStats();
+
+
+  const quran =
+    getQuranProgress();
+
+
+  const recitation =
+    getRecitationStats();
+
+
+  const completedJuz =
+    getCompletedJuz();
+
+
+  const totalPoints =
+    getTotalPoints();
+
+
+  const weeklyPoints =
+    getWeeklyPoints();
+
+
+  const commitment =
+    getCommitment();
+
+
+  const photo =
+    profile.photoUrl
+      ? profile.photoUrl
+      : '';
+
+
+  app.innerHTML = `
+
+    <!-- =====================
+         بطاقة الطالب
+    ====================== -->
+
+    <section class="student-hero">
+
+      <div class="hero-content">
+
+        <img
+          id="heroPhoto"
+          class="hero-photo"
+          src="${
+            photo ||
+            'data:image/svg+xml;charset=UTF-8,' +
+            encodeURIComponent(`
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="200"
+                height="200"
+              >
+                <rect
+                  width="200"
+                  height="200"
+                  fill="#e8eee9"
+                />
+                <text
+                  x="100"
+                  y="112"
+                  text-anchor="middle"
+                  font-size="80"
+                >
+                  👤
+                </text>
+              </svg>
+            `)
+          }"
+          alt="صورة الطالب"
+        >
+
+
+        <div class="hero-info">
+
+          <h2>
+            ${escapeHtml(
+              student.name
+            )}
           </h2>
 
           <p>
-            أدخل بيانات الطالب بشكل صحيح
+            شعبة
+            ${escapeHtml(
+              student.section ||
+              'غير محددة'
+            )}
+          </p>
+
+          <div class="hero-pills">
+
+            <span class="hero-pill">
+              📖
+              ${completedJuz}
+              جزء مكتمل
+            </span>
+
+            <span class="hero-pill">
+              📚
+              ${quran.completed}
+              صفحة مسجلة
+            </span>
+
+            <span class="hero-pill">
+              🏆
+              ${formatNumber(
+                totalPoints,
+                1
+              )}
+              نقطة
+            </span>
+
+            <span class="hero-pill">
+              ⭐
+              ${escapeHtml(
+                commitment.label
+              )}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="hero-side">
+
+          <div class="hero-stat">
+
+            <small>
+              إنجاز الأسبوع
+            </small>
+
+            <strong>
+              ${formatNumber(
+                weekly.weeklyProgress,
+                0
+              )}%
+            </strong>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <small>
+              نقاط الطالب
+            </small>
+
+            <strong>
+              ${formatNumber(
+                totalPoints,
+                1
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <small>
+              نقاط هذا الأسبوع
+            </small>
+
+            <strong>
+              ${formatNumber(
+                weeklyPoints,
+                1
+              )}
+            </strong>
+
+          </div>
+
+
+          <div class="hero-stat">
+
+            <small>
+              الالتزام
+            </small>
+
+            <strong>
+              ${formatNumber(
+                commitment.total,
+                0
+              )}%
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================
+         الإحصائيات
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            لوحة الإنجاز
+          </h2>
+
+          <p class="section-subtitle">
+            الإحصائيات التالية محسوبة تلقائياً من السجلات الفعلية.
           </p>
 
         </div>
 
-        <button
-          class="close-modal"
-          id="closeModal"
-          type="button">
+      </div>
 
-          <i class="fa-solid fa-xmark"></i>
 
-        </button>
+      <div class="stats">
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            📖
+          </div>
+
+          <div class="stat-label">
+            حفظ هذا الأسبوع
+          </div>
+
+          <div class="stat-value">
+            ${weekly.hifzPages}
+          </div>
+
+          <div class="stat-note">
+            من
+            ${formatNumber(
+              weekly.goalHifz,
+              1
+            )}
+            صفحة مطلوبة
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            🔄
+          </div>
+
+          <div class="stat-label">
+            مراجعة هذا الأسبوع
+          </div>
+
+          <div class="stat-value">
+            ${weekly.reviewPages}
+          </div>
+
+          <div class="stat-note">
+            من
+            ${formatNumber(
+              weekly.goalReview,
+              1
+            )}
+            صفحة مطلوبة
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            📚
+          </div>
+
+          <div class="stat-label">
+            إنجاز القرآن
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              quran.percent,
+              1
+            )}%
+          </div>
+
+          <div class="stat-note">
+            ${quran.completed}
+            من 604 صفحة
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            ⭐
+          </div>
+
+          <div class="stat-label">
+            تقييم الالتزام
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              commitment.total,
+              0
+            )}%
+          </div>
+
+          <div class="stat-note">
+            ${escapeHtml(
+              commitment.label
+            )}
+          </div>
+
+        </div>
 
       </div>
 
-      <form
-        id="studentForm"
-        class="form">
+    </section>
 
-        <div class="form-group">
 
-          <label for="studentName">
+    <!-- =====================
+         نسب الأسبوع
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            التقدم الأسبوعي
+          </h2>
+
+          <p class="section-subtitle">
+            الأسبوع الحالي من الجمعة إلى الخميس.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="progress-grid">
+
+        <div class="progress-card">
+
+          <div class="progress-top">
+
+            <strong>
+              📖 إنجاز الحفظ الجديد
+            </strong>
+
+            <span class="percent">
+              ${formatNumber(
+                weekly.hifzProgress,
+                0
+              )}%
+            </span>
+
+          </div>
+
+
+          <div class="bar">
+
+            <div
+              class="bar-fill"
+              style="
+                width:${clamp(
+                  weekly.hifzProgress,
+                  0,
+                  100
+                )}%
+              "
+            ></div>
+
+          </div>
+
+
+          <div class="progress-note">
+
+            تم إنجاز
+            <b>
+              ${weekly.hifzPages}
+            </b>
+
+            من
+
+            <b>
+              ${weekly.goalHifz}
+            </b>
+
+            صفحة.
+
+            النسبة لا تتوقف عند 100%؛ إذا أنجز 8 من 4 تظهر 200%.
+
+          </div>
+
+        </div>
+
+
+        <div class="progress-card">
+
+          <div class="progress-top">
+
+            <strong>
+              🔄 إنجاز المراجعة
+            </strong>
+
+            <span class="percent">
+              ${formatNumber(
+                weekly.reviewProgress,
+                0
+              )}%
+            </span>
+
+          </div>
+
+
+          <div class="bar">
+
+            <div
+              class="bar-fill"
+              style="
+                width:${clamp(
+                  weekly.reviewProgress,
+                  0,
+                  100
+                )}%
+              "
+            ></div>
+
+          </div>
+
+
+          <div class="progress-note">
+
+            تم إنجاز
+            <b>
+              ${weekly.reviewPages}
+            </b>
+
+            من
+
+            <b>
+              ${weekly.goalReview}
+            </b>
+
+            صفحة.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        style="
+          margin-top:15px;
+          padding:15px;
+          border-radius:14px;
+          background:#f7faf8;
+          color:#52645c;
+          font-size:13px;
+        "
+      >
+
+        <b
+          style="
+            color:#0d4d3a;
+          "
+        >
+          🧮 التسميع المكافئ:
+        </b>
+
+        ${formatNumber(
+          weekly.equivalent,
+          1
+        )}
+
+        صفحة حفظ مكافئة من
+
+        ${formatNumber(
+          weekly.requiredEquivalent,
+          1
+        )}
+
+        مطلوبة.
+
+        <span
+          style="
+            color:#8a7650;
+          "
+        >
+          كل 3 صفحات مراجعة = صفحة حفظ جديد.
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================
+         نقاط الطالب
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            🏆 نظام النقاط
+          </h2>
+
+          <p class="section-subtitle">
+            النقاط تُحتسب تلقائياً حسب جودة التسميع والحضور والاختبارات.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="points-breakdown">
+
+        <div class="points-card">
+
+          <small>
+            نقاط الحفظ الجديد
+          </small>
+
+          <strong>
+            ${formatNumber(
+              getTotalRecitationPoints(),
+              1
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="points-card">
+
+          <small>
+            نقاط الحضور
+          </small>
+
+          <strong>
+            ${formatNumber(
+              getTotalAttendancePoints(),
+              1
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="points-card">
+
+          <small>
+            نقاط الاختبارات
+          </small>
+
+          <strong>
+            ${formatNumber(
+              getTotalTestPoints(),
+              1
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="points-card">
+
+          <small>
+            المجموع الكلي
+          </small>
+
+          <strong>
+            ${formatNumber(
+              totalPoints,
+              1
+            )}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div
+        style="
+          padding:15px;
+          border-radius:14px;
+          background:#fffdf6;
+          border:1px solid #eee4c5;
+          color:#675a37;
+          font-size:12px;
+          line-height:1.8;
+        "
+      >
+
+        <b>
+          توزيع النقاط:
+        </b>
+
+        الحفظ الجديد:
+        6 / 5 / 4 / 2 / 0
+
+        حسب جودة التسميع.
+
+        المراجعة:
+        3 / 2.5 / 2 / 1 / 0
+
+        حسب الجودة.
+
+        الحضور:
+        حاضر 2،
+        متأخر 1،
+        معتذر 0.5،
+        غائب 0.
+
+        الاختبارات:
+        ممتاز 12،
+        جيد جداً 8،
+        جيد 4،
+        غير مجتاز 0.
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================
+         تقييم الالتزام
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            ⭐ تقييم التزام الطالب
+          </h2>
+
+          <p class="section-subtitle">
+            يعتمد على الحضور والحفظ والمراجعة ونجاح الاختبارات خلال الأسبوع.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="stats">
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            📅
+          </div>
+
+          <div class="stat-label">
+            الحضور
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              commitment.attendance,
+              0
+            )}%
+          </div>
+
+          <div class="stat-note">
+            وزن التقييم: 20%
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            📖
+          </div>
+
+          <div class="stat-label">
+            الحفظ الجديد
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              clamp(
+                commitment.hifz,
+                0,
+                100
+              ),
+              0
+            )}%
+          </div>
+
+          <div class="stat-note">
+            وزن التقييم: 35%
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            🔄
+          </div>
+
+          <div class="stat-label">
+            المراجعة
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              clamp(
+                commitment.review,
+                0,
+                100
+              ),
+              0
+            )}%
+          </div>
+
+          <div class="stat-note">
+            وزن التقييم: 25%
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            🧪
+          </div>
+
+          <div class="stat-label">
+            الاختبارات
+          </div>
+
+          <div class="stat-value">
+            ${formatNumber(
+              commitment.tests,
+              0
+            )}%
+          </div>
+
+          <div class="stat-note">
+            وزن التقييم: 20%
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        style="
+          margin-top:15px;
+          padding:18px;
+          border-radius:16px;
+          background:linear-gradient(135deg,#edf7f1,#fffaf0);
+          border:1px solid #dfe9e1;
+          text-align:center;
+        "
+      >
+
+        <div
+          style="
+            color:#718078;
+            font-size:12px;
+            margin-bottom:4px;
+          "
+        >
+          التقييم الأسبوعي النهائي
+        </div>
+
+        <div
+          style="
+            color:#0d4d3a;
+            font-size:30px;
+            font-weight:900;
+          "
+        >
+          ${formatNumber(
+            commitment.total,
+            0
+          )}%
+        </div>
+
+        <div
+          style="
+            margin-top:4px;
+            color:#8a7650;
+            font-weight:bold;
+          "
+        >
+          ${escapeHtml(
+            commitment.label
+          )}
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================
+         البيانات الأساسية
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            👤 البيانات الأساسية
+          </h2>
+
+          <p class="section-subtitle">
+            المعلومات الشخصية والإدارية للطالب.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-grid">
+
+        <div class="field">
+
+          <label>
             اسم الطالب
           </label>
 
           <input
-            type="text"
-            id="studentName"
-            required
-            placeholder="مثال: أحمد محمد">
+            id="name"
+            value="${escapeHtml(
+              student.name || ''
+            )}"
+          >
 
         </div>
 
-        <div class="form-group">
 
-          <label for="studentSection">
+        <div class="field">
+
+          <label>
             الشعبة
           </label>
 
-          <select
-            id="studentSection"
-            required>
-
-            <option value="">
-              اختر الشعبة
-            </option>
-
-            <option value="شعبة الحفاظ">
-              شعبة الحفاظ
-            </option>
-
-            <option value="شعبة تجويد">
-              شعبة تجويد
-            </option>
-
-            <option value="شعبة إجازة">
-              شعبة إجازة
-            </option>
-
-            <option value="شعبة فرسان">
-              شعبة فرسان
-            </option>
-
-          </select>
+          <input
+            id="section"
+            value="${escapeHtml(
+              student.section || ''
+            )}"
+          >
 
         </div>
 
-        <div class="form-group">
 
-          <label for="memorization">
-            مستوى الحفظ
+        <div class="field">
+
+          <label>
+            الحفظ الحالي
           </label>
 
           <input
-            type="text"
             id="memorization"
-            placeholder="مثال: سورة البقرة">
+            value="${escapeHtml(
+              student.memorization || ''
+            )}"
+            placeholder="مثال: 10 أجزاء"
+          >
 
         </div>
 
-        <div class="form-group">
 
-          <label for="studentStatus">
-            الحالة
+        <div class="field">
+
+          <label>
+            حالة الطالب
           </label>
 
-          <select
-            id="studentStatus">
+          <select id="status">
 
-            <option value="active">
-              مستمر
+            <option
+              value="active"
+              ${
+                student.status === 'active'
+                  ? 'selected'
+                  : ''
+              }
+            >
+              فعال
             </option>
 
-            <option value="inactive">
-              متوقف
-            </option>
-
-            <option value="rejected">
-              غير مقبول
-            </option>
-
-            <option value="expelled">
-              مفصول
+            <option
+              value="inactive"
+              ${
+                student.status === 'inactive'
+                  ? 'selected'
+                  : ''
+              }
+            >
+              غير فعال
             </option>
 
           </select>
 
         </div>
 
-        <div class="modal-buttons">
 
-          <button
-            type="submit"
-            class="save-btn"
-            id="saveButton">
+        <div class="field full-field">
 
-            <i class="fa-solid fa-check"></i>
+          <label>
+            صورة الطالب
+          </label>
 
-            حفظ الطالب
 
-          </button>
+          <div class="image-upload">
 
-          <button
-            type="button"
-            class="cancel-btn"
-            id="cancelButton">
+            <div class="image-upload-row">
 
-            إلغاء
+              <img
+                id="photoPreview"
+                class="image-preview"
+                src="${
+                  photo ||
+                  'data:image/svg+xml;charset=UTF-8,' +
+                  encodeURIComponent(`
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="200"
+                      height="200"
+                    >
+                      <rect
+                        width="200"
+                        height="200"
+                        fill="#e8eee9"
+                      />
+                      <text
+                        x="100"
+                        y="112"
+                        text-anchor="middle"
+                        font-size="80"
+                      >
+                        👤
+                      </text>
+                    </svg>
+                  `)
+                }"
+                alt="معاينة صورة الطالب"
+              >
 
-          </button>
+
+              <div>
+
+                <label
+                  class="file-button"
+                >
+
+                  📷 اختيار صورة من الجهاز
+
+                  <input
+                    id="photoFile"
+                    type="file"
+                    accept="image/*"
+                    onchange="handlePhotoFile(this)"
+                  >
+
+                </label>
+
+
+                <div class="image-help">
+                  اختر صورة من ملفات الكمبيوتر، وسيتم تصغيرها تلقائياً للحفاظ على سرعة الموقع.
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
-        <div id="message"></div>
 
-      </form>
+        <div class="field">
+
+          <label>
+            رقم جوال ولي الأمر
+          </label>
+
+          <input
+            id="guardianPhone"
+            value="${escapeHtml(
+              profile.guardianPhone
+            )}"
+            placeholder="07XXXXXXXX"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            تاريخ الالتحاق
+          </label>
+
+          <input
+            id="joiningDate"
+            type="date"
+            value="${escapeHtml(
+              profile.joiningDate
+            )}"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            مكان السكن
+          </label>
+
+          <input
+            id="residence"
+            value="${escapeHtml(
+              profile.residence
+            )}"
+            placeholder="مثال: حي الرشيد"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            الحافلة
+          </label>
+
+          <input
+            id="bus"
+            value="${escapeHtml(
+              profile.bus
+            )}"
+            placeholder="مثال: حافلة 1"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            موقع المنزل
+          </label>
+
+          <input
+            id="homeLocation"
+            value="${escapeHtml(
+              profile.homeLocation
+            )}"
+            placeholder="32.01993, 35.86838"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================
+         الهدف الأسبوعي
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            🎯 الهدف الأسبوعي
+          </h2>
+
+          <p class="section-subtitle">
+            هذه الأرقام هي المطلوب من الطالب خلال الأسبوع الحالي.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="form-grid">
+
+        <div class="field">
+
+          <label>
+            صفحات الحفظ المطلوبة
+          </label>
+
+          <input
+            id="goalHifz"
+            type="number"
+            min="0"
+            step="1"
+            value="${number(
+              profile.weeklyGoal?.hifz
+            )}"
+          >
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            صفحات المراجعة المطلوبة
+          </label>
+
+          <input
+            id="goalReview"
+            type="number"
+            min="0"
+            step="1"
+            value="${number(
+              profile.weeklyGoal?.review
+            )}"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================
+         الحضور
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            📅 سجل الحضور
+          </h2>
+
+          <p class="section-subtitle">
+            نقاط الحضور تحسب تلقائياً.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="attendanceEditor"
+        class="editor-list"
+      ></div>
+
+
+      <button
+        class="add"
+        onclick="addAttendance()"
+      >
+        + إضافة سجل حضور
+      </button>
+
+    </section>
+
+
+    <!-- =====================
+         الخطة الأسبوعية
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            📋 الخطة الأسبوعية
+          </h2>
+
+          <p class="section-subtitle">
+            الحالة تتحدد تلقائياً من التسميع المسجل في نفس الأسبوع.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="planEditor"
+        class="editor-list"
+      ></div>
+
+
+      <button
+        class="add"
+        onclick="addPlan()"
+      >
+        + إضافة خطة أسبوعية
+      </button>
+
+    </section>
+
+
+    <!-- =====================
+         الاختبارات
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            🧪 الاختبارات
+          </h2>
+
+          <p class="section-subtitle">
+            النقاط تُحسب تلقائياً من نتيجة الاختبار.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="recitation-summary">
+
+        <div class="mini-stat">
+
+          <small>
+            مجموع نقاط الاختبارات
+          </small>
+
+          <strong>
+            ${formatNumber(
+              getTotalTestPoints(),
+              1
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="mini-stat">
+
+          <small>
+            عدد الاختبارات
+          </small>
+
+          <strong>
+            ${profile.tests.length}
+          </strong>
+
+        </div>
+
+
+        <div class="mini-stat">
+
+          <small>
+            اختبارات هذا الأسبوع
+          </small>
+
+          <strong>
+            ${
+              profile.tests.filter(
+                item =>
+                  dateInCurrentWeek(
+                    item.date
+                  )
+              ).length
+            }
+          </strong>
+
+        </div>
+
+
+        <div class="mini-stat">
+
+          <small>
+            متوسط التسميع
+          </small>
+
+          <strong>
+            ${formatNumber(
+              recitation.average,
+              1
+            )}%
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="testsEditor"
+        class="editor-list"
+      ></div>
+
+
+      <button
+        class="add"
+        onclick="addTest()"
+      >
+        + إضافة اختبار
+      </button>
+
+    </section>
+
+
+    <!-- =====================
+         سجل التسميع
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            📖 سجل التسميع
+          </h2>
+
+          <p class="section-subtitle">
+            سجّل كل صفحة سمعها الطالب، وسيظهر التقدير والنقاط تلقائياً.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="recitation-summary">
+
+        <div class="mini-stat">
+
+          <small>
+            إجمالي جلسات التسميع
+          </small>
+
+          <strong>
+            ${recitation.records}
+          </strong>
+
+        </div>
+
+
+        <div class="mini-stat">
+
+          <small>
+            متوسط درجة التسميع
+          </small>
+
+          <strong>
+            ${formatNumber(
+              recitation.average,
+              1
+            )}%
+          </strong>
+
+        </div>
+
+
+        <div class="mini-stat">
+
+          <small>
+            أعلى تقدير
+          </small>
+
+          <strong
+            style="
+              font-size:13px;
+            "
+          >
+            ${escapeHtml(
+              recitation.highest
+            )}
+          </strong>
+
+        </div>
+
+
+        <div class="mini-stat">
+
+          <small>
+            نقاط التسميع
+          </small>
+
+          <strong>
+            ${formatNumber(
+              getTotalRecitationPoints(),
+              1
+            )}
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="recitationsEditor"
+        class="editor-list"
+      ></div>
+
+
+      <button
+        class="add"
+        onclick="addRecitation()"
+      >
+        + تسجيل تسميع صفحة
+      </button>
+
+    </section>
+
+
+    <!-- =====================
+         خريطة القرآن
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            🗺️ خريطة القرآن
+          </h2>
+
+          <p class="section-subtitle">
+            كل مربع يمثل صفحة حقيقية من 1 إلى 604.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="quran-progress">
+
+        <div class="quran-progress-head">
+
+          <span>
+            الإنجاز الكلي
+          </span>
+
+          <strong>
+            ${formatNumber(
+              quran.percent,
+              1
+            )}%
+          </strong>
+
+        </div>
+
+
+        <div class="bar">
+
+          <div
+            class="bar-fill"
+            style="
+              width:${clamp(
+                quran.percent,
+                0,
+                100
+              )}%
+            "
+          ></div>
+
+        </div>
+
+
+        <div
+          style="
+            margin-top:9px;
+            color:#718078;
+            font-size:12px;
+          "
+        >
+
+          ${quran.completed}
+
+          صفحة مسجلة من أصل
+
+          ${TOTAL_QURAN_PAGES}
+
+          صفحة
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="quranMap"
+        class="juz-grid"
+      ></div>
+
+
+      <div class="map-legend">
+
+        <div class="legend-item">
+
+          <span class="legend-dot hifz"></span>
+
+          حفظ جديد
+
+        </div>
+
+
+        <div class="legend-item">
+
+          <span class="legend-dot review"></span>
+
+          مراجعة
+
+        </div>
+
+
+        <div class="legend-item">
+
+          <span class="legend-dot"></span>
+
+          غير مسجلة
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================
+         ملاحظات
+    ====================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+
+        <div>
+
+          <h2 class="section-title">
+            📝 ملاحظات المعلم
+          </h2>
+
+          <p class="section-subtitle">
+            الملاحظات والتوجيهات الخاصة بالطالب.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <textarea
+        id="notes"
+      >${escapeHtml(
+        profile.notes || ''
+      )}</textarea>
+
+    </section>
+
+
+    <!-- =====================
+         أزرار الحفظ
+    ====================== -->
+
+    <div class="actions">
+
+      <button
+        id="saveButton"
+        class="save"
+        onclick="saveProfile()"
+      >
+        💾 حفظ جميع التعديلات
+      </button>
+
+
+      <button
+        class="secondary"
+        onclick="
+          window.scrollTo({
+            top:0,
+            behavior:'smooth'
+          })
+        "
+      >
+        ↑ للأعلى
+      </button>
 
     </div>
 
-  </div>
+  `;
 
-  <div
-    class="toast"
-    id="toast">
 
-    <i id="toastIcon"></i>
+  renderAttendance();
 
-    <span id="toastText"></span>
+  renderPlan();
 
-  </div>
+  renderTests();
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  renderRecitations();
 
-  <script>
+  renderQuranMap();
 
-    const SUPABASE_URL =
-      'https://lsbbcybpiulusdgfhepf.supabase.co';
+}
 
-    const SUPABASE_PUBLISHABLE_KEY =
-      'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
+/* =========================================================
+   رفع الصورة من الجهاز
+========================================================= */
+
+async function handlePhotoFile(
+  input
+) {
+
+  const file =
+    input.files?.[0];
+
+
+  if (!file)
+    return;
+
+
+  if (
+    !file.type.startsWith(
+      'image/'
+    )
+  ) {
+
+    alert(
+      'الملف المحدد ليس صورة.'
+    );
+
+    input.value = '';
+
+    return;
+
+  }
+
+
+  try {
+
+    const compressed =
+      await compressImage(
+        file
       );
 
-    const tableBody =
+
+    profile.photoUrl =
+      compressed;
+
+
+    const preview =
       document.getElementById(
-        'studentsTable'
+        'photoPreview'
       );
 
-    const emptyMessage =
+
+    const hero =
       document.getElementById(
-        'emptyMessage'
+        'heroPhoto'
       );
 
-    const totalStudents =
-      document.getElementById(
-        'totalStudents'
-      );
-
-    const activeStudents =
-      document.getElementById(
-        'activeStudents'
-      );
-
-    const memorizedStudents =
-      document.getElementById(
-        'memorizedStudents'
-      );
-
-    const searchInput =
-      document.getElementById(
-        'searchInput'
-      );
-
-    const sectionFilter =
-      document.getElementById(
-        'sectionFilter'
-      );
-
-    const statusFilter =
-      document.getElementById(
-        'statusFilter'
-      );
-
-    const sortFilter =
-      document.getElementById(
-        'sortFilter'
-      );
-
-    const modal =
-      document.getElementById(
-        'studentModal'
-      );
-
-    const openModal =
-      document.getElementById(
-        'openModal'
-      );
-
-    const closeModal =
-      document.getElementById(
-        'closeModal'
-      );
-
-    const cancelButton =
-      document.getElementById(
-        'cancelButton'
-      );
-
-    const studentForm =
-      document.getElementById(
-        'studentForm'
-      );
-
-    const message =
-      document.getElementById(
-        'message'
-      );
-
-    const modalTitle =
-      document.getElementById(
-        'modalTitle'
-      );
-
-    const saveButton =
-      document.getElementById(
-        'saveButton'
-      );
-
-    const toast =
-      document.getElementById(
-        'toast'
-      );
-
-    const toastText =
-      document.getElementById(
-        'toastText'
-      );
-
-    const toastIcon =
-      document.getElementById(
-        'toastIcon'
-      );
-
-    const requestsList =
-      document.getElementById(
-        'requestsList'
-      );
-
-    const pendingCount =
-      document.getElementById(
-        'pendingCount'
-      );
-
-    let students = [];
 
-    let editingStudentId = null;
+    if (preview)
+      preview.src =
+        compressed;
 
-    let profileMap = {};
 
-    function showToast(
-      text,
-      type = 'success'
-    ) {
+    if (hero)
+      hero.src =
+        compressed;
 
-      toastText.textContent =
-        text;
-
-      toast.className =
-        'toast show ' + type;
 
-      toastIcon.className =
-        type === 'success'
-          ? 'fa-solid fa-circle-check'
-          : 'fa-solid fa-circle-exclamation';
-
-      setTimeout(() => {
-
-        toast.classList.remove(
-          'show'
-        );
-
-      }, 3000);
-    }
-
-    function checkUser() {
+    showMessage(
+      'تم إدراج صورة الطالب بنجاح. اضغط حفظ لتثبيتها ✅',
+      'success'
+    );
 
-      const accessGranted =
-        localStorage.getItem(
-          'teacherAccess'
-        ) === 'granted';
-
-      if (!accessGranted) {
+  } catch (
+    error
+  ) {
 
-        window.location.href =
-          'teacher-login.html';
-
-        return false;
-      }
-
-      document.getElementById(
-        'teacherName'
-      ).textContent =
-        'المعلم';
+    console.error(
+      error
+    );
 
-      document.getElementById(
-        'teacherEmail'
-      ).textContent =
-        'بوابة المعلمين';
+    alert(
+      'تعذر تجهيز الصورة.'
+    );
 
-      return true;
-    }
-
-    function toNumber(value) {
-
-      const n =
-        Number(
-          String(value ?? '')
-            .replace(',', '.')
-            .replace(/[^\d.-]/g, '')
-        );
-
-      return Number.isFinite(n)
-        ? n
-        : 0;
-    }
-
-    function attendancePoint(status) {
-
-      const value =
-        String(status || '')
-          .trim()
-          .toLowerCase();
-
-      if (
-        value === 'حاضر' ||
-        value === 'present'
-      ) {
-        return 2;
-      }
-
-      if (
-        value === 'متأخر' ||
-        value === 'late'
-      ) {
-        return 1;
-      }
-
-      if (
-        value === 'معتذر' ||
-        value === 'excused'
-      ) {
-        return .5;
-      }
-
-      return 0;
-    }
-
-    function recitationPoint(item) {
-
-      const raw =
-        item?.grade ??
-        item?.score ??
-        item?.mark ??
-        item?.rating ??
-        item?.status ??
-        item?.result ??
-        '';
-
-      const type =
-        String(
-          item?.type || ''
-        )
-          .trim()
-          .toLowerCase();
-
-      const isReview =
-        type === 'review' ||
-        type === 'مراجعة';
-
-      const numeric =
-        toNumber(raw);
-
-      if (numeric > 0) {
-
-        if (numeric >= 97) {
-          return isReview ? 3 : 6;
-        }
-
-        if (numeric >= 95) {
-          return isReview ? 2.5 : 5;
-        }
-
-        if (numeric >= 92) {
-          return isReview ? 2 : 4;
-        }
-
-        if (numeric >= 90) {
-          return isReview ? 1 : 2;
-        }
-
-        return 0;
-      }
-
-      const label =
-        String(raw)
-          .trim()
-          .toLowerCase();
-
-      if (
-        label.includes('ممتاز')
-      ) {
-        return isReview ? 3 : 6;
-      }
-
-      if (
-        label.includes('جيد جداً') ||
-        label.includes('جيد جدا')
-      ) {
-        return isReview ? 2.5 : 5;
-      }
-
-      if (
-        label === 'جيد'
-      ) {
-        return isReview ? 2 : 4;
-      }
-
-      if (
-        label.includes('مقبول')
-      ) {
-        return isReview ? 1 : 2;
-      }
-
-      return 0;
-    }
-
-    function testPoint(item) {
-
-      const raw =
-        item?.grade ??
-        item?.result ??
-        item?.status ??
-        item?.rating ??
-        item?.score ??
-        '';
-
-      const numeric =
-        toNumber(raw);
-
-      if (numeric > 0) {
-
-        const percentage =
-          numeric <= 12
-            ? (
-                numeric /
-                12
-              ) * 100
-            : numeric;
-
-        if (
-          percentage >= 97
-        ) {
-          return 12;
-        }
-
-        if (
-          percentage >= 90
-        ) {
-          return 8;
-        }
-
-        if (
-          percentage >= 80
-        ) {
-          return 4;
-        }
-
-        return 0;
-      }
-
-      const label =
-        String(raw)
-          .trim()
-          .toLowerCase();
-
-      if (
-        label.includes('ممتاز')
-      ) {
-        return 12;
-      }
-
-      if (
-        label.includes('جيد جداً') ||
-        label.includes('جيد جدا')
-      ) {
-        return 8;
-      }
-
-      if (
-        label === 'جيد'
-      ) {
-        return 4;
-      }
-
-      return 0;
-    }
-
-    function calculateStudentPerformance(
-      profileData
-    ) {
-
-      const profile =
-        profileData || {};
-
-      const attendance =
-        Array.isArray(
-          profile.attendance
-        )
-          ? profile.attendance
-          : [];
-
-      const recitations =
-        Array.isArray(
-          profile.recitations
-        )
-          ? profile.recitations
-          : [];
-
-      const tests =
-        Array.isArray(
-          profile.tests
-        )
-          ? profile.tests
-          : [];
-
-      const attendancePoints =
-        attendance.reduce(
-          (
-            sum,
-            item
-          ) =>
-            sum +
-            attendancePoint(
-              item?.status ??
-              item?.state ??
-              item?.attendance
-            ),
-          0
-        );
-
-      const attendanceScore =
-        attendance.length
-          ? Math.min(
-              100,
-              (
-                attendancePoints /
-                (
-                  attendance.length *
-                  2
-                )
-              ) * 100
-            )
-          : 0;
-
-      const hifz =
-        recitations.filter(
-          item => {
-
-            const type =
-              String(
-                item?.type || ''
-              )
-                .trim()
-                .toLowerCase();
-
-            return (
-              type !== 'review' &&
-              type !== 'مراجعة'
-            );
+  }
+
+}
+
+
+function compressImage(
+  file
+) {
+
+  return new Promise(
+    (
+      resolve,
+      reject
+    ) => {
+
+      const reader =
+        new FileReader();
+
+
+      reader.onload = () => {
+
+        const img =
+          new Image();
+
+
+        img.onload = () => {
+
+          const maxSize =
+            700;
+
+
+          let width =
+            img.width;
+
+          let height =
+            img.height;
+
+
+          if (
+            width > height &&
+            width > maxSize
+          ) {
+
+            height =
+              Math.round(
+                height *
+                maxSize /
+                width
+              );
+
+            width =
+              maxSize;
+
           }
-        );
 
-      const review =
-        recitations.filter(
-          item => {
+          else if (
+            height >= width &&
+            height > maxSize
+          ) {
 
-            const type =
-              String(
-                item?.type || ''
-              )
-                .trim()
-                .toLowerCase();
+            width =
+              Math.round(
+                width *
+                maxSize /
+                height
+              );
 
-            return (
-              type === 'review' ||
-              type === 'مراجعة'
-            );
+            height =
+              maxSize;
+
           }
-        );
 
-      const hifzPoints =
-        hifz.reduce(
-          (
-            sum,
-            item
-          ) =>
-            sum +
-            recitationPoint(
-              item
-            ),
-          0
-        );
 
-      const reviewPoints =
-        review.reduce(
-          (
-            sum,
-            item
-          ) =>
-            sum +
-            recitationPoint(
-              item
-            ),
-          0
-        );
+          const canvas =
+            document.createElement(
+              'canvas'
+            );
 
-      const hifzScore =
-        hifz.length
-          ? Math.min(
-              100,
-              (
-                hifzPoints /
-                (
-                  hifz.length *
-                  6
-                )
-              ) * 100
-            )
-          : 0;
 
-      const reviewScore =
-        review.length
-          ? Math.min(
-              100,
-              (
-                reviewPoints /
-                (
-                  review.length *
-                  3
-                )
-              ) * 100
-            )
-          : 0;
+          canvas.width =
+            width;
 
-      const testPoints =
-        tests.reduce(
-          (
-            sum,
-            item
-          ) =>
-            sum +
-            testPoint(item),
-          0
-        );
+          canvas.height =
+            height;
 
-      const testsScore =
-        tests.length
-          ? Math.min(
-              100,
-              (
-                testPoints /
-                (
-                  tests.length *
-                  12
-                )
-              ) * 100
-            )
-          : 0;
 
-      const score =
-        (
-          attendanceScore *
-          .20
-        ) +
-        (
-          hifzScore *
-          .35
-        ) +
-        (
-          reviewScore *
-          .25
-        ) +
-        (
-          testsScore *
-          .20
-        );
+          const ctx =
+            canvas.getContext(
+              '2d'
+            );
 
-      const recitationPointsTotal =
-        recitations.reduce(
-          (
-            sum,
-            item
-          ) =>
-            sum +
-            recitationPoint(
-              item
-            ),
-          0
-        );
 
-      const totalPoints =
-        attendancePoints +
-        recitationPointsTotal +
-        testPoints;
-
-      return {
-
-        score:
-          Math.round(
-            Math.max(
-              0,
-              Math.min(
-                100,
-                score
-              )
-            )
-          ),
-
-        totalPoints:
-          Math.round(
-            totalPoints *
-            10
-          ) / 10
-
-      };
-    }
-
-    async function loadProfiles() {
-
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
-          .from('student_profiles')
-          .select(
-            'student_id, data'
+          ctx.drawImage(
+            img,
+            0,
+            0,
+            width,
+            height
           );
 
-      if (error) {
 
-        console.warn(
-          'تعذر تحميل ملفات الطلاب:',
-          error
-        );
+          const result =
+            canvas.toDataURL(
+              'image/jpeg',
+              0.82
+            );
 
-        profileMap = {};
 
-        return;
-      }
+          resolve(
+            result
+          );
 
-      profileMap = {};
+        };
 
+
+        img.onerror =
+          reject;
+
+
+        img.src =
+          reader.result;
+
+      };
+
+
+      reader.onerror =
+        reject;
+
+
+      reader.readAsDataURL(
+        file
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   الحضور
+========================================================= */
+
+function renderAttendance() {
+
+  const box =
+    document.getElementById(
+      'attendanceEditor'
+    );
+
+
+  const items =
+    profile.attendance ||
+    [];
+
+
+  if (!items.length) {
+
+    box.innerHTML = `
+
+      <div
+        style="
+          padding:18px;
+          text-align:center;
+          color:#718078;
+          background:#f7faf8;
+          border-radius:14px;
+        "
+      >
+        لا يوجد سجل حضور بعد.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    items.map(
       (
-        data || []
-      ).forEach(
-        row => {
+        item,
+        index
+      ) => `
 
-          profileMap[
-            String(
-              row.student_id
-            )
-          ] =
-            row.data || {};
-        }
-      );
-    }
+        <div
+          class="editor-row"
+        >
 
-    function getStudentPerformance(
-      student
-    ) {
+          <div
+            class="editor-row-head"
+          >
 
-      return calculateStudentPerformance(
-        profileMap[
-          String(student.id)
-        ] || {}
-      );
-    }
-
-    function formatPoints(
-      points
-    ) {
-
-      const value =
-        Number(
-          points || 0
-        );
-
-      return Number.isInteger(
-        value
-      )
-        ? `${value} نقطة`
-        : `${value.toFixed(1)} نقطة`;
-    }
-
-    function getStatusInfo(
-      status
-    ) {
-
-      const map = {
-
-        active: {
-          text: 'مستمر',
-          className: 'active'
-        },
-
-        inactive: {
-          text: 'متوقف',
-          className: 'inactive'
-        },
-
-        rejected: {
-          text: 'غير مقبول',
-          className: 'rejected'
-        },
-
-        expelled: {
-          text: 'مفصول',
-          className: 'expelled'
-        }
-
-      };
-
-      return (
-        map[status] || {
-          text: 'غير محدد',
-          className: 'inactive'
-        }
-      );
-    }
-
-    async function loadStudents() {
-
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
-          .from('students')
-          .select('*')
-          .order(
-            'created_at',
-            {
-              ascending: false
-            }
-          );
-
-      if (error) {
-
-        console.error(
-          error
-        );
-
-        emptyMessage.style.display =
-          'block';
-
-        emptyMessage.querySelector(
-          'strong'
-        ).textContent =
-          'تعذر تحميل البيانات';
-
-        emptyMessage.querySelector(
-          'p'
-        ).textContent =
-          'تأكد من إعداد قاعدة البيانات والصلاحيات.';
-
-        return;
-      }
-
-      students =
-        data || [];
-
-      await loadProfiles();
-
-      renderStudents();
-
-      updateStats();
-    }
-
-    async function loadPendingRequests() {
-
-      const {
-        data,
-        error
-      } =
-        await supabaseClient
-          .from('students')
-          .select('*')
-          .eq(
-            'status',
-            'pending'
-          )
-          .order(
-            'created_at',
-            {
-              ascending: false
-            }
-          );
-
-      if (error) {
-
-        console.error(
-          'خطأ في تحميل طلبات الانضمام:',
-          error
-        );
-
-        return;
-      }
-
-      const requests =
-        data || [];
-
-      pendingCount.textContent =
-        `${requests.length} طلب`;
-
-      if (
-        requests.length === 0
-      ) {
-
-        requestsList.innerHTML = `
-
-          <div class="requests-empty">
-
-            <i class="fa-solid fa-inbox"></i>
-
-            <strong>
-              لا توجد طلبات جديدة
-            </strong>
-
-            <span>
-              ستظهر هنا طلبات الطلاب الجدد بعد التسجيل.
+            <span
+              class="editor-row-title"
+            >
+              حضور #${index + 1}
             </span>
+
+
+            <button
+              class="remove"
+              onclick="
+                removeAttendance(
+                  ${index}
+                )
+              "
+            >
+              حذف
+            </button>
+
+          </div>
+
+
+          <div
+            class="editor-grid"
+          >
+
+            <div
+              class="field"
+            >
+
+              <label>
+                التاريخ
+              </label>
+
+              <input
+                type="date"
+                value="${escapeHtml(
+                  item.date || ''
+                )}"
+                data-attendance-date="${index}"
+              >
+
+            </div>
+
+
+            <div
+              class="field"
+            >
+
+              <label>
+                الحالة
+              </label>
+
+              <select
+                data-attendance-status="${index}"
+              >
+
+                <option
+                  ${
+                    item.status === 'حاضر'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  حاضر
+                </option>
+
+                <option
+                  ${
+                    item.status === 'متأخر'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  متأخر
+                </option>
+
+                <option
+                  ${
+                    item.status === 'معتذر'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  معتذر
+                </option>
+
+                <option
+                  ${
+                    item.status === 'غائب'
+                      ? 'selected'
+                      : ''
+                  }
+                >
+                  غائب
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div
+              class="field"
+            >
+
+              <label>
+                النقاط
+              </label>
+
+              <input
+                readonly
+                value="${formatNumber(
+                  getAttendancePoints(
+                    item.status
+                  ),
+                  1
+                )}"
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+      `
+    )
+    .join('');
+
+}
+
+
+function addAttendance() {
+
+  profile.attendance.push({
+
+    date:
+      todayISO(),
+
+    status:
+      'حاضر'
+
+  });
+
+
+  renderAttendance();
+
+}
+
+
+function removeAttendance(
+  index
+) {
+
+  profile.attendance.splice(
+    index,
+    1
+  );
+
+
+  renderAttendance();
+
+}
+
+
+function collectAttendance() {
+
+  return profile.attendance.map(
+    (
+      item,
+      index
+    ) => ({
+
+      date:
+        document.querySelector(
+          `[data-attendance-date="${index}"]`
+        )?.value || '',
+
+      status:
+        document.querySelector(
+          `[data-attendance-status="${index}"]`
+        )?.value || ''
+
+    })
+  );
+
+}
+
+
+/* =========================================================
+   الخطة
+========================================================= */
+
+function renderPlan() {
+
+  const box =
+    document.getElementById(
+      'planEditor'
+    );
+
+
+  const items =
+    profile.weeklyPlan ||
+    [];
+
+
+  if (!items.length) {
+
+    box.innerHTML = `
+
+      <div
+        style="
+          padding:18px;
+          text-align:center;
+          color:#718078;
+          background:#f7faf8;
+          border-radius:14px;
+        "
+      >
+        لم تتم إضافة خطة أسبوعية بعد.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    items.map(
+      (
+        item,
+        index
+      ) => {
+
+        const status =
+          getPlanStatus(
+            item
+          );
+
+
+        return `
+
+          <div
+            class="editor-row"
+          >
+
+            <div
+              class="editor-row-head"
+            >
+
+              <span
+                class="editor-row-title"
+              >
+                خطة أسبوع #${index + 1}
+              </span>
+
+
+              <button
+                class="remove"
+                onclick="
+                  removePlan(
+                    ${index}
+                  )
+                "
+              >
+                حذف
+              </button>
+
+            </div>
+
+
+            <div
+              class="editor-grid"
+            >
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  تاريخ بداية الأسبوع
+                </label>
+
+                <input
+                  type="date"
+                  value="${escapeHtml(
+                    item.date || ''
+                  )}"
+                  data-plan-date="${index}"
+                  onchange="
+                    refreshPlanStatus(
+                      ${index}
+                    )
+                  "
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  الجزء
+                </label>
+
+                <input
+                  value="${escapeHtml(
+                    item.juz || ''
+                  )}"
+                  placeholder="مثال: 20"
+                  data-plan-juz="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  عدد صفحات الحفظ
+                </label>
+
+                <input
+                  type="number"
+                  min="0"
+                  value="${number(
+                    item.hifzTarget ??
+                    (
+                      /^\d+$/.test(
+                        String(
+                          item.hifz || ''
+                        ).trim()
+                      )
+                        ? item.hifz
+                        : 0
+                    )
+                  )}"
+                  data-plan-hifz="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  عدد صفحات المراجعة
+                </label>
+
+                <input
+                  type="number"
+                  min="0"
+                  value="${number(
+                    item.reviewTarget ??
+                    (
+                      /^\d+$/.test(
+                        String(
+                          item.review || ''
+                        ).trim()
+                      )
+                        ? item.review
+                        : 0
+                    )
+                  )}"
+                  data-plan-review="${index}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  حالة الخطة
+                </label>
+
+                <div
+                  id="plan-status-${index}"
+                  class="
+                    status-badge
+                    ${status.className}
+                  "
+                  style="
+                    width:100%;
+                    min-height:45px;
+                  "
+                >
+                  ${status.label}
+                </div>
+
+              </div>
+
+            </div>
 
           </div>
 
         `;
 
-        return;
       }
+    )
+    .join('');
 
-      requestsList.innerHTML =
-        requests.map(
-          student => {
+}
 
-            return `
 
-              <div class="request-card">
+function refreshPlanStatus(
+  index
+) {
 
-                <div class="request-content">
+  const item =
+    profile.weeklyPlan[
+      index
+    ];
 
-                  <div>
 
-                    <div class="request-name">
+  if (!item)
+    return;
 
-                      ${escapeHtml(
-                        student.name || ''
-                      )}
 
-                    </div>
+  const date =
+    document.querySelector(
+      `[data-plan-date="${index}"]`
+    )?.value || '';
 
-                    <div class="request-details">
 
-                      العمر:
-                      ${
-                        student.age ||
-                        'غير محدد'
-                      }
+  const hifz =
+    number(
+      document.querySelector(
+        `[data-plan-hifz="${index}"]`
+      )?.value
+    );
 
-                      <br>
 
-                      الشعبة:
-                      ${escapeHtml(
-                        student.section || '-'
-                      )}
+  const review =
+    number(
+      document.querySelector(
+        `[data-plan-review="${index}"]`
+      )?.value
+    );
 
-                      <br>
 
-                      هاتف ولي الأمر:
-                      ${escapeHtml(
-                        student.guardian_phone || '-'
-                      )}
+  const temporary = {
 
-                      ${
-                        student.notes
-                          ? `
-                            <br>
-                            الملاحظات:
-                            ${escapeHtml(
-                              student.notes
-                            )}
-                          `
-                          : ''
-                      }
+    ...item,
 
-                    </div>
+    date,
 
-                  </div>
+    hifzTarget:
+      hifz,
 
-                  <div class="request-actions">
+    reviewTarget:
+      review
 
-                    <button
-                      type="button"
-                      class="approve-btn"
-                      onclick="approveStudent('${student.id}')">
+  };
 
-                      <i class="fa-solid fa-check"></i>
 
-                      قبول
+  const status =
+    getPlanStatus(
+      temporary
+    );
 
-                    </button>
 
-                    <button
-                      type="button"
-                      class="reject-btn"
-                      onclick="rejectStudent('${student.id}')">
+  const element =
+    document.getElementById(
+      `plan-status-${index}`
+    );
 
-                      <i class="fa-solid fa-xmark"></i>
 
-                      رفض
+  if (element) {
 
-                    </button>
+    element.className =
+      `status-badge ${status.className}`;
 
-                  </div>
+    element.textContent =
+      status.label;
 
-                </div>
+  }
 
-              </div>
+}
 
-            `;
-          }
-        ).join('');
-    }
 
-    window.approveStudent =
-      async function(
-        id
-      ) {
+function addPlan() {
 
-        const confirmed =
-          confirm(
-            'هل تريد قبول هذا الطالب وإضافته إلى قائمة الطلاب؟'
-          );
-
-        if (!confirmed) return;
-
-        const {
-          error
-        } =
-          await supabaseClient
-            .from('students')
-            .update({
-              status:
-                'active'
-            })
-            .eq(
-              'id',
-              id
-            )
-            .eq(
-              'status',
-              'pending'
-            );
-
-        if (error) {
-
-          console.error(
-            error
-          );
-
-          showToast(
-            'حدث خطأ أثناء قبول الطلب.',
-            'error'
-          );
-
-          return;
-        }
-
-        showToast(
-          'تم قبول الطالب وإضافته إلى النظام.'
-        );
-
-        await loadStudents();
-
-        await loadPendingRequests();
-      };
-
-    window.rejectStudent =
-      async function(
-        id
-      ) {
-
-        const confirmed =
-          confirm(
-            'هل أنت متأكد من رفض طلب الانضمام؟'
-          );
-
-        if (!confirmed) return;
-
-        const {
-          error
-        } =
-          await supabaseClient
-            .from('students')
-            .update({
-              status:
-                'rejected'
-            })
-            .eq(
-              'id',
-              id
-            )
-            .eq(
-              'status',
-              'pending'
-            );
-
-        if (error) {
-
-          console.error(
-            error
-          );
-
-          showToast(
-            'حدث خطأ أثناء رفض الطلب.',
-            'error'
-          );
-
-          return;
-        }
-
-        showToast(
-          'تم رفض طلب الانضمام.'
-        );
-
-        await loadStudents();
-
-        await loadPendingRequests();
-
-        statusFilter.value =
-          'rejected';
-
-        renderStudents();
-      };
-
-    function getFilteredStudents() {
-
-      const search =
-        searchInput.value
-          .trim()
-          .toLowerCase();
-
-      const selectedSection =
-        sectionFilter.value;
-
-      const selectedStatus =
-        statusFilter.value;
-
-      const selectedSort =
-        sortFilter.value;
-
-      let filtered =
-        students
-          .map(
-            student => {
-
-              const performance =
-                getStudentPerformance(
-                  student
-                );
-
-              return {
-
-                ...student,
-
-                _score:
-                  performance.score,
-
-                _points:
-                  performance.totalPoints
-
-              };
-            }
+  profile.weeklyPlan.push({
+
+    date:
+      todayISO(),
+
+    juz: '',
+
+    hifzTarget:
+      number(
+        profile.weeklyGoal?.hifz
+      ),
+
+    reviewTarget:
+      number(
+        profile.weeklyGoal?.review
+      )
+
+  });
+
+
+  renderPlan();
+
+}
+
+
+function removePlan(
+  index
+) {
+
+  profile.weeklyPlan.splice(
+    index,
+    1
+  );
+
+
+  renderPlan();
+
+}
+
+
+function collectPlan() {
+
+  return profile.weeklyPlan.map(
+    (
+      item,
+      index
+    ) => {
+
+      return {
+
+        date:
+          document.querySelector(
+            `[data-plan-date="${index}"]`
+          )?.value || '',
+
+        juz:
+          document.querySelector(
+            `[data-plan-juz="${index}"]`
+          )?.value || '',
+
+        hifzTarget:
+          number(
+            document.querySelector(
+              `[data-plan-hifz="${index}"]`
+            )?.value
+          ),
+
+        reviewTarget:
+          number(
+            document.querySelector(
+              `[data-plan-review="${index}"]`
+            )?.value
           )
-          .filter(
-            student => {
 
-              const matchesSearch =
-                String(
-                  student.name ||
-                  ''
-                )
-                  .toLowerCase()
-                  .includes(
-                    search
-                  );
+      };
 
-              const matchesSection =
-                !selectedSection ||
-                student.section ===
-                selectedSection;
-
-              let matchesStatus =
-                true;
-
-              if (
-                selectedStatus ===
-                'accepted'
-              ) {
-
-                matchesStatus =
-                  student.status ===
-                    'active' ||
-                  student.status ===
-                    'inactive';
-
-              }
-
-              else if (
-                selectedStatus ===
-                'all'
-              ) {
-
-                matchesStatus =
-                  true;
-
-              }
-
-              else {
-
-                matchesStatus =
-                  student.status ===
-                  selectedStatus;
-              }
-
-              return (
-                matchesSearch &&
-                matchesSection &&
-                matchesStatus
-              );
-            }
-          );
-
-      filtered.sort(
-        (
-          a,
-          b
-        ) => {
-
-          if (
-            selectedSort ===
-            'points'
-          ) {
-
-            const pointsDiff =
-              (
-                b._points || 0
-              ) -
-              (
-                a._points || 0
-              );
-
-            if (
-              pointsDiff !== 0
-            ) {
-
-              return pointsDiff;
-            }
-          }
-
-          if (
-            selectedSort ===
-            'section'
-          ) {
-
-            const sectionCompare =
-              String(
-                a.section || ''
-              ).localeCompare(
-                String(
-                  b.section || ''
-                ),
-                'ar'
-              );
-
-            if (
-              sectionCompare !== 0
-            ) {
-
-              return sectionCompare;
-            }
-          }
-
-          return String(
-            a.name || ''
-          ).localeCompare(
-            String(
-              b.name || ''
-            ),
-            'ar'
-          );
-        }
-      );
-
-      return filtered;
     }
+  );
 
-    function renderStudents() {
+}
 
-      const filtered =
-        getFilteredStudents();
 
-      tableBody.innerHTML =
-        '';
+/* =========================================================
+   الاختبارات
+========================================================= */
 
-      if (
-        filtered.length ===
-        0
-      ) {
+function renderTests() {
 
-        emptyMessage.style.display =
-          'block';
+  const box =
+    document.getElementById(
+      'testsEditor'
+    );
 
-        const title =
-          emptyMessage.querySelector(
-            'strong'
+
+  const items =
+    profile.tests ||
+    [];
+
+
+  if (!items.length) {
+
+    box.innerHTML = `
+
+      <div
+        style="
+          padding:18px;
+          text-align:center;
+          color:#718078;
+          background:#f7faf8;
+          border-radius:14px;
+        "
+      >
+        لا يوجد اختبارات مسجلة بعد.
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    items.map(
+      (
+        item,
+        index
+      ) => {
+
+        const points =
+          getTestPointsByResult(
+            item.result
           );
 
-        if (
-          statusFilter.value ===
-          'rejected'
-        ) {
 
-          title.textContent =
-            'لا يوجد طلاب غير مقبولين';
+        return `
 
-        }
+          <div
+            class="editor-row"
+          >
 
-        else if (
-          statusFilter.value ===
-          'expelled'
-        ) {
+            <div
+              class="editor-row-head"
+            >
 
-          title.textContent =
-            'لا يوجد طلاب مفصولون';
-
-        }
-
-        else {
-
-          title.textContent =
-            'لا يوجد طلاب';
-        }
-
-        return;
-      }
-
-      emptyMessage.style.display =
-        'none';
-
-      filtered.forEach(
-        student => {
-
-          const row =
-            document.createElement(
-              'tr'
-            );
-
-          const statusInfo =
-            getStatusInfo(
-              student.status
-            );
-
-          const firstLetter =
-            (
-              student.name ||
-              '?'
-            )
-              .trim()
-              .charAt(0);
-
-          const pointsText =
-            formatPoints(
-              student._points
-            );
-
-          const permanentDelete =
-            student.status ===
-              'rejected' ||
-            student.status ===
-              'expelled';
-
-          row.innerHTML = `
-
-            <td>
-
-              <div class="student-name">
-
-                <div class="student-avatar">
-
-                  ${escapeHtml(
-                    firstLetter
-                  )}
-
-                </div>
-
-                <div>
-
-                  <a
-                    class="student-name-link"
-                    href="student-details.html?id=${encodeURIComponent(
-                      student.id
-                    )}"
-                    title="فتح ملف الطالب">
-
-                    ${escapeHtml(
-                      student.name || ''
-                    )}
-
-                  </a>
-
-                  <div class="student-subinfo">
-
-                    التقييم:
-                    <strong>
-                      ${student._score}
-                      / 100
-                    </strong>
-
-                    ·
-
-                    النقاط:
-                    <strong>
-                      ${escapeHtml(
-                        pointsText
-                      )}
-                    </strong>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-            </td>
-
-            <td>
-
-              <span class="section-badge">
-
-                ${escapeHtml(
-                  student.section ||
-                  '-'
-                )}
-
-              </span>
-
-            </td>
-
-            <td>
-
-              ${
-                student.memorization
-                  ? `
-
-                    <span class="memorization">
-
-                      ${escapeHtml(
-                        student.memorization
-                      )}
-
-                    </span>
-
-                  `
-                  : `
-
-                    <span class="no-data">
-
-                      لم يحدد
-
-                    </span>
-
-                  `
-              }
-
-            </td>
-
-            <td>
-
-              <span class="status ${statusInfo.className}">
-
-                ${statusInfo.text}
-
-              </span>
-
-            </td>
-
-            <td>
-
-              <span class="score-badge">
-
-                ${student._score}
-                / 100
-
-              </span>
-
-            </td>
-
-            <td>
-
-              <span class="points-badge">
-
-                ${escapeHtml(
-                  pointsText
-                )}
-
-              </span>
-
-            </td>
-
-            <td>
-
-              <div class="actions">
-
-                <button
-                  class="action-btn edit-btn"
-                  title="تعديل"
-                  type="button"
-                  onclick="editStudent('${student.id}')">
-
-                  <i class="fa-solid fa-pen"></i>
-
-                </button>
-
+              <span
+                class="editor-row-title"
+              >
                 ${
-                  permanentDelete
-                    ? `
-
-                      <button
-                        class="action-btn delete-btn"
-                        title="حذف نهائي"
-                        type="button"
-                        onclick="deleteStudent('${student.id}')">
-
-                        <i class="fa-solid fa-trash"></i>
-
-                      </button>
-
-                    `
-                    : `
-
-                      <button
-                        class="action-btn expel-btn"
-                        title="فصل الطالب"
-                        type="button"
-                        onclick="deleteStudent('${student.id}')">
-
-                        <i class="fa-solid fa-user-slash"></i>
-
-                      </button>
-
-                    `
+                  escapeHtml(
+                    item.name ||
+                    `اختبار #${index + 1}`
+                  )
                 }
+              </span>
+
+
+              <button
+                class="remove"
+                onclick="
+                  removeTest(
+                    ${index}
+                  )
+                "
+              >
+                حذف
+              </button>
+
+            </div>
+
+
+            <div
+              class="editor-grid"
+            >
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  اسم الاختبار
+                </label>
+
+                <input
+                  value="${escapeHtml(
+                    item.name || ''
+                  )}"
+                  placeholder="مثال: اختبار الجزء 20"
+                  data-test-name="${index}"
+                >
 
               </div>
 
-            </td>
 
-          `;
+              <div
+                class="field"
+              >
 
-          tableBody.appendChild(
-            row
-          );
-        }
-      );
-    }
+                <label>
+                  التاريخ
+                </label>
 
-    function updateStats() {
+                <input
+                  type="date"
+                  value="${escapeHtml(
+                    item.date || ''
+                  )}"
+                  data-test-date="${index}"
+                >
 
-      totalStudents.textContent =
-        students.length;
+              </div>
 
-      activeStudents.textContent =
-        students.filter(
-          student =>
-            student.status ===
-            'active'
-        ).length;
 
-      memorizedStudents.textContent =
-        students.filter(
-          student =>
-            student.memorization &&
-            String(
-              student.memorization
-            ).trim() !== ''
-        ).length;
-    }
+              <div
+                class="field"
+              >
 
-    function openAddModal() {
+                <label>
+                  النتيجة
+                </label>
 
-      editingStudentId =
-        null;
+                <select
+                  data-test-result="${index}"
+                >
 
-      modalTitle.textContent =
-        'إضافة طالب جديد';
+                  <option value="">
+                    اختر النتيجة
+                  </option>
 
-      saveButton.innerHTML =
-        '<i class="fa-solid fa-check"></i> حفظ الطالب';
+                  <option
+                    ${
+                      item.result === 'ممتاز'
+                      ||
+                      item.result === 'ممتاز+'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    ممتاز
+                  </option>
 
-      studentForm.reset();
+                  <option
+                    ${
+                      item.result === 'جيد جداً'
+                      ||
+                      item.result === 'جيد جدًا'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    جيد جداً
+                  </option>
 
-      document.getElementById(
-        'studentStatus'
-      ).value =
-        'active';
+                  <option
+                    ${
+                      item.result === 'جيد'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    جيد
+                  </option>
 
-      message.textContent =
-        '';
+                  <option
+                    ${
+                      item.result === 'غير مجتاز'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    غير مجتاز
+                  </option>
 
-      modal.classList.add(
-        'show'
-      );
-    }
+                </select>
 
-    openModal.addEventListener(
-      'click',
-      openAddModal
-    );
+              </div>
 
-    window.editStudent =
-      function(
-        id
-      ) {
 
-        const student =
-          students.find(
-            item =>
-              String(
-                item.id
-              ) ===
-              String(id)
-          );
+              <div
+                class="field"
+              >
 
-        if (!student) return;
+                <label>
+                  النقاط
+                </label>
 
-        editingStudentId =
-          id;
+                <input
+                  readonly
+                  value="${formatNumber(
+                    points,
+                    1
+                  )}"
+                >
 
-        modalTitle.textContent =
-          'تعديل بيانات الطالب';
+              </div>
 
-        saveButton.innerHTML =
-          '<i class="fa-solid fa-check"></i> حفظ التعديلات';
+            </div>
 
-        document.getElementById(
-          'studentName'
-        ).value =
-          student.name ||
-          '';
+          </div>
 
-        document.getElementById(
-          'studentSection'
-        ).value =
-          student.section ||
-          '';
+        `;
 
-        document.getElementById(
-          'memorization'
-        ).value =
-          student.memorization ||
-          '';
+      }
+    )
+    .join('');
 
-        document.getElementById(
-          'studentStatus'
-        ).value =
-          student.status ||
-          'active';
+}
 
-        message.textContent =
-          '';
 
-        modal.classList.add(
-          'show'
-        );
+function addTest() {
+
+  profile.tests.unshift({
+
+    name: '',
+
+    date:
+      todayISO(),
+
+    result: ''
+
+  });
+
+
+  renderTests();
+
+}
+
+
+function removeTest(
+  index
+) {
+
+  profile.tests.splice(
+    index,
+    1
+  );
+
+
+  renderTests();
+
+}
+
+
+function collectTests() {
+
+  return profile.tests.map(
+    (
+      item,
+      index
+    ) => {
+
+      const result =
+        document.querySelector(
+          `[data-test-result="${index}"]`
+        )?.value || '';
+
+
+      return {
+
+        name:
+          document.querySelector(
+            `[data-test-name="${index}"]`
+          )?.value || '',
+
+        date:
+          document.querySelector(
+            `[data-test-date="${index}"]`
+          )?.value || '',
+
+        result,
+
+        points:
+          getTestPointsByResult(
+            result
+          )
+
       };
 
-    studentForm.addEventListener(
-      'submit',
-      async function(
-        event
-      ) {
+    }
+  );
 
-        event.preventDefault();
+}
 
-        const name =
-          document.getElementById(
-            'studentName'
-          ).value.trim();
 
-        const section =
-          document.getElementById(
-            'studentSection'
-          ).value;
+/* =========================================================
+   التسميع
+========================================================= */
 
-        const memorization =
-          document.getElementById(
-            'memorization'
-          ).value.trim();
+function renderRecitations() {
 
-        const status =
-          document.getElementById(
-            'studentStatus'
-          ).value;
+  const box =
+    document.getElementById(
+      'recitationsEditor'
+    );
 
-        if (
-          !name ||
-          !section
-        ) {
 
-          message.style.color =
-            'var(--danger)';
+  const items =
+    profile.recitations ||
+    [];
 
-          message.textContent =
-            'يرجى تعبئة البيانات المطلوبة.';
 
-          return;
-        }
+  if (!items.length) {
 
-        saveButton.disabled =
-          true;
+    box.innerHTML = `
 
-        saveButton.innerHTML =
-          '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الحفظ...';
+      <div
+        style="
+          padding:18px;
+          text-align:center;
+          color:#718078;
+          background:#f7faf8;
+          border-radius:14px;
+        "
+      >
+        لم يتم تسجيل أي تسميع بعد.
+      </div>
 
-        try {
+    `;
 
-          if (
-            editingStudentId
-          ) {
+    return;
 
-            const {
-              data,
-              error
-            } =
-              await supabaseClient
-                .from(
-                  'students'
-                )
-                .update({
-                  name,
-                  section,
-                  memorization,
-                  status
-                })
-                .eq(
-                  'id',
-                  editingStudentId
-                )
-                .select()
-                .single();
+  }
 
-            if (error) {
-              throw error;
-            }
 
-            students =
-              students.map(
-                student =>
-                  String(
-                    student.id
-                  ) ===
-                  String(
-                    editingStudentId
+  box.innerHTML =
+    items.map(
+      (
+        item,
+        index
+      ) => {
+
+        const grade =
+          getRecitationGrade(
+            item.score
+          );
+
+
+        const points =
+          getRecitationPoints(
+            item
+          );
+
+
+        return `
+
+          <div
+            class="editor-row"
+            id="recitation-row-${index}"
+          >
+
+            <div
+              class="editor-row-head"
+            >
+
+              <span
+                class="editor-row-title"
+              >
+                📖 صفحة
+                ${
+                  escapeHtml(
+                    item.page || '—'
                   )
-                    ? data
-                    : student
-              );
+                }
+              </span>
 
-            showToast(
-              'تم تعديل بيانات الطالب بنجاح.'
-            );
 
-          }
+              <button
+                class="remove"
+                onclick="
+                  removeRecitation(
+                    ${index}
+                  )
+                "
+              >
+                حذف
+              </button>
 
-          else {
+            </div>
 
-            const {
-              data,
-              error
-            } =
-              await supabaseClient
-                .from(
-                  'students'
-                )
-                .insert([
-                  {
-                    name,
-                    section,
-                    memorization,
-                    status
-                  }
-                ])
-                .select()
-                .single();
 
-            if (error) {
-              throw error;
-            }
+            <div
+              class="editor-grid"
+            >
 
-            students.unshift(
-              data
-            );
+              <div
+                class="field"
+              >
 
-            showToast(
-              'تمت إضافة الطالب بنجاح.'
-            );
-          }
+                <label>
+                  التاريخ
+                </label>
 
-          await loadProfiles();
+                <input
+                  type="date"
+                  value="${escapeHtml(
+                    item.date || ''
+                  )}"
+                  data-rec-date="${index}"
+                >
 
-          renderStudents();
+              </div>
 
-          updateStats();
 
-          closeStudentModal();
+              <div
+                class="field"
+              >
 
-        }
+                <label>
+                  رقم الصفحة
+                </label>
 
-        catch (error) {
+                <input
+                  type="number"
+                  min="1"
+                  max="604"
+                  value="${escapeHtml(
+                    item.page || ''
+                  )}"
+                  placeholder="1 - 604"
+                  data-rec-page="${index}"
+                >
 
-          console.error(
-            error
-          );
+              </div>
 
-          message.style.color =
-            'var(--danger)';
 
-          message.textContent =
-            'حدث خطأ أثناء حفظ الطالب.';
+              <div
+                class="field"
+              >
 
-        }
+                <label>
+                  النوع
+                </label>
 
-        finally {
+                <select
+                  data-rec-type="${index}"
+                  onchange="
+                    refreshRecitationPreview(
+                      ${index}
+                    )
+                  "
+                >
 
-          saveButton.disabled =
-            false;
+                  <option
+                    value="hifz"
+                    ${
+                      item.type === 'hifz'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    حفظ جديد
+                  </option>
 
-          saveButton.innerHTML =
-            '<i class="fa-solid fa-check"></i> حفظ الطالب';
+                  <option
+                    value="review"
+                    ${
+                      item.type === 'review'
+                        ? 'selected'
+                        : ''
+                    }
+                  >
+                    مراجعة
+                  </option>
 
-        }
+                </select>
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  الدرجة من 100
+                </label>
+
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="${escapeHtml(
+                    item.score ?? ''
+                  )}"
+                  placeholder="مثال: 97"
+                  data-rec-score="${index}"
+                  oninput="
+                    refreshRecitationPreview(
+                      ${index}
+                    )
+                  "
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  التقدير التلقائي
+                </label>
+
+                <div
+                  id="grade-preview-${index}"
+                  class="
+                    grade-preview
+                    ${grade.className}
+                  "
+                >
+                  ${escapeHtml(
+                    grade.label
+                  )}
+                </div>
+
+              </div>
+
+
+              <div
+                class="field"
+              >
+
+                <label>
+                  نقاط التسميع
+                </label>
+
+                <input
+                  id="points-preview-${index}"
+                  readonly
+                  value="${formatNumber(
+                    points,
+                    1
+                  )}"
+                >
+
+              </div>
+
+
+              <div
+                class="field"
+                style="
+                  grid-column:1 / -1;
+                "
+              >
+
+                <label>
+                  ملاحظة على الصفحة
+                </label>
+
+                <input
+                  value="${escapeHtml(
+                    item.note || ''
+                  )}"
+                  placeholder="مثال: أخطاء في بداية الصفحة"
+                  data-rec-note="${index}"
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+        `;
 
       }
+    )
+    .join('');
+
+}
+
+
+function refreshRecitationPreview(
+  index
+) {
+
+  const score =
+    document.querySelector(
+      `[data-rec-score="${index}"]`
+    )?.value;
+
+
+  const type =
+    document.querySelector(
+      `[data-rec-type="${index}"]`
+    )?.value ||
+    'hifz';
+
+
+  const grade =
+    getRecitationGrade(
+      score
     );
 
-    window.deleteStudent =
-      async function(
-        id
-      ) {
 
-        const student =
-          students.find(
-            item =>
-              String(
-                item.id
-              ) ===
-              String(id)
-          );
+  const points =
+    getRecitationPoints({
 
-        if (!student) return;
+      type,
 
-        const isPermanentDelete =
-          student.status ===
-            'rejected' ||
-          student.status ===
-            'expelled';
+      score
 
-        if (
-          isPermanentDelete
-        ) {
+    });
 
-          const confirmed =
-            confirm(
-              `سيتم حذف الطالب "${student.name}" نهائيًا من قاعدة البيانات. لا يمكن التراجع عن هذه العملية. هل تريد المتابعة؟`
+
+  const gradeElement =
+    document.getElementById(
+      `grade-preview-${index}`
+    );
+
+
+  const pointsElement =
+    document.getElementById(
+      `points-preview-${index}`
+    );
+
+
+  if (gradeElement) {
+
+    gradeElement.className =
+      `grade-preview ${grade.className}`;
+
+    gradeElement.textContent =
+      grade.label;
+
+  }
+
+
+  if (pointsElement) {
+
+    pointsElement.value =
+      formatNumber(
+        points,
+        1
+      );
+
+  }
+
+}
+
+
+function addRecitation() {
+
+  profile.recitations.unshift({
+
+    date:
+      todayISO(),
+
+    page: '',
+
+    type:
+      'hifz',
+
+    score:
+      '',
+
+    grade:
+      '',
+
+    note:
+      ''
+
+  });
+
+
+  renderRecitations();
+
+
+  const firstPage =
+    document.querySelector(
+      '[data-rec-page="0"]'
+    );
+
+
+  if (firstPage) {
+
+    firstPage.focus();
+
+  }
+
+}
+
+
+function removeRecitation(
+  index
+) {
+
+  profile.recitations.splice(
+    index,
+    1
+  );
+
+
+  renderRecitations();
+
+}
+
+
+function collectRecitations() {
+
+  return profile.recitations.map(
+    (
+      item,
+      index
+    ) => {
+
+      const type =
+        document.querySelector(
+          `[data-rec-type="${index}"]`
+        )?.value ||
+        'hifz';
+
+
+      const scoreRaw =
+        document.querySelector(
+          `[data-rec-score="${index}"]`
+        )?.value;
+
+
+      const score =
+        scoreRaw === ''
+          ? ''
+          : clamp(
+              scoreRaw,
+              0,
+              100
             );
 
-          if (!confirmed) return;
 
-          const {
-            error
-          } =
-            await supabaseClient
-              .from(
-                'students'
-              )
-              .delete()
-              .eq(
-                'id',
-                id
-              );
+      const grade =
+        score === ''
+          ? ''
+          : getRecitationGrade(
+              score
+            ).label;
 
-          if (error) {
 
-            console.error(
-              error
-            );
+      return {
 
-            showToast(
-              'حدث خطأ أثناء الحذف النهائي للطالب.',
-              'error'
-            );
+        date:
+          document.querySelector(
+            `[data-rec-date="${index}"]`
+          )?.value || '',
 
-            return;
-          }
+        page:
+          number(
+            document.querySelector(
+              `[data-rec-page="${index}"]`
+            )?.value
+          ),
 
-          students =
-            students.filter(
-              item =>
-                String(
-                  item.id
-                ) !==
-                String(id)
-            );
+        type,
 
-          delete profileMap[
-            String(id)
-          ];
+        score,
 
-          renderStudents();
+        grade,
 
-          updateStats();
+        note:
+          document.querySelector(
+            `[data-rec-note="${index}"]`
+          )?.value || ''
 
-          showToast(
-            'تم حذف الطالب نهائيًا.'
-          );
-
-          return;
-        }
-
-        const confirmed =
-          confirm(
-            `سيتم فصل الطالب "${student.name}" ونقله إلى قائمة المفصولين. لن تُحذف بياناته. هل تريد المتابعة؟`
-          );
-
-        if (!confirmed) return;
-
-        const {
-          data,
-          error
-        } =
-          await supabaseClient
-            .from(
-              'students'
-            )
-            .update({
-              status:
-                'expelled'
-            })
-            .eq(
-              'id',
-              id
-            )
-            .select()
-            .single();
-
-        if (error) {
-
-          console.error(
-            error
-          );
-
-          showToast(
-            'حدث خطأ أثناء فصل الطالب.',
-            'error'
-          );
-
-          return;
-        }
-
-        students =
-          students.map(
-            item =>
-              String(
-                item.id
-              ) ===
-              String(id)
-                ? data
-                : item
-          );
-
-        renderStudents();
-
-        updateStats();
-
-        showToast(
-          'تم فصل الطالب ونقله إلى قائمة المفصولين.'
-        );
       };
 
-    function closeStudentModal() {
-
-      modal.classList.remove(
-        'show'
-      );
-
-      studentForm.reset();
-
-      message.textContent =
-        '';
-
-      editingStudentId =
-        null;
-
-      saveButton.disabled =
-        false;
-
-      saveButton.innerHTML =
-        '<i class="fa-solid fa-check"></i> حفظ الطالب';
     }
+  ).filter(
+    item =>
+      item.page >= 1 &&
+      item.page <= 604
+  );
 
-    closeModal.addEventListener(
-      'click',
-      closeStudentModal
+}
+
+
+/* =========================================================
+   خريطة القرآن
+========================================================= */
+
+function getPageState(
+  page
+) {
+
+  const hifz =
+    getHifzPageSet();
+
+
+  const review =
+    getReviewPageSet();
+
+
+  const hasHifz =
+    hifz.has(page);
+
+
+  const hasReview =
+    review.has(page);
+
+
+  if (
+    hasHifz &&
+    hasReview
+  ) {
+    return 'both';
+  }
+
+
+  if (hasHifz)
+    return 'hifz';
+
+
+  if (hasReview)
+    return 'review';
+
+
+  return '';
+
+}
+
+
+function renderQuranMap() {
+
+  const box =
+    document.getElementById(
+      'quranMap'
     );
 
-    cancelButton.addEventListener(
-      'click',
-      closeStudentModal
-    );
 
-    modal.addEventListener(
-      'click',
-      function(
-        event
-      ) {
+  if (!box)
+    return;
 
-        if (
-          event.target ===
-          modal
-        ) {
 
-          closeStudentModal();
+  let html =
+    '';
 
-        }
-      }
-    );
 
-    searchInput.addEventListener(
-      'input',
-      renderStudents
-    );
+  for (
+    let juz = 1;
+    juz <= 30;
+    juz++
+  ) {
 
-    sectionFilter.addEventListener(
-      'change',
-      renderStudents
-    );
+    const info =
+      getJuzInfo(juz);
 
-    statusFilter.addEventListener(
-      'change',
-      renderStudents
-    );
 
-    sortFilter.addEventListener(
-      'change',
-      renderStudents
-    );
+    let completed =
+      0;
 
-    document
-      .getElementById(
-        'logoutButton'
-      )
-      .addEventListener(
-        'click',
-        logout
-      );
 
-    function logout() {
+    let pagesHtml =
+      '';
 
-      localStorage.removeItem(
-        'teacherAccess'
-      );
 
-      window.location.href =
-        'teacher-login.html';
-    }
-
-    const sidebar =
-      document.getElementById(
-        'sidebar'
-      );
-
-    document
-      .getElementById(
-        'mobileMenu'
-      )
-      .addEventListener(
-        'click',
-        function() {
-
-          sidebar.classList.add(
-            'open'
-          );
-
-        }
-      );
-
-    document
-      .getElementById(
-        'closeSidebar'
-      )
-      .addEventListener(
-        'click',
-        function() {
-
-          sidebar.classList.remove(
-            'open'
-          );
-
-        }
-      );
-
-    document
-      .querySelector(
-        '.sidebar-brand'
-      )
-      .addEventListener(
-        'click',
-        function() {
-
-          sidebar.classList.remove(
-            'open'
-          );
-
-        }
-      );
-
-    document
-      .getElementById(
-        'studentsNav'
-      )
-      .addEventListener(
-        'click',
-        function() {
-
-          document
-            .getElementById(
-              'studentsPanel'
-            )
-            .scrollIntoView({
-              behavior:
-                'smooth'
-            });
-
-          sidebar.classList.remove(
-            'open'
-          );
-        }
-      );
-
-    document
-      .getElementById(
-        'requestsNav'
-      )
-      .addEventListener(
-        'click',
-        function() {
-
-          document
-            .getElementById(
-              'requestsPanel'
-            )
-            .scrollIntoView({
-              behavior:
-                'smooth'
-            });
-
-          sidebar.classList.remove(
-            'open'
-          );
-        }
-      );
-
-    document
-      .getElementById(
-        'memorizationNav'
-      )
-      .addEventListener(
-        'click',
-        function() {
-
-          document
-            .getElementById(
-              'studentsPanel'
-            )
-            .scrollIntoView({
-              behavior:
-                'smooth'
-            });
-
-          sidebar.classList.remove(
-            'open'
-          );
-        }
-      );
-
-    function escapeHtml(
-      text
+    for (
+      let page =
+        info.start;
+      page <= info.end;
+      page++
     ) {
 
-      return String(
-        text
-      )
-        .replaceAll(
-          '&',
-          '&amp;'
-        )
-        .replaceAll(
-          '<',
-          '&lt;'
-        )
-        .replaceAll(
-          '>',
-          '&gt;'
-        )
-        .replaceAll(
-          '"',
-          '&quot;'
-        )
-        .replaceAll(
-          "'",
-          '&#039;'
+      const state =
+        getPageState(
+          page
         );
-    }
 
-    (async function() {
 
-      const loggedIn =
-        checkUser();
+      if (state)
+        completed++;
 
-      if (!loggedIn) {
-        return;
+
+      let stateText =
+        'غير مسجلة';
+
+
+      if (
+        state === 'hifz'
+      ) {
+
+        stateText =
+          'حفظ جديد';
+
       }
 
-      await loadStudents();
+      else if (
+        state === 'review'
+      ) {
 
-      await loadPendingRequests();
+        stateText =
+          'مراجعة';
 
-    })();
+      }
 
-  </script>
+      else if (
+        state === 'both'
+      ) {
+
+        stateText =
+          'حفظ + مراجعة';
+
+      }
+
+
+      pagesHtml += `
+
+        <div
+          class="
+            page-dot
+            ${state}
+          "
+          title="
+            صفحة ${page} —
+            ${stateText}
+          "
+          onclick="
+            showPageInfo(
+              ${page}
+            )
+          "
+        >
+          ${page}
+        </div>
+
+      `;
+
+    }
+
+
+    html += `
+
+      <div
+        class="juz-card"
+      >
+
+        <div
+          class="juz-head"
+        >
+
+          <span
+            class="juz-title"
+          >
+            الجزء ${juz}
+          </span>
+
+
+          <span
+            class="juz-count"
+          >
+            ${completed}/${info.length}
+          </span>
+
+        </div>
+
+
+        <div
+          class="juz-range"
+        >
+          الصفحات
+          ${info.start}
+          -
+          ${info.end}
+        </div>
+
+
+        <div
+          class="page-grid"
+        >
+          ${pagesHtml}
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+  box.innerHTML =
+    html;
+
+}
+
+
+function showPageInfo(
+  page
+) {
+
+  const records =
+    profile.recitations.filter(
+      item =>
+        number(item.page) === page
+    );
+
+
+  if (!records.length) {
+
+    alert(
+      `📖 صفحة ${page}\n\nلا يوجد سجل لهذه الصفحة حتى الآن.`
+    );
+
+    return;
+
+  }
+
+
+  const details =
+    records.map(
+      item => {
+
+        const grade =
+          getRecitationGrade(
+            item.score
+          );
+
+
+        const points =
+          getRecitationPoints(
+            item
+          );
+
+
+        const type =
+          item.type === 'review'
+            ? 'مراجعة'
+            : 'حفظ جديد';
+
+
+        return [
+
+          `النوع: ${type}`,
+
+          `التاريخ: ${formatDate(
+            item.date
+          )}`,
+
+          `الدرجة: ${
+            item.score === ''
+              ? 'غير مسجلة'
+              : item.score + '%'
+          }`,
+
+          `التقدير: ${
+            grade.label
+          }`,
+
+          `النقاط: ${
+            formatNumber(
+              points,
+              1
+            )
+          }`,
+
+          `الملاحظة: ${
+            item.note ||
+            'لا توجد'
+          }`
+
+        ].join('\n');
+
+      }
+    )
+    .join(
+      '\n\n----------------\n\n'
+    );
+
+
+  alert(
+    `📖 تفاصيل الصفحة ${page}\n\n${details}`
+  );
+
+}
+
+
+/* =========================================================
+   حفظ جميع البيانات
+========================================================= */
+
+async function saveProfile() {
+
+  hideMessage();
+
+
+  const button =
+    document.getElementById(
+      'saveButton'
+    );
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    'جاري الحفظ...';
+
+
+  try {
+
+    const studentUpdate = {
+
+      name:
+        document
+          .getElementById(
+            'name'
+          )
+          .value
+          .trim(),
+
+      section:
+        document
+          .getElementById(
+            'section'
+          )
+          .value
+          .trim(),
+
+      memorization:
+        document
+          .getElementById(
+            'memorization'
+          )
+          .value
+          .trim(),
+
+      status:
+        document
+          .getElementById(
+            'status'
+          )
+          .value
+
+    };
+
+
+    if (
+      !studentUpdate.name
+    ) {
+
+      throw new Error(
+        'اسم الطالب مطلوب.'
+      );
+
+    }
+
+
+    /*
+      أولاً تحديث جدول الطلاب
+    */
+
+    const {
+      error:
+        studentError
+    } =
+      await supabaseClient
+
+        .from('students')
+
+        .update(
+          studentUpdate
+        )
+
+        .eq(
+          'id',
+          studentId
+        );
+
+
+    if (studentError)
+      throw studentError;
+
+
+    /*
+      جمع البيانات
+    */
+
+    const newProfile = {
+
+      photoUrl:
+        profile.photoUrl ||
+        '',
+
+      guardianPhone:
+        document
+          .getElementById(
+            'guardianPhone'
+          )
+          .value
+          .trim(),
+
+      joiningDate:
+        document
+          .getElementById(
+            'joiningDate'
+          )
+          .value,
+
+      residence:
+        document
+          .getElementById(
+            'residence'
+          )
+          .value
+          .trim(),
+
+      bus:
+        document
+          .getElementById(
+            'bus'
+          )
+          .value
+          .trim(),
+
+      homeLocation:
+        document
+          .getElementById(
+            'homeLocation'
+          )
+          .value
+          .trim(),
+
+
+      weeklyGoal: {
+
+        hifz:
+          number(
+            document
+              .getElementById(
+                'goalHifz'
+              )
+              .value
+          ),
+
+        review:
+          number(
+            document
+              .getElementById(
+                'goalReview'
+              )
+              .value
+          )
+
+      },
+
+
+      attendance:
+        collectAttendance(),
+
+
+      weeklyPlan:
+        collectPlan(),
+
+
+      tests:
+        collectTests(),
+
+
+      recitations:
+        collectRecitations(),
+
+
+      notes:
+        document
+          .getElementById(
+            'notes'
+          )
+          .value
+          .trim()
+
+    };
+
+
+    /*
+      حفظ profile داخل
+      student_profiles
+    */
+
+    const {
+      error:
+        profileError
+    } =
+      await supabaseClient
+
+        .from(
+          'student_profiles'
+        )
+
+        .upsert({
+
+          student_id:
+            String(
+              studentId
+            ),
+
+          data:
+            newProfile,
+
+          updated_at:
+            new Date()
+              .toISOString()
+
+        });
+
+
+    if (profileError)
+      throw profileError;
+
+
+    /*
+      تحديث البيانات الحالية
+    */
+
+    profile =
+      mergeProfile(
+        newProfile
+      );
+
+
+    student = {
+
+      ...student,
+
+      ...studentUpdate
+
+    };
+
+
+    showMessage(
+      'تم حفظ جميع البيانات وإعادة احتساب النسب والنقاط وحالة الخطة تلقائياً ✅',
+      'success'
+    );
+
+
+    render();
+
+
+  } catch (
+    error
+  ) {
+
+    console.error(
+      'SAVE ERROR:',
+      error
+    );
+
+
+    showMessage(
+      error.message ||
+      'حدث خطأ أثناء حفظ البيانات.',
+      'error'
+    );
+
+
+  } finally {
+
+    button =
+      document.getElementById(
+        'saveButton'
+      );
+
+
+    if (button) {
+
+      button.disabled =
+        false;
+
+      button.textContent =
+        '💾 حفظ جميع التعديلات';
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   تشغيل الصفحة
+========================================================= */
+
+loadStudent();
+
+</script>
 
 </body>
 </html>
