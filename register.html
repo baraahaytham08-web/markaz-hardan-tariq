@@ -106,12 +106,67 @@
       border-radius: 12px;
     }
 
+    .direct-button {
+      background: #174d3a;
+      color: white;
+    }
+
+    .direct-button:hover {
+      background: #103b2c;
+    }
+
+    .whatsapp-button {
+      background: #b8943d;
+      color: white;
+    }
+
+    .whatsapp-button:hover {
+      opacity: 0.92;
+    }
+
+    .button-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 2px 0;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .button-divider::before,
+    .button-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #ddd;
+    }
+
     .form-note {
       text-align: center;
       font-size: 14px;
       opacity: 0.7;
       line-height: 1.7;
       margin-top: 5px;
+    }
+
+    .success-message,
+    .error-message {
+      display: none;
+      text-align: center;
+      padding: 14px;
+      border-radius: 12px;
+      line-height: 1.7;
+      font-weight: bold;
+    }
+
+    .success-message {
+      background: #edf5f1;
+      color: #174d3a;
+    }
+
+    .error-message {
+      background: #fff0f0;
+      color: #a33;
     }
 
     @media (max-width: 600px) {
@@ -149,8 +204,7 @@
           <h1>التسجيل الإلكتروني 📝</h1>
 
           <p>
-            أدخل بيانات الطالب المطلوبة، وبعد الإرسال سيتم تحويلك إلى واتساب
-            لإرسال طلب التسجيل إلى المركز.
+            أدخل بيانات الطالب المطلوبة واختر طريقة إرسال طلب التسجيل.
           </p>
 
         </div>
@@ -236,15 +290,46 @@
           </div>
 
 
+          <!-- التسجيل المباشر -->
           <button
-            type="submit"
-            class="btn btn-gold submit-button"
+            type="button"
+            id="directRegisterButton"
+            class="submit-button direct-button"
+          >
+            التسجيل مباشرة داخل الموقع ✅
+          </button>
+
+
+          <div class="button-divider">
+            أو
+          </div>
+
+
+          <!-- التسجيل عبر واتساب -->
+          <button
+            type="button"
+            id="whatsappButton"
+            class="submit-button whatsapp-button"
           >
             إرسال طلب التسجيل عبر واتساب 📝
           </button>
 
+
+          <div id="successMessage" class="success-message">
+            تم تسجيل الطالب بنجاح ✅
+            <br>
+            شكرًا لتسجيلكم في مركز حردان طارق القرآني.
+          </div>
+
+
+          <div id="errorMessage" class="error-message">
+            حدث خطأ أثناء التسجيل، يرجى المحاولة مرة أخرى.
+          </div>
+
+
           <div class="form-note">
-            لن يتم حفظ البيانات داخل الموقع، وسيتم إرسالها مباشرة إلى المركز عبر واتساب.
+            التسجيل المباشر يحفظ بيانات الطالب في نظام المركز،
+            أما التسجيل عبر واتساب فيرسل الطلب مباشرة إلى المركز.
           </div>
 
         </form>
@@ -256,56 +341,204 @@
   </main>
 
 
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
   <script>
-    document.getElementById('registrationForm').addEventListener('submit', function(event) {
 
-      event.preventDefault();
+    const SUPABASE_URL =
+      'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-      const studentName =
-        document.getElementById('studentName').value.trim();
+    const SUPABASE_PUBLISHABLE_KEY =
+      'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
-      const studentAge =
-        document.getElementById('studentAge').value.trim();
-
-      const guardianPhone =
-        document.getElementById('guardianPhone').value.trim();
-
-      const program =
-        document.getElementById('program').value;
-
-      const notes =
-        document.getElementById('notes').value.trim();
-
-
-      const message = [
-        'السلام عليكم، أرغب بتسجيل طالب في مركز حردان طارق القرآني.',
-        '',
-        `اسم الطالب: ${studentName}`,
-        `العمر: ${studentAge}`,
-        `رقم ولي الأمر: ${guardianPhone}`,
-        `الشعبة المطلوبة: ${program}`,
-        `ملاحظات إضافية: ${notes || 'لا يوجد'}`,
-        '',
-        'تم إرسال الطلب من الموقع الإلكتروني للمركز.'
-      ].join('\n');
-
-
-      const whatsappURL =
-        'https://wa.me/962780791622?text=' +
-        encodeURIComponent(message);
-
-
-      const opened = window.open(
-        whatsappURL,
-        '_blank',
-        'noopener'
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
       );
 
-      if (!opened) {
-        window.location.href = whatsappURL;
+
+    const form =
+      document.getElementById('registrationForm');
+
+    const directRegisterButton =
+      document.getElementById('directRegisterButton');
+
+    const whatsappButton =
+      document.getElementById('whatsappButton');
+
+    const successMessage =
+      document.getElementById('successMessage');
+
+    const errorMessage =
+      document.getElementById('errorMessage');
+
+
+    function getFormData() {
+
+      return {
+
+        studentName:
+          document.getElementById('studentName').value.trim(),
+
+        studentAge:
+          document.getElementById('studentAge').value.trim(),
+
+        guardianPhone:
+          document.getElementById('guardianPhone').value.trim(),
+
+        program:
+          document.getElementById('program').value,
+
+        notes:
+          document.getElementById('notes').value.trim()
+
+      };
+
+    }
+
+
+    function validateForm() {
+
+      if (!form.checkValidity()) {
+
+        form.reportValidity();
+
+        return false;
+
       }
 
-    });
+      return true;
+
+    }
+
+
+    // التسجيل المباشر داخل الموقع
+    directRegisterButton.addEventListener(
+      'click',
+      async function() {
+
+        if (!validateForm()) {
+          return;
+        }
+
+
+        const data = getFormData();
+
+
+        directRegisterButton.disabled = true;
+
+        directRegisterButton.textContent =
+          'جاري تسجيل الطالب...';
+
+
+        successMessage.style.display = 'none';
+
+        errorMessage.style.display = 'none';
+
+
+        const { error } = await supabaseClient
+          .from('students')
+          .insert([
+
+            {
+              name: data.studentName,
+              age: Number(data.studentAge),
+              guardian_phone: data.guardianPhone,
+              section: data.program,
+              memorization: '',
+              status: 'active',
+              notes: data.notes || ''
+            }
+
+          ]);
+
+
+        directRegisterButton.disabled = false;
+
+        directRegisterButton.textContent =
+          'التسجيل مباشرة داخل الموقع ✅';
+
+
+        if (error) {
+
+          console.error(error);
+
+          errorMessage.textContent =
+            'حدث خطأ أثناء التسجيل. يرجى المحاولة مرة أخرى.';
+
+          errorMessage.style.display = 'block';
+
+          return;
+
+        }
+
+
+        successMessage.style.display = 'block';
+
+        form.reset();
+
+      }
+    );
+
+
+    // التسجيل عبر واتساب
+    whatsappButton.addEventListener(
+      'click',
+      function() {
+
+        if (!validateForm()) {
+          return;
+        }
+
+
+        const data = getFormData();
+
+
+        const message = [
+
+          'السلام عليكم، أرغب بتسجيل طالب في مركز حردان طارق القرآني.',
+
+          '',
+
+          `اسم الطالب: ${data.studentName}`,
+
+          `العمر: ${data.studentAge}`,
+
+          `رقم ولي الأمر: ${data.guardianPhone}`,
+
+          `الشعبة المطلوبة: ${data.program}`,
+
+          `ملاحظات إضافية: ${data.notes || 'لا يوجد'}`,
+
+          '',
+
+          'تم إرسال الطلب من الموقع الإلكتروني للمركز.'
+
+        ].join('\n');
+
+
+        const whatsappURL =
+          'https://wa.me/962780791622?text=' +
+          encodeURIComponent(message);
+
+
+        const opened = window.open(
+          whatsappURL,
+          '_blank',
+          'noopener'
+        );
+
+
+        if (!opened) {
+          window.location.href = whatsappURL;
+        }
+
+      }
+    );
+
   </script>
 
 </body>
