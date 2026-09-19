@@ -1,18 +1,19 @@
-```html
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 
 <head>
 
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<meta
+ name="viewport"
+ content="width=device-width, initial-scale=1.0">
 
   <title>لوحة المعلم | مركز حردان طارق القرآني</title>
 
   <link rel="icon" type="image/png" href="logo.png">
+  <link rel="shortcut icon" type="image/png" href="logo.png">
 
   <link
     rel="stylesheet"
@@ -28,29 +29,38 @@
 
     :root {
       --green: #174d3a;
-      --green-dark: #103b2c;
-      --green-light: #edf5f1;
+      --green-dark: #0c3023;
+      --green-mid: #21664b;
+      --green-soft: #eaf4ef;
 
       --gold: #b28b18;
-      --gold-light: #d4b44c;
+      --gold-light: #d9bc5c;
+      --gold-soft: #fff8df;
 
       --cream: #faf8f0;
-
       --white: #ffffff;
 
-      --text: #1f2933;
-      --muted: #74808a;
+      --text: #1d2924;
+      --muted: #78837e;
 
-      --border: #e8ebe8;
-
-      --danger: #b3261e;
-      --danger-light: #fff0ef;
+      --border: #e5ebe7;
 
       --success: #237a31;
-      --success-light: #e9f7eb;
+      --success-soft: #eaf7ec;
+
+      --danger: #b3261e;
+      --danger-soft: #fff0ef;
+
+      --purple: #6653a6;
+      --purple-soft: #f1edff;
 
       --shadow:
-        0 10px 35px rgba(23, 77, 58, .08);
+        0 12px 35px rgba(23,77,58,.07);
+    }
+
+
+    html {
+      scroll-behavior: smooth;
     }
 
 
@@ -61,18 +71,31 @@
         "Tahoma",
         sans-serif;
 
-      background:
-        linear-gradient(
-          135deg,
-          #faf8f0 0%,
-          #ffffff 45%,
-          #edf5f1 100%
-        );
-
       color: var(--text);
 
       min-height: 100vh;
 
+      background:
+        radial-gradient(
+          circle at 8% 8%,
+          rgba(178,139,24,.10),
+          transparent 23%
+        ),
+
+        radial-gradient(
+          circle at 90% 80%,
+          rgba(23,77,58,.10),
+          transparent 28%
+        ),
+
+        linear-gradient(
+          135deg,
+          #faf8f0,
+          #ffffff 48%,
+          #edf5f1
+        );
+
+      overflow-x: hidden;
     }
 
 
@@ -80,16 +103,12 @@
     input,
     select,
     textarea {
-
       font-family: inherit;
-
     }
 
 
     button {
-
       cursor: pointer;
-
     }
 
 
@@ -105,28 +124,62 @@
       right: 0;
       bottom: 0;
 
-      width: 260px;
-
-      background:
-        linear-gradient(
-          180deg,
-          var(--green),
-          var(--green-dark)
-        );
-
-      color: white;
-
-      padding: 25px 18px;
+      width: 275px;
 
       z-index: 50;
 
-      box-shadow:
-        -8px 0 30px rgba(0,0,0,.08);
+      padding: 22px 17px;
 
+      color: white;
+
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(212,180,76,.12),
+          transparent 25%
+        ),
+
+        linear-gradient(
+          160deg,
+          #174d3a,
+          #0c3023
+        );
+
+      box-shadow:
+        -12px 0 40px rgba(0,0,0,.10);
+
+      overflow: hidden;
     }
 
 
-    .sidebar-logo {
+    .sidebar::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 240px;
+      height: 240px;
+
+      border-radius: 50%;
+
+      left: -130px;
+      bottom: -100px;
+
+      background:
+        rgba(255,255,255,.035);
+
+      pointer-events: none;
+    }
+
+
+    /* =====================================================
+       BRAND
+    ===================================================== */
+
+    .sidebar-brand {
+
+      position: relative;
 
       display: flex;
 
@@ -135,80 +188,99 @@
       gap: 12px;
 
       padding:
-        5px 8px 25px;
+        7px 8px 23px;
+
+      margin-bottom: 24px;
+
+      text-decoration: none;
+
+      color: white;
 
       border-bottom:
         1px solid rgba(255,255,255,.12);
 
-      margin-bottom: 25px;
-
+      transition: .25s;
     }
 
 
-    .logo-icon {
+    .sidebar-brand:hover {
+      transform:
+        translateX(-3px);
+    }
 
-      width: 48px;
-      height: 48px;
 
-      border-radius: 14px;
+    .sidebar-logo {
 
-      display: flex;
+      width: 55px;
+      height: 55px;
 
-      align-items: center;
-      justify-content: center;
+      min-width: 55px;
 
-      background:
-        linear-gradient(
-          135deg,
-          var(--gold),
-          var(--gold-light)
-        );
+      border-radius: 50%;
 
-      color: white;
+      overflow: hidden;
 
-      font-size: 22px;
+      background: white;
+
+      border:
+        3px solid rgba(217,188,92,.75);
 
       box-shadow:
-        0 8px 20px rgba(0,0,0,.15);
-
+        0 8px 22px rgba(0,0,0,.20);
     }
 
 
-    .logo-text strong {
+    .sidebar-logo img {
+
+      width: 100%;
+      height: 100%;
 
       display: block;
 
-      font-size: 15px;
+      object-fit: cover;
 
-      margin-bottom: 4px;
-
+      border-radius: 50%;
     }
 
 
-    .logo-text span {
+    .brand-text strong {
 
-      font-size: 11px;
+      display: block;
 
-      color:
-        rgba(255,255,255,.65);
+      font-size: 14px;
 
+      line-height: 1.5;
+
+      margin-bottom: 3px;
     }
 
 
-    .sidebar-title {
+    .brand-text span {
 
       color:
-        rgba(255,255,255,.45);
+        rgba(255,255,255,.58);
 
-      font-size: 11px;
+      font-size: 10px;
+    }
+
+
+    /* =====================================================
+       NAV
+    ===================================================== */
+
+    .sidebar-heading {
+
+      color:
+        rgba(255,255,255,.40);
+
+      font-size: 10px;
 
       font-weight: bold;
 
       margin:
         0 10px 10px;
 
-      letter-spacing: .5px;
-
+      letter-spacing: .4px;
     }
 
 
@@ -216,16 +288,7 @@
 
       width: 100%;
 
-      border: none;
-
-      background: transparent;
-
-      color:
-        rgba(255,255,255,.75);
-
-      padding: 13px 14px;
-
-      border-radius: 11px;
+      min-height: 48px;
 
       display: flex;
 
@@ -233,60 +296,133 @@
 
       gap: 12px;
 
-      font-size: 14px;
+      border: none;
 
-      text-align: right;
+      border-right:
+        3px solid transparent;
+
+      border-radius: 12px;
 
       margin-bottom: 5px;
 
-      transition: .2s;
+      padding:
+        11px 13px;
 
+      background: transparent;
+
+      color:
+        rgba(255,255,255,.70);
+
+      font-size: 13px;
+
+      text-align: right;
+
+      text-decoration: none;
+
+      transition:
+        background .25s,
+        color .25s,
+        transform .25s,
+        border-color .25s;
     }
 
 
     .side-link i {
 
-      width: 20px;
+      width: 21px;
 
       text-align: center;
 
+      font-size: 15px;
     }
 
 
-    .side-link:hover,
-    .side-link.active {
+    .side-link:hover {
 
       background:
-        rgba(255,255,255,.11);
+        rgba(255,255,255,.08);
 
       color: white;
 
+      transform:
+        translateX(-2px);
     }
 
 
     .side-link.active {
 
-      border-right:
-        3px solid var(--gold);
+      background:
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.13),
+          rgba(255,255,255,.05)
+        );
 
+      color: white;
+
+      border-right-color:
+        var(--gold-light);
+
+      box-shadow:
+        inset 0 0 20px rgba(255,255,255,.025);
     }
 
 
-    .home-link {
-
-      text-decoration: none;
-
+    .side-link.active i {
+      color: var(--gold-light);
     }
 
+
+    /* =====================================================
+       SIDEBAR BOTTOM
+    ===================================================== */
 
     .sidebar-bottom {
 
       position: absolute;
 
-      right: 18px;
-      left: 18px;
-      bottom: 20px;
+      right: 17px;
+      left: 17px;
+      bottom: 18px;
+    }
 
+
+    .sidebar-status {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 10px;
+
+      padding:
+        10px 12px;
+
+      border-radius: 11px;
+
+      background:
+        rgba(255,255,255,.06);
+
+      color:
+        rgba(255,255,255,.62);
+
+      font-size: 10px;
+    }
+
+
+    .online-dot {
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: #6ee27d;
+
+      box-shadow:
+        0 0 0 4px rgba(110,226,125,.10);
     }
 
 
@@ -294,52 +430,68 @@
 
       width: 100%;
 
-      border:
-        1px solid rgba(255,255,255,.15);
-
-      background:
-        rgba(255,255,255,.07);
-
-      color: white;
-
       padding: 12px;
+
+      border:
+        1px solid rgba(255,255,255,.13);
 
       border-radius: 11px;
 
+      background:
+        rgba(255,255,255,.06);
+
+      color: white;
+
       font-weight: bold;
 
-      transition: .2s;
+      font-size: 12px;
 
+      transition: .25s;
     }
 
 
     .logout-side:hover {
 
       background:
-        rgba(178,139,24,.25);
+        rgba(179,38,30,.20);
 
       border-color:
-        rgba(212,180,76,.5);
+        rgba(255,130,130,.30);
 
+      transform:
+        translateY(-2px);
     }
 
 
     /* =====================================================
-       CLOSE SIDEBAR
+       CLOSE
     ===================================================== */
 
     .close-sidebar {
 
       display: none;
 
-      border: none;
+      position: absolute;
 
-      background: transparent;
+      top: 14px;
+      left: 14px;
+
+      width: 38px;
+      height: 38px;
+
+      border:
+        1px solid rgba(255,255,255,.16);
+
+      border-radius: 10px;
+
+      background:
+        rgba(255,255,255,.08);
 
       color: white;
 
-      cursor: pointer;
+      font-size: 22px;
 
+      z-index: 5;
     }
 
 
@@ -349,10 +501,9 @@
 
     .main {
 
-      margin-right: 260px;
+      margin-right: 275px;
 
       min-height: 100vh;
-
     }
 
 
@@ -362,16 +513,13 @@
 
     .topbar {
 
-      height: 78px;
+      position: sticky;
 
-      background:
-        rgba(255,255,255,.88);
+      top: 0;
 
-      backdrop-filter:
-        blur(12px);
+      z-index: 30;
 
-      border-bottom:
-        1px solid var(--border);
+      min-height: 78px;
 
       display: flex;
 
@@ -379,15 +527,58 @@
 
       justify-content: space-between;
 
+      gap: 20px;
+
       padding:
-        0 35px;
+        12px 38px;
 
-      position: sticky;
+      background:
+        rgba(255,255,255,.84);
 
-      top: 0;
+      backdrop-filter:
+        blur(18px);
 
-      z-index: 30;
+      border-bottom:
+        1px solid rgba(229,235,231,.85);
 
+      box-shadow:
+        0 5px 25px rgba(23,77,58,.035);
+    }
+
+
+    .page-heading {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+    }
+
+
+    .page-heading-icon {
+
+      width: 44px;
+      height: 44px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--green-mid)
+        );
+
+      color: white;
+
+      box-shadow:
+        0 7px 18px rgba(23,77,58,.15);
     }
 
 
@@ -395,10 +586,9 @@
 
       color: var(--green);
 
-      font-size: 21px;
+      font-size: 20px;
 
-      margin-bottom: 4px;
-
+      margin-bottom: 3px;
     }
 
 
@@ -406,8 +596,7 @@
 
       color: var(--muted);
 
-      font-size: 12px;
-
+      font-size: 11px;
     }
 
 
@@ -417,42 +606,79 @@
 
       align-items: center;
 
-      gap: 12px;
+      gap: 11px;
+    }
 
+
+    .teacher-details {
+
+      text-align: left;
+    }
+
+
+    .teacher-name {
+
+      display: block;
+
+      color: var(--green);
+
+      font-size: 12px;
+
+      font-weight: bold;
+
+      margin-bottom: 3px;
+    }
+
+
+    .teacher-email {
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      direction: ltr;
     }
 
 
     .teacher-avatar {
 
-      width: 42px;
-      height: 42px;
-
-      border-radius: 50%;
+      width: 44px;
+      height: 44px;
 
       display: flex;
 
       align-items: center;
       justify-content: center;
 
+      border-radius: 50%;
+
       background:
-        var(--green-light);
+        var(--green-soft);
 
       color: var(--green);
 
       border:
         1px solid #dcebe4;
-
     }
 
 
-    .teacher-email {
+    .mobile-menu {
 
-      font-size: 12px;
+      display: none;
 
-      color: var(--muted);
+      width: 42px;
+      height: 42px;
 
-      direction: ltr;
+      border: none;
 
+      border-radius: 11px;
+
+      background:
+        var(--green-soft);
+
+      color: var(--green);
+
+      font-size: 17px;
     }
 
 
@@ -463,16 +689,15 @@
     .content {
 
       width:
-        min(1250px, 94%);
+        min(1320px, 94%);
 
       margin:
-        30px auto 50px;
-
+        28px auto 55px;
     }
 
 
     /* =====================================================
-       WELCOME
+       HERO
     ===================================================== */
 
     .welcome-card {
@@ -481,26 +706,56 @@
 
       overflow: hidden;
 
-      background:
-        linear-gradient(
-          120deg,
-          var(--green),
-          #21644b
-        );
+      min-height: 190px;
+
+      display: flex;
+
+      align-items: center;
+
+      margin-bottom: 22px;
+
+      padding:
+        31px 35px;
+
+      border-radius: 24px;
 
       color: white;
 
-      border-radius: 20px;
+      background:
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(217,188,92,.18),
+          transparent 24%
+        ),
 
-      padding:
-        28px 32px;
-
-      margin-bottom: 25px;
+        linear-gradient(
+          120deg,
+          #123f2f,
+          #1d6549 58%,
+          #174d3a
+        );
 
       box-shadow:
-        0 15px 40px
-        rgba(23,77,58,.15);
+        0 20px 45px rgba(23,77,58,.16);
 
+      animation:
+        heroIn .7s ease both;
+    }
+
+
+    @keyframes heroIn {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0);
+      }
     }
 
 
@@ -510,17 +765,16 @@
 
       position: absolute;
 
-      width: 220px;
-      height: 220px;
+      width: 260px;
+      height: 260px;
+
+      border:
+        1px solid rgba(255,255,255,.07);
 
       border-radius: 50%;
 
-      left: -80px;
-      top: -110px;
-
-      background:
-        rgba(255,255,255,.04);
-
+      left: -100px;
+      top: -135px;
     }
 
 
@@ -530,17 +784,16 @@
 
       position: absolute;
 
-      width: 160px;
-      height: 160px;
+      width: 310px;
+      height: 310px;
+
+      border:
+        1px solid rgba(217,188,92,.10);
 
       border-radius: 50%;
 
-      right: 25%;
-      bottom: -110px;
-
-      background:
-        rgba(212,180,76,.08);
-
+      left: 42%;
+      bottom: -240px;
     }
 
 
@@ -549,40 +802,109 @@
       position: relative;
 
       z-index: 2;
-
     }
 
 
     .welcome-small {
 
-      font-size: 12px;
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      margin-bottom: 9px;
 
       color:
-        rgba(255,255,255,.65);
+        rgba(255,255,255,.66);
 
-      margin-bottom: 7px;
+      font-size: 11px;
+    }
 
+
+    .welcome-small::before {
+
+      content: "";
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background:
+        var(--gold-light);
+
+      box-shadow:
+        0 0 0 5px rgba(217,188,92,.10);
     }
 
 
     .welcome-card h2 {
 
-      font-size: 27px;
+      font-size: 29px;
 
-      margin-bottom: 8px;
+      line-height: 1.4;
 
+      margin-bottom: 7px;
     }
 
 
     .welcome-card p {
 
+      max-width: 620px;
+
       color:
-        rgba(255,255,255,.78);
+        rgba(255,255,255,.72);
 
-      font-size: 14px;
+      font-size: 13px;
 
-      line-height: 1.8;
+      line-height: 1.9;
+    }
 
+
+    .hero-decoration {
+
+      position: absolute;
+
+      left: 50px;
+
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      width: 110px;
+      height: 110px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border:
+        1px solid rgba(255,255,255,.10);
+
+      border-radius: 50%;
+
+      color:
+        rgba(255,255,255,.13);
+
+      font-size: 55px;
+    }
+
+
+    .hero-decoration::before {
+
+      content: "";
+
+      position: absolute;
+
+      inset: -14px;
+
+      border:
+        1px solid rgba(217,188,92,.08);
+
+      border-radius: 50%;
     }
 
 
@@ -597,92 +919,115 @@
       grid-template-columns:
         repeat(3, 1fr);
 
-      gap: 18px;
+      gap: 17px;
 
-      margin-bottom: 25px;
-
+      margin-bottom: 23px;
     }
 
 
     .stat-card {
 
-      background: white;
+      position: relative;
+
+      overflow: hidden;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      min-height: 110px;
+
+      padding:
+        20px 21px;
 
       border:
         1px solid var(--border);
 
       border-radius: 18px;
 
-      padding: 21px;
+      background:
+        rgba(255,255,255,.94);
 
-      display: flex;
+      box-shadow:
+        var(--shadow);
 
-      align-items: center;
+      transition:
+        transform .25s,
+        box-shadow .25s;
+    }
 
-      gap: 16px;
 
-      box-shadow: var(--shadow);
+    .stat-card::after {
 
-      transition: .25s;
+      content: "";
 
+      position: absolute;
+
+      width: 90px;
+      height: 90px;
+
+      border-radius: 50%;
+
+      left: -42px;
+      bottom: -48px;
+
+      background:
+        rgba(23,77,58,.035);
     }
 
 
     .stat-card:hover {
 
       transform:
-        translateY(-3px);
+        translateY(-4px);
 
       box-shadow:
-        0 15px 40px
-        rgba(23,77,58,.12);
-
+        0 17px 40px rgba(23,77,58,.11);
     }
 
 
     .stat-icon {
 
-      width: 55px;
-      height: 55px;
+      width: 57px;
+      height: 57px;
 
-      min-width: 55px;
-
-      border-radius: 15px;
+      min-width: 57px;
 
       display: flex;
 
       align-items: center;
       justify-content: center;
 
+      border-radius: 16px;
+
       background:
-        var(--green-light);
+        var(--green-soft);
 
       color: var(--green);
 
-      font-size: 22px;
-
+      font-size: 21px;
     }
 
 
-    .stat-card:nth-child(2)
-    .stat-icon {
+    .stat-card:nth-child(2) .stat-icon {
 
       background:
-        #fff8df;
+        var(--gold-soft);
 
-      color: var(--gold);
-
+      color:
+        var(--gold);
     }
 
 
-    .stat-card:nth-child(3)
-    .stat-icon {
+    .stat-card:nth-child(3) .stat-icon {
 
       background:
-        #f1edff;
+        var(--purple-soft);
 
-      color: #6552a8;
-
+      color:
+        var(--purple);
     }
 
 
@@ -694,10 +1039,9 @@
 
       font-size: 28px;
 
-      font-weight: bold;
+      font-weight: 800;
 
-      margin-bottom: 3px;
-
+      margin-bottom: 4px;
     }
 
 
@@ -705,38 +1049,34 @@
 
       color: var(--muted);
 
-      font-size: 12px;
-
+      font-size: 11px;
     }
 
 
     /* =====================================================
-       PANEL
+       PANELS
     ===================================================== */
 
     .panel {
 
-      background: white;
+      overflow: hidden;
+
+      margin-bottom: 23px;
 
       border:
         1px solid var(--border);
 
       border-radius: 20px;
 
-      box-shadow: var(--shadow);
+      background:
+        rgba(255,255,255,.96);
 
-      overflow: hidden;
-
+      box-shadow:
+        var(--shadow);
     }
 
 
     .panel-top {
-
-      padding:
-        23px 25px;
-
-      border-bottom:
-        1px solid var(--border);
 
       display: flex;
 
@@ -746,8 +1086,13 @@
 
       gap: 15px;
 
-      flex-wrap: wrap;
+      padding:
+        21px 24px;
 
+      border-bottom:
+        1px solid var(--border);
+
+      flex-wrap: wrap;
     }
 
 
@@ -758,27 +1103,25 @@
       align-items: center;
 
       gap: 11px;
-
     }
 
 
     .panel-title-icon {
 
-      width: 40px;
-      height: 40px;
-
-      border-radius: 11px;
+      width: 42px;
+      height: 42px;
 
       display: flex;
 
       align-items: center;
       justify-content: center;
 
+      border-radius: 12px;
+
       background:
-        var(--green-light);
+        var(--green-soft);
 
       color: var(--green);
-
     }
 
 
@@ -786,8 +1129,9 @@
 
       color: var(--green);
 
-      font-size: 18px;
+      font-size: 17px;
 
+      margin-bottom: 3px;
     }
 
 
@@ -797,46 +1141,26 @@
 
       color: var(--muted);
 
-      font-size: 11px;
-
-      margin-top: 3px;
-
+      font-size: 10px;
     }
 
 
-    .add-btn {
-
-      border: none;
-
-      background:
-        var(--green);
-
-      color: white;
+    .pending-count {
 
       padding:
-        11px 17px;
+        7px 12px;
 
-      border-radius: 10px;
-
-      font-weight: bold;
-
-      transition: .2s;
-
-      box-shadow:
-        0 6px 15px
-        rgba(23,77,58,.15);
-
-    }
-
-
-    .add-btn:hover {
+      border-radius: 20px;
 
       background:
-        var(--green-dark);
+        var(--gold-soft);
 
-      transform:
-        translateY(-2px);
+      color:
+        #806711;
 
+      font-size: 11px;
+
+      font-weight: bold;
     }
 
 
@@ -844,75 +1168,44 @@
        REQUESTS
     ===================================================== */
 
-    .requests-panel {
-
-      margin-bottom: 25px;
-
-    }
-
-
-    .pending-count {
-
-      background:
-        #fff8df;
-
-      color:
-        #866b13;
-
-      padding:
-        8px 13px;
-
-      border-radius: 20px;
-
-      font-size: 12px;
-
-      font-weight: bold;
-
-      white-space: nowrap;
-
-    }
-
-
     .requests-list {
 
-      padding: 20px;
-
+      padding: 17px;
     }
 
 
     .request-card {
 
+      padding: 17px;
+
+      margin-bottom: 10px;
+
       border:
         1px solid var(--border);
 
-      border-radius: 15px;
-
-      padding: 18px;
-
-      margin-bottom: 12px;
+      border-radius: 14px;
 
       background: #fff;
 
-      transition: .2s;
-
+      transition: .25s;
     }
 
 
     .request-card:last-child {
-
       margin-bottom: 0;
-
     }
 
 
     .request-card:hover {
 
       border-color:
-        #d7e3dc;
+        #d2e0d8;
 
       box-shadow:
-        0 8px 22px rgba(23,77,58,.06);
+        0 8px 22px rgba(23,77,58,.055);
 
+      transform:
+        translateY(-1px);
     }
 
 
@@ -920,21 +1213,13 @@
 
       display: flex;
 
-      justify-content: space-between;
-
       align-items: center;
+
+      justify-content: space-between;
 
       gap: 18px;
 
       flex-wrap: wrap;
-
-    }
-
-
-    .request-info {
-
-      min-width: 0;
-
     }
 
 
@@ -942,12 +1227,11 @@
 
       color: var(--green);
 
-      font-size: 16px;
+      font-size: 15px;
 
       font-weight: bold;
 
-      margin-bottom: 7px;
-
+      margin-bottom: 6px;
     }
 
 
@@ -955,10 +1239,9 @@
 
       color: var(--muted);
 
-      font-size: 12px;
+      font-size: 11px;
 
       line-height: 2;
-
     }
 
 
@@ -967,28 +1250,24 @@
       display: flex;
 
       gap: 8px;
-
-      flex-wrap: wrap;
-
     }
 
 
     .approve-btn,
     .reject-btn {
 
-      border: none;
-
       padding:
         10px 15px;
 
+      border: none;
+
       border-radius: 9px;
+
+      font-size: 11px;
 
       font-weight: bold;
 
-      font-size: 12px;
-
       transition: .2s;
-
     }
 
 
@@ -998,7 +1277,6 @@
         var(--green);
 
       color: white;
-
     }
 
 
@@ -1008,19 +1286,17 @@
         var(--green-dark);
 
       transform:
-        translateY(-1px);
-
+        translateY(-2px);
     }
 
 
     .reject-btn {
 
       background:
-        var(--danger-light);
+        var(--danger-soft);
 
       color:
         var(--danger);
-
     }
 
 
@@ -1031,18 +1307,19 @@
 
       color: white;
 
+      transform:
+        translateY(-2px);
     }
 
 
     .requests-empty {
 
+      padding:
+        35px 15px;
+
       text-align: center;
 
-      padding:
-        35px 10px;
-
       color: var(--muted);
-
     }
 
 
@@ -1050,12 +1327,11 @@
 
       display: block;
 
-      font-size: 35px;
+      margin-bottom: 11px;
 
       color: var(--green);
 
-      margin-bottom: 12px;
-
+      font-size: 32px;
     }
 
 
@@ -1063,17 +1339,17 @@
 
       display: block;
 
-      color: var(--green);
-
       margin-bottom: 5px;
 
+      color: var(--green);
+
+      font-size: 13px;
     }
 
 
     .requests-empty span {
 
-      font-size: 12px;
-
+      font-size: 11px;
     }
 
 
@@ -1083,9 +1359,6 @@
 
     .filters {
 
-      padding:
-        18px 25px;
-
       display: grid;
 
       grid-template-columns:
@@ -1093,16 +1366,16 @@
 
       gap: 10px;
 
+      padding:
+        17px 24px;
+
       border-bottom:
         1px solid var(--border);
-
     }
 
 
     .search-box {
-
       position: relative;
-
     }
 
 
@@ -1110,17 +1383,16 @@
 
       position: absolute;
 
-      right: 13px;
+      right: 14px;
 
       top: 50%;
 
       transform:
         translateY(-50%);
 
-      color: #9aa3a9;
+      color: #9aa49f;
 
-      font-size: 14px;
-
+      font-size: 13px;
     }
 
 
@@ -1134,26 +1406,25 @@
       border:
         1px solid var(--border);
 
-      border-radius: 10px;
+      border-radius: 11px;
 
       outline: none;
 
-      background: #fcfdfc;
+      background:
+        #fafcfb;
 
       color: var(--text);
 
-      font-size: 13px;
+      font-size: 12px;
 
       transition: .2s;
-
     }
 
 
     .search-input {
 
       padding:
-        0 40px 0 14px;
-
+        0 40px 0 13px;
     }
 
 
@@ -1161,22 +1432,19 @@
 
       padding:
         0 12px;
-
     }
 
 
     .search-input:focus,
     .filter-select:focus {
 
+      background: white;
+
       border-color:
         var(--gold);
 
-      background: white;
-
       box-shadow:
-        0 0 0 3px
-        rgba(178,139,24,.08);
-
+        0 0 0 3px rgba(178,139,24,.08);
     }
 
 
@@ -1185,9 +1453,7 @@
     ===================================================== */
 
     .table-wrapper {
-
       overflow-x: auto;
-
     }
 
 
@@ -1195,71 +1461,62 @@
 
       width: 100%;
 
-      border-collapse:
-        collapse;
-
       min-width: 750px;
 
+      border-collapse:
+        collapse;
     }
 
 
     th {
 
       padding:
-        14px 20px;
+        13px 20px;
 
       background:
-        #fafcfb;
+        #f8faf9;
 
       color:
-        #65716c;
+        #68736e;
 
-      font-size: 11px;
-
-      font-weight: bold;
+      font-size: 10px;
 
       text-align: right;
 
       border-bottom:
         1px solid var(--border);
-
     }
 
 
     td {
 
       padding:
-        16px 20px;
+        15px 20px;
 
       border-bottom:
-        1px solid #f0f2f1;
+        1px solid #f0f3f1;
 
-      font-size: 13px;
+      font-size: 12px;
 
       vertical-align: middle;
-
     }
 
 
     tbody tr {
 
-      transition: .15s;
-
+      transition: .2s;
     }
 
 
     tbody tr:hover {
 
       background:
-        #fcfdfc;
-
+        #fbfdfc;
     }
 
 
     tbody tr:last-child td {
-
       border-bottom: none;
-
     }
 
 
@@ -1272,9 +1529,31 @@
       gap: 10px;
 
       font-weight: bold;
+    }
 
-      color: var(--text);
 
+    .student-avatar {
+
+      width: 37px;
+      height: 37px;
+
+      min-width: 37px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 11px;
+
+      background:
+        var(--green-soft);
+
+      color: var(--green);
+
+      font-size: 13px;
+
+      font-weight: bold;
     }
 
 
@@ -1282,47 +1561,20 @@
 
       color: var(--green);
 
-      font-weight: bold;
-
       text-decoration: none;
 
-      cursor: pointer;
+      font-weight: bold;
 
       transition: .2s;
-
     }
 
 
     .student-name-link:hover {
 
-      color: var(--gold);
+      color:
+        var(--gold);
 
       text-decoration: underline;
-
-    }
-
-
-    .student-avatar {
-
-      width: 36px;
-      height: 36px;
-
-      min-width: 36px;
-
-      border-radius: 10px;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      background:
-        var(--green-light);
-
-      color: var(--green);
-
-      font-size: 14px;
-
     }
 
 
@@ -1339,26 +1591,21 @@
         #f7f4e8;
 
       color:
-        #866b13;
+        #806711;
 
-      font-size: 11px;
+      font-size: 10px;
 
       font-weight: bold;
-
     }
 
 
     .memorization {
-
-      color: #59645f;
-
+      color: #5c6762;
     }
 
 
     .no-data {
-
-      color: #a2aaa6;
-
+      color: #a3aba7;
     }
 
 
@@ -1371,14 +1618,13 @@
       gap: 6px;
 
       padding:
-        6px 9px;
+        6px 10px;
 
       border-radius: 20px;
 
-      font-size: 11px;
+      font-size: 10px;
 
       font-weight: bold;
-
     }
 
 
@@ -1390,45 +1636,36 @@
       height: 6px;
 
       border-radius: 50%;
-
     }
 
 
     .status.active {
 
       background:
-        var(--success-light);
+        var(--success-soft);
 
       color:
         var(--success);
-
     }
 
 
     .status.active::before {
-
-      background:
-        var(--success);
-
+      background: var(--success);
     }
 
 
     .status.inactive {
 
       background:
-        var(--danger-light);
+        var(--danger-soft);
 
       color:
         var(--danger);
-
     }
 
 
     .status.inactive::before {
-
-      background:
-        var(--danger);
-
+      background: var(--danger);
     }
 
 
@@ -1437,7 +1674,6 @@
       display: flex;
 
       gap: 6px;
-
     }
 
 
@@ -1446,28 +1682,26 @@
       width: 34px;
       height: 34px;
 
-      border: none;
-
-      border-radius: 9px;
-
       display: flex;
 
       align-items: center;
       justify-content: center;
 
-      transition: .2s;
+      border: none;
 
+      border-radius: 9px;
+
+      transition: .2s;
     }
 
 
     .edit-btn {
 
       background:
-        #fff8df;
+        var(--gold-soft);
 
       color:
         var(--gold);
-
     }
 
 
@@ -1478,17 +1712,18 @@
 
       color: white;
 
+      transform:
+        translateY(-2px);
     }
 
 
     .delete-btn {
 
       background:
-        var(--danger-light);
+        var(--danger-soft);
 
       color:
         var(--danger);
-
     }
 
 
@@ -1499,6 +1734,57 @@
 
       color: white;
 
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =====================================================
+       ADD BUTTON
+    ===================================================== */
+
+    .add-btn {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        11px 16px;
+
+      border: none;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--green),
+          var(--green-mid)
+        );
+
+      color: white;
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 7px 16px rgba(23,77,58,.14);
+
+      transition: .25s;
+    }
+
+
+    .add-btn:hover {
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 11px 23px rgba(23,77,58,.20);
     }
 
 
@@ -1508,14 +1794,14 @@
 
     .empty {
 
-      text-align: center;
-
-      padding: 55px 20px;
-
-      color: var(--muted);
-
       display: none;
 
+      padding:
+        55px 20px;
+
+      text-align: center;
+
+      color: var(--muted);
     }
 
 
@@ -1524,23 +1810,22 @@
       width: 65px;
       height: 65px;
 
-      margin:
-        0 auto 14px;
-
-      border-radius: 50%;
-
-      background:
-        var(--green-light);
-
-      color: var(--green);
-
       display: flex;
 
       align-items: center;
       justify-content: center;
 
-      font-size: 25px;
+      margin:
+        0 auto 13px;
 
+      border-radius: 50%;
+
+      background:
+        var(--green-soft);
+
+      color: var(--green);
+
+      font-size: 24px;
     }
 
 
@@ -1548,17 +1833,16 @@
 
       display: block;
 
-      color: var(--green);
-
       margin-bottom: 5px;
 
+      color: var(--green);
+
+      font-size: 13px;
     }
 
 
     .empty p {
-
-      font-size: 12px;
-
+      font-size: 11px;
     }
 
 
@@ -1572,29 +1856,25 @@
 
       inset: 0;
 
-      background:
-        rgba(16,59,44,.68);
-
-      backdrop-filter:
-        blur(5px);
+      z-index: 100;
 
       display: none;
 
       align-items: center;
-
       justify-content: center;
 
       padding: 20px;
 
-      z-index: 100;
+      background:
+        rgba(12,48,35,.70);
 
+      backdrop-filter:
+        blur(7px);
     }
 
 
     .modal.show {
-
       display: flex;
-
     }
 
 
@@ -1603,22 +1883,19 @@
       width:
         min(520px, 100%);
 
-      max-height:
-        90vh;
+      max-height: 90vh;
 
       overflow-y: auto;
 
       background: white;
 
-      border-radius: 20px;
+      border-radius: 21px;
 
       box-shadow:
-        0 25px 70px
-        rgba(0,0,0,.22);
+        0 30px 80px rgba(0,0,0,.25);
 
       animation:
-        modalIn .2s ease;
-
+        modalIn .25s ease both;
     }
 
 
@@ -1627,8 +1904,8 @@
       from {
         opacity: 0;
         transform:
-          translateY(12px)
-          scale(.98);
+          translateY(15px)
+          scale(.97);
       }
 
       to {
@@ -1637,17 +1914,10 @@
           translateY(0)
           scale(1);
       }
-
     }
 
 
     .modal-header {
-
-      padding:
-        22px 25px;
-
-      border-bottom:
-        1px solid var(--border);
 
       display: flex;
 
@@ -1655,6 +1925,11 @@
 
       justify-content: space-between;
 
+      padding:
+        21px 24px;
+
+      border-bottom:
+        1px solid var(--border);
     }
 
 
@@ -1662,8 +1937,9 @@
 
       color: var(--green);
 
-      font-size: 19px;
+      font-size: 18px;
 
+      margin-bottom: 4px;
     }
 
 
@@ -1671,54 +1947,46 @@
 
       color: var(--muted);
 
-      font-size: 11px;
-
-      margin-top: 4px;
-
+      font-size: 10px;
     }
 
 
     .close-modal {
 
-      width: 34px;
-      height: 34px;
+      width: 35px;
+      height: 35px;
 
       border: none;
 
       border-radius: 9px;
 
-      background:
-        #f4f5f4;
+      background: #f3f5f4;
 
       color: #68736e;
 
       transition: .2s;
-
     }
 
 
     .close-modal:hover {
 
       background:
-        var(--danger-light);
+        var(--danger-soft);
 
       color:
         var(--danger);
-
     }
 
 
     .form {
 
-      padding: 25px;
-
+      padding: 24px;
     }
 
 
     .form-group {
 
-      margin-bottom: 17px;
-
+      margin-bottom: 16px;
     }
 
 
@@ -1726,14 +1994,13 @@
 
       display: block;
 
-      color: var(--green);
-
-      font-size: 12px;
-
-      font-weight: bold;
-
       margin-bottom: 7px;
 
+      color: var(--green);
+
+      font-size: 11px;
+
+      font-weight: bold;
     }
 
 
@@ -1742,7 +2009,7 @@
 
       width: 100%;
 
-      height: 45px;
+      height: 44px;
 
       padding:
         0 13px;
@@ -1755,29 +2022,26 @@
       outline: none;
 
       background:
-        #fcfdfc;
-
-      font-size: 13px;
+        #fafcfb;
 
       color: var(--text);
 
-      transition: .2s;
+      font-size: 12px;
 
+      transition: .2s;
     }
 
 
     .form-group input:focus,
     .form-group select:focus {
 
+      background: white;
+
       border-color:
         var(--gold);
 
-      background: white;
-
       box-shadow:
-        0 0 0 3px
-        rgba(178,139,24,.08);
-
+        0 0 0 3px rgba(178,139,24,.08);
     }
 
 
@@ -1788,23 +2052,21 @@
       grid-template-columns:
         1fr 1fr;
 
-      gap: 10px;
+      gap: 9px;
 
-      margin-top: 22px;
-
+      margin-top: 21px;
     }
 
 
     .modal-buttons button {
 
-      height: 45px;
+      height: 44px;
 
       border: none;
 
       border-radius: 10px;
 
       font-weight: bold;
-
     }
 
 
@@ -1814,34 +2076,28 @@
         var(--green);
 
       color: white;
-
     }
 
 
     .save-btn:hover {
-
       background:
         var(--green-dark);
-
     }
 
 
     .cancel-btn {
 
       background:
-        #f0f2f1;
+        #eef1ef;
 
       color:
-        #49534f;
-
+        #4d5853;
     }
 
 
     .cancel-btn:hover {
-
       background:
-        #e5e8e6;
-
+        #e4e8e5;
     }
 
 
@@ -1849,14 +2105,13 @@
 
       min-height: 20px;
 
+      margin-top: 11px;
+
       text-align: center;
 
-      font-size: 12px;
+      font-size: 11px;
 
       font-weight: bold;
-
-      margin-top: 12px;
-
     }
 
 
@@ -1868,434 +2123,316 @@
 
       position: fixed;
 
-      left: 25px;
+      left: 24px;
+      bottom: 24px;
 
-      bottom: 25px;
+      z-index: 200;
 
-      min-width: 260px;
+      display: flex;
+
+      align-items: center;
+
+      gap: 9px;
+
+      min-width: 250px;
 
       max-width: 360px;
+
+      padding:
+        13px 16px;
+
+      border-radius: 12px;
 
       background:
         var(--green-dark);
 
       color: white;
 
-      padding:
-        14px 17px;
-
-      border-radius: 12px;
-
       box-shadow:
-        0 15px 35px rgba(0,0,0,.18);
+        0 15px 40px rgba(0,0,0,.18);
 
-      display: flex;
-
-      align-items: center;
-
-      gap: 10px;
-
-      z-index: 200;
-
-      transform:
-        translateY(20px);
+      font-size: 11px;
 
       opacity: 0;
 
       pointer-events: none;
 
-      transition: .25s;
+      transform:
+        translateY(18px);
 
-      font-size: 12px;
-
+      transition: .3s;
     }
 
 
     .toast.show {
 
-      transform:
-        translateY(0);
-
       opacity: 1;
 
+      transform:
+        translateY(0);
     }
 
 
     .toast.success i {
-
-      color:
-        #71d584;
-
+      color: #72d883;
     }
 
 
     .toast.error i {
-
-      color:
-        #ff8d8d;
-
+      color: #ff8585;
     }
 
 
     /* =====================================================
-       BADGE
+       RESPONSIVE
     ===================================================== */
 
-    .badge {
-
-      position: fixed;
-
-      left: 12px;
-
-      bottom: 12px;
-
-      background:
-        var(--green);
-
-      color: white;
-
-      padding:
-        7px 12px;
-
-      border-radius: 20px;
-
-      font-size: 10px;
-
-      z-index: 250;
-
-      box-shadow:
-        0 5px 15px
-        rgba(23,77,58,.15);
-
-    }
-
-
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
-
-    .mobile-menu {
-
-      display: none;
-
-      width: 40px;
-      height: 40px;
-
-      border: none;
-
-      border-radius: 10px;
-
-      background:
-        var(--green-light);
-
-      color: var(--green);
-
-      font-size: 18px;
-
-    }
-
-
-    /* =====================================================
-       TABLET
-    ===================================================== */
-
-    @media (max-width: 950px) {
+    @media (max-width: 1050px) {
 
       .sidebar {
-
-        width: 220px;
-
+        width: 235px;
       }
-
 
       .main {
-
-        margin-right: 220px;
-
+        margin-right: 235px;
       }
 
-
-      .filters {
-
-        grid-template-columns:
-          1fr 160px;
-
+      .hero-decoration {
+        left: 25px;
       }
 
     }
 
 
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    @media (max-width: 750px) {
+    @media (max-width: 850px) {
 
       .sidebar {
 
         transform:
           translateX(100%);
 
-        transition: .25s;
+        transition:
+          transform .3s ease;
 
-        width: 280px;
+        width: 285px;
 
         padding-top: 65px;
-
       }
 
 
       .sidebar.open {
-
         transform:
           translateX(0);
-
       }
 
 
       .close-sidebar {
-
         display: flex;
 
-        position: absolute;
-
-        top: 15px;
-
-        left: 15px;
-
-        width: 40px;
-
-        height: 40px;
-
         align-items: center;
-
         justify-content: center;
-
-        border:
-          1px solid rgba(255,255,255,.18);
-
-        border-radius: 10px;
-
-        background:
-          rgba(255,255,255,.10);
-
-        color: white;
-
-        font-size: 28px;
-
-        line-height: 1;
-
-        z-index: 100;
-
-      }
-
-
-      .close-sidebar:hover {
-
-        background:
-          rgba(255,255,255,.20);
-
       }
 
 
       .main {
-
         margin-right: 0;
-
-      }
-
-
-      .topbar {
-
-        padding:
-          0 17px;
-
       }
 
 
       .mobile-menu {
-
         display: block;
+      }
 
+
+      .topbar {
+        padding:
+          12px 18px;
       }
 
 
       .teacher-email {
-
         display: none;
-
       }
 
 
       .content {
-
         width: 94%;
-
-        margin-top: 20px;
-
       }
 
 
-      .stats {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .filters {
-
-        grid-template-columns:
-          1fr;
-
-      }
-
-
-      .welcome-card {
-
-        padding: 23px;
-
-      }
-
-
-      .welcome-card h2 {
-
-        font-size: 23px;
-
-      }
-
-
-      .panel-top {
-
-        align-items: stretch;
-
-      }
-
-
-      .add-btn {
-
-        width: 100%;
-
-      }
-
-
-      .request-content {
-
-        align-items: stretch;
-
-      }
-
-
-      .request-actions {
-
-        width: 100%;
-
-      }
-
-
-      .approve-btn,
-      .reject-btn {
-
-        flex: 1;
-
-      }
-
-
-      .badge {
-
-        bottom: 8px;
-
-        left: 8px;
-
+      .hero-decoration {
+        opacity: .35;
       }
 
     }
 
 
-    /* =====================================================
-       SMALL MOBILE
-    ===================================================== */
+    @media (max-width: 680px) {
 
-    @media (max-width: 480px) {
-
-      .topbar {
-
-        height: 70px;
-
+      .stats {
+        grid-template-columns: 1fr;
       }
 
 
-      .page-title h1 {
-
-        font-size: 17px;
-
-      }
-
-
-      .page-title p {
-
-        display: none;
-
-      }
-
-
-      .teacher-avatar {
-
-        width: 37px;
-        height: 37px;
-
-      }
-
-
-      .content {
-
-        width: 92%;
-
+      .filters {
+        grid-template-columns: 1fr;
       }
 
 
       .welcome-card {
+        min-height: 175px;
+        padding:
+          25px 22px;
+      }
 
-        border-radius: 16px;
 
+      .welcome-card h2 {
+        font-size: 24px;
+      }
+
+
+      .hero-decoration {
+        width: 80px;
+        height: 80px;
+        font-size: 38px;
+        left: 12px;
+      }
+
+
+      .request-content {
+        align-items: stretch;
+      }
+
+
+      .request-actions {
+        width: 100%;
+      }
+
+
+      .approve-btn,
+      .reject-btn {
+        flex: 1;
+      }
+
+
+      .panel-top {
+        align-items: stretch;
+      }
+
+
+      .add-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+    }
+
+
+    @media (max-width: 480px) {
+
+      .topbar {
+        min-height: 68px;
+      }
+
+
+      .page-heading-icon {
+        width: 39px;
+        height: 39px;
+        min-width: 39px;
+      }
+
+
+      .page-title h1 {
+        font-size: 16px;
+      }
+
+
+      .page-title p {
+        display: none;
+      }
+
+
+      .teacher-avatar {
+        width: 38px;
+        height: 38px;
+      }
+
+
+      .teacher-name {
+        font-size: 10px;
+      }
+
+
+      .content {
+        width: 92%;
+        margin-top: 19px;
+      }
+
+
+      .welcome-card {
+        border-radius: 18px;
       }
 
 
       .panel {
-
-        border-radius: 16px;
-
+        border-radius: 17px;
       }
 
 
-      .stat-card {
-
-        padding: 17px;
-
+      .panel-top {
+        padding:
+          18px 17px;
       }
 
 
-      .sidebar {
-
-        width: 85%;
-
-        max-width: 300px;
-
+      .filters {
+        padding:
+          14px 17px;
       }
 
 
       .requests-list {
-
-        padding: 14px;
-
+        padding: 13px;
       }
 
 
       .request-card {
+        padding: 14px;
+      }
 
-        padding: 15px;
 
+      .stat-card {
+        min-height: 96px;
+        padding: 17px;
+      }
+
+
+      .stat-number {
+        font-size: 25px;
+      }
+
+
+      .toast {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        min-width: 0;
+      }
+
+    }
+
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
       }
 
     }
@@ -2304,9 +2441,7 @@
 
 </head>
 
-
 <body>
-
 
   <!-- =====================================================
        SIDEBAR
@@ -2316,122 +2451,131 @@
     class="sidebar"
     id="sidebar">
 
+```
+<button
+  class="close-sidebar"
+  id="closeSidebar"
+  type="button"
+  aria-label="إغلاق القائمة">
 
-    <button
-      class="close-sidebar"
-      id="closeSidebar"
-      type="button"
-      aria-label="إغلاق القائمة">
+  ×
 
-      ×
-
-    </button>
-
-
-    <div class="sidebar-logo">
-
-      <div class="logo-icon">
-
-        <i class="fa-solid fa-book-quran"></i>
-
-      </div>
-
-      <div class="logo-text">
-
-        <strong>
-          مركز حردان طارق
-        </strong>
-
-        <span>
-          البوابة الإدارية
-        </span>
-
-      </div>
-
-    </div>
+</button>
 
 
-    <div class="sidebar-title">
-      القائمة الرئيسية
-    </div>
+<!-- اسم المركز = العودة للرئيسية -->
+
+<a
+  href="index.html"
+  class="sidebar-brand"
+  title="العودة إلى الصفحة الرئيسية">
 
 
-    <button
-      class="side-link active"
-      type="button">
+  <div class="sidebar-logo">
 
-      <i class="fa-solid fa-chart-line"></i>
+    <img
+      src="logo.png"
+      alt="شعار مركز حردان طارق القرآني">
 
-      لوحة المتابعة
-
-    </button>
+  </div>
 
 
-    <button
-      class="side-link"
-      id="studentsNav"
-      type="button">
+  <div class="brand-text">
 
-      <i class="fa-solid fa-users"></i>
+    <strong>
+      مركز حردان طارق القرآني
+    </strong>
 
-      الطلاب
+    <span>
+      البوابة الإدارية
+    </span>
 
-    </button>
+  </div>
 
-
-    <button
-      class="side-link"
-      id="requestsNav"
-      type="button">
-
-      <i class="fa-solid fa-user-clock"></i>
-
-      طلبات الانضمام
-
-    </button>
+</a>
 
 
-    <button
-      class="side-link"
-      type="button">
-
-      <i class="fa-solid fa-book-open"></i>
-
-      متابعة الحفظ
-
-    </button>
+<div class="sidebar-heading">
+  إدارة المركز
+</div>
 
 
-    <a
-      href="index.html"
-      class="side-link home-link">
+<button
+  class="side-link active"
+  type="button">
 
-      <i class="fa-solid fa-house"></i>
+  <i class="fa-solid fa-chart-pie"></i>
 
-      الرئيسية
+  لوحة المتابعة
 
-    </a>
+</button>
 
 
-    <div class="sidebar-bottom">
+<button
+  class="side-link"
+  id="studentsNav"
+  type="button">
 
-      <button
-        class="logout-side"
-        id="logoutButton"
-        type="button">
+  <i class="fa-solid fa-users"></i>
 
-        <i class="fa-solid fa-right-from-bracket"></i>
+  الطلاب
 
-        &nbsp;
+</button>
 
-        تسجيل الخروج
 
-      </button>
+<button
+  class="side-link"
+  id="requestsNav"
+  type="button">
 
-    </div>
+  <i class="fa-solid fa-user-clock"></i>
+
+  طلبات الانضمام
+
+</button>
+
+
+<button
+  class="side-link"
+  id="memorizationNav"
+  type="button">
+
+  <i class="fa-solid fa-book-quran"></i>
+
+  متابعة الحفظ
+
+</button>
+
+
+<div class="sidebar-bottom">
+
+
+  <div class="sidebar-status">
+
+    <span class="online-dot"></span>
+
+    النظام يعمل بشكل طبيعي
+
+  </div>
+
+
+  <button
+    class="logout-side"
+    id="logoutButton"
+    type="button">
+
+    <i class="fa-solid fa-right-from-bracket"></i>
+
+    &nbsp;
+
+    تسجيل الخروج
+
+  </button>
+
+</div>
+```
 
   </aside>
-
 
   <!-- =====================================================
        MAIN
@@ -2439,628 +2583,661 @@
 
   <div class="main">
 
+```
+<!-- TOPBAR -->
 
-    <!-- TOPBAR -->
+<header class="topbar">
 
-    <header class="topbar">
 
-      <div
-        style="
-          display:flex;
-          align-items:center;
-          gap:12px;
-        ">
+  <div class="page-heading">
 
 
-        <button
-          class="mobile-menu"
-          id="mobileMenu"
-          type="button"
-          aria-label="فتح القائمة">
+    <button
+      class="mobile-menu"
+      id="mobileMenu"
+      type="button"
+      aria-label="فتح القائمة">
 
-          <i class="fa-solid fa-bars"></i>
+      <i class="fa-solid fa-bars"></i>
 
-        </button>
+    </button>
 
 
-        <div class="page-title">
+    <div class="page-heading-icon">
 
-          <h1>
-            لوحة متابعة الطلاب
-          </h1>
+      <i class="fa-solid fa-chart-line"></i>
 
-          <p>
-            إدارة ومتابعة طلاب المركز
-          </p>
+    </div>
 
-        </div>
 
-      </div>
+    <div class="page-title">
 
+      <h1>
+        لوحة متابعة الطلاب
+      </h1>
 
-      <div class="teacher-info">
-
-        <div>
-
-          <div
-            style="
-              font-size:12px;
-              font-weight:bold;
-              color:var(--green);
-              text-align:left;
-            "
-            id="teacherName">
-
-            المعلم
-
-          </div>
-
-
-          <div
-            class="teacher-email"
-            id="teacherEmail">
-
-            -
-
-          </div>
-
-        </div>
-
-
-        <div class="teacher-avatar">
-
-          <i class="fa-solid fa-user"></i>
-
-        </div>
-
-      </div>
-
-    </header>
-
-
-    <!-- CONTENT -->
-
-    <main class="content">
-
-
-      <!-- WELCOME -->
-
-      <section class="welcome-card">
-
-        <div class="welcome-content">
-
-          <div class="welcome-small">
-            مركز حردان طارق القرآني
-          </div>
-
-          <h2>
-            أهلاً وسهلاً بك 👋
-          </h2>
-
-          <p>
-            من هنا يمكنك متابعة طلاب المركز،
-            إضافة الطلاب وإدارة بياناتهم بسهولة.
-          </p>
-
-        </div>
-
-      </section>
-
-
-      <!-- STATS -->
-
-      <section class="stats">
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-users"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="totalStudents">
-
-              0
-
-            </span>
-
-            <span class="stat-label">
-
-              إجمالي الطلاب
-
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-user-check"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="activeStudents">
-
-              0
-
-            </span>
-
-            <span class="stat-label">
-
-              الطلاب المستمرون
-
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-
-            <i class="fa-solid fa-book-quran"></i>
-
-          </div>
-
-          <div>
-
-            <span
-              class="stat-number"
-              id="memorizedStudents">
-
-              0
-
-            </span>
-
-            <span class="stat-label">
-
-              لديهم متابعة حفظ
-
-            </span>
-
-          </div>
-
-        </div>
-
-
-      </section>
-
-
-      <!-- REQUESTS -->
-
-      <section
-        class="panel requests-panel"
-        id="requestsPanel">
-
-
-        <div class="panel-top">
-
-
-          <div class="panel-title">
-
-            <div class="panel-title-icon">
-
-              <i class="fa-solid fa-user-clock"></i>
-
-            </div>
-
-            <div>
-
-              <h2>
-                طلبات الانضمام
-              </h2>
-
-              <span>
-                الطلاب الذين ينتظرون موافقتك
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <span
-            class="pending-count"
-            id="pendingCount">
-
-            0 طلب
-
-          </span>
-
-
-        </div>
-
-
-        <div
-          class="requests-list"
-          id="requestsList">
-
-        </div>
-
-
-      </section>
-
-
-      <!-- STUDENTS -->
-
-      <section
-        class="panel"
-        id="studentsPanel">
-
-
-        <div class="panel-top">
-
-
-          <div class="panel-title">
-
-            <div class="panel-title-icon">
-
-              <i class="fa-solid fa-users"></i>
-
-            </div>
-
-            <div>
-
-              <h2>
-                قائمة الطلاب
-              </h2>
-
-              <span>
-                عرض وإدارة جميع الطلاب
-              </span>
-
-            </div>
-
-          </div>
-
-
-          <button
-            class="add-btn"
-            id="openModal"
-            type="button">
-
-            <i class="fa-solid fa-plus"></i>
-
-            إضافة طالب جديد
-
-          </button>
-
-
-        </div>
-
-
-        <!-- FILTERS -->
-
-        <div class="filters">
-
-
-          <div class="search-box">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-              type="text"
-              id="searchInput"
-              class="search-input"
-              placeholder="ابحث باسم الطالب...">
-
-          </div>
-
-
-          <select
-            id="sectionFilter"
-            class="filter-select">
-
-            <option value="">
-              جميع الشعب
-            </option>
-
-            <option value="شعبة الحفاظ">
-              شعبة الحفاظ
-            </option>
-
-            <option value="شعبة تجويد">
-              شعبة تجويد
-            </option>
-
-            <option value="شعبة إجازة">
-              شعبة إجازة
-            </option>
-
-            <option value="شعبة فرسان">
-              شعبة فرسان
-            </option>
-
-          </select>
-
-
-        </div>
-
-
-        <!-- TABLE -->
-
-        <div class="table-wrapper">
-
-          <table>
-
-            <thead>
-
-              <tr>
-
-                <th>
-                  الطالب
-                </th>
-
-                <th>
-                  الشعبة
-                </th>
-
-                <th>
-                  مستوى الحفظ
-                </th>
-
-                <th>
-                  الحالة
-                </th>
-
-                <th>
-                  الإجراءات
-                </th>
-
-              </tr>
-
-            </thead>
-
-
-            <tbody
-              id="studentsTable">
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-
-        <!-- EMPTY -->
-
-        <div
-          id="emptyMessage"
-          class="empty">
-
-          <div class="empty-icon">
-
-            <i class="fa-solid fa-users-slash"></i>
-
-          </div>
-
-          <strong>
-            لا يوجد طلاب
-          </strong>
-
-          <p>
-            لم يتم العثور على طلاب مطابقين للبحث.
-          </p>
-
-        </div>
-
-
-      </section>
-
-
-    </main>
-
-  </div>
-
-
-  <!-- MODAL -->
-
-  <div
-    class="modal"
-    id="studentModal">
-
-
-    <div class="modal-box">
-
-
-      <div class="modal-header">
-
-        <div>
-
-          <h2 id="modalTitle">
-            إضافة طالب جديد
-          </h2>
-
-          <p>
-            أدخل بيانات الطالب بشكل صحيح
-          </p>
-
-        </div>
-
-
-        <button
-          class="close-modal"
-          id="closeModal"
-          type="button">
-
-          <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-      </div>
-
-
-      <form
-        id="studentForm"
-        class="form">
-
-
-        <div class="form-group">
-
-          <label for="studentName">
-            اسم الطالب
-          </label>
-
-          <input
-            type="text"
-            id="studentName"
-            required
-            placeholder="مثال: أحمد محمد">
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="studentSection">
-            الشعبة
-          </label>
-
-          <select
-            id="studentSection"
-            required>
-
-            <option value="">
-              اختر الشعبة
-            </option>
-
-            <option value="شعبة الحفاظ">
-              شعبة الحفاظ
-            </option>
-
-            <option value="شعبة تجويد">
-              شعبة تجويد
-            </option>
-
-            <option value="شعبة إجازة">
-              شعبة إجازة
-            </option>
-
-            <option value="شعبة فرسان">
-              شعبة فرسان
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="memorization">
-            مستوى الحفظ
-          </label>
-
-          <input
-            type="text"
-            id="memorization"
-            placeholder="مثال: سورة البقرة">
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="studentStatus">
-            الحالة
-          </label>
-
-          <select
-            id="studentStatus">
-
-            <option value="active">
-              مستمر
-            </option>
-
-            <option value="inactive">
-              متوقف
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="modal-buttons">
-
-          <button
-            type="submit"
-            class="save-btn"
-            id="saveButton">
-
-            <i class="fa-solid fa-check"></i>
-
-            حفظ الطالب
-
-          </button>
-
-
-          <button
-            type="button"
-            class="cancel-btn"
-            id="cancelButton">
-
-            إلغاء
-
-          </button>
-
-        </div>
-
-
-        <div id="message"></div>
-
-
-      </form>
+      <p>
+        إدارة ومتابعة طلاب المركز بسهولة
+      </p>
 
     </div>
 
   </div>
 
 
-  <!-- TOAST -->
+  <div class="teacher-info">
+
+
+    <div class="teacher-details">
+
+      <span
+        class="teacher-name"
+        id="teacherName">
+
+        المعلم
+
+      </span>
+
+
+      <span
+        class="teacher-email"
+        id="teacherEmail">
+
+        -
+
+      </span>
+
+    </div>
+
+
+    <div class="teacher-avatar">
+
+      <i class="fa-solid fa-user-tie"></i>
+
+    </div>
+
+  </div>
+
+
+</header>
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<main class="content">
+
+
+  <!-- WELCOME -->
+
+  <section class="welcome-card">
+
+
+    <div class="welcome-content">
+
+
+      <div class="welcome-small">
+
+        مركز حردان طارق القرآني
+
+      </div>
+
+
+      <h2>
+        أهلاً وسهلاً بك 👋
+      </h2>
+
+
+      <p>
+        من هنا تقدر تتابع طلاب المركز،
+        تشوف طلبات الانضمام، وتدير بيانات الطلاب
+        بكل سهولة ومن مكان واحد.
+      </p>
+
+
+    </div>
+
+
+    <div class="hero-decoration">
+
+      <i class="fa-solid fa-book-quran"></i>
+
+    </div>
+
+
+  </section>
+
+
+  <!-- =====================================================
+       STATS
+  ===================================================== -->
+
+  <section class="stats">
+
+
+    <div class="stat-card">
+
+
+      <div class="stat-icon">
+
+        <i class="fa-solid fa-users"></i>
+
+      </div>
+
+
+      <div>
+
+        <span
+          class="stat-number"
+          id="totalStudents">
+
+          0
+
+        </span>
+
+        <span class="stat-label">
+          إجمالي الطلاب
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="stat-card">
+
+
+      <div class="stat-icon">
+
+        <i class="fa-solid fa-user-check"></i>
+
+      </div>
+
+
+      <div>
+
+        <span
+          class="stat-number"
+          id="activeStudents">
+
+          0
+
+        </span>
+
+        <span class="stat-label">
+          الطلاب المستمرون
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="stat-card">
+
+
+      <div class="stat-icon">
+
+        <i class="fa-solid fa-book-quran"></i>
+
+      </div>
+
+
+      <div>
+
+        <span
+          class="stat-number"
+          id="memorizedStudents">
+
+          0
+
+        </span>
+
+        <span class="stat-label">
+          لديهم متابعة حفظ
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+  <!-- =====================================================
+       REQUESTS
+  ===================================================== -->
+
+  <section
+    class="panel requests-panel"
+    id="requestsPanel">
+
+
+    <div class="panel-top">
+
+
+      <div class="panel-title">
+
+
+        <div class="panel-title-icon">
+
+          <i class="fa-solid fa-user-clock"></i>
+
+        </div>
+
+
+        <div>
+
+          <h2>
+            طلبات الانضمام
+          </h2>
+
+          <span>
+            الطلاب الذين ينتظرون موافقتك
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+      <span
+        class="pending-count"
+        id="pendingCount">
+
+        0 طلب
+
+      </span>
+
+
+    </div>
+
+
+    <div
+      class="requests-list"
+      id="requestsList">
+
+    </div>
+
+
+  </section>
+
+
+  <!-- =====================================================
+       STUDENTS
+  ===================================================== -->
+
+  <section
+    class="panel"
+    id="studentsPanel">
+
+
+    <div class="panel-top">
+
+
+      <div class="panel-title">
+
+
+        <div class="panel-title-icon">
+
+          <i class="fa-solid fa-users"></i>
+
+        </div>
+
+
+        <div>
+
+          <h2>
+            قائمة الطلاب
+          </h2>
+
+          <span>
+            عرض وإدارة جميع الطلاب المقبولين
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+      <button
+        class="add-btn"
+        id="openModal"
+        type="button">
+
+        <i class="fa-solid fa-user-plus"></i>
+
+        إضافة طالب جديد
+
+      </button>
+
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+
+      <div class="search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="ابحث باسم الطالب...">
+
+      </div>
+
+
+      <select
+        id="sectionFilter"
+        class="filter-select">
+
+        <option value="">
+          جميع الشعب
+        </option>
+
+        <option value="شعبة الحفاظ">
+          شعبة الحفاظ
+        </option>
+
+        <option value="شعبة تجويد">
+          شعبة تجويد
+        </option>
+
+        <option value="شعبة إجازة">
+          شعبة إجازة
+        </option>
+
+        <option value="شعبة فرسان">
+          شعبة فرسان
+        </option>
+
+      </select>
+
+
+    </div>
+
+
+    <!-- TABLE -->
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              الطالب
+            </th>
+
+            <th>
+              الشعبة
+            </th>
+
+            <th>
+              مستوى الحفظ
+            </th>
+
+            <th>
+              الحالة
+            </th>
+
+            <th>
+              الإجراءات
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="studentsTable"></tbody>
+
+      </table>
+
+    </div>
+
+
+    <div
+      id="emptyMessage"
+      class="empty">
+
+
+      <div class="empty-icon">
+
+        <i class="fa-solid fa-users-slash"></i>
+
+      </div>
+
+
+      <strong>
+        لا يوجد طلاب
+      </strong>
+
+
+      <p>
+        لم يتم العثور على طلاب مطابقين للبحث.
+      </p>
+
+
+    </div>
+
+
+  </section>
+
+
+</main>
+```
+
+  </div>
+
+  <!-- =====================================================
+       MODAL
+  ===================================================== -->
+
+  <div
+    class="modal"
+    id="studentModal">
+
+```
+<div class="modal-box">
+
+
+  <div class="modal-header">
+
+
+    <div>
+
+      <h2 id="modalTitle">
+        إضافة طالب جديد
+      </h2>
+
+      <p>
+        أدخل بيانات الطالب بشكل صحيح
+      </p>
+
+    </div>
+
+
+    <button
+      class="close-modal"
+      id="closeModal"
+      type="button">
+
+      <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+
+  </div>
+
+
+  <form
+    id="studentForm"
+    class="form">
+
+
+    <div class="form-group">
+
+      <label for="studentName">
+        اسم الطالب
+      </label>
+
+      <input
+        type="text"
+        id="studentName"
+        required
+        placeholder="مثال: أحمد محمد">
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="studentSection">
+        الشعبة
+      </label>
+
+      <select
+        id="studentSection"
+        required>
+
+        <option value="">
+          اختر الشعبة
+        </option>
+
+        <option value="شعبة الحفاظ">
+          شعبة الحفاظ
+        </option>
+
+        <option value="شعبة تجويد">
+          شعبة تجويد
+        </option>
+
+        <option value="شعبة إجازة">
+          شعبة إجازة
+        </option>
+
+        <option value="شعبة فرسان">
+          شعبة فرسان
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="memorization">
+        مستوى الحفظ
+      </label>
+
+      <input
+        type="text"
+        id="memorization"
+        placeholder="مثال: سورة البقرة">
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label for="studentStatus">
+        الحالة
+      </label>
+
+      <select
+        id="studentStatus">
+
+        <option value="active">
+          مستمر
+        </option>
+
+        <option value="inactive">
+          متوقف
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="modal-buttons">
+
+
+      <button
+        type="submit"
+        class="save-btn"
+        id="saveButton">
+
+        <i class="fa-solid fa-check"></i>
+
+        حفظ الطالب
+
+      </button>
+
+
+      <button
+        type="button"
+        class="cancel-btn"
+        id="cancelButton">
+
+        إلغاء
+
+      </button>
+
+
+    </div>
+
+
+    <div id="message"></div>
+
+
+  </form>
+
+</div>
+```
+
+  </div>
+
+  <!-- =====================================================
+       TOAST
+  ===================================================== -->
 
   <div
     class="toast"
     id="toast">
 
-    <i id="toastIcon"></i>
+```
+<i id="toastIcon"></i>
 
-    <span id="toastText"></span>
+<span id="toastText"></span>
+```
 
   </div>
 
-
-  <div class="badge">
-    النسخة التجريبية
-  </div>
-
-
-  <!-- SUPABASE -->
+  <!-- =====================================================
+       SUPABASE
+  ===================================================== -->
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
   <script>
-
-    /* =====================================================
-       SUPABASE
-    ===================================================== */
 
     const SUPABASE_URL =
       'https://lsbbcybpiulusdgfhepf.supabase.co';
@@ -3077,128 +3254,84 @@
       );
 
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
-
     const tableBody =
-      document.getElementById(
-        'studentsTable'
-      );
+      document.getElementById('studentsTable');
 
 
     const emptyMessage =
-      document.getElementById(
-        'emptyMessage'
-      );
+      document.getElementById('emptyMessage');
 
 
     const totalStudents =
-      document.getElementById(
-        'totalStudents'
-      );
+      document.getElementById('totalStudents');
 
 
     const activeStudents =
-      document.getElementById(
-        'activeStudents'
-      );
+      document.getElementById('activeStudents');
 
 
     const memorizedStudents =
-      document.getElementById(
-        'memorizedStudents'
-      );
+      document.getElementById('memorizedStudents');
 
 
     const searchInput =
-      document.getElementById(
-        'searchInput'
-      );
+      document.getElementById('searchInput');
 
 
     const sectionFilter =
-      document.getElementById(
-        'sectionFilter'
-      );
+      document.getElementById('sectionFilter');
 
 
     const modal =
-      document.getElementById(
-        'studentModal'
-      );
+      document.getElementById('studentModal');
 
 
     const openModal =
-      document.getElementById(
-        'openModal'
-      );
+      document.getElementById('openModal');
 
 
     const closeModal =
-      document.getElementById(
-        'closeModal'
-      );
+      document.getElementById('closeModal');
 
 
     const cancelButton =
-      document.getElementById(
-        'cancelButton'
-      );
+      document.getElementById('cancelButton');
 
 
     const studentForm =
-      document.getElementById(
-        'studentForm'
-      );
+      document.getElementById('studentForm');
 
 
     const message =
-      document.getElementById(
-        'message'
-      );
+      document.getElementById('message');
 
 
     const modalTitle =
-      document.getElementById(
-        'modalTitle'
-      );
+      document.getElementById('modalTitle');
 
 
     const saveButton =
-      document.getElementById(
-        'saveButton'
-      );
+      document.getElementById('saveButton');
 
 
     const toast =
-      document.getElementById(
-        'toast'
-      );
+      document.getElementById('toast');
 
 
     const toastText =
-      document.getElementById(
-        'toastText'
-      );
+      document.getElementById('toastText');
 
 
     const toastIcon =
-      document.getElementById(
-        'toastIcon'
-      );
+      document.getElementById('toastIcon');
 
 
     const requestsList =
-      document.getElementById(
-        'requestsList'
-      );
+      document.getElementById('requestsList');
 
 
     const pendingCount =
-      document.getElementById(
-        'pendingCount'
-      );
+      document.getElementById('pendingCount');
 
 
     let students = [];
@@ -3220,7 +3353,6 @@
       toast.className =
         'toast show ' + type;
 
-
       toastIcon.className =
         type === 'success'
           ? 'fa-solid fa-circle-check'
@@ -3229,9 +3361,7 @@
 
       setTimeout(() => {
 
-        toast.classList.remove(
-          'show'
-        );
+        toast.classList.remove('show');
 
       }, 3000);
 
@@ -3248,9 +3378,7 @@
         data,
         error
       } =
-        await supabaseClient
-          .auth
-          .getUser();
+        await supabaseClient.auth.getUser();
 
 
       if (
@@ -3288,7 +3416,6 @@
 
     /* =====================================================
        LOAD STUDENTS
-       فقط الطلاب المقبولون
     ===================================================== */
 
     async function loadStudents() {
@@ -3421,118 +3548,113 @@
 
 
       requestsList.innerHTML =
-        requests
-          .map(student => {
+        requests.map(student => {
 
-            const safeName =
-              escapeHtml(
-                student.name || ''
-              );
+          const safeName =
+            escapeHtml(
+              student.name || ''
+            );
 
-            const safeSection =
-              escapeHtml(
-                student.section || '-'
-              );
+          const safeSection =
+            escapeHtml(
+              student.section || '-'
+            );
 
-            const safePhone =
-              escapeHtml(
-                student.guardian_phone || '-'
-              );
+          const safePhone =
+            escapeHtml(
+              student.guardian_phone || '-'
+            );
 
-            const safeNotes =
-              escapeHtml(
-                student.notes || ''
-              );
-
-
-            return `
-
-              <div class="request-card">
-
-                <div class="request-content">
+          const safeNotes =
+            escapeHtml(
+              student.notes || ''
+            );
 
 
-                  <div class="request-info">
+          return `
 
-                    <div class="request-name">
+            <div class="request-card">
 
-                      ${safeName}
+              <div class="request-content">
 
-                    </div>
+                <div>
 
+                  <div class="request-name">
 
-                    <div class="request-details">
-
-                      العمر:
-                      ${student.age || 'غير محدد'}
-
-                      <br>
-
-                      الشعبة:
-                      ${safeSection}
-
-                      <br>
-
-                      هاتف ولي الأمر:
-                      ${safePhone}
-
-                      ${
-                        student.notes
-                          ? `
-                            <br>
-                            الملاحظات:
-                            ${safeNotes}
-                          `
-                          : ''
-                      }
-
-                    </div>
+                    ${safeName}
 
                   </div>
 
+                  <div class="request-details">
 
-                  <div class="request-actions">
+                    العمر:
+                    ${student.age || 'غير محدد'}
 
-                    <button
-                      type="button"
-                      class="approve-btn"
-                      onclick="approveStudent('${student.id}')">
+                    <br>
 
-                      <i class="fa-solid fa-check"></i>
+                    الشعبة:
+                    ${safeSection}
 
-                      قبول
+                    <br>
 
-                    </button>
+                    هاتف ولي الأمر:
+                    ${safePhone}
 
-
-                    <button
-                      type="button"
-                      class="reject-btn"
-                      onclick="rejectStudent('${student.id}')">
-
-                      <i class="fa-solid fa-xmark"></i>
-
-                      رفض
-
-                    </button>
+                    ${
+                      student.notes
+                        ? `
+                          <br>
+                          الملاحظات:
+                          ${safeNotes}
+                        `
+                        : ''
+                    }
 
                   </div>
 
+                </div>
+
+
+                <div class="request-actions">
+
+                  <button
+                    type="button"
+                    class="approve-btn"
+                    onclick="approveStudent('${student.id}')">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    قبول
+
+                  </button>
+
+
+                  <button
+                    type="button"
+                    class="reject-btn"
+                    onclick="rejectStudent('${student.id}')">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                    رفض
+
+                  </button>
 
                 </div>
 
               </div>
 
-            `;
+            </div>
 
-          })
-          .join('');
+          `;
+
+        }).join('');
 
     }
 
 
     /* =====================================================
-       APPROVE STUDENT
+       APPROVE
     ===================================================== */
 
     window.approveStudent =
@@ -3544,9 +3666,7 @@
           );
 
 
-        if (!confirmed) {
-          return;
-        }
+        if (!confirmed) return;
 
 
         const {
@@ -3569,10 +3689,7 @@
 
         if (error) {
 
-          console.error(
-            'خطأ في قبول الطالب:',
-            error
-          );
+          console.error(error);
 
           showToast(
             'حدث خطأ أثناء قبول الطلب.',
@@ -3597,7 +3714,7 @@
 
 
     /* =====================================================
-       REJECT STUDENT
+       REJECT
     ===================================================== */
 
     window.rejectStudent =
@@ -3609,9 +3726,7 @@
           );
 
 
-        if (!confirmed) {
-          return;
-        }
+        if (!confirmed) return;
 
 
         const {
@@ -3634,10 +3749,7 @@
 
         if (error) {
 
-          console.error(
-            'خطأ في رفض الطلب:',
-            error
-          );
+          console.error(error);
 
           showToast(
             'حدث خطأ أثناء رفض الطلب.',
@@ -3720,9 +3832,7 @@
       filtered.forEach(student => {
 
         const row =
-          document.createElement(
-            'tr'
-          );
+          document.createElement('tr');
 
 
         const statusText =
@@ -3751,9 +3861,7 @@
 
               <div class="student-avatar">
 
-                ${escapeHtml(
-                  firstLetter
-                )}
+                ${escapeHtml(firstLetter)}
 
               </div>
 
@@ -3761,8 +3869,7 @@
               <a
                 class="student-name-link"
                 href="student-profile.html?id=${encodeURIComponent(student.id)}"
-                title="فتح ملف الطالب"
-              >
+                title="فتح ملف الطالب">
 
                 ${escapeHtml(
                   student.name || ''
@@ -3806,9 +3913,7 @@
                 : `
 
                   <span class="no-data">
-
                     لم يحدد
-
                   </span>
 
                 `
@@ -3819,8 +3924,7 @@
 
           <td>
 
-            <span
-              class="status ${statusClass}">
+            <span class="status ${statusClass}">
 
               ${statusText}
 
@@ -3832,7 +3936,6 @@
           <td>
 
             <div class="actions">
-
 
               <button
                 class="action-btn edit-btn"
@@ -3855,7 +3958,6 @@
 
               </button>
 
-
             </div>
 
           </td>
@@ -3863,9 +3965,7 @@
         `;
 
 
-        tableBody.appendChild(
-          row
-        );
+        tableBody.appendChild(row);
 
       });
 
@@ -3885,8 +3985,7 @@
       activeStudents.textContent =
         students.filter(
           student =>
-            student.status ===
-            'active'
+            student.status === 'active'
         ).length;
 
 
@@ -3901,7 +4000,7 @@
 
 
     /* =====================================================
-       OPEN ADD MODAL
+       ADD MODAL
     ===================================================== */
 
     function openAddModal() {
@@ -3932,7 +4031,7 @@
 
 
     /* =====================================================
-       EDIT STUDENT
+       EDIT
     ===================================================== */
 
     window.editStudent =
@@ -3948,8 +4047,7 @@
         if (!student) return;
 
 
-        editingStudentId =
-          id;
+        editingStudentId = id;
 
 
         modalTitle.textContent =
@@ -3992,7 +4090,7 @@
 
 
     /* =====================================================
-       SAVE STUDENT
+       SAVE
     ===================================================== */
 
     studentForm.addEventListener(
@@ -4003,43 +4101,30 @@
 
 
         const name =
-          document
-            .getElementById(
-              'studentName'
-            )
-            .value
-            .trim();
+          document.getElementById(
+            'studentName'
+          ).value.trim();
 
 
         const section =
-          document
-            .getElementById(
-              'studentSection'
-            )
-            .value;
+          document.getElementById(
+            'studentSection'
+          ).value;
 
 
         const memorization =
-          document
-            .getElementById(
-              'memorization'
-            )
-            .value
-            .trim();
+          document.getElementById(
+            'memorization'
+          ).value.trim();
 
 
         const status =
-          document
-            .getElementById(
-              'studentStatus'
-            )
-            .value;
+          document.getElementById(
+            'studentStatus'
+          ).value;
 
 
-        if (
-          !name ||
-          !section
-        ) {
+        if (!name || !section) {
 
           message.style.color =
             'var(--danger)';
@@ -4253,9 +4338,7 @@
 
     function closeStudentModal() {
 
-      modal.classList.remove(
-        'show'
-      );
+      modal.classList.remove('show');
 
       studentForm.reset();
 
@@ -4263,8 +4346,7 @@
 
       editingStudentId = null;
 
-      saveButton.disabled =
-        false;
+      saveButton.disabled = false;
 
       saveButton.innerHTML =
         '<i class="fa-solid fa-check"></i> حفظ الطالب';
@@ -4321,9 +4403,7 @@
     ===================================================== */
 
     document
-      .getElementById(
-        'logoutButton'
-      )
+      .getElementById('logoutButton')
       .addEventListener(
         'click',
         logout
@@ -4348,109 +4428,104 @@
     ===================================================== */
 
     const sidebar =
-      document.getElementById(
-        'sidebar'
-      );
+      document.getElementById('sidebar');
 
 
     document
-      .getElementById(
-        'mobileMenu'
-      )
+      .getElementById('mobileMenu')
       .addEventListener(
         'click',
         function() {
 
-          sidebar.classList.add(
-            'open'
-          );
+          sidebar.classList.add('open');
 
         }
       );
 
 
     document
-      .getElementById(
-        'closeSidebar'
-      )
+      .getElementById('closeSidebar')
       .addEventListener(
         'click',
         function() {
 
-          sidebar.classList.remove(
-            'open'
-          );
+          sidebar.classList.remove('open');
 
         }
       );
 
 
     document
-      .querySelector('.home-link')
+      .querySelector('.sidebar-brand')
       .addEventListener(
         'click',
         function() {
 
-          sidebar.classList.remove(
-            'open'
-          );
+          sidebar.classList.remove('open');
 
         }
       );
 
 
     document
-      .getElementById(
-        'studentsNav'
-      )
+      .getElementById('studentsNav')
       .addEventListener(
         'click',
         function() {
 
           document
-            .getElementById(
-              'studentsPanel'
-            )
+            .getElementById('studentsPanel')
             .scrollIntoView({
               behavior: 'smooth'
             });
 
 
-          sidebar.classList.remove(
-            'open'
-          );
+          sidebar.classList.remove('open');
 
         }
       );
 
 
     document
-      .getElementById(
-        'requestsNav'
-      )
+      .getElementById('requestsNav')
       .addEventListener(
         'click',
         function() {
 
           document
-            .getElementById(
-              'requestsPanel'
-            )
+            .getElementById('requestsPanel')
             .scrollIntoView({
               behavior: 'smooth'
             });
 
 
-          sidebar.classList.remove(
-            'open'
-          );
+          sidebar.classList.remove('open');
+
+        }
+      );
+
+
+    document
+      .getElementById('memorizationNav')
+      .addEventListener(
+        'click',
+        function() {
+
+          document
+            .getElementById('studentsPanel')
+            .scrollIntoView({
+              behavior: 'smooth'
+            });
+
+
+          sidebar.classList.remove('open');
 
         }
       );
 
 
     /* =====================================================
-       ESCAPE
+       ESCAPE HTML
     ===================================================== */
 
     function escapeHtml(text) {
@@ -4510,4 +4585,3 @@
 </body>
 
 </html>
-```
