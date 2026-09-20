@@ -6,6 +6,14 @@
 
   <title>ملف الطالب | مركز حردان طارق القرآني</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
@@ -48,9 +56,10 @@
 
     body{
       font-family:
+        "Cairo",
+        "Segoe UI",
         Tahoma,
         Arial,
-        "Segoe UI",
         sans-serif;
 
       min-height:100vh;
@@ -182,13 +191,14 @@
     .brand-text strong{
       display:block;
       color:var(--gold2);
-      font-size:15px;
+      font-size:16px;
       margin-bottom:4px;
+      font-weight:800;
     }
 
     .brand-text span{
       color:var(--muted2);
-      font-size:10px;
+      font-size:11px;
     }
 
     .top-actions{
@@ -212,7 +222,8 @@
       background:rgba(7,22,15,.80);
       color:var(--text);
 
-      font-size:11px;
+      font-size:12px;
+      font-weight:600;
 
       transition:.22s ease;
     }
@@ -366,7 +377,7 @@
 
       border:1px solid rgba(217,184,108,.13);
 
-      font-size:9px;
+      font-size:10px;
 
       margin-bottom:7px;
     }
@@ -389,7 +400,7 @@
       color:var(--white);
 
       font-size:
-        clamp(24px,3.4vw,35px);
+        clamp(25px,3.4vw,37px);
 
       line-height:1.15;
 
@@ -413,12 +424,12 @@
 
       color:var(--gold2);
 
-      font-size:10px;
+      font-size:11px;
     }
 
     .student-code strong{
       letter-spacing:2px;
-      font-size:12px;
+      font-size:13px;
     }
 
     /* =========================
@@ -480,7 +491,7 @@
 
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       line-height:1.45;
 
@@ -493,7 +504,7 @@
 
       color:var(--gold2);
 
-      font-size:19px;
+      font-size:21px;
 
       font-weight:800;
 
@@ -506,7 +517,7 @@
 
       color:var(--muted2);
 
-      font-size:7px;
+      font-size:8px;
 
       margin-top:2px;
     }
@@ -538,7 +549,7 @@
 
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       margin-bottom:5px;
     }
@@ -546,7 +557,7 @@
     .detail-field input,
     .detail-field select{
       width:100%;
-      height:38px;
+      height:39px;
 
       border-radius:10px;
 
@@ -560,7 +571,7 @@
 
       padding:7px 9px;
 
-      font-size:10px;
+      font-size:11px;
     }
 
     .detail-field input:focus,
@@ -598,7 +609,7 @@
 
       color:var(--text);
 
-      font-size:10px;
+      font-size:11px;
 
       margin-bottom:2px;
     }
@@ -608,13 +619,13 @@
 
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
     }
 
     .photo-name{
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       overflow:hidden;
       text-overflow:ellipsis;
@@ -645,7 +656,7 @@
 
       background:rgba(217,184,108,.08);
 
-      font-size:9px;
+      font-size:10px;
     }
 
     .photo-button input{
@@ -686,7 +697,8 @@
 
       color:var(--muted);
 
-      font-size:10px;
+      font-size:11px;
+      font-weight:600;
 
       transition:.23s ease;
     }
@@ -773,7 +785,7 @@
 
       color:var(--gold2);
 
-      font-size:15px;
+      font-size:17px;
       font-weight:700;
     }
 
@@ -793,7 +805,7 @@
 
     .section-note{
       color:var(--muted2);
-      font-size:8px;
+      font-size:9px;
     }
 
     /* =========================
@@ -823,13 +835,13 @@
 
     .rule-title{
       color:var(--gold2);
-      font-size:10px;
+      font-size:11px;
       margin-bottom:4px;
     }
 
     .rule-text{
       color:var(--muted);
-      font-size:8px;
+      font-size:9px;
       line-height:1.8;
     }
 
@@ -851,7 +863,8 @@
 
       border-radius:10px;
 
-      font-size:9px;
+      font-size:10px;
+      font-weight:600;
 
       transition:.2s ease;
     }
@@ -904,7 +917,7 @@
     .summary-label{
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       margin-bottom:5px;
     }
@@ -912,7 +925,7 @@
     .summary-value{
       color:var(--gold2);
 
-      font-size:19px;
+      font-size:21px;
 
       font-weight:800;
     }
@@ -973,7 +986,7 @@
 
       color:var(--muted);
 
-      font-size:9px;
+      font-size:10px;
     }
 
     .plan-view-btn.active{
@@ -1010,7 +1023,7 @@
 
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       margin-bottom:3px;
     }
@@ -1018,7 +1031,7 @@
     .plan-summary-card strong{
       color:var(--gold2);
 
-      font-size:15px;
+      font-size:17px;
     }
 
     .editor-list{
@@ -1057,7 +1070,7 @@
 
     .field label{
       color:var(--muted2);
-      font-size:8px;
+      font-size:9px;
     }
 
     .normal-input,
@@ -1077,7 +1090,7 @@
 
       padding:8px 9px;
 
-      font-size:9px;
+      font-size:10px;
     }
 
     .normal-input,
@@ -1113,7 +1126,7 @@
 
       border-radius:999px;
 
-      font-size:8px;
+      font-size:9px;
     }
 
     .plan-status.done{
@@ -1157,7 +1170,7 @@
 
       color:var(--muted);
 
-      font-size:9px;
+      font-size:10px;
     }
 
     .view-btn.active{
@@ -1191,7 +1204,7 @@
 
       color:var(--muted);
 
-      font-size:9px;
+      font-size:10px;
 
       line-height:1.9;
 
@@ -1225,7 +1238,7 @@
 
       color:var(--muted);
 
-      font-size:8px;
+      font-size:9px;
     }
 
     .legend-dot{
@@ -1299,7 +1312,7 @@
     .juz-title{
       color:var(--gold2);
 
-      font-size:10px;
+      font-size:11px;
 
       font-weight:700;
 
@@ -1309,7 +1322,7 @@
     .juz-meta{
       color:var(--muted2);
 
-      font-size:7px;
+      font-size:8px;
 
       line-height:1.7;
     }
@@ -1327,7 +1340,7 @@
     .juz-percent{
       color:var(--gold2);
 
-      font-size:12px;
+      font-size:14px;
 
       font-weight:800;
     }
@@ -1383,10 +1396,6 @@
           var(--gold)
         );
     }
-
-    /* =========================
-       JUZ OUTER PROGRESS
-    ========================= */
 
     .juz-card-progress{
       height:6px;
@@ -1445,7 +1454,7 @@
 
       place-items:center;
 
-      font-size:7px;
+      font-size:8px;
 
       transition:.16s ease;
 
@@ -1501,7 +1510,7 @@
 
       color:var(--muted);
 
-      font-size:7px;
+      font-size:8px;
     }
 
     .juz-completion-btn.active{
@@ -1540,7 +1549,7 @@
 
       text-align:right;
 
-      font-size:8px;
+      font-size:9px;
     }
 
     th{
@@ -1568,7 +1577,7 @@
 
       border-radius:999px;
 
-      font-size:7px;
+      font-size:8px;
     }
 
     .tag-new{
@@ -1652,7 +1661,7 @@
     .modal-head h3{
       color:var(--gold2);
 
-      font-size:17px;
+      font-size:18px;
     }
 
     .close-btn{
@@ -1696,7 +1705,7 @@
 
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       margin-bottom:4px;
     }
@@ -1704,7 +1713,7 @@
     .preview-box strong{
       color:var(--gold2);
 
-      font-size:10px;
+      font-size:11px;
     }
 
     .page-history{
@@ -1742,7 +1751,7 @@
 
       color:var(--text);
 
-      font-size:9px;
+      font-size:10px;
 
       margin-bottom:3px;
     }
@@ -1750,7 +1759,7 @@
     .history-main span{
       color:var(--muted2);
 
-      font-size:7px;
+      font-size:8px;
 
       line-height:1.8;
     }
@@ -1796,7 +1805,7 @@
     }
 
     .badge-icon{
-      font-size:29px;
+      font-size:30px;
 
       margin-bottom:7px;
     }
@@ -1804,7 +1813,7 @@
     .badge-name{
       color:var(--gold2);
 
-      font-size:11px;
+      font-size:13px;
 
       font-weight:700;
 
@@ -1814,7 +1823,7 @@
     .badge-description{
       color:var(--muted);
 
-      font-size:8px;
+      font-size:9px;
 
       line-height:1.7;
 
@@ -1826,7 +1835,7 @@
 
       color:var(--gold2);
 
-      font-size:8px;
+      font-size:9px;
 
       font-weight:700;
     }
@@ -1836,253 +1845,9 @@
 
       color:var(--muted2);
 
-      font-size:7px;
-    }
+      font-size:8px;
 
-    /* =========================
-       EMPTY
-    ========================= */
-
-    .empty{
-      text-align:center;
-
-      padding:20px 10px;
-
-      color:var(--muted2);
-
-      border:1px dashed rgba(255,255,255,.07);
-
-      border-radius:13px;
-
-      font-size:9px;
-
-      line-height:1.8;
-    }
-
-    /* =========================
-       SAVE
-    ========================= */
-
-    .save-bar{
-      position:sticky;
-
-      bottom:12px;
-
-      z-index:100;
-
-      display:flex;
-
-      align-items:center;
-
-      justify-content:space-between;
-
-      gap:12px;
-
-      margin-top:12px;
-
-      padding:11px 13px;
-
-      border-radius:16px;
-
-      background:rgba(5,19,12,.92);
-
-      border:1px solid rgba(217,184,108,.16);
-
-      box-shadow:
-        0 18px 45px rgba(0,0,0,.34);
-
-      backdrop-filter:blur(18px);
-    }
-
-    .save-status{
-      color:var(--muted);
-
-      font-size:9px;
-    }
-
-    .save-status strong{
-      color:var(--gold2);
-    }
-
-    .save-btn{
-      min-height:42px;
-
-      padding:9px 17px;
-
-      border:none;
-
-      border-radius:11px;
-
-      color:#fff;
-
-      background:
-        linear-gradient(
-          135deg,
-          #2f946a,
-          #206d4e
-        );
-
-      box-shadow:
-        0 9px 22px rgba(29,108,76,.18);
-
-      font-size:10px;
-
-      transition:.23s ease;
-    }
-
-    .save-btn:hover{
-      transform:translateY(-2px);
-    }
-
-    .save-btn:disabled{
-      opacity:.65;
-      cursor:not-allowed;
-      transform:none;
-    }
-
-    /* =========================
-       LOADING
-    ========================= */
-
-    #loading{
-      position:fixed;
-
-      inset:0;
-
-      z-index:1000;
-
-      display:flex;
-
-      align-items:center;
-      justify-content:center;
-
-      background:#030905;
-    }
-
-    .loader-box{
-      text-align:center;
-    }
-
-    .spinner{
-      width:50px;
-      height:50px;
-
-      margin:0 auto 13px;
-
-      border-radius:50%;
-
-      border:3px solid rgba(217,184,108,.12);
-
-      border-top-color:var(--gold);
-
-      animation:spin 1s linear infinite;
-    }
-
-    .loader-box span{
-      color:var(--muted);
-
-      font-size:11px;
-    }
-
-    @keyframes spin{
-      to{
-        transform:rotate(360deg);
-      }
-    }
-
-    /* =========================
-       ERROR
-    ========================= */
-
-    .error-card{
-      display:none;
-
-      width:min(600px,92%);
-
-      margin:80px auto;
-
-      padding:28px;
-
-      text-align:center;
-
-      border-radius:23px;
-
-      background:var(--panel);
-
-      border:1px solid var(--line);
-
-      box-shadow:var(--shadow);
-    }
-
-    .error-card .icon{
-      font-size:40px;
-      margin-bottom:10px;
-    }
-
-    .error-card h2{
-      color:var(--gold2);
-
-      font-size:20px;
-
-      margin-bottom:9px;
-    }
-
-    .error-card p{
-      color:var(--muted);
-
-      font-size:11px;
-
-      line-height:1.9;
-
-      margin-bottom:16px;
-    }
-
-    /* =========================
-       TOAST
-    ========================= */
-
-    #toast{
-      position:fixed;
-
-      left:50%;
-      bottom:27px;
-
-      z-index:2000;
-
-      transform:
-        translate(-50%,20px);
-
-      opacity:0;
-
-      pointer-events:none;
-
-      padding:11px 15px;
-
-      border-radius:12px;
-
-      background:rgba(8,29,19,.98);
-
-      color:var(--white);
-
-      border:1px solid rgba(217,184,108,.19);
-
-      box-shadow:
-        0 15px 40px rgba(0,0,0,.34);
-
-      transition:.28s ease;
-
-      font-size:10px;
-    }
-
-    #toast.show{
-      opacity:1;
-      transform:
-        translate(-50%,0);
-    }
-
-    #toast.error{
-      color:#f0b5b5;
-      border-color:rgba(213,109,109,.23);
+      line-height:1.7;
     }
 
     /* =========================
@@ -2115,7 +1880,7 @@
 
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       margin-bottom:5px;
     }
@@ -2123,7 +1888,7 @@
     .fee-summary-card strong{
       color:var(--gold2);
 
-      font-size:18px;
+      font-size:20px;
     }
 
     .fee-form{
@@ -2141,7 +1906,7 @@
     .fee-form-title{
       color:var(--gold2);
 
-      font-size:12px;
+      font-size:13px;
 
       font-weight:700;
 
@@ -2159,7 +1924,7 @@
 
       border-radius:999px;
 
-      font-size:8px;
+      font-size:9px;
 
       white-space:nowrap;
     }
@@ -2219,7 +1984,7 @@
 
       color:var(--text);
 
-      font-size:10px;
+      font-size:11px;
 
       margin-bottom:4px;
     }
@@ -2227,7 +1992,7 @@
     .fee-archive-main span{
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       line-height:1.8;
     }
@@ -2262,7 +2027,7 @@
 
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       margin-bottom:5px;
     }
@@ -2270,7 +2035,7 @@
     .extra-summary-card strong{
       color:var(--gold2);
 
-      font-size:18px;
+      font-size:20px;
     }
 
     .extra-reasons{
@@ -2294,7 +2059,7 @@
 
       color:var(--muted);
 
-      font-size:8px;
+      font-size:9px;
 
       transition:.2s ease;
     }
@@ -2332,7 +2097,7 @@
 
       color:var(--gold2);
 
-      font-size:9px;
+      font-size:10px;
 
       font-weight:700;
     }
@@ -2380,7 +2145,7 @@
 
       color:var(--text);
 
-      font-size:10px;
+      font-size:11px;
 
       margin-bottom:4px;
     }
@@ -2388,19 +2153,255 @@
     .extra-archive-main span{
       color:var(--muted2);
 
-      font-size:8px;
+      font-size:9px;
 
       line-height:1.8;
     }
 
-    .extra-archive-points{
+    /* =========================
+       EMPTY
+    ========================= */
+
+    .empty{
+      text-align:center;
+
+      padding:20px 10px;
+
+      color:var(--muted2);
+
+      border:1px dashed rgba(255,255,255,.07);
+
+      border-radius:13px;
+
+      font-size:10px;
+
+      line-height:1.8;
+    }
+
+    /* =========================
+       SAVE
+    ========================= */
+
+    .save-bar{
+      position:sticky;
+
+      bottom:12px;
+
+      z-index:100;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:12px;
+
+      margin-top:12px;
+
+      padding:11px 13px;
+
+      border-radius:16px;
+
+      background:rgba(5,19,12,.92);
+
+      border:1px solid rgba(217,184,108,.16);
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,.34);
+
+      backdrop-filter:blur(18px);
+    }
+
+    .save-status{
+      color:var(--muted);
+
+      font-size:10px;
+    }
+
+    .save-status strong{
       color:var(--gold2);
+    }
+
+    .save-btn{
+      min-height:42px;
+
+      padding:9px 17px;
+
+      border:none;
+
+      border-radius:11px;
+
+      color:#fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #2f946a,
+          #206d4e
+        );
+
+      box-shadow:
+        0 9px 22px rgba(29,108,76,.18);
+
+      font-size:11px;
+
+      transition:.23s ease;
+    }
+
+    .save-btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .save-btn:disabled{
+      opacity:.65;
+      cursor:not-allowed;
+      transform:none;
+    }
+
+    /* =========================
+       LOADING
+    ========================= */
+
+    #loading{
+      position:fixed;
+
+      inset:0;
+
+      z-index:1000;
+
+      display:flex;
+
+      align-items:center;
+      justify-content:center;
+
+      background:#030905;
+    }
+
+    .loader-box{
+      text-align:center;
+    }
+
+    .spinner{
+      width:50px;
+      height:50px;
+
+      margin:0 auto 13px;
+
+      border-radius:50%;
+
+      border:3px solid rgba(217,184,108,.12);
+
+      border-top-color:var(--gold);
+
+      animation:spin 1s linear infinite;
+    }
+
+    .loader-box span{
+      color:var(--muted);
+
+      font-size:12px;
+    }
+
+    @keyframes spin{
+      to{
+        transform:rotate(360deg);
+      }
+    }
+
+    /* =========================
+       ERROR
+    ========================= */
+
+    .error-card{
+      display:none;
+
+      width:min(600px,92%);
+
+      margin:80px auto;
+
+      padding:28px;
+
+      text-align:center;
+
+      border-radius:23px;
+
+      background:var(--panel);
+
+      border:1px solid var(--line);
+
+      box-shadow:var(--shadow);
+    }
+
+    .error-card .icon{
+      font-size:40px;
+      margin-bottom:10px;
+    }
+
+    .error-card h2{
+      color:var(--gold2);
+
+      font-size:21px;
+
+      margin-bottom:9px;
+    }
+
+    .error-card p{
+      color:var(--muted);
 
       font-size:12px;
 
-      font-weight:800;
+      line-height:1.9;
 
-      white-space:nowrap;
+      margin-bottom:16px;
+    }
+
+    /* =========================
+       TOAST
+    ========================= */
+
+    #toast{
+      position:fixed;
+
+      left:50%;
+      bottom:27px;
+
+      z-index:2000;
+
+      transform:
+        translate(-50%,20px);
+
+      opacity:0;
+
+      pointer-events:none;
+
+      padding:11px 15px;
+
+      border-radius:12px;
+
+      background:rgba(8,29,19,.98);
+
+      color:var(--white);
+
+      border:1px solid rgba(217,184,108,.19);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.34);
+
+      transition:.28s ease;
+
+      font-size:11px;
+    }
+
+    #toast.show{
+      opacity:1;
+      transform:
+        translate(-50%,0);
+    }
+
+    #toast.error{
+      color:#f0b5b5;
+      border-color:rgba(213,109,109,.23);
     }
 
     /* =========================
@@ -2510,7 +2511,7 @@
       }
 
       .metric-value{
-        font-size:16px;
+        font-size:17px;
       }
 
       .id-details{
@@ -3252,9 +3253,7 @@
           <div class="section-title">
 
             <div class="section-icon">
-
               📝
-
             </div>
 
             سجل اختبارات الخطة والنقاط
@@ -3728,6 +3727,10 @@
 
           </div>
 
+          <div class="section-note">
+            المطالبة الشهرية تنشأ تلقائيًا لكل طالب
+          </div>
+
         </div>
 
 
@@ -3740,7 +3743,7 @@
             </small>
 
             <strong id="feeApprovedMonthly">
-              0 د.أ
+              5 د.أ
             </strong>
 
           </div>
@@ -3774,170 +3777,23 @@
         </div>
 
 
-        <div class="editor-grid">
-
-          <div class="field">
-
-            <label>
-              الاشتراك الشهري المعتمد
-            </label>
-
-            <input
-              class="normal-input"
-              id="monthlyFee"
-              type="number"
-              min="0"
-              step="0.01"
-              placeholder="مثال: 15"
-            />
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              نوع الاشتراك
-            </label>
-
-            <select
-              class="normal-select"
-              id="subscriptionType"
-            >
-
-              <option value="">
-                اختر
-              </option>
-
-              <option value="شهري">
-                شهري
-              </option>
-
-              <option value="ربع سنوي">
-                ربع سنوي
-              </option>
-
-              <option value="نصف سنوي">
-                نصف سنوي
-              </option>
-
-              <option value="سنوي">
-                سنوي
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <div
-          class="fee-form"
-          style="margin-top:11px;"
-        >
+        <div class="fee-form">
 
           <div class="fee-form-title">
-            💳 تسجيل مطالبة رسوم شهرية جديدة
-          </div>
-
-
-          <div class="editor-grid">
-
-            <div class="field">
-
-              <label>
-                📅 الشهر
-              </label>
-
-              <input
-                class="normal-input"
-                id="newFeeMonth"
-                type="month"
-              />
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                💰 القيمة (دينار أردني)
-              </label>
-
-              <input
-                class="normal-input"
-                id="newFeeAmount"
-                type="number"
-                min="0"
-                step="0.01"
-                placeholder="15"
-              />
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                🏷️ حالة الدفع المبدئية
-              </label>
-
-              <select
-                class="normal-select"
-                id="newFeeStatus"
-              >
-
-                <option value="متبقي">
-                  متبقي
-                </option>
-
-                <option value="قيد الانتظار">
-                  قيد الانتظار ⏳
-                </option>
-
-                <option value="مدفوع">
-                  مدفوع بالكامل ✅
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="field full">
-
-              <label>
-                📝 ملاحظات إضافية (اختياري)
-              </label>
-
-              <input
-                class="normal-input"
-                id="newFeeNotes"
-                type="text"
-                placeholder="اكتب ملاحظة..."
-              />
-
-            </div>
-
+            💳 المطالبة الشهرية
           </div>
 
 
           <div
-            style="
-              margin-top:9px;
-              display:flex;
-              justify-content:flex-start;
-            "
+            class="map-intro"
+            style="margin-bottom:0;"
           >
 
-            <button
-              type="button"
-              class="action-btn btn-add"
-              onclick="addFee()"
-            >
-              إضافة السجل
-            </button>
+            قيمة الاشتراك الشهري المعتمد ثابتة على
+            <strong>5 دنانير أردنية</strong>.
+            ينشئ النظام مطالبة جديدة تلقائيًا في بداية كل شهر
+            لكل طالب بقيمة 5 د.أ، وتظهر في سجل المدفوعات
+            حتى يتم تحديث حالتها.
 
           </div>
 
@@ -4059,7 +3915,7 @@
           <div
             style="
               color:var(--muted);
-              font-size:9px;
+              font-size:10px;
               line-height:1.8;
               margin-bottom:9px;
             "
@@ -4318,9 +4174,10 @@
 
         <div class="map-intro">
 
-          الأوسمة الأساسية تُحتسب تلقائيًا بناءً على نقاط الطالب،
-          أما ألقاب بطل الشهر وأبطال الشعب فتتحدد مباشرة حسب
-          ترتيب الطالب بين طلاب المركز والشعبة.
+          الأوسمة الأساسية تعتمد على نقاط الطالب فقط،
+          ولا تضيف أي نقاط جديدة إلى مجموع نقاطه.
+          وسام بطل الشهر يُحسم في نهاية كل شهر حسب أعلى تقييم
+          ويبقى محفوظًا في سجل الطالب، ويمكن الحصول عليه أكثر من مرة.
 
         </div>
 
@@ -4603,6 +4460,9 @@
     const PHOTO_BUCKET =
       'student-photos';
 
+    const FIXED_MONTHLY_FEE =
+      5;
+
 
     const supabaseClient =
       window.supabase.createClient(
@@ -4668,14 +4528,6 @@
     let editingPageRecordId = null;
 
     let currentPlanView = 'week';
-
-    let championData = {
-
-      monthlyChampionId:null,
-
-      sectionChampionIds:{}
-
-    };
 
     const openJuz = new Set();
 
@@ -4883,19 +4735,32 @@
     }
 
 
-    function isCurrentMonth(
-      dateValue
-    ){
+    function getMonthKey(value){
 
-      if(!dateValue){
+      if(!value){
 
-        return false;
+        return '';
+
+      }
+
+
+      const str =
+        String(value);
+
+
+      if(
+        /^\d{4}-\d{2}$/.test(
+          str
+        )
+      ){
+
+        return str;
 
       }
 
 
       const date =
-        new Date(dateValue);
+        new Date(value);
 
 
       if(
@@ -4904,21 +4769,91 @@
         )
       ){
 
-        return false;
+        return '';
 
       }
 
+
+      return `${date.getFullYear()}-${String(
+        date.getMonth() + 1
+      ).padStart(2,'0')}`;
+
+    }
+
+
+    function getCurrentMonthKey(){
+
+      return getMonthKey(
+        new Date()
+      );
+
+    }
+
+
+    function getPreviousMonthKey(){
 
       const now =
         new Date();
 
 
+      return getMonthKey(
+        new Date(
+          now.getFullYear(),
+          now.getMonth() - 1,
+          1
+        )
+      );
+
+    }
+
+
+    function getLastDayOfMonth(
+      monthKey
+    ){
+
+      const parts =
+        String(monthKey || '')
+          .split('-');
+
+
+      const year =
+        Number(parts[0]);
+
+      const month =
+        Number(parts[1]);
+
+
+      return new Date(
+        year,
+        month,
+        0
+      )
+        .toISOString()
+        .slice(0,10);
+
+    }
+
+
+    function isInMonth(
+      value,
+      monthKey
+    ){
+
       return (
-        date.getFullYear() ===
-          now.getFullYear()
-        &&
-        date.getMonth() ===
-          now.getMonth()
+        getMonthKey(value) ===
+        String(monthKey || '')
+      );
+
+    }
+
+
+    function isCurrentMonth(
+      dateValue
+    ){
+
+      return isInMonth(
+        dateValue,
+        getCurrentMonthKey()
       );
 
     }
@@ -4983,6 +4918,50 @@
         }
       ).format(
         new Date()
+      );
+
+    }
+
+
+    function formatMonthLabel(
+      monthKey
+    ){
+
+      const parts =
+        String(
+          monthKey || ''
+        ).split('-');
+
+
+      const year =
+        Number(parts[0]);
+
+      const month =
+        Number(parts[1]);
+
+
+      if(
+        !year ||
+        !month
+      ){
+
+        return monthKey || '';
+
+      }
+
+
+      return new Intl.DateTimeFormat(
+        'ar-JO',
+        {
+          year:'numeric',
+          month:'long'
+        }
+      ).format(
+        new Date(
+          year,
+          month - 1,
+          1
+        )
       );
 
     }
@@ -5471,7 +5450,13 @@
 
         normalizeDataStructures();
 
-        await loadChampionData();
+        ensureCurrentStudentMonthlyFee();
+
+        await ensureMonthlyFeesForAllStudents();
+
+        await finalizePreviousMonthChampion();
+
+        normalizeDataStructures();
 
         fillIdentity();
 
@@ -6997,7 +6982,7 @@
           <div
             style="
               color:var(--gold2);
-              font-size:9px;
+              font-size:10px;
               margin-bottom:6px;
             "
           >
@@ -7077,7 +7062,7 @@
                       <div
                         style="
                           color:var(--gold2);
-                          font-size:8px;
+                          font-size:9px;
                         "
                       >
                         ${formatPoints(points)}
@@ -8021,14 +8006,6 @@
                 );
 
 
-              const typeLabel =
-                task.type === 'new'
-                  ? 'حفظ جديد'
-                  : task.type === 'review'
-                    ? 'مراجعة'
-                    : 'اختبار';
-
-
               let resultText = 'قادم';
 
 
@@ -8279,7 +8256,7 @@
                               <span
                                 style="
                                   color:var(--gold2);
-                                  font-size:8px;
+                                  font-size:9px;
                                 "
                               >
                                 ${formatPoints(
@@ -8830,7 +8807,7 @@
                           display:flex;
                           align-items:center;
                           color:var(--gold2);
-                          font-size:10px;
+                          font-size:11px;
                         "
                       >
                         ${getAttendancePoints(
@@ -8880,7 +8857,9 @@
 
 
                   <div
-                    style="margin-top:8px;"
+                    style="
+                      margin-top:8px;
+                    "
                   >
 
                     <button
@@ -9168,7 +9147,7 @@
                           display:flex;
                           align-items:center;
                           color:var(--gold2);
-                          font-size:9px;
+                          font-size:10px;
                         "
                         data-test-preview
                       >
@@ -9530,60 +9509,9 @@
       }
 
 
-      const str =
-        String(
-          value
-        );
-
-
-      if(
-        /^\d{4}-\d{2}$/.test(
-          str
-        )
-      ){
-
-        return str;
-
-      }
-
-
-      if(
-        /^\d{4}-\d{2}-\d{2}$/.test(
-          str
-        )
-      ){
-
-        return str.slice(
-          0,
-          7
-        );
-
-      }
-
-
-      const date =
-        new Date(
-          str
-        );
-
-
-      if(
-        Number.isNaN(
-          date.getTime()
-        )
-      ){
-
-        return '';
-
-      }
-
-
-      return date
-        .toISOString()
-        .slice(
-          0,
-          7
-        );
+      return getMonthKey(
+        value
+      );
 
     }
 
@@ -9617,6 +9545,268 @@
 
 
       return 'pending';
+
+    }
+
+
+    function ensureCurrentStudentMonthlyFee(){
+
+      if(
+        !Array.isArray(
+          profileData.fees
+        )
+      ){
+
+        profileData.fees =
+          [];
+
+      }
+
+
+      profileData.monthlyFee =
+        FIXED_MONTHLY_FEE;
+
+
+      const month =
+        getCurrentMonthKey();
+
+
+      const exists =
+        profileData.fees.some(
+          fee =>
+            getFeeMonthValue(
+              fee
+            ) === month
+        );
+
+
+      if(!exists){
+
+        profileData.fees.push({
+
+          id:
+            makeId(),
+
+          month,
+
+          period:
+            month,
+
+          amount:
+            FIXED_MONTHLY_FEE,
+
+          date:
+            month,
+
+          status:
+            'متبقي',
+
+          notes:
+            'تسجيل تلقائي للنظام (5 د.أ)',
+
+          autoGenerated:
+            true,
+
+          createdAt:
+            new Date().toISOString()
+
+        });
+
+      }
+
+    }
+
+
+    async function ensureMonthlyFeesForAllStudents(){
+
+      const month =
+        getCurrentMonthKey();
+
+
+      try{
+
+        const {
+          data:studentsData,
+          error:studentsError
+        } =
+          await supabaseClient
+            .from('students')
+            .select('id,status');
+
+
+        if(studentsError){
+
+          console.error(
+            studentsError
+          );
+
+          return;
+
+        }
+
+
+        const {
+          data:profilesData,
+          error:profilesError
+        } =
+          await supabaseClient
+            .from('student_profiles')
+            .select('student_id,data');
+
+
+        if(profilesError){
+
+          console.error(
+            profilesError
+          );
+
+          return;
+
+        }
+
+
+        const profileMap =
+          new Map();
+
+
+        (profilesData || [])
+          .forEach(
+            row => {
+
+              profileMap.set(
+                String(
+                  row.student_id
+                ),
+                row.data &&
+                typeof row.data === 'object'
+                  ? {
+                      ...row.data
+                    }
+                  : {}
+              );
+
+            }
+          );
+
+
+        for(
+          const currentStudent of
+          (studentsData || [])
+        ){
+
+          const data =
+            profileMap.get(
+              String(
+                currentStudent.id
+              )
+            ) || {};
+
+
+          if(
+            !Array.isArray(
+              data.fees
+            )
+          ){
+
+            data.fees = [];
+
+          }
+
+
+          data.monthlyFee =
+            FIXED_MONTHLY_FEE;
+
+
+          const exists =
+            data.fees.some(
+              fee =>
+                getFeeMonthValue(
+                  fee
+                ) === month
+            );
+
+
+          if(!exists){
+
+            data.fees.push({
+
+              id:
+                makeId(),
+
+              month,
+
+              period:
+                month,
+
+              amount:
+                FIXED_MONTHLY_FEE,
+
+              date:
+                month,
+
+              status:
+                'متبقي',
+
+              notes:
+                'تسجيل تلقائي للنظام (5 د.أ)',
+
+              autoGenerated:
+                true,
+
+              createdAt:
+                new Date().toISOString()
+
+            });
+
+
+            const {
+              error:upsertError
+            } =
+              await supabaseClient
+                .from('student_profiles')
+                .upsert(
+                  {
+
+                    student_id:
+                      String(
+                        currentStudent.id
+                      ),
+
+                    data,
+
+                    updated_at:
+                      new Date()
+                        .toISOString()
+
+                  },
+                  {
+
+                    onConflict:
+                      'student_id'
+
+                  }
+                );
+
+
+            if(upsertError){
+
+              console.error(
+                upsertError
+              );
+
+            }
+
+          }
+
+        }
+
+      }catch(error){
+
+        console.error(
+          error
+        );
+
+      }
 
     }
 
@@ -9695,19 +9885,11 @@
         calculateFeeSummary();
 
 
-      const monthlyFee =
-        Number(
-          document.getElementById(
-            'monthlyFee'
-          ).value
-        ) || 0;
-
-
       document.getElementById(
         'feeApprovedMonthly'
       ).textContent =
         `${formatPoints(
-          monthlyFee
+          FIXED_MONTHLY_FEE
         )} د.أ`;
 
 
@@ -9729,79 +9911,9 @@
     }
 
 
-    function initializeFeeForm(){
-
-      const monthInput =
-        document.getElementById(
-          'newFeeMonth'
-        );
-
-
-      if(
-        monthInput &&
-        !monthInput.value
-      ){
-
-        monthInput.value =
-          new Date()
-            .toISOString()
-            .slice(
-              0,
-              7
-            );
-
-      }
-
-
-      const statusInput =
-        document.getElementById(
-          'newFeeStatus'
-        );
-
-
-      if(
-        statusInput &&
-        !statusInput.value
-      ){
-
-        statusInput.value =
-          'متبقي';
-
-      }
-
-    }
-
-
     function renderFees(){
 
-      initializeFeeForm();
-
-
-      document.getElementById(
-        'subscriptionType'
-      ).value =
-        firstValue(
-          profileData,
-          [
-            'subscriptionType',
-            'subscription_type'
-          ],
-          ''
-        );
-
-
-      document.getElementById(
-        'monthlyFee'
-      ).value =
-        firstValue(
-          profileData,
-          [
-            'monthlyFee',
-            'monthly_fee'
-          ],
-          0
-        );
-
+      ensureCurrentStudentMonthlyFee();
 
       renderFeeSummary();
 
@@ -9815,7 +9927,18 @@
       const items =
         arrayValue(
           profileData.fees
-        );
+        )
+          .slice()
+          .sort(
+            (a,b) =>
+              String(
+                getFeeMonthValue(b)
+              ).localeCompare(
+                String(
+                  getFeeMonthValue(a)
+                )
+              )
+          );
 
 
       if(!items.length){
@@ -9835,7 +9958,16 @@
       container.innerHTML =
         items
           .map(
-            (item,index) => {
+            item => {
+
+              const originalIndex =
+                profileData.fees
+                  .findIndex(
+                    fee =>
+                      String(fee.id || '') ===
+                      String(item.id || '')
+                  );
+
 
               const month =
                 getFeeMonthValue(
@@ -9877,11 +10009,17 @@
                 );
 
 
+              const autoGenerated =
+                Boolean(
+                  item.autoGenerated
+                );
+
+
               return `
 
                 <div
                   class="fee-archive-item"
-                  data-fee-index="${index}"
+                  data-fee-index="${originalIndex}"
                 >
 
                   <div class="fee-archive-head">
@@ -9889,14 +10027,18 @@
                     <div class="fee-archive-main">
 
                       <strong>
+
                         📅 شهر ${escapeHtml(
                           month || 'غير محدد'
                         )}
+
                         — المبلغ:
                         ${formatPoints(
                           amount
                         )} د.أ
+
                       </strong>
+
 
                       <span>
 
@@ -9904,6 +10046,13 @@
                           notes
                             ? `ملاحظات: ${escapeHtml(notes)}`
                             : 'لا توجد ملاحظات إضافية.'
+                        }
+
+
+                        ${
+                          autoGenerated
+                            ? ' • تسجيل تلقائي'
+                            : ''
                         }
 
                       </span>
@@ -10051,7 +10200,7 @@
                     <button
                       type="button"
                       class="action-btn btn-delete"
-                      onclick="removeFee(${index})"
+                      onclick="removeFee(${originalIndex})"
                     >
                       حذف
                     </button>
@@ -10100,18 +10249,6 @@
           }
         );
 
-
-      document.getElementById(
-        'monthlyFee'
-      ).addEventListener(
-        'input',
-        () => {
-
-          renderFeeSummary();
-
-        }
-      );
-
     }
 
 
@@ -10129,185 +10266,74 @@
         );
 
 
-      profileData.fees =
-        Array.from(rows)
-          .map(
-            (
-              row,
-              index
-            ) => {
+      Array.from(rows)
+        .forEach(
+          row => {
 
-              const old =
-                oldItems[index] ||
-                {};
+            const index =
+              Number(
+                row.dataset.feeIndex
+              );
 
 
-              return {
+            if(
+              !Number.isInteger(index) ||
+              !oldItems[index]
+            ){
 
-                id:
-                  old.id ||
-                  makeId(),
-
-                month:
-                  row.querySelector(
-                    '[data-fee-month]'
-                  )?.value ||
-                  '',
-
-                period:
-                  row.querySelector(
-                    '[data-fee-month]'
-                  )?.value ||
-                  '',
-
-                amount:
-                  Number(
-                    row.querySelector(
-                      '[data-fee-amount]'
-                    )?.value ||
-                    0
-                  ),
-
-                date:
-                  row.querySelector(
-                    '[data-fee-month]'
-                  )?.value ||
-                  '',
-
-                status:
-                  row.querySelector(
-                    '[data-fee-status]'
-                  )?.value ||
-                  'متبقي',
-
-                notes:
-                  row.querySelector(
-                    '[data-fee-notes]'
-                  )?.value ||
-                  ''
-
-              };
+              return;
 
             }
-          );
-
-    }
 
 
-    function addFee(){
-
-      syncFees();
-
-
-      const month =
-        document.getElementById(
-          'newFeeMonth'
-        ).value;
+            const old =
+              oldItems[index];
 
 
-      const amount =
-        Number(
-          document.getElementById(
-            'newFeeAmount'
-          ).value
+            const month =
+              row.querySelector(
+                '[data-fee-month]'
+              )?.value ||
+              '';
+
+
+            old.month =
+              month;
+
+            old.period =
+              month;
+
+            old.date =
+              month;
+
+            old.amount =
+              Number(
+                row.querySelector(
+                  '[data-fee-amount]'
+                )?.value ||
+                0
+              );
+
+            old.status =
+              normalizeFeeStatus(
+                row.querySelector(
+                  '[data-fee-status]'
+                )?.value ||
+                'متبقي'
+              );
+
+            old.notes =
+              row.querySelector(
+                '[data-fee-notes]'
+              )?.value ||
+              '';
+
+          }
         );
 
 
-      const status =
-        document.getElementById(
-          'newFeeStatus'
-        ).value;
-
-
-      const notes =
-        document.getElementById(
-          'newFeeNotes'
-        ).value.trim();
-
-
-      if(!month){
-
-        showToast(
-          'اختر شهر المطالبة.',
-          true
-        );
-
-        return;
-
-      }
-
-
-      if(
-        !Number.isFinite(amount) ||
-        amount < 0
-      ){
-
-        showToast(
-          'أدخل قيمة رسوم صحيحة.',
-          true
-        );
-
-        return;
-
-      }
-
-
-      profileData.fees
-        .push({
-
-          id:
-            makeId(),
-
-          month,
-
-          period:
-            month,
-
-          amount,
-
-          date:
-            month,
-
-          status:
-            normalizeFeeStatus(
-              status
-            ),
-
-          notes
-
-        });
-
-
-      document.getElementById(
-        'newFeeMonth'
-      ).value =
-        '';
-
-
-      document.getElementById(
-        'newFeeAmount'
-      ).value =
-        '';
-
-
-      document.getElementById(
-        'newFeeStatus'
-      ).value =
-        'متبقي';
-
-
-      document.getElementById(
-        'newFeeNotes'
-      ).value =
-        '';
-
-
-      renderFees();
-
-
-      showToast(
-        'تمت إضافة سجل الرسوم بنجاح.'
-      );
+      profileData.fees =
+        oldItems;
 
     }
 
@@ -10327,6 +10353,10 @@
 
 
       renderFees();
+
+      showToast(
+        'تم حذف سجل الرسوم من النسخة الحالية.'
+      );
 
     }
 
@@ -10802,7 +10832,7 @@
         id:'beginner-reader',
         icon:'📖',
         name:'القارئ المبتدئ',
-        points:5,
+        points:0,
         threshold:50,
         type:'milestone',
         description:
@@ -10817,7 +10847,7 @@
         id:'persevering',
         icon:'🌟',
         name:'المثابر',
-        points:10,
+        points:0,
         threshold:100,
         type:'milestone',
         description:
@@ -10832,7 +10862,7 @@
         id:'excellence',
         icon:'💎',
         name:'التميز',
-        points:15,
+        points:0,
         threshold:200,
         type:'milestone',
         description:
@@ -10847,7 +10877,7 @@
         id:'golden-hafiz',
         icon:'🏆',
         name:'الحافظ الذهبي',
-        points:20,
+        points:0,
         threshold:300,
         type:'milestone',
         description:
@@ -10862,7 +10892,7 @@
         id:'crown-of-dignity',
         icon:'👑',
         name:'تاج الوقار',
-        points:30,
+        points:0,
         threshold:500,
         type:'milestone',
         description:
@@ -10880,70 +10910,9 @@
         points:0,
         type:'monthly',
         description:
-          'يُمنح لأعلى طالب تقييمًا ونقاطًا بين طلاب المركز خلال الشهر الحالي.',
+          'يُحسم في نهاية كل شهر للطالب صاحب أعلى تقييم شهري، ويبقى في سجله ويمكن الحصول عليه أكثر من مرة.',
         condition:
-          metrics =>
-            metrics.isMonthlyChampion === true
-      },
-
-
-      {
-        id:'champion-huffaz',
-        icon:'👑',
-        name:'بطل الحفاظ',
-        points:0,
-        type:'section',
-        section:'الحفاظ',
-        description:
-          'يُمنح لأعلى طالب تقييمًا ونقاطًا في شعبة الحفاظ.',
-        condition:
-          metrics =>
-            metrics.sectionChampion === 'الحفاظ'
-      },
-
-
-      {
-        id:'champion-fursan',
-        icon:'⚔️',
-        name:'بطل الفرسان',
-        points:0,
-        type:'section',
-        section:'الفرسان',
-        description:
-          'يُمنح لأعلى طالب تقييمًا ونقاطًا في شعبة الفرسان.',
-        condition:
-          metrics =>
-            metrics.sectionChampion === 'الفرسان'
-      },
-
-
-      {
-        id:'champion-ijaza',
-        icon:'📜',
-        name:'بطل الإجازة',
-        points:0,
-        type:'section',
-        section:'إجازة',
-        description:
-          'يُمنح لأعلى طالب تقييمًا ونقاطًا في شعبة الإجازة.',
-        condition:
-          metrics =>
-            metrics.sectionChampion === 'إجازة'
-      },
-
-
-      {
-        id:'champion-tajweed',
-        icon:'🕌',
-        name:'بطل التجويد',
-        points:0,
-        type:'section',
-        section:'تجويد',
-        description:
-          'يُمنح لأعلى طالب تقييمًا ونقاطًا في شعبة التجويد.',
-        condition:
-          metrics =>
-            metrics.sectionChampion === 'تجويد'
+          () => false
       }
 
     ];
@@ -10967,15 +10936,267 @@
     }
 
 
-    async function loadChampionData(){
+    function getBadgeHistory(
+      badgeId
+    ){
 
-      championData = {
+      return arrayValue(
+        profileData.badges
+      )
+        .filter(
+          badge =>
+            String(
+              badge.badgeId ||
+              badge.id
+            ) ===
+            String(badgeId)
+        );
 
-        monthlyChampionId:null,
+    }
 
-        sectionChampionIds:{}
 
-      };
+    function renderBadges(){
+
+      const container =
+        document.getElementById(
+          'badgeGrid'
+        );
+
+
+      const overall =
+        calculateEvaluation(
+          'overall'
+        );
+
+
+      container.innerHTML =
+        BADGE_DEFINITIONS
+          .map(
+            definition => {
+
+              const history =
+                getBadgeHistory(
+                  definition.id
+                );
+
+
+              const earned =
+                history.length > 0;
+
+
+              let statusText =
+                '🔒 مقفل';
+
+
+              if(
+                definition.type ===
+                'milestone'
+              ){
+
+                if(earned){
+
+                  statusText =
+                    '✅ مفتوح';
+
+                }else{
+
+                  const remaining =
+                    Math.max(
+                      0,
+                      definition.threshold -
+                      overall.totalPoints
+                    );
+
+
+                  statusText =
+                    `🔒 مقفل — متبقي: ${formatPoints(
+                      remaining
+                    )} نقطة`;
+
+                }
+
+              }else if(
+                definition.type ===
+                'monthly'
+              ){
+
+                if(earned){
+
+                  const months =
+                    history
+                      .map(
+                        badge =>
+                          badge.monthKey ||
+                          getMonthKey(
+                            badge.earnedAt
+                          )
+                      )
+                      .filter(Boolean);
+
+
+                  const uniqueMonths =
+                    Array.from(
+                      new Set(
+                        months
+                      )
+                    );
+
+
+                  const monthText =
+                    uniqueMonths.length
+                      ? uniqueMonths
+                          .map(
+                            month =>
+                              formatMonthLabel(
+                                month
+                              )
+                          )
+                          .join(' • ')
+                      : 'سجل تاريخي';
+
+
+                  statusText =
+                    `✅ حصل عليه ${history.length} مرة — ${escapeHtml(
+                      monthText
+                    )}`;
+
+                }else{
+
+                  statusText =
+                    '⏳ يُحسم في نهاية الشهر';
+
+                }
+
+              }
+
+
+              return `
+
+                <div
+                  class="badge-card ${
+                    earned
+                      ? 'earned'
+                      : ''
+                  }"
+                >
+
+                  <div class="badge-icon">
+                    ${definition.icon}
+                  </div>
+
+
+                  <div class="badge-name">
+                    ${escapeHtml(
+                      definition.name
+                    )}
+                  </div>
+
+
+                  <div class="badge-description">
+                    ${escapeHtml(
+                      definition.description
+                    )}
+                  </div>
+
+
+                  <div class="badge-lock">
+                    ${statusText}
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('');
+
+    }
+
+
+    function awardAutomaticBadges(){
+
+      const overall =
+        calculateEvaluation(
+          'overall'
+        );
+
+
+      const milestoneDefinitions =
+        BADGE_DEFINITIONS
+          .filter(
+            definition =>
+              definition.type ===
+              'milestone'
+          );
+
+
+      const earnedIds =
+        getEarnedBadgeIds();
+
+
+      milestoneDefinitions
+        .forEach(
+          definition => {
+
+            if(
+              definition.condition(
+                overall
+              ) &&
+              !earnedIds.has(
+                definition.id
+              )
+            ){
+
+              profileData.badges
+                .push({
+
+                  id:
+                    makeId(),
+
+                  badgeId:
+                    definition.id,
+
+                  title:
+                    definition.name,
+
+                  icon:
+                    definition.icon,
+
+                  points:
+                    0,
+
+                  earnedAt:
+                    todayString(),
+
+                  type:
+                    'milestone'
+
+                });
+
+            }
+
+          }
+        );
+
+    }
+
+
+    /* ==================================================
+       MONTHLY CHAMPION
+    ================================================== */
+
+    async function finalizePreviousMonthChampion(){
+
+      const monthKey =
+        getPreviousMonthKey();
+
+
+      if(!monthKey){
+
+        return;
+
+      }
 
 
       try{
@@ -11024,50 +11245,19 @@
         }
 
 
-        const profileMap =
-          new Map();
-
-
-        (profilesData || [])
-          .forEach(
-            row => {
-
-              profileMap.set(
-                String(
-                  row.student_id
-                ),
-                row.data &&
-                typeof row.data === 'object'
-                  ? row.data
-                  : {}
-              );
-
-            }
-          );
-
-
-        let monthlyWinner =
-          null;
-
-
-        const sectionWinners =
-          {};
+        const candidates = [];
 
 
         (studentsData || [])
           .forEach(
             currentStudent => {
 
-              const studentStatus =
+              if(
                 String(
                   currentStudent.status ||
                   'active'
-                );
-
-
-              if(
-                studentStatus !==
-                  'active'
+                ) !==
+                'active'
               ){
 
                 return;
@@ -11075,134 +11265,250 @@
               }
 
 
+              const row =
+                (profilesData || [])
+                  .find(
+                    item =>
+                      String(
+                        item.student_id
+                      ) ===
+                      String(
+                        currentStudent.id
+                      )
+                  );
+
+
               const data =
-                profileMap.get(
-                  String(
-                    currentStudent.id
-                  )
-                ) || {};
+                row?.data &&
+                typeof row.data === 'object'
+                  ? {
+                      ...row.data
+                    }
+                  : {};
 
 
               const monthly =
                 calculateEvaluationForProfileData(
                   data,
-                  'monthly'
+                  'monthly',
+                  {
+                    monthKey
+                  }
                 );
 
 
-              const overall =
-                calculateEvaluationForProfileData(
-                  data,
-                  'overall'
-                );
+              const hasData =
+                [
+                  monthly.components.recitationPercent,
+                  monthly.components.testPercent,
+                  monthly.components.attendancePercent,
+                  monthly.components.planPercent
+                ]
+                  .some(
+                    value =>
+                      value !== null
+                  );
 
 
-              const candidate = {
-
-                id:
-                  String(
-                    currentStudent.id
-                  ),
-
-                section:
-                  String(
-                    currentStudent.section || ''
-                  ),
-
-                monthlyPercentage:
-                  monthly.baseOverall,
-
-                monthlyPoints:
-                  monthly.basePoints,
-
-                overallPercentage:
-                  overall.baseOverall,
-
-                overallPoints:
-                  overall.basePoints
-
-              };
-
-
-              if(
-                !monthlyWinner ||
-                candidate.monthlyPercentage >
-                  monthlyWinner.monthlyPercentage ||
-                (
-                  candidate.monthlyPercentage ===
-                    monthlyWinner.monthlyPercentage &&
-                  candidate.monthlyPoints >
-                    monthlyWinner.monthlyPoints
-                )
-              ){
-
-                monthlyWinner =
-                  candidate;
-
-              }
-
-
-              const section =
-                candidate.section;
-
-
-              if(!section){
+              if(!hasData){
 
                 return;
 
               }
 
 
-              const existing =
-                sectionWinners[
-                  section
-                ];
+              candidates.push({
 
+                studentId:
+                  String(
+                    currentStudent.id
+                  ),
 
-              if(
-                !existing ||
-                candidate.overallPercentage >
-                  existing.overallPercentage ||
-                (
-                  candidate.overallPercentage ===
-                    existing.overallPercentage &&
-                  candidate.overallPoints >
-                    existing.overallPoints
-                )
-              ){
+                data,
 
-                sectionWinners[
-                  section
-                ] =
-                  candidate;
+                monthly
 
-              }
+              });
 
             }
           );
 
 
-        championData.monthlyChampionId =
-          monthlyWinner
-            ? monthlyWinner.id
-            : null;
+        if(!candidates.length){
+
+          return;
+
+        }
 
 
-        Object.keys(
-          sectionWinners
-        ).forEach(
-          section => {
+        candidates.sort(
+          (a,b) => {
 
-            championData
-              .sectionChampionIds[
-                section
-              ] =
-              sectionWinners[
-                section
-              ].id;
+            if(
+              b.monthly.finalPercentage !==
+              a.monthly.finalPercentage
+            ){
+
+              return (
+                b.monthly.finalPercentage -
+                a.monthly.finalPercentage
+              );
+
+            }
+
+
+            return (
+              b.monthly.totalPoints -
+              a.monthly.totalPoints
+            );
 
           }
         );
+
+
+        const winner =
+          candidates[0];
+
+
+        if(!winner){
+
+          return;
+
+        }
+
+
+        const alreadyAwarded =
+          arrayValue(
+            winner.data.badges
+          )
+          .some(
+            badge =>
+              String(
+                badge.badgeId ||
+                badge.id
+              ) ===
+              'monthly-champion' &&
+              String(
+                badge.monthKey ||
+                ''
+              ) ===
+              monthKey
+          );
+
+
+        if(
+          !alreadyAwarded
+        ){
+
+          if(
+            !Array.isArray(
+              winner.data.badges
+            )
+          ){
+
+            winner.data.badges =
+              [];
+
+          }
+
+
+          winner.data.badges.push({
+
+            id:
+              makeId(),
+
+            badgeId:
+              'monthly-champion',
+
+            title:
+              `بطل شهر ${formatMonthLabel(
+                monthKey
+              )}`,
+
+            icon:
+              '🥇',
+
+            points:
+              0,
+
+            earnedAt:
+              getLastDayOfMonth(
+                monthKey
+              ),
+
+            type:
+              'monthly',
+
+            monthKey,
+
+            monthlyPercentage:
+              winner.monthly.finalPercentage
+
+          });
+
+
+          const {
+            error:upsertError
+          } =
+            await supabaseClient
+              .from('student_profiles')
+              .upsert(
+                {
+
+                  student_id:
+                    String(
+                      winner.studentId
+                    ),
+
+                  data:
+                    winner.data,
+
+                  updated_at:
+                    new Date()
+                      .toISOString()
+
+                },
+                {
+
+                  onConflict:
+                    'student_id'
+
+                }
+              );
+
+
+          if(upsertError){
+
+            console.error(
+              upsertError
+            );
+
+          }
+
+
+          if(
+            String(
+              winner.studentId
+            ) ===
+            String(studentId)
+          ){
+
+            profileData.badges =
+              winner.data.badges;
+
+          }
+
+        }else if(
+          String(
+            winner.studentId
+          ) ===
+          String(studentId)
+        ){
+
+          profileData.badges =
+            winner.data.badges;
+
+        }
 
       }catch(error){
 
@@ -11215,331 +11521,22 @@
     }
 
 
-    function calculateEvaluationForProfileData(
-      data,
-      period='overall'
-    ){
-
-      const previousProfileData =
-        profileData;
-
-
-      profileData =
-        data &&
-        typeof data === 'object'
-          ? data
-          : {};
-
-
-      normalizeDataStructures();
-
-
-      const result =
-        calculateEvaluation(
-          period
-        );
-
-
-      profileData =
-        previousProfileData;
-
-
-      return result;
-
-    }
-
-
-    function isCurrentMonthlyChampion(){
-
-      return (
-        String(
-          championData.monthlyChampionId || ''
-        ) ===
-        String(
-          studentId || ''
-        )
-      );
-
-    }
-
-
-    function getCurrentSectionChampion(){
-
-      const section =
-        String(
-          student?.section || ''
-        );
-
-
-      if(!section){
-
-        return null;
-
-      }
-
-
-      return (
-        String(
-          championData
-            .sectionChampionIds[
-              section
-            ] || ''
-        ) ===
-        String(
-          studentId || ''
-        )
-      )
-        ? section
-        : null;
-
-    }
-
-
-    function renderBadges(){
-
-      const container =
-        document.getElementById(
-          'badgeGrid'
-        );
-
-
-      const earnedIds =
-        getEarnedBadgeIds();
-
-
-      const overall =
-        calculateEvaluation(
-          'overall'
-        );
-
-
-      const metrics = {
-
-        ...overall,
-
-        isMonthlyChampion:
-          isCurrentMonthlyChampion(),
-
-        sectionChampion:
-          getCurrentSectionChampion()
-
-      };
-
-
-      container.innerHTML =
-        BADGE_DEFINITIONS
-          .map(
-            definition => {
-
-              const storedEarned =
-                earnedIds.has(
-                  definition.id
-                );
-
-
-              const dynamicEarned =
-                definition.type === 'monthly' ||
-                definition.type === 'section'
-                  ? definition.condition(
-                      metrics
-                    )
-                  : false;
-
-
-              const earned =
-                storedEarned ||
-                dynamicEarned;
-
-
-              let statusText =
-                earned
-                  ? '✓ مفتوح'
-                  : '🔒 مقفل';
-
-
-              if(
-                !earned &&
-                definition.threshold
-              ){
-
-                const remaining =
-                  Math.max(
-                    0,
-                    definition.threshold -
-                    overall.totalPoints
-                  );
-
-
-                statusText =
-                  `🔒 مقفل — متبقي: ${formatPoints(
-                    remaining
-                  )} نقطة`;
-
-              }
-
-
-              if(
-                !storedEarned &&
-                dynamicEarned
-              ){
-
-                statusText =
-                  '✅ مستحق تلقائيًا';
-
-              }
-
-
-              return `
-
-                <div
-                  class="badge-card ${
-                    earned
-                      ? 'earned'
-                      : ''
-                  }"
-                >
-
-                  <div class="badge-icon">
-                    ${definition.icon}
-                  </div>
-
-                  <div class="badge-name">
-                    ${escapeHtml(
-                      definition.name
-                    )}
-                  </div>
-
-                  <div class="badge-description">
-                    ${escapeHtml(
-                      definition.description
-                    )}
-                  </div>
-
-                  ${
-                    definition.points > 0
-                      ? `
-                        <div class="badge-points">
-                          +${definition.points} نقطة
-                        </div>
-                      `
-                      : ''
-                  }
-
-                  <div class="badge-lock">
-
-                    ${escapeHtml(
-                      statusText
-                    )}
-
-                  </div>
-
-                </div>
-
-              `;
-
-            }
-          )
-          .join('');
-
-    }
-
-
-    function awardAutomaticBadges(){
-
-      const milestoneDefinitions =
-        BADGE_DEFINITIONS
-          .filter(
-            definition =>
-              definition.type ===
-              'milestone'
-          );
-
-
-      let awardedSomething =
-        true;
-
-
-      while(
-        awardedSomething
-      ){
-
-        awardedSomething =
-          false;
-
-
-        const earnedIds =
-          getEarnedBadgeIds();
-
-
-        const evaluation =
-          calculateEvaluation(
-            'overall'
-          );
-
-
-        milestoneDefinitions
-          .forEach(
-            definition => {
-
-              if(
-                definition.condition(
-                  evaluation
-                ) &&
-                !earnedIds.has(
-                  definition.id
-                )
-              ){
-
-                profileData.badges
-                  .push({
-
-                    id:
-                      makeId(),
-
-                    badgeId:
-                      definition.id,
-
-                    title:
-                      definition.name,
-
-                    icon:
-                      definition.icon,
-
-                    points:
-                      definition.points,
-
-                    earnedAt:
-                      todayString(),
-
-                    type:
-                      'milestone'
-
-                  });
-
-
-                awardedSomething =
-                  true;
-
-              }
-
-            }
-          );
-
-      }
-
-    }
-
-
     /* ==================================================
        SCORE CALCULATION
     ================================================== */
 
     function getBaseComponentScores(
-      period
+      period,
+      monthKey=null
     ){
 
       const monthly =
         period === 'monthly';
+
+
+      const targetMonth =
+        monthKey ||
+        getCurrentMonthKey();
 
 
       const recitations =
@@ -11547,8 +11544,9 @@
           .filter(
             item =>
               !monthly ||
-              isCurrentMonth(
-                item.date
+              isInMonth(
+                item.date,
+                targetMonth
               )
           );
 
@@ -11560,8 +11558,9 @@
           .filter(
             item =>
               !monthly ||
-              isCurrentMonth(
-                item.date
+              isInMonth(
+                item.date,
+                targetMonth
               )
           );
 
@@ -11573,8 +11572,9 @@
           .filter(
             item =>
               !monthly ||
-              isCurrentMonth(
-                item.date
+              isInMonth(
+                item.date,
+                targetMonth
               )
           );
 
@@ -11590,8 +11590,9 @@
               ) &&
               (
                 !monthly ||
-                isCurrentMonth(
-                  task.date
+                isInMonth(
+                  task.date,
+                  targetMonth
                 )
               )
           );
@@ -11804,11 +11805,17 @@
 
 
     function getBonusPoints(
-      period
+      period,
+      monthKey=null
     ){
 
       const monthly =
         period === 'monthly';
+
+
+      const targetMonth =
+        monthKey ||
+        getCurrentMonthKey();
 
 
       const extra =
@@ -11818,8 +11825,9 @@
           .filter(
             item =>
               !monthly ||
-              isCurrentMonth(
-                item.date
+              isInMonth(
+                item.date,
+                targetMonth
               )
           )
           .reduce(
@@ -11835,28 +11843,12 @@
           );
 
 
+      /*
+        الأوسمة لا تضيف أي نقاط نهائيًا.
+      */
+
       const badges =
-        arrayValue(
-          profileData.badges
-        )
-          .filter(
-            badge =>
-              !monthly ||
-              isCurrentMonth(
-                badge.earnedAt
-              )
-          )
-          .reduce(
-            (
-              total,
-              badge
-            ) =>
-              total +
-              Number(
-                badge.points || 0
-              ),
-            0
-          );
+        0;
 
 
       return {
@@ -11866,8 +11858,7 @@
         badges,
 
         total:
-          extra +
-          badges
+          extra
 
       };
 
@@ -11887,7 +11878,9 @@
         getBaseComponentScores(
           isMonthly
             ? 'monthly'
-            : 'overall'
+            : 'overall',
+          options.monthKey ||
+          null
         );
 
 
@@ -11997,14 +11990,16 @@
           : getBonusPoints(
               isMonthly
                 ? 'monthly'
-                : 'overall'
+                : 'overall',
+              options.monthKey ||
+              null
             );
 
 
       /*
-        كل 4 نقاط إضافية/أوسمة ≈ 1%
-        بحد أقصى +10% حتى يبقى الأداء الأساسي
-        هو العامل الأكبر.
+        كل 4 نقاط إضافية ≈ 1%
+        بحد أقصى +10%.
+        نقاط الأوسمة لا تدخل نهائيًا.
       */
 
       const bonusPercentage =
@@ -12065,7 +12060,7 @@
           bonus.extra,
 
         badgePoints:
-          bonus.badges,
+          0,
 
         bonusPoints:
           bonus.total,
@@ -12134,6 +12129,42 @@
         components
 
       };
+
+    }
+
+
+    function calculateEvaluationForProfileData(
+      data,
+      period='overall',
+      options={}
+    ){
+
+      const previousProfileData =
+        profileData;
+
+
+      profileData =
+        data &&
+        typeof data === 'object'
+          ? data
+          : {};
+
+
+      normalizeDataStructures();
+
+
+      const result =
+        calculateEvaluation(
+          period,
+          options
+        );
+
+
+      profileData =
+        previousProfileData;
+
+
+      return result;
 
     }
 
@@ -12317,18 +12348,15 @@
         ).value.trim();
 
 
-      profileData.subscriptionType =
-        document.getElementById(
-          'subscriptionType'
-        ).value;
-
+      /*
+        الاشتراك الشهري ثابت على 5 دنانير.
+      */
 
       profileData.monthlyFee =
-        Number(
-          document.getElementById(
-            'monthlyFee'
-          ).value
-        ) || 0;
+        FIXED_MONTHLY_FEE;
+
+
+      ensureCurrentStudentMonthlyFee();
 
     }
 
@@ -12525,7 +12553,6 @@
 
         /*
           الكود إذا كان موجودًا يبقى نفسه دائمًا.
-          لا نعيد توليده.
         */
 
         if(
@@ -12587,19 +12614,11 @@
 
 
         /*
-          نحسب الحالة الأساسية قبل المكافآت،
-          ثم نمنح الأوسمة المستحقة مرة واحدة.
+          الأوسمة لا تضيف أي نقاط.
         */
-
-        await loadChampionData();
-
 
         awardAutomaticBadges();
 
-
-        /*
-          بعد منح الأوسمة نعيد حساب الملخص النهائي.
-        */
 
         const overall =
           calculateEvaluation(
@@ -12646,10 +12665,6 @@
         };
 
 
-        /*
-          نحفظ النسخ الجديدة.
-        */
-
         const {
           error: profileError
         } =
@@ -12695,7 +12710,9 @@
           };
 
 
-        await loadChampionData();
+        await ensureMonthlyFeesForAllStudents();
+
+        await finalizePreviousMonthChampion();
 
 
         selectedPhotoFile =
@@ -12789,11 +12806,6 @@
 
       }
 
-
-      /*
-        معاينة الطالب تستخدم sessionStorage
-        وصفحة الطالب نفسها قراءة فقط.
-      */
 
       sessionStorage.setItem(
         'studentSession',
