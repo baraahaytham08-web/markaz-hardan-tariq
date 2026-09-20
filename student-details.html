@@ -1384,6 +1384,39 @@
         );
     }
 
+    /* =========================
+       JUZ OUTER PROGRESS
+    ========================= */
+
+    .juz-card-progress{
+      height:6px;
+
+      width:100%;
+
+      background:rgba(255,255,255,.045);
+
+      overflow:hidden;
+
+      border-radius:0 0 16px 16px;
+    }
+
+    .juz-card-progress-fill{
+      height:100%;
+
+      width:0%;
+
+      border-radius:0 0 16px 16px;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--green),
+          var(--gold)
+        );
+
+      transition:.35s ease;
+    }
+
     .page-grid{
       display:grid;
 
@@ -2053,6 +2086,324 @@
     }
 
     /* =========================
+       FEES
+    ========================= */
+
+    .fee-summary{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+      gap:8px;
+
+      margin-bottom:12px;
+    }
+
+    .fee-summary-card{
+      padding:13px;
+
+      border-radius:15px;
+
+      background:rgba(255,255,255,.023);
+
+      border:1px solid rgba(255,255,255,.055);
+    }
+
+    .fee-summary-card small{
+      display:block;
+
+      color:var(--muted2);
+
+      font-size:8px;
+
+      margin-bottom:5px;
+    }
+
+    .fee-summary-card strong{
+      color:var(--gold2);
+
+      font-size:18px;
+    }
+
+    .fee-form{
+      padding:12px;
+
+      border-radius:15px;
+
+      background:rgba(217,184,108,.025);
+
+      border:1px solid rgba(217,184,108,.08);
+
+      margin-bottom:12px;
+    }
+
+    .fee-form-title{
+      color:var(--gold2);
+
+      font-size:12px;
+
+      font-weight:700;
+
+      margin-bottom:10px;
+    }
+
+    .fee-status{
+      display:inline-flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:5px 8px;
+
+      border-radius:999px;
+
+      font-size:8px;
+
+      white-space:nowrap;
+    }
+
+    .fee-status.paid{
+      color:#bdeed6;
+
+      background:rgba(47,159,114,.10);
+    }
+
+    .fee-status.pending{
+      color:#eddca4;
+
+      background:rgba(217,184,108,.08);
+    }
+
+    .fee-status.waiting{
+      color:#ead19b;
+
+      background:rgba(217,184,108,.06);
+    }
+
+    .fee-archive{
+      display:grid;
+
+      gap:8px;
+    }
+
+    .fee-archive-item{
+      padding:12px;
+
+      border-radius:15px;
+
+      background:rgba(255,255,255,.02);
+
+      border:1px solid rgba(255,255,255,.055);
+    }
+
+    .fee-archive-head{
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      gap:10px;
+
+      margin-bottom:5px;
+    }
+
+    .fee-archive-main{
+      min-width:0;
+    }
+
+    .fee-archive-main strong{
+      display:block;
+
+      color:var(--text);
+
+      font-size:10px;
+
+      margin-bottom:4px;
+    }
+
+    .fee-archive-main span{
+      color:var(--muted2);
+
+      font-size:8px;
+
+      line-height:1.8;
+    }
+
+    /* =========================
+       EXTRA POINTS
+    ========================= */
+
+    .extra-summary{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+      gap:8px;
+
+      margin-bottom:12px;
+    }
+
+    .extra-summary-card{
+      padding:13px;
+
+      border-radius:15px;
+
+      background:rgba(255,255,255,.023);
+
+      border:1px solid rgba(255,255,255,.055);
+    }
+
+    .extra-summary-card small{
+      display:block;
+
+      color:var(--muted2);
+
+      font-size:8px;
+
+      margin-bottom:5px;
+    }
+
+    .extra-summary-card strong{
+      color:var(--gold2);
+
+      font-size:18px;
+    }
+
+    .extra-reasons{
+      display:flex;
+
+      gap:6px;
+
+      flex-wrap:wrap;
+
+      margin-top:7px;
+    }
+
+    .extra-reason-btn{
+      padding:7px 9px;
+
+      border-radius:10px;
+
+      border:1px solid rgba(217,184,108,.12);
+
+      background:rgba(217,184,108,.035);
+
+      color:var(--muted);
+
+      font-size:8px;
+
+      transition:.2s ease;
+    }
+
+    .extra-reason-btn:hover{
+      color:var(--gold2);
+
+      border-color:
+        rgba(217,184,108,.28);
+
+      background:
+        rgba(217,184,108,.07);
+    }
+
+    .extra-points-shortcuts{
+      display:flex;
+
+      gap:6px;
+
+      flex-wrap:wrap;
+
+      margin-top:7px;
+    }
+
+    .extra-points-btn{
+      min-width:43px;
+
+      padding:7px 10px;
+
+      border-radius:10px;
+
+      border:1px solid rgba(217,184,108,.14);
+
+      background:rgba(217,184,108,.05);
+
+      color:var(--gold2);
+
+      font-size:9px;
+
+      font-weight:700;
+    }
+
+    .extra-points-btn:hover{
+      background:
+        rgba(217,184,108,.10);
+
+      border-color:
+        rgba(217,184,108,.28);
+    }
+
+    .extra-archive{
+      display:grid;
+
+      gap:8px;
+    }
+
+    .extra-archive-item{
+      padding:12px;
+
+      border-radius:15px;
+
+      background:rgba(255,255,255,.02);
+
+      border:1px solid rgba(255,255,255,.055);
+    }
+
+    .extra-archive-top{
+      display:flex;
+
+      align-items:flex-start;
+
+      justify-content:space-between;
+
+      gap:10px;
+    }
+
+    .extra-archive-main{
+      min-width:0;
+    }
+
+    .extra-archive-main strong{
+      display:block;
+
+      color:var(--text);
+
+      font-size:10px;
+
+      margin-bottom:4px;
+    }
+
+    .extra-archive-main span{
+      color:var(--muted2);
+
+      font-size:8px;
+
+      line-height:1.8;
+    }
+
+    .extra-archive-points{
+      color:var(--gold2);
+
+      font-size:12px;
+
+      font-weight:800;
+
+      white-space:nowrap;
+    }
+
+    /* =========================
        RESPONSIVE
     ========================= */
 
@@ -2181,7 +2532,9 @@
 
       .summary-cards,
       .plan-summary,
-      .badge-grid{
+      .badge-grid,
+      .fee-summary,
+      .extra-summary{
         grid-template-columns:1fr;
       }
 
@@ -2451,10 +2804,25 @@
               القسم / الحلقة
             </label>
 
-            <input
-              id="section"
-              type="text"
-            />
+            <select id="section">
+
+              <option value="الحفاظ">
+                الحفاظ
+              </option>
+
+              <option value="الفرسان">
+                الفرسان
+              </option>
+
+              <option value="إجازة">
+                إجازة
+              </option>
+
+              <option value="تجويد">
+                تجويد
+              </option>
+
+            </select>
 
           </div>
 
@@ -2875,6 +3243,99 @@
       </section>
 
 
+      <!-- TESTS -->
+
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+
+              📝
+
+            </div>
+
+            سجل اختبارات الخطة والنقاط
+
+          </div>
+
+          <button
+            type="button"
+            class="action-btn btn-add"
+            onclick="addTest()"
+          >
+            + إضافة اختبار
+          </button>
+
+        </div>
+
+
+        <div class="rules">
+
+          <div class="rule">
+
+            <div class="rule-title">
+              90–100
+            </div>
+
+            <div class="rule-text">
+              ممتاز — <strong>12 نقطة</strong>
+            </div>
+
+          </div>
+
+
+          <div class="rule">
+
+            <div class="rule-title">
+              80–89
+            </div>
+
+            <div class="rule-text">
+              جيد جدًا — <strong>8 نقاط</strong>
+            </div>
+
+          </div>
+
+
+          <div class="rule">
+
+            <div class="rule-title">
+              70–79
+            </div>
+
+            <div class="rule-text">
+              جيد — <strong>4 نقاط</strong>
+            </div>
+
+          </div>
+
+
+          <div class="rule">
+
+            <div class="rule-title">
+              أقل من 70
+            </div>
+
+            <div class="rule-text">
+              يحتاج مراجعة — <strong>0</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="testsEditor"
+          class="editor-list"
+        ></div>
+
+      </section>
+
+
       <!-- RECITATION REGISTER -->
 
       <section class="section">
@@ -3241,97 +3702,6 @@
 
       </section>
 
-
-      <!-- TESTS -->
-
-      <section class="section">
-
-        <div class="section-head">
-
-          <div class="section-title">
-
-            <div class="section-icon">
-              📝
-            </div>
-
-            سجل اختبارات الخطة والنقاط
-
-          </div>
-
-          <button
-            type="button"
-            class="action-btn btn-add"
-            onclick="addTest()"
-          >
-            + إضافة اختبار
-          </button>
-
-        </div>
-
-
-        <div class="rules">
-
-          <div class="rule">
-
-            <div class="rule-title">
-              90–100
-            </div>
-
-            <div class="rule-text">
-              ممتاز — <strong>12 نقطة</strong>
-            </div>
-
-          </div>
-
-
-          <div class="rule">
-
-            <div class="rule-title">
-              80–89
-            </div>
-
-            <div class="rule-text">
-              جيد جدًا — <strong>8 نقاط</strong>
-            </div>
-
-          </div>
-
-
-          <div class="rule">
-
-            <div class="rule-title">
-              70–79
-            </div>
-
-            <div class="rule-text">
-              جيد — <strong>4 نقاط</strong>
-            </div>
-
-          </div>
-
-
-          <div class="rule">
-
-            <div class="rule-title">
-              أقل من 70
-            </div>
-
-            <div class="rule-text">
-              يحتاج مراجعة — <strong>0</strong>
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div
-          id="testsEditor"
-          class="editor-list"
-        ></div>
-
-      </section>
-
     </section>
 
 
@@ -3358,18 +3728,71 @@
 
           </div>
 
-          <button
-            type="button"
-            class="action-btn btn-add"
-            onclick="addFee()"
-          >
-            + إضافة دفعة
-          </button>
+        </div>
+
+
+        <div class="fee-summary">
+
+          <div class="fee-summary-card">
+
+            <small>
+              الاشتراك الشهري المعتمد
+            </small>
+
+            <strong id="feeApprovedMonthly">
+              0 د.أ
+            </strong>
+
+          </div>
+
+
+          <div class="fee-summary-card">
+
+            <small>
+              المدفوع إجمالاً
+            </small>
+
+            <strong id="feePaidTotal">
+              0 د.أ
+            </strong>
+
+          </div>
+
+
+          <div class="fee-summary-card">
+
+            <small>
+              المتبقي المطلوب
+            </small>
+
+            <strong id="feeRemainingTotal">
+              0 د.أ
+            </strong>
+
+          </div>
 
         </div>
 
 
         <div class="editor-grid">
+
+          <div class="field">
+
+            <label>
+              الاشتراك الشهري المعتمد
+            </label>
+
+            <input
+              class="normal-input"
+              id="monthlyFee"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="مثال: 15"
+            />
+
+          </div>
+
 
           <div class="field">
 
@@ -3406,20 +3829,130 @@
 
           </div>
 
+        </div>
 
-          <div class="field">
 
-            <label>
-              الرسوم الشهرية
-            </label>
+        <div
+          class="fee-form"
+          style="margin-top:11px;"
+        >
 
-            <input
-              class="normal-input"
-              id="monthlyFee"
-              type="number"
-              min="0"
-              step="0.01"
-            />
+          <div class="fee-form-title">
+            💳 تسجيل مطالبة رسوم شهرية جديدة
+          </div>
+
+
+          <div class="editor-grid">
+
+            <div class="field">
+
+              <label>
+                📅 الشهر
+              </label>
+
+              <input
+                class="normal-input"
+                id="newFeeMonth"
+                type="month"
+              />
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                💰 القيمة (دينار أردني)
+              </label>
+
+              <input
+                class="normal-input"
+                id="newFeeAmount"
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="15"
+              />
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                🏷️ حالة الدفع المبدئية
+              </label>
+
+              <select
+                class="normal-select"
+                id="newFeeStatus"
+              >
+
+                <option value="متبقي">
+                  متبقي
+                </option>
+
+                <option value="قيد الانتظار">
+                  قيد الانتظار ⏳
+                </option>
+
+                <option value="مدفوع">
+                  مدفوع بالكامل ✅
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="field full">
+
+              <label>
+                📝 ملاحظات إضافية (اختياري)
+              </label>
+
+              <input
+                class="normal-input"
+                id="newFeeNotes"
+                type="text"
+                placeholder="اكتب ملاحظة..."
+              />
+
+            </div>
+
+          </div>
+
+
+          <div
+            style="
+              margin-top:9px;
+              display:flex;
+              justify-content:flex-start;
+            "
+          >
+
+            <button
+              type="button"
+              class="action-btn btn-add"
+              onclick="addFee()"
+            >
+              إضافة السجل
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              📋
+            </div>
+
+            سجل المدفوعات والاشتراكات التفصيلي
 
           </div>
 
@@ -3428,8 +3961,7 @@
 
         <div
           id="feesEditor"
-          class="editor-list"
-          style="margin-top:11px;"
+          class="fee-archive"
         ></div>
 
       </section>
@@ -3456,33 +3988,297 @@
               🌟
             </div>
 
-            النقاط الإضافية
+            النقاط الإضافية (التحفيز)
 
           </div>
 
-          <button
-            type="button"
-            class="action-btn btn-add"
-            onclick="addExtraPoint()"
-          >
-            + إضافة نقاط
-          </button>
+        </div>
+
+
+        <div class="extra-summary">
+
+          <div class="extra-summary-card">
+
+            <small>
+              النقاط الإضافية (التحفيز)
+            </small>
+
+            <strong id="extraPointsTotalDisplay">
+              🌟 0 نقطة
+            </strong>
+
+          </div>
+
+
+          <div class="extra-summary-card">
+
+            <small>
+              نقاط التسميع (الأكاديمية)
+            </small>
+
+            <strong id="recitationAcademicPointsDisplay">
+              📖 0 نقطة
+            </strong>
+
+          </div>
+
+
+          <div class="extra-summary-card">
+
+            <small>
+              مجموع نقاط الطالب الكلي
+            </small>
+
+            <strong id="overallPointsDisplay">
+              🏆 0 نقطة
+            </strong>
+
+          </div>
 
         </div>
 
 
         <div class="map-intro">
 
-          النقاط الإضافية تدخل في <strong>النقاط الكلية</strong>
-          وتساهم في <strong>التقييم المئوي</strong>، لكن بحد أقصى
-          10 نقاط مئوية حتى لا تطغى المكافآت على الأداء الأكاديمي.
+          يمكنك منح الطالب نقاط تفوق إضافية لأسباب سلوكية،
+          تشجيعية، حضور مبكر، أو أي تميز آخر غير التسميع اليومي.
+
+        </div>
+
+
+        <div
+          class="fee-form"
+          style="margin-top:11px;"
+        >
+
+          <div class="fee-form-title">
+            منح الطالب نقاط إضافية / تحفيزية
+          </div>
+
+
+          <div
+            style="
+              color:var(--muted);
+              font-size:9px;
+              line-height:1.8;
+              margin-bottom:9px;
+            "
+          >
+
+            💡 اختصارات سريعة للسبب:
+
+          </div>
+
+
+          <div class="extra-reasons">
+
+            <button
+              type="button"
+              class="extra-reason-btn"
+              onclick="setExtraReason('الأدب والأخلاق العالية في الحلقة ✨')"
+            >
+              الأدب والأخلاق العالية في الحلقة ✨
+            </button>
+
+
+            <button
+              type="button"
+              class="extra-reason-btn"
+              onclick="setExtraReason('المواظبة والحضور المبكر المتميز ⏰')"
+            >
+              المواظبة والحضور المبكر المتميز ⏰
+            </button>
+
+
+            <button
+              type="button"
+              class="extra-reason-btn"
+              onclick="setExtraReason('المساعدة والتعاون مع زملائه في الحلقة 🤝')"
+            >
+              المساعدة والتعاون مع زملائه في الحلقة 🤝
+            </button>
+
+
+            <button
+              type="button"
+              class="extra-reason-btn"
+              onclick="setExtraReason('تحقيق تميز خاص في الحفظ الأسبوعي 🌟')"
+            >
+              تحقيق تميز خاص في الحفظ الأسبوعي 🌟
+            </button>
+
+
+            <button
+              type="button"
+              class="extra-reason-btn"
+              onclick="setExtraReason('المشاركة الفعالة والتفوق في الأنشطة والمسابقات 🏆')"
+            >
+              المشاركة الفعالة والتفوق في الأنشطة والمسابقات 🏆
+            </button>
+
+
+            <button
+              type="button"
+              class="extra-reason-btn"
+              onclick="setExtraReason('تحسين ملحوظ في الأداء والسلوك 📈')"
+            >
+              تحسين ملحوظ في الأداء والسلوك 📈
+            </button>
+
+          </div>
+
+
+          <div
+            class="editor-grid"
+            style="margin-top:10px;"
+          >
+
+            <div class="field">
+
+              <label>
+                📝 سبب منح النقاط
+              </label>
+
+              <input
+                class="normal-input"
+                id="newExtraReason"
+                type="text"
+                placeholder="اكتب السبب..."
+              />
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                🌟 مقدار النقاط الإضافية
+              </label>
+
+              <input
+                class="normal-input"
+                id="newExtraPoints"
+                type="number"
+                min="0"
+                step="1"
+                placeholder="مثال: 5"
+              />
+
+
+              <div class="extra-points-shortcuts">
+
+                <button
+                  type="button"
+                  class="extra-points-btn"
+                  onclick="setExtraPoints(1)"
+                >
+                  +1
+                </button>
+
+
+                <button
+                  type="button"
+                  class="extra-points-btn"
+                  onclick="setExtraPoints(2)"
+                >
+                  +2
+                </button>
+
+
+                <button
+                  type="button"
+                  class="extra-points-btn"
+                  onclick="setExtraPoints(5)"
+                >
+                  +5
+                </button>
+
+
+                <button
+                  type="button"
+                  class="extra-points-btn"
+                  onclick="setExtraPoints(10)"
+                >
+                  +10
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                📅 التاريخ
+              </label>
+
+              <input
+                class="normal-input"
+                id="newExtraDate"
+                type="date"
+              />
+
+            </div>
+
+
+            <div class="field">
+
+              <label>
+                📝 ملاحظة
+              </label>
+
+              <input
+                class="normal-input"
+                id="newExtraNote"
+                type="text"
+                placeholder="اختياري"
+              />
+
+            </div>
+
+          </div>
+
+
+          <div
+            style="
+              margin-top:10px;
+              display:flex;
+              justify-content:flex-start;
+            "
+          >
+
+            <button
+              type="button"
+              class="action-btn btn-add"
+              onclick="addExtraPoint()"
+            >
+              منح النقاط ✨
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              📚
+            </div>
+
+            أرشيف ومبررات النقاط الإضافية الممنوحة
+
+          </div>
 
         </div>
 
 
         <div
           id="extraPointsEditor"
-          class="editor-list"
+          class="extra-archive"
         ></div>
 
       </section>
@@ -3522,9 +4318,9 @@
 
         <div class="map-intro">
 
-          الأوسمة تُمنح تلقائيًا بناءً على الأداء الأساسي
-          قبل احتساب المكافآت، ثم تدخل نقاط الوسام في
-          النقاط والتقييم. كل وسام يُمنح مرة واحدة فقط.
+          الأوسمة الأساسية تُحتسب تلقائيًا بناءً على نقاط الطالب،
+          أما ألقاب بطل الشهر وأبطال الشعب فتتحدد مباشرة حسب
+          ترتيب الطالب بين طلاب المركز والشعبة.
 
         </div>
 
@@ -3872,6 +4668,14 @@
     let editingPageRecordId = null;
 
     let currentPlanView = 'week';
+
+    let championData = {
+
+      monthlyChampionId:null,
+
+      sectionChampionIds:{}
+
+    };
 
     const openJuz = new Set();
 
@@ -4667,11 +5471,15 @@
 
         normalizeDataStructures();
 
+        await loadChampionData();
+
         fillIdentity();
 
         fillBasicFields();
 
         renderGeneralEditors();
+
+        renderTests();
 
         renderFees();
 
@@ -4857,6 +5665,7 @@
             ? profileData.weeklyPlan
                 .map(
                   item => ({
+
                     id:
                       item.id ||
                       makeId(),
@@ -4891,16 +5700,26 @@
                       ),
 
                     requiredPages:
-                      Number(
-                        firstValue(
-                          item,
-                          [
-                            'requiredPages',
-                            'pages',
-                            'amount'
-                          ],
-                          1
-                        )
+                      firstValue(
+                        item,
+                        [
+                          'requiredPages',
+                          'pages',
+                          'amount'
+                        ],
+                        ''
+                      ),
+
+                    requiredPageNumbers:
+                      firstValue(
+                        item,
+                        [
+                          'requiredPageNumbers',
+                          'pageNumbers',
+                          'pagesNumbers',
+                          'required_pages_numbers'
+                        ],
+                        ''
                       ),
 
                     notes:
@@ -5058,7 +5877,8 @@
       ).value =
         valueOrEmpty(
           student.section
-        );
+        ) ||
+        'الحفاظ';
 
 
       document.getElementById(
@@ -5824,6 +6644,19 @@
 
                   </div>
 
+
+                  <div class="juz-card-progress">
+
+                    <div
+                      class="juz-card-progress-fill"
+                      style="width:${Math.min(
+                        100,
+                        percentage
+                      )}%"
+                    ></div>
+
+                  </div>
+
                 </div>
 
               `;
@@ -6431,6 +7264,10 @@
 
       renderScores();
 
+      renderBadges();
+
+      renderExtraPoints();
+
 
       showToast(
         'تم تسجيل التسميع. اضغط حفظ لإثباته في قاعدة البيانات.'
@@ -6581,6 +7418,189 @@
 
 
     /* ==================================================
+       PLAN PAGE NUMBERS
+    ================================================== */
+
+    function parsePlanPageNumbers(
+      value
+    ){
+
+      if(
+        value === null ||
+        value === undefined
+      ){
+
+        return [];
+
+      }
+
+
+      const text =
+        String(value)
+          .trim()
+          .replace(/،/g,',')
+          .replace(/؛/g,',')
+          .replace(/\s+/g,' ');
+
+
+      if(!text){
+
+        return [];
+
+      }
+
+
+      const tokens =
+        text
+          .split(',')
+          .flatMap(
+            item =>
+              item
+                .split(' ')
+                .map(
+                  part =>
+                    part.trim()
+                )
+                .filter(Boolean)
+          );
+
+
+      const pages = [];
+
+
+      tokens.forEach(
+        token => {
+
+          const rangeMatch =
+            token.match(
+              /^(\d+)\s*[-–]\s*(\d+)$/
+            );
+
+
+          if(rangeMatch){
+
+            const start =
+              Number(
+                rangeMatch[1]
+              );
+
+            const end =
+              Number(
+                rangeMatch[2]
+              );
+
+
+            if(
+              Number.isInteger(start) &&
+              Number.isInteger(end) &&
+              start >= 1 &&
+              start <= 604 &&
+              end >= 1 &&
+              end <= 604
+            ){
+
+              const from =
+                Math.min(
+                  start,
+                  end
+                );
+
+              const to =
+                Math.max(
+                  start,
+                  end
+                );
+
+
+              for(
+                let page=from;
+                page<=to;
+                page++
+              ){
+
+                pages.push(
+                  page
+                );
+
+              }
+
+            }
+
+            return;
+
+          }
+
+
+          const page =
+            Number(
+              token
+            );
+
+
+          if(
+            Number.isInteger(page) &&
+            page >= 1 &&
+            page <= 604
+          ){
+
+            pages.push(
+              page
+            );
+
+          }
+
+        }
+      );
+
+
+      return Array.from(
+        new Set(
+          pages
+        )
+      ).sort(
+        (a,b) =>
+          a-b
+      );
+
+    }
+
+
+    function getPlanPageInputValue(
+      task
+    ){
+
+      if(
+        task &&
+        task.requiredPageNumbers !== undefined &&
+        task.requiredPageNumbers !== null &&
+        String(
+          task.requiredPageNumbers
+        ).trim()
+      ){
+
+        return String(
+          task.requiredPageNumbers
+        );
+
+      }
+
+
+      if(
+        task &&
+        typeof task.requiredPages === 'string'
+      ){
+
+        return task.requiredPages;
+
+      }
+
+
+      return '';
+
+    }
+
+
+    /* ==================================================
        PLAN
     ================================================== */
 
@@ -6717,21 +7737,31 @@
         )
       ){
 
+        const upcomingPages =
+          parsePlanPageNumbers(
+            getPlanPageInputValue(
+              task
+            )
+          );
+
+
         return {
+
           ratio:null,
+
           done:0,
+
           required:
             task.type === 'test'
               ? 1
-              : Math.max(
-                  1,
-                  Number(
-                    task.requiredPages || 1
-                  )
-                ),
+              : upcomingPages.length,
+
           points:0,
+
           maxPoints:0,
+
           status:'upcoming'
+
         };
 
       }
@@ -6788,16 +7818,36 @@
       }
 
 
-      const required =
-        Math.max(
-          1,
-          Number(
-            task.requiredPages || 1
+      const requiredPages =
+        parsePlanPageNumbers(
+          getPlanPageInputValue(
+            task
           )
         );
 
 
-      const pages =
+      if(!requiredPages.length){
+
+        return {
+
+          ratio:0,
+
+          done:0,
+
+          required:0,
+
+          points:0,
+
+          maxPoints:5,
+
+          status:'pending'
+
+        };
+
+      }
+
+
+      const completedPages =
         getPageRecords()
           .filter(
             record =>
@@ -6816,21 +7866,34 @@
           )
           .map(
             record =>
-              Number(record.page)
+              Number(
+                record.page
+              )
           );
 
 
-      const unique =
+      const completedSet =
         new Set(
-          pages
-        ).size;
+          completedPages
+        );
+
+
+      const done =
+        requiredPages
+          .filter(
+            page =>
+              completedSet.has(
+                page
+              )
+          )
+          .length;
 
 
       const ratio =
         Math.min(
           1,
-          unique /
-          required
+          done /
+          requiredPages.length
         );
 
 
@@ -6838,10 +7901,12 @@
 
         ratio,
 
-        done:
-          unique,
+        done,
 
-        required,
+        required:
+          requiredPages.length,
+
+        requiredPages,
 
         points:
           5 * ratio,
@@ -7099,7 +8164,7 @@
                         ${
                           task.type === 'test'
                             ? 'الحالة'
-                            : 'عدد الصفحات'
+                            : 'رقم الصفحات'
                         }
                       </label>
 
@@ -7129,15 +8194,14 @@
                             <input
                               class="normal-input"
                               data-plan-pages
-                              type="number"
-                              min="1"
-                              step="1"
-                              value="${Math.max(
-                                1,
-                                Number(
-                                  task.requiredPages || 1
+                              type="text"
+                              inputmode="numeric"
+                              value="${escapeHtml(
+                                getPlanPageInputValue(
+                                  task
                                 )
                               )}"
+                              placeholder="مثال: 15، 16، 17 أو 15-20"
                             />
                           `
                       }
@@ -7501,13 +8565,11 @@
 
           if(pagesInput){
 
+            task.requiredPageNumbers =
+              pagesInput.value.trim();
+
             task.requiredPages =
-              Math.max(
-                1,
-                Number(
-                  pagesInput.value
-                ) || 1
-              );
+              task.requiredPageNumbers;
 
           }
 
@@ -7548,7 +8610,10 @@
           '',
 
         requiredPages:
-          1,
+          '',
+
+        requiredPageNumbers:
+          '',
 
         notes:
           ''
@@ -8350,8 +9415,6 @@
 
       renderAttendance();
 
-      renderTests();
-
 
       document.getElementById(
         'weeklyProgress'
@@ -8400,7 +9463,319 @@
        FEES
     ================================================== */
 
+    function normalizeFeeStatus(
+      status
+    ){
+
+      const value =
+        String(
+          status || ''
+        ).trim();
+
+
+      if(
+        value === 'مدفوع' ||
+        value === 'مدفوع بالكامل'
+      ){
+
+        return 'مدفوع';
+
+      }
+
+
+      if(
+        value === 'قيد الانتظار'
+      ){
+
+        return 'قيد الانتظار';
+
+      }
+
+
+      if(
+        value === 'غير مدفوع'
+      ){
+
+        return 'متبقي';
+
+      }
+
+
+      return value ||
+        'متبقي';
+
+    }
+
+
+    function getFeeMonthValue(
+      item
+    ){
+
+      const value =
+        firstValue(
+          item,
+          [
+            'month',
+            'period',
+            'date'
+          ],
+          ''
+        );
+
+
+      if(!value){
+
+        return '';
+
+      }
+
+
+      const str =
+        String(
+          value
+        );
+
+
+      if(
+        /^\d{4}-\d{2}$/.test(
+          str
+        )
+      ){
+
+        return str;
+
+      }
+
+
+      if(
+        /^\d{4}-\d{2}-\d{2}$/.test(
+          str
+        )
+      ){
+
+        return str.slice(
+          0,
+          7
+        );
+
+      }
+
+
+      const date =
+        new Date(
+          str
+        );
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
+        )
+      ){
+
+        return '';
+
+      }
+
+
+      return date
+        .toISOString()
+        .slice(
+          0,
+          7
+        );
+
+    }
+
+
+    function getFeeStatusClass(
+      status
+    ){
+
+      const value =
+        normalizeFeeStatus(
+          status
+        );
+
+
+      if(
+        value === 'مدفوع'
+      ){
+
+        return 'paid';
+
+      }
+
+
+      if(
+        value === 'قيد الانتظار'
+      ){
+
+        return 'waiting';
+
+      }
+
+
+      return 'pending';
+
+    }
+
+
+    function calculateFeeSummary(){
+
+      const items =
+        arrayValue(
+          profileData.fees
+        );
+
+
+      let paidTotal = 0;
+
+      let remainingTotal = 0;
+
+
+      items.forEach(
+        item => {
+
+          const amount =
+            Number(
+              firstValue(
+                item,
+                [
+                  'amount',
+                  'value'
+                ],
+                0
+              )
+            ) || 0;
+
+
+          const status =
+            normalizeFeeStatus(
+              firstValue(
+                item,
+                ['status'],
+                'متبقي'
+              )
+            );
+
+
+          if(
+            status === 'مدفوع'
+          ){
+
+            paidTotal +=
+              amount;
+
+          }else{
+
+            remainingTotal +=
+              amount;
+
+          }
+
+        }
+      );
+
+
+      return {
+
+        paidTotal,
+
+        remainingTotal
+
+      };
+
+    }
+
+
+    function renderFeeSummary(){
+
+      const summary =
+        calculateFeeSummary();
+
+
+      const monthlyFee =
+        Number(
+          document.getElementById(
+            'monthlyFee'
+          ).value
+        ) || 0;
+
+
+      document.getElementById(
+        'feeApprovedMonthly'
+      ).textContent =
+        `${formatPoints(
+          monthlyFee
+        )} د.أ`;
+
+
+      document.getElementById(
+        'feePaidTotal'
+      ).textContent =
+        `${formatPoints(
+          summary.paidTotal
+        )} د.أ`;
+
+
+      document.getElementById(
+        'feeRemainingTotal'
+      ).textContent =
+        `${formatPoints(
+          summary.remainingTotal
+        )} د.أ`;
+
+    }
+
+
+    function initializeFeeForm(){
+
+      const monthInput =
+        document.getElementById(
+          'newFeeMonth'
+        );
+
+
+      if(
+        monthInput &&
+        !monthInput.value
+      ){
+
+        monthInput.value =
+          new Date()
+            .toISOString()
+            .slice(
+              0,
+              7
+            );
+
+      }
+
+
+      const statusInput =
+        document.getElementById(
+          'newFeeStatus'
+        );
+
+
+      if(
+        statusInput &&
+        !statusInput.value
+      ){
+
+        statusInput.value =
+          'متبقي';
+
+      }
+
+    }
+
+
     function renderFees(){
+
+      initializeFeeForm();
+
 
       document.getElementById(
         'subscriptionType'
@@ -8424,8 +9799,11 @@
             'monthlyFee',
             'monthly_fee'
           ],
-          ''
+          0
         );
+
+
+      renderFeeSummary();
 
 
       const container =
@@ -8445,7 +9823,7 @@
         container.innerHTML =
           `
             <div class="empty">
-              لا توجد دفعات مسجلة.
+              لا توجد دفعات أو مطالبات رسوم مسجلة.
             </div>
           `;
 
@@ -8457,157 +9835,282 @@
       container.innerHTML =
         items
           .map(
-            (item,index) => `
+            (item,index) => {
 
-              <div
-                class="editor-row"
-                data-fee-index="${index}"
-              >
-
-                <div class="editor-grid">
-
-                  <div class="field">
-
-                    <label>
-                      الفترة
-                    </label>
-
-                    <input
-                      class="normal-input"
-                      data-fee-period
-                      value="${escapeHtml(
-                        firstValue(
-                          item,
-                          [
-                            'period',
-                            'month',
-                            'name'
-                          ],
-                          ''
-                        )
-                      )}"
-                    />
-
-                  </div>
+              const month =
+                getFeeMonthValue(
+                  item
+                );
 
 
-                  <div class="field">
-
-                    <label>
-                      المبلغ
-                    </label>
-
-                    <input
-                      class="normal-input"
-                      data-fee-amount
-                      type="number"
-                      min="0"
-                      step="0.01"
-                      value="${escapeHtml(
-                        firstValue(
-                          item,
-                          [
-                            'amount',
-                            'value'
-                          ],
-                          0
-                        )
-                      )}"
-                    />
-
-                  </div>
+              const amount =
+                Number(
+                  firstValue(
+                    item,
+                    [
+                      'amount',
+                      'value'
+                    ],
+                    0
+                  )
+                ) || 0;
 
 
-                  <div class="field">
-
-                    <label>
-                      التاريخ
-                    </label>
-
-                    <input
-                      class="normal-input"
-                      data-fee-date
-                      type="date"
-                      value="${escapeHtml(
-                        getDateInputValue(
-                          firstValue(
-                            item,
-                            ['date'],
-                            ''
-                          )
-                        )
-                      )}"
-                    />
-
-                  </div>
+              const status =
+                normalizeFeeStatus(
+                  firstValue(
+                    item,
+                    ['status'],
+                    'متبقي'
+                  )
+                );
 
 
-                  <div class="field">
+              const notes =
+                firstValue(
+                  item,
+                  [
+                    'notes',
+                    'note'
+                  ],
+                  ''
+                );
 
-                    <label>
-                      الحالة
-                    </label>
 
-                    <select
-                      class="normal-select"
-                      data-fee-status
+              return `
+
+                <div
+                  class="fee-archive-item"
+                  data-fee-index="${index}"
+                >
+
+                  <div class="fee-archive-head">
+
+                    <div class="fee-archive-main">
+
+                      <strong>
+                        📅 شهر ${escapeHtml(
+                          month || 'غير محدد'
+                        )}
+                        — المبلغ:
+                        ${formatPoints(
+                          amount
+                        )} د.أ
+                      </strong>
+
+                      <span>
+
+                        ${
+                          notes
+                            ? `ملاحظات: ${escapeHtml(notes)}`
+                            : 'لا توجد ملاحظات إضافية.'
+                        }
+
+                      </span>
+
+                    </div>
+
+
+                    <div
+                      class="
+                        fee-status
+                        ${getFeeStatusClass(
+                          status
+                        )}
+                      "
                     >
 
-                      <option
-                        value="مدفوع"
-                        ${
-                          firstValue(
-                            item,
-                            ['status'],
-                            'مدفوع'
-                          ) === 'مدفوع'
-                            ? 'selected'
-                            : ''
-                        }
-                      >
-                        مدفوع
-                      </option>
+                      ${
+                        status === 'مدفوع'
+                          ? '✅ مدفوع'
+                          : status === 'قيد الانتظار'
+                            ? '⏳ قيد الانتظار'
+                            : '💳 متبقي'
+                      }
 
-                      <option
-                        value="غير مدفوع"
-                        ${
-                          firstValue(
-                            item,
-                            ['status'],
-                            ''
-                          ) === 'غير مدفوع'
-                            ? 'selected'
-                            : ''
-                        }
-                      >
-                        غير مدفوع
-                      </option>
+                    </div>
 
-                    </select>
+                  </div>
+
+
+                  <div
+                    class="editor-grid"
+                    style="margin-top:8px;"
+                  >
+
+                    <div class="field">
+
+                      <label>
+                        الشهر
+                      </label>
+
+                      <input
+                        class="normal-input"
+                        data-fee-month
+                        type="month"
+                        value="${escapeHtml(
+                          month
+                        )}"
+                      />
+
+                    </div>
+
+
+                    <div class="field">
+
+                      <label>
+                        المبلغ
+                      </label>
+
+                      <input
+                        class="normal-input"
+                        data-fee-amount
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value="${escapeHtml(
+                          amount
+                        )}"
+                      />
+
+                    </div>
+
+
+                    <div class="field">
+
+                      <label>
+                        الحالة
+                      </label>
+
+                      <select
+                        class="normal-select"
+                        data-fee-status
+                      >
+
+                        <option
+                          value="متبقي"
+                          ${
+                            status === 'متبقي'
+                              ? 'selected'
+                              : ''
+                          }
+                        >
+                          متبقي
+                        </option>
+
+                        <option
+                          value="قيد الانتظار"
+                          ${
+                            status === 'قيد الانتظار'
+                              ? 'selected'
+                              : ''
+                          }
+                        >
+                          قيد الانتظار ⏳
+                        </option>
+
+                        <option
+                          value="مدفوع"
+                          ${
+                            status === 'مدفوع'
+                              ? 'selected'
+                              : ''
+                          }
+                        >
+                          مدفوع بالكامل ✅
+                        </option>
+
+                      </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                      <label>
+                        ملاحظات
+                      </label>
+
+                      <input
+                        class="normal-input"
+                        data-fee-notes
+                        value="${escapeHtml(
+                          notes
+                        )}"
+                      />
+
+                    </div>
+
+                  </div>
+
+
+                  <div
+                    style="margin-top:8px;"
+                  >
+
+                    <button
+                      type="button"
+                      class="action-btn btn-delete"
+                      onclick="removeFee(${index})"
+                    >
+                      حذف
+                    </button>
 
                   </div>
 
                 </div>
 
+              `;
 
-                <div style="margin-top:8px;">
-
-                  <button
-                    type="button"
-                    class="action-btn btn-delete"
-                    onclick="removeFee(${index})"
-                  >
-                    حذف
-                  </button>
-
-                </div>
-
-              </div>
-
-            `
+            }
           )
           .join('');
 
+
+      container
+        .querySelectorAll(
+          'input,select'
+        )
+        .forEach(
+          element => {
+
+            element.addEventListener(
+              'input',
+              () => {
+
+                syncFees();
+
+                renderFeeSummary();
+
+              }
+            );
+
+
+            element.addEventListener(
+              'change',
+              () => {
+
+                syncFees();
+
+                renderFees();
+
+              }
+            );
+
+          }
+        );
+
+
+      document.getElementById(
+        'monthlyFee'
+      ).addEventListener(
+        'input',
+        () => {
+
+          renderFeeSummary();
+
+        }
+      );
 
     }
 
@@ -8616,45 +10119,76 @@
 
       const rows =
         document.querySelectorAll(
-          '#feesEditor .editor-row'
+          '#feesEditor .fee-archive-item'
+        );
+
+
+      const oldItems =
+        arrayValue(
+          profileData.fees
         );
 
 
       profileData.fees =
         Array.from(rows)
           .map(
-            row => ({
+            (
+              row,
+              index
+            ) => {
 
-              id:
-                makeId(),
+              const old =
+                oldItems[index] ||
+                {};
 
-              period:
-                row.querySelector(
-                  '[data-fee-period]'
-                )?.value ||
-                '',
 
-              amount:
-                Number(
+              return {
+
+                id:
+                  old.id ||
+                  makeId(),
+
+                month:
                   row.querySelector(
-                    '[data-fee-amount]'
+                    '[data-fee-month]'
                   )?.value ||
-                  0
-                ),
+                  '',
 
-              date:
-                row.querySelector(
-                  '[data-fee-date]'
-                )?.value ||
-                '',
+                period:
+                  row.querySelector(
+                    '[data-fee-month]'
+                  )?.value ||
+                  '',
 
-              status:
-                row.querySelector(
-                  '[data-fee-status]'
-                )?.value ||
-                'مدفوع'
+                amount:
+                  Number(
+                    row.querySelector(
+                      '[data-fee-amount]'
+                    )?.value ||
+                    0
+                  ),
 
-            })
+                date:
+                  row.querySelector(
+                    '[data-fee-month]'
+                  )?.value ||
+                  '',
+
+                status:
+                  row.querySelector(
+                    '[data-fee-status]'
+                  )?.value ||
+                  'متبقي',
+
+                notes:
+                  row.querySelector(
+                    '[data-fee-notes]'
+                  )?.value ||
+                  ''
+
+              };
+
+            }
           );
 
     }
@@ -8665,28 +10199,115 @@
       syncFees();
 
 
+      const month =
+        document.getElementById(
+          'newFeeMonth'
+        ).value;
+
+
+      const amount =
+        Number(
+          document.getElementById(
+            'newFeeAmount'
+          ).value
+        );
+
+
+      const status =
+        document.getElementById(
+          'newFeeStatus'
+        ).value;
+
+
+      const notes =
+        document.getElementById(
+          'newFeeNotes'
+        ).value.trim();
+
+
+      if(!month){
+
+        showToast(
+          'اختر شهر المطالبة.',
+          true
+        );
+
+        return;
+
+      }
+
+
+      if(
+        !Number.isFinite(amount) ||
+        amount < 0
+      ){
+
+        showToast(
+          'أدخل قيمة رسوم صحيحة.',
+          true
+        );
+
+        return;
+
+      }
+
+
       profileData.fees
         .push({
 
           id:
             makeId(),
 
-          period:
-            '',
+          month,
 
-          amount:
-            0,
+          period:
+            month,
+
+          amount,
 
           date:
-            todayString(),
+            month,
 
           status:
-            'مدفوع'
+            normalizeFeeStatus(
+              status
+            ),
+
+          notes
 
         });
 
 
+      document.getElementById(
+        'newFeeMonth'
+      ).value =
+        '';
+
+
+      document.getElementById(
+        'newFeeAmount'
+      ).value =
+        '';
+
+
+      document.getElementById(
+        'newFeeStatus'
+      ).value =
+        'متبقي';
+
+
+      document.getElementById(
+        'newFeeNotes'
+      ).value =
+        '';
+
+
       renderFees();
+
+
+      showToast(
+        'تمت إضافة سجل الرسوم بنجاح.'
+      );
 
     }
 
@@ -8714,7 +10335,55 @@
        EXTRA POINTS
     ================================================== */
 
+    function setExtraReason(
+      reason
+    ){
+
+      document.getElementById(
+        'newExtraReason'
+      ).value =
+        reason;
+
+    }
+
+
+    function setExtraPoints(
+      points
+    ){
+
+      document.getElementById(
+        'newExtraPoints'
+      ).value =
+        points;
+
+    }
+
+
+    function initializeExtraPointForm(){
+
+      const dateInput =
+        document.getElementById(
+          'newExtraDate'
+        );
+
+
+      if(
+        dateInput &&
+        !dateInput.value
+      ){
+
+        dateInput.value =
+          todayString();
+
+      }
+
+    }
+
+
     function renderExtraPoints(){
+
+      initializeExtraPointForm();
+
 
       const container =
         document.getElementById(
@@ -8728,12 +10397,85 @@
         );
 
 
+      const extraTotal =
+        items.reduce(
+          (
+            total,
+            item
+          ) =>
+            total +
+            (
+              Number(
+                firstValue(
+                  item,
+                  [
+                    'points',
+                    'amount'
+                  ],
+                  0
+                )
+              ) || 0
+            ),
+          0
+        );
+
+
+      const academicRecitationPoints =
+        getPageRecords()
+          .reduce(
+            (
+              total,
+              record
+            ) =>
+              total +
+              (
+                Number(
+                  getRecitationPoints(
+                    record.score,
+                    record.type
+                  )
+                ) || 0
+              ),
+            0
+          );
+
+
+      const overall =
+        calculateEvaluation(
+          'overall'
+        );
+
+
+      document.getElementById(
+        'extraPointsTotalDisplay'
+      ).textContent =
+        `🌟 ${formatPoints(
+          extraTotal
+        )} نقطة`;
+
+
+      document.getElementById(
+        'recitationAcademicPointsDisplay'
+      ).textContent =
+        `📖 ${formatPoints(
+          academicRecitationPoints
+        )} نقطة`;
+
+
+      document.getElementById(
+        'overallPointsDisplay'
+      ).textContent =
+        `🏆 ${formatPoints(
+          overall.totalPoints
+        )} نقطة`;
+
+
       if(!items.length){
 
         container.innerHTML =
           `
             <div class="empty">
-              لا توجد نقاط إضافية مسجلة حاليًا.
+              لا توجد نقاط إضافية ممنوحة حتى الآن.
             </div>
           `;
 
@@ -8744,204 +10486,157 @@
 
       container.innerHTML =
         items
+          .slice()
+          .reverse()
           .map(
-            (item,index) => `
+            (
+              item,
+              reverseIndex
+            ) => {
 
-              <div
-                class="editor-row"
-                data-extra-index="${index}"
-              >
-
-                <div class="editor-grid">
-
-                  <div class="field">
-
-                    <label>
-                      سبب النقاط
-                    </label>
-
-                    <input
-                      class="normal-input"
-                      data-extra-reason
-                      value="${escapeHtml(
-                        firstValue(
-                          item,
-                          [
-                            'reason',
-                            'title',
-                            'name'
-                          ],
-                          ''
-                        )
-                      )}"
-                    />
-
-                  </div>
+              const index =
+                items.length -
+                1 -
+                reverseIndex;
 
 
-                  <div class="field">
-
-                    <label>
-                      عدد النقاط
-                    </label>
-
-                    <input
-                      class="normal-input"
-                      data-extra-points
-                      type="number"
-                      min="0"
-                      value="${escapeHtml(
-                        firstValue(
-                          item,
-                          [
-                            'points',
-                            'amount'
-                          ],
-                          0
-                        )
-                      )}"
-                    />
-
-                  </div>
+              const reason =
+                firstValue(
+                  item,
+                  [
+                    'reason',
+                    'title',
+                    'name'
+                  ],
+                  'بدون سبب'
+                );
 
 
-                  <div class="field">
+              const points =
+                Number(
+                  firstValue(
+                    item,
+                    [
+                      'points',
+                      'amount'
+                    ],
+                    0
+                  )
+                ) || 0;
 
-                    <label>
-                      التاريخ
-                    </label>
 
-                    <input
-                      class="normal-input"
-                      data-extra-date
-                      type="date"
-                      value="${escapeHtml(
-                        getDateInputValue(
+              const date =
+                firstValue(
+                  item,
+                  ['date'],
+                  ''
+                );
+
+
+              const note =
+                firstValue(
+                  item,
+                  [
+                    'note',
+                    'notes'
+                  ],
+                  ''
+                );
+
+
+              return `
+
+                <div
+                  class="extra-archive-item"
+                  data-extra-index="${index}"
+                >
+
+                  <div class="extra-archive-top">
+
+                    <div class="extra-archive-main">
+
+                      <strong>
+                        ⭐ +${formatPoints(
+                          points
+                        )} نقطة إضافية
+                      </strong>
+
+                      <span>
+
+                        بسبب:
+                        ${escapeHtml(
+                          reason
+                        )}
+
+                        <br>
+
+                        📅 تاريخ المنح:
+                        ${escapeHtml(
+                          date || 'غير محدد'
+                        )}
+
+                        • بواسطة:
+                        ${escapeHtml(
                           firstValue(
                             item,
-                            ['date'],
-                            ''
+                            [
+                              'awardedBy',
+                              'createdBy',
+                              'by'
+                            ],
+                            'المشرف'
                           )
-                        )
-                      )}"
-                    />
+                        )}
 
-                  </div>
+                        ${
+                          note
+                            ? `
+                              <br>
+                              📝 ${escapeHtml(
+                                note
+                              )}
+                            `
+                            : ''
+                        }
+
+                      </span>
+
+                    </div>
 
 
-                  <div class="field">
-
-                    <label>
-                      ملاحظة
-                    </label>
-
-                    <input
-                      class="normal-input"
-                      data-extra-note
-                      value="${escapeHtml(
-                        firstValue(
-                          item,
-                          [
-                            'note',
-                            'notes'
-                          ],
-                          ''
-                        )
-                      )}"
-                    />
+                    <button
+                      type="button"
+                      class="action-btn btn-delete"
+                      onclick="removeExtraPoint(${index})"
+                    >
+                      حذف
+                    </button>
 
                   </div>
 
                 </div>
 
+              `;
 
-                <div style="margin-top:8px;">
-
-                  <button
-                    type="button"
-                    class="action-btn btn-delete"
-                    onclick="removeExtraPoint(${index})"
-                  >
-                    حذف
-                  </button>
-
-                </div>
-
-              </div>
-
-            `
+            }
           )
           .join('');
-
-
-      container
-        .querySelectorAll(
-          'input'
-        )
-        .forEach(
-          input => {
-
-            input.addEventListener(
-              'input',
-              () => {
-
-                syncExtraPoints();
-
-                renderScores();
-
-              }
-            );
-
-          }
-        );
 
     }
 
 
     function syncExtraPoints(){
 
-      const rows =
-        document.querySelectorAll(
-          '#extraPointsEditor .editor-row'
-        );
+      if(
+        !Array.isArray(
+          profileData.extraPoints
+        )
+      ){
 
+        profileData.extraPoints =
+          [];
 
-      profileData.extraPoints =
-        Array.from(rows)
-          .map(
-            row => ({
-
-              id:
-                makeId(),
-
-              reason:
-                row.querySelector(
-                  '[data-extra-reason]'
-                )?.value ||
-                '',
-
-              points:
-                Number(
-                  row.querySelector(
-                    '[data-extra-points]'
-                  )?.value ||
-                  0
-                ),
-
-              date:
-                row.querySelector(
-                  '[data-extra-date]'
-                )?.value ||
-                '',
-
-              note:
-                row.querySelector(
-                  '[data-extra-note]'
-                )?.value ||
-                ''
-
-            })
-          );
+      }
 
     }
 
@@ -8951,30 +10646,125 @@
       syncExtraPoints();
 
 
+      const reason =
+        document.getElementById(
+          'newExtraReason'
+        ).value.trim();
+
+
+      const points =
+        Number(
+          document.getElementById(
+            'newExtraPoints'
+          ).value
+        );
+
+
+      const date =
+        document.getElementById(
+          'newExtraDate'
+        ).value;
+
+
+      const note =
+        document.getElementById(
+          'newExtraNote'
+        ).value.trim();
+
+
+      if(!reason){
+
+        showToast(
+          'اكتب سبب منح النقاط.',
+          true
+        );
+
+        return;
+
+      }
+
+
+      if(
+        !Number.isFinite(points) ||
+        points <= 0
+      ){
+
+        showToast(
+          'أدخل مقدار نقاط صحيح أكبر من صفر.',
+          true
+        );
+
+        return;
+
+      }
+
+
+      if(!date){
+
+        showToast(
+          'اختر تاريخ منح النقاط.',
+          true
+        );
+
+        return;
+
+      }
+
+
       profileData.extraPoints
         .push({
 
           id:
             makeId(),
 
-          reason:
-            '',
+          reason,
 
-          points:
-            0,
+          points,
 
-          date:
-            todayString(),
+          date,
 
-          note:
-            ''
+          note,
+
+          awardedBy:
+            'المشرف'
 
         });
+
+
+      document.getElementById(
+        'newExtraReason'
+      ).value =
+        '';
+
+
+      document.getElementById(
+        'newExtraPoints'
+      ).value =
+        '';
+
+
+      document.getElementById(
+        'newExtraDate'
+      ).value =
+        todayString();
+
+
+      document.getElementById(
+        'newExtraNote'
+      ).value =
+        '';
 
 
       renderExtraPoints();
 
       renderScores();
+
+      renderBadges();
+
+
+      showToast(
+        'تم منح الطالب النقاط الإضافية بنجاح.'
+      );
 
     }
 
@@ -8997,6 +10787,8 @@
 
       renderScores();
 
+      renderBadges();
+
     }
 
 
@@ -9007,89 +10799,151 @@
     const BADGE_DEFINITIONS = [
 
       {
-        id:'master',
-        icon:'🏆',
-        name:'مُتقن',
-        points:10,
-        description:
-          'عند وصول التقييم الأساسي الكلي إلى 95% فأكثر.',
-        condition:
-          metrics =>
-            metrics.baseOverall >= 95
-      },
-
-      {
-        id:'excellent',
-        icon:'🌟',
-        name:'متميز',
-        points:8,
-        description:
-          'عند وصول التقييم الأساسي الكلي إلى 90% فأكثر.',
-        condition:
-          metrics =>
-            metrics.baseOverall >= 90
-      },
-
-      {
-        id:'hardworker',
-        icon:'📚',
-        name:'مجتهد',
-        points:5,
-        description:
-          'عند وصول التقييم الأساسي الكلي إلى 80% فأكثر.',
-        condition:
-          metrics =>
-            metrics.baseOverall >= 80
-      },
-
-      {
-        id:'attendance',
-        icon:'🟢',
-        name:'مواظب',
-        points:6,
-        description:
-          'حضور لا يقل عن 95% مع وجود 8 سجلات حضور على الأقل.',
-        condition:
-          metrics =>
-            metrics.attendancePercent >= 95 &&
-            metrics.attendanceCount >= 8
-      },
-
-      {
-        id:'plan',
-        icon:'📋',
-        name:'ملتزم بالخطة',
-        points:6,
-        description:
-          'التزام لا يقل عن 90% مع وجود 5 مهام مستحقة على الأقل.',
-        condition:
-          metrics =>
-            metrics.planPercent >= 90 &&
-            metrics.planTaskCount >= 5
-      },
-
-      {
-        id:'quran-progress',
+        id:'beginner-reader',
         icon:'📖',
-        name:'إنجاز قرآني',
-        points:8,
+        name:'القارئ المبتدئ',
+        points:5,
+        threshold:50,
+        type:'milestone',
         description:
-          'تسجيل 30 صفحة أو أكثر كحفظ جديد.',
+          'يُمنح للطلاب عند إحراز 50 نقطة كحافز لبداية رحلتهم العطرة.',
         condition:
           metrics =>
-            metrics.newPageCount >= 30
+            metrics.totalPoints >= 50
       },
 
+
       {
-        id:'review-master',
-        icon:'🔄',
-        name:'بطل المراجعة',
-        points:8,
+        id:'persevering',
+        icon:'🌟',
+        name:'المثابر',
+        points:10,
+        threshold:100,
+        type:'milestone',
         description:
-          'تسجيل 60 صفحة مراجعة أو أكثر.',
+          'يُمنح عند إحراز 100 نقطة تقديرًا للمواظبة والالتزام الدائم.',
         condition:
           metrics =>
-            metrics.reviewPageCount >= 60
+            metrics.totalPoints >= 100
+      },
+
+
+      {
+        id:'excellence',
+        icon:'💎',
+        name:'التميز',
+        points:15,
+        threshold:200,
+        type:'milestone',
+        description:
+          'يُمنح عند إحراز 200 نقطة للطلاب الذين قطعوا شوطًا كبيرًا في المراجعة والحفظ.',
+        condition:
+          metrics =>
+            metrics.totalPoints >= 200
+      },
+
+
+      {
+        id:'golden-hafiz',
+        icon:'🏆',
+        name:'الحافظ الذهبي',
+        points:20,
+        threshold:300,
+        type:'milestone',
+        description:
+          'يُمنح عند الوصول إلى 300 نقطة تتويجًا لإنجازات الحفظ الاستثنائية.',
+        condition:
+          metrics =>
+            metrics.totalPoints >= 300
+      },
+
+
+      {
+        id:'crown-of-dignity',
+        icon:'👑',
+        name:'تاج الوقار',
+        points:30,
+        threshold:500,
+        type:'milestone',
+        description:
+          'الوسام الأعلى، يُمنح عند تخطي 500 نقطة كحارس مخلص لكتاب الله.',
+        condition:
+          metrics =>
+            metrics.totalPoints >= 500
+      },
+
+
+      {
+        id:'monthly-champion',
+        icon:'🥇',
+        name:'بطل الشهر',
+        points:0,
+        type:'monthly',
+        description:
+          'يُمنح لأعلى طالب تقييمًا ونقاطًا بين طلاب المركز خلال الشهر الحالي.',
+        condition:
+          metrics =>
+            metrics.isMonthlyChampion === true
+      },
+
+
+      {
+        id:'champion-huffaz',
+        icon:'👑',
+        name:'بطل الحفاظ',
+        points:0,
+        type:'section',
+        section:'الحفاظ',
+        description:
+          'يُمنح لأعلى طالب تقييمًا ونقاطًا في شعبة الحفاظ.',
+        condition:
+          metrics =>
+            metrics.sectionChampion === 'الحفاظ'
+      },
+
+
+      {
+        id:'champion-fursan',
+        icon:'⚔️',
+        name:'بطل الفرسان',
+        points:0,
+        type:'section',
+        section:'الفرسان',
+        description:
+          'يُمنح لأعلى طالب تقييمًا ونقاطًا في شعبة الفرسان.',
+        condition:
+          metrics =>
+            metrics.sectionChampion === 'الفرسان'
+      },
+
+
+      {
+        id:'champion-ijaza',
+        icon:'📜',
+        name:'بطل الإجازة',
+        points:0,
+        type:'section',
+        section:'إجازة',
+        description:
+          'يُمنح لأعلى طالب تقييمًا ونقاطًا في شعبة الإجازة.',
+        condition:
+          metrics =>
+            metrics.sectionChampion === 'إجازة'
+      },
+
+
+      {
+        id:'champion-tajweed',
+        icon:'🕌',
+        name:'بطل التجويد',
+        points:0,
+        type:'section',
+        section:'تجويد',
+        description:
+          'يُمنح لأعلى طالب تقييمًا ونقاطًا في شعبة التجويد.',
+        condition:
+          metrics =>
+            metrics.sectionChampion === 'تجويد'
       }
 
     ];
@@ -9113,6 +10967,334 @@
     }
 
 
+    async function loadChampionData(){
+
+      championData = {
+
+        monthlyChampionId:null,
+
+        sectionChampionIds:{}
+
+      };
+
+
+      try{
+
+        const {
+          data:studentsData,
+          error:studentsError
+        } =
+          await supabaseClient
+            .from('students')
+            .select(
+              'id,name,section,status'
+            );
+
+
+        if(studentsError){
+
+          console.error(
+            studentsError
+          );
+
+          return;
+
+        }
+
+
+        const {
+          data:profilesData,
+          error:profilesError
+        } =
+          await supabaseClient
+            .from('student_profiles')
+            .select(
+              'student_id,data'
+            );
+
+
+        if(profilesError){
+
+          console.error(
+            profilesError
+          );
+
+          return;
+
+        }
+
+
+        const profileMap =
+          new Map();
+
+
+        (profilesData || [])
+          .forEach(
+            row => {
+
+              profileMap.set(
+                String(
+                  row.student_id
+                ),
+                row.data &&
+                typeof row.data === 'object'
+                  ? row.data
+                  : {}
+              );
+
+            }
+          );
+
+
+        let monthlyWinner =
+          null;
+
+
+        const sectionWinners =
+          {};
+
+
+        (studentsData || [])
+          .forEach(
+            currentStudent => {
+
+              const studentStatus =
+                String(
+                  currentStudent.status ||
+                  'active'
+                );
+
+
+              if(
+                studentStatus !==
+                  'active'
+              ){
+
+                return;
+
+              }
+
+
+              const data =
+                profileMap.get(
+                  String(
+                    currentStudent.id
+                  )
+                ) || {};
+
+
+              const monthly =
+                calculateEvaluationForProfileData(
+                  data,
+                  'monthly'
+                );
+
+
+              const overall =
+                calculateEvaluationForProfileData(
+                  data,
+                  'overall'
+                );
+
+
+              const candidate = {
+
+                id:
+                  String(
+                    currentStudent.id
+                  ),
+
+                section:
+                  String(
+                    currentStudent.section || ''
+                  ),
+
+                monthlyPercentage:
+                  monthly.baseOverall,
+
+                monthlyPoints:
+                  monthly.basePoints,
+
+                overallPercentage:
+                  overall.baseOverall,
+
+                overallPoints:
+                  overall.basePoints
+
+              };
+
+
+              if(
+                !monthlyWinner ||
+                candidate.monthlyPercentage >
+                  monthlyWinner.monthlyPercentage ||
+                (
+                  candidate.monthlyPercentage ===
+                    monthlyWinner.monthlyPercentage &&
+                  candidate.monthlyPoints >
+                    monthlyWinner.monthlyPoints
+                )
+              ){
+
+                monthlyWinner =
+                  candidate;
+
+              }
+
+
+              const section =
+                candidate.section;
+
+
+              if(!section){
+
+                return;
+
+              }
+
+
+              const existing =
+                sectionWinners[
+                  section
+                ];
+
+
+              if(
+                !existing ||
+                candidate.overallPercentage >
+                  existing.overallPercentage ||
+                (
+                  candidate.overallPercentage ===
+                    existing.overallPercentage &&
+                  candidate.overallPoints >
+                    existing.overallPoints
+                )
+              ){
+
+                sectionWinners[
+                  section
+                ] =
+                  candidate;
+
+              }
+
+            }
+          );
+
+
+        championData.monthlyChampionId =
+          monthlyWinner
+            ? monthlyWinner.id
+            : null;
+
+
+        Object.keys(
+          sectionWinners
+        ).forEach(
+          section => {
+
+            championData
+              .sectionChampionIds[
+                section
+              ] =
+              sectionWinners[
+                section
+              ].id;
+
+          }
+        );
+
+      }catch(error){
+
+        console.error(
+          error
+        );
+
+      }
+
+    }
+
+
+    function calculateEvaluationForProfileData(
+      data,
+      period='overall'
+    ){
+
+      const previousProfileData =
+        profileData;
+
+
+      profileData =
+        data &&
+        typeof data === 'object'
+          ? data
+          : {};
+
+
+      normalizeDataStructures();
+
+
+      const result =
+        calculateEvaluation(
+          period
+        );
+
+
+      profileData =
+        previousProfileData;
+
+
+      return result;
+
+    }
+
+
+    function isCurrentMonthlyChampion(){
+
+      return (
+        String(
+          championData.monthlyChampionId || ''
+        ) ===
+        String(
+          studentId || ''
+        )
+      );
+
+    }
+
+
+    function getCurrentSectionChampion(){
+
+      const section =
+        String(
+          student?.section || ''
+        );
+
+
+      if(!section){
+
+        return null;
+
+      }
+
+
+      return (
+        String(
+          championData
+            .sectionChampionIds[
+              section
+            ] || ''
+        ) ===
+        String(
+          studentId || ''
+        )
+      )
+        ? section
+        : null;
+
+    }
+
+
     function renderBadges(){
 
       const container =
@@ -9125,13 +11307,23 @@
         getEarnedBadgeIds();
 
 
-      const metrics =
+      const overall =
         calculateEvaluation(
-          'overall',
-          {
-            ignoreBonuses:true
-          }
+          'overall'
         );
+
+
+      const metrics = {
+
+        ...overall,
+
+        isMonthlyChampion:
+          isCurrentMonthlyChampion(),
+
+        sectionChampion:
+          getCurrentSectionChampion()
+
+      };
 
 
       container.innerHTML =
@@ -9139,10 +11331,62 @@
           .map(
             definition => {
 
-              const earned =
+              const storedEarned =
                 earnedIds.has(
                   definition.id
                 );
+
+
+              const dynamicEarned =
+                definition.type === 'monthly' ||
+                definition.type === 'section'
+                  ? definition.condition(
+                      metrics
+                    )
+                  : false;
+
+
+              const earned =
+                storedEarned ||
+                dynamicEarned;
+
+
+              let statusText =
+                earned
+                  ? '✓ مفتوح'
+                  : '🔒 مقفل';
+
+
+              if(
+                !earned &&
+                definition.threshold
+              ){
+
+                const remaining =
+                  Math.max(
+                    0,
+                    definition.threshold -
+                    overall.totalPoints
+                  );
+
+
+                statusText =
+                  `🔒 مقفل — متبقي: ${formatPoints(
+                    remaining
+                  )} نقطة`;
+
+              }
+
+
+              if(
+                !storedEarned &&
+                dynamicEarned
+              ){
+
+                statusText =
+                  '✅ مستحق تلقائيًا';
+
+              }
 
 
               return `
@@ -9171,17 +11415,21 @@
                     )}
                   </div>
 
-                  <div class="badge-points">
-                    +${definition.points} نقطة
-                  </div>
+                  ${
+                    definition.points > 0
+                      ? `
+                        <div class="badge-points">
+                          +${definition.points} نقطة
+                        </div>
+                      `
+                      : ''
+                  }
 
                   <div class="badge-lock">
 
-                    ${
-                      earned
-                        ? '✅ تم الحصول عليه'
-                        : '🔒 لم يتحقق الشرط بعد'
-                    }
+                    ${escapeHtml(
+                      statusText
+                    )}
 
                   </div>
 
@@ -9198,149 +11446,86 @@
 
     function awardAutomaticBadges(){
 
-      const evaluation =
-        calculateEvaluation(
-          'overall',
-          {
-            ignoreBonuses:true
-          }
-        );
-
-
-      const earnedIds =
-        getEarnedBadgeIds();
-
-
-      /*
-        التدرج العام:
-        لا نعطي "مجتهد" ثم "متميز" ثم "متقن" كلهم لنفس الإنجاز.
-        نعطي أعلى وسام من هذه المجموعة فقط.
-      */
-
-      const tierDefinitions = [
-
-        'master',
-        'excellent',
-        'hardworker'
-
-      ];
-
-
-      let tierAwarded = null;
-
-
-      for(
-        const definitionId of tierDefinitions
-      ){
-
-        const definition =
-          BADGE_DEFINITIONS.find(
-            item =>
-              item.id ===
-              definitionId
+      const milestoneDefinitions =
+        BADGE_DEFINITIONS
+          .filter(
+            definition =>
+              definition.type ===
+              'milestone'
           );
 
 
-        if(
-          definition &&
-          definition.condition(
-            evaluation
-          )
-        ){
-
-          tierAwarded =
-            definition;
-
-          break;
-
-        }
-
-      }
+      let awardedSomething =
+        true;
 
 
-      if(
-        tierAwarded &&
-        !earnedIds.has(
-          tierAwarded.id
-        )
+      while(
+        awardedSomething
       ){
 
-        profileData.badges
-          .push({
-
-            id:
-              makeId(),
-
-            badgeId:
-              tierAwarded.id,
-
-            title:
-              tierAwarded.name,
-
-            icon:
-              tierAwarded.icon,
-
-            points:
-              tierAwarded.points,
-
-            earnedAt:
-              todayString()
-
-          });
-
-      }
+        awardedSomething =
+          false;
 
 
-      /*
-        الأوسمة المستقلة
-      */
+        const earnedIds =
+          getEarnedBadgeIds();
 
-      BADGE_DEFINITIONS
-        .filter(
-          definition =>
-            !tierDefinitions.includes(
-              definition.id
-            )
-        )
-        .forEach(
-          definition => {
 
-            if(
-              definition.condition(
-                evaluation
-              ) &&
-              !earnedIds.has(
-                definition.id
-              )
-            ){
+        const evaluation =
+          calculateEvaluation(
+            'overall'
+          );
 
-              profileData.badges
-                .push({
 
-                  id:
-                    makeId(),
+        milestoneDefinitions
+          .forEach(
+            definition => {
 
-                  badgeId:
-                    definition.id,
+              if(
+                definition.condition(
+                  evaluation
+                ) &&
+                !earnedIds.has(
+                  definition.id
+                )
+              ){
 
-                  title:
-                    definition.name,
+                profileData.badges
+                  .push({
 
-                  icon:
-                    definition.icon,
+                    id:
+                      makeId(),
 
-                  points:
-                    definition.points,
+                    badgeId:
+                      definition.id,
 
-                  earnedAt:
-                    todayString()
+                    title:
+                      definition.name,
 
-                });
+                    icon:
+                      definition.icon,
+
+                    points:
+                      definition.points,
+
+                    earnedAt:
+                      todayString(),
+
+                    type:
+                      'milestone'
+
+                  });
+
+
+                awardedSomething =
+                  true;
+
+              }
 
             }
+          );
 
-          }
-        );
+      }
 
     }
 
@@ -10299,7 +12484,7 @@
         const section =
           document.getElementById(
             'section'
-          ).value.trim();
+          ).value;
 
 
         const memorization =
@@ -10406,6 +12591,9 @@
           ثم نمنح الأوسمة المستحقة مرة واحدة.
         */
 
+        await loadChampionData();
+
+
         awardAutomaticBadges();
 
 
@@ -10507,6 +12695,9 @@
           };
 
 
+        await loadChampionData();
+
+
         selectedPhotoFile =
           null;
 
@@ -10528,6 +12719,8 @@
         fillBasicFields();
 
         renderGeneralEditors();
+
+        renderTests();
 
         renderFees();
 
