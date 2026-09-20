@@ -4998,6 +4998,7 @@
         'teacherAccess'
       );
 
+
       window.location.href =
         'teacher-login.html';
 
@@ -5745,6 +5746,16 @@
           [];
 
       }
+
+
+      /*
+        تنظيف الأوسمة القديمة:
+        - يسمح فقط بالأوسمة المعتمدة في النظام.
+        - أوسمة الأقسام القديمة يتم تجاهلها وإزالتها.
+        - نقاط جميع الأوسمة تصير 0 دائمًا.
+      */
+
+      normalizeBadgeRecords();
 
 
       if(
@@ -6989,6 +7000,20 @@
             سجل الصفحة ${pageNumber}
           </div>
 
+
+          <button
+            type="button"
+            class="action-btn btn-delete"
+            style="
+              width:100%;
+              margin-bottom:8px;
+            "
+            onclick="deletePageRecitations(${Number(pageNumber)})"
+          >
+            🗑️ حذف تسميع الصفحة بالكامل
+          </button>
+
+
           ${
             records
               .map(
@@ -7022,6 +7047,7 @@
                           }
 
                           —
+
                           ${record.score}%
 
                         </strong>
@@ -7079,6 +7105,100 @@
           }
 
         `;
+
+    }
+
+
+    function deletePageRecitations(
+      pageNumber
+    ){
+
+      const page =
+        Number(
+          pageNumber
+        );
+
+
+      if(
+        !Number.isInteger(page) ||
+        page < 1 ||
+        page > 604
+      ){
+
+        showToast(
+          'رقم الصفحة غير صالح.',
+          true
+        );
+
+        return;
+
+      }
+
+
+      const records =
+        getPageRecords()
+          .filter(
+            record =>
+              Number(record.page) ===
+              page
+          );
+
+
+      if(!records.length){
+
+        showToast(
+          'لا يوجد تسميع مسجل لهذه الصفحة.',
+          true
+        );
+
+        return;
+
+      }
+
+
+      const confirmed =
+        window.confirm(
+          `هل تريد حذف جميع سجلات تسميع الصفحة ${page}؟\n\nبعد الحذف ستظهر الصفحة كأن الطالب لم يسمّعها.`
+        );
+
+
+      if(!confirmed){
+
+        return;
+
+      }
+
+
+      profileData.recitationPages =
+        arrayValue(
+          profileData.recitationPages
+        )
+          .filter(
+            record =>
+              Number(record.page) !==
+              page
+          );
+
+
+      closePageModal();
+
+
+      renderMap();
+
+      renderRecitationTable();
+
+      renderPlan();
+
+      renderScores();
+
+      renderBadges();
+
+      renderExtraPoints();
+
+
+      showToast(
+        `تم حذف جميع سجلات تسميع الصفحة ${page}. اضغط حفظ لإثبات الحذف في قاعدة البيانات.`
+      );
 
     }
 
@@ -7984,6 +8104,7 @@
         renderPlanSummary(
           []
         );
+
 
         return;
 
@@ -10354,6 +10475,7 @@
 
       renderFees();
 
+
       showToast(
         'تم حذف سجل الرسوم من النسخة الحالية.'
       );
@@ -10918,6 +11040,58 @@
     ];
 
 
+    function normalizeBadgeRecords(){
+
+      const allowedIds =
+        new Set(
+          BADGE_DEFINITIONS
+            .map(
+              definition =>
+                String(
+                  definition.id
+                )
+            )
+        );
+
+
+      const badges =
+        arrayValue(
+          profileData.badges
+        );
+
+
+      profileData.badges =
+        badges
+          .filter(
+            badge => {
+
+              const badgeId =
+                String(
+                  badge?.badgeId ||
+                  badge?.id ||
+                  ''
+                );
+
+
+              return allowedIds.has(
+                badgeId
+              );
+
+            }
+          )
+          .map(
+            badge => ({
+
+              ...badge,
+
+              points:0
+
+            })
+          );
+
+    }
+
+
     function getEarnedBadgeIds(){
 
       return new Set(
@@ -10956,6 +11130,9 @@
 
 
     function renderBadges(){
+
+      normalizeBadgeRecords();
+
 
       const container =
         document.getElementById(
@@ -11115,6 +11292,9 @@
 
 
     function awardAutomaticBadges(){
+
+      normalizeBadgeRecords();
+
 
       const overall =
         calculateEvaluation(
@@ -11447,6 +11627,11 @@
           });
 
 
+          normalizeBadgeRecordsForExternalData(
+            winner.data
+          );
+
+
           const {
             error:upsertError
           } =
@@ -11505,6 +11690,11 @@
           String(studentId)
         ){
 
+          normalizeBadgeRecordsForExternalData(
+            winner.data
+          );
+
+
           profileData.badges =
             winner.data.badges;
 
@@ -11517,6 +11707,66 @@
         );
 
       }
+
+    }
+
+
+    function normalizeBadgeRecordsForExternalData(
+      data
+    ){
+
+      if(
+        !data ||
+        typeof data !== 'object'
+      ){
+
+        return;
+
+      }
+
+
+      const allowedIds =
+        new Set(
+          BADGE_DEFINITIONS
+            .map(
+              definition =>
+                String(
+                  definition.id
+                )
+            )
+        );
+
+
+      data.badges =
+        arrayValue(
+          data.badges
+        )
+          .filter(
+            badge => {
+
+              const badgeId =
+                String(
+                  badge?.badgeId ||
+                  badge?.id ||
+                  ''
+                );
+
+
+              return allowedIds.has(
+                badgeId
+              );
+
+            }
+          )
+          .map(
+            badge => ({
+
+              ...badge,
+
+              points:0
+
+            })
+          );
 
     }
 
@@ -12291,6 +12541,14 @@
 
       syncExtraPoints();
 
+      /*
+        تنظيف الأوسمة قبل الحفظ:
+        الأوسمة غير المعتمدة تختفي،
+        وجميع الأوسمة تُحفظ دائمًا بدون نقاط.
+      */
+
+      normalizeBadgeRecords();
+
 
       profileData.weeklyProgress =
         document.getElementById(
@@ -12618,6 +12876,9 @@
         */
 
         awardAutomaticBadges();
+
+
+        normalizeBadgeRecords();
 
 
         const overall =
