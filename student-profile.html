@@ -653,7 +653,12 @@
 
       <div class="top-actions">
         <a href="index.html" class="top-btn">⌂ الرئيسية</a>
-        <button class="top-btn" type="button" onclick="logoutStudent()">
+
+        <button
+          class="top-btn"
+          type="button"
+          onclick="logoutStudent()"
+        >
           خروج
         </button>
       </div>
@@ -667,15 +672,23 @@
       <div class="hero-content">
 
         <div class="avatar-wrap">
+
           <div class="avatar">
 
-            <img id="studentPhoto" alt="صورة الطالب">
+            <img
+              id="studentPhoto"
+              alt="صورة الطالب"
+            />
 
-            <div class="avatar-letter" id="avatarLetter">
+            <div
+              class="avatar-letter"
+              id="avatarLetter"
+            >
               ط
             </div>
 
           </div>
+
         </div>
 
         <div class="hero-info">
@@ -688,7 +701,10 @@
             جاري التحميل...
           </h1>
 
-          <div class="hero-subtitle" id="heroSubtitle">
+          <div
+            class="hero-subtitle"
+            id="heroSubtitle"
+          >
             بيانات المتابعة الخاصة بك
           </div>
 
@@ -703,23 +719,66 @@
     <section class="stats">
 
       <div class="stat">
-        <div class="stat-label">الحلقة / القسم</div>
-        <div class="stat-value" id="statSection">—</div>
+
+        <div class="stat-label">
+          الحلقة / القسم
+        </div>
+
+        <div
+          class="stat-value"
+          id="statSection"
+        >
+          —
+        </div>
+
       </div>
 
-      <div class="stat">
-        <div class="stat-label">الحفظ</div>
-        <div class="stat-value" id="statMemorization">—</div>
-      </div>
 
       <div class="stat">
-        <div class="stat-label">الحالة</div>
-        <div class="stat-value" id="statStatus">—</div>
+
+        <div class="stat-label">
+          الحفظ
+        </div>
+
+        <div
+          class="stat-value"
+          id="statMemorization"
+        >
+          —
+        </div>
+
       </div>
 
+
       <div class="stat">
-        <div class="stat-label">النقاط</div>
-        <div class="stat-value" id="statPoints">—</div>
+
+        <div class="stat-label">
+          التقييم
+        </div>
+
+        <div
+          class="stat-value"
+          id="statEvaluation"
+        >
+          —
+        </div>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-label">
+          النقاط
+        </div>
+
+        <div
+          class="stat-value"
+          id="statPoints"
+        >
+          —
+        </div>
+
       </div>
 
     </section>
@@ -728,14 +787,20 @@
     <!-- CONTENT -->
     <div class="grid">
 
+
       <!-- PERSONAL INFO -->
       <section class="section">
 
         <div class="section-head">
 
           <div class="section-title">
-            <div class="section-icon">👤</div>
+
+            <div class="section-icon">
+              👤
+            </div>
+
             المعلومات الشخصية
+
           </div>
 
           <div class="section-note">
@@ -744,100 +809,267 @@
 
         </div>
 
+
         <div class="info-grid">
 
-          <div class="info-item">
-            <div class="info-label">اسم الطالب</div>
-            <div class="info-value" id="infoName">—</div>
-          </div>
 
           <div class="info-item">
-            <div class="info-label">القسم</div>
-            <div class="info-value" id="infoSection">—</div>
+
+            <div class="info-label">
+              اسم الطالب
+            </div>
+
+            <div
+              class="info-value"
+              id="infoName"
+            >
+              —
+            </div>
+
           </div>
 
-          <div class="info-item">
-            <div class="info-label">مستوى الحفظ</div>
-            <div class="info-value" id="infoMemorization">—</div>
-          </div>
 
           <div class="info-item">
-            <div class="info-label">الحالة</div>
-            <div class="info-value" id="infoStatus">—</div>
+
+            <div class="info-label">
+              القسم
+            </div>
+
+            <div
+              class="info-value"
+              id="infoSection"
+            >
+              —
+            </div>
+
           </div>
 
-          <div class="info-item">
-            <div class="info-label">رقم ولي الأمر</div>
-            <div class="info-value" id="infoGuardianPhone">—</div>
-          </div>
 
           <div class="info-item">
-            <div class="info-label">تاريخ الالتحاق</div>
-            <div class="info-value" id="infoJoiningDate">—</div>
+
+            <div class="info-label">
+              مستوى الحفظ
+            </div>
+
+            <div
+              class="info-value"
+              id="infoMemorization"
+            >
+              —
+            </div>
+
           </div>
 
-          <div class="info-item">
-            <div class="info-label">مكان السكن</div>
-            <div class="info-value" id="infoResidence">—</div>
-          </div>
 
           <div class="info-item">
-            <div class="info-label">المواصلات</div>
-            <div class="info-value" id="infoBus">—</div>
+
+            <div class="info-label">
+              الحالة
+            </div>
+
+            <div
+              class="info-value"
+              id="infoStatus"
+            >
+              —
+            </div>
+
           </div>
 
-          <div class="info-item">
-            <div class="info-label">موقع المنزل</div>
-            <div class="info-value" id="infoHomeLocation">—</div>
-          </div>
 
           <div class="info-item">
-            <div class="info-label">الالتزام</div>
-            <div class="info-value" id="infoCommitment">—</div>
+
+            <div class="info-label">
+              التقييم الحالي
+            </div>
+
+            <div
+              class="info-value"
+              id="infoEvaluation"
+            >
+              —
+            </div>
+
           </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              رقم ولي الأمر
+            </div>
+
+            <div
+              class="info-value"
+              id="infoGuardianPhone"
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              تاريخ الالتحاق
+            </div>
+
+            <div
+              class="info-value"
+              id="infoJoiningDate"
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              مكان السكن
+            </div>
+
+            <div
+              class="info-value"
+              id="infoResidence"
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              المواصلات
+            </div>
+
+            <div
+              class="info-value"
+              id="infoBus"
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              الالتزام
+            </div>
+
+            <div
+              class="info-value"
+              id="infoCommitment"
+            >
+              —
+            </div>
+
+          </div>
+
 
         </div>
 
       </section>
 
 
-      <!-- WEEKLY GOALS -->
+      <!-- POINTS -->
       <section class="section">
 
         <div class="section-head">
 
           <div class="section-title">
-            <div class="section-icon">🎯</div>
-            الأهداف الأسبوعية
+
+            <div class="section-icon">
+              ⭐
+            </div>
+
+            النقاط والتقييم
+
           </div>
 
-        </div>
-
-        <div id="weeklyGoals" class="list">
-          <div class="empty">لا توجد أهداف مسجلة.</div>
-        </div>
-
-      </section>
-
-
-      <!-- ATTENDANCE -->
-      <section class="section">
-
-        <div class="section-head">
-
-          <div class="section-title">
-            <div class="section-icon">📅</div>
-            الحضور والغياب
-          </div>
-
-          <div class="section-note" id="attendanceSummary">
+          <div
+            class="section-note"
+            id="pointsSummary"
+          >
             —
           </div>
 
         </div>
 
-        <div id="attendanceList" class="list">
-          <div class="empty">لا توجد سجلات حضور.</div>
+
+        <div class="info-grid">
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              نقاط التسميع
+            </div>
+
+            <div
+              class="info-value"
+              id="academicPoints"
+            >
+              0
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              النقاط الإضافية
+            </div>
+
+            <div
+              class="info-value"
+              id="bonusPoints"
+            >
+              0
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              مجموع النقاط
+            </div>
+
+            <div
+              class="info-value"
+              id="totalPoints"
+            >
+              0
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              التقييم
+            </div>
+
+            <div
+              class="info-value"
+              id="currentEvaluation"
+            >
+              —
+            </div>
+
+          </div>
+
+
         </div>
 
       </section>
@@ -849,14 +1081,34 @@
         <div class="section-head">
 
           <div class="section-title">
-            <div class="section-icon">🗓️</div>
+
+            <div class="section-icon">
+              🗓️
+            </div>
+
             الخطة الأسبوعية
+
+          </div>
+
+          <div
+            class="section-note"
+            id="weeklyPlanSummary"
+          >
+            —
           </div>
 
         </div>
 
-        <div id="weeklyPlan" class="list">
-          <div class="empty">لا توجد خطة أسبوعية.</div>
+
+        <div
+          id="weeklyPlan"
+          class="list"
+        >
+
+          <div class="empty">
+            لا توجد خطة أسبوعية.
+          </div>
+
         </div>
 
       </section>
@@ -868,18 +1120,34 @@
         <div class="section-head">
 
           <div class="section-title">
-            <div class="section-icon">📝</div>
+
+            <div class="section-icon">
+              📝
+            </div>
+
             الاختبارات
+
           </div>
 
-          <div class="section-note" id="testsSummary">
+          <div
+            class="section-note"
+            id="testsSummary"
+          >
             —
           </div>
 
         </div>
 
-        <div id="testsList" class="list">
-          <div class="empty">لا توجد اختبارات مسجلة.</div>
+
+        <div
+          id="testsList"
+          class="list"
+        >
+
+          <div class="empty">
+            لا توجد اختبارات مسجلة.
+          </div>
+
         </div>
 
       </section>
@@ -891,18 +1159,410 @@
         <div class="section-head">
 
           <div class="section-title">
-            <div class="section-icon">📖</div>
+
+            <div class="section-icon">
+              📖
+            </div>
+
             التسميع
+
           </div>
 
-          <div class="section-note" id="recitationsSummary">
+          <div
+            class="section-note"
+            id="recitationsSummary"
+          >
             —
           </div>
 
         </div>
 
-        <div id="recitationsList" class="list">
-          <div class="empty">لا توجد جلسات تسميع مسجلة.</div>
+
+        <div
+          id="recitationsList"
+          class="list"
+        >
+
+          <div class="empty">
+            لا توجد جلسات تسميع مسجلة.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- JUZ PROGRESS -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              📚
+            </div>
+
+            تقدم الحفظ
+
+          </div>
+
+          <div
+            class="section-note"
+            id="juzSummary"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              الصفحات المسَمَّعة
+            </div>
+
+            <div
+              class="info-value"
+              id="memorizedPagesCount"
+            >
+              0
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              من أصل صفحات المصحف
+            </div>
+
+            <div
+              class="info-value"
+              id="memorizedPagesTotal"
+            >
+              604
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              نسبة إنجاز الصفحات
+            </div>
+
+            <div
+              class="info-value"
+              id="memorizedPagesPercent"
+            >
+              0%
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              الأجزاء المكتملة
+            </div>
+
+            <div
+              class="info-value"
+              id="completedJuzCount"
+            >
+              0
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div
+          id="juzProgressList"
+          class="list"
+          style="margin-top:12px;"
+        >
+
+          <div class="empty">
+            لا توجد بيانات تقدم بعد.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- EXTRA POINTS -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              ✨
+            </div>
+
+            النقاط الإضافية
+
+          </div>
+
+          <div
+            class="section-note"
+            id="extraPointsSummary"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div
+          id="extraPointsList"
+          class="list"
+        >
+
+          <div class="empty">
+            لا توجد نقاط إضافية مسجلة.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- BADGES -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              🏅
+            </div>
+
+            الأوسمة
+
+          </div>
+
+          <div
+            class="section-note"
+            id="badgesSummary"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div
+          id="badgesList"
+          class="list"
+        >
+
+          <div class="empty">
+            لا توجد أوسمة بعد.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- MONTHLY FEES -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              💳
+            </div>
+
+            الرسوم الشهرية
+
+          </div>
+
+          <div
+            class="section-note"
+            id="feesSummary"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              الرسوم الشهرية
+            </div>
+
+            <div
+              class="info-value"
+              id="monthlyFeeAmount"
+            >
+              5 د.أ
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              الشهر الحالي
+            </div>
+
+            <div
+              class="info-value"
+              id="currentFeeMonth"
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              حالة الدفع
+            </div>
+
+            <div
+              class="info-value"
+              id="currentFeeStatus"
+            >
+              —
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              آخر دفعة
+            </div>
+
+            <div
+              class="info-value"
+              id="lastFeePayment"
+            >
+              —
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div
+          id="feesList"
+          class="list"
+          style="margin-top:12px;"
+        >
+
+          <div class="empty">
+            لا توجد بيانات رسوم مسجلة.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ATTENDANCE -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              📅
+            </div>
+
+            الحضور والغياب
+
+          </div>
+
+          <div
+            class="section-note"
+            id="attendanceSummary"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div
+          id="attendanceList"
+          class="list"
+        >
+
+          <div class="empty">
+            لا توجد سجلات حضور.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- MONTHLY CHAMPION -->
+      <section class="section full">
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              👑
+            </div>
+
+            سجل البطل الشهري
+
+          </div>
+
+          <div
+            class="section-note"
+            id="championSummary"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div
+          id="championList"
+          class="list"
+        >
+
+          <div class="empty">
+            لم يحصل الطالب على لقب البطل الشهري بعد.
+          </div>
+
         </div>
 
       </section>
@@ -914,33 +1574,84 @@
         <div class="section-head">
 
           <div class="section-title">
-            <div class="section-icon">📈</div>
+
+            <div class="section-icon">
+              📈
+            </div>
+
             التقدم
+
           </div>
 
         </div>
 
+
         <div class="info-grid">
 
-          <div class="info-item">
-            <div class="info-label">الإنجاز الأسبوعي</div>
-            <div class="info-value" id="progressWeekly">—</div>
-          </div>
 
           <div class="info-item">
-            <div class="info-label">الإنجاز العام</div>
-            <div class="info-value" id="progressOverall">—</div>
+
+            <div class="info-label">
+              الإنجاز الأسبوعي
+            </div>
+
+            <div
+              class="info-value"
+              id="progressWeekly"
+            >
+              —
+            </div>
+
           </div>
 
-          <div class="info-item">
-            <div class="info-label">عدد النقاط</div>
-            <div class="info-value" id="progressPoints">—</div>
-          </div>
 
           <div class="info-item">
-            <div class="info-label">آخر تحديث</div>
-            <div class="info-value" id="progressUpdated">—</div>
+
+            <div class="info-label">
+              الإنجاز العام
+            </div>
+
+            <div
+              class="info-value"
+              id="progressOverall"
+            >
+              —
+            </div>
+
           </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              عدد الصفحات المسَمَّعة
+            </div>
+
+            <div
+              class="info-value"
+              id="progressRecitedPages"
+            >
+              0
+            </div>
+
+          </div>
+
+
+          <div class="info-item">
+
+            <div class="info-label">
+              آخر تحديث
+            </div>
+
+            <div
+              class="info-value"
+              id="progressUpdated"
+            >
+              —
+            </div>
+
+          </div>
+
 
         </div>
 
@@ -953,8 +1664,13 @@
         <div class="section-head">
 
           <div class="section-title">
-            <div class="section-icon">📌</div>
+
+            <div class="section-icon">
+              📌
+            </div>
+
             ملاحظات المعلم
+
           </div>
 
           <div class="section-note">
@@ -963,7 +1679,11 @@
 
         </div>
 
-        <div class="notes" id="teacherNotes">
+
+        <div
+          class="notes"
+          id="teacherNotes"
+        >
           لا توجد ملاحظات حاليًا.
         </div>
 
@@ -971,20 +1691,34 @@
 
 
       <!-- EXTRA DATA -->
-      <section class="section full" id="extraSection" style="display:none;">
+      <section
+        class="section full"
+        id="extraSection"
+        style="display:none;"
+      >
 
         <div class="section-head">
 
           <div class="section-title">
-            <div class="section-icon">✨</div>
+
+            <div class="section-icon">
+              ℹ️
+            </div>
+
             معلومات إضافية
+
           </div>
 
         </div>
 
-        <div class="info-grid" id="extraInfo"></div>
+
+        <div
+          class="info-grid"
+          id="extraInfo"
+        ></div>
 
       </section>
+
 
     </div>
 
@@ -1000,11 +1734,14 @@
 
 
   <script>
+
     const SUPABASE_URL =
       'https://lsbbcybpiulusdgfhepf.supabase.co';
 
+
     const SUPABASE_PUBLISHABLE_KEY =
       'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
+
 
     const supabaseClient =
       window.supabase.createClient(
@@ -1014,322 +1751,3787 @@
 
 
     let student = null;
+
     let profile = null;
+
     let profileData = {};
+
+
+    /* =========================
+       BADGES
+    ========================= */
+
+    const BADGE_DEFINITIONS = {
+
+      beginner_reader: {
+        id:'beginner_reader',
+        emoji:'📖',
+        name:'القارئ المبتدئ',
+        requirement:'50 نقطة'
+      },
+
+      persistent: {
+        id:'persistent',
+        emoji:'🌟',
+        name:'المثابر',
+        requirement:'100 نقطة'
+      },
+
+      excellence: {
+        id:'excellence',
+        emoji:'💎',
+        name:'التميز',
+        requirement:'200 نقطة'
+      },
+
+      golden_memorizer: {
+        id:'golden_memorizer',
+        emoji:'🏆',
+        name:'الحافظ الذهبي',
+        requirement:'300 نقطة'
+      },
+
+      crown_of_dignity: {
+        id:'crown_of_dignity',
+        emoji:'👑',
+        name:'تاج الوقار',
+        requirement:'500 نقطة'
+      },
+
+      monthly_champion: {
+        id:'monthly_champion',
+        emoji:'🥇',
+        name:'البطل الشهري',
+        requirement:'أعلى تقييم شهري'
+      }
+
+    };
 
 
     /* =========================
        HELPERS
     ========================= */
 
-    function escapeHtml(value) {
+    function escapeHtml(value){
+
       return String(value ?? '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;')
+        .replace(/'/g,'&#039;');
+
     }
 
 
-    function text(value, fallback = '—') {
-      if (
+    function text(
+      value,
+      fallback='—'
+    ){
+
+      if(
         value === null ||
         value === undefined ||
         value === ''
-      ) {
+      ){
+
         return fallback;
+
       }
 
+
       return String(value);
+
     }
 
 
-    function firstValue(object, keys, fallback = '—') {
-      if (!object || typeof object !== 'object') {
+    function firstValue(
+      object,
+      keys,
+      fallback='—'
+    ){
+
+      if(
+        !object ||
+        typeof object !== 'object'
+      ){
+
         return fallback;
+
       }
 
-      for (const key of keys) {
-        if (
+
+      for(
+        const key of keys
+      ){
+
+        if(
           object[key] !== undefined &&
           object[key] !== null &&
           object[key] !== ''
-        ) {
+        ){
+
           return object[key];
+
         }
+
       }
+
 
       return fallback;
+
     }
 
 
-    function toArray(value) {
+    function toArray(value){
 
-      if (Array.isArray(value)) {
+      if(
+        Array.isArray(value)
+      ){
+
         return value;
+
       }
 
-      if (
+
+      if(
         value &&
         typeof value === 'object'
-      ) {
-        return Object.entries(value).map(
-          ([key, val]) => ({
-            key,
-            value: val
-          })
-        );
+      ){
+
+        return Object.entries(value)
+          .map(
+            ([key,val]) => ({
+              key,
+              value:val
+            })
+          );
+
       }
 
-      if (
+
+      if(
         typeof value === 'string' &&
         value.trim() !== ''
-      ) {
+      ){
+
         return value
           .split('\n')
-          .map(item => item.trim())
+          .map(
+            item => item.trim()
+          )
           .filter(Boolean);
+
       }
 
+
       return [];
+
     }
 
 
-    function formatDate(value) {
+    function numberValue(
+      value,
+      fallback=0
+    ){
 
-      if (!value) {
+      if(
+        typeof value === 'number' &&
+        Number.isFinite(value)
+      ){
+
+        return value;
+
+      }
+
+
+      if(
+        typeof value === 'string'
+      ){
+
+        const cleaned =
+          value
+            .replace(
+              /,/g,
+              ''
+            )
+            .replace(
+              /[^\d.-]/g,
+              ''
+            );
+
+
+        const parsed =
+          Number(cleaned);
+
+
+        if(
+          Number.isFinite(parsed)
+        ){
+
+          return parsed;
+
+        }
+
+      }
+
+
+      return fallback;
+
+    }
+
+
+    function formatNumber(
+      value
+    ){
+
+      return new Intl.NumberFormat(
+        'ar-JO'
+      ).format(
+        numberValue(value)
+      );
+
+    }
+
+
+    function formatDate(
+      value
+    ){
+
+      if(!value){
+
         return '—';
+
       }
 
-      const date = new Date(value);
 
-      if (Number.isNaN(date.getTime())) {
+      const date =
+        new Date(value);
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
+        )
+      ){
+
         return String(value);
+
       }
+
 
       return new Intl.DateTimeFormat(
         'ar-JO',
         {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
+          year:'numeric',
+          month:'long',
+          day:'numeric'
         }
       ).format(date);
+
     }
 
 
-    function normalizeProfileData(profileRow) {
+    function formatDateTime(
+      value
+    ){
 
-      if (
-        profileRow &&
-        typeof profileRow.data === 'object' &&
-        profileRow.data !== null
-      ) {
-        return profileRow.data;
+      if(!value){
+
+        return '—';
+
       }
 
-      return {};
+
+      const date =
+        new Date(value);
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
+        )
+      ){
+
+        return String(value);
+
+      }
+
+
+      return new Intl.DateTimeFormat(
+        'ar-JO',
+        {
+          year:'numeric',
+          month:'long',
+          day:'numeric',
+          hour:'numeric',
+          minute:'2-digit'
+        }
+      ).format(date);
+
     }
 
 
-    function getInitial(name) {
+    function formatMonth(
+      monthKey
+    ){
 
-      const value = String(name || '').trim();
+      if(!monthKey){
 
-      if (!value) {
+        return '—';
+
+      }
+
+
+      let date;
+
+
+      if(
+        /^\d{4}-\d{2}$/.test(
+          String(monthKey)
+        )
+      ){
+
+        date =
+          new Date(
+            `${monthKey}-01T00:00:00`
+          );
+
+      }else{
+
+        date =
+          new Date(monthKey);
+
+      }
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
+        )
+      ){
+
+        return String(monthKey);
+
+      }
+
+
+      return new Intl.DateTimeFormat(
+        'ar-JO',
+        {
+          year:'numeric',
+          month:'long'
+        }
+      ).format(date);
+
+    }
+
+
+    function currentMonthKey(){
+
+      const date =
+        new Date();
+
+
+      const year =
+        date.getFullYear();
+
+
+      const month =
+        String(
+          date.getMonth() + 1
+        ).padStart(
+          2,
+          '0'
+        );
+
+
+      return `${year}-${month}`;
+
+    }
+
+
+    function getInitial(
+      name
+    ){
+
+      const value =
+        String(
+          name || ''
+        ).trim();
+
+
+      if(!value){
+
         return 'ط';
+
       }
+
 
       return value.charAt(0);
+
     }
 
 
-    function setText(id, value) {
+    function setText(
+      id,
+      value
+    ){
 
       const element =
         document.getElementById(id);
 
-      if (!element) {
+
+      if(!element){
+
         return;
+
       }
+
 
       element.textContent =
         text(value);
+
     }
 
 
-    /* =========================
-       SESSION
-    ========================= */
+    function setHtml(
+      id,
+      html
+    ){
 
-    function getStudentSession() {
-
-      try {
-
-        const raw =
-          sessionStorage.getItem('studentSession');
-
-        if (!raw) {
-          return null;
-        }
-
-        return JSON.parse(raw);
-
-      } catch (error) {
-
-        console.error(
-          'Student session error:',
-          error
-        );
-
-        return null;
-      }
-    }
+      const element =
+        document.getElementById(id);
 
 
-    /* =========================
-       LOAD STUDENT
-    ========================= */
-
-    async function loadStudent() {
-
-      const session =
-        getStudentSession();
-
-      /*
-        مهم جدًا:
-        الطالب لا يستخدم ?id=
-        نهائيًا.
-        الصفحة تعتمد على الجلسة الناتجة
-        من student-login.html فقط.
-      */
-
-      if (!session || !session.id) {
-
-        window.location.href =
-          'student-login.html';
+      if(!element){
 
         return;
+
       }
 
 
-      try {
+      element.innerHTML =
+        html;
 
-        const {
-          data: studentData,
-          error: studentError
-        } = await supabaseClient
-          .from('students')
-          .select('*')
-          .eq('id', session.id)
-          .maybeSingle();
+    }
 
 
-        if (studentError) {
+    function normalizeProfileData(
+      profileRow
+    ){
 
-          console.error(
-            studentError
-          );
+      if(
+        profileRow &&
+        typeof profileRow.data === 'object' &&
+        profileRow.data !== null
+      ){
 
-          throw new Error(
-            'تعذر تحميل بيانات الطالب.'
-          );
-        }
+        return profileRow.data;
 
-
-        if (!studentData) {
-
-          throw new Error(
-            'لم يتم العثور على ملف الطالب.'
-          );
-        }
+      }
 
 
-        student =
-          studentData;
+      return {};
+
+    }
 
 
-        const {
-          data: profileDataRow,
-          error: profileError
-        } = await supabaseClient
-          .from('student_profiles')
-          .select('*')
-          .eq(
-            'student_id',
-            String(student.id)
-          )
-          .maybeSingle();
+    function formatStatus(
+      status
+    ){
+
+      const value =
+        String(
+          status || ''
+        )
+        .toLowerCase();
 
 
-        if (profileError) {
+      const map = {
 
-          console.error(
-            profileError
-          );
+        active:'نشط',
 
-          throw new Error(
-            'تعذر تحميل تفاصيل ملف الطالب.'
-          );
-        }
+        inactive:'غير نشط',
 
+        suspended:'موقوف',
 
-        profile =
-          profileDataRow || {};
+        graduated:'متخرج'
 
-        profileData =
-          normalizeProfileData(
-            profile
-          );
+      };
 
 
-        renderStudent();
+      return (
+        map[value] ||
+        text(status)
+      );
+
+    }
 
 
-        document.getElementById(
-          'loadingScreen'
-        ).style.display = 'none';
+    function normalizeBadgeId(
+      badge
+    ){
+
+      if(
+        !badge ||
+        typeof badge !== 'object'
+      ){
+
+        return '';
+
+      }
 
 
-        document.getElementById(
-          'page'
-        ).style.display = 'block';
+      return String(
+        firstValue(
+          badge,
+          [
+            'id',
+            'badgeId',
+            'badge_id',
+            'type',
+            'badgeType',
+            'badge_type'
+          ],
+          ''
+        )
+      );
+
+    }
 
 
-      } catch (error) {
+    function normalizeBadges(
+      value
+    ){
 
-        console.error(error);
+      return toArray(value)
+        .filter(
+          badge => {
 
-        showError(
-          error.message ||
-          'حدث خطأ أثناء تحميل الملف.'
+            const id =
+              normalizeBadgeId(
+                badge
+              );
+
+
+            return (
+              id &&
+              BADGE_DEFINITIONS[id]
+            );
+
+          }
         );
+
+    }
+
+
+    function normalizeRecitationRecords(){
+
+      const source =
+        firstValue(
+          profileData,
+          [
+            'recitationPages',
+            'recitation_pages',
+            'pageRecitations',
+            'page_recitations',
+            'recitations',
+            'tasmee',
+            'tasmee3',
+            'recitation'
+          ],
+          []
+        );
+
+
+      return toArray(source)
+        .filter(
+          record =>
+            record &&
+            typeof record === 'object'
+        );
+
+    }
+
+
+    function getRecitationPageNumbers(){
+
+      const pages =
+        normalizeRecitationRecords()
+          .map(
+            record =>
+              numberValue(
+                firstValue(
+                  record,
+                  [
+                    'page',
+                    'pageNumber',
+                    'page_number',
+                    'pageno'
+                  ],
+                  0
+                )
+              )
+          )
+          .filter(
+            page =>
+              Number.isInteger(page) &&
+              page >= 1 &&
+              page <= 604
+          );
+
+
+      return [
+        ...new Set(pages)
+      ];
+
+    }
+
+
+    function getAcademicPoints(){
+
+      const stored =
+        firstValue(
+          profileData,
+          [
+            'academicPoints',
+            'academic_points',
+            'recitationPoints',
+            'recitation_points',
+            'tajweedPoints',
+            'tajweed_points'
+          ],
+          null
+        );
+
+
+      if(
+        stored !== null &&
+        stored !== '—'
+      ){
+
+        return numberValue(
+          stored
+        );
+
       }
+
+
+      return normalizeRecitationRecords()
+        .reduce(
+          (
+            total,
+            record
+          ) => {
+
+            return total +
+              numberValue(
+                firstValue(
+                  record,
+                  [
+                    'points',
+                    'academicPoints',
+                    'academic_points',
+                    'recitationPoints',
+                    'recitation_points'
+                  ],
+                  0
+                )
+              );
+
+          },
+          0
+        );
+
+    }
+
+
+    function getExtraPointRecords(){
+
+      return toArray(
+        firstValue(
+          profileData,
+          [
+            'extraPoints',
+            'extra_points',
+            'bonusPoints',
+            'bonus_points',
+            'promotionalPoints',
+            'promotional_points',
+            'pointRecords',
+            'point_records'
+          ],
+          []
+        )
+      )
+      .filter(
+        item =>
+          item &&
+          typeof item === 'object'
+      );
+
+    }
+
+
+    function getBonusPoints(){
+
+      const stored =
+        firstValue(
+          profileData,
+          [
+            'bonusPointsTotal',
+            'bonus_points_total',
+            'promotionalPointsTotal',
+            'promotional_points_total',
+            'extraPointsTotal',
+            'extra_points_total'
+          ],
+          null
+        );
+
+
+      if(
+        stored !== null &&
+        stored !== '—'
+      ){
+
+        return numberValue(
+          stored
+        );
+
+      }
+
+
+      return getExtraPointRecords()
+        .reduce(
+          (
+            total,
+            item
+          ) => {
+
+            const points =
+              numberValue(
+                firstValue(
+                  item,
+                  [
+                    'points',
+                    'value',
+                    'amount'
+                  ],
+                  0
+                )
+              );
+
+
+            return total +
+              Math.max(
+                0,
+                points
+              );
+
+          },
+          0
+        );
+
+    }
+
+
+    function getTotalPoints(){
+
+      const stored =
+        firstValue(
+          profileData,
+          [
+            'points',
+            'totalPoints',
+            'total_points'
+          ],
+          null
+        );
+
+
+      if(
+        stored !== null &&
+        stored !== '—'
+      ){
+
+        return numberValue(
+          stored
+        );
+
+      }
+
+
+      return (
+        getAcademicPoints() +
+        getBonusPoints()
+      );
+
+    }
+
+
+    function getEvaluation(){
+
+      return firstValue(
+        profileData,
+        [
+          'evaluation',
+          'currentEvaluation',
+          'current_evaluation',
+          'overallEvaluation',
+          'overall_evaluation',
+          'finalEvaluation',
+          'final_evaluation',
+          'scoreEvaluation',
+          'score_evaluation',
+          'studentEvaluation',
+          'student_evaluation'
+        ],
+        firstValue(
+          student,
+          [
+            'evaluation',
+            'current_evaluation',
+            'final_evaluation'
+          ],
+          '—'
+        )
+      );
+
     }
 
 
     /* =========================
-       RENDER
+       PLAN PAGE PARSER
     ========================= */
 
-    function renderStudent() {
+    function parsePageNumbers(
+      value
+    ){
+
+      const pages =
+        new Set();
+
+
+      function addPage(
+        page
+      ){
+
+        const n =
+          Number(page);
+
+
+        if(
+          Number.isInteger(n) &&
+          n >= 1 &&
+          n <= 604
+        ){
+
+          pages.add(n);
+
+        }
+
+      }
+
+
+      function parse(
+        raw
+      ){
+
+        if(
+          raw === null ||
+          raw === undefined
+        ){
+
+          return;
+
+        }
+
+
+        if(
+          typeof raw === 'number'
+        ){
+
+          addPage(raw);
+
+          return;
+
+        }
+
+
+        if(
+          Array.isArray(raw)
+        ){
+
+          raw.forEach(
+            item => parse(item)
+          );
+
+          return;
+
+        }
+
+
+        if(
+          typeof raw === 'object'
+        ){
+
+          const nested =
+            firstValue(
+              raw,
+              [
+                'page',
+                'pages',
+                'pageNumber',
+                'pageNumbers',
+                'requiredPageNumbers',
+                'requiredPages',
+                'required_pages'
+              ],
+              null
+            );
+
+
+          if(nested !== null){
+
+            parse(nested);
+
+          }
+
+
+          return;
+
+        }
+
+
+        const stringValue =
+          String(raw)
+            .trim();
+
+
+        if(!stringValue){
+
+          return;
+
+        }
+
+
+        stringValue
+          .split(',')
+          .map(
+            part =>
+              part.trim()
+          )
+          .filter(Boolean)
+          .forEach(
+            part => {
+
+              const range =
+                part.match(
+                  /^(\d+)\s*[-–—]\s*(\d+)$/
+                );
+
+
+              if(range){
+
+                let start =
+                  Number(
+                    range[1]
+                  );
+
+                let end =
+                  Number(
+                    range[2]
+                  );
+
+
+                if(start > end){
+
+                  [
+                    start,
+                    end
+                  ] =
+                  [
+                    end,
+                    start
+                  ];
+
+                }
+
+
+                for(
+                  let p = start;
+                  p <= end;
+                  p++
+                ){
+
+                  addPage(p);
+
+                }
+
+
+              }else{
+
+                addPage(
+                  part
+                );
+
+              }
+
+            }
+          );
+
+      }
+
+
+      parse(value);
+
+
+      return [
+        ...pages
+      ].sort(
+        (a,b) =>
+          a - b
+      );
+
+    }
+
+
+    function extractTaskPages(
+      task
+    ){
+
+      return parsePageNumbers(
+        firstValue(
+          task,
+          [
+            'requiredPageNumbers',
+            'required_page_numbers',
+            'requiredPages',
+            'required_pages',
+            'pages',
+            'pageNumbers',
+            'page_numbers',
+            'targetPages',
+            'target_pages',
+            'page'
+          ],
+          ''
+        )
+      );
+
+    }
+
+
+    /* =========================
+       FEES
+    ========================= */
+
+    function getFeeRecords(){
+
+      return toArray(
+        firstValue(
+          profileData,
+          [
+            'monthlyFees',
+            'monthly_fees',
+            'feeClaims',
+            'fee_claims',
+            'fees',
+            'feesHistory',
+            'fees_history',
+            'monthlyPayments',
+            'monthly_payments'
+          ],
+          []
+        )
+      )
+      .filter(
+        item =>
+          item &&
+          typeof item === 'object'
+      );
+
+    }
+
+
+    function getFeeMonth(
+      fee
+    ){
+
+      const direct =
+        firstValue(
+          fee,
+          [
+            'month',
+            'monthKey',
+            'month_key',
+            'billingMonth',
+            'billing_month',
+            'period'
+          ],
+          ''
+        );
+
+
+      if(direct){
+
+        const value =
+          String(direct);
+
+
+        if(
+          /^\d{4}-\d{2}$/.test(
+            value
+          )
+        ){
+
+          return value;
+
+        }
+
+
+        const date =
+          new Date(value);
+
+
+        if(
+          !Number.isNaN(
+            date.getTime()
+          )
+        ){
+
+          return (
+            date.getFullYear() +
+            '-' +
+            String(
+              date.getMonth() + 1
+            ).padStart(
+              2,
+              '0'
+            )
+          );
+
+        }
+
+      }
+
+
+      const dateValue =
+        firstValue(
+          fee,
+          [
+            'date',
+            'createdAt',
+            'created_at'
+          ],
+          ''
+        );
+
+
+      if(dateValue){
+
+        const date =
+          new Date(
+            dateValue
+          );
+
+
+        if(
+          !Number.isNaN(
+            date.getTime()
+          )
+        ){
+
+          return (
+            date.getFullYear() +
+            '-' +
+            String(
+              date.getMonth() + 1
+            ).padStart(
+              2,
+              '0'
+            )
+          );
+
+        }
+
+      }
+
+
+      return '';
+
+    }
+
+
+    function feeIsPaid(
+      fee
+    ){
+
+      const status =
+        String(
+          firstValue(
+            fee,
+            [
+              'status',
+              'paymentStatus',
+              'payment_status'
+            ],
+            ''
+          )
+        )
+        .toLowerCase()
+        .trim();
+
+
+      if(
+        status === 'paid' ||
+        status === 'مدفوع' ||
+        status === 'paid_true'
+      ){
+
+        return true;
+
+      }
+
+
+      if(
+        status === 'unpaid' ||
+        status === 'غير مدفوع' ||
+        status === 'pending' ||
+        status === 'متأخر'
+      ){
+
+        return false;
+
+      }
+
+
+      const explicitPaid =
+        firstValue(
+          fee,
+          [
+            'paid',
+            'isPaid',
+            'is_paid'
+          ],
+          null
+        );
+
+
+      if(
+        explicitPaid !== null
+      ){
+
+        return (
+          explicitPaid === true ||
+          explicitPaid === 'true' ||
+          explicitPaid === 1 ||
+          explicitPaid === '1'
+        );
+
+      }
+
+
+      return false;
+
+    }
+
+
+    /* =========================
+       JUZ DATA
+    ========================= */
+
+    const JUZ_RANGES = [
+
+      [1,1,21],
+      [2,22,41],
+      [3,42,61],
+      [4,62,81],
+      [5,82,101],
+      [6,102,121],
+      [7,122,141],
+      [8,142,161],
+      [9,162,181],
+      [10,182,201],
+      [11,202,221],
+      [12,222,241],
+      [13,242,261],
+      [14,262,281],
+      [15,282,301],
+      [16,302,321],
+      [17,322,341],
+      [18,342,361],
+      [19,362,381],
+      [20,382,401],
+      [21,402,421],
+      [22,422,441],
+      [23,442,461],
+      [24,462,481],
+      [25,482,501],
+      [26,502,521],
+      [27,522,541],
+      [28,542,561],
+      [29,562,581],
+      [30,582,604]
+
+    ];
+
+
+    function renderJuzProgress(){
+
+      const container =
+        document.getElementById(
+          'juzProgressList'
+        );
+
+
+      const pageNumbers =
+        getRecitationPageNumbers();
+
+
+      const pageSet =
+        new Set(
+          pageNumbers
+        );
+
+
+      const totalPages =
+        pageNumbers.length;
+
+
+      const percent =
+        Math.round(
+          (
+            totalPages /
+            604
+          ) *
+          100
+        );
+
+
+      let completedJuz = 0;
+
+
+      container.innerHTML =
+        JUZ_RANGES
+          .map(
+            range => {
+
+              const juz =
+                range[0];
+
+              const start =
+                range[1];
+
+              const end =
+                range[2];
+
+
+              let done = 0;
+
+
+              for(
+                let page = start;
+                page <= end;
+                page++
+              ){
+
+                if(
+                  pageSet.has(page)
+                ){
+
+                  done++;
+
+                }
+
+              }
+
+
+              const total =
+                end - start + 1;
+
+
+              const juzPercent =
+                Math.round(
+                  (
+                    done /
+                    total
+                  ) *
+                  100
+                );
+
+
+              if(
+                done >= total
+              ){
+
+                completedJuz++;
+
+              }
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      الجزء ${juz}
+                    </div>
+
+                    <div class="item-sub">
+                      الصفحات ${start} - ${end}
+                      • تم تسميع ${done} من ${total} صفحة
+                    </div>
+
+                  </div>
+
+                  <div class="item-badge">
+                    ${juzPercent}%
+                  </div>
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      setText(
+        'memorizedPagesCount',
+        formatNumber(
+          totalPages
+        )
+      );
+
+
+      setText(
+        'memorizedPagesTotal',
+        '604'
+      );
+
+
+      setText(
+        'memorizedPagesPercent',
+        `${percent}%`
+      );
+
+
+      setText(
+        'completedJuzCount',
+        `${completedJuz} جزء`
+      );
+
+
+      document.getElementById(
+        'juzSummary'
+      ).textContent =
+        `${totalPages} صفحة • ${percent}%`;
+
+    }
+
+
+    /* =========================
+       GOALS
+    ========================= */
+
+    function renderWeeklyPlan(){
+
+      const container =
+        document.getElementById(
+          'weeklyPlan'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'weeklyPlanSummary'
+        );
+
+
+      const value =
+        firstValue(
+          profileData,
+          [
+            'weeklyPlan',
+            'weekly_plan',
+            'plan',
+            'planTasks',
+            'plan_tasks',
+            'tasks'
+          ],
+          []
+        );
+
+
+      const items =
+        toArray(value);
+
+
+      if(!items.length){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد خطة أسبوعية.</div>';
+
+        summary.textContent =
+          'لا توجد بيانات';
+
+        return;
+
+      }
+
+
+      const recitedPages =
+        new Set(
+          getRecitationPageNumbers()
+        );
+
+
+      let totalRequired = 0;
+
+      let totalCompleted = 0;
+
+
+      container.innerHTML =
+        items
+          .map(
+            (item,index) => {
+
+              if(
+                typeof item === 'string'
+              ){
+
+                return `
+                  <div class="item">
+
+                    <div class="item-main">
+
+                      <div class="item-title">
+                        المهمة ${index + 1}
+                      </div>
+
+                      <div class="item-sub">
+                        ${escapeHtml(item)}
+                      </div>
+
+                    </div>
+
+                  </div>
+                `;
+
+              }
+
+
+              const day =
+                firstValue(
+                  item,
+                  [
+                    'day',
+                    'weekday',
+                    'name'
+                  ],
+                  `المهمة ${index + 1}`
+                );
+
+
+              const task =
+                firstValue(
+                  item,
+                  [
+                    'task',
+                    'content',
+                    'plan',
+                    'text',
+                    'details',
+                    'description'
+                  ],
+                  ''
+                );
+
+
+              const requiredPages =
+                extractTaskPages(
+                  item
+                );
+
+
+              const requiredCount =
+                requiredPages.length;
+
+
+              const completedPages =
+                requiredPages
+                  .filter(
+                    page =>
+                      recitedPages.has(
+                        page
+                      )
+                  );
+
+
+              const completedCount =
+                completedPages.length;
+
+
+              totalRequired +=
+                requiredCount;
+
+
+              totalCompleted +=
+                completedCount;
+
+
+              const target =
+                firstValue(
+                  item,
+                  [
+                    'target',
+                    'amount',
+                    'surah'
+                  ],
+                  ''
+                );
+
+
+              const details = [];
+
+
+              if(task !== ''){
+
+                details.push(
+                  task
+                );
+
+              }
+
+
+              if(
+                requiredCount
+              ){
+
+                details.push(
+                  `الصفحات المطلوبة: ${requiredPages.join(', ')}`
+                );
+
+
+                details.push(
+                  `تم الإنجاز: ${completedPages.join(', ') || 'لا يوجد'}`
+                );
+
+              }
+
+
+              if(
+                !requiredCount &&
+                target !== ''
+              ){
+
+                details.push(
+                  String(target)
+                );
+
+              }
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      ${escapeHtml(day)}
+                    </div>
+
+                    ${
+                      details.length
+                        ? `
+                          <div class="item-sub">
+                            ${details
+                              .map(
+                                part =>
+                                  escapeHtml(part)
+                              )
+                              .join(' • ')}
+                          </div>
+                        `
+                        : ''
+                    }
+
+                  </div>
+
+                  ${
+                    requiredCount
+                      ? `
+                        <div class="item-badge">
+                          ${completedCount}/${requiredCount}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      const overallPlanPercent =
+        totalRequired
+          ? Math.round(
+              (
+                totalCompleted /
+                totalRequired
+              ) *
+              100
+            )
+          : 0;
+
+
+      summary.textContent =
+        totalRequired
+          ? `${totalCompleted} من ${totalRequired} صفحة • ${overallPlanPercent}%`
+          : `${items.length} مهمة`;
+
+    }
+
+
+    /* =========================
+       TESTS
+    ========================= */
+
+    function renderTests(){
+
+      const container =
+        document.getElementById(
+          'testsList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'testsSummary'
+        );
+
+
+      const items =
+        toArray(
+          firstValue(
+            profileData,
+            [
+              'tests',
+              'exams',
+              'examResults',
+              'exam_results',
+              'recitationTests',
+              'recitation_tests'
+            ],
+            []
+          )
+        );
+
+
+      if(!items.length){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد اختبارات مسجلة.</div>';
+
+        summary.textContent =
+          '0 اختبار';
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        items
+          .map(
+            (item,index) => {
+
+              if(
+                typeof item === 'string'
+              ){
+
+                return `
+                  <div class="item">
+
+                    <div class="item-main">
+
+                      <div class="item-title">
+                        اختبار ${index + 1}
+                      </div>
+
+                      <div class="item-sub">
+                        ${escapeHtml(item)}
+                      </div>
+
+                    </div>
+
+                  </div>
+                `;
+
+              }
+
+
+              const name =
+                firstValue(
+                  item,
+                  [
+                    'name',
+                    'title',
+                    'test',
+                    'subject',
+                    'type'
+                  ],
+                  `اختبار ${index + 1}`
+                );
+
+
+              const score =
+                firstValue(
+                  item,
+                  [
+                    'score',
+                    'mark',
+                    'grade',
+                    'evaluation'
+                  ],
+                  ''
+                );
+
+
+              const total =
+                firstValue(
+                  item,
+                  [
+                    'total',
+                    'max',
+                    'outOf',
+                    'out_of'
+                  ],
+                  ''
+                );
+
+
+              const date =
+                firstValue(
+                  item,
+                  [
+                    'date',
+                    'createdAt',
+                    'created_at'
+                  ],
+                  ''
+                );
+
+
+              const notes =
+                firstValue(
+                  item,
+                  [
+                    'notes',
+                    'note',
+                    'comment'
+                  ],
+                  ''
+                );
+
+
+              const page =
+                firstValue(
+                  item,
+                  [
+                    'page',
+                    'pageNumber',
+                    'page_number'
+                  ],
+                  ''
+                );
+
+
+              const details = [];
+
+
+              if(
+                page !== ''
+              ){
+
+                details.push(
+                  `الصفحة: ${page}`
+                );
+
+              }
+
+
+              if(
+                date !== ''
+              ){
+
+                details.push(
+                  formatDate(date)
+                );
+
+              }
+
+
+              if(
+                notes !== ''
+              ){
+
+                details.push(
+                  notes
+                );
+
+              }
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      ${escapeHtml(name)}
+                    </div>
+
+                    ${
+                      details.length
+                        ? `
+                          <div class="item-sub">
+                            ${details
+                              .map(
+                                part =>
+                                  escapeHtml(part)
+                              )
+                              .join(' • ')}
+                          </div>
+                        `
+                        : ''
+                    }
+
+                  </div>
+
+                  ${
+                    score !== ''
+                      ? `
+                        <div class="item-badge">
+                          ${escapeHtml(score)}
+                          ${
+                            total !== ''
+                              ? ` / ${escapeHtml(total)}`
+                              : ''
+                          }
+                        </div>
+                      `
+                      : ''
+                  }
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      summary.textContent =
+        `${items.length} اختبار`;
+
+    }
+
+
+    /* =========================
+       RECITATIONS
+    ========================= */
+
+    function renderRecitations(){
+
+      const container =
+        document.getElementById(
+          'recitationsList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'recitationsSummary'
+        );
+
+
+      const items =
+        normalizeRecitationRecords();
+
+
+      if(!items.length){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد جلسات تسميع مسجلة.</div>';
+
+        summary.textContent =
+          '0 جلسة';
+
+        return;
+
+      }
+
+
+      const sorted =
+        [...items]
+          .sort(
+            (
+              a,
+              b
+            ) => {
+
+              const dateA =
+                new Date(
+                  firstValue(
+                    a,
+                    [
+                      'date',
+                      'createdAt',
+                      'created_at'
+                    ],
+                    0
+                  )
+                ).getTime();
+
+
+              const dateB =
+                new Date(
+                  firstValue(
+                    b,
+                    [
+                      'date',
+                      'createdAt',
+                      'created_at'
+                    ],
+                    0
+                  )
+                ).getTime();
+
+
+              return dateB - dateA;
+
+            }
+          );
+
+
+      container.innerHTML =
+        sorted
+          .map(
+            (item,index) => {
+
+              const page =
+                firstValue(
+                  item,
+                  [
+                    'page',
+                    'pageNumber',
+                    'page_number'
+                  ],
+                  ''
+                );
+
+
+              const type =
+                firstValue(
+                  item,
+                  [
+                    'type',
+                    'recitationType',
+                    'recitation_type'
+                  ],
+                  ''
+                );
+
+
+              const score =
+                firstValue(
+                  item,
+                  [
+                    'score',
+                    'mark',
+                    'grade',
+                    'evaluation'
+                  ],
+                  ''
+                );
+
+
+              const points =
+                firstValue(
+                  item,
+                  [
+                    'points',
+                    'academicPoints',
+                    'academic_points',
+                    'recitationPoints',
+                    'recitation_points'
+                  ],
+                  ''
+                );
+
+
+              const date =
+                firstValue(
+                  item,
+                  [
+                    'date',
+                    'createdAt',
+                    'created_at'
+                  ],
+                  ''
+                );
+
+
+              const notes =
+                firstValue(
+                  item,
+                  [
+                    'notes',
+                    'note',
+                    'comment'
+                  ],
+                  ''
+                );
+
+
+              const title =
+                page !== ''
+                  ? `صفحة ${page}`
+                  : `جلسة ${index + 1}`;
+
+
+              const details = [];
+
+
+              if(
+                type !== ''
+              ){
+
+                details.push(
+                  `النوع: ${type}`
+                );
+
+              }
+
+
+              if(
+                score !== ''
+              ){
+
+                details.push(
+                  `التقييم: ${score}`
+                );
+
+              }
+
+
+              if(
+                points !== ''
+              ){
+
+                details.push(
+                  `النقاط: ${points}`
+                );
+
+              }
+
+
+              if(
+                date !== ''
+              ){
+
+                details.push(
+                  formatDateTime(date)
+                );
+
+              }
+
+
+              if(
+                notes !== ''
+              ){
+
+                details.push(
+                  notes
+                );
+
+              }
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      ${escapeHtml(title)}
+                    </div>
+
+                    ${
+                      details.length
+                        ? `
+                          <div class="item-sub">
+                            ${details
+                              .map(
+                                part =>
+                                  escapeHtml(part)
+                              )
+                              .join(' • ')}
+                          </div>
+                        `
+                        : ''
+                    }
+
+                  </div>
+
+                  ${
+                    score !== ''
+                      ? `
+                        <div class="item-badge">
+                          ${escapeHtml(score)}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      const uniquePages =
+        getRecitationPageNumbers()
+          .length;
+
+
+      summary.textContent =
+        `${items.length} جلسة • ${uniquePages} صفحة`;
+
+    }
+
+
+    /* =========================
+       EXTRA POINTS
+    ========================= */
+
+    function renderExtraPoints(){
+
+      const container =
+        document.getElementById(
+          'extraPointsList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'extraPointsSummary'
+        );
+
+
+      const items =
+        getExtraPointRecords();
+
+
+      const total =
+        getBonusPoints();
+
+
+      setText(
+        'bonusPoints',
+        formatNumber(total)
+      );
+
+
+      if(!items.length){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد نقاط إضافية مسجلة.</div>';
+
+        summary.textContent =
+          `${formatNumber(total)} نقطة`;
+
+        return;
+
+      }
+
+
+      const sorted =
+        [...items]
+          .sort(
+            (
+              a,
+              b
+            ) => {
+
+              const dateA =
+                new Date(
+                  firstValue(
+                    a,
+                    [
+                      'date',
+                      'createdAt',
+                      'created_at'
+                    ],
+                    0
+                  )
+                ).getTime();
+
+
+              const dateB =
+                new Date(
+                  firstValue(
+                    b,
+                    [
+                      'date',
+                      'createdAt',
+                      'created_at'
+                    ],
+                    0
+                  )
+                ).getTime();
+
+
+              return dateB - dateA;
+
+            }
+          );
+
+
+      container.innerHTML =
+        sorted
+          .map(
+            (item,index) => {
+
+              const reason =
+                firstValue(
+                  item,
+                  [
+                    'reason',
+                    'description',
+                    'title',
+                    'note'
+                  ],
+                  `نقطة إضافية ${index + 1}`
+                );
+
+
+              const points =
+                numberValue(
+                  firstValue(
+                    item,
+                    [
+                      'points',
+                      'value',
+                      'amount'
+                    ],
+                    0
+                  )
+                );
+
+
+              const date =
+                firstValue(
+                  item,
+                  [
+                    'date',
+                    'createdAt',
+                    'created_at'
+                  ],
+                  ''
+                );
+
+
+              const by =
+                firstValue(
+                  item,
+                  [
+                    'by',
+                    'awardedBy',
+                    'awarded_by',
+                    'teacher',
+                    'teacherName',
+                    'teacher_name'
+                  ],
+                  ''
+                );
+
+
+              const details = [];
+
+
+              if(
+                date !== ''
+              ){
+
+                details.push(
+                  formatDateTime(date)
+                );
+
+              }
+
+
+              if(
+                by !== ''
+              ){
+
+                details.push(
+                  `بواسطة: ${by}`
+                );
+
+              }
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      ${escapeHtml(reason)}
+                    </div>
+
+                    ${
+                      details.length
+                        ? `
+                          <div class="item-sub">
+                            ${details
+                              .map(
+                                part =>
+                                  escapeHtml(part)
+                              )
+                              .join(' • ')}
+                          </div>
+                        `
+                        : ''
+                    }
+
+                  </div>
+
+                  <div class="item-badge">
+                    +${formatNumber(points)}
+                  </div>
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      summary.textContent =
+        `${formatNumber(total)} نقطة`;
+
+    }
+
+
+    /* =========================
+       BADGES
+    ========================= */
+
+    function renderBadges(){
+
+      const container =
+        document.getElementById(
+          'badgesList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'badgesSummary'
+        );
+
+
+      const badges =
+        normalizeBadges(
+          firstValue(
+            profileData,
+            [
+              'badges',
+              'badgeRecords',
+              'badge_records'
+            ],
+            []
+          )
+        );
+
+
+      if(!badges.length){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد أوسمة بعد.</div>';
+
+        summary.textContent =
+          '0 وسام';
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        badges
+          .map(
+            (
+              badge,
+              index
+            ) => {
+
+              const id =
+                normalizeBadgeId(
+                  badge
+                );
+
+
+              const definition =
+                BADGE_DEFINITIONS[id];
+
+
+              if(!definition){
+
+                return '';
+
+              }
+
+
+              const awardedAt =
+                firstValue(
+                  badge,
+                  [
+                    'awardedAt',
+                    'awarded_at',
+                    'date',
+                    'createdAt',
+                    'created_at'
+                  ],
+                  ''
+                );
+
+
+              const month =
+                firstValue(
+                  badge,
+                  [
+                    'month',
+                    'monthKey',
+                    'month_key'
+                  ],
+                  ''
+                );
+
+
+              const reason =
+                firstValue(
+                  badge,
+                  [
+                    'reason',
+                    'note',
+                    'description'
+                  ],
+                  ''
+                );
+
+
+              const details = [];
+
+
+              if(
+                month !== ''
+              ){
+
+                details.push(
+                  `الشهر: ${formatMonth(month)}`
+                );
+
+              }
+
+
+              if(
+                awardedAt !== ''
+              ){
+
+                details.push(
+                  `تاريخ الاستحقاق: ${formatDateTime(awardedAt)}`
+                );
+
+              }
+
+
+              if(
+                reason !== ''
+              ){
+
+                details.push(
+                  reason
+                );
+
+              }
+
+
+              if(
+                id !== 'monthly_champion'
+              ){
+
+                details.push(
+                  `يُمنح تلقائيًا عند الوصول إلى ${definition.requirement}`
+                );
+
+              }
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      ${definition.emoji} ${escapeHtml(definition.name)}
+                    </div>
+
+                    ${
+                      details.length
+                        ? `
+                          <div class="item-sub">
+                            ${details
+                              .map(
+                                part =>
+                                  escapeHtml(part)
+                              )
+                              .join(' • ')}
+                          </div>
+                        `
+                        : ''
+                    }
+
+                  </div>
+
+                  <div class="item-badge">
+                    مستحق
+                  </div>
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      summary.textContent =
+        `${badges.length} وسام`;
+
+    }
+
+
+    /* =========================
+       FEES
+    ========================= */
+
+    function renderFees(){
+
+      const records =
+        getFeeRecords();
+
+
+      const currentMonth =
+        currentMonthKey();
+
+
+      const currentFee =
+        records.find(
+          fee =>
+            getFeeMonth(
+              fee
+            ) === currentMonth
+        );
+
+
+      setText(
+        'monthlyFeeAmount',
+        '5 د.أ'
+      );
+
+
+      setText(
+        'currentFeeMonth',
+        formatMonth(
+          currentMonth
+        )
+      );
+
+
+      if(currentFee){
+
+        setText(
+          'currentFeeStatus',
+          feeIsPaid(currentFee)
+            ? 'مدفوعة'
+            : 'غير مدفوعة'
+        );
+
+
+        const paidAt =
+          firstValue(
+            currentFee,
+            [
+              'paidAt',
+              'paid_at',
+              'paymentDate',
+              'payment_date'
+            ],
+            ''
+          );
+
+
+        setText(
+          'lastFeePayment',
+          paidAt
+            ? formatDateTime(paidAt)
+            : '—'
+        );
+
+      }else{
+
+        setText(
+          'currentFeeStatus',
+          'لم تُسجل بعد'
+        );
+
+
+        setText(
+          'lastFeePayment',
+          '—'
+        );
+
+      }
+
+
+      const container =
+        document.getElementById(
+          'feesList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'feesSummary'
+        );
+
+
+      if(!records.length){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد بيانات رسوم مسجلة.</div>';
+
+        summary.textContent =
+          '5 د.أ شهريًا';
+
+        return;
+
+      }
+
+
+      const sorted =
+        [...records]
+          .sort(
+            (
+              a,
+              b
+            ) => {
+
+              return (
+                getFeeMonth(b)
+                  .localeCompare(
+                    getFeeMonth(a)
+                  )
+              );
+
+            }
+          );
+
+
+      container.innerHTML =
+        sorted
+          .map(
+            fee => {
+
+              const month =
+                getFeeMonth(
+                  fee
+                );
+
+
+              const paid =
+                feeIsPaid(
+                  fee
+                );
+
+
+              const amount =
+                numberValue(
+                  firstValue(
+                    fee,
+                    [
+                      'amount',
+                      'value',
+                      'fee',
+                      'price'
+                    ],
+                    5
+                  ),
+                  5
+                );
+
+
+              const paidAt =
+                firstValue(
+                  fee,
+                  [
+                    'paidAt',
+                    'paid_at',
+                    'paymentDate',
+                    'payment_date'
+                  ],
+                  ''
+                );
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      ${escapeHtml(
+                        formatMonth(
+                          month
+                        )
+                      )}
+                    </div>
+
+                    <div class="item-sub">
+                      ${paidAt
+                        ? `5 د.أ • تاريخ الدفع: ${escapeHtml(formatDateTime(paidAt))}`
+                        : '5 د.أ رسوم شهرية'}
+                    </div>
+
+                  </div>
+
+                  <div class="item-badge">
+                    ${paid ? 'مدفوعة' : 'غير مدفوعة'}
+                  </div>
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      const paidCount =
+        sorted.filter(
+          fee =>
+            feeIsPaid(fee)
+        ).length;
+
+
+      summary.textContent =
+        `${paidCount} مدفوعة من ${sorted.length}`;
+
+    }
+
+
+    /* =========================
+       ATTENDANCE
+    ========================= */
+
+    function renderAttendance(){
+
+      const container =
+        document.getElementById(
+          'attendanceList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'attendanceSummary'
+        );
+
+
+      const items =
+        toArray(
+          firstValue(
+            profileData,
+            [
+              'attendance',
+              'attendances',
+              'attendanceRecords',
+              'attendance_records'
+            ],
+            []
+          )
+        );
+
+
+      if(!items.length){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد سجلات حضور.</div>';
+
+        summary.textContent =
+          'لا توجد بيانات';
+
+        return;
+
+      }
+
+
+      let present = 0;
+
+      let absent = 0;
+
+      let late = 0;
+
+
+      container.innerHTML =
+        items
+          .map(
+            (
+              item,
+              index
+            ) => {
+
+              let day = '';
+
+              let date = '';
+
+              let status = '';
+
+              let note = '';
+
+
+              if(
+                typeof item === 'string'
+              ){
+
+                status =
+                  item;
+
+              }else{
+
+                day =
+                  firstValue(
+                    item,
+                    [
+                      'day',
+                      'weekday'
+                    ],
+                    ''
+                  );
+
+
+                date =
+                  firstValue(
+                    item,
+                    [
+                      'date',
+                      'dayDate',
+                      'day_date'
+                    ],
+                    ''
+                  );
+
+
+                status =
+                  firstValue(
+                    item,
+                    [
+                      'status',
+                      'attendance'
+                    ],
+                    '—'
+                  );
+
+
+                note =
+                  firstValue(
+                    item,
+                    [
+                      'note',
+                      'notes',
+                      'reason'
+                    ],
+                    ''
+                  );
+
+              }
+
+
+              const normalized =
+                String(
+                  status
+                ).toLowerCase();
+
+
+              if(
+                normalized.includes('حاضر') ||
+                normalized.includes('present') ||
+                normalized === 'p'
+              ){
+
+                present++;
+
+              }
+
+
+              if(
+                normalized.includes('غائب') ||
+                normalized.includes('absent') ||
+                normalized === 'a'
+              ){
+
+                absent++;
+
+              }
+
+
+              if(
+                normalized.includes('متأخر') ||
+                normalized.includes('late')
+              ){
+
+                late++;
+
+              }
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      ${escapeHtml(
+                        day ||
+                        `سجل ${index + 1}`
+                      )}
+                    </div>
+
+                    ${
+                      date
+                        ? `
+                          <div class="item-sub">
+                            ${escapeHtml(
+                              formatDate(date)
+                            )}
+                          </div>
+                        `
+                        : ''
+                    }
+
+                    ${
+                      note
+                        ? `
+                          <div class="item-sub">
+                            ${escapeHtml(note)}
+                          </div>
+                        `
+                        : ''
+                    }
+
+                  </div>
+
+                  <div class="item-badge">
+                    ${escapeHtml(status)}
+                  </div>
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      summary.textContent =
+        `حاضر: ${present} • غياب: ${absent} • تأخير: ${late}`;
+
+    }
+
+
+    /* =========================
+       MONTHLY CHAMPIONS
+    ========================= */
+
+    function renderChampions(){
+
+      const container =
+        document.getElementById(
+          'championList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'championSummary'
+        );
+
+
+      const badges =
+        normalizeBadges(
+          firstValue(
+            profileData,
+            [
+              'badges',
+              'badgeRecords',
+              'badge_records'
+            ],
+            []
+          )
+        );
+
+
+      const champions =
+        badges.filter(
+          badge =>
+            normalizeBadgeId(
+              badge
+            ) === 'monthly_champion'
+        );
+
+
+      if(!champions.length){
+
+        container.innerHTML =
+          '<div class="empty">لم يحصل الطالب على لقب البطل الشهري بعد.</div>';
+
+        summary.textContent =
+          '0 مرة';
+
+        return;
+
+      }
+
+
+      const sorted =
+        [...champions]
+          .sort(
+            (
+              a,
+              b
+            ) => {
+
+              const monthA =
+                String(
+                  firstValue(
+                    a,
+                    [
+                      'month',
+                      'monthKey',
+                      'month_key'
+                    ],
+                    ''
+                  )
+                );
+
+
+              const monthB =
+                String(
+                  firstValue(
+                    b,
+                    [
+                      'month',
+                      'monthKey',
+                      'month_key'
+                    ],
+                    ''
+                  )
+                );
+
+
+              return monthB.localeCompare(
+                monthA
+              );
+
+            }
+          );
+
+
+      container.innerHTML =
+        sorted
+          .map(
+            badge => {
+
+              const month =
+                firstValue(
+                  badge,
+                  [
+                    'month',
+                    'monthKey',
+                    'month_key'
+                  ],
+                  ''
+                );
+
+
+              const awardedAt =
+                firstValue(
+                  badge,
+                  [
+                    'awardedAt',
+                    'awarded_at',
+                    'date',
+                    'createdAt',
+                    'created_at'
+                  ],
+                  ''
+                );
+
+
+              const evaluation =
+                firstValue(
+                  badge,
+                  [
+                    'evaluation',
+                    'score',
+                    'monthlyEvaluation',
+                    'monthly_evaluation'
+                  ],
+                  ''
+                );
+
+
+              const points =
+                numberValue(
+                  firstValue(
+                    badge,
+                    [
+                      'pointsAtAward',
+                      'points_at_award',
+                      'studentPoints',
+                      'student_points'
+                    ],
+                    0
+                  )
+                );
+
+
+              const details = [];
+
+
+              if(
+                month !== ''
+              ){
+
+                details.push(
+                  `الشهر: ${formatMonth(month)}`
+                );
+
+              }
+
+
+              if(
+                evaluation !== ''
+              ){
+
+                details.push(
+                  `التقييم: ${evaluation}`
+                );
+
+              }
+
+
+              if(
+                points > 0
+              ){
+
+                details.push(
+                  `النقاط وقت الاستحقاق: ${formatNumber(points)}`
+                );
+
+              }
+
+
+              if(
+                awardedAt !== ''
+              ){
+
+                details.push(
+                  `تاريخ التتويج: ${formatDateTime(awardedAt)}`
+                );
+
+              }
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      👑 البطل الشهري
+                    </div>
+
+                    ${
+                      details.length
+                        ? `
+                          <div class="item-sub">
+                            ${details
+                              .map(
+                                part =>
+                                  escapeHtml(part)
+                              )
+                              .join(' • ')}
+                          </div>
+                        `
+                        : ''
+                    }
+
+                  </div>
+
+                  <div class="item-badge">
+                    سجل تاريخي
+                  </div>
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      summary.textContent =
+        `${champions.length} مرة`;
+
+    }
+
+
+    /* =========================
+       PROGRESS
+    ========================= */
+
+    function renderProgress(){
+
+      const weekly =
+        firstValue(
+          profileData,
+          [
+            'weeklyProgress',
+            'weekly_progress',
+            'weeklyAchievement',
+            'weekly_achievement'
+          ],
+          ''
+        );
+
+
+      const overall =
+        firstValue(
+          profileData,
+          [
+            'overallProgress',
+            'overall_progress',
+            'progress'
+          ],
+          ''
+        );
+
+
+      const updatedAt =
+        profile.updated_at ||
+        firstValue(
+          profileData,
+          [
+            'updatedAt',
+            'updated_at'
+          ],
+          ''
+        );
+
+
+      const pages =
+        getRecitationPageNumbers()
+          .length;
+
+
+      setText(
+        'progressWeekly',
+        weekly || 'يتم احتسابه من الخطة الأسبوعية'
+      );
+
+
+      setText(
+        'progressOverall',
+        overall || `${Math.round((pages / 604) * 100)}% من صفحات المصحف`
+      );
+
+
+      setText(
+        'progressRecitedPages',
+        formatNumber(pages)
+      );
+
+
+      setText(
+        'progressUpdated',
+        updatedAt
+          ? formatDateTime(updatedAt)
+          : '—'
+      );
+
+    }
+
+
+    /* =========================
+       EXTRA DATA
+    ========================= */
+
+    function renderExtraData(){
+
+      const knownKeys =
+        new Set([
+
+          'photo',
+          'photoUrl',
+          'photo_url',
+          'image',
+          'imageUrl',
+          'image_url',
+          'avatar',
+
+          'section',
+          'group',
+          'class',
+
+          'memorization',
+          'memorization_level',
+          'hifz',
+
+          'guardianPhone',
+          'guardian_phone',
+          'parentPhone',
+          'parent_phone',
+          'phone',
+
+          'joiningDate',
+          'joining_date',
+          'joinDate',
+          'join_date',
+
+          'residence',
+          'address',
+          'home',
+          'housing',
+
+          'bus',
+          'transport',
+          'transportation',
+
+          'homeLocation',
+          'home_location',
+          'location',
+
+          'commitment',
+          'commitmentLevel',
+          'commitment_level',
+
+          'points',
+          'totalPoints',
+          'total_points',
+
+          'academicPoints',
+          'academic_points',
+
+          'bonusPointsTotal',
+          'bonus_points_total',
+
+          'extraPointsTotal',
+          'extra_points_total',
+
+          'promotionalPointsTotal',
+          'promotional_points_total',
+
+          'weeklyGoals',
+          'weekly_goals',
+          'goals',
+
+          'attendance',
+          'attendances',
+          'attendanceRecords',
+          'attendance_records',
+
+          'weeklyPlan',
+          'weekly_plan',
+          'plan',
+          'planTasks',
+          'plan_tasks',
+          'tasks',
+
+          'tests',
+          'exams',
+          'examResults',
+          'exam_results',
+          'recitationTests',
+          'recitation_tests',
+
+          'recitationPages',
+          'recitation_pages',
+          'pageRecitations',
+          'page_recitations',
+          'recitations',
+          'tasmee',
+          'tasmee3',
+          'recitation',
+
+          'extraPoints',
+          'extra_points',
+          'bonusPoints',
+          'bonus_points',
+          'promotionalPoints',
+          'promotional_points',
+          'pointRecords',
+          'point_records',
+
+          'badges',
+          'badgeRecords',
+          'badge_records',
+
+          'monthlyFees',
+          'monthly_fees',
+          'feeClaims',
+          'fee_claims',
+          'fees',
+          'feesHistory',
+          'fees_history',
+          'monthlyPayments',
+          'monthly_payments',
+
+          'evaluation',
+          'currentEvaluation',
+          'current_evaluation',
+          'overallEvaluation',
+          'overall_evaluation',
+          'finalEvaluation',
+          'final_evaluation',
+          'scoreEvaluation',
+          'score_evaluation',
+          'studentEvaluation',
+          'student_evaluation',
+
+          'weeklyProgress',
+          'weekly_progress',
+          'weeklyAchievement',
+          'weekly_achievement',
+
+          'overallProgress',
+          'overall_progress',
+          'progress',
+
+          'notes',
+          'teacherNotes',
+          'teacher_notes',
+          'note'
+
+        ]);
+
+
+      const entries =
+        Object.entries(
+          profileData || {}
+        )
+        .filter(
+          ([key,value]) =>
+            !knownKeys.has(key) &&
+            value !== null &&
+            value !== undefined &&
+            value !== ''
+        );
+
+
+      const section =
+        document.getElementById(
+          'extraSection'
+        );
+
+
+      const container =
+        document.getElementById(
+          'extraInfo'
+        );
+
+
+      if(!entries.length){
+
+        section.style.display =
+          'none';
+
+        return;
+
+      }
+
+
+      section.style.display =
+        'block';
+
+
+      container.innerHTML =
+        entries
+          .map(
+            ([key,value]) => {
+
+              let printable;
+
+
+              if(
+                typeof value === 'object'
+              ){
+
+                try{
+
+                  printable =
+                    JSON.stringify(
+                      value,
+                      null,
+                      2
+                    );
+
+                }catch{
+
+                  printable =
+                    String(value);
+
+                }
+
+              }else{
+
+                printable =
+                  String(value);
+
+              }
+
+
+              return `
+                <div class="info-item">
+
+                  <div class="info-label">
+                    ${escapeHtml(
+                      formatKey(key)
+                    )}
+                  </div>
+
+                  <div class="info-value">
+                    ${escapeHtml(printable)}
+                  </div>
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+    }
+
+
+    function formatKey(
+      key
+    ){
+
+      const map = {
+
+        phone:
+          'رقم الهاتف',
+
+        email:
+          'البريد الإلكتروني',
+
+        age:
+          'العمر',
+
+        birthDate:
+          'تاريخ الميلاد',
+
+        birth_date:
+          'تاريخ الميلاد',
+
+        nationality:
+          'الجنسية',
+
+        school:
+          'المدرسة',
+
+        grade:
+          'الصف الدراسي'
+
+      };
+
+
+      return (
+        map[key] ||
+        String(key)
+          .replace(
+            /_/g,
+            ' '
+          )
+      );
+
+    }
+
+
+    /* =========================
+       RENDER STUDENT
+    ========================= */
+
+    function renderStudent(){
 
       const name =
         firstValue(
           student,
-          ['name', 'full_name'],
-          'الطالب'
+          [
+            'name',
+            'full_name'
+          ],
+          firstValue(
+            profileData,
+            [
+              'name',
+              'full_name'
+            ],
+            'الطالب'
+          )
         );
 
 
       const section =
         firstValue(
           student,
-          ['section', 'group', 'class'],
+          [
+            'section',
+            'group',
+            'class'
+          ],
           firstValue(
             profileData,
-            ['section', 'group', 'class']
+            [
+              'section',
+              'group',
+              'class'
+            ]
           )
         );
 
@@ -1356,35 +5558,49 @@
       const status =
         firstValue(
           student,
-          ['status'],
-          'active'
-        );
-
-
-      const points =
-        firstValue(
-          profileData,
           [
-            'points',
-            'totalPoints',
-            'total_points'
+            'status'
           ],
-          0
+          firstValue(
+            profileData,
+            [
+              'status'
+            ],
+            'active'
+          )
         );
 
 
-      /* HERO */
-
-      document.getElementById(
-        'studentName'
-      ).textContent =
-        text(name, 'الطالب');
+      const evaluation =
+        getEvaluation();
 
 
-      document.getElementById(
-        'avatarLetter'
-      ).textContent =
-        getInitial(name);
+      const academicPoints =
+        getAcademicPoints();
+
+
+      const bonusPoints =
+        getBonusPoints();
+
+
+      const totalPoints =
+        getTotalPoints();
+
+
+      /* =========================
+         HERO
+      ========================= */
+
+      setText(
+        'studentName',
+        name
+      );
+
+
+      setText(
+        'avatarLetter',
+        getInitial(name)
+      );
 
 
       document.getElementById(
@@ -1395,7 +5611,9 @@
           : 'هذه الصفحة مخصصة لعرض بياناتك';
 
 
-      /* PHOTO */
+      /* =========================
+         PHOTO
+      ========================= */
 
       const photoUrl =
         firstValue(
@@ -1409,88 +5627,127 @@
             'image_url',
             'avatar'
           ],
-          ''
+          firstValue(
+            student,
+            [
+              'photo',
+              'photoUrl',
+              'photo_url',
+              'image',
+              'imageUrl',
+              'image_url',
+              'avatar'
+            ],
+            ''
+          )
         );
 
 
-      if (
+      if(
         photoUrl &&
         photoUrl !== '—'
-      ) {
+      ){
 
         const photo =
           document.getElementById(
             'studentPhoto'
           );
 
+
         const letter =
           document.getElementById(
             'avatarLetter'
           );
 
+
         photo.src =
           String(photoUrl);
+
 
         photo.style.display =
           'block';
 
+
         letter.style.display =
           'none';
 
-        photo.onerror = function () {
 
-          photo.style.display =
-            'none';
+        photo.onerror =
+          function(){
 
-          letter.style.display =
-            'grid';
-        };
+            photo.style.display =
+              'none';
+
+
+            letter.style.display =
+              'grid';
+
+          };
+
       }
 
 
-      /* STATS */
+      /* =========================
+         STATS
+      ========================= */
 
       setText(
         'statSection',
         section
       );
 
+
       setText(
         'statMemorization',
         memorization
       );
 
+
       setText(
-        'statStatus',
-        formatStatus(status)
+        'statEvaluation',
+        evaluation
       );
+
 
       setText(
         'statPoints',
-        points
+        formatNumber(
+          totalPoints
+        )
       );
 
 
-      /* PERSONAL INFO */
+      /* =========================
+         PERSONAL INFO
+      ========================= */
 
       setText(
         'infoName',
         name
       );
 
+
       setText(
         'infoSection',
         section
       );
+
 
       setText(
         'infoMemorization',
         memorization
       );
 
+
       setText(
         'infoStatus',
         formatStatus(status)
+      );
+
+
+      setText(
+        'infoEvaluation',
+        evaluation
       );
 
 
@@ -1554,19 +5811,6 @@
 
 
       setText(
-        'infoHomeLocation',
-        firstValue(
-          profileData,
-          [
-            'homeLocation',
-            'home_location',
-            'location'
-          ]
-        )
-      );
-
-
-      setText(
         'infoCommitment',
         firstValue(
           profileData,
@@ -1579,126 +5823,76 @@
       );
 
 
-      /* GOALS */
-
-      renderGoals(
-        firstValue(
-          profileData,
-          [
-            'weeklyGoals',
-            'weekly_goals',
-            'goals'
-          ],
-          []
-        )
-      );
-
-
-      /* ATTENDANCE */
-
-      renderAttendance(
-        firstValue(
-          profileData,
-          [
-            'attendance',
-            'attendances'
-          ],
-          []
-        )
-      );
-
-
-      /* WEEKLY PLAN */
-
-      renderWeeklyPlan(
-        firstValue(
-          profileData,
-          [
-            'weeklyPlan',
-            'weekly_plan',
-            'plan'
-          ],
-          []
-        )
-      );
-
-
-      /* TESTS */
-
-      renderTests(
-        firstValue(
-          profileData,
-          [
-            'tests',
-            'exams',
-            'examResults',
-            'exam_results'
-          ],
-          []
-        )
-      );
-
-
-      /* RECITATIONS */
-
-      renderRecitations(
-        firstValue(
-          profileData,
-          [
-            'recitations',
-            'tasmee',
-            'tasmee3',
-            'recitation'
-          ],
-          []
-        )
-      );
-
-
-      /* PROGRESS */
+      /* =========================
+         POINTS
+      ========================= */
 
       setText(
-        'progressWeekly',
-        firstValue(
-          profileData,
-          [
-            'weeklyProgress',
-            'weekly_progress',
-            'weeklyAchievement',
-            'weekly_achievement'
-          ]
+        'academicPoints',
+        formatNumber(
+          academicPoints
         )
       );
 
 
       setText(
-        'progressOverall',
-        firstValue(
-          profileData,
-          [
-            'overallProgress',
-            'overall_progress',
-            'progress'
-          ]
+        'bonusPoints',
+        formatNumber(
+          bonusPoints
         )
       );
 
 
       setText(
-        'progressPoints',
-        points
+        'totalPoints',
+        formatNumber(
+          totalPoints
+        )
       );
 
 
       setText(
-        'progressUpdated',
-        profile.updated_at
-          ? formatDate(profile.updated_at)
-          : '—'
+        'currentEvaluation',
+        evaluation
       );
 
 
-      /* NOTES */
+      document.getElementById(
+        'pointsSummary'
+      ).textContent =
+        `${formatNumber(totalPoints)} نقطة`;
+
+
+      /* =========================
+         OTHER SECTIONS
+      ========================= */
+
+      renderWeeklyPlan();
+
+      renderTests();
+
+      renderRecitations();
+
+      renderJuzProgress();
+
+      renderExtraPoints();
+
+      renderBadges();
+
+      renderFees();
+
+      renderAttendance();
+
+      renderChampions();
+
+      renderProgress();
+
+      renderExtraData();
+
+
+      /* =========================
+         NOTES
+      ========================= */
 
       const notes =
         firstValue(
@@ -1716,1024 +5910,191 @@
       document.getElementById(
         'teacherNotes'
       ).textContent =
-        notes || 'لا توجد ملاحظات حاليًا.';
+        notes ||
+        'لا توجد ملاحظات حاليًا.';
 
-
-      /* EXTRA DATA */
-
-      renderExtraData();
     }
 
 
     /* =========================
-       STATUS
+       SESSION
     ========================= */
 
-    function formatStatus(status) {
+    function getStudentSession(){
 
-      const value =
-        String(status || '')
-          .toLowerCase();
+      try{
 
-      const map = {
-        active: 'نشط',
-        inactive: 'غير نشط',
-        suspended: 'موقوف',
-        graduated: 'متخرج'
-      };
-
-      return map[value] || text(status);
-    }
+        const raw =
+          sessionStorage.getItem(
+            'studentSession'
+          );
 
 
-    /* =========================
-       GOALS
-    ========================= */
+        if(!raw){
 
-    function renderGoals(value) {
+          return null;
 
-      const container =
-        document.getElementById(
-          'weeklyGoals'
+        }
+
+
+        return JSON.parse(
+          raw
         );
 
-      const items =
-        toArray(value);
+      }catch(error){
+
+        console.error(
+          'Student session error:',
+          error
+        );
 
 
-      if (!items.length) {
+        return null;
 
-        container.innerHTML =
-          '<div class="empty">لا توجد أهداف مسجلة.</div>';
+      }
+
+    }
+
+
+    /* =========================
+       LOAD STUDENT
+    ========================= */
+
+    async function loadStudent(){
+
+      const session =
+        getStudentSession();
+
+
+      /*
+        الطالب لا يستخدم ?id=
+        الصفحة تعتمد على الجلسة
+        الناتجة من student-login.html.
+      */
+
+      if(
+        !session ||
+        !session.id
+      ){
+
+        window.location.href =
+          'student-login.html';
 
         return;
+
       }
 
 
-      container.innerHTML =
-        items.map(
-          (item, index) => {
+      try{
 
-            if (
-              typeof item === 'string'
-            ) {
-
-              return `
-                <div class="item">
-                  <div class="item-main">
-                    <div class="item-title">
-                      الهدف ${index + 1}
-                    </div>
-                    <div class="item-sub">
-                      ${escapeHtml(item)}
-                    </div>
-                  </div>
-                </div>
-              `;
-            }
+        const {
+          data:studentData,
+          error:studentError
+        } =
+          await supabaseClient
+            .from('students')
+            .select('*')
+            .eq(
+              'id',
+              session.id
+            )
+            .maybeSingle();
 
 
-            const title =
-              firstValue(
-                item,
-                [
-                  'title',
-                  'name',
-                  'goal',
-                  'text'
-                ],
-                `الهدف ${index + 1}`
-              );
+        if(studentError){
+
+          console.error(
+            studentError
+          );
 
 
-            const details =
-              firstValue(
-                item,
-                [
-                  'description',
-                  'details',
-                  'note'
-                ],
-                ''
-              );
+          throw new Error(
+            'تعذر تحميل بيانات الطالب.'
+          );
+
+        }
 
 
-            const valueText =
-              firstValue(
-                item,
-                [
-                  'value',
-                  'target',
-                  'amount'
-                ],
-                ''
-              );
+        if(!studentData){
+
+          throw new Error(
+            'لم يتم العثور على ملف الطالب.'
+          );
+
+        }
 
 
-            return `
-              <div class="item">
-
-                <div class="item-main">
-
-                  <div class="item-title">
-                    ${escapeHtml(title)}
-                  </div>
-
-                  ${
-                    details !== ''
-                      ? `
-                        <div class="item-sub">
-                          ${escapeHtml(details)}
-                        </div>
-                      `
-                      : ''
-                  }
-
-                </div>
-
-                ${
-                  valueText !== ''
-                    ? `
-                      <div class="item-badge">
-                        ${escapeHtml(valueText)}
-                      </div>
-                    `
-                    : ''
-                }
-
-              </div>
-            `;
-          }
-        ).join('');
-    }
+        student =
+          studentData;
 
 
-    /* =========================
-       ATTENDANCE
-    ========================= */
+        const {
+          data:profileDataRow,
+          error:profileError
+        } =
+          await supabaseClient
+            .from('student_profiles')
+            .select('*')
+            .eq(
+              'student_id',
+              String(student.id)
+            )
+            .maybeSingle();
 
-    function renderAttendance(value) {
 
-      const container =
+        if(profileError){
+
+          console.error(
+            profileError
+          );
+
+
+          throw new Error(
+            'تعذر تحميل تفاصيل ملف الطالب.'
+          );
+
+        }
+
+
+        profile =
+          profileDataRow || {};
+
+
+        profileData =
+          normalizeProfileData(
+            profile
+          );
+
+
+        renderStudent();
+
+
         document.getElementById(
-          'attendanceList'
-        );
-
-      const summary =
-        document.getElementById(
-          'attendanceSummary'
-        );
-
-
-      const items =
-        toArray(value);
-
-
-      if (!items.length) {
-
-        container.innerHTML =
-          '<div class="empty">لا توجد سجلات حضور.</div>';
-
-        summary.textContent =
-          'لا توجد بيانات';
-
-        return;
-      }
-
-
-      let present = 0;
-      let absent = 0;
-      let late = 0;
-
-
-      container.innerHTML =
-        items.map(
-          (item, index) => {
-
-            let day = '';
-            let date = '';
-            let status = '';
-            let note = '';
-
-
-            if (
-              typeof item === 'string'
-            ) {
-
-              status =
-                item;
-
-            } else {
-
-              day =
-                firstValue(
-                  item,
-                  [
-                    'day',
-                    'weekday'
-                  ],
-                  ''
-                );
-
-              date =
-                firstValue(
-                  item,
-                  [
-                    'date',
-                    'dayDate'
-                  ],
-                  ''
-                );
-
-              status =
-                firstValue(
-                  item,
-                  [
-                    'status',
-                    'attendance'
-                  ],
-                  '—'
-                );
-
-              note =
-                firstValue(
-                  item,
-                  [
-                    'note',
-                    'notes',
-                    'reason'
-                  ],
-                  ''
-                );
-            }
-
-
-            const normalized =
-              String(status)
-                .toLowerCase();
-
-
-            if (
-              normalized.includes('حاضر') ||
-              normalized.includes('present') ||
-              normalized === 'p'
-            ) {
-              present++;
-            }
-
-
-            if (
-              normalized.includes('غائب') ||
-              normalized.includes('absent') ||
-              normalized === 'a'
-            ) {
-              absent++;
-            }
-
-
-            if (
-              normalized.includes('متأخر') ||
-              normalized.includes('late')
-            ) {
-              late++;
-            }
-
-
-            return `
-              <div class="item">
-
-                <div class="item-main">
-
-                  <div class="item-title">
-                    ${escapeHtml(
-                      day ||
-                      `سجل ${index + 1}`
-                    )}
-                  </div>
-
-                  ${
-                    date
-                      ? `
-                        <div class="item-sub">
-                          ${escapeHtml(
-                            formatDate(date)
-                          )}
-                        </div>
-                      `
-                      : ''
-                  }
-
-                  ${
-                    note
-                      ? `
-                        <div class="item-sub">
-                          ${escapeHtml(note)}
-                        </div>
-                      `
-                      : ''
-                  }
-
-                </div>
-
-                <div class="item-badge">
-                  ${escapeHtml(status)}
-                </div>
-
-              </div>
-            `;
-          }
-        ).join('');
-
-
-      summary.textContent =
-        `حاضر: ${present} • غياب: ${absent} • تأخير: ${late}`;
-    }
-
-
-    /* =========================
-       WEEKLY PLAN
-    ========================= */
-
-    function renderWeeklyPlan(value) {
-
-      const container =
-        document.getElementById(
-          'weeklyPlan'
-        );
-
-
-      const items =
-        toArray(value);
-
-
-      if (!items.length) {
-
-        container.innerHTML =
-          '<div class="empty">لا توجد خطة أسبوعية.</div>';
-
-        return;
-      }
-
-
-      container.innerHTML =
-        items.map(
-          (item, index) => {
-
-            if (
-              typeof item === 'string'
-            ) {
-
-              return `
-                <div class="item">
-                  <div class="item-main">
-                    <div class="item-title">
-                      ${escapeHtml(item)}
-                    </div>
-                  </div>
-                </div>
-              `;
-            }
-
-
-            const day =
-              firstValue(
-                item,
-                [
-                  'day',
-                  'weekday',
-                  'name'
-                ],
-                `اليوم ${index + 1}`
-              );
-
-
-            const task =
-              firstValue(
-                item,
-                [
-                  'task',
-                  'content',
-                  'plan',
-                  'text',
-                  'details'
-                ],
-                '—'
-              );
-
-
-            const target =
-              firstValue(
-                item,
-                [
-                  'target',
-                  'amount',
-                  'pages',
-                  'surah'
-                ],
-                ''
-              );
-
-
-            return `
-              <div class="item">
-
-                <div class="item-main">
-
-                  <div class="item-title">
-                    ${escapeHtml(day)}
-                  </div>
-
-                  <div class="item-sub">
-                    ${escapeHtml(task)}
-                  </div>
-
-                </div>
-
-                ${
-                  target !== ''
-                    ? `
-                      <div class="item-badge">
-                        ${escapeHtml(target)}
-                      </div>
-                    `
-                    : ''
-                }
-
-              </div>
-            `;
-          }
-        ).join('');
-    }
-
-
-    /* =========================
-       TESTS
-    ========================= */
-
-    function renderTests(value) {
-
-      const container =
-        document.getElementById(
-          'testsList'
-        );
-
-      const summary =
-        document.getElementById(
-          'testsSummary'
-        );
-
-
-      const items =
-        toArray(value);
-
-
-      if (!items.length) {
-
-        container.innerHTML =
-          '<div class="empty">لا توجد اختبارات مسجلة.</div>';
-
-        summary.textContent =
-          '0 اختبار';
-
-        return;
-      }
-
-
-      container.innerHTML =
-        items.map(
-          (item, index) => {
-
-            if (
-              typeof item === 'string'
-            ) {
-
-              return `
-                <div class="item">
-                  <div class="item-main">
-                    <div class="item-title">
-                      اختبار ${index + 1}
-                    </div>
-                    <div class="item-sub">
-                      ${escapeHtml(item)}
-                    </div>
-                  </div>
-                </div>
-              `;
-            }
-
-
-            const name =
-              firstValue(
-                item,
-                [
-                  'name',
-                  'title',
-                  'test',
-                  'subject'
-                ],
-                `اختبار ${index + 1}`
-              );
-
-
-            const score =
-              firstValue(
-                item,
-                [
-                  'score',
-                  'mark',
-                  'grade'
-                ],
-                ''
-              );
-
-
-            const total =
-              firstValue(
-                item,
-                [
-                  'total',
-                  'max',
-                  'outOf',
-                  'out_of'
-                ],
-                ''
-              );
-
-
-            const date =
-              firstValue(
-                item,
-                ['date'],
-                ''
-              );
-
-
-            return `
-              <div class="item">
-
-                <div class="item-main">
-
-                  <div class="item-title">
-                    ${escapeHtml(name)}
-                  </div>
-
-                  ${
-                    date
-                      ? `
-                        <div class="item-sub">
-                          ${escapeHtml(
-                            formatDate(date)
-                          )}
-                        </div>
-                      `
-                      : ''
-                  }
-
-                </div>
-
-                ${
-                  score !== ''
-                    ? `
-                      <div class="item-badge">
-                        ${escapeHtml(score)}
-                        ${
-                          total !== ''
-                            ? ` / ${escapeHtml(total)}`
-                            : ''
-                        }
-                      </div>
-                    `
-                    : ''
-                }
-
-              </div>
-            `;
-          }
-        ).join('');
-
-
-      summary.textContent =
-        `${items.length} اختبار`;
-    }
-
-
-    /* =========================
-       RECITATIONS
-    ========================= */
-
-    function renderRecitations(value) {
-
-      const container =
-        document.getElementById(
-          'recitationsList'
-        );
-
-      const summary =
-        document.getElementById(
-          'recitationsSummary'
-        );
-
-
-      const items =
-        toArray(value);
-
-
-      if (!items.length) {
-
-        container.innerHTML =
-          '<div class="empty">لا توجد جلسات تسميع مسجلة.</div>';
-
-        summary.textContent =
-          '0 جلسة';
-
-        return;
-      }
-
-
-      container.innerHTML =
-        items.map(
-          (item, index) => {
-
-            if (
-              typeof item === 'string'
-            ) {
-
-              return `
-                <div class="item">
-                  <div class="item-main">
-                    <div class="item-title">
-                      جلسة ${index + 1}
-                    </div>
-
-                    <div class="item-sub">
-                      ${escapeHtml(item)}
-                    </div>
-                  </div>
-                </div>
-              `;
-            }
-
-
-            const surah =
-              firstValue(
-                item,
-                [
-                  'surah',
-                  'soura',
-                  'chapter',
-                  'name',
-                  'title'
-                ],
-                `جلسة ${index + 1}`
-              );
-
-
-            const pages =
-              firstValue(
-                item,
-                [
-                  'pages',
-                  'amount',
-                  'quantity'
-                ],
-                ''
-              );
-
-
-            const verses =
-              firstValue(
-                item,
-                [
-                  'verses',
-                  'ayat',
-                  'ayahs'
-                ],
-                ''
-              );
-
-
-            const grade =
-              firstValue(
-                item,
-                [
-                  'grade',
-                  'score',
-                  'mark',
-                  'evaluation'
-                ],
-                ''
-              );
-
-
-            const date =
-              firstValue(
-                item,
-                ['date'],
-                ''
-              );
-
-
-            const note =
-              firstValue(
-                item,
-                [
-                  'note',
-                  'notes',
-                  'comment'
-                ],
-                ''
-              );
-
-
-            const subParts = [];
-
-
-            if (pages !== '') {
-              subParts.push(
-                `الصفحات: ${pages}`
-              );
-            }
-
-
-            if (verses !== '') {
-              subParts.push(
-                `الآيات: ${verses}`
-              );
-            }
-
-
-            if (date !== '') {
-              subParts.push(
-                formatDate(date)
-              );
-            }
-
-
-            if (note !== '') {
-              subParts.push(
-                note
-              );
-            }
-
-
-            return `
-              <div class="item">
-
-                <div class="item-main">
-
-                  <div class="item-title">
-                    ${escapeHtml(surah)}
-                  </div>
-
-                  ${
-                    subParts.length
-                      ? `
-                        <div class="item-sub">
-                          ${subParts
-                            .map(
-                              part =>
-                                escapeHtml(part)
-                            )
-                            .join(' • ')}
-                        </div>
-                      `
-                      : ''
-                  }
-
-                </div>
-
-                ${
-                  grade !== ''
-                    ? `
-                      <div class="item-badge">
-                        ${escapeHtml(grade)}
-                      </div>
-                    `
-                    : ''
-                }
-
-              </div>
-            `;
-          }
-        ).join('');
-
-
-      summary.textContent =
-        `${items.length} جلسة`;
-    }
-
-
-    /* =========================
-       EXTRA DATA
-    ========================= */
-
-    function renderExtraData() {
-
-      const knownKeys = new Set([
-        'photo',
-        'photoUrl',
-        'photo_url',
-        'image',
-        'imageUrl',
-        'image_url',
-        'avatar',
-
-        'section',
-        'group',
-        'class',
-
-        'memorization',
-        'memorization_level',
-        'hifz',
-
-        'guardianPhone',
-        'guardian_phone',
-        'parentPhone',
-        'parent_phone',
-        'phone',
-
-        'joiningDate',
-        'joining_date',
-        'joinDate',
-        'join_date',
-
-        'residence',
-        'address',
-        'home',
-        'housing',
-
-        'bus',
-        'transport',
-        'transportation',
-
-        'homeLocation',
-        'home_location',
-        'location',
-
-        'commitment',
-        'commitmentLevel',
-        'commitment_level',
-
-        'points',
-        'totalPoints',
-        'total_points',
-
-        'weeklyGoals',
-        'weekly_goals',
-        'goals',
-
-        'attendance',
-        'attendances',
-
-        'weeklyPlan',
-        'weekly_plan',
-        'plan',
-
-        'tests',
-        'exams',
-        'examResults',
-        'exam_results',
-
-        'recitations',
-        'tasmee',
-        'tasmee3',
-        'recitation',
-
-        'weeklyProgress',
-        'weekly_progress',
-        'weeklyAchievement',
-        'weekly_achievement',
-
-        'overallProgress',
-        'overall_progress',
-        'progress',
-
-        'notes',
-        'teacherNotes',
-        'teacher_notes',
-        'note'
-      ]);
-
-
-      const entries =
-        Object.entries(
-          profileData || {}
-        ).filter(
-          ([key, value]) =>
-            !knownKeys.has(key) &&
-            value !== null &&
-            value !== undefined &&
-            value !== ''
-        );
-
-
-      const section =
-        document.getElementById(
-          'extraSection'
-        );
-
-      const container =
-        document.getElementById(
-          'extraInfo'
-        );
-
-
-      if (!entries.length) {
-
-        section.style.display =
+          'loadingScreen'
+        ).style.display =
           'none';
 
-        return;
+
+        document.getElementById(
+          'page'
+        ).style.display =
+          'block';
+
+
+      }catch(error){
+
+        console.error(
+          error
+        );
+
+
+        showError(
+          error.message ||
+          'حدث خطأ أثناء تحميل الملف.'
+        );
+
       }
 
-
-      section.style.display =
-        'block';
-
-
-      container.innerHTML =
-        entries.map(
-          ([key, value]) => {
-
-            let printable;
-
-
-            if (
-              typeof value === 'object'
-            ) {
-              try {
-                printable =
-                  JSON.stringify(
-                    value,
-                    null,
-                    2
-                  );
-              } catch {
-                printable =
-                  String(value);
-              }
-            } else {
-              printable =
-                String(value);
-            }
-
-
-            return `
-              <div class="info-item">
-
-                <div class="info-label">
-                  ${escapeHtml(
-                    formatKey(key)
-                  )}
-                </div>
-
-                <div class="info-value">
-                  ${escapeHtml(printable)}
-                </div>
-
-              </div>
-            `;
-          }
-        ).join('');
-    }
-
-
-    function formatKey(key) {
-
-      const map = {
-
-        phone:
-          'رقم الهاتف',
-
-        email:
-          'البريد الإلكتروني',
-
-        age:
-          'العمر',
-
-        birthDate:
-          'تاريخ الميلاد',
-
-        birth_date:
-          'تاريخ الميلاد',
-
-        nationality:
-          'الجنسية',
-
-        school:
-          'المدرسة',
-
-        grade:
-          'الصف الدراسي'
-
-      };
-
-
-      return (
-        map[key] ||
-        String(key)
-          .replace(/_/g, ' ')
-      );
     }
 
 
@@ -2741,16 +6102,20 @@
        ERROR
     ========================= */
 
-    function showError(message) {
+    function showError(
+      message
+    ){
 
       document.getElementById(
         'loadingScreen'
-      ).style.display = 'none';
+      ).style.display =
+        'none';
 
 
       document.getElementById(
         'page'
-      ).style.display = 'none';
+      ).style.display =
+        'none';
 
 
       document.getElementById(
@@ -2781,6 +6146,7 @@
         </div>
 
       `;
+
     }
 
 
@@ -2788,14 +6154,16 @@
        LOGOUT
     ========================= */
 
-    function logoutStudent() {
+    function logoutStudent(){
 
       sessionStorage.removeItem(
         'studentSession'
       );
 
+
       window.location.href =
         'student-login.html';
+
     }
 
 
@@ -2807,6 +6175,7 @@
       'DOMContentLoaded',
       loadStudent
     );
+
   </script>
 
 </body>
