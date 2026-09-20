@@ -173,6 +173,39 @@
       align-items:center;
 
       gap:13px;
+
+      min-width:0;
+    }
+
+
+    .brand-button{
+      border:none;
+      outline:none;
+
+      background:transparent;
+
+      color:inherit;
+
+      padding:0;
+
+      cursor:pointer;
+
+      text-align:right;
+
+      display:flex;
+
+      align-items:center;
+
+      gap:13px;
+
+      min-width:0;
+
+      transition:.25s ease;
+    }
+
+
+    .brand-button:hover{
+      transform:translateY(-1px);
     }
 
 
@@ -184,17 +217,13 @@
         1px solid
         rgba(217,184,108,.35);
 
-      border-radius:17px;
+      border-radius:50%;
 
-      display:grid;
-      place-items:center;
+      object-fit:cover;
 
-      background:
-        linear-gradient(
-          145deg,
-          rgba(217,184,108,.17),
-          rgba(27,108,77,.12)
-        );
+      flex:none;
+
+      background:#fff;
 
       box-shadow:
         inset 0 0 20px
@@ -202,8 +231,11 @@
 
         0 10px 25px
         rgba(0,0,0,.18);
+    }
 
-      font-size:23px;
+
+    .brand-text{
+      min-width:0;
     }
 
 
@@ -212,14 +244,20 @@
 
       font-size:16px;
 
-      color:var(--gold2);
+      color:
+        var(--gold2);
 
       margin-bottom:4px;
+
+      word-break:
+        break-word;
     }
 
 
     .brand-text span{
-      color:var(--muted2);
+      color:
+        var(--muted2);
+
       font-size:12px;
     }
 
@@ -241,19 +279,22 @@
       background:
         rgba(9,27,20,.65);
 
-      color:var(--white);
+      color:
+        var(--white);
 
       padding:
         11px
         16px;
 
-      border-radius:14px;
+      border-radius:
+        14px;
 
       cursor:pointer;
 
       font-size:13px;
 
-      transition:.25s ease;
+      transition:
+        .25s ease;
 
       backdrop-filter:
         blur(10px);
@@ -327,16 +368,17 @@
 
     .personal-card-head{
       position:relative;
+
       z-index:1;
 
       display:flex;
 
-      align-items:center;
+      align-items:flex-start;
 
       gap:22px;
 
       margin-bottom:
-        24px;
+        20px;
     }
 
 
@@ -365,6 +407,7 @@
         );
 
       display:grid;
+
       place-items:center;
 
       box-shadow:
@@ -389,7 +432,8 @@
     .avatar-letter{
       font-size:38px;
 
-      color:var(--gold2);
+      color:
+        var(--gold2);
 
       font-weight:800;
     }
@@ -397,6 +441,8 @@
 
     .personal-main{
       min-width:0;
+
+      flex:1;
     }
 
 
@@ -427,7 +473,7 @@
       font-size:12px;
 
       margin-bottom:
-        10px;
+        8px;
     }
 
 
@@ -454,23 +500,112 @@
 
       line-height:1.2;
 
-      margin-bottom:6px;
+      margin-bottom:
+        9px;
 
-      word-break:break-word;
+      word-break:
+        break-word;
     }
 
 
-    .personal-subtitle{
-      color:var(--muted);
+    /* كود الطالب */
+
+    .student-code-box{
+      display:flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      flex-wrap:wrap;
+    }
+
+
+    .student-code-label{
+      color:
+        var(--muted2);
+
+      font-size:12px;
+
+      font-weight:600;
+    }
+
+
+    .student-code{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      background:
+        rgba(217,184,108,.08);
+
+      color:
+        var(--gold2);
+
+      border:
+        1px solid
+        rgba(217,184,108,.20);
+
+      padding:
+        7px
+        10px;
+
+      border-radius:
+        10px;
 
       font-size:13px;
 
-      line-height:1.9;
+      font-weight:800;
+
+      direction:ltr;
     }
 
 
-    .personal-info-grid{
+    .copy-code-btn{
+      border:
+        1px solid
+        rgba(217,184,108,.18);
+
+      background:
+        rgba(217,184,108,.06);
+
+      color:
+        var(--gold2);
+
+      border-radius:
+        9px;
+
+      padding:
+        7px
+        10px;
+
+      cursor:pointer;
+
+      font-size:11px;
+
+      transition:.22s ease;
+    }
+
+
+    .copy-code-btn:hover{
+      background:
+        rgba(217,184,108,.12);
+
+      transform:
+        translateY(-1px);
+    }
+
+
+    /* =========================
+       METRICS - نفس الـ 4 الموجودة
+       في student-details.html
+    ========================= */
+
+    .metrics{
       position:relative;
+
       z-index:1;
 
       display:grid;
@@ -481,7 +616,138 @@
           minmax(0,1fr)
         );
 
-      gap:11px;
+      gap:10px;
+
+      margin-top:
+        4px;
+
+      margin-bottom:
+        16px;
+    }
+
+
+    .metric{
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          .055
+        );
+
+      border-radius:
+        14px;
+
+      padding:
+        14px 12px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .025
+        );
+
+      min-width:0;
+    }
+
+
+    .metric small{
+      display:block;
+
+      color:
+        var(--muted2);
+
+      font-weight:
+        700;
+
+      font-size:10px;
+
+      margin-bottom:
+        8px;
+
+      line-height:
+        1.6;
+    }
+
+
+    .metric strong{
+      font-size:
+        23px;
+
+      line-height:1;
+
+      color:
+        var(--gold2);
+
+      word-break:
+        break-word;
+    }
+
+
+    .metric .suffix{
+      font-size:11px;
+
+      color:
+        var(--muted);
+
+      margin-right:3px;
+    }
+
+
+    .metric:nth-child(2){
+      background:
+        rgba(
+          47,
+          159,
+          114,
+          .045
+        );
+    }
+
+
+    .metric:nth-child(3){
+      background:
+        rgba(
+          217,
+          184,
+          108,
+          .045
+        );
+    }
+
+
+    .metric:nth-child(4){
+      background:
+        rgba(
+          100,
+          160,
+          190,
+          .045
+        );
+    }
+
+
+    /* =========================
+       PERSONAL INFO GRID
+    ========================= */
+
+    .personal-info-grid{
+      position:relative;
+
+      z-index:1;
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          minmax(0,1fr)
+        );
+
+      gap:10px;
     }
 
 
@@ -515,7 +781,8 @@
       color:
         var(--muted2);
 
-      font-size:10px;
+      font-size:
+        10px;
 
       margin-bottom:
         6px;
@@ -526,9 +793,11 @@
       color:
         var(--white);
 
-      font-size:13px;
+      font-size:
+        13px;
 
-      line-height:1.8;
+      line-height:
+        1.8;
 
       word-break:
         break-word;
@@ -539,7 +808,17 @@
       color:
         var(--gold2);
 
-      font-weight:700;
+      font-weight:
+        800;
+    }
+
+
+    .warning-value{
+      color:
+        #f0d991;
+
+      font-weight:
+        800;
     }
 
 
@@ -578,8 +857,7 @@
         19px;
 
       padding:
-        16px
-        13px;
+        16px 13px;
 
       cursor:pointer;
 
@@ -672,12 +950,6 @@
        CONTENT SECTION
     ========================= */
 
-    #sectionContent{
-      min-height:
-        150px;
-    }
-
-
     .profile-section{
       display:none;
 
@@ -750,6 +1022,7 @@
       border-radius:12px;
 
       display:grid;
+
       place-items:center;
 
       background:
@@ -765,7 +1038,8 @@
       color:
         var(--muted2);
 
-      font-size:11px;
+      font-size:
+        11px;
     }
 
 
@@ -813,7 +1087,8 @@
 
 
     .stat-label{
-      font-size:11px;
+      font-size:
+        11px;
 
       color:
         var(--muted2);
@@ -824,7 +1099,8 @@
 
 
     .stat-value{
-      font-size:20px;
+      font-size:
+        20px;
 
       color:
         var(--gold2);
@@ -884,7 +1160,8 @@
       color:
         var(--muted2);
 
-      font-size:11px;
+      font-size:
+        11px;
 
       margin-bottom:
         7px;
@@ -895,7 +1172,8 @@
       color:
         var(--white);
 
-      font-size:14px;
+      font-size:
+        14px;
 
       line-height:
         1.8;
@@ -961,11 +1239,14 @@
       color:
         var(--white);
 
-      font-size:13px;
+      font-size:
+        13px;
 
-      font-weight:700;
+      font-weight:
+        700;
 
-      margin-bottom:4px;
+      margin-bottom:
+        4px;
 
       word-break:
         break-word;
@@ -976,9 +1257,11 @@
       color:
         var(--muted);
 
-      font-size:11px;
+      font-size:
+        11px;
 
-      line-height:1.9;
+      line-height:
+        1.9;
 
       word-break:
         break-word;
@@ -1005,7 +1288,8 @@
         6px
         9px;
 
-      font-size:11px;
+      font-size:
+        11px;
 
       white-space:
         nowrap;
@@ -1013,14 +1297,8 @@
 
 
     /* =========================
-       JUZ PROGRESS
+       PROGRESS
     ========================= */
-
-    .juz-progress{
-      margin-top:
-        10px;
-    }
-
 
     .progress-line{
       width:100%;
@@ -1084,18 +1362,84 @@
       border-radius:
         18px;
 
-      color:#ddd8ca;
+      color:
+        #ddd8ca;
 
       line-height:
         2;
 
-      font-size:14px;
+      font-size:
+        14px;
 
       white-space:
         pre-wrap;
 
       word-break:
         break-word;
+    }
+
+
+    /* =========================
+       COPY NOTICE
+    ========================= */
+
+    .copy-notice{
+      position:fixed;
+
+      right:50%;
+
+      bottom:24px;
+
+      transform:
+        translate(
+          50%,
+          15px
+        );
+
+      background:
+        rgba(
+          9,
+          27,
+          20,
+          .94
+        );
+
+      border:
+        1px solid
+        rgba(217,184,108,.18);
+
+      color:
+        var(--gold2);
+
+      padding:
+        10px
+        15px;
+
+      border-radius:
+        12px;
+
+      font-size:
+        12px;
+
+      opacity:0;
+
+      pointer-events:none;
+
+      transition:
+        .25s ease;
+
+      z-index:100;
+    }
+
+
+    .copy-notice.show{
+      opacity:1;
+
+      transform:
+        translate(
+          50%,
+          0
+        );
     }
 
 
@@ -1114,7 +1458,8 @@
         24px
         10px;
 
-      font-size:13px;
+      font-size:
+        13px;
     }
 
 
@@ -1148,7 +1493,8 @@
     .loader-box{
       text-align:center;
 
-      padding:30px;
+      padding:
+        30px;
     }
 
 
@@ -1177,7 +1523,8 @@
       color:
         var(--muted);
 
-      font-size:14px;
+      font-size:
+        14px;
     }
 
 
@@ -1194,14 +1541,17 @@
     ========================= */
 
     .error-box{
-      max-width:560px;
+      max-width:
+        560px;
 
       margin:
         90px auto;
 
-      padding:30px;
+      padding:
+        30px;
 
-      text-align:center;
+      text-align:
+        center;
 
       background:
         var(--card2);
@@ -1219,7 +1569,8 @@
 
 
     .error-icon{
-      font-size:42px;
+      font-size:
+        42px;
 
       margin-bottom:
         15px;
@@ -1248,7 +1599,8 @@
 
 
     .error-btn{
-      display:inline-block;
+      display:
+        inline-block;
 
       padding:
         12px
@@ -1274,12 +1626,14 @@
     ========================= */
 
     footer{
-      text-align:center;
+      text-align:
+        center;
 
       color:
         var(--muted2);
 
-      font-size:11px;
+      font-size:
+        11px;
 
       padding:
         28px
@@ -1311,56 +1665,95 @@
           );
       }
 
+
+      .metrics{
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          );
+      }
+
     }
 
 
     @media(max-width:700px){
 
       .page{
-        width:min(
-          94%,
-          570px
-        );
+        width:
+          min(
+            94%,
+            570px
+          );
 
-        padding-top:18px;
+        padding-top:
+          18px;
       }
 
 
       .personal-card{
-        padding:20px;
+        padding:
+          20px;
 
-        border-radius:25px;
+        border-radius:
+          25px;
       }
 
 
       .personal-card-head{
-        align-items:flex-start;
+        align-items:
+          flex-start;
 
-        gap:15px;
+        gap:
+          15px;
       }
 
 
       .avatar{
-        width:88px;
-        height:88px;
+        width:
+          88px;
 
-        border-radius:25px;
+        height:
+          88px;
+
+        border-radius:
+          25px;
       }
 
 
       .avatar-letter{
-        font-size:31px;
+        font-size:
+          31px;
       }
 
 
       .personal-main h1{
-        font-size:25px;
+        font-size:
+          25px;
       }
 
 
       .personal-info-grid{
         grid-template-columns:
           1fr;
+      }
+
+
+      .metrics{
+        gap:
+          9px;
+      }
+
+
+      .metric{
+        padding:
+          13px;
+      }
+
+
+      .metric strong{
+        font-size:
+          20px;
       }
 
 
@@ -1380,9 +1773,11 @@
 
 
       .profile-section{
-        padding:18px;
+        padding:
+          18px;
 
-        border-radius:20px;
+        border-radius:
+          20px;
       }
 
 
@@ -1393,12 +1788,14 @@
 
 
       .top-actions{
-        width:100%;
+        width:
+          100%;
       }
 
 
       .top-btn{
-        flex:1;
+        flex:
+          1;
       }
 
     }
@@ -1429,22 +1826,71 @@
 
 
       .switch-icon{
-        flex-shrink:0;
+        flex-shrink:
+          0;
+      }
+
+
+      .personal-card-head{
+        flex-direction:
+          column;
+      }
+
+
+      .avatar-wrap{
+        width:
+          100%;
+      }
+
+
+      .avatar{
+        margin:
+          0 auto;
+      }
+
+
+      .personal-main{
+        width:
+          100%;
+
+        text-align:
+          center;
+      }
+
+
+      .personal-label{
+        margin:
+          0 auto 8px;
+      }
+
+
+      .student-code-box{
+        justify-content:
+          center;
+      }
+
+
+      .metrics{
+        grid-template-columns:
+          1fr 1fr;
       }
 
 
       .stats{
-        gap:9px;
+        gap:
+          9px;
       }
 
 
       .stat{
-        padding:13px;
+        padding:
+          13px;
       }
 
 
       .stat-value{
-        font-size:17px;
+        font-size:
+          17px;
       }
 
     }
@@ -1454,10 +1900,16 @@
 
 <body>
 
+
+  <!-- =========================
+       LOADING
+  ========================= -->
+
   <div
     class="loading-screen"
     id="loadingScreen"
   >
+
     <div class="loader-box">
 
       <div class="loader"></div>
@@ -1467,8 +1919,13 @@
       </div>
 
     </div>
+
   </div>
 
+
+  <!-- =========================
+       PAGE
+  ========================= -->
 
   <main
     class="page"
@@ -1483,11 +1940,21 @@
 
     <div class="topbar">
 
-      <div class="brand">
 
-        <div class="brand-logo">
-          📖
-        </div>
+      <!-- الضغط على الشعار واسم المركز يعيد تحميل الصفحة -->
+
+      <button
+        type="button"
+        class="brand-button"
+        onclick="reloadPage()"
+        title="إعادة تحميل الصفحة"
+      >
+
+        <img
+          class="brand-logo"
+          src="logo.png"
+          alt="شعار مركز حردان طارق القرآني"
+        />
 
         <div class="brand-text">
 
@@ -1501,7 +1968,7 @@
 
         </div>
 
-      </div>
+      </button>
 
 
       <div class="top-actions">
@@ -1533,7 +2000,9 @@
 
     <section class="personal-card">
 
+
       <div class="personal-card-head">
+
 
         <div class="avatar-wrap">
 
@@ -1558,25 +2027,133 @@
 
         <div class="personal-main">
 
+
           <div class="personal-label">
             البطاقة الشخصية
           </div>
 
-          <h1 id="studentName">
+
+          <h1
+            id="studentName"
+          >
             جاري التحميل...
           </h1>
 
-          <div
-            class="personal-subtitle"
-            id="personalSubtitle"
-          >
-            بيانات الطالب
+
+          <!-- الكود بدل الكلام الموجود تحت الاسم -->
+
+          <div class="student-code-box">
+
+            <span class="student-code-label">
+              كود الطالب:
+            </span>
+
+            <span
+              class="student-code"
+              id="studentCode"
+            >
+              ---
+            </span>
+
+            <button
+              type="button"
+              class="copy-code-btn"
+              onclick="copyStudentCode()"
+            >
+              📋 نسخ الكود
+            </button>
+
           </div>
+
 
         </div>
 
       </div>
 
+
+      <!-- =========================
+           METRICS
+           نفس الأربعة الموجودة في
+           student-details.html
+      ========================= -->
+
+      <div class="metrics">
+
+
+        <div class="metric">
+
+          <small>
+            النقاط الكلية
+          </small>
+
+          <strong
+            id="metricTotalPoints"
+          >
+            0
+          </strong>
+
+          <span class="suffix">
+            نقطة
+          </span>
+
+        </div>
+
+
+        <div class="metric">
+
+          <small>
+            تقييم الطالب المئوي الكلي
+          </small>
+
+          <strong
+            id="metricOverall"
+          >
+            0%
+          </strong>
+
+        </div>
+
+
+        <div class="metric">
+
+          <small>
+            تقييم الطالب المئوي الشهري
+          </small>
+
+          <strong
+            id="metricMonthly"
+          >
+            0%
+          </strong>
+
+        </div>
+
+
+        <div class="metric">
+
+          <small>
+            نقاط الطالب الشهرية
+          </small>
+
+          <strong
+            id="metricMonthlyPoints"
+          >
+            0
+          </strong>
+
+          <span class="suffix">
+            نقطة
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- =========================
+           PERSONAL INFORMATION
+      ========================= -->
 
       <div class="personal-info-grid">
 
@@ -1600,7 +2177,7 @@
         <div class="personal-item">
 
           <div class="personal-label-small">
-            القسم
+            الشعبة
           </div>
 
           <div
@@ -1616,23 +2193,7 @@
         <div class="personal-item">
 
           <div class="personal-label-small">
-            مستوى الحفظ
-          </div>
-
-          <div
-            class="personal-value"
-            id="infoMemorization"
-          >
-            —
-          </div>
-
-        </div>
-
-
-        <div class="personal-item">
-
-          <div class="personal-label-small">
-            الحالة
+            حالة الطالب
           </div>
 
           <div
@@ -1648,7 +2209,23 @@
         <div class="personal-item">
 
           <div class="personal-label-small">
-            رقم ولي الأمر
+            الإنذارات
+          </div>
+
+          <div
+            class="personal-value warning-value"
+            id="infoWarnings"
+          >
+            0
+          </div>
+
+        </div>
+
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            هاتف ولي الأمر
           </div>
 
           <div
@@ -1696,44 +2273,12 @@
         <div class="personal-item">
 
           <div class="personal-label-small">
-            المواصلات
+            الباص
           </div>
 
           <div
             class="personal-value"
             id="infoBus"
-          >
-            —
-          </div>
-
-        </div>
-
-
-        <div class="personal-item">
-
-          <div class="personal-label-small">
-            موقع المنزل
-          </div>
-
-          <div
-            class="personal-value"
-            id="infoHomeLocation"
-          >
-            —
-          </div>
-
-        </div>
-
-
-        <div class="personal-item">
-
-          <div class="personal-label-small">
-            الالتزام
-          </div>
-
-          <div
-            class="personal-value"
-            id="infoCommitment"
           >
             —
           </div>
@@ -1765,7 +2310,6 @@
 
           <div
             class="personal-value payment-value"
-            id="infoMonthlyFee"
           >
             5 د.أ
           </div>
@@ -1774,6 +2318,7 @@
 
 
       </div>
+
 
     </section>
 
@@ -1936,13 +2481,16 @@
 
 
     <!-- =========================
-         SECTION CONTENT
+         CONTENT
     ========================= -->
+
 
     <div id="sectionContent">
 
 
-      <!-- RECITATION -->
+      <!-- =========================
+           RECITATION
+      ========================= -->
 
       <section
         class="profile-section active"
@@ -1973,6 +2521,7 @@
 
         <div class="stats">
 
+
           <div class="stat">
 
             <div class="stat-label">
@@ -1995,9 +2544,7 @@
               من أصل صفحات المصحف
             </div>
 
-            <div
-              class="stat-value"
-            >
+            <div class="stat-value">
               604
             </div>
 
@@ -2035,6 +2582,7 @@
 
           </div>
 
+
         </div>
 
 
@@ -2066,7 +2614,9 @@
       </section>
 
 
-      <!-- PLAN -->
+      <!-- =========================
+           PLAN
+      ========================= -->
 
       <section
         class="profile-section"
@@ -2109,7 +2659,9 @@
       </section>
 
 
-      <!-- TESTS -->
+      <!-- =========================
+           TESTS
+      ========================= -->
 
       <section
         class="profile-section"
@@ -2152,7 +2704,9 @@
       </section>
 
 
-      <!-- ATTENDANCE -->
+      <!-- =========================
+           ATTENDANCE
+      ========================= -->
 
       <section
         class="profile-section"
@@ -2195,7 +2749,9 @@
       </section>
 
 
-      <!-- POINTS -->
+      <!-- =========================
+           POINTS
+      ========================= -->
 
       <section
         class="profile-section"
@@ -2225,6 +2781,7 @@
 
 
         <div class="stats">
+
 
           <div class="stat">
 
@@ -2277,7 +2834,7 @@
           <div class="stat">
 
             <div class="stat-label">
-              التقييم
+              التقييم العام
             </div>
 
             <div
@@ -2288,6 +2845,7 @@
             </div>
 
           </div>
+
 
         </div>
 
@@ -2307,7 +2865,9 @@
       </section>
 
 
-      <!-- BADGES -->
+      <!-- =========================
+           BADGES
+      ========================= -->
 
       <section
         class="profile-section"
@@ -2350,7 +2910,7 @@
 
         <div
           style="
-            margin-top:12px;
+            margin-top:18px;
           "
         >
 
@@ -2392,7 +2952,9 @@
       </section>
 
 
-      <!-- FEES -->
+      <!-- =========================
+           FEES
+      ========================= -->
 
       <section
         class="profile-section"
@@ -2423,15 +2985,14 @@
 
         <div class="stats">
 
+
           <div class="stat">
 
             <div class="stat-label">
               الرسوم الشهرية
             </div>
 
-            <div
-              class="stat-value"
-            >
+            <div class="stat-value">
               5 د.أ
             </div>
 
@@ -2485,6 +3046,7 @@
 
           </div>
 
+
         </div>
 
 
@@ -2503,7 +3065,9 @@
       </section>
 
 
-      <!-- PROGRESS -->
+      <!-- =========================
+           PROGRESS
+      ========================= -->
 
       <section
         class="profile-section"
@@ -2526,6 +3090,7 @@
 
 
         <div class="info-grid">
+
 
           <div class="info-item">
 
@@ -2590,6 +3155,7 @@
 
           </div>
 
+
         </div>
 
 
@@ -2637,7 +3203,20 @@
       مركز حردان طارق القرآني — هذه الصفحة مخصصة لعرض بيانات الطالب فقط
     </footer>
 
+
   </main>
+
+
+  <!-- =========================
+       COPY NOTICE
+  ========================= -->
+
+  <div
+    class="copy-notice"
+    id="copyNotice"
+  >
+    ✅ تم نسخ كود الطالب
+  </div>
 
 
   <div id="errorContainer"></div>
@@ -2677,46 +3256,51 @@
 
     const BADGE_DEFINITIONS = {
 
-      beginner_reader:{
-        id:'beginner_reader',
-        emoji:'📖',
-        name:'القارئ المبتدئ',
-        requirement:'50 نقطة'
+      beginner:{
+        id:'beginner',
+        icon:'📖',
+        title:'القارئ المبتدئ',
+        threshold:50
       },
 
       persistent:{
         id:'persistent',
-        emoji:'🌟',
-        name:'المثابر',
-        requirement:'100 نقطة'
+        icon:'🌟',
+        title:'المثابر',
+        threshold:100
       },
 
       excellence:{
         id:'excellence',
-        emoji:'💎',
-        name:'التميز',
-        requirement:'200 نقطة'
+        icon:'💎',
+        title:'التميز',
+        threshold:200
       },
 
-      golden_memorizer:{
-        id:'golden_memorizer',
-        emoji:'🏆',
-        name:'الحافظ الذهبي',
-        requirement:'300 نقطة'
+      golden:{
+        id:'golden',
+        icon:'🏆',
+        title:'الحافظ الذهبي',
+        threshold:300
       },
 
-      crown_of_dignity:{
-        id:'crown_of_dignity',
-        emoji:'👑',
-        name:'تاج الوقار',
-        requirement:'500 نقطة'
+      crown:{
+        id:'crown',
+        icon:'👑',
+        title:'تاج الوقار',
+        threshold:500
+      },
+
+      monthlyChampion:{
+        id:'monthlyChampion',
+        icon:'🥇',
+        title:'بطل الشهر'
       },
 
       monthly_champion:{
         id:'monthly_champion',
-        emoji:'🥇',
-        name:'البطل الشهري',
-        requirement:'أعلى تقييم شهري'
+        icon:'🥇',
+        title:'بطل الشهر'
       }
 
     };
@@ -2766,7 +3350,9 @@
        HELPERS
     ========================= */
 
-    function escapeHtml(value){
+    function escapeHtml(
+      value
+    ){
 
       return String(
         value ?? ''
@@ -2811,7 +3397,9 @@
       }
 
 
-      return String(value);
+      return String(
+        value
+      );
 
     }
 
@@ -2937,7 +3525,9 @@
 
 
         const parsed =
-          Number(cleaned);
+          Number(
+            cleaned
+          );
 
 
         if(
@@ -2969,6 +3559,35 @@
     }
 
 
+    function decimalNumber(
+      value
+    ){
+
+      const number =
+        Number(
+          value
+        );
+
+
+      if(
+        !Number.isFinite(number)
+      ){
+
+        return '0';
+
+      }
+
+
+      return number
+        .toFixed(1)
+        .replace(
+          /\.0$/,
+          ''
+        );
+
+    }
+
+
     function formatDate(
       value
     ){
@@ -2981,7 +3600,9 @@
 
 
       const date =
-        new Date(value);
+        new Date(
+          value
+        );
 
 
       if(
@@ -2990,7 +3611,9 @@
         )
       ){
 
-        return String(value);
+        return String(
+          value
+        );
 
       }
 
@@ -3002,7 +3625,9 @@
           month:'long',
           day:'numeric'
         }
-      ).format(date);
+      ).format(
+        date
+      );
 
     }
 
@@ -3019,7 +3644,9 @@
 
 
       const date =
-        new Date(value);
+        new Date(
+          value
+        );
 
 
       if(
@@ -3028,7 +3655,9 @@
         )
       ){
 
-        return String(value);
+        return String(
+          value
+        );
 
       }
 
@@ -3042,7 +3671,9 @@
           hour:'numeric',
           minute:'2-digit'
         }
-      ).format(date);
+      ).format(
+        date
+      );
 
     }
 
@@ -3101,7 +3732,9 @@
           year:'numeric',
           month:'long'
         }
-      ).format(date);
+      ).format(
+        date
+      );
 
     }
 
@@ -3112,20 +3745,16 @@
         new Date();
 
 
-      const year =
-        date.getFullYear();
-
-
-      const month =
+      return (
+        date.getFullYear() +
+        '-' +
         String(
-          date.getMonth() + 1
+          date.getMonth()+1
         ).padStart(
           2,
           '0'
-        );
-
-
-      return `${year}-${month}`;
+        )
+      );
 
     }
 
@@ -3149,7 +3778,9 @@
 
 
       element.textContent =
-        text(value);
+        text(
+          value
+        );
 
     }
 
@@ -3196,6 +3827,10 @@
     }
 
 
+    /* =========================
+       STATUS
+    ========================= */
+
     function formatStatus(
       status
     ){
@@ -3204,18 +3839,26 @@
         String(
           status || ''
         )
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 
 
       const map = {
 
-        active:'نشط',
+        active:
+          'ملتزم',
 
-        inactive:'غير نشط',
+        inactive:
+          'منقطع',
 
-        suspended:'موقوف',
+        suspended:
+          'مفصول لفترة',
 
-        graduated:'متخرج'
+        terminated:
+          'مفصول كليًا',
+
+        graduated:
+          'متخرج'
 
       };
 
@@ -3274,21 +3917,21 @@
 
     function getRecitationRecords(){
 
-      return toArray(
+      const value =
         firstValue(
           profileData,
           [
             'recitationPages',
             'recitation_pages',
             'pageRecitations',
-            'page_recitations',
-            'recitations',
-            'tasmee',
-            'tasmee3',
-            'recitation'
+            'page_recitations'
           ],
           []
-        )
+        );
+
+
+      return toArray(
+        value
       )
       .filter(
         record =>
@@ -3301,38 +3944,30 @@
 
     function getRecitationPageNumbers(){
 
-      const records =
-        getRecitationRecords();
-
-
-      const pages =
-        records
-          .map(
-            record =>
-              numberValue(
-                firstValue(
-                  record,
-                  [
-                    'page',
-                    'pageNumber',
-                    'page_number',
-                    'pageno'
-                  ],
-                  0
-                )
-              )
-          )
-          .filter(
-            page =>
-              Number.isInteger(page) &&
-              page >= 1 &&
-              page <= 604
-          );
-
-
       return [
         ...new Set(
-          pages
+          getRecitationRecords()
+            .map(
+              record =>
+                numberValue(
+                  firstValue(
+                    record,
+                    [
+                      'page',
+                      'pageNumber',
+                      'page_number',
+                      'pageno'
+                    ],
+                    0
+                  )
+                )
+            )
+            .filter(
+              page =>
+                Number.isInteger(page) &&
+                page >= 1 &&
+                page <= 604
+            )
         )
       ];
 
@@ -3343,28 +3978,57 @@
        POINTS
     ========================= */
 
-    function getAcademicPoints(){
+    function getScoreSummary(){
 
-      const stored =
+      const summary =
         firstValue(
           profileData,
           [
-            'academicPoints',
-            'academic_points',
-            'recitationPoints',
-            'recitation_points'
+            'scoreSummary',
+            'score_summary'
           ],
           null
         );
 
 
       if(
-        stored !== null &&
-        stored !== '—'
+        summary &&
+        typeof summary === 'object'
+      ){
+
+        return summary;
+
+      }
+
+
+      return {};
+
+    }
+
+
+    function getAcademicPoints(){
+
+      const summary =
+        getScoreSummary();
+
+
+      const fromSummary =
+        firstValue(
+          summary,
+          [
+            'recitationAcademic'
+          ],
+          null
+        );
+
+
+      if(
+        fromSummary !== null &&
+        fromSummary !== '—'
       ){
 
         return numberValue(
-          stored
+          fromSummary
         );
 
       }
@@ -3408,13 +4072,7 @@
           profileData,
           [
             'extraPoints',
-            'extra_points',
-            'bonusPoints',
-            'bonus_points',
-            'promotionalPoints',
-            'promotional_points',
-            'pointRecords',
-            'point_records'
+            'extra_points'
           ],
           []
         )
@@ -3430,86 +4088,61 @@
 
     function getBonusPoints(){
 
-      const stored =
-        firstValue(
-          profileData,
-          [
-            'bonusPointsTotal',
-            'bonus_points_total',
-            'promotionalPointsTotal',
-            'promotional_points_total',
-            'extraPointsTotal',
-            'extra_points_total'
-          ],
-          null
-        );
+      const all =
+        getExtraPointRecords();
 
 
-      if(
-        stored !== null &&
-        stored !== '—'
-      ){
+      return all.reduce(
+        (
+          total,
+          item
+        ) => {
 
-        return numberValue(
-          stored
-        );
-
-      }
-
-
-      return getExtraPointRecords()
-        .reduce(
-          (
-            total,
-            item
-          ) => {
-
-            return (
-              total +
-              Math.max(
-                0,
-                numberValue(
-                  firstValue(
-                    item,
-                    [
-                      'points',
-                      'value',
-                      'amount'
-                    ],
-                    0
-                  )
-                )
+          return (
+            total +
+            numberValue(
+              firstValue(
+                item,
+                [
+                  'points',
+                  'value',
+                  'amount'
+                ],
+                0
               )
-            );
+            )
+          );
 
-          },
-          0
-        );
+        },
+        0
+      );
 
     }
 
 
     function getTotalPoints(){
 
-      const stored =
+      const summary =
+        getScoreSummary();
+
+
+      const savedTotal =
         firstValue(
-          profileData,
+          summary,
           [
-            'points',
-            'totalPoints',
-            'total_points'
+            'totalPoints'
           ],
           null
         );
 
 
       if(
-        stored !== null &&
-        stored !== '—'
+        savedTotal !== null &&
+        savedTotal !== '—'
       ){
 
         return numberValue(
-          stored
+          savedTotal
         );
 
       }
@@ -3523,105 +4156,337 @@
     }
 
 
-    function getEvaluation(){
+    function getOverallEvaluation(){
 
-      return firstValue(
-        profileData,
-        [
-          'evaluation',
-          'currentEvaluation',
-          'current_evaluation',
-          'overallEvaluation',
-          'overall_evaluation',
-          'finalEvaluation',
-          'final_evaluation',
-          'scoreEvaluation',
-          'score_evaluation',
-          'studentEvaluation',
-          'student_evaluation'
-        ],
+      const summary =
+        getScoreSummary();
+
+
+      const saved =
         firstValue(
-          student,
+          summary,
           [
-            'evaluation',
-            'current_evaluation',
-            'final_evaluation'
+            'overallFinal'
           ],
-          '—'
-        )
+          null
+        );
+
+
+      if(
+        saved !== null &&
+        saved !== '—'
+      ){
+
+        return numberValue(
+          saved
+        );
+
+      }
+
+
+      const fallback =
+        firstValue(
+          profileData,
+          [
+            'overallProgress',
+            'overall_progress'
+          ],
+          0
+        );
+
+
+      return numberValue(
+        fallback
       );
 
     }
 
 
-    /* =========================
-       BADGES
-    ========================= */
+    function getMonthlyEvaluation(){
 
-    function normalizeBadgeId(
-      badge
-    ){
+      const summary =
+        getScoreSummary();
+
+
+      const saved =
+        firstValue(
+          summary,
+          [
+            'monthlyFinal'
+          ],
+          null
+        );
+
 
       if(
-        !badge ||
-        typeof badge !== 'object'
+        saved !== null &&
+        saved !== '—'
       ){
+
+        return numberValue(
+          saved
+        );
+
+      }
+
+
+      const fallback =
+        firstValue(
+          profileData,
+          [
+            'weeklyProgress',
+            'weekly_progress'
+          ],
+          0
+        );
+
+
+      return numberValue(
+        fallback
+      );
+
+    }
+
+
+    function getMonthlyPoints(){
+
+      const summary =
+        getScoreSummary();
+
+
+      const saved =
+        firstValue(
+          summary,
+          [
+            'monthlyPoints'
+          ],
+          null
+        );
+
+
+      if(
+        saved !== null &&
+        saved !== '—'
+      ){
+
+        return numberValue(
+          saved
+        );
+
+      }
+
+
+      const month =
+        currentMonthKey();
+
+
+      const recitation =
+        getRecitationRecords()
+          .filter(
+            record =>
+              getMonthKey(
+                firstValue(
+                  record,
+                  [
+                    'date',
+                    'createdAt',
+                    'created_at'
+                  ],
+                  ''
+                )
+              ) === month
+          )
+          .reduce(
+            (
+              total,
+              record
+            ) => {
+
+              return (
+                total +
+                numberValue(
+                  firstValue(
+                    record,
+                    [
+                      'points',
+                      'academicPoints',
+                      'academic_points',
+                      'recitationPoints',
+                      'recitation_points'
+                    ],
+                    0
+                  )
+                )
+              );
+
+            },
+            0
+          );
+
+
+      const extras =
+        getExtraPointRecords()
+          .filter(
+            record =>
+              getMonthKey(
+                firstValue(
+                  record,
+                  [
+                    'date',
+                    'createdAt',
+                    'created_at'
+                  ],
+                  ''
+                )
+              ) === month
+          )
+          .reduce(
+            (
+              total,
+              record
+            ) => {
+
+              return (
+                total +
+                numberValue(
+                  firstValue(
+                    record,
+                    [
+                      'points',
+                      'value',
+                      'amount'
+                    ],
+                    0
+                  )
+                )
+              );
+
+            },
+            0
+          );
+
+
+      return (
+        recitation +
+        extras
+      );
+
+    }
+
+
+    function getMonthKey(
+      value
+    ){
+
+      if(!value){
 
         return '';
 
       }
 
 
-      return String(
-        firstValue(
-          badge,
-          [
-            'id',
-            'badgeId',
-            'badge_id',
-            'type',
-            'badgeType',
-            'badge_type'
-          ],
-          ''
+      const date =
+        new Date(
+          value
+        );
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
         )
-      );
+      ){
 
-    }
+        const raw =
+          String(
+            value
+          );
 
 
-    function getBadges(){
+        if(
+          /^\d{4}-\d{2}$/.test(
+            raw
+          )
+        ){
 
-      return toArray(
-        firstValue(
-          profileData,
-          [
-            'badges',
-            'badgeRecords',
-            'badge_records'
-          ],
-          []
+          return raw;
+
+        }
+
+
+        return '';
+
+      }
+
+
+      return (
+        date.getFullYear() +
+        '-' +
+        String(
+          date.getMonth()+1
+        ).padStart(
+          2,
+          '0'
         )
-      )
-      .filter(
-        badge =>
-          badge &&
-          typeof badge === 'object'
-      )
-      .filter(
-        badge =>
-          !!BADGE_DEFINITIONS[
-            normalizeBadgeId(
-              badge
-            )
-          ]
       );
 
     }
 
 
     /* =========================
-       FEES
+       METRICS
+    ========================= */
+
+    function renderMetrics(){
+
+      const total =
+        getTotalPoints();
+
+
+      const overall =
+        getOverallEvaluation();
+
+
+      const monthly =
+        getMonthlyEvaluation();
+
+
+      const monthlyPoints =
+        getMonthlyPoints();
+
+
+      setText(
+        'metricTotalPoints',
+        decimalNumber(
+          total
+        )
+      );
+
+
+      setText(
+        'metricOverall',
+        `${decimalNumber(overall)}%`
+      );
+
+
+      setText(
+        'metricMonthly',
+        `${decimalNumber(monthly)}%`
+      );
+
+
+      setText(
+        'metricMonthlyPoints',
+        decimalNumber(
+          monthlyPoints
+        )
+      );
+
+    }
+
+
+    /* =========================
+       PAYMENT
     ========================= */
 
     function getFeeRecords(){
@@ -3630,137 +4495,22 @@
         firstValue(
           profileData,
           [
+            'fees',
             'monthlyFees',
             'monthly_fees',
             'feeClaims',
             'fee_claims',
-            'fees',
             'feesHistory',
-            'fees_history',
-            'monthlyPayments',
-            'monthly_payments'
+            'fees_history'
           ],
           []
         )
       )
       .filter(
-        item =>
-          item &&
-          typeof item === 'object'
+        fee =>
+          fee &&
+          typeof fee === 'object'
       );
-
-    }
-
-
-    function getFeeMonth(
-      fee
-    ){
-
-      const direct =
-        firstValue(
-          fee,
-          [
-            'month',
-            'monthKey',
-            'month_key',
-            'billingMonth',
-            'billing_month',
-            'period'
-          ],
-          ''
-        );
-
-
-      if(direct){
-
-        const value =
-          String(
-            direct
-          );
-
-
-        if(
-          /^\d{4}-\d{2}$/.test(
-            value
-          )
-        ){
-
-          return value;
-
-        }
-
-
-        const date =
-          new Date(
-            value
-          );
-
-
-        if(
-          !Number.isNaN(
-            date.getTime()
-          )
-        ){
-
-          return (
-            date.getFullYear() +
-            '-' +
-            String(
-              date.getMonth()+1
-            ).padStart(
-              2,
-              '0'
-            )
-          );
-
-        }
-
-      }
-
-
-      const dateValue =
-        firstValue(
-          fee,
-          [
-            'date',
-            'createdAt',
-            'created_at'
-          ],
-          ''
-        );
-
-
-      if(dateValue){
-
-        const date =
-          new Date(
-            dateValue
-          );
-
-
-        if(
-          !Number.isNaN(
-            date.getTime()
-          )
-        ){
-
-          return (
-            date.getFullYear() +
-            '-' +
-            String(
-              date.getMonth()+1
-            ).padStart(
-              2,
-              '0'
-            )
-          );
-
-        }
-
-      }
-
-
-      return '';
 
     }
 
@@ -3796,19 +4546,6 @@
       }
 
 
-      if(
-        status === 'unpaid' ||
-        status === 'غير مدفوع' ||
-        status === 'غير مدفوعة' ||
-        status === 'pending' ||
-        status === 'متأخر'
-      ){
-
-        return false;
-
-      }
-
-
       const explicitPaid =
         firstValue(
           fee,
@@ -3840,474 +4577,68 @@
     }
 
 
-    /* =========================
-       LOAD
-    ========================= */
+    function getFeeMonth(
+      fee
+    ){
 
-    async function loadStudent(){
-
-      const session =
-        getStudentSession();
-
-
-      if(
-        !session ||
-        !session.id
-      ){
-
-        window.location.href =
-          'student-login.html';
-
-        return;
-
-      }
-
-
-      try{
-
-        const {
-          data:studentData,
-          error:studentError
-        } =
-          await supabaseClient
-            .from('students')
-            .select('*')
-            .eq(
-              'id',
-              session.id
-            )
-            .maybeSingle();
-
-
-        if(studentError){
-
-          console.error(
-            studentError
-          );
-
-
-          throw new Error(
-            'تعذر تحميل بيانات الطالب.'
-          );
-
-        }
-
-
-        if(!studentData){
-
-          throw new Error(
-            'لم يتم العثور على ملف الطالب.'
-          );
-
-        }
-
-
-        student =
-          studentData;
-
-
-        const {
-          data:profileDataRow,
-          error:profileError
-        } =
-          await supabaseClient
-            .from('student_profiles')
-            .select('*')
-            .eq(
-              'student_id',
-              String(
-                student.id
-              )
-            )
-            .maybeSingle();
-
-
-        if(profileError){
-
-          console.error(
-            profileError
-          );
-
-
-          throw new Error(
-            'تعذر تحميل تفاصيل ملف الطالب.'
-          );
-
-        }
-
-
-        profile =
-          profileDataRow || {};
-
-
-        profileData =
-          normalizeProfileData(
-            profile
-          );
-
-
-        renderStudent();
-
-
-        document.getElementById(
-          'loadingScreen'
-        ).style.display =
-          'none';
-
-
-        document.getElementById(
-          'page'
-        ).style.display =
-          'block';
-
-
-      }catch(error){
-
-        console.error(
-          error
-        );
-
-
-        showError(
-          error.message ||
-          'حدث خطأ أثناء تحميل الملف.'
-        );
-
-      }
-
-    }
-
-
-    /* =========================
-       RENDER STUDENT
-    ========================= */
-
-    function renderStudent(){
-
-      const name =
+      const direct =
         firstValue(
-          student,
+          fee,
           [
-            'name',
-            'full_name'
+            'month',
+            'monthKey',
+            'month_key',
+            'billingMonth',
+            'billing_month'
           ],
-          firstValue(
-            profileData,
-            [
-              'name',
-              'full_name'
-            ],
-            'الطالب'
-          )
+          ''
         );
 
 
-      const section =
-        firstValue(
-          student,
-          [
-            'section',
-            'group',
-            'class'
-          ],
-          firstValue(
-            profileData,
-            [
-              'section',
-              'group',
-              'class'
-            ]
-          )
-        );
+      if(direct){
 
-
-      const memorization =
-        firstValue(
-          student,
-          [
-            'memorization',
-            'memorization_level',
-            'hifz'
-          ],
-          firstValue(
-            profileData,
-            [
-              'memorization',
-              'memorization_level',
-              'hifz'
-            ]
-          )
-        );
-
-
-      const status =
-        firstValue(
-          student,
-          [
-            'status'
-          ],
-          firstValue(
-            profileData,
-            [
-              'status'
-            ],
-            'active'
-          )
-        );
-
-
-      /* =========================
-         BASIC CARD
-      ========================= */
-
-      setText(
-        'studentName',
-        name
-      );
-
-
-      setText(
-        'avatarLetter',
-        getInitial(
-          name
-        )
-      );
-
-
-      document.getElementById(
-        'personalSubtitle'
-      ).textContent =
-        section !== '—'
-          ? `القسم: ${text(section)} — ملف الطالب للعرض فقط`
-          : 'ملف الطالب للعرض فقط';
-
-
-      setText(
-        'infoName',
-        name
-      );
-
-
-      setText(
-        'infoSection',
-        section
-      );
-
-
-      setText(
-        'infoMemorization',
-        memorization
-      );
-
-
-      setText(
-        'infoStatus',
-        formatStatus(
-          status
-        )
-      );
-
-
-      setText(
-        'infoGuardianPhone',
-        firstValue(
-          profileData,
-          [
-            'guardianPhone',
-            'guardian_phone',
-            'parentPhone',
-            'parent_phone',
-            'phone'
-          ]
-        )
-      );
-
-
-      setText(
-        'infoJoiningDate',
-        formatDate(
-          firstValue(
-            profileData,
-            [
-              'joiningDate',
-              'joining_date',
-              'joinDate',
-              'join_date'
-            ],
-            ''
-          )
-        )
-      );
-
-
-      setText(
-        'infoResidence',
-        firstValue(
-          profileData,
-          [
-            'residence',
-            'address',
-            'home',
-            'housing'
-          ]
-        )
-      );
-
-
-      setText(
-        'infoBus',
-        firstValue(
-          profileData,
-          [
-            'bus',
-            'transport',
-            'transportation'
-          ]
-        )
-      );
-
-
-      setText(
-        'infoHomeLocation',
-        firstValue(
-          profileData,
-          [
-            'homeLocation',
-            'home_location',
-            'location'
-          ]
-        )
-      );
-
-
-      setText(
-        'infoCommitment',
-        firstValue(
-          profileData,
-          [
-            'commitment',
-            'commitmentLevel',
-            'commitment_level'
-          ]
-        )
-      );
-
-
-      /* =========================
-         PHOTO
-      ========================= */
-
-      const photoUrl =
-        firstValue(
-          profileData,
-          [
-            'photo',
-            'photoUrl',
-            'photo_url',
-            'image',
-            'imageUrl',
-            'image_url',
-            'avatar'
-          ],
-          firstValue(
-            student,
-            [
-              'photo',
-              'photoUrl',
-              'photo_url',
-              'image',
-              'imageUrl',
-              'image_url',
-              'avatar'
-            ],
-            ''
-          )
-        );
-
-
-      if(
-        photoUrl &&
-        photoUrl !== '—'
-      ){
-
-        const photo =
-          document.getElementById(
-            'studentPhoto'
-          );
-
-
-        const letter =
-          document.getElementById(
-            'avatarLetter'
-          );
-
-
-        photo.src =
+        const value =
           String(
-            photoUrl
+            direct
           );
 
 
-        photo.style.display =
-          'block';
+        if(
+          /^\d{4}-\d{2}$/.test(
+            value
+          )
+        ){
+
+          return value;
+
+        }
 
 
-        letter.style.display =
-          'none';
-
-
-        photo.onerror =
-          function(){
-
-            photo.style.display =
-              'none';
-
-
-            letter.style.display =
-              'grid';
-
-          };
+        return getMonthKey(
+          value
+        );
 
       }
 
 
-      /* =========================
-         PAYMENT STATUS
-      ========================= */
-
-      renderPaymentStatus();
-
-
-      /* =========================
-         SECTIONS
-      ========================= */
-
-      renderRecitations();
-
-      renderPlan();
-
-      renderTests();
-
-      renderAttendance();
-
-      renderPoints();
-
-      renderBadges();
-
-      renderFees();
-
-      renderProgress();
+      return getMonthKey(
+        firstValue(
+          fee,
+          [
+            'date',
+            'createdAt',
+            'created_at'
+          ],
+          ''
+        )
+      );
 
     }
 
-
-    /* =========================
-       PAYMENT STATUS
-    ========================= */
 
     function renderPaymentStatus(){
 
-      const currentMonth =
+      const month =
         currentMonthKey();
 
 
@@ -4320,29 +4651,20 @@
           fee =>
             getFeeMonth(
               fee
-            ) === currentMonth
+            ) === month
         );
 
 
-      if(currentFee){
-
-        const paid =
-          feeIsPaid(
-            currentFee
-          );
-
+      if(
+        currentFee &&
+        feeIsPaid(
+          currentFee
+        )
+      ){
 
         setText(
           'infoPaymentStatus',
-          paid
-            ? 'مدفوع'
-            : 'غير مدفوع'
-        );
-
-
-        setText(
-          'infoMonthlyFee',
-          '5 د.أ'
+          'مدفوع'
         );
 
       }else{
@@ -4352,67 +4674,216 @@
           'غير مدفوع'
         );
 
+      }
+
+
+      setText(
+        'infoMonthlyFee',
+        '5 د.أ'
+      );
+
+    }
+
+
+    function renderFees(){
+
+      const records =
+        getFeeRecords();
+
+
+      const currentMonth =
+        currentMonthKey();
+
+
+      const currentFee =
+        records.find(
+          fee =>
+            getFeeMonth(
+              fee
+            ) === currentMonth
+        );
+
+
+      setText(
+        'currentFeeMonth',
+        formatMonth(
+          currentMonth
+        )
+      );
+
+
+      if(currentFee){
 
         setText(
-          'infoMonthlyFee',
-          '5 د.أ'
+          'currentFeeStatus',
+          feeIsPaid(
+            currentFee
+          )
+            ? 'مدفوع'
+            : 'غير مدفوع'
+        );
+
+
+        const paidAt =
+          firstValue(
+            currentFee,
+            [
+              'paidAt',
+              'paid_at',
+              'paymentDate',
+              'payment_date'
+            ],
+            ''
+          );
+
+
+        setText(
+          'lastFeePayment',
+          paidAt
+            ? formatDateTime(
+                paidAt
+              )
+            : '—'
+        );
+
+      }else{
+
+        setText(
+          'currentFeeStatus',
+          'غير مدفوع'
+        );
+
+
+        setText(
+          'lastFeePayment',
+          '—'
         );
 
       }
 
+
+      const container =
+        document.getElementById(
+          'feesList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'feesSummary'
+        );
+
+
+      if(!records.length){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد بيانات رسوم مسجلة.</div>';
+
+        summary.textContent =
+          '5 د.أ شهريًا';
+
+        return;
+
+      }
+
+
+      const sorted =
+        [...records]
+          .sort(
+            (
+              a,
+              b
+            ) =>
+              getFeeMonth(b)
+                .localeCompare(
+                  getFeeMonth(a)
+                )
+          );
+
+
+      container.innerHTML =
+        sorted
+          .map(
+            fee => {
+
+              const month =
+                getFeeMonth(
+                  fee
+                );
+
+
+              const paid =
+                feeIsPaid(
+                  fee
+                );
+
+
+              const paidAt =
+                firstValue(
+                  fee,
+                  [
+                    'paidAt',
+                    'paid_at',
+                    'paymentDate',
+                    'payment_date'
+                  ],
+                  ''
+                );
+
+
+              return `
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      ${escapeHtml(
+                        formatMonth(
+                          month
+                        )
+                      )}
+                    </div>
+
+                    <div class="item-sub">
+                      5 د.أ
+                      ${
+                        paidAt
+                          ? ` • تاريخ الدفع: ${escapeHtml(formatDateTime(paidAt))}`
+                          : ''
+                      }
+                    </div>
+
+                  </div>
+
+                  <div class="item-badge">
+                    ${paid ? 'مدفوع' : 'غير مدفوع'}
+                  </div>
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
+
+
+      const paidCount =
+        sorted.filter(
+          fee =>
+            feeIsPaid(
+              fee
+            )
+        ).length;
+
+
+      summary.textContent =
+        `${paidCount} مدفوعة من ${sorted.length}`;
+
     }
 
 
     /* =========================
-       SECTION SWITCH
-    ========================= */
-
-    function showProfileSection(
-      sectionName
-    ){
-
-      const buttons =
-        document.querySelectorAll(
-          '.section-switch'
-        );
-
-
-      const sections =
-        document.querySelectorAll(
-          '.profile-section'
-        );
-
-
-      buttons.forEach(
-        button => {
-
-          button.classList.toggle(
-            'active',
-            button.dataset.section ===
-            sectionName
-          );
-
-        }
-      );
-
-
-      sections.forEach(
-        section => {
-
-          section.classList.toggle(
-            'active',
-            section.dataset.content ===
-            sectionName
-          );
-
-        }
-      );
-
-    }
-
-
-    /* =========================
-       RECITATION
+       RECITATION RENDER
     ========================= */
 
     function renderRecitations(){
@@ -4427,18 +4898,18 @@
         getRecitationRecords();
 
 
-      const pageNumbers =
+      const pages =
         getRecitationPageNumbers();
 
 
       const pageSet =
         new Set(
-          pageNumbers
+          pages
         );
 
 
       const pageCount =
-        pageNumbers.length;
+        pages.length;
 
 
       const percent =
@@ -4458,20 +4929,13 @@
       JUZ_RANGES.forEach(
         range => {
 
-          const start =
-            range[1];
-
-          const end =
-            range[2];
-
-
           let done =
             0;
 
 
           for(
-            let page = start;
-            page <= end;
+            let page = range[1];
+            page <= range[2];
             page++
           ){
 
@@ -4490,7 +4954,9 @@
 
           if(
             done >=
-            end - start + 1
+            range[2] -
+            range[1] +
+            1
           ){
 
             completedJuz++;
@@ -4583,13 +5049,13 @@
           sorted
             .map(
               (
-                item,
+                record,
                 index
               ) => {
 
                 const page =
                   firstValue(
-                    item,
+                    record,
                     [
                       'page',
                       'pageNumber',
@@ -4601,7 +5067,7 @@
 
                 const type =
                   firstValue(
-                    item,
+                    record,
                     [
                       'type',
                       'recitationType',
@@ -4613,7 +5079,7 @@
 
                 const score =
                   firstValue(
-                    item,
+                    record,
                     [
                       'score',
                       'mark',
@@ -4626,7 +5092,7 @@
 
                 const points =
                   firstValue(
-                    item,
+                    record,
                     [
                       'points',
                       'academicPoints',
@@ -4640,7 +5106,7 @@
 
                 const date =
                   firstValue(
-                    item,
+                    record,
                     [
                       'date',
                       'createdAt',
@@ -4652,24 +5118,24 @@
 
                 const note =
                   firstValue(
-                    item,
+                    record,
                     [
-                      'notes',
                       'note',
+                      'notes',
                       'comment'
                     ],
                     ''
                   );
 
 
-                const details = [];
+                const parts = [];
 
 
                 if(
                   type !== ''
                 ){
 
-                  details.push(
+                  parts.push(
                     `النوع: ${type}`
                   );
 
@@ -4680,7 +5146,7 @@
                   score !== ''
                 ){
 
-                  details.push(
+                  parts.push(
                     `التقييم: ${score}`
                   );
 
@@ -4691,7 +5157,7 @@
                   points !== ''
                 ){
 
-                  details.push(
+                  parts.push(
                     `النقاط: ${points}`
                   );
 
@@ -4702,7 +5168,7 @@
                   date !== ''
                 ){
 
-                  details.push(
+                  parts.push(
                     formatDateTime(
                       date
                     )
@@ -4715,7 +5181,7 @@
                   note !== ''
                 ){
 
-                  details.push(
+                  parts.push(
                     note
                   );
 
@@ -4736,10 +5202,10 @@
                       </div>
 
                       ${
-                        details.length
+                        parts.length
                           ? `
                             <div class="item-sub">
-                              ${details
+                              ${parts
                                 .map(
                                   part =>
                                     escapeHtml(part)
@@ -4862,10 +5328,12 @@
                     </div>
 
                     <div class="progress-line">
+
                       <div
                         class="progress-fill"
                         style="width:${percent}%"
                       ></div>
+
                     </div>
 
                   </div>
@@ -4885,7 +5353,7 @@
 
 
     /* =========================
-       PLAN
+       PAGE PARSER
     ========================= */
 
     function parsePageNumbers(
@@ -5071,11 +5539,16 @@
         (
           a,
           b
-        ) => a - b
+        ) =>
+          a - b
       );
 
     }
 
+
+    /* =========================
+       PLAN
+    ========================= */
 
     function renderPlan(){
 
@@ -5096,11 +5569,11 @@
           firstValue(
             profileData,
             [
+              'planTasks',
+              'plan_tasks',
               'weeklyPlan',
               'weekly_plan',
               'plan',
-              'planTasks',
-              'plan_tasks',
               'tasks'
             ],
             []
@@ -5195,7 +5668,7 @@
                 );
 
 
-              const requiredPages =
+              const pages =
                 parsePageNumbers(
                   firstValue(
                     item,
@@ -5216,8 +5689,8 @@
                 );
 
 
-              const completedPages =
-                requiredPages.filter(
+              const completed =
+                pages.filter(
                   page =>
                     pageSet.has(
                       page
@@ -5226,11 +5699,11 @@
 
 
               requiredTotal +=
-                requiredPages.length;
+                pages.length;
 
 
               completedTotal +=
-                completedPages.length;
+                completed.length;
 
 
               const details = [];
@@ -5248,16 +5721,16 @@
 
 
               if(
-                requiredPages.length
+                pages.length
               ){
 
                 details.push(
-                  `الصفحات المطلوبة: ${requiredPages.join(', ')}`
+                  `الصفحات المطلوبة: ${pages.join(', ')}`
                 );
 
 
                 details.push(
-                  `تم الإنجاز: ${completedPages.join(', ') || 'لا يوجد'}`
+                  `تم الإنجاز: ${completed.join(', ') || 'لا يوجد'}`
                 );
 
               }
@@ -5290,10 +5763,10 @@
                   </div>
 
                   ${
-                    requiredPages.length
+                    pages.length
                       ? `
                         <div class="item-badge">
-                          ${completedPages.length}/${requiredPages.length}
+                          ${completed.length}/${pages.length}
                         </div>
                       `
                       : ''
@@ -5353,9 +5826,7 @@
               'tests',
               'exams',
               'examResults',
-              'exam_results',
-              'recitationTests',
-              'recitation_tests'
+              'exam_results'
             ],
             []
           )
@@ -5412,11 +5883,10 @@
                 firstValue(
                   test,
                   [
-                    'name',
                     'title',
+                    'name',
                     'test',
-                    'subject',
-                    'type'
+                    'subject'
                   ],
                   `اختبار ${index + 1}`
                 );
@@ -5428,21 +5898,7 @@
                   [
                     'score',
                     'mark',
-                    'grade',
-                    'evaluation'
-                  ],
-                  ''
-                );
-
-
-              const total =
-                firstValue(
-                  test,
-                  [
-                    'total',
-                    'max',
-                    'outOf',
-                    'out_of'
+                    'grade'
                   ],
                   ''
                 );
@@ -5472,14 +5928,14 @@
                 );
 
 
-              const details = [];
+              const parts = [];
 
 
               if(
                 date !== ''
               ){
 
-                details.push(
+                parts.push(
                   formatDate(
                     date
                   )
@@ -5492,7 +5948,7 @@
                 note !== ''
               ){
 
-                details.push(
+                parts.push(
                   note
                 );
 
@@ -5509,10 +5965,10 @@
                     </div>
 
                     ${
-                      details.length
+                      parts.length
                         ? `
                           <div class="item-sub">
-                            ${details
+                            ${parts
                               .map(
                                 part =>
                                   escapeHtml(part)
@@ -5530,11 +5986,6 @@
                       ? `
                         <div class="item-badge">
                           ${escapeHtml(score)}
-                          ${
-                            total !== ''
-                              ? ` / ${escapeHtml(total)}`
-                              : ''
-                          }
                         </div>
                       `
                       : ''
@@ -5578,9 +6029,7 @@
             profileData,
             [
               'attendance',
-              'attendances',
-              'attendanceRecords',
-              'attendance_records'
+              'attendances'
             ],
             []
           )
@@ -5777,7 +6226,7 @@
 
 
     /* =========================
-       POINTS
+       EXTRA POINTS
     ========================= */
 
     function renderPoints(){
@@ -5795,12 +6244,12 @@
 
 
       const evaluation =
-        getEvaluation();
+        getOverallEvaluation();
 
 
       setText(
         'academicPoints',
-        formatNumber(
+        decimalNumber(
           academic
         )
       );
@@ -5808,7 +6257,7 @@
 
       setText(
         'bonusPoints',
-        formatNumber(
+        decimalNumber(
           bonus
         )
       );
@@ -5816,7 +6265,7 @@
 
       setText(
         'totalPoints',
-        formatNumber(
+        decimalNumber(
           total
         )
       );
@@ -5824,14 +6273,14 @@
 
       setText(
         'evaluation',
-        evaluation
+        `${decimalNumber(evaluation)}%`
       );
 
 
       document.getElementById(
         'pointsSummary'
       ).textContent =
-        `${formatNumber(total)} نقطة`;
+        `${decimalNumber(total)} نقطة`;
 
 
       const container =
@@ -5971,7 +6420,7 @@
                   </div>
 
                   <div class="item-badge">
-                    +${formatNumber(points)}
+                    +${decimalNumber(points)}
                   </div>
 
                 </div>
@@ -5988,6 +6437,50 @@
        BADGES
     ========================= */
 
+    function getBadges(){
+
+      return toArray(
+        firstValue(
+          profileData,
+          [
+            'badges',
+            'badgeRecords',
+            'badge_records'
+          ],
+          []
+        )
+      )
+      .filter(
+        badge =>
+          badge &&
+          typeof badge === 'object'
+      );
+
+    }
+
+
+    function getBadgeId(
+      badge
+    ){
+
+      return String(
+        firstValue(
+          badge,
+          [
+            'badgeId',
+            'badge_id',
+            'id',
+            'type',
+            'badgeType',
+            'badge_type'
+          ],
+          ''
+        )
+      );
+
+    }
+
+
     function renderBadges(){
 
       const container =
@@ -6003,7 +6496,15 @@
 
 
       const badges =
-        getBadges();
+        getBadges()
+          .filter(
+            badge =>
+              !!BADGE_DEFINITIONS[
+                getBadgeId(
+                  badge
+                )
+              ]
+          );
 
 
       if(!badges.length){
@@ -6014,153 +6515,92 @@
         summary.textContent =
           '0 وسام';
 
-      }else{
+        renderChampions();
 
-        container.innerHTML =
-          badges
-            .map(
-              badge => {
+        return;
 
-                const id =
-                  normalizeBadgeId(
+      }
+
+
+      container.innerHTML =
+        badges
+          .filter(
+            badge =>
+              getBadgeId(badge) !==
+                'monthlyChampion' &&
+              getBadgeId(badge) !==
+                'monthly_champion'
+          )
+          .map(
+            badge => {
+
+              const definition =
+                BADGE_DEFINITIONS[
+                  getBadgeId(
                     badge
-                  );
+                  )
+                ];
 
 
-                const definition =
-                  BADGE_DEFINITIONS[
-                    id
-                  ];
+              const earnedAt =
+                firstValue(
+                  badge,
+                  [
+                    'earnedAt',
+                    'earned_at',
+                    'awardedAt',
+                    'awarded_at',
+                    'date'
+                  ],
+                  ''
+                );
 
 
-                const awardedAt =
-                  firstValue(
-                    badge,
-                    [
-                      'awardedAt',
-                      'awarded_at',
-                      'date',
-                      'createdAt',
-                      'created_at'
-                    ],
-                    ''
-                  );
+              return `
+                <div class="item">
 
+                  <div class="item-main">
 
-                const month =
-                  firstValue(
-                    badge,
-                    [
-                      'month',
-                      'monthKey',
-                      'month_key'
-                    ],
-                    ''
-                  );
-
-
-                const reason =
-                  firstValue(
-                    badge,
-                    [
-                      'reason',
-                      'note',
-                      'description'
-                    ],
-                    ''
-                  );
-
-
-                const details = [];
-
-
-                if(
-                  month !== ''
-                ){
-
-                  details.push(
-                    `الشهر: ${formatMonth(month)}`
-                  );
-
-                }
-
-
-                if(
-                  awardedAt !== ''
-                ){
-
-                  details.push(
-                    `الاستحقاق: ${formatDateTime(awardedAt)}`
-                  );
-
-                }
-
-
-                if(
-                  reason !== ''
-                ){
-
-                  details.push(
-                    reason
-                  );
-
-                }
-
-
-                if(
-                  id !== 'monthly_champion'
-                ){
-
-                  details.push(
-                    `عند الوصول إلى ${definition.requirement}`
-                  );
-
-                }
-
-
-                return `
-                  <div class="item">
-
-                    <div class="item-main">
-
-                      <div class="item-title">
-                        ${definition.emoji}
-                        ${escapeHtml(definition.name)}
-                      </div>
-
-                      ${
-                        details.length
-                          ? `
-                            <div class="item-sub">
-                              ${details
-                                .map(
-                                  part =>
-                                    escapeHtml(part)
-                                )
-                                .join(' • ')}
-                            </div>
-                          `
-                          : ''
-                      }
-
+                    <div class="item-title">
+                      ${definition.icon}
+                      ${escapeHtml(definition.title)}
                     </div>
 
-                    <div class="item-badge">
-                      مستحق
+                    <div class="item-sub">
+                      تم الحصول على الوسام تلقائيًا
+                      ${
+                        earnedAt
+                          ? ` • ${escapeHtml(formatDate(earnedAt))}`
+                          : ''
+                      }
                     </div>
 
                   </div>
-                `;
 
-              }
-            )
-            .join('');
+                  <div class="item-badge">
+                    مستحق
+                  </div>
+
+                </div>
+              `;
+
+            }
+          )
+          .join('');
 
 
-        summary.textContent =
-          `${badges.length} وسام`;
+      const basicBadgesCount =
+        badges.filter(
+          badge =>
+            getBadgeId(badge) !==
+              'monthlyChampion' &&
+            getBadgeId(badge) !==
+              'monthly_champion'
+        ).length;
 
-      }
+
+      summary.textContent =
+        `${basicBadgesCount} وسام`;
 
 
       renderChampions();
@@ -6189,11 +6629,22 @@
       const champions =
         getBadges()
           .filter(
-            badge =>
-              normalizeBadgeId(
-                badge
-              ) ===
-              'monthly_champion'
+            badge => {
+
+              const id =
+                getBadgeId(
+                  badge
+                );
+
+
+              return (
+                id ===
+                  'monthlyChampion' ||
+                id ===
+                  'monthly_champion'
+              );
+
+            }
           );
 
 
@@ -6246,9 +6697,9 @@
                   [
                     'awardedAt',
                     'awarded_at',
-                    'date',
-                    'createdAt',
-                    'created_at'
+                    'earnedAt',
+                    'earned_at',
+                    'date'
                   ],
                   ''
                 );
@@ -6284,7 +6735,7 @@
               ){
 
                 details.push(
-                  `تاريخ التتويج: ${formatDateTime(awardedAt)}`
+                  `التتويج: ${formatDateTime(awardedAt)}`
                 );
 
               }
@@ -6335,211 +6786,6 @@
 
 
     /* =========================
-       FEES
-    ========================= */
-
-    function renderFees(){
-
-      const records =
-        getFeeRecords();
-
-
-      const month =
-        currentMonthKey();
-
-
-      const currentFee =
-        records.find(
-          fee =>
-            getFeeMonth(
-              fee
-            ) === month
-        );
-
-
-      setText(
-        'currentFeeMonth',
-        formatMonth(
-          month
-        )
-      );
-
-
-      if(currentFee){
-
-        const paid =
-          feeIsPaid(
-            currentFee
-          );
-
-
-        setText(
-          'currentFeeStatus',
-          paid
-            ? 'مدفوع'
-            : 'غير مدفوع'
-        );
-
-
-        const paidAt =
-          firstValue(
-            currentFee,
-            [
-              'paidAt',
-              'paid_at',
-              'paymentDate',
-              'payment_date'
-            ],
-            ''
-          );
-
-
-        setText(
-          'lastFeePayment',
-          paidAt
-            ? formatDateTime(
-                paidAt
-              )
-            : '—'
-        );
-
-      }else{
-
-        setText(
-          'currentFeeStatus',
-          'غير مدفوع'
-        );
-
-
-        setText(
-          'lastFeePayment',
-          '—'
-        );
-
-      }
-
-
-      const container =
-        document.getElementById(
-          'feesList'
-        );
-
-
-      const summary =
-        document.getElementById(
-          'feesSummary'
-        );
-
-
-      if(!records.length){
-
-        container.innerHTML =
-          '<div class="empty">لا توجد بيانات رسوم مسجلة.</div>';
-
-        summary.textContent =
-          '5 د.أ شهريًا';
-
-        return;
-
-      }
-
-
-      const sorted =
-        [...records]
-          .sort(
-            (
-              a,
-              b
-            ) =>
-              getFeeMonth(b)
-                .localeCompare(
-                  getFeeMonth(a)
-                )
-          );
-
-
-      container.innerHTML =
-        sorted
-          .map(
-            fee => {
-
-              const feeMonth =
-                getFeeMonth(
-                  fee
-                );
-
-
-              const paid =
-                feeIsPaid(
-                  fee
-                );
-
-
-              const paidAt =
-                firstValue(
-                  fee,
-                  [
-                    'paidAt',
-                    'paid_at',
-                    'paymentDate',
-                    'payment_date'
-                  ],
-                  ''
-                );
-
-
-              return `
-                <div class="item">
-
-                  <div class="item-main">
-
-                    <div class="item-title">
-                      ${escapeHtml(
-                        formatMonth(
-                          feeMonth
-                        )
-                      )}
-                    </div>
-
-                    <div class="item-sub">
-                      5 د.أ
-                      ${
-                        paidAt
-                          ? ` • تاريخ الدفع: ${escapeHtml(formatDateTime(paidAt))}`
-                          : ''
-                      }
-                    </div>
-
-                  </div>
-
-                  <div class="item-badge">
-                    ${paid ? 'مدفوع' : 'غير مدفوع'}
-                  </div>
-
-                </div>
-              `;
-
-            }
-          )
-          .join('');
-
-
-      const paidCount =
-        sorted.filter(
-          fee =>
-            feeIsPaid(
-              fee
-            )
-        ).length;
-
-
-      summary.textContent =
-        `${paidCount} مدفوعة من ${sorted.length}`;
-
-    }
-
-
-    /* =========================
        PROGRESS
     ========================= */
 
@@ -6550,9 +6796,7 @@
           profileData,
           [
             'weeklyProgress',
-            'weekly_progress',
-            'weeklyAchievement',
-            'weekly_achievement'
+            'weekly_progress'
           ],
           ''
         );
@@ -6563,8 +6807,7 @@
           profileData,
           [
             'overallProgress',
-            'overall_progress',
-            'progress'
+            'overall_progress'
           ],
           ''
         );
@@ -6576,7 +6819,7 @@
 
 
       const updatedAt =
-        profile.updated_at ||
+        profile?.updated_at ||
         firstValue(
           profileData,
           [
@@ -6589,15 +6832,17 @@
 
       setText(
         'progressWeekly',
-        weekly ||
-        'يتم احتساب الإنجاز من الخطة الأسبوعية'
+        weekly !== ''
+          ? `${decimalNumber(weekly)}%`
+          : `${decimalNumber(getMonthlyEvaluation())}%`
       );
 
 
       setText(
         'progressOverall',
-        overall ||
-        `${Math.round((pages / 604) * 100)}% من صفحات المصحف`
+        overall !== ''
+          ? `${decimalNumber(overall)}%`
+          : `${Math.round((pages / 604) * 100)}% من صفحات المصحف`
       );
 
 
@@ -6637,6 +6882,616 @@
       ).textContent =
         notes ||
         'لا توجد ملاحظات حاليًا.';
+
+    }
+
+
+    /* =========================
+       PERSONAL CARD
+    ========================= */
+
+    function renderPersonalCard(){
+
+      const name =
+        firstValue(
+          student,
+          [
+            'name',
+            'full_name'
+          ],
+          firstValue(
+            profileData,
+            [
+              'name',
+              'full_name'
+            ],
+            'الطالب'
+          )
+        );
+
+
+      const section =
+        firstValue(
+          student,
+          [
+            'section',
+            'group',
+            'class'
+          ],
+          firstValue(
+            profileData,
+            [
+              'section',
+              'group',
+              'class'
+            ]
+          )
+        );
+
+
+      const status =
+        firstValue(
+          student,
+          [
+            'status'
+          ],
+          'active'
+        );
+
+
+      const code =
+        firstValue(
+          profileData,
+          [
+            'studentCode'
+          ],
+          '---'
+        );
+
+
+      const warnings =
+        numberValue(
+          firstValue(
+            profileData,
+            [
+              'warnings'
+            ],
+            0
+          )
+        );
+
+
+      setText(
+        'studentName',
+        name
+      );
+
+
+      setText(
+        'avatarLetter',
+        getInitial(
+          name
+        )
+      );
+
+
+      setText(
+        'studentCode',
+        code
+      );
+
+
+      setText(
+        'infoName',
+        name
+      );
+
+
+      setText(
+        'infoSection',
+        section
+      );
+
+
+      setText(
+        'infoStatus',
+        formatStatus(
+          status
+        )
+      );
+
+
+      setText(
+        'infoWarnings',
+        warnings
+      );
+
+
+      setText(
+        'infoGuardianPhone',
+        firstValue(
+          profileData,
+          [
+            'guardianPhone',
+            'guardian_phone',
+            'parentPhone',
+            'parent_phone',
+            'phone'
+          ]
+        )
+      );
+
+
+      setText(
+        'infoJoiningDate',
+        formatDate(
+          firstValue(
+            profileData,
+            [
+              'joiningDate',
+              'joining_date',
+              'joinDate',
+              'join_date'
+            ],
+            ''
+          )
+        )
+      );
+
+
+      setText(
+        'infoResidence',
+        firstValue(
+          profileData,
+          [
+            'residence',
+            'address',
+            'home',
+            'housing'
+          ]
+        )
+      );
+
+
+      setText(
+        'infoBus',
+        firstValue(
+          profileData,
+          [
+            'bus',
+            'transport',
+            'transportation'
+          ]
+        )
+      );
+
+
+      const photoUrl =
+        firstValue(
+          profileData,
+          [
+            'photoUrl',
+            'photo_url',
+            'photo',
+            'imageUrl',
+            'image_url',
+            'image',
+            'avatar'
+          ],
+          ''
+        );
+
+
+      if(
+        photoUrl &&
+        photoUrl !== '—'
+      ){
+
+        const photo =
+          document.getElementById(
+            'studentPhoto'
+          );
+
+
+        const letter =
+          document.getElementById(
+            'avatarLetter'
+          );
+
+
+        photo.src =
+          String(
+            photoUrl
+          );
+
+
+        photo.style.display =
+          'block';
+
+
+        letter.style.display =
+          'none';
+
+
+        photo.onerror =
+          function(){
+
+            photo.style.display =
+              'none';
+
+
+            letter.style.display =
+              'grid';
+
+          };
+
+      }
+
+
+      renderMetrics();
+
+      renderPaymentStatus();
+
+    }
+
+
+    /* =========================
+       SECTION SWITCH
+    ========================= */
+
+    function showProfileSection(
+      sectionName
+    ){
+
+      const buttons =
+        document.querySelectorAll(
+          '.section-switch'
+        );
+
+
+      const sections =
+        document.querySelectorAll(
+          '.profile-section'
+        );
+
+
+      buttons.forEach(
+        button => {
+
+          button.classList.toggle(
+            'active',
+            button.dataset.section ===
+            sectionName
+          );
+
+        }
+      );
+
+
+      sections.forEach(
+        section => {
+
+          section.classList.toggle(
+            'active',
+            section.dataset.content ===
+            sectionName
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================
+       COPY CODE
+    ========================= */
+
+    async function copyStudentCode(){
+
+      const code =
+        firstValue(
+          profileData,
+          [
+            'studentCode'
+          ],
+          ''
+        );
+
+
+      if(
+        !code ||
+        code === '—' ||
+        code === '---'
+      ){
+
+        showCopyNotice(
+          '⚠️ لا يوجد كود طالب مسجل.'
+        );
+
+        return;
+
+      }
+
+
+      try{
+
+        if(
+          navigator.clipboard &&
+          window.isSecureContext
+        ){
+
+          await navigator.clipboard.writeText(
+            String(code)
+          );
+
+        }else{
+
+          const temporary =
+            document.createElement(
+              'textarea'
+            );
+
+
+          temporary.value =
+            String(code);
+
+
+          temporary.style.position =
+            'fixed';
+
+          temporary.style.opacity =
+            '0';
+
+
+          document.body.appendChild(
+            temporary
+          );
+
+
+          temporary.focus();
+
+          temporary.select();
+
+
+          document.execCommand(
+            'copy'
+          );
+
+
+          temporary.remove();
+
+        }
+
+
+        showCopyNotice(
+          '✅ تم نسخ كود الطالب'
+        );
+
+      }catch(error){
+
+        console.error(
+          'Copy error:',
+          error
+        );
+
+
+        showCopyNotice(
+          '❌ تعذر نسخ الكود'
+        );
+
+      }
+
+    }
+
+
+    function showCopyNotice(
+      message
+    ){
+
+      const notice =
+        document.getElementById(
+          'copyNotice'
+        );
+
+
+      notice.textContent =
+        message;
+
+
+      notice.classList.add(
+        'show'
+      );
+
+
+      clearTimeout(
+        showCopyNotice.timer
+      );
+
+
+      showCopyNotice.timer =
+        setTimeout(
+          () => {
+
+            notice.classList.remove(
+              'show'
+            );
+
+          },
+          1800
+        );
+
+    }
+
+
+    /* =========================
+       RELOAD
+    ========================= */
+
+    function reloadPage(){
+
+      window.location.reload();
+
+    }
+
+
+    /* =========================
+       LOAD STUDENT
+    ========================= */
+
+    async function loadStudent(){
+
+      const session =
+        getStudentSession();
+
+
+      /*
+        الطالب لا يستخدم ?id=
+        الصفحة تعتمد على جلسة
+        تسجيل الدخول فقط.
+      */
+
+      if(
+        !session ||
+        !session.id
+      ){
+
+        window.location.href =
+          'student-login.html';
+
+        return;
+
+      }
+
+
+      try{
+
+        const {
+          data:studentData,
+          error:studentError
+        } =
+          await supabaseClient
+            .from('students')
+            .select('*')
+            .eq(
+              'id',
+              session.id
+            )
+            .maybeSingle();
+
+
+        if(studentError){
+
+          console.error(
+            studentError
+          );
+
+
+          throw new Error(
+            'تعذر تحميل بيانات الطالب.'
+          );
+
+        }
+
+
+        if(!studentData){
+
+          throw new Error(
+            'لم يتم العثور على ملف الطالب.'
+          );
+
+        }
+
+
+        student =
+          studentData;
+
+
+        const {
+          data:profileDataRow,
+          error:profileError
+        } =
+          await supabaseClient
+            .from('student_profiles')
+            .select('*')
+            .eq(
+              'student_id',
+              String(
+                student.id
+              )
+            )
+            .maybeSingle();
+
+
+        if(profileError){
+
+          console.error(
+            profileError
+          );
+
+
+          throw new Error(
+            'تعذر تحميل تفاصيل ملف الطالب.'
+          );
+
+        }
+
+
+        profile =
+          profileDataRow ||
+          {};
+
+
+        profileData =
+          normalizeProfileData(
+            profile
+          );
+
+
+        renderPersonalCard();
+
+        renderRecitations();
+
+        renderPlan();
+
+        renderTests();
+
+        renderAttendance();
+
+        renderPoints();
+
+        renderBadges();
+
+        renderFees();
+
+        renderProgress();
+
+
+        document.getElementById(
+          'loadingScreen'
+        ).style.display =
+          'none';
+
+
+        document.getElementById(
+          'page'
+        ).style.display =
+          'block';
+
+
+      }catch(error){
+
+        console.error(
+          error
+        );
+
+
+        showError(
+          error.message ||
+          'حدث خطأ أثناء تحميل الملف.'
+        );
+
+      }
 
     }
 
