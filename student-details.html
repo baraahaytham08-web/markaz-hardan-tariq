@@ -1,6969 +1,2813 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>تفاصيل الطالب | مركز حردان طارق القرآني</title>
-
-  <link rel="icon" type="image/png" href="logo.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  >
+  <title>ملف الطالب | مركز حردان طارق القرآني</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
+    :root{
+      --bg:#07130f;
+      --bg2:#0b1f18;
+      --card:rgba(14,38,29,.78);
+      --card2:rgba(9,28,21,.88);
 
-    * {
-      box-sizing: border-box;
+      --gold:#d9b86c;
+      --gold2:#f0d991;
+      --gold3:#b69143;
+
+      --green:#1b6c4d;
+      --green2:#2f9f72;
+
+      --white:#f8f5ea;
+      --muted:#aeb9b2;
+      --muted2:#829188;
+
+      --line:rgba(217,184,108,.15);
+      --shadow:0 20px 50px rgba(0,0,0,.30);
+      --radius:24px;
     }
 
-    :root {
-      --green: #0d4d3a;
-      --green2: #218866;
-      --green3: #2da579;
-      --light-green: #eaf4ee;
-      --very-light: #f5f9f7;
-
-      --gold: #b78a28;
-      --gold-light: #fbf4df;
-
-      --border: #dfe9e4;
-      --text: #18352c;
-      --muted: #71817a;
-
-      --danger: #b42318;
-      --danger-light: #fff0ef;
-
-      --warning: #a15c00;
-      --warning-light: #fff7e7;
-
-      --blue: #2563a6;
-      --blue-light: #edf5ff;
-
-      --purple: #6d4db5;
-      --purple-light: #f3effd;
-
-      --white: #ffffff;
-
-      --shadow:
-        0 10px 35px rgba(13, 77, 58, .08);
-
-      --shadow-big:
-        0 18px 55px rgba(13, 77, 58, .12);
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
+    body{
+      font-family:
+        Tahoma,
+        Arial,
+        "Segoe UI",
+        sans-serif;
       background:
-        radial-gradient(
-          circle at top right,
-          rgba(33,136,102,.07),
-          transparent 30%
-        ),
-        linear-gradient(
-          135deg,
-          #f5f9f7 0%,
-          #eef6f2 100%
-        );
-
-      color: var(--text);
-      font-family: "Cairo", sans-serif;
-      min-height: 100vh;
+        radial-gradient(circle at 15% 15%, rgba(47,159,114,.14), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(217,184,108,.10), transparent 28%),
+        radial-gradient(circle at 50% 90%, rgba(27,108,77,.12), transparent 32%),
+        linear-gradient(140deg, #06110d, #0b1b15 45%, #07130f);
+      color:var(--white);
+      min-height:100vh;
+      overflow-x:hidden;
     }
 
-    button,
-    input,
-    select,
-    textarea {
-      font-family: inherit;
+    body::before{
+      content:"";
+      position:fixed;
+      width:420px;
+      height:420px;
+      border-radius:50%;
+      background:rgba(47,159,114,.07);
+      filter:blur(80px);
+      top:-120px;
+      right:-120px;
+      pointer-events:none;
     }
 
-    button {
-      cursor: pointer;
+    body::after{
+      content:"";
+      position:fixed;
+      width:350px;
+      height:350px;
+      border-radius:50%;
+      background:rgba(217,184,108,.05);
+      filter:blur(90px);
+      bottom:-120px;
+      left:-100px;
+      pointer-events:none;
     }
 
-    /* =========================================================
-       TOP BAR
-    ========================================================= */
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-
-      background: rgba(255,255,255,.94);
-      backdrop-filter: blur(12px);
-
-      border-bottom: 1px solid var(--border);
-
-      box-shadow:
-        0 4px 20px rgba(0,0,0,.04);
+    a{
+      color:inherit;
+      text-decoration:none;
     }
 
-    .topbar-inner {
-      max-width: 1350px;
-      margin: auto;
-
-      padding: 13px 20px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 15px;
+    .page{
+      width:min(1200px, 94%);
+      margin:auto;
+      padding:28px 0 50px;
+      position:relative;
+      z-index:1;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    /* HEADER */
 
-      text-decoration: none;
-      color: var(--green);
-      font-weight: 900;
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      margin-bottom:25px;
+      flex-wrap:wrap;
     }
 
-    .brand img {
-      width: 45px;
-      height: 45px;
-
-      object-fit: contain;
-      border-radius: 12px;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:13px;
     }
 
-    .brand-text {
-      line-height: 1.3;
-    }
-
-    .brand-title {
-      font-size: 16px;
-    }
-
-    .brand-subtitle {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .back-btn {
-      border: 1px solid var(--border);
-
-      background: white;
-      color: var(--green);
-
-      padding: 10px 16px;
-
-      border-radius: 12px;
-
-      font-weight: 800;
-
-      transition: .2s;
-    }
-
-    .back-btn:hover {
-      background: var(--light-green);
-      transform: translateY(-1px);
-    }
-
-    /* =========================================================
-       MAIN
-    ========================================================= */
-
-    .page {
-      max-width: 1350px;
-      margin: auto;
-
-      padding:
-        25px
-        20px
-        60px;
-    }
-
-    /* =========================================================
-       PROFILE HEADER
-    ========================================================= */
-
-    .profile-header {
-      position: relative;
-
-      background: white;
-
-      border: 1px solid var(--border);
-      border-radius: 24px;
-
-      box-shadow: var(--shadow-big);
-
-      padding: 25px;
-
-      display: flex;
-      align-items: center;
-
-      gap: 25px;
-
-      margin-bottom: 18px;
-
-      overflow: hidden;
-    }
-
-    .profile-header::before {
-      content: "";
-
-      position: absolute;
-
-      top: 0;
-      right: 0;
-      left: 0;
-
-      height: 4px;
-
+    .brand-logo{
+      width:52px;
+      height:52px;
+      border:1px solid rgba(217,184,108,.35);
+      border-radius:17px;
+      display:grid;
+      place-items:center;
       background:
-        linear-gradient(
-          90deg,
-          var(--green),
-          var(--green3),
-          var(--gold)
-        );
-    }
-
-    .photo-area {
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .student-photo {
-      width: 125px;
-      height: 125px;
-
-      border-radius: 25px;
-
-      object-fit: cover;
-
-      border: 4px solid var(--light-green);
-
-      background: #f0f4f2;
-
-      display: block;
-    }
-
-    .photo-button {
-      position: absolute;
-
-      bottom: -8px;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      border: none;
-
-      background: var(--green);
-      color: white;
-
-      padding: 7px 13px;
-
-      border-radius: 10px;
-
-      font-size: 11px;
-      font-weight: 800;
-
-      white-space: nowrap;
-
+        linear-gradient(145deg, rgba(217,184,108,.17), rgba(27,108,77,.12));
       box-shadow:
-        0 5px 15px rgba(13,77,58,.2);
+        inset 0 0 20px rgba(217,184,108,.06),
+        0 10px 25px rgba(0,0,0,.18);
+      font-size:23px;
     }
 
-    #photoInput {
-      display: none;
+    .brand-text strong{
+      display:block;
+      font-size:16px;
+      color:var(--gold2);
+      margin-bottom:4px;
     }
 
-    .profile-main {
-      flex: 1;
-      min-width: 0;
+    .brand-text span{
+      color:var(--muted2);
+      font-size:12px;
     }
 
-    .profile-name {
-      font-size: 29px;
-      font-weight: 900;
-
-      color: var(--green);
-
-      margin:
-        0
-        0
-        8px;
-
-      word-break: break-word;
+    .top-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
     }
 
-    .profile-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .top-btn{
+      border:1px solid var(--line);
+      background:rgba(9,27,20,.65);
+      color:var(--white);
+      padding:11px 16px;
+      border-radius:14px;
+      cursor:pointer;
+      font-size:13px;
+      transition:.25s ease;
+      backdrop-filter:blur(10px);
     }
 
-    .meta-badge {
-      background: var(--very-light);
-
-      border: 1px solid var(--border);
-
-      color: var(--muted);
-
-      border-radius: 10px;
-
-      padding: 6px 10px;
-
-      font-size: 12px;
-      font-weight: 700;
+    .top-btn:hover{
+      border-color:rgba(217,184,108,.34);
+      transform:translateY(-2px);
+      background:rgba(18,51,38,.8);
     }
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
+    /* HERO */
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
-
-      border-radius: 50%;
-    }
-
-    /* =========================================================
-       SMART SUMMARY
-    ========================================================= */
-
-    .smart-summary {
+    .hero{
+      position:relative;
+      overflow:hidden;
       background:
         linear-gradient(
           135deg,
-          #ffffff,
-          #f7fbf9
+          rgba(20,62,45,.92),
+          rgba(8,27,20,.90)
         );
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 20px;
-
-      padding: 20px;
-
-      box-shadow: var(--shadow);
-
-      margin-bottom: 18px;
+      border:1px solid rgba(217,184,108,.17);
+      border-radius:32px;
+      padding:32px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
     }
 
-    .summary-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 10px;
-
-      margin-bottom: 15px;
-    }
-
-    .summary-title h2 {
-      margin: 0;
-
-      color: var(--green);
-
-      font-size: 17px;
-      font-weight: 900;
-    }
-
-    .week-label {
-      background: var(--light-green);
-
-      color: var(--green);
-
-      border: 1px solid #d3e7dc;
-
-      border-radius: 10px;
-
-      padding: 6px 10px;
-
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .progress-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 13px;
-    }
-
-    .progress-card {
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 16px;
-
-      padding: 15px;
-    }
-
-    .progress-top {
-      display: flex;
-
-      justify-content: space-between;
-      align-items: center;
-
-      gap: 8px;
-
-      margin-bottom: 9px;
-    }
-
-    .progress-title {
-      font-size: 12px;
-      font-weight: 800;
-
-      color: var(--muted);
-    }
-
-    .progress-percent {
-      font-size: 19px;
-      font-weight: 900;
-
-      color: var(--green);
-    }
-
-    .progress-bar {
-      height: 9px;
-
-      background: #edf2ef;
-
-      border-radius: 999px;
-
-      overflow: hidden;
-
-      margin-bottom: 8px;
-    }
-
-    .progress-fill {
-      height: 100%;
-
-      width: 0%;
-
-      border-radius: inherit;
-
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
       background:
         linear-gradient(
-          90deg,
-          var(--green),
-          var(--green3)
+          120deg,
+          transparent 0 35%,
+          rgba(217,184,108,.04) 50%,
+          transparent 65%
         );
-
-      transition:
-        width .5s ease;
+      pointer-events:none;
     }
 
-    .progress-fill.gold {
+    .hero-content{
+      display:flex;
+      align-items:center;
+      gap:26px;
+      position:relative;
+      z-index:1;
+    }
+
+    .avatar-wrap{
+      flex-shrink:0;
+    }
+
+    .avatar{
+      width:118px;
+      height:118px;
+      border-radius:34px;
+      overflow:hidden;
+      border:1px solid rgba(217,184,108,.38);
       background:
-        linear-gradient(
-          90deg,
-          #a67c1f,
-          #d3aa4a
-        );
-    }
-
-    .progress-fill.blue {
-      background:
-        linear-gradient(
-          90deg,
-          #2563a6,
-          #4d8dcc
-        );
-    }
-
-    .progress-fill.purple {
-      background:
-        linear-gradient(
-          90deg,
-          #6d4db5,
-          #9878d3
-        );
-    }
-
-    .progress-details {
-      color: var(--muted);
-
-      font-size: 11px;
-      font-weight: 700;
-
-      line-height: 1.7;
-    }
-
-    /* =========================================================
-       STATS
-    ========================================================= */
-
-    .stats-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(6, 1fr);
-
-      gap: 12px;
-
-      margin-bottom: 20px;
-    }
-
-    .stat-card {
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 17px;
-
-      padding: 15px;
-
-      box-shadow: var(--shadow);
-
-      min-width: 0;
-    }
-
-    .stat-icon {
-      font-size: 20px;
-      margin-bottom: 5px;
-    }
-
-    .stat-label {
-      color: var(--muted);
-
-      font-size: 11px;
-      font-weight: 700;
-
-      margin-bottom: 4px;
-    }
-
-    .stat-value {
-      color: var(--green);
-
-      font-size: 21px;
-      font-weight: 900;
-
-      word-break: break-word;
-    }
-
-    .stat-small {
-      color: var(--muted);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      margin-top: 2px;
-    }
-
-    /* =========================================================
-       QUICK INFO
-    ========================================================= */
-
-    .quick-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 13px;
-
-      margin-bottom: 20px;
-    }
-
-    .info-card {
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 17px;
-
-      padding: 16px;
-
-      box-shadow: var(--shadow);
-    }
-
-    .info-label {
-      color: var(--muted);
-
-      font-size: 11px;
-      font-weight: 700;
-
-      margin-bottom: 4px;
-    }
-
-    .info-value {
-      color: var(--text);
-
-      font-size: 13px;
-      font-weight: 800;
-
-      line-height: 1.7;
-
-      word-break: break-word;
-    }
-
-    /* =========================================================
-       EVALUATION
-    ========================================================= */
-
-    .evaluation {
-      background:
-        linear-gradient(
-          135deg,
-          #0d4d3a,
-          #218866
-        );
-
-      color: white;
-
-      border-radius: 19px;
-
-      padding: 18px 20px;
-
-      margin-bottom: 20px;
-
+        linear-gradient(145deg, #123a2b, #091c15);
+      display:grid;
+      place-items:center;
       box-shadow:
-        0 12px 30px
-        rgba(13,77,58,.18);
-
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 20px;
+        0 15px 35px rgba(0,0,0,.25),
+        inset 0 0 25px rgba(217,184,108,.05);
     }
 
-    .evaluation-label {
-      font-size: 11px;
-      opacity: .8;
-
-      margin-bottom: 3px;
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:none;
     }
 
-    .evaluation-title {
-      font-size: 20px;
-      font-weight: 900;
+    .avatar-letter{
+      font-size:42px;
+      color:var(--gold2);
+      font-weight:800;
     }
 
-    .evaluation-details {
-      font-size: 11px;
-      opacity: .88;
-
-      margin-top: 3px;
+    .hero-info{
+      min-width:0;
     }
 
-    .evaluation-score {
-      text-align: center;
-
-      min-width: 100px;
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:rgba(217,184,108,.08);
+      border:1px solid rgba(217,184,108,.15);
+      color:var(--gold2);
+      font-size:12px;
+      margin-bottom:12px;
     }
 
-    .evaluation-score strong {
-      display: block;
-
-      font-size: 29px;
-      font-weight: 900;
+    .hero-badge::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--green2);
+      box-shadow:0 0 12px rgba(47,159,114,.55);
     }
 
-    .evaluation-score span {
-      font-size: 10px;
-      opacity: .8;
+    .hero h1{
+      font-size:clamp(27px, 4vw, 40px);
+      margin-bottom:8px;
+      line-height:1.15;
+      word-break:break-word;
     }
 
-    /* =========================================================
-       SECTIONS
-    ========================================================= */
-
-    .section {
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 18px;
-
-      margin-bottom: 15px;
-
-      overflow: hidden;
-
-      transition: .2s;
+    .hero-subtitle{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.8;
     }
 
-    .section.open {
-      border-color: #cfe0d8;
+    /* STATS */
 
-      box-shadow:
-        0 12px 30px
-        rgba(13,77,58,.08);
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:14px;
+      margin-bottom:22px;
     }
 
-    .section-head {
-      min-height: 62px;
-
-      padding:
-        12px
-        58px
-        12px
-        18px;
-
-      position: relative;
-
-      cursor: pointer;
-
-      user-select: none;
-
-      display: flex;
-      align-items: center;
+    .stat{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:20px;
+      box-shadow:0 12px 35px rgba(0,0,0,.16);
+      backdrop-filter:blur(14px);
     }
 
-    .section-head::after {
-      content: "＋";
-
-      position: absolute;
-
-      left: 15px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      width: 36px;
-      height: 36px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 10px;
-
-      background: var(--very-light);
-      color: var(--green);
-
-      font-size: 20px;
-      font-weight: 900;
+    .stat-label{
+      font-size:12px;
+      color:var(--muted2);
+      margin-bottom:10px;
     }
 
-    .section.open .section-head::after {
-      content: "−";
-
-      background:
-        var(--light-green);
+    .stat-value{
+      font-size:22px;
+      color:var(--gold2);
+      font-weight:800;
+      word-break:break-word;
     }
 
-    .section-title {
-      margin: 0;
+    /* GRID */
 
-      font-size: 16px;
-      font-weight: 900;
-
-      color: var(--green);
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
     }
 
-    .section-subtitle {
-      color: var(--muted);
-
-      font-size: 11px;
-
-      margin-top: 2px;
+    .section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:0 14px 40px rgba(0,0,0,.16);
+      padding:23px;
+      backdrop-filter:blur(12px);
     }
 
-    .section-body {
-      display: none;
-
-      padding:
-        0
-        20px
-        20px;
+    .section.full{
+      grid-column:1 / -1;
     }
 
-    .section.open .section-body {
-      display: block;
-
-      animation:
-        openSection .22s ease;
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:19px;
+      padding-bottom:13px;
+      border-bottom:1px solid var(--line);
     }
 
-    @keyframes openSection {
-
-      from {
-        opacity: 0;
-        transform:
-          translateY(-5px);
-      }
-
-      to {
-        opacity: 1;
-        transform:
-          translateY(0);
-      }
-
+    .section-title{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:17px;
+      color:var(--gold2);
     }
 
-    /* =========================================================
-       FORMS
-    ========================================================= */
-
-    .form-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 15px;
+    .section-icon{
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:rgba(217,184,108,.08);
+      border:1px solid rgba(217,184,108,.13);
     }
 
-    .form-group {
-      display: flex;
-
-      flex-direction: column;
-
-      gap: 6px;
+    .section-note{
+      color:var(--muted2);
+      font-size:11px;
     }
 
-    .form-group.full {
-      grid-column: 1 / -1;
+    /* INFO */
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
     }
 
-    .form-label {
-      font-size: 12px;
-
-      font-weight: 800;
-
-      color: #496159;
+    .info-item{
+      background:rgba(255,255,255,.025);
+      border:1px solid rgba(255,255,255,.05);
+      border-radius:17px;
+      padding:15px;
     }
 
-    input,
-    select,
-    textarea {
-      width: 100%;
-
-      border:
-        1px solid var(--border);
-
-      background:
-        #fbfdfc;
-
-      color: var(--text);
-
-      border-radius: 11px;
-
-      padding:
-        11px
-        13px;
-
-      outline: none;
-
-      font-size: 13px;
-
-      transition: .2s;
+    .info-label{
+      color:var(--muted2);
+      font-size:11px;
+      margin-bottom:7px;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color:
-        var(--green2);
-
-      box-shadow:
-        0 0 0 3px
-        rgba(33,136,102,.08);
-
-      background: white;
+    .info-value{
+      color:var(--white);
+      font-size:14px;
+      line-height:1.7;
+      word-break:break-word;
     }
 
-    textarea {
-      min-height: 110px;
+    /* LISTS */
 
-      resize: vertical;
+    .list{
+      display:grid;
+      gap:10px;
     }
 
-    /* =========================================================
-       TABLES
-    ========================================================= */
-
-    .table-wrap {
-      overflow-x: auto;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 13px;
+    .item{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:15px;
+      background:rgba(255,255,255,.025);
+      border:1px solid rgba(255,255,255,.05);
+      border-radius:16px;
+      padding:14px;
     }
 
-    table {
-      width: 100%;
-
-      border-collapse: collapse;
-
-      min-width: 700px;
+    .item-main{
+      min-width:0;
     }
 
-    th,
-    td {
-      padding:
-        11px
-        10px;
-
-      border-bottom:
-        1px solid #edf2ef;
-
-      text-align: center;
-
-      font-size: 12px;
+    .item-title{
+      color:var(--white);
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:4px;
+      word-break:break-word;
     }
 
-    th {
-      background:
-        var(--very-light);
-
-      color: var(--green);
-
-      font-weight: 900;
+    .item-sub{
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.8;
+      word-break:break-word;
     }
 
-    tr:last-child td {
-      border-bottom: none;
+    .item-badge{
+      flex-shrink:0;
+      border:1px solid rgba(217,184,108,.17);
+      background:rgba(217,184,108,.07);
+      color:var(--gold2);
+      border-radius:999px;
+      padding:6px 9px;
+      font-size:11px;
+      white-space:nowrap;
     }
 
-    .table-input {
-      min-width: 100px;
+    /* NOTES */
 
-      padding:
-        8px
-        9px;
-
-      font-size: 12px;
-    }
-
-    .add-row {
-      margin-top: 12px;
-
-      border:
-        1px dashed #b9ccc3;
-
-      background:
-        #f8fbf9;
-
-      color: var(--green);
-
-      border-radius: 10px;
-
-      padding:
-        9px
-        14px;
-
-      font-weight: 800;
-    }
-
-    .remove-row {
-      border: none;
-
-      background:
-        var(--danger-light);
-
-      color: var(--danger);
-
-      width: 32px;
-      height: 32px;
-
-      border-radius: 8px;
-
-      font-weight: 900;
-    }
-
-    /* =========================================================
-       QURAN MAP
-    ========================================================= */
-
-    .quran-intro {
-      background:
-        var(--very-light);
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 14px;
-
-      padding: 13px;
-
-      margin-bottom: 15px;
-
-      color: var(--muted);
-
-      font-size: 12px;
-
-      line-height: 1.8;
-    }
-
-    .quran-summary {
-      display: grid;
-
-      grid-template-columns:
-        repeat(4, 1fr);
-
-      gap: 10px;
-
-      margin-bottom: 18px;
-    }
-
-    .quran-summary-card {
-      background: white;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 13px;
-
-      padding: 12px;
-
-      text-align: center;
-    }
-
-    .quran-summary-card strong {
-      display: block;
-
-      color: var(--green);
-
-      font-size: 20px;
-
-      font-weight: 900;
-    }
-
-    .quran-summary-card span {
-      color: var(--muted);
-
-      font-size: 10px;
-
-      font-weight: 700;
-    }
-
-    .juz-card {
-      border:
-        1px solid var(--border);
-
-      border-radius: 15px;
-
-      margin-bottom: 12px;
-
-      overflow: hidden;
-
-      background: #fff;
-    }
-
-    .juz-head {
-      padding: 12px 14px;
-
+    .notes{
       background:
         linear-gradient(
-          90deg,
-          #f5f9f7,
-          #ffffff
+          145deg,
+          rgba(217,184,108,.07),
+          rgba(27,108,77,.05)
         );
-
-      border-bottom:
-        1px solid var(--border);
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      gap: 10px;
+      border:1px solid rgba(217,184,108,.12);
+      padding:18px;
+      border-radius:18px;
+      color:#ddd8ca;
+      line-height:2;
+      font-size:14px;
+      white-space:pre-wrap;
+      word-break:break-word;
     }
 
-    .juz-name {
-      color: var(--green);
+    /* EMPTY */
 
-      font-size: 13px;
-
-      font-weight: 900;
+    .empty{
+      color:var(--muted2);
+      text-align:center;
+      padding:22px 10px;
+      font-size:13px;
     }
 
-    .juz-count {
-      color: var(--muted);
+    /* LOADING */
 
-      font-size: 10px;
-
-      font-weight: 700;
-    }
-
-    .page-grid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(10, 1fr);
-
-      gap: 6px;
-
-      padding: 12px;
-    }
-
-    .quran-page {
-      min-height: 38px;
-
-      border:
-        1px solid var(--border);
-
+    .loading-screen{
+      position:fixed;
+      inset:0;
+      z-index:50;
+      display:flex;
+      justify-content:center;
+      align-items:center;
       background:
-        #f9fbfa;
-
-      color: #697871;
-
-      border-radius: 8px;
-
-      font-size: 11px;
-
-      font-weight: 800;
-
-      transition: .15s;
+        radial-gradient(circle at 50% 30%, rgba(27,108,77,.18), transparent 40%),
+        #06110d;
     }
 
-    .quran-page:hover {
-      transform:
-        translateY(-1px);
-
-      border-color:
-        var(--green2);
+    .loader-box{
+      text-align:center;
+      padding:30px;
     }
 
-    .quran-page.hifz {
-      background:
-        #dff2e7;
-
-      border-color:
-        #a8d7ba;
-
-      color:
-        #14633e;
+    .loader{
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      border:3px solid rgba(217,184,108,.14);
+      border-top-color:var(--gold);
+      margin:0 auto 17px;
+      animation:spin 1s linear infinite;
     }
 
-    .quran-page.review {
-      background:
-        #edf5ff;
-
-      border-color:
-        #b8d4f0;
-
-      color:
-        #235b91;
+    .loader-text{
+      color:var(--muted);
+      font-size:14px;
     }
 
-    .quran-page.both {
-      background:
-        linear-gradient(
-          135deg,
-          #dff2e7 0 50%,
-          #edf5ff 50% 100%
-        );
-
-      border-color:
-        #9fc8b2;
-
-      color:
-        #145c3b;
+    @keyframes spin{
+      to{
+        transform:rotate(360deg);
+      }
     }
 
-    .quran-page.current-week {
-      box-shadow:
-        inset 0 0 0 2px
-        rgba(183,138,40,.55);
+    /* ERROR */
+
+    .error-box{
+      max-width:560px;
+      margin:90px auto;
+      padding:30px;
+      text-align:center;
+      background:var(--card2);
+      border:1px solid rgba(217,184,108,.16);
+      border-radius:28px;
+      box-shadow:var(--shadow);
     }
 
-    .quran-legend {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 10px;
-
-      margin-top: 13px;
+    .error-icon{
+      font-size:42px;
+      margin-bottom:15px;
     }
 
-    .legend-item {
-      display: inline-flex;
-
-      align-items: center;
-
-      gap: 6px;
-
-      color: var(--muted);
-
-      font-size: 10px;
-
-      font-weight: 700;
+    .error-box h2{
+      color:var(--gold2);
+      margin-bottom:10px;
     }
 
-    .legend-dot {
-      width: 14px;
-      height: 14px;
-
-      border-radius: 4px;
-
-      border:
-        1px solid var(--border);
+    .error-box p{
+      color:var(--muted);
+      line-height:1.9;
+      margin-bottom:20px;
     }
 
-    .legend-dot.hifz {
-      background: #dff2e7;
-      border-color: #a8d7ba;
+    .error-btn{
+      display:inline-block;
+      padding:12px 19px;
+      border-radius:14px;
+      border:1px solid rgba(217,184,108,.2);
+      background:rgba(217,184,108,.07);
+      color:var(--gold2);
     }
 
-    .legend-dot.review {
-      background: #edf5ff;
-      border-color: #b8d4f0;
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      color:var(--muted2);
+      font-size:11px;
+      padding:28px 0 0;
     }
 
-    .legend-dot.none {
-      background: #f9fbfa;
+    /* MOBILE */
+
+    @media(max-width:900px){
+      .stats{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .section.full{
+        grid-column:auto;
+      }
     }
 
-    /* =========================================================
-       SAVE
-    ========================================================= */
+    @media(max-width:650px){
+      .page{
+        width:min(94%, 570px);
+        padding-top:18px;
+      }
 
-    .save-wrap {
-      margin-top: 18px;
+      .hero{
+        padding:22px;
+        border-radius:25px;
+      }
 
-      padding-top: 15px;
+      .hero-content{
+        align-items:flex-start;
+      }
 
-      border-top:
-        1px solid #e2e9e5;
+      .avatar{
+        width:88px;
+        height:88px;
+        border-radius:25px;
+      }
 
-      display: flex;
+      .avatar-letter{
+        font-size:31px;
+      }
 
-      align-items: center;
+      .hero h1{
+        font-size:26px;
+      }
 
-      gap: 10px;
+      .stats{
+        gap:10px;
+      }
 
-      flex-wrap: wrap;
+      .stat{
+        padding:15px;
+      }
+
+      .stat-value{
+        font-size:18px;
+      }
+
+      .section{
+        padding:18px;
+        border-radius:20px;
+      }
+
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .topbar{
+        align-items:flex-start;
+      }
+
+      .top-actions{
+        width:100%;
+      }
+
+      .top-btn{
+        flex:1;
+      }
     }
-
-    .save-btn {
-      border: none;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--green),
-          var(--green2)
-        );
-
-      color: white;
-
-      padding:
-        12px
-        20px;
-
-      border-radius: 12px;
-
-      font-weight: 900;
-
-      font-size: 13px;
-
-      box-shadow:
-        0 7px 18px
-        rgba(13,77,58,.16);
-
-      transition: .2s;
-    }
-
-    .save-btn:hover {
-      transform:
-        translateY(-2px);
-    }
-
-    .save-btn:disabled {
-      opacity: .65;
-
-      cursor: wait;
-
-      transform: none;
-    }
-
-    .save-message {
-      min-height: 20px;
-
-      font-size: 12px;
-
-      font-weight: 800;
-    }
-
-    .save-message.success {
-      color: #13743f;
-    }
-
-    .save-message.error {
-      color: var(--danger);
-    }
-
-    /* =========================================================
-       LOADING / ERROR
-    ========================================================= */
-
-    .loading {
-      min-height: 300px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      flex-direction: column;
-
-      gap: 12px;
-
-      color: var(--muted);
-
-      font-weight: 800;
-    }
-
-    .spinner {
-      width: 38px;
-      height: 38px;
-
-      border:
-        4px solid #dceae3;
-
-      border-top-color:
-        var(--green);
-
-      border-radius: 50%;
-
-      animation:
-        spin .8s linear infinite;
-    }
-
-    @keyframes spin {
-
-      to {
-        transform:
-          rotate(360deg);
-      }
-
-    }
-
-    .error-box {
-      background:
-        #fff4f3;
-
-      border:
-        1px solid #f1cbc7;
-
-      color: var(--danger);
-
-      border-radius: 15px;
-
-      padding: 20px;
-
-      text-align: center;
-
-      font-weight: 800;
-    }
-
-    .empty {
-      text-align: center;
-
-      padding: 25px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-
-      font-weight: 700;
-    }
-
-    /* =========================================================
-       MOBILE
-    ========================================================= */
-
-    @media (max-width: 1100px) {
-
-      .stats-grid {
-        grid-template-columns:
-          repeat(3, 1fr);
-      }
-
-      .progress-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-    }
-
-    @media (max-width: 800px) {
-
-      .stats-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .quick-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .profile-header {
-        align-items: flex-start;
-      }
-
-      .form-grid {
-        grid-template-columns:
-          1fr;
-      }
-
-      .form-group.full {
-        grid-column: auto;
-      }
-
-      .quran-summary {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
-      .page-grid {
-        grid-template-columns:
-          repeat(8, 1fr);
-      }
-
-    }
-
-    @media (max-width: 600px) {
-
-      .topbar-inner {
-        padding:
-          10px
-          12px;
-      }
-
-      .brand-title {
-        font-size: 13px;
-      }
-
-      .brand-subtitle {
-        display: none;
-      }
-
-      .brand img {
-        width: 39px;
-        height: 39px;
-      }
-
-      .back-btn {
-        padding:
-          8px
-          11px;
-
-        font-size: 11px;
-      }
-
-      .page {
-        padding:
-          14px
-          9px
-          35px;
-      }
-
-      .profile-header {
-        padding: 18px;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        text-align: center;
-      }
-
-      .profile-meta {
-        justify-content: center;
-      }
-
-      .student-photo {
-        width: 110px;
-        height: 110px;
-      }
-
-      .profile-name {
-        font-size: 23px;
-      }
-
-      .progress-grid {
-        grid-template-columns:
-          1fr;
-      }
-
-      .summary-title {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .stats-grid {
-        gap: 8px;
-      }
-
-      .stat-card {
-        padding: 12px;
-      }
-
-      .stat-value {
-        font-size: 19px;
-      }
-
-      .quick-grid {
-        grid-template-columns:
-          1fr;
-      }
-
-      .evaluation {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-      }
-
-      .evaluation-score {
-        min-width: auto;
-      }
-
-      .section-head {
-        min-height: 56px;
-
-        padding:
-          10px
-          50px
-          10px
-          12px;
-      }
-
-      .section-head::after {
-        width: 31px;
-        height: 31px;
-
-        left: 10px;
-      }
-
-      .section-body {
-        padding:
-          0
-          12px
-          15px;
-      }
-
-      .save-wrap {
-        flex-direction: column;
-
-        align-items: stretch;
-      }
-
-      .save-btn {
-        width: 100%;
-      }
-
-      .page-grid {
-        grid-template-columns:
-          repeat(6, 1fr);
-
-        gap: 5px;
-
-        padding: 9px;
-      }
-
-      .quran-page {
-        min-height: 35px;
-        font-size: 10px;
-      }
-
-    }
-
   </style>
 </head>
 
 <body>
 
-  <header class="topbar">
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loader-box">
+      <div class="loader"></div>
+      <div class="loader-text">جاري تحميل ملف الطالب...</div>
+    </div>
+  </div>
 
-    <div class="topbar-inner">
+  <main class="page" id="page" style="display:none;">
 
-      <a
-        href="teacher-dashboard.html"
-        class="brand"
-      >
+    <!-- HEADER -->
+    <div class="topbar">
 
-        <img
-          src="logo.png"
-          alt="شعار المركز"
-        >
+      <div class="brand">
+        <div class="brand-logo">📖</div>
 
         <div class="brand-text">
-
-          <div class="brand-title">
-            مركز حردان طارق القرآني
-          </div>
-
-          <div class="brand-subtitle">
-            تفاصيل ومتابعة الطالب
-          </div>
-
+          <strong>مركز حردان طارق القرآني</strong>
+          <span>بوابة الطالب</span>
         </div>
+      </div>
 
-      </a>
-
-      <button
-        class="back-btn"
-        type="button"
-        onclick="goBack()"
-      >
-        ← العودة للطلاب
-      </button>
+      <div class="top-actions">
+        <a href="index.html" class="top-btn">⌂ الرئيسية</a>
+        <button class="top-btn" type="button" onclick="logoutStudent()">
+          خروج
+        </button>
+      </div>
 
     </div>
 
-  </header>
 
+    <!-- HERO -->
+    <section class="hero">
 
-  <main class="page">
+      <div class="hero-content">
 
-    <div id="app">
+        <div class="avatar-wrap">
+          <div class="avatar">
 
-      <div class="loading">
+            <img id="studentPhoto" alt="صورة الطالب">
 
-        <div class="spinner"></div>
+            <div class="avatar-letter" id="avatarLetter">
+              ط
+            </div>
 
-        <div>
-          جاري تحميل ملف الطالب...
+          </div>
+        </div>
+
+        <div class="hero-info">
+
+          <div class="hero-badge">
+            ملف طالب
+          </div>
+
+          <h1 id="studentName">
+            جاري التحميل...
+          </h1>
+
+          <div class="hero-subtitle" id="heroSubtitle">
+            بيانات المتابعة الخاصة بك
+          </div>
+
         </div>
 
       </div>
 
+    </section>
+
+
+    <!-- STATS -->
+    <section class="stats">
+
+      <div class="stat">
+        <div class="stat-label">الحلقة / القسم</div>
+        <div class="stat-value" id="statSection">—</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">الحفظ</div>
+        <div class="stat-value" id="statMemorization">—</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">الحالة</div>
+        <div class="stat-value" id="statStatus">—</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">النقاط</div>
+        <div class="stat-value" id="statPoints">—</div>
+      </div>
+
+    </section>
+
+
+    <!-- CONTENT -->
+    <div class="grid">
+
+      <!-- PERSONAL INFO -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            <div class="section-icon">👤</div>
+            المعلومات الشخصية
+          </div>
+
+          <div class="section-note">
+            للعرض فقط
+          </div>
+
+        </div>
+
+        <div class="info-grid">
+
+          <div class="info-item">
+            <div class="info-label">اسم الطالب</div>
+            <div class="info-value" id="infoName">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">القسم</div>
+            <div class="info-value" id="infoSection">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">مستوى الحفظ</div>
+            <div class="info-value" id="infoMemorization">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">الحالة</div>
+            <div class="info-value" id="infoStatus">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">رقم ولي الأمر</div>
+            <div class="info-value" id="infoGuardianPhone">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">تاريخ الالتحاق</div>
+            <div class="info-value" id="infoJoiningDate">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">مكان السكن</div>
+            <div class="info-value" id="infoResidence">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">المواصلات</div>
+            <div class="info-value" id="infoBus">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">موقع المنزل</div>
+            <div class="info-value" id="infoHomeLocation">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">الالتزام</div>
+            <div class="info-value" id="infoCommitment">—</div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- WEEKLY GOALS -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            <div class="section-icon">🎯</div>
+            الأهداف الأسبوعية
+          </div>
+
+        </div>
+
+        <div id="weeklyGoals" class="list">
+          <div class="empty">لا توجد أهداف مسجلة.</div>
+        </div>
+
+      </section>
+
+
+      <!-- ATTENDANCE -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            <div class="section-icon">📅</div>
+            الحضور والغياب
+          </div>
+
+          <div class="section-note" id="attendanceSummary">
+            —
+          </div>
+
+        </div>
+
+        <div id="attendanceList" class="list">
+          <div class="empty">لا توجد سجلات حضور.</div>
+        </div>
+
+      </section>
+
+
+      <!-- WEEKLY PLAN -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            <div class="section-icon">🗓️</div>
+            الخطة الأسبوعية
+          </div>
+
+        </div>
+
+        <div id="weeklyPlan" class="list">
+          <div class="empty">لا توجد خطة أسبوعية.</div>
+        </div>
+
+      </section>
+
+
+      <!-- TESTS -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            <div class="section-icon">📝</div>
+            الاختبارات
+          </div>
+
+          <div class="section-note" id="testsSummary">
+            —
+          </div>
+
+        </div>
+
+        <div id="testsList" class="list">
+          <div class="empty">لا توجد اختبارات مسجلة.</div>
+        </div>
+
+      </section>
+
+
+      <!-- RECITATIONS -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            <div class="section-icon">📖</div>
+            التسميع
+          </div>
+
+          <div class="section-note" id="recitationsSummary">
+            —
+          </div>
+
+        </div>
+
+        <div id="recitationsList" class="list">
+          <div class="empty">لا توجد جلسات تسميع مسجلة.</div>
+        </div>
+
+      </section>
+
+
+      <!-- PROGRESS -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            <div class="section-icon">📈</div>
+            التقدم
+          </div>
+
+        </div>
+
+        <div class="info-grid">
+
+          <div class="info-item">
+            <div class="info-label">الإنجاز الأسبوعي</div>
+            <div class="info-value" id="progressWeekly">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">الإنجاز العام</div>
+            <div class="info-value" id="progressOverall">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">عدد النقاط</div>
+            <div class="info-value" id="progressPoints">—</div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-label">آخر تحديث</div>
+            <div class="info-value" id="progressUpdated">—</div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- NOTES -->
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            <div class="section-icon">📌</div>
+            ملاحظات المعلم
+          </div>
+
+          <div class="section-note">
+            للعرض فقط
+          </div>
+
+        </div>
+
+        <div class="notes" id="teacherNotes">
+          لا توجد ملاحظات حاليًا.
+        </div>
+
+      </section>
+
+
+      <!-- EXTRA DATA -->
+      <section class="section full" id="extraSection" style="display:none;">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            <div class="section-icon">✨</div>
+            معلومات إضافية
+          </div>
+
+        </div>
+
+        <div class="info-grid" id="extraInfo"></div>
+
+      </section>
+
     </div>
+
+
+    <footer>
+      مركز حردان طارق القرآني — هذه الصفحة مخصصة لعرض بيانات الطالب فقط
+    </footer>
 
   </main>
 
 
-<script>
-
-  /* =========================================================
-     SUPABASE
-  ========================================================= */
-
-  const SUPABASE_URL =
-    'https://lsbbcybpiulusdgfhepf.supabase.co';
-
-  const SUPABASE_KEY =
-    'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
-
-  const supabaseClient =
-    window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+  <div id="errorContainer"></div>
 
 
-  /* =========================================================
-     AUTH
-  ========================================================= */
+  <script>
+    const SUPABASE_URL =
+      'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-  function checkUser() {
+    const SUPABASE_PUBLISHABLE_KEY =
+      'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
 
-    const accessGranted =
-      localStorage.getItem(
-        'teacherAccess'
-      ) === 'granted';
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
 
-    if (!accessGranted) {
 
-      window.location.href =
-        'teacher-login.html';
+    let student = null;
+    let profile = null;
+    let profileData = {};
 
-      return false;
 
+    /* =========================
+       HELPERS
+    ========================= */
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
     }
 
-    return true;
 
-  }
-
-
-  if (!checkUser()) {
-    throw new Error('Unauthorized');
-  }
-
-
-  /* =========================================================
-     STUDENT ID
-  ========================================================= */
-
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
-
-  const studentId =
-    params.get('id');
-
-
-  if (!studentId) {
-
-    document.getElementById(
-      'app'
-    ).innerHTML = `
-
-      <div class="error-box">
-
-        لم يتم تحديد الطالب.
-
-        <br><br>
-
-        <button
-          class="back-btn"
-          onclick="goBack()"
-        >
-          العودة للوحة المعلم
-        </button>
-
-      </div>
-
-    `;
-
-    throw new Error(
-      'Student ID missing'
-    );
-
-  }
-
-
-  /* =========================================================
-     DATA
-  ========================================================= */
-
-  let student = null;
-
-  let profile = {};
-
-
-  /* =========================================================
-     DEFAULT PROFILE
-  ========================================================= */
-
-  function mergeProfile(data) {
-
-    const source =
-      data &&
-      typeof data === 'object'
-        ? data
-        : {};
-
-    return {
-
-      photoUrl:
-        source.photoUrl || '',
-
-      guardianPhone:
-        source.guardianPhone || '',
-
-      joiningDate:
-        source.joiningDate || '',
-
-      residence:
-        source.residence || '',
-
-      bus:
-        source.bus || '',
-
-      homeLocation:
-        source.homeLocation || '',
-
-      weeklyGoal:
-        source.weeklyGoal || {
-          hifz: '',
-          review: ''
-        },
-
-      attendance:
-        Array.isArray(
-          source.attendance
-        )
-          ? source.attendance
-          : [],
-
-      weeklyPlan:
-        Array.isArray(
-          source.weeklyPlan
-        )
-          ? source.weeklyPlan
-          : [],
-
-      tests:
-        Array.isArray(
-          source.tests
-        )
-          ? source.tests
-          : [],
-
-      recitations:
-        Array.isArray(
-          source.recitations
-        )
-          ? source.recitations
-          : [],
-
-      notes:
-        source.notes || ''
-
-    };
-
-  }
-
-
-  /* =========================================================
-     LOAD STUDENT
-  ========================================================= */
-
-  async function loadStudent() {
-
-    try {
-
-      const {
-        data: studentData,
-        error: studentError
-      } =
-        await supabaseClient
-
-          .from('students')
-
-          .select('*')
-
-          .eq(
-            'id',
-            studentId
-          )
-
-          .maybeSingle();
-
-
-      if (studentError)
-        throw studentError;
-
-
-      if (!studentData) {
-
-        throw new Error(
-          'لم يتم العثور على الطالب.'
-        );
-
+    function text(value, fallback = '—') {
+      if (
+        value === null ||
+        value === undefined ||
+        value === ''
+      ) {
+        return fallback;
       }
 
-
-      student =
-        studentData;
-
-
-      const {
-        data: profileData,
-        error: profileError
-      } =
-        await supabaseClient
-
-          .from('student_profiles')
-
-          .select('data')
-
-          .eq(
-            'student_id',
-            String(studentId)
-          )
-
-          .maybeSingle();
-
-
-      if (profileError)
-        throw profileError;
-
-
-      profile =
-        mergeProfile(
-          profileData?.data || {}
-        );
-
-
-      render();
-
-    } catch (error) {
-
-      console.error(
-        'LOAD STUDENT ERROR:',
-        error
-      );
-
-      document.getElementById(
-        'app'
-      ).innerHTML = `
-
-        <div class="error-box">
-
-          حدث خطأ أثناء تحميل بيانات الطالب.
-
-          <br><br>
-
-          ${escapeHtml(
-            error?.message ||
-            'خطأ غير معروف'
-          )}
-
-          <br><br>
-
-          <button
-            class="back-btn"
-            onclick="goBack()"
-          >
-            العودة للوحة المعلم
-          </button>
-
-        </div>
-
-      `;
-
+      return String(value);
     }
 
-  }
 
-
-  /* =========================================================
-     ESCAPE
-  ========================================================= */
-
-  function escapeHtml(value) {
-
-    return String(value ?? '')
-      .replace(
-        /&/g,
-        '&amp;'
-      )
-      .replace(
-        /</g,
-        '&lt;'
-      )
-      .replace(
-        />/g,
-        '&gt;'
-      )
-      .replace(
-        /"/g,
-        '&quot;'
-      )
-      .replace(
-        /'/g,
-        '&#039;'
-      );
-
-  }
-
-
-  /* =========================================================
-     NUMBER
-  ========================================================= */
-
-  function number(value) {
-
-    if (
-      value === '' ||
-      value === null ||
-      value === undefined
-    ) {
-      return '';
-    }
-
-    const n =
-      Number(value);
-
-    return Number.isFinite(n)
-      ? n
-      : '';
-
-  }
-
-
-  /* =========================================================
-     STATUS
-  ========================================================= */
-
-  function statusText(status) {
-
-    const map = {
-
-      active: 'مستمر',
-
-      inactive: 'متوقف',
-
-      rejected: 'غير مقبول',
-
-      expelled: 'مفصول',
-
-      pending:
-        'طلب بانتظار الموافقة'
-
-    };
-
-    return (
-      map[status] ||
-      status ||
-      'غير محدد'
-    );
-
-  }
-
-
-  function statusDot(status) {
-
-    const colors = {
-
-      active: '#18a05e',
-
-      inactive: '#999',
-
-      rejected: '#d83a31',
-
-      expelled: '#d83a31',
-
-      pending: '#d98a00'
-
-    };
-
-    return (
-      colors[status] ||
-      '#999'
-    );
-
-  }
-
-
-  /* =========================================================
-     DATE HELPERS
-  ========================================================= */
-
-  function localDateString(date) {
-
-    const d =
-      new Date(date);
-
-    const year =
-      d.getFullYear();
-
-    const month =
-      String(
-        d.getMonth() + 1
-      ).padStart(2, '0');
-
-    const day =
-      String(
-        d.getDate()
-      ).padStart(2, '0');
-
-    return `${year}-${month}-${day}`;
-
-  }
-
-
-  /*
-    نظام الحلقة:
-    السبت → الجمعة
-  */
-
-  function getCurrentWeekRange() {
-
-    const now =
-      new Date();
-
-    now.setHours(
-      0, 0, 0, 0
-    );
-
-    const day =
-      now.getDay();
-
-    /*
-      JS:
-      Sunday = 0
-      Monday = 1
-      ...
-      Saturday = 6
-
-      نريد السبت كبداية.
-    */
-
-    const daysSinceSaturday =
-      (day + 1) % 7;
-
-    const start =
-      new Date(now);
-
-    start.setDate(
-      start.getDate() -
-      daysSinceSaturday
-    );
-
-    const end =
-      new Date(start);
-
-    end.setDate(
-      end.getDate() + 6
-    );
-
-    return {
-
-      start:
-        localDateString(start),
-
-      end:
-        localDateString(end)
-
-    };
-
-  }
-
-
-  function isDateInCurrentWeek(
-    date
-  ) {
-
-    if (!date)
-      return false;
-
-    const range =
-      getCurrentWeekRange();
-
-    return (
-      date >= range.start &&
-      date <= range.end
-    );
-
-  }
-
-
-  function formatDate(
-    date
-  ) {
-
-    if (!date)
-      return '—';
-
-    try {
-
-      return new Date(
-        date + 'T00:00:00'
-      ).toLocaleDateString(
-        'ar-JO',
-        {
-          year: 'numeric',
-          month: '2-digit',
-          day: '2-digit'
+    function firstValue(object, keys, fallback = '—') {
+      if (!object || typeof object !== 'object') {
+        return fallback;
+      }
+
+      for (const key of keys) {
+        if (
+          object[key] !== undefined &&
+          object[key] !== null &&
+          object[key] !== ''
+        ) {
+          return object[key];
         }
-      );
+      }
 
-    } catch {
-
-      return date;
-
+      return fallback;
     }
 
-  }
 
+    function toArray(value) {
 
-  /* =========================================================
-     RANGE HELPERS
-  ========================================================= */
+      if (Array.isArray(value)) {
+        return value;
+      }
 
-  function validPage(
-    page
-  ) {
+      if (
+        value &&
+        typeof value === 'object'
+      ) {
+        return Object.entries(value).map(
+          ([key, val]) => ({
+            key,
+            value: val
+          })
+        );
+      }
 
-    const n =
-      Number(page);
+      if (
+        typeof value === 'string' &&
+        value.trim() !== ''
+      ) {
+        return value
+          .split('\n')
+          .map(item => item.trim())
+          .filter(Boolean);
+      }
 
-    return (
-      Number.isInteger(n) &&
-      n >= 1 &&
-      n <= 604
-    );
-
-  }
-
-
-  function getRangePages(
-    from,
-    to
-  ) {
-
-    const start =
-      Number(from);
-
-    const end =
-      Number(to);
-
-    if (
-      !validPage(start) ||
-      !validPage(end)
-    ) {
       return [];
     }
 
-    const first =
-      Math.min(
-        start,
-        end
-      );
 
-    const last =
-      Math.max(
-        start,
-        end
-      );
+    function formatDate(value) {
 
-    const pages = [];
-
-    for (
-      let p = first;
-      p <= last;
-      p++
-    ) {
-
-      pages.push(p);
-
-    }
-
-    return pages;
-
-  }
-
-
-  function uniquePagesFromRecitations(
-    recitations,
-    type = null,
-    onlyCurrentWeek = false
-  ) {
-
-    const set =
-      new Set();
-
-    (
-      recitations || []
-    ).forEach(item => {
-
-      if (
-        type &&
-        item.type !== type
-      ) {
-        return;
+      if (!value) {
+        return '—';
       }
 
-      if (
-        onlyCurrentWeek &&
-        !isDateInCurrentWeek(
-          item.date
-        )
-      ) {
-        return;
+      const date = new Date(value);
+
+      if (Number.isNaN(date.getTime())) {
+        return String(value);
       }
 
-      const pages =
-        getRangePages(
-          item.from,
-          item.to
-        );
-
-      pages.forEach(
-        page =>
-          set.add(page)
-      );
-
-    });
-
-    return set;
-
-  }
-
-
-  function countRange(
-    from,
-    to
-  ) {
-
-    return getRangePages(
-      from,
-      to
-    ).length;
-
-  }
-
-
-  /* =========================================================
-     SMART STATISTICS
-  ========================================================= */
-
-  function calculateStats() {
-
-    const recitations =
-      Array.isArray(
-        profile.recitations
-      )
-        ? profile.recitations
-        : [];
-
-    const attendance =
-      Array.isArray(
-        profile.attendance
-      )
-        ? profile.attendance
-        : [];
-
-    const tests =
-      Array.isArray(
-        profile.tests
-      )
-        ? profile.tests
-        : [];
-
-
-    /*
-      جميع صفحات الحفظ الفعلية
-    */
-
-    const allHifzPages =
-      uniquePagesFromRecitations(
-        recitations,
-        'hifz',
-        false
-      );
-
-
-    /*
-      جميع صفحات المراجعة الفعلية
-    */
-
-    const allReviewPages =
-      uniquePagesFromRecitations(
-        recitations,
-        'review',
-        false
-      );
-
-
-    /*
-      صفحات الأسبوع الحالي
-    */
-
-    const weeklyHifzPages =
-      uniquePagesFromRecitations(
-        recitations,
-        'hifz',
-        true
-      );
-
-
-    const weeklyReviewPages =
-      uniquePagesFromRecitations(
-        recitations,
-        'review',
-        true
-      );
-
-
-    const goalHifz =
-      Number(
-        profile.weeklyGoal?.hifz
-      ) || 0;
-
-
-    const goalReview =
-      Number(
-        profile.weeklyGoal?.review
-      ) || 0;
-
-
-    const hifzPercent =
-      goalHifz > 0
-        ? Math.min(
-            100,
-            Math.round(
-              (
-                weeklyHifzPages.size /
-                goalHifz
-              ) * 100
-            )
-          )
-        : 0;
-
-
-    const reviewPercent =
-      goalReview > 0
-        ? Math.min(
-            100,
-            Math.round(
-              (
-                weeklyReviewPages.size /
-                goalReview
-              ) * 100
-            )
-          )
-        : 0;
-
-
-    /*
-      إنجاز الأسبوع العام:
-      متوسط الحفظ والمراجعة
-    */
-
-    let weeklyAchievement = 0;
-
-    if (
-      goalHifz > 0 &&
-      goalReview > 0
-    ) {
-
-      weeklyAchievement =
-        Math.round(
-          (
-            hifzPercent +
-            reviewPercent
-          ) / 2
-        );
-
-    } else if (goalHifz > 0) {
-
-      weeklyAchievement =
-        hifzPercent;
-
-    } else if (goalReview > 0) {
-
-      weeklyAchievement =
-        reviewPercent;
-
+      return new Intl.DateTimeFormat(
+        'ar-JO',
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }
+      ).format(date);
     }
 
 
-    /*
-      نسبة القرآن الكلية
-    */
+    function normalizeProfileData(profileRow) {
 
-    const quranPercent =
-      Math.round(
-        (
-          allHifzPages.size /
-          604
-        ) * 100
-      );
+      if (
+        profileRow &&
+        typeof profileRow.data === 'object' &&
+        profileRow.data !== null
+      ) {
+        return profileRow.data;
+      }
 
-
-    /*
-      الصفحات المعادلة:
-      كل 5 مراجعة = صفحة حفظ
-    */
-
-    const equivalentPages =
-      allHifzPages.size +
-      (
-        allReviewPages.size / 5
-      );
+      return {};
+    }
 
 
-    /*
-      متوسط التسميع
-    */
+    function getInitial(name) {
 
-    const scoredRecitations =
-      recitations.filter(
-        item =>
-          item.score !== '' &&
-          item.score !== null &&
-          item.score !== undefined &&
-          Number.isFinite(
-            Number(item.score)
+      const value = String(name || '').trim();
+
+      if (!value) {
+        return 'ط';
+      }
+
+      return value.charAt(0);
+    }
+
+
+    function setText(id, value) {
+
+      const element =
+        document.getElementById(id);
+
+      if (!element) {
+        return;
+      }
+
+      element.textContent =
+        text(value);
+    }
+
+
+    /* =========================
+       SESSION
+    ========================= */
+
+    function getStudentSession() {
+
+      try {
+
+        const raw =
+          sessionStorage.getItem('studentSession');
+
+        if (!raw) {
+          return null;
+        }
+
+        return JSON.parse(raw);
+
+      } catch (error) {
+
+        console.error(
+          'Student session error:',
+          error
+        );
+
+        return null;
+      }
+    }
+
+
+    /* =========================
+       LOAD STUDENT
+    ========================= */
+
+    async function loadStudent() {
+
+      const session =
+        getStudentSession();
+
+      /*
+        مهم جدًا:
+        الطالب لا يستخدم ?id=
+        نهائيًا.
+        الصفحة تعتمد على الجلسة الناتجة
+        من student-login.html فقط.
+      */
+
+      if (!session || !session.id) {
+
+        window.location.href =
+          'student-login.html';
+
+        return;
+      }
+
+
+      try {
+
+        const {
+          data: studentData,
+          error: studentError
+        } = await supabaseClient
+          .from('students')
+          .select('*')
+          .eq('id', session.id)
+          .maybeSingle();
+
+
+        if (studentError) {
+
+          console.error(
+            studentError
+          );
+
+          throw new Error(
+            'تعذر تحميل بيانات الطالب.'
+          );
+        }
+
+
+        if (!studentData) {
+
+          throw new Error(
+            'لم يتم العثور على ملف الطالب.'
+          );
+        }
+
+
+        student =
+          studentData;
+
+
+        const {
+          data: profileDataRow,
+          error: profileError
+        } = await supabaseClient
+          .from('student_profiles')
+          .select('*')
+          .eq(
+            'student_id',
+            String(student.id)
           )
-      );
+          .maybeSingle();
 
 
-    let averageScore = 0;
+        if (profileError) {
 
-    if (
-      scoredRecitations.length
-    ) {
+          console.error(
+            profileError
+          );
 
-      averageScore =
-        scoredRecitations.reduce(
-          (
-            sum,
-            item
-          ) =>
-            sum +
-            Number(item.score),
+          throw new Error(
+            'تعذر تحميل تفاصيل ملف الطالب.'
+          );
+        }
+
+
+        profile =
+          profileDataRow || {};
+
+        profileData =
+          normalizeProfileData(
+            profile
+          );
+
+
+        renderStudent();
+
+
+        document.getElementById(
+          'loadingScreen'
+        ).style.display = 'none';
+
+
+        document.getElementById(
+          'page'
+        ).style.display = 'block';
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        showError(
+          error.message ||
+          'حدث خطأ أثناء تحميل الملف.'
+        );
+      }
+    }
+
+
+    /* =========================
+       RENDER
+    ========================= */
+
+    function renderStudent() {
+
+      const name =
+        firstValue(
+          student,
+          ['name', 'full_name'],
+          'الطالب'
+        );
+
+
+      const section =
+        firstValue(
+          student,
+          ['section', 'group', 'class'],
+          firstValue(
+            profileData,
+            ['section', 'group', 'class']
+          )
+        );
+
+
+      const memorization =
+        firstValue(
+          student,
+          [
+            'memorization',
+            'memorization_level',
+            'hifz'
+          ],
+          firstValue(
+            profileData,
+            [
+              'memorization',
+              'memorization_level',
+              'hifz'
+            ]
+          )
+        );
+
+
+      const status =
+        firstValue(
+          student,
+          ['status'],
+          'active'
+        );
+
+
+      const points =
+        firstValue(
+          profileData,
+          [
+            'points',
+            'totalPoints',
+            'total_points'
+          ],
           0
-        ) /
-        scoredRecitations.length;
-
-    }
+        );
 
 
-    /*
-      أعلى درجة
-    */
+      /* HERO */
 
-    const highestScore =
-      scoredRecitations.length
-        ? Math.max(
-            ...scoredRecitations.map(
-              item =>
-                Number(item.score)
-            )
-          )
-        : 0;
+      document.getElementById(
+        'studentName'
+      ).textContent =
+        text(name, 'الطالب');
 
 
-    /*
-      عدد الأجزاء المكتملة
-    */
-
-    const completedJuz =
-      getCompletedJuzCount(
-        allHifzPages
-      );
+      document.getElementById(
+        'avatarLetter'
+      ).textContent =
+        getInitial(name);
 
 
-    /*
-      نقاط الاختبارات
-    */
+      document.getElementById(
+        'heroSubtitle'
+      ).textContent =
+        section !== '—'
+          ? `القسم: ${text(section)} — هذه الصفحة مخصصة لعرض بياناتك`
+          : 'هذه الصفحة مخصصة لعرض بياناتك';
 
-    let testPoints = 0;
 
-    tests.forEach(test => {
+      /* PHOTO */
 
-      const score =
-        Number(test.score);
+      const photoUrl =
+        firstValue(
+          profileData,
+          [
+            'photo',
+            'photoUrl',
+            'photo_url',
+            'image',
+            'imageUrl',
+            'image_url',
+            'avatar'
+          ],
+          ''
+        );
 
-      const outOf =
-        Number(test.outOf) || 100;
 
       if (
-        !Number.isFinite(score) ||
-        !Number.isFinite(outOf) ||
-        outOf <= 0
-      ) {
-        return;
-      }
-
-      const percent =
-        (
-          score /
-          outOf
-        ) * 100;
-
-      if (percent >= 90) {
-
-        testPoints += 12;
-
-      } else if (
-        percent >= 80
+        photoUrl &&
+        photoUrl !== '—'
       ) {
 
-        testPoints += 8;
-
-      } else if (
-        percent >= 70
-      ) {
-
-        testPoints += 4;
-
-      }
-
-    });
-
-
-    /*
-      نقاط بسيطة للتسميع الممتاز
-      بناءً على درجات التسميع
-    */
-
-    let recitationPoints = 0;
-
-    scoredRecitations.forEach(
-      item => {
-
-        const score =
-          Number(item.score);
-
-        if (score >= 90) {
-
-          recitationPoints += 3;
-
-        } else if (
-          score >= 80
-        ) {
-
-          recitationPoints += 2;
-
-        } else if (
-          score >= 70
-        ) {
-
-          recitationPoints += 1;
-
-        }
-
-      }
-    );
-
-
-    const totalPoints =
-      testPoints +
-      recitationPoints;
-
-
-    return {
-
-      attendanceCount:
-        attendance.length,
-
-      recitationCount:
-        recitations.length,
-
-      testCount:
-        tests.length,
-
-      allHifzPages,
-
-      allReviewPages,
-
-      weeklyHifzPages,
-
-      weeklyReviewPages,
-
-      goalHifz,
-
-      goalReview,
-
-      hifzPercent,
-
-      reviewPercent,
-
-      weeklyAchievement,
-
-      quranPercent,
-
-      equivalentPages,
-
-      averageScore,
-
-      highestScore,
-
-      completedJuz,
-
-      totalPoints
-
-    };
-
-  }
-
-
-  /* =========================================================
-     JUZ RANGES
-  ========================================================= */
-
-  function getJuzRanges() {
-
-    const ranges = [];
-
-    ranges.push({
-      juz: 1,
-      start: 1,
-      end: 21
-    });
-
-    for (
-      let juz = 2;
-      juz <= 29;
-      juz++
-    ) {
-
-      const start =
-        22 +
-        (
-          (juz - 2) * 20
-        );
-
-      const end =
-        start + 19;
-
-      ranges.push({
-        juz,
-        start,
-        end
-      });
-
-    }
-
-    ranges.push({
-      juz: 30,
-      start: 582,
-      end: 604
-    });
-
-    return ranges;
-
-  }
-
-
-  function getCompletedJuzCount(
-    hifzPages
-  ) {
-
-    let count = 0;
-
-    getJuzRanges().forEach(
-      range => {
-
-        let complete = true;
-
-        for (
-          let p =
-            range.start;
-          p <= range.end;
-          p++
-        ) {
-
-          if (
-            !hifzPages.has(p)
-          ) {
-
-            complete = false;
-            break;
-
-          }
-
-        }
-
-        if (complete)
-          count++;
-
-      }
-    );
-
-    return count;
-
-  }
-
-
-  /* =========================================================
-     EVALUATION
-  ========================================================= */
-
-  function getEvaluation(
-    stats
-  ) {
-
-    const score =
-      stats.weeklyAchievement;
-
-    if (score >= 100) {
-
-      return {
-        title: '🏆 ملتزم ممتاز',
-        details:
-          'أتمّ الهدف الأسبوعي أو تجاوزه.',
-      };
-
-    }
-
-    if (score >= 80) {
-
-      return {
-        title: '⭐ ملتزم جدًا',
-        details:
-          'مستوى ممتاز وقريب من إتمام الهدف.',
-      };
-
-    }
-
-    if (score >= 60) {
-
-      return {
-        title: '👍 ملتزم',
-        details:
-          'يوجد تقدم جيد ويحتاج إلى الاستمرار.',
-      };
-
-    }
-
-    if (score > 0) {
-
-      return {
-        title: '📚 يحتاج متابعة',
-        details:
-          'يحتاج إلى زيادة الإنجاز خلال الأسبوع.',
-      };
-
-    }
-
-    return {
-      title: '⏳ لم يبدأ الإنجاز',
-      details:
-        'لم يتم تسجيل إنجاز لهذا الأسبوع بعد.',
-    };
-
-  }
-
-
-  /* =========================================================
-     RENDER
-  ========================================================= */
-
-  function render() {
-
-    const app =
-      document.getElementById(
-        'app'
-      );
-
-    const stats =
-      calculateStats();
-
-    const evaluation =
-      getEvaluation(stats);
-
-    const week =
-      getCurrentWeekRange();
-
-
-    app.innerHTML = `
-
-      <!-- ================= PROFILE HEADER ================= -->
-
-      <section class="profile-header">
-
-        <div class="photo-area">
-
-          <img
-            id="studentPhoto"
-            class="student-photo"
-            src="${escapeHtml(
-              getStudentPhoto()
-            )}"
-            alt="صورة الطالب"
-            onerror="
-              this.src='';
-              this.style.background='#eef4f1';
-            "
-          >
-
-          <button
-            type="button"
-            class="photo-button"
-            onclick="
-              document
-                .getElementById('photoInput')
-                .click()
-            "
-          >
-            📷 تغيير الصورة
-          </button>
-
-          <input
-            id="photoInput"
-            type="file"
-            accept="image/*"
-            onchange="handlePhoto(event)"
-          >
-
-        </div>
-
-
-        <div class="profile-main">
-
-          <h1 class="profile-name">
-            ${escapeHtml(
-              student.name ||
-              'طالب'
-            )}
-          </h1>
-
-          <div class="profile-meta">
-
-            <span class="meta-badge">
-              🏫 الشعبة:
-              ${escapeHtml(
-                student.section ||
-                'غير محدد'
-              )}
-            </span>
-
-            <span class="meta-badge">
-              🎂 العمر:
-              ${escapeHtml(
-                student.age ||
-                'غير محدد'
-              )}
-            </span>
-
-            <span class="meta-badge status-badge">
-
-              <span
-                class="status-dot"
-                style="
-                  background:${statusDot(
-                    student.status
-                  )}
-                "
-              ></span>
-
-              ${escapeHtml(
-                statusText(
-                  student.status
-                )
-              )}
-
-            </span>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= SMART SUMMARY ================= -->
-
-      <section class="smart-summary">
-
-        <div class="summary-title">
-
-          <h2>
-            📊 المتابعة الذكية لهذا الأسبوع
-          </h2>
-
-          <span class="week-label">
-            ${formatDate(week.start)}
-            -
-            ${formatDate(week.end)}
-          </span>
-
-        </div>
-
-
-        <div class="progress-grid">
-
-
-          <!-- HIFZ -->
-
-          <div class="progress-card">
-
-            <div class="progress-top">
-
-              <span class="progress-title">
-                📖 إنجاز الحفظ
-              </span>
-
-              <span
-                class="progress-percent"
-                id="hifzPercent"
-              >
-                ${stats.hifzPercent}%
-              </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-              <div
-                class="progress-fill"
-                id="hifzFill"
-                style="
-                  width:${Math.min(
-                    stats.hifzPercent,
-                    100
-                  )}%
-                "
-              ></div>
-
-            </div>
-
-            <div
-              class="progress-details"
-              id="hifzDetails"
-            >
-              تم إنجاز
-              ${stats.weeklyHifzPages.size}
-              من
-              ${stats.goalHifz || 0}
-              صفحة
-            </div>
-
-          </div>
-
-
-          <!-- REVIEW -->
-
-          <div class="progress-card">
-
-            <div class="progress-top">
-
-              <span class="progress-title">
-                🔄 إنجاز المراجعة
-              </span>
-
-              <span
-                class="progress-percent"
-                id="reviewPercent"
-              >
-                ${stats.reviewPercent}%
-              </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-              <div
-                class="progress-fill blue"
-                id="reviewFill"
-                style="
-                  width:${Math.min(
-                    stats.reviewPercent,
-                    100
-                  )}%
-                "
-              ></div>
-
-            </div>
-
-            <div
-              class="progress-details"
-              id="reviewDetails"
-            >
-              تم إنجاز
-              ${stats.weeklyReviewPages.size}
-              من
-              ${stats.goalReview || 0}
-              صفحة
-            </div>
-
-          </div>
-
-
-          <!-- QURAN -->
-
-          <div class="progress-card">
-
-            <div class="progress-top">
-
-              <span class="progress-title">
-                📚 نسبة حفظ القرآن
-              </span>
-
-              <span
-                class="progress-percent"
-              >
-                ${stats.quranPercent}%
-              </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-              <div
-                class="progress-fill gold"
-                style="
-                  width:${stats.quranPercent}%
-                "
-              ></div>
-
-            </div>
-
-            <div class="progress-details">
-
-              ${stats.allHifzPages.size}
-              صفحة محفوظة من 604
-
-            </div>
-
-          </div>
-
-
-          <!-- WEEK -->
-
-          <div class="progress-card">
-
-            <div class="progress-top">
-
-              <span class="progress-title">
-                🎯 إنجاز الأسبوع
-              </span>
-
-              <span
-                class="progress-percent"
-              >
-                ${stats.weeklyAchievement}%
-              </span>
-
-            </div>
-
-            <div class="progress-bar">
-
-              <div
-                class="progress-fill purple"
-                style="
-                  width:${Math.min(
-                    stats.weeklyAchievement,
-                    100
-                  )}%
-                "
-              ></div>
-
-            </div>
-
-            <div class="progress-details">
-
-              حفظ:
-              ${stats.weeklyHifzPages.size}
-
-              •
-
-              مراجعة:
-              ${stats.weeklyReviewPages.size}
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= STATS ================= -->
-
-      <section class="stats-grid">
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            📅
-          </div>
-
-          <div class="stat-label">
-            أيام الحضور
-          </div>
-
-          <div
-            class="stat-value"
-          >
-            ${stats.attendanceCount}
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            📖
-          </div>
-
-          <div class="stat-label">
-            التسميعات
-          </div>
-
-          <div
-            class="stat-value"
-          >
-            ${stats.recitationCount}
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            🧪
-          </div>
-
-          <div class="stat-label">
-            الاختبارات
-          </div>
-
-          <div
-            class="stat-value"
-          >
-            ${stats.testCount}
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            📚
-          </div>
-
-          <div class="stat-label">
-            الصفحات المحفوظة
-          </div>
-
-          <div
-            class="stat-value"
-          >
-            ${stats.allHifzPages.size}
-          </div>
-
-          <div class="stat-small">
-            من أصل 604
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            🕌
-          </div>
-
-          <div class="stat-label">
-            الأجزاء المكتملة
-          </div>
-
-          <div
-            class="stat-value"
-          >
-            ${stats.completedJuz}
-          </div>
-
-          <div class="stat-small">
-            من 30 جزءًا
-          </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-          <div class="stat-icon">
-            ⭐
-          </div>
-
-          <div class="stat-label">
-            النقاط الكلية
-          </div>
-
-          <div
-            class="stat-value"
-          >
-            ${stats.totalPoints}
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= QUICK INFO ================= -->
-
-      <section class="quick-grid">
-
-        <div class="info-card">
-
-          <div class="info-label">
-            🎯 الهدف الحالي
-          </div>
-
-          <div class="info-value">
-
-            حفظ
-            ${stats.goalHifz || 0}
-            صفحة
-
-            /
-
-            مراجعة
-            ${stats.goalReview || 0}
-            صفحة
-
-          </div>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <div class="info-label">
-            📈 متوسط درجات التسميع
-          </div>
-
-          <div class="info-value">
-
-            ${
-              stats.averageScore
-                ? stats.averageScore.toFixed(1)
-                : 'لا توجد درجات'
-            }
-
-            ${
-              stats.averageScore
-                ? '%'
-                : ''
-            }
-
-          </div>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <div class="info-label">
-            🏆 أعلى درجة تسميع
-          </div>
-
-          <div class="info-value">
-
-            ${
-              stats.highestScore
-                ? stats.highestScore + '%'
-                : 'لا توجد درجات'
-            }
-
-          </div>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <div class="info-label">
-            🔢 الصفحات المعادلة
-          </div>
-
-          <div class="info-value">
-
-            ${stats.equivalentPages.toFixed(1)}
-
-            صفحة
-
-            <span
-              style="
-                color:var(--muted);
-                font-size:10px;
-              "
-            >
-              (كل 5 صفحات مراجعة = صفحة حفظ)
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <div class="info-label">
-            📍 منطقة السكن
-          </div>
-
-          <div class="info-value">
-
-            ${
-              escapeHtml(
-                profile.residence ||
-                'غير مسجل'
-              )
-            }
-
-          </div>
-
-        </div>
-
-
-        <div class="info-card">
-
-          <div class="info-label">
-            🚌 حافلة الطالب
-          </div>
-
-          <div class="info-value">
-
-            ${
-              escapeHtml(
-                profile.bus ||
-                'غير مسجل'
-              )
-            }
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= EVALUATION ================= -->
-
-      <section class="evaluation">
-
-        <div>
-
-          <div class="evaluation-label">
-            👑 التقييم العام والمتابعة
-          </div>
-
-          <div class="evaluation-title">
-            ${evaluation.title}
-          </div>
-
-          <div class="evaluation-details">
-            ${evaluation.details}
-          </div>
-
-        </div>
-
-        <div class="evaluation-score">
-
-          <strong>
-            ${stats.weeklyAchievement}%
-          </strong>
-
-          <span>
-            إنجاز الأسبوع
-          </span>
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= BASIC ================= -->
-
-      <section
-        class="section accordion-section"
-        data-key="basic"
-      >
-
-        <div
-          class="section-head"
-          onclick="
-            toggleSection(this.parentElement)
-          "
-        >
-
-          <div>
-
-            <h2 class="section-title">
-              📋 البيانات الأساسية
-            </h2>
-
-            <div class="section-subtitle">
-              معلومات الطالب الأساسية وبيانات التواصل
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-body">
-
-          <div class="form-grid">
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                اسم الطالب
-              </label>
-
-              <input
-                id="name"
-                type="text"
-                value="${escapeHtml(
-                  student.name || ''
-                )}"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                العمر
-              </label>
-
-              <input
-                id="age"
-                type="number"
-                min="1"
-                value="${escapeHtml(
-                  student.age ?? ''
-                )}"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                الصف / الحلقة
-              </label>
-
-              <input
-                id="section"
-                type="text"
-                value="${escapeHtml(
-                  student.section || ''
-                )}"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                حالة الطالب
-              </label>
-
-              <select id="status">
-
-                <option
-                  value="active"
-                  ${
-                    student.status === 'active'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  مستمر
-                </option>
-
-                <option
-                  value="inactive"
-                  ${
-                    student.status === 'inactive'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  متوقف
-                </option>
-
-                <option
-                  value="rejected"
-                  ${
-                    student.status === 'rejected'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  غير مقبول
-                </option>
-
-                <option
-                  value="expelled"
-                  ${
-                    student.status === 'expelled'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  مفصول
-                </option>
-
-                <option
-                  value="pending"
-                  ${
-                    student.status === 'pending'
-                      ? 'selected'
-                      : ''
-                  }
-                >
-                  طلب بانتظار الموافقة
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                مقدار الحفظ الحالي
-              </label>
-
-              <input
-                id="memorization"
-                type="text"
-                value="${escapeHtml(
-                  student.memorization || ''
-                )}"
-                placeholder="مثال: 5 أجزاء"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                رقم ولي الأمر
-              </label>
-
-              <input
-                id="guardianPhone"
-                type="tel"
-                value="${escapeHtml(
-                  profile.guardianPhone ||
-                  student.guardian_phone ||
-                  ''
-                )}"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                تاريخ الالتحاق
-              </label>
-
-              <input
-                id="joiningDate"
-                type="date"
-                value="${escapeHtml(
-                  profile.joiningDate || ''
-                )}"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                مكان السكن
-              </label>
-
-              <input
-                id="residence"
-                type="text"
-                value="${escapeHtml(
-                  profile.residence || ''
-                )}"
-                placeholder="مثال: الرصيفة"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                الباص
-              </label>
-
-              <input
-                id="bus"
-                type="text"
-                value="${escapeHtml(
-                  profile.bus || ''
-                )}"
-                placeholder="رقم أو اسم الباص"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                موقع المنزل
-              </label>
-
-              <input
-                id="homeLocation"
-                type="text"
-                value="${escapeHtml(
-                  profile.homeLocation || ''
-                )}"
-                placeholder="الإحداثيات أو وصف الموقع"
-              >
-
-            </div>
-
-          </div>
-
-
-          ${saveButton(
-            'basic',
-            '💾 حفظ البيانات الأساسية'
-          )}
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= WEEKLY GOAL ================= -->
-
-      <section
-        class="section accordion-section"
-        data-key="weeklyGoal"
-      >
-
-        <div
-          class="section-head"
-          onclick="
-            toggleSection(this.parentElement)
-          "
-        >
-
-          <div>
-
-            <h2 class="section-title">
-              🎯 الهدف الأسبوعي
-            </h2>
-
-            <div class="section-subtitle">
-              تحديد هدف الحفظ والمراجعة
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-body">
-
-          <div class="form-grid">
-
-            <div class="form-group">
-
-              <label class="form-label">
-                هدف الحفظ الجديد - صفحات
-              </label>
-
-              <input
-                id="goalHifz"
-                type="number"
-                min="0"
-                value="${escapeHtml(
-                  profile.weeklyGoal?.hifz ?? ''
-                )}"
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label class="form-label">
-                هدف المراجعة - صفحات
-              </label>
-
-              <input
-                id="goalReview"
-                type="number"
-                min="0"
-                value="${escapeHtml(
-                  profile.weeklyGoal?.review ?? ''
-                )}"
-              >
-
-            </div>
-
-          </div>
-
-
-          <div
-            class="quran-intro"
-            style="margin-top:15px"
-          >
-
-            💡 بعد تسجيل الهدف، النظام يحسب
-            <strong>
-              نسبة الإنجاز تلقائيًا
-            </strong>
-            من سجلات التسميع الخاصة بهذا الأسبوع.
-
-          </div>
-
-
-          ${saveButton(
-            'weeklyGoal',
-            '💾 حفظ الهدف الأسبوعي'
-          )}
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= ATTENDANCE ================= -->
-
-      <section
-        class="section accordion-section"
-        data-key="attendance"
-      >
-
-        <div
-          class="section-head"
-          onclick="
-            toggleSection(this.parentElement)
-          "
-        >
-
-          <div>
-
-            <h2 class="section-title">
-              📅 سجل الحضور
-            </h2>
-
-            <div class="section-subtitle">
-              إضافة وتعديل حضور الطالب
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-body">
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-
-                  <th>
-                    التاريخ
-                  </th>
-
-                  <th>
-                    الحالة
-                  </th>
-
-                  <th>
-                    ملاحظة
-                  </th>
-
-                  <th>
-                    حذف
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody
-                id="attendanceBody"
-              ></tbody>
-
-            </table>
-
-          </div>
-
-
-          <button
-            type="button"
-            class="add-row"
-            onclick="addAttendanceRow()"
-          >
-            ＋ إضافة يوم
-          </button>
-
-
-          ${saveButton(
-            'attendance',
-            '💾 حفظ الحضور'
-          )}
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= WEEKLY PLAN ================= -->
-
-      <section
-        class="section accordion-section"
-        data-key="weeklyPlan"
-      >
-
-        <div
-          class="section-head"
-          onclick="
-            toggleSection(this.parentElement)
-          "
-        >
-
-          <div>
-
-            <h2 class="section-title">
-              📝 الخطة الأسبوعية
-            </h2>
-
-            <div class="section-subtitle">
-              تنظيم خطة الحفظ والمراجعة
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-body">
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-
-                  <th>
-                    اليوم / التاريخ
-                  </th>
-
-                  <th>
-                    الحفظ
-                  </th>
-
-                  <th>
-                    المراجعة
-                  </th>
-
-                  <th>
-                    ملاحظات
-                  </th>
-
-                  <th>
-                    حذف
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody
-                id="planBody"
-              ></tbody>
-
-            </table>
-
-          </div>
-
-
-          <button
-            type="button"
-            class="add-row"
-            onclick="addPlanRow()"
-          >
-            ＋ إضافة يوم
-          </button>
-
-
-          ${saveButton(
-            'weeklyPlan',
-            '💾 حفظ الخطة الأسبوعية'
-          )}
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= TESTS ================= -->
-
-      <section
-        class="section accordion-section"
-        data-key="tests"
-      >
-
-        <div
-          class="section-head"
-          onclick="
-            toggleSection(this.parentElement)
-          "
-        >
-
-          <div>
-
-            <h2 class="section-title">
-              🧪 الاختبارات
-            </h2>
-
-            <div class="section-subtitle">
-              تسجيل نتائج الاختبارات والنقاط
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-body">
-
-          <div
-            class="quran-intro"
-          >
-
-            💡 نظام النقاط:
-            <strong>ممتاز = +12</strong>
-            &nbsp; • &nbsp;
-            <strong>جيد جدًا = +8</strong>
-            &nbsp; • &nbsp;
-            <strong>جيد = +4</strong>
-
-          </div>
-
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-
-                  <th>
-                    التاريخ
-                  </th>
-
-                  <th>
-                    اسم الاختبار
-                  </th>
-
-                  <th>
-                    العلامة
-                  </th>
-
-                  <th>
-                    من
-                  </th>
-
-                  <th>
-                    ملاحظات
-                  </th>
-
-                  <th>
-                    حذف
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody
-                id="testsBody"
-              ></tbody>
-
-            </table>
-
-          </div>
-
-
-          <button
-            type="button"
-            class="add-row"
-            onclick="addTestRow()"
-          >
-            ＋ إضافة اختبار
-          </button>
-
-
-          ${saveButton(
-            'tests',
-            '💾 حفظ الاختبارات'
-          )}
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= RECITATIONS ================= -->
-
-      <section
-        class="section accordion-section"
-        data-key="recitations"
-      >
-
-        <div
-          class="section-head"
-          onclick="
-            toggleSection(this.parentElement)
-          "
-        >
-
-          <div>
-
-            <h2 class="section-title">
-              📖 سجل التسميع
-            </h2>
-
-            <div class="section-subtitle">
-              النظام يحسب منه نسب الحفظ والمراجعة تلقائيًا
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-body">
-
-
-          <div class="quran-intro">
-
-            <strong>
-              مهم:
-            </strong>
-
-            عند تسجيل
-
-            <strong>
-              حفظ
-            </strong>
-
-            من صفحة 10 إلى 12،
-
-            النظام يعتبرها
-
-            <strong>
-              3 صفحات
-            </strong>
-
-            تلقائيًا.
-
-            وإذا تكرر تسجيل نفس الصفحة،
-            لا تتكرر في نسبة الحفظ الكلية.
-
-          </div>
-
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-
-                <tr>
-
-                  <th>
-                    التاريخ
-                  </th>
-
-                  <th>
-                    النوع
-                  </th>
-
-                  <th>
-                    من صفحة
-                  </th>
-
-                  <th>
-                    إلى صفحة
-                  </th>
-
-                  <th>
-                    عدد الصفحات
-                  </th>
-
-                  <th>
-                    الدرجة
-                  </th>
-
-                  <th>
-                    ملاحظات
-                  </th>
-
-                  <th>
-                    حذف
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody
-                id="recitationsBody"
-              ></tbody>
-
-            </table>
-
-          </div>
-
-
-          <button
-            type="button"
-            class="add-row"
-            onclick="addRecitationRow()"
-          >
-            ＋ إضافة تسميع
-          </button>
-
-
-          ${saveButton(
-            'recitations',
-            '💾 حفظ التسميع'
-          )}
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= QURAN MAP ================= -->
-
-      <section
-        class="section accordion-section"
-        data-key="quranMap"
-      >
-
-        <div
-          class="section-head"
-          onclick="
-            toggleSection(this.parentElement)
-          "
-        >
-
-          <div>
-
-            <h2 class="section-title">
-              🗺️ خريطة متابعة القرآن الكريم
-            </h2>
-
-            <div class="section-subtitle">
-              604 صفحة يتم تحديثها تلقائيًا من سجل التسميع
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-body">
-
-          <div class="quran-intro">
-
-            كل صفحة يتم تسجيلها في
-
-            <strong>
-              الحفظ
-            </strong>
-
-            تظهر باللون الأخضر،
-            وكل صفحة في
-
-            <strong>
-              المراجعة
-            </strong>
-
-            تظهر بالأزرق.
-
-            ويمكن للصفحة أن تظهر باللونين إذا تم
-            حفظها ومراجعتها.
-
-          </div>
-
-
-          <div
-            class="quran-summary"
-            id="quranSummary"
-          ></div>
-
-
-          <div
-            id="quranMap"
-          ></div>
-
-
-          <div class="quran-legend">
-
-            <div class="legend-item">
-
-              <span
-                class="legend-dot hifz"
-              ></span>
-
-              حفظ جديد
-
-            </div>
-
-
-            <div class="legend-item">
-
-              <span
-                class="legend-dot review"
-              ></span>
-
-              مراجعة
-
-            </div>
-
-
-            <div class="legend-item">
-
-              <span
-                class="legend-dot none"
-              ></span>
-
-              غير مسجلة
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ================= NOTES ================= -->
-
-      <section
-        class="section accordion-section"
-        data-key="notes"
-      >
-
-        <div
-          class="section-head"
-          onclick="
-            toggleSection(this.parentElement)
-          "
-        >
-
-          <div>
-
-            <h2 class="section-title">
-              🗒️ ملاحظات المعلم
-            </h2>
-
-            <div class="section-subtitle">
-              ملاحظات وتوجيهات خاصة بالطالب
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="section-body">
-
-          <div class="form-group">
-
-            <label class="form-label">
-              الملاحظات
-            </label>
-
-            <textarea
-              id="notes"
-              placeholder="اكتب ملاحظاتك عن الطالب هنا..."
-            >${escapeHtml(
-              profile.notes || ''
-            )}</textarea>
-
-          </div>
-
-
-          ${saveButton(
-            'notes',
-            '💾 حفظ الملاحظات'
-          )}
-
-        </div>
-
-      </section>
-
-    `;
-
-
-    renderAttendance();
-
-    renderPlan();
-
-    renderTests();
-
-    renderRecitations();
-
-    renderQuranMap();
-
-    updateStats();
-
-  }
-
-
-  /* =========================================================
-     SAVE BUTTON
-  ========================================================= */
-
-  function saveButton(
-    key,
-    text
-  ) {
-
-    return `
-
-      <div class="save-wrap">
-
-        <button
-          type="button"
-          class="save-btn"
-          onclick="
-            saveSection(
-              '${key}',
-              this
-            )
-          "
-        >
-          ${text}
-        </button>
-
-        <span
-          class="save-message"
-        ></span>
-
-      </div>
-
-    `;
-
-  }
-
-
-  /* =========================================================
-     GET PHOTO
-  ========================================================= */
-
-  function getStudentPhoto() {
-
-    const localPhoto =
-      localStorage.getItem(
-        `studentPhoto_${studentId}`
-      );
-
-    if (localPhoto)
-      return localPhoto;
-
-
-    if (profile?.photoUrl)
-      return profile.photoUrl;
-
-
-    return '';
-
-  }
-
-
-  /* =========================================================
-     PHOTO
-  ========================================================= */
-
-  async function handlePhoto(event) {
-
-    const file =
-      event.target.files?.[0];
-
-    if (!file)
-      return;
-
-
-    if (
-      !file.type.startsWith(
-        'image/'
-      )
-    ) {
-
-      alert(
-        'الرجاء اختيار صورة صحيحة.'
-      );
-
-      return;
-
-    }
-
-
-    const reader =
-      new FileReader();
-
-
-    reader.onload =
-      async function(e) {
-
-        const dataUrl =
-          e.target.result;
-
-
-        localStorage.setItem(
-          `studentPhoto_${studentId}`,
-          dataUrl
-        );
-
-
-        const img =
+        const photo =
           document.getElementById(
             'studentPhoto'
           );
 
-
-        if (img)
-          img.src =
-            dataUrl;
-
-
-        try {
-
-          const fresh =
-            await readFreshProfile();
-
-
-          await saveProfilePatch({
-
-            photoUrl:
-              dataUrl
-
-          });
-
-
-          profile =
-            mergeProfile({
-
-              ...fresh,
-
-              photoUrl:
-                dataUrl
-
-            });
-
-
-          showGlobalMessage(
-            '✅ تم تغيير صورة الطالب وحفظها بنجاح.'
+        const letter =
+          document.getElementById(
+            'avatarLetter'
           );
 
-        } catch (error) {
+        photo.src =
+          String(photoUrl);
 
-          console.error(
-            'PHOTO SAVE ERROR:',
-            error
-          );
+        photo.style.display =
+          'block';
 
-          showGlobalMessage(
-            '⚠️ تم تغيير الصورة على الجهاز، لكن تعذر حفظها في قاعدة البيانات.'
-          );
+        letter.style.display =
+          'none';
 
-        }
+        photo.onerror = function () {
+
+          photo.style.display =
+            'none';
+
+          letter.style.display =
+            'grid';
+        };
+      }
+
+
+      /* STATS */
+
+      setText(
+        'statSection',
+        section
+      );
+
+      setText(
+        'statMemorization',
+        memorization
+      );
+
+      setText(
+        'statStatus',
+        formatStatus(status)
+      );
+
+      setText(
+        'statPoints',
+        points
+      );
+
+
+      /* PERSONAL INFO */
+
+      setText(
+        'infoName',
+        name
+      );
+
+      setText(
+        'infoSection',
+        section
+      );
+
+      setText(
+        'infoMemorization',
+        memorization
+      );
+
+      setText(
+        'infoStatus',
+        formatStatus(status)
+      );
+
+
+      setText(
+        'infoGuardianPhone',
+        firstValue(
+          profileData,
+          [
+            'guardianPhone',
+            'guardian_phone',
+            'parentPhone',
+            'parent_phone',
+            'phone'
+          ]
+        )
+      );
+
+
+      setText(
+        'infoJoiningDate',
+        formatDate(
+          firstValue(
+            profileData,
+            [
+              'joiningDate',
+              'joining_date',
+              'joinDate',
+              'join_date'
+            ],
+            ''
+          )
+        )
+      );
+
+
+      setText(
+        'infoResidence',
+        firstValue(
+          profileData,
+          [
+            'residence',
+            'address',
+            'home',
+            'housing'
+          ]
+        )
+      );
+
+
+      setText(
+        'infoBus',
+        firstValue(
+          profileData,
+          [
+            'bus',
+            'transport',
+            'transportation'
+          ]
+        )
+      );
+
+
+      setText(
+        'infoHomeLocation',
+        firstValue(
+          profileData,
+          [
+            'homeLocation',
+            'home_location',
+            'location'
+          ]
+        )
+      );
+
+
+      setText(
+        'infoCommitment',
+        firstValue(
+          profileData,
+          [
+            'commitment',
+            'commitmentLevel',
+            'commitment_level'
+          ]
+        )
+      );
+
+
+      /* GOALS */
+
+      renderGoals(
+        firstValue(
+          profileData,
+          [
+            'weeklyGoals',
+            'weekly_goals',
+            'goals'
+          ],
+          []
+        )
+      );
+
+
+      /* ATTENDANCE */
+
+      renderAttendance(
+        firstValue(
+          profileData,
+          [
+            'attendance',
+            'attendances'
+          ],
+          []
+        )
+      );
+
+
+      /* WEEKLY PLAN */
+
+      renderWeeklyPlan(
+        firstValue(
+          profileData,
+          [
+            'weeklyPlan',
+            'weekly_plan',
+            'plan'
+          ],
+          []
+        )
+      );
+
+
+      /* TESTS */
+
+      renderTests(
+        firstValue(
+          profileData,
+          [
+            'tests',
+            'exams',
+            'examResults',
+            'exam_results'
+          ],
+          []
+        )
+      );
+
+
+      /* RECITATIONS */
+
+      renderRecitations(
+        firstValue(
+          profileData,
+          [
+            'recitations',
+            'tasmee',
+            'tasmee3',
+            'recitation'
+          ],
+          []
+        )
+      );
+
+
+      /* PROGRESS */
+
+      setText(
+        'progressWeekly',
+        firstValue(
+          profileData,
+          [
+            'weeklyProgress',
+            'weekly_progress',
+            'weeklyAchievement',
+            'weekly_achievement'
+          ]
+        )
+      );
+
+
+      setText(
+        'progressOverall',
+        firstValue(
+          profileData,
+          [
+            'overallProgress',
+            'overall_progress',
+            'progress'
+          ]
+        )
+      );
+
+
+      setText(
+        'progressPoints',
+        points
+      );
+
+
+      setText(
+        'progressUpdated',
+        profile.updated_at
+          ? formatDate(profile.updated_at)
+          : '—'
+      );
+
+
+      /* NOTES */
+
+      const notes =
+        firstValue(
+          profileData,
+          [
+            'notes',
+            'teacherNotes',
+            'teacher_notes',
+            'note'
+          ],
+          ''
+        );
+
+
+      document.getElementById(
+        'teacherNotes'
+      ).textContent =
+        notes || 'لا توجد ملاحظات حاليًا.';
+
+
+      /* EXTRA DATA */
+
+      renderExtraData();
+    }
+
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    function formatStatus(status) {
+
+      const value =
+        String(status || '')
+          .toLowerCase();
+
+      const map = {
+        active: 'نشط',
+        inactive: 'غير نشط',
+        suspended: 'موقوف',
+        graduated: 'متخرج'
+      };
+
+      return map[value] || text(status);
+    }
+
+
+    /* =========================
+       GOALS
+    ========================= */
+
+    function renderGoals(value) {
+
+      const container =
+        document.getElementById(
+          'weeklyGoals'
+        );
+
+      const items =
+        toArray(value);
+
+
+      if (!items.length) {
+
+        container.innerHTML =
+          '<div class="empty">لا توجد أهداف مسجلة.</div>';
+
+        return;
+      }
+
+
+      container.innerHTML =
+        items.map(
+          (item, index) => {
+
+            if (
+              typeof item === 'string'
+            ) {
+
+              return `
+                <div class="item">
+                  <div class="item-main">
+                    <div class="item-title">
+                      الهدف ${index + 1}
+                    </div>
+                    <div class="item-sub">
+                      ${escapeHtml(item)}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+
+
+            const title =
+              firstValue(
+                item,
+                [
+                  'title',
+                  'name',
+                  'goal',
+                  'text'
+                ],
+                `الهدف ${index + 1}`
+              );
+
+
+            const details =
+              firstValue(
+                item,
+                [
+                  'description',
+                  'details',
+                  'note'
+                ],
+                ''
+              );
+
+
+            const valueText =
+              firstValue(
+                item,
+                [
+                  'value',
+                  'target',
+                  'amount'
+                ],
+                ''
+              );
+
+
+            return `
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+                    ${escapeHtml(title)}
+                  </div>
+
+                  ${
+                    details !== ''
+                      ? `
+                        <div class="item-sub">
+                          ${escapeHtml(details)}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                </div>
+
+                ${
+                  valueText !== ''
+                    ? `
+                      <div class="item-badge">
+                        ${escapeHtml(valueText)}
+                      </div>
+                    `
+                    : ''
+                }
+
+              </div>
+            `;
+          }
+        ).join('');
+    }
+
+
+    /* =========================
+       ATTENDANCE
+    ========================= */
+
+    function renderAttendance(value) {
+
+      const container =
+        document.getElementById(
+          'attendanceList'
+        );
+
+      const summary =
+        document.getElementById(
+          'attendanceSummary'
+        );
+
+
+      const items =
+        toArray(value);
+
+
+      if (!items.length) {
+
+        container.innerHTML =
+          '<div class="empty">لا توجد سجلات حضور.</div>';
+
+        summary.textContent =
+          'لا توجد بيانات';
+
+        return;
+      }
+
+
+      let present = 0;
+      let absent = 0;
+      let late = 0;
+
+
+      container.innerHTML =
+        items.map(
+          (item, index) => {
+
+            let day = '';
+            let date = '';
+            let status = '';
+            let note = '';
+
+
+            if (
+              typeof item === 'string'
+            ) {
+
+              status =
+                item;
+
+            } else {
+
+              day =
+                firstValue(
+                  item,
+                  [
+                    'day',
+                    'weekday'
+                  ],
+                  ''
+                );
+
+              date =
+                firstValue(
+                  item,
+                  [
+                    'date',
+                    'dayDate'
+                  ],
+                  ''
+                );
+
+              status =
+                firstValue(
+                  item,
+                  [
+                    'status',
+                    'attendance'
+                  ],
+                  '—'
+                );
+
+              note =
+                firstValue(
+                  item,
+                  [
+                    'note',
+                    'notes',
+                    'reason'
+                  ],
+                  ''
+                );
+            }
+
+
+            const normalized =
+              String(status)
+                .toLowerCase();
+
+
+            if (
+              normalized.includes('حاضر') ||
+              normalized.includes('present') ||
+              normalized === 'p'
+            ) {
+              present++;
+            }
+
+
+            if (
+              normalized.includes('غائب') ||
+              normalized.includes('absent') ||
+              normalized === 'a'
+            ) {
+              absent++;
+            }
+
+
+            if (
+              normalized.includes('متأخر') ||
+              normalized.includes('late')
+            ) {
+              late++;
+            }
+
+
+            return `
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+                    ${escapeHtml(
+                      day ||
+                      `سجل ${index + 1}`
+                    )}
+                  </div>
+
+                  ${
+                    date
+                      ? `
+                        <div class="item-sub">
+                          ${escapeHtml(
+                            formatDate(date)
+                          )}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                  ${
+                    note
+                      ? `
+                        <div class="item-sub">
+                          ${escapeHtml(note)}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                </div>
+
+                <div class="item-badge">
+                  ${escapeHtml(status)}
+                </div>
+
+              </div>
+            `;
+          }
+        ).join('');
+
+
+      summary.textContent =
+        `حاضر: ${present} • غياب: ${absent} • تأخير: ${late}`;
+    }
+
+
+    /* =========================
+       WEEKLY PLAN
+    ========================= */
+
+    function renderWeeklyPlan(value) {
+
+      const container =
+        document.getElementById(
+          'weeklyPlan'
+        );
+
+
+      const items =
+        toArray(value);
+
+
+      if (!items.length) {
+
+        container.innerHTML =
+          '<div class="empty">لا توجد خطة أسبوعية.</div>';
+
+        return;
+      }
+
+
+      container.innerHTML =
+        items.map(
+          (item, index) => {
+
+            if (
+              typeof item === 'string'
+            ) {
+
+              return `
+                <div class="item">
+                  <div class="item-main">
+                    <div class="item-title">
+                      ${escapeHtml(item)}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+
+
+            const day =
+              firstValue(
+                item,
+                [
+                  'day',
+                  'weekday',
+                  'name'
+                ],
+                `اليوم ${index + 1}`
+              );
+
+
+            const task =
+              firstValue(
+                item,
+                [
+                  'task',
+                  'content',
+                  'plan',
+                  'text',
+                  'details'
+                ],
+                '—'
+              );
+
+
+            const target =
+              firstValue(
+                item,
+                [
+                  'target',
+                  'amount',
+                  'pages',
+                  'surah'
+                ],
+                ''
+              );
+
+
+            return `
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+                    ${escapeHtml(day)}
+                  </div>
+
+                  <div class="item-sub">
+                    ${escapeHtml(task)}
+                  </div>
+
+                </div>
+
+                ${
+                  target !== ''
+                    ? `
+                      <div class="item-badge">
+                        ${escapeHtml(target)}
+                      </div>
+                    `
+                    : ''
+                }
+
+              </div>
+            `;
+          }
+        ).join('');
+    }
+
+
+    /* =========================
+       TESTS
+    ========================= */
+
+    function renderTests(value) {
+
+      const container =
+        document.getElementById(
+          'testsList'
+        );
+
+      const summary =
+        document.getElementById(
+          'testsSummary'
+        );
+
+
+      const items =
+        toArray(value);
+
+
+      if (!items.length) {
+
+        container.innerHTML =
+          '<div class="empty">لا توجد اختبارات مسجلة.</div>';
+
+        summary.textContent =
+          '0 اختبار';
+
+        return;
+      }
+
+
+      container.innerHTML =
+        items.map(
+          (item, index) => {
+
+            if (
+              typeof item === 'string'
+            ) {
+
+              return `
+                <div class="item">
+                  <div class="item-main">
+                    <div class="item-title">
+                      اختبار ${index + 1}
+                    </div>
+                    <div class="item-sub">
+                      ${escapeHtml(item)}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+
+
+            const name =
+              firstValue(
+                item,
+                [
+                  'name',
+                  'title',
+                  'test',
+                  'subject'
+                ],
+                `اختبار ${index + 1}`
+              );
+
+
+            const score =
+              firstValue(
+                item,
+                [
+                  'score',
+                  'mark',
+                  'grade'
+                ],
+                ''
+              );
+
+
+            const total =
+              firstValue(
+                item,
+                [
+                  'total',
+                  'max',
+                  'outOf',
+                  'out_of'
+                ],
+                ''
+              );
+
+
+            const date =
+              firstValue(
+                item,
+                ['date'],
+                ''
+              );
+
+
+            return `
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+                    ${escapeHtml(name)}
+                  </div>
+
+                  ${
+                    date
+                      ? `
+                        <div class="item-sub">
+                          ${escapeHtml(
+                            formatDate(date)
+                          )}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                </div>
+
+                ${
+                  score !== ''
+                    ? `
+                      <div class="item-badge">
+                        ${escapeHtml(score)}
+                        ${
+                          total !== ''
+                            ? ` / ${escapeHtml(total)}`
+                            : ''
+                        }
+                      </div>
+                    `
+                    : ''
+                }
+
+              </div>
+            `;
+          }
+        ).join('');
+
+
+      summary.textContent =
+        `${items.length} اختبار`;
+    }
+
+
+    /* =========================
+       RECITATIONS
+    ========================= */
+
+    function renderRecitations(value) {
+
+      const container =
+        document.getElementById(
+          'recitationsList'
+        );
+
+      const summary =
+        document.getElementById(
+          'recitationsSummary'
+        );
+
+
+      const items =
+        toArray(value);
+
+
+      if (!items.length) {
+
+        container.innerHTML =
+          '<div class="empty">لا توجد جلسات تسميع مسجلة.</div>';
+
+        summary.textContent =
+          '0 جلسة';
+
+        return;
+      }
+
+
+      container.innerHTML =
+        items.map(
+          (item, index) => {
+
+            if (
+              typeof item === 'string'
+            ) {
+
+              return `
+                <div class="item">
+                  <div class="item-main">
+                    <div class="item-title">
+                      جلسة ${index + 1}
+                    </div>
+
+                    <div class="item-sub">
+                      ${escapeHtml(item)}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+
+
+            const surah =
+              firstValue(
+                item,
+                [
+                  'surah',
+                  'soura',
+                  'chapter',
+                  'name',
+                  'title'
+                ],
+                `جلسة ${index + 1}`
+              );
+
+
+            const pages =
+              firstValue(
+                item,
+                [
+                  'pages',
+                  'amount',
+                  'quantity'
+                ],
+                ''
+              );
+
+
+            const verses =
+              firstValue(
+                item,
+                [
+                  'verses',
+                  'ayat',
+                  'ayahs'
+                ],
+                ''
+              );
+
+
+            const grade =
+              firstValue(
+                item,
+                [
+                  'grade',
+                  'score',
+                  'mark',
+                  'evaluation'
+                ],
+                ''
+              );
+
+
+            const date =
+              firstValue(
+                item,
+                ['date'],
+                ''
+              );
+
+
+            const note =
+              firstValue(
+                item,
+                [
+                  'note',
+                  'notes',
+                  'comment'
+                ],
+                ''
+              );
+
+
+            const subParts = [];
+
+
+            if (pages !== '') {
+              subParts.push(
+                `الصفحات: ${pages}`
+              );
+            }
+
+
+            if (verses !== '') {
+              subParts.push(
+                `الآيات: ${verses}`
+              );
+            }
+
+
+            if (date !== '') {
+              subParts.push(
+                formatDate(date)
+              );
+            }
+
+
+            if (note !== '') {
+              subParts.push(
+                note
+              );
+            }
+
+
+            return `
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+                    ${escapeHtml(surah)}
+                  </div>
+
+                  ${
+                    subParts.length
+                      ? `
+                        <div class="item-sub">
+                          ${subParts
+                            .map(
+                              part =>
+                                escapeHtml(part)
+                            )
+                            .join(' • ')}
+                        </div>
+                      `
+                      : ''
+                  }
+
+                </div>
+
+                ${
+                  grade !== ''
+                    ? `
+                      <div class="item-badge">
+                        ${escapeHtml(grade)}
+                      </div>
+                    `
+                    : ''
+                }
+
+              </div>
+            `;
+          }
+        ).join('');
+
+
+      summary.textContent =
+        `${items.length} جلسة`;
+    }
+
+
+    /* =========================
+       EXTRA DATA
+    ========================= */
+
+    function renderExtraData() {
+
+      const knownKeys = new Set([
+        'photo',
+        'photoUrl',
+        'photo_url',
+        'image',
+        'imageUrl',
+        'image_url',
+        'avatar',
+
+        'section',
+        'group',
+        'class',
+
+        'memorization',
+        'memorization_level',
+        'hifz',
+
+        'guardianPhone',
+        'guardian_phone',
+        'parentPhone',
+        'parent_phone',
+        'phone',
+
+        'joiningDate',
+        'joining_date',
+        'joinDate',
+        'join_date',
+
+        'residence',
+        'address',
+        'home',
+        'housing',
+
+        'bus',
+        'transport',
+        'transportation',
+
+        'homeLocation',
+        'home_location',
+        'location',
+
+        'commitment',
+        'commitmentLevel',
+        'commitment_level',
+
+        'points',
+        'totalPoints',
+        'total_points',
+
+        'weeklyGoals',
+        'weekly_goals',
+        'goals',
+
+        'attendance',
+        'attendances',
+
+        'weeklyPlan',
+        'weekly_plan',
+        'plan',
+
+        'tests',
+        'exams',
+        'examResults',
+        'exam_results',
+
+        'recitations',
+        'tasmee',
+        'tasmee3',
+        'recitation',
+
+        'weeklyProgress',
+        'weekly_progress',
+        'weeklyAchievement',
+        'weekly_achievement',
+
+        'overallProgress',
+        'overall_progress',
+        'progress',
+
+        'notes',
+        'teacherNotes',
+        'teacher_notes',
+        'note'
+      ]);
+
+
+      const entries =
+        Object.entries(
+          profileData || {}
+        ).filter(
+          ([key, value]) =>
+            !knownKeys.has(key) &&
+            value !== null &&
+            value !== undefined &&
+            value !== ''
+        );
+
+
+      const section =
+        document.getElementById(
+          'extraSection'
+        );
+
+      const container =
+        document.getElementById(
+          'extraInfo'
+        );
+
+
+      if (!entries.length) {
+
+        section.style.display =
+          'none';
+
+        return;
+      }
+
+
+      section.style.display =
+        'block';
+
+
+      container.innerHTML =
+        entries.map(
+          ([key, value]) => {
+
+            let printable;
+
+
+            if (
+              typeof value === 'object'
+            ) {
+              try {
+                printable =
+                  JSON.stringify(
+                    value,
+                    null,
+                    2
+                  );
+              } catch {
+                printable =
+                  String(value);
+              }
+            } else {
+              printable =
+                String(value);
+            }
+
+
+            return `
+              <div class="info-item">
+
+                <div class="info-label">
+                  ${escapeHtml(
+                    formatKey(key)
+                  )}
+                </div>
+
+                <div class="info-value">
+                  ${escapeHtml(printable)}
+                </div>
+
+              </div>
+            `;
+          }
+        ).join('');
+    }
+
+
+    function formatKey(key) {
+
+      const map = {
+
+        phone:
+          'رقم الهاتف',
+
+        email:
+          'البريد الإلكتروني',
+
+        age:
+          'العمر',
+
+        birthDate:
+          'تاريخ الميلاد',
+
+        birth_date:
+          'تاريخ الميلاد',
+
+        nationality:
+          'الجنسية',
+
+        school:
+          'المدرسة',
+
+        grade:
+          'الصف الدراسي'
 
       };
 
 
-    reader.readAsDataURL(file);
-
-  }
-
-
-  /* =========================================================
-     READ FRESH PROFILE
-  ========================================================= */
-
-  async function readFreshProfile() {
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient
-
-        .from('student_profiles')
-
-        .select('data')
-
-        .eq(
-          'student_id',
-          String(studentId)
-        )
-
-        .maybeSingle();
-
-
-    if (error)
-      throw error;
-
-
-    return mergeProfile(
-      data?.data || {}
-    );
-
-  }
-
-
-  /* =========================================================
-     SAVE PROFILE PATCH
-  ========================================================= */
-
-  async function saveProfilePatch(
-    changes
-  ) {
-
-    const fresh =
-      await readFreshProfile();
-
-
-    const merged = {
-
-      ...fresh,
-
-      ...changes
-
-    };
-
-
-    const {
-      error
-    } =
-      await supabaseClient
-
-        .from('student_profiles')
-
-        .upsert({
-
-          student_id:
-            String(studentId),
-
-          data:
-            merged,
-
-          updated_at:
-            new Date().toISOString()
-
-        });
-
-
-    if (error)
-      throw error;
-
-
-    return merged;
-
-  }
-
-
-  /* =========================================================
-     SAVE SECTION
-  ========================================================= */
-
-  async function saveSection(
-    key,
-    button
-  ) {
-
-    if (
-      !student ||
-      !studentId
-    ) {
-
-      showSaveError(
-        button,
-        'لم يتم تحميل بيانات الطالب.'
+      return (
+        map[key] ||
+        String(key)
+          .replace(/_/g, ' ')
       );
-
-      return;
-
     }
 
 
-    button.disabled =
-      true;
+    /* =========================
+       ERROR
+    ========================= */
 
+    function showError(message) {
 
-    const oldText =
-      button.textContent;
-
-
-    button.textContent =
-      '⏳ جاري الحفظ...';
-
-
-    try {
-
-      switch (key) {
-
-
-        /* ================= BASIC ================= */
-
-        case 'basic': {
-
-          const name =
-            document
-              .getElementById('name')
-              ?.value
-              .trim() || '';
-
-
-          if (!name) {
-
-            throw new Error(
-              'اسم الطالب مطلوب.'
-            );
-
-          }
-
-
-          const studentUpdate = {
-
-            name,
-
-            age:
-              number(
-                document
-                  .getElementById('age')
-                  ?.value
-              ),
-
-            section:
-              document
-                .getElementById('section')
-                ?.value
-                .trim() || '',
-
-            memorization:
-              document
-                .getElementById(
-                  'memorization'
-                )
-                ?.value
-                .trim() || '',
-
-            status:
-              document
-                .getElementById('status')
-                ?.value ||
-              'active',
-
-            guardian_phone:
-              document
-                .getElementById(
-                  'guardianPhone'
-                )
-                ?.value
-                .trim() || ''
-
-          };
-
-
-          const {
-            error:
-              studentError
-          } =
-            await supabaseClient
-
-              .from('students')
-
-              .update(
-                studentUpdate
-              )
-
-              .eq(
-                'id',
-                studentId
-              );
-
-
-          if (studentError)
-            throw studentError;
-
-
-          const profilePatch = {
-
-            photoUrl:
-              profile.photoUrl ||
-              '',
-
-            guardianPhone:
-              document
-                .getElementById(
-                  'guardianPhone'
-                )
-                ?.value
-                .trim() || '',
-
-            joiningDate:
-              document
-                .getElementById(
-                  'joiningDate'
-                )
-                ?.value || '',
-
-            residence:
-              document
-                .getElementById(
-                  'residence'
-                )
-                ?.value
-                .trim() || '',
-
-            bus:
-              document
-                .getElementById(
-                  'bus'
-                )
-                ?.value
-                .trim() || '',
-
-            homeLocation:
-              document
-                .getElementById(
-                  'homeLocation'
-                )
-                ?.value
-                .trim() || ''
-
-          };
-
-
-          await saveProfilePatch(
-            profilePatch
-          );
-
-
-          student = {
-
-            ...student,
-
-            ...studentUpdate
-
-          };
-
-
-          profile =
-            mergeProfile({
-
-              ...profile,
-
-              ...profilePatch
-
-            });
-
-
-          break;
-
-        }
-
-
-        /* ================= GOAL ================= */
-
-        case 'weeklyGoal': {
-
-          const weeklyGoal = {
-
-            hifz:
-              number(
-                document
-                  .getElementById(
-                    'goalHifz'
-                  )
-                  ?.value
-              ),
-
-            review:
-              number(
-                document
-                  .getElementById(
-                    'goalReview'
-                  )
-                  ?.value
-              )
-
-          };
-
-
-          await saveProfilePatch({
-
-            weeklyGoal
-
-          });
-
-
-          profile.weeklyGoal =
-            weeklyGoal;
-
-
-          break;
-
-        }
-
-
-        /* ================= ATTENDANCE ================= */
-
-        case 'attendance': {
-
-          const attendance =
-            collectAttendance();
-
-
-          await saveProfilePatch({
-
-            attendance
-
-          });
-
-
-          profile.attendance =
-            attendance;
-
-
-          break;
-
-        }
-
-
-        /* ================= PLAN ================= */
-
-        case 'weeklyPlan': {
-
-          const weeklyPlan =
-            collectPlan();
-
-
-          await saveProfilePatch({
-
-            weeklyPlan
-
-          });
-
-
-          profile.weeklyPlan =
-            weeklyPlan;
-
-
-          break;
-
-        }
-
-
-        /* ================= TESTS ================= */
-
-        case 'tests': {
-
-          const tests =
-            collectTests();
-
-
-          await saveProfilePatch({
-
-            tests
-
-          });
-
-
-          profile.tests =
-            tests;
-
-
-          break;
-
-        }
-
-
-        /* ================= RECITATIONS ================= */
-
-        case 'recitations': {
-
-          const recitations =
-            collectRecitations();
-
-
-          await saveProfilePatch({
-
-            recitations
-
-          });
-
-
-          profile.recitations =
-            recitations;
-
-
-          break;
-
-        }
-
-
-        /* ================= NOTES ================= */
-
-        case 'notes': {
-
-          const notes =
-            document
-              .getElementById(
-                'notes'
-              )
-              ?.value
-              .trim() || '';
-
-
-          await saveProfilePatch({
-
-            notes
-
-          });
-
-
-          profile.notes =
-            notes;
-
-
-          break;
-
-        }
-
-
-        default:
-
-          throw new Error(
-            'الخانة غير معروفة.'
-          );
-
-      }
-
-
-      /*
-        إعادة بناء الصفحة بعد الحفظ
-        حتى تتحدث النسب فورًا.
-      */
-
-      render();
-
-
-      showGlobalMessage(
-        '✅ تم الحفظ وتحديث الإحصائيات تلقائيًا.'
-      );
-
-
-    } catch (error) {
-
-      console.error(
-        'SECTION SAVE ERROR:',
-        error
-      );
-
-
-      showSaveError(
-        button,
-        error?.message ||
-        'حدث خطأ أثناء الحفظ.'
-      );
-
-    } finally {
-
-      button.disabled =
-        false;
-
-      button.textContent =
-        oldText;
-
-    }
-
-  }
-
-
-  /* =========================================================
-     SAVE MESSAGES
-  ========================================================= */
-
-  function getSaveMessageBox(
-    button
-  ) {
-
-    return button
-      ?.closest('.save-wrap')
-      ?.querySelector(
-        '.save-message'
-      );
-
-  }
-
-
-  function showSaveSuccess(
-    button,
-    message
-  ) {
-
-    const box =
-      getSaveMessageBox(
-        button
-      );
-
-
-    if (!box)
-      return;
-
-
-    box.className =
-      'save-message success';
-
-
-    box.textContent =
-      message;
-
-  }
-
-
-  function showSaveError(
-    button,
-    message
-  ) {
-
-    const box =
-      getSaveMessageBox(
-        button
-      );
-
-
-    if (!box)
-      return;
-
-
-    box.className =
-      'save-message error';
-
-
-    box.textContent =
-      message;
-
-  }
-
-
-  function showGlobalMessage(
-    message
-  ) {
-
-    const old =
       document.getElementById(
-        'globalMessage'
-      );
+        'loadingScreen'
+      ).style.display = 'none';
 
 
-    if (old)
-      old.remove();
-
-
-    const box =
-      document.createElement(
-        'div'
-      );
-
-
-    box.id =
-      'globalMessage';
-
-
-    box.textContent =
-      message;
-
-
-    Object.assign(
-      box.style,
-      {
-
-        position: 'fixed',
-
-        bottom: '20px',
-
-        left: '50%',
-
-        transform:
-          'translateX(-50%)',
-
-        zIndex: '9999',
-
-        background:
-          '#0d4d3a',
-
-        color: 'white',
-
-        padding:
-          '12px 20px',
-
-        borderRadius:
-          '12px',
-
-        fontWeight:
-          '800',
-
-        fontSize:
-          '13px',
-
-        boxShadow:
-          '0 10px 30px rgba(0,0,0,.2)',
-
-        maxWidth:
-          'calc(100% - 30px)',
-
-        textAlign:
-          'center'
-
-      }
-    );
-
-
-    document.body.appendChild(
-      box
-    );
-
-
-    setTimeout(
-      () => {
-
-        box.remove();
-
-      },
-      3500
-    );
-
-  }
-
-
-  /* =========================================================
-     ACCORDION
-  ========================================================= */
-
-  function toggleSection(
-    section
-  ) {
-
-    if (
-      section.classList.contains(
-        'open'
-      )
-    ) {
-
-      section.classList.remove(
-        'open'
-      );
-
-      return;
-
-    }
-
-
-    document
-      .querySelectorAll(
-        '.accordion-section.open'
-      )
-      .forEach(
-        other => {
-
-          if (
-            other !== section
-          ) {
-
-            other.classList.remove(
-              'open'
-            );
-
-          }
-
-        }
-      );
-
-
-    section.classList.add(
-      'open'
-    );
-
-  }
-
-
-  /* =========================================================
-     ATTENDANCE
-  ========================================================= */
-
-  function renderAttendance() {
-
-    const body =
       document.getElementById(
-        'attendanceBody'
-      );
+        'page'
+      ).style.display = 'none';
 
 
-    if (!body)
-      return;
+      document.getElementById(
+        'errorContainer'
+      ).innerHTML = `
 
+        <div class="error-box">
 
-    body.innerHTML = '';
+          <div class="error-icon">
+            ⚠️
+          </div>
 
+          <h2>
+            تعذر فتح الملف
+          </h2>
 
-    if (
-      !profile.attendance ||
-      !profile.attendance.length
-    ) {
+          <p>
+            ${escapeHtml(message)}
+          </p>
 
-      body.innerHTML = `
-
-        <tr>
-
-          <td
-            colspan="4"
-            class="empty"
+          <a
+            href="student-login.html"
+            class="error-btn"
           >
-            لا يوجد سجل حضور حتى الآن.
-          </td>
-
-        </tr>
-
-      `;
-
-      return;
-
-    }
-
-
-    profile.attendance.forEach(
-      item => {
-
-        addAttendanceRow(
-          item,
-          false
-        );
-
-      }
-    );
-
-  }
-
-
-  function addAttendanceRow(
-    item = {},
-    redraw = true
-  ) {
-
-    const body =
-      document.getElementById(
-        'attendanceBody'
-      );
-
-
-    if (!body)
-      return;
-
-
-    const empty =
-      body.querySelector(
-        '.empty'
-      );
-
-
-    if (empty)
-      empty.closest('tr')?.remove();
-
-
-    const row =
-      document.createElement(
-        'tr'
-      );
-
-
-    row.innerHTML = `
-
-      <td>
-
-        <input
-          class="
-            table-input
-            attendance-date
-          "
-          type="date"
-          value="${escapeHtml(
-            item.date || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <select
-          class="
-            table-input
-            attendance-status
-          "
-        >
-
-          <option
-            value="present"
-            ${
-              item.status === 'present'
-                ? 'selected'
-                : ''
-            }
-          >
-            حاضر
-          </option>
-
-          <option
-            value="late"
-            ${
-              item.status === 'late'
-                ? 'selected'
-                : ''
-            }
-          >
-            متأخر
-          </option>
-
-          <option
-            value="excused"
-            ${
-              item.status === 'excused'
-                ? 'selected'
-                : ''
-            }
-          >
-            معتذر
-          </option>
-
-          <option
-            value="absent"
-            ${
-              item.status === 'absent'
-                ? 'selected'
-                : ''
-            }
-          >
-            غائب
-          </option>
-
-        </select>
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            attendance-note
-          "
-          type="text"
-          placeholder="ملاحظة"
-          value="${escapeHtml(
-            item.note || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <button
-          type="button"
-          class="remove-row"
-          onclick="
-            this.closest('tr').remove()
-          "
-        >
-          ×
-        </button>
-
-      </td>
-
-    `;
-
-
-    body.appendChild(
-      row
-    );
-
-  }
-
-
-  function collectAttendance() {
-
-    return [
-      ...document.querySelectorAll(
-        '#attendanceBody tr'
-      )
-    ]
-
-      .map(
-        row => ({
-
-          date:
-            row
-              .querySelector(
-                '.attendance-date'
-              )
-              ?.value ||
-            '',
-
-          status:
-            row
-              .querySelector(
-                '.attendance-status'
-              )
-              ?.value ||
-            'present',
-
-          note:
-            row
-              .querySelector(
-                '.attendance-note'
-              )
-              ?.value
-              .trim() ||
-            ''
-
-        })
-      )
-
-      .filter(
-        item =>
-          item.date ||
-          item.note
-      );
-
-  }
-
-
-  /* =========================================================
-     WEEKLY PLAN
-  ========================================================= */
-
-  function renderPlan() {
-
-    const body =
-      document.getElementById(
-        'planBody'
-      );
-
-
-    if (!body)
-      return;
-
-
-    body.innerHTML = '';
-
-
-    if (
-      !profile.weeklyPlan ||
-      !profile.weeklyPlan.length
-    ) {
-
-      body.innerHTML = `
-
-        <tr>
-
-          <td
-            colspan="5"
-            class="empty"
-          >
-            لا توجد خطة مسجلة حتى الآن.
-          </td>
-
-        </tr>
-
-      `;
-
-      return;
-
-    }
-
-
-    profile.weeklyPlan.forEach(
-      item => {
-
-        addPlanRow(
-          item
-        );
-
-      }
-    );
-
-  }
-
-
-  function addPlanRow(
-    item = {}
-  ) {
-
-    const body =
-      document.getElementById(
-        'planBody'
-      );
-
-
-    if (!body)
-      return;
-
-
-    const empty =
-      body.querySelector(
-        '.empty'
-      );
-
-
-    if (empty)
-      empty.closest('tr')?.remove();
-
-
-    const row =
-      document.createElement(
-        'tr'
-      );
-
-
-    row.innerHTML = `
-
-      <td>
-
-        <input
-          class="
-            table-input
-            plan-day
-          "
-          type="text"
-          placeholder="السبت"
-          value="${escapeHtml(
-            item.day || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            plan-hifz
-          "
-          type="text"
-          placeholder="مثال: ص 20-22"
-          value="${escapeHtml(
-            item.hifz || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            plan-review
-          "
-          type="text"
-          placeholder="مثال: ص 10-19"
-          value="${escapeHtml(
-            item.review || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            plan-note
-          "
-          type="text"
-          placeholder="ملاحظات"
-          value="${escapeHtml(
-            item.note || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <button
-          type="button"
-          class="remove-row"
-          onclick="
-            this.closest('tr').remove()
-          "
-        >
-          ×
-        </button>
-
-      </td>
-
-    `;
-
-
-    body.appendChild(
-      row
-    );
-
-  }
-
-
-  function collectPlan() {
-
-    return [
-      ...document.querySelectorAll(
-        '#planBody tr'
-      )
-    ]
-
-      .map(
-        row => ({
-
-          day:
-            row
-              .querySelector(
-                '.plan-day'
-              )
-              ?.value
-              .trim() ||
-            '',
-
-          hifz:
-            row
-              .querySelector(
-                '.plan-hifz'
-              )
-              ?.value
-              .trim() ||
-            '',
-
-          review:
-            row
-              .querySelector(
-                '.plan-review'
-              )
-              ?.value
-              .trim() ||
-            '',
-
-          note:
-            row
-              .querySelector(
-                '.plan-note'
-              )
-              ?.value
-              .trim() ||
-            ''
-
-        })
-      )
-
-      .filter(
-        item =>
-          item.day ||
-          item.hifz ||
-          item.review ||
-          item.note
-      );
-
-  }
-
-
-  /* =========================================================
-     TESTS
-  ========================================================= */
-
-  function renderTests() {
-
-    const body =
-      document.getElementById(
-        'testsBody'
-      );
-
-
-    if (!body)
-      return;
-
-
-    body.innerHTML = '';
-
-
-    if (
-      !profile.tests ||
-      !profile.tests.length
-    ) {
-
-      body.innerHTML = `
-
-        <tr>
-
-          <td
-            colspan="6"
-            class="empty"
-          >
-            لا توجد اختبارات مسجلة حتى الآن.
-          </td>
-
-        </tr>
-
-      `;
-
-      return;
-
-    }
-
-
-    profile.tests.forEach(
-      item => {
-
-        addTestRow(
-          item
-        );
-
-      }
-    );
-
-  }
-
-
-  function addTestRow(
-    item = {}
-  ) {
-
-    const body =
-      document.getElementById(
-        'testsBody'
-      );
-
-
-    if (!body)
-      return;
-
-
-    const empty =
-      body.querySelector(
-        '.empty'
-      );
-
-
-    if (empty)
-      empty.closest('tr')?.remove();
-
-
-    const row =
-      document.createElement(
-        'tr'
-      );
-
-
-    row.innerHTML = `
-
-      <td>
-
-        <input
-          class="
-            table-input
-            test-date
-          "
-          type="date"
-          value="${escapeHtml(
-            item.date || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            test-name
-          "
-          type="text"
-          placeholder="اسم الاختبار"
-          value="${escapeHtml(
-            item.name || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            test-score
-          "
-          type="number"
-          step="0.1"
-          min="0"
-          value="${escapeHtml(
-            item.score ?? ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            test-outof
-          "
-          type="number"
-          step="0.1"
-          min="1"
-          value="${escapeHtml(
-            item.outOf ?? 100
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            test-note
-          "
-          type="text"
-          placeholder="ملاحظات"
-          value="${escapeHtml(
-            item.note || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <button
-          type="button"
-          class="remove-row"
-          onclick="
-            this.closest('tr').remove()
-          "
-        >
-          ×
-        </button>
-
-      </td>
-
-    `;
-
-
-    body.appendChild(
-      row
-    );
-
-  }
-
-
-  function collectTests() {
-
-    return [
-      ...document.querySelectorAll(
-        '#testsBody tr'
-      )
-    ]
-
-      .map(
-        row => ({
-
-          date:
-            row
-              .querySelector(
-                '.test-date'
-              )
-              ?.value ||
-            '',
-
-          name:
-            row
-              .querySelector(
-                '.test-name'
-              )
-              ?.value
-              .trim() ||
-            '',
-
-          score:
-            number(
-              row
-                .querySelector(
-                  '.test-score'
-                )
-                ?.value
-            ),
-
-          outOf:
-            number(
-              row
-                .querySelector(
-                  '.test-outof'
-                )
-                ?.value
-            ) || 100,
-
-          note:
-            row
-              .querySelector(
-                '.test-note'
-              )
-              ?.value
-              .trim() ||
-            ''
-
-        })
-      )
-
-      .filter(
-        item =>
-          item.date ||
-          item.name ||
-          item.score !== ''
-      );
-
-  }
-
-
-  /* =========================================================
-     RECITATIONS
-  ========================================================= */
-
-  function renderRecitations() {
-
-    const body =
-      document.getElementById(
-        'recitationsBody'
-      );
-
-
-    if (!body)
-      return;
-
-
-    body.innerHTML = '';
-
-
-    if (
-      !profile.recitations ||
-      !profile.recitations.length
-    ) {
-
-      body.innerHTML = `
-
-        <tr>
-
-          <td
-            colspan="8"
-            class="empty"
-          >
-            لا توجد تسميعات مسجلة حتى الآن.
-          </td>
-
-        </tr>
-
-      `;
-
-      return;
-
-    }
-
-
-    profile.recitations.forEach(
-      item => {
-
-        addRecitationRow(
-          item
-        );
-
-      }
-    );
-
-  }
-
-
-  function addRecitationRow(
-    item = {}
-  ) {
-
-    const body =
-      document.getElementById(
-        'recitationsBody'
-      );
-
-
-    if (!body)
-      return;
-
-
-    const empty =
-      body.querySelector(
-        '.empty'
-      );
-
-
-    if (empty)
-      empty.closest('tr')?.remove();
-
-
-    const row =
-      document.createElement(
-        'tr'
-      );
-
-
-    row.innerHTML = `
-
-      <td>
-
-        <input
-          class="
-            table-input
-            rec-date
-          "
-          type="date"
-          value="${escapeHtml(
-            item.date || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <select
-          class="
-            table-input
-            rec-type
-          "
-        >
-
-          <option
-            value="hifz"
-            ${
-              item.type === 'hifz'
-                ? 'selected'
-                : ''
-            }
-          >
-            📖 حفظ
-          </option>
-
-          <option
-            value="review"
-            ${
-              item.type === 'review'
-                ? 'selected'
-                : ''
-            }
-          >
-            🔄 مراجعة
-          </option>
-
-        </select>
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            rec-from
-          "
-          type="number"
-          min="1"
-          max="604"
-          placeholder="1"
-          value="${escapeHtml(
-            item.from ?? ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            rec-to
-          "
-          type="number"
-          min="1"
-          max="604"
-          placeholder="604"
-          value="${escapeHtml(
-            item.to ?? ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <span
-          class="rec-page-count"
-          style="
-            font-weight:900;
-            color:var(--green);
-          "
-        >
-          ${countRange(
-            item.from,
-            item.to
-          )}
-        </span>
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            rec-score
-          "
-          type="number"
-          min="0"
-          max="100"
-          step="0.1"
-          placeholder="100"
-          value="${escapeHtml(
-            item.score ?? ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <input
-          class="
-            table-input
-            rec-note
-          "
-          type="text"
-          placeholder="ملاحظات"
-          value="${escapeHtml(
-            item.note || ''
-          )}"
-        >
-
-      </td>
-
-
-      <td>
-
-        <button
-          type="button"
-          class="remove-row"
-          onclick="
-            this.closest('tr').remove()
-          "
-        >
-          ×
-        </button>
-
-      </td>
-
-    `;
-
-
-    body.appendChild(
-      row
-    );
-
-
-    const fromInput =
-      row.querySelector(
-        '.rec-from'
-      );
-
-    const toInput =
-      row.querySelector(
-        '.rec-to'
-      );
-
-    const countElement =
-      row.querySelector(
-        '.rec-page-count'
-      );
-
-
-    function updateCount() {
-
-      if (!countElement)
-        return;
-
-      countElement.textContent =
-        countRange(
-          fromInput?.value,
-          toInput?.value
-        );
-
-    }
-
-
-    fromInput?.addEventListener(
-      'input',
-      updateCount
-    );
-
-    toInput?.addEventListener(
-      'input',
-      updateCount
-    );
-
-  }
-
-
-  function collectRecitations() {
-
-    return [
-      ...document.querySelectorAll(
-        '#recitationsBody tr'
-      )
-    ]
-
-      .map(
-        row => ({
-
-          date:
-            row
-              .querySelector(
-                '.rec-date'
-              )
-              ?.value ||
-            '',
-
-          type:
-            row
-              .querySelector(
-                '.rec-type'
-              )
-              ?.value ||
-            'hifz',
-
-          from:
-            number(
-              row
-                .querySelector(
-                  '.rec-from'
-                )
-                ?.value
-            ),
-
-          to:
-            number(
-              row
-                .querySelector(
-                  '.rec-to'
-                )
-                ?.value
-            ),
-
-          score:
-            number(
-              row
-                .querySelector(
-                  '.rec-score'
-                )
-                ?.value
-            ),
-
-          note:
-            row
-              .querySelector(
-                '.rec-note'
-              )
-              ?.value
-              .trim() ||
-            ''
-
-        })
-      )
-
-      .filter(
-        item =>
-          item.date ||
-          item.from !== '' ||
-          item.to !== '' ||
-          item.score !== '' ||
-          item.note
-      );
-
-  }
-
-
-  /* =========================================================
-     QURAN MAP
-  ========================================================= */
-
-  function renderQuranMap() {
-
-    const map =
-      document.getElementById(
-        'quranMap'
-      );
-
-    const summary =
-      document.getElementById(
-        'quranSummary'
-      );
-
-
-    if (!map)
-      return;
-
-
-    const stats =
-      calculateStats();
-
-
-    const hifzPages =
-      stats.allHifzPages;
-
-    const reviewPages =
-      stats.allReviewPages;
-
-
-    if (summary) {
-
-      summary.innerHTML = `
-
-        <div class="quran-summary-card">
-
-          <strong>
-            ${hifzPages.size}
-          </strong>
-
-          <span>
-            صفحة محفوظة
-          </span>
-
-        </div>
-
-
-        <div class="quran-summary-card">
-
-          <strong>
-            ${reviewPages.size}
-          </strong>
-
-          <span>
-            صفحة مراجعة
-          </span>
-
-        </div>
-
-
-        <div class="quran-summary-card">
-
-          <strong>
-            ${stats.quranPercent}%
-          </strong>
-
-          <span>
-            نسبة الحفظ
-          </span>
-
-        </div>
-
-
-        <div class="quran-summary-card">
-
-          <strong>
-            ${stats.completedJuz}
-          </strong>
-
-          <span>
-            أجزاء مكتملة
-          </span>
+            العودة لتسجيل دخول الطالب
+          </a>
 
         </div>
 
       `;
-
     }
 
 
-    map.innerHTML = '';
+    /* =========================
+       LOGOUT
+    ========================= */
 
+    function logoutStudent() {
 
-    getJuzRanges().forEach(
-      range => {
-
-        let hifzCount = 0;
-
-        let reviewCount = 0;
-
-        for (
-          let p =
-            range.start;
-          p <= range.end;
-          p++
-        ) {
-
-          if (
-            hifzPages.has(p)
-          ) {
-
-            hifzCount++;
-
-          }
-
-          if (
-            reviewPages.has(p)
-          ) {
-
-            reviewCount++;
-
-          }
-
-        }
-
-
-        const card =
-          document.createElement(
-            'div'
-          );
-
-        card.className =
-          'juz-card';
-
-
-        const head =
-          document.createElement(
-            'div'
-          );
-
-        head.className =
-          'juz-head';
-
-
-        const name =
-          document.createElement(
-            'div'
-          );
-
-        name.className =
-          'juz-name';
-
-        name.textContent =
-          `الجزء ${toArabicNumber(
-            range.juz
-          )}`;
-
-
-        const count =
-          document.createElement(
-            'div'
-          );
-
-        count.className =
-          'juz-count';
-
-        count.textContent =
-          `${range.start} - ${range.end}
-           • ${hifzCount} حفظ
-           • ${reviewCount} مراجعة`;
-
-
-        head.appendChild(
-          name
-        );
-
-        head.appendChild(
-          count
-        );
-
-
-        const grid =
-          document.createElement(
-            'div'
-          );
-
-        grid.className =
-          'page-grid';
-
-
-        for (
-          let page =
-            range.start;
-          page <= range.end;
-          page++
-        ) {
-
-          const button =
-            document.createElement(
-              'button'
-            );
-
-          button.type =
-            'button';
-
-          button.className =
-            'quran-page';
-
-
-          const hasHifz =
-            hifzPages.has(
-              page
-            );
-
-          const hasReview =
-            reviewPages.has(
-              page
-            );
-
-
-          if (
-            hasHifz &&
-            hasReview
-          ) {
-
-            button.classList.add(
-              'both'
-            );
-
-          } else if (
-            hasHifz
-          ) {
-
-            button.classList.add(
-              'hifz'
-            );
-
-          } else if (
-            hasReview
-          ) {
-
-            button.classList.add(
-              'review'
-            );
-
-          }
-
-
-          if (
-            isPageInCurrentWeek(
-              page
-            )
-          ) {
-
-            button.classList.add(
-              'current-week'
-            );
-
-          }
-
-
-          button.textContent =
-            page;
-
-
-          button.title =
-            getPageTooltip(
-              page,
-              hasHifz,
-              hasReview
-            );
-
-
-          button.onclick =
-            function() {
-
-              showPageDetails(
-                page
-              );
-
-            };
-
-
-          grid.appendChild(
-            button
-          );
-
-        }
-
-
-        card.appendChild(
-          head
-        );
-
-        card.appendChild(
-          grid
-        );
-
-
-        map.appendChild(
-          card
-        );
-
-      }
-    );
-
-  }
-
-
-  function isPageInCurrentWeek(
-    page
-  ) {
-
-    const recitations =
-      profile.recitations ||
-      [];
-
-    return recitations.some(
-      item => {
-
-        if (
-          !isDateInCurrentWeek(
-            item.date
-          )
-        ) {
-
-          return false;
-
-        }
-
-        return getRangePages(
-          item.from,
-          item.to
-        ).includes(
-          page
-        );
-
-      }
-    );
-
-  }
-
-
-  function getPageTooltip(
-    page,
-    hasHifz,
-    hasReview
-  ) {
-
-    let state =
-      'غير مسجلة';
-
-    if (
-      hasHifz &&
-      hasReview
-    ) {
-
-      state =
-        'حفظ + مراجعة';
-
-    } else if (hasHifz) {
-
-      state =
-        'حفظ';
-
-    } else if (hasReview) {
-
-      state =
-        'مراجعة';
-
-    }
-
-    return `صفحة ${page} — ${state}`;
-
-  }
-
-
-  function showPageDetails(
-    page
-  ) {
-
-    const records =
-      (
-        profile.recitations ||
-        []
-      ).filter(
-        item =>
-          getRangePages(
-            item.from,
-            item.to
-          ).includes(
-            page
-          )
+      sessionStorage.removeItem(
+        'studentSession'
       );
-
-
-    if (!records.length) {
-
-      showGlobalMessage(
-        `صفحة ${page}: لم يتم تسجيلها بعد.`
-      );
-
-      return;
-
-    }
-
-
-    const latest =
-      records[
-        records.length - 1
-      ];
-
-
-    const type =
-      latest.type === 'review'
-        ? 'مراجعة'
-        : 'حفظ';
-
-
-    const score =
-      latest.score !== '' &&
-      latest.score !== null &&
-      latest.score !== undefined
-        ? ` • الدرجة ${latest.score}%`
-        : '';
-
-
-    showGlobalMessage(
-      `صفحة ${page}: ${type}${score}`
-    );
-
-  }
-
-
-  function toArabicNumber(
-    numberValue
-  ) {
-
-    const arabic =
-      [
-        '٠',
-        '١',
-        '٢',
-        '٣',
-        '٤',
-        '٥',
-        '٦',
-        '٧',
-        '٨',
-        '٩'
-      ];
-
-    return String(
-      numberValue
-    ).replace(
-      /\d/g,
-      d => arabic[
-        Number(d)
-      ]
-    );
-
-  }
-
-
-  /* =========================================================
-     STATS
-  ========================================================= */
-
-  function updateStats() {
-
-    const stats =
-      calculateStats();
-
-
-    const attendanceElement =
-      document.getElementById(
-        'attendanceCount'
-      );
-
-
-    if (attendanceElement) {
-
-      attendanceElement.textContent =
-        stats.attendanceCount;
-
-    }
-
-  }
-
-
-  /* =========================================================
-     BACK
-  ========================================================= */
-
-  function goBack() {
-
-    if (
-      document.referrer &&
-      document.referrer.includes(
-        'teacher-dashboard'
-      )
-    ) {
-
-      history.back();
-
-    } else {
 
       window.location.href =
-        'teacher-dashboard.html';
-
+        'student-login.html';
     }
 
-  }
 
+    /* =========================
+       START
+    ========================= */
 
-  /* =========================================================
-     START
-  ========================================================= */
-
-  loadStudent();
-
-</script>
+    document.addEventListener(
+      'DOMContentLoaded',
+      loadStudent
+    );
+  </script>
 
 </body>
 </html>
