@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -4616,6 +4615,7 @@
     <a
       href="index.html"
       class="brand-link"
+      title="العودة إلى الصفحة الرئيسية"
     >
 
       <div class="brand-logo-wrap">
@@ -4651,16 +4651,16 @@
 
         <span class="header-dot"></span>
 
-        لوحة المعلم
+        بوابة الطالب
 
       </div>
 
 
       <a
         class="back"
-        href="teacher-dashboard.html"
+        href="index.html"
       >
-        ← لوحة المعلم
+        ← الرئيسية
       </a>
 
     </div>
@@ -4770,9 +4770,6 @@ const SUPABASE_URL =
 
 const SUPABASE_KEY =
   'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
-
-const TEACHER_EMAIL =
-  'baraahaytham08@gmail.com';
 
 const TOTAL_QURAN_PAGES =
   604;
@@ -6383,76 +6380,6 @@ function getPlanStatus(
 
 
 /* =========================================================
-   التحقق من المعلم
-========================================================= */
-
-async function checkTeacher() {
-
-  try {
-
-    const {
-      data: {
-        user
-      },
-      error
-    } =
-      await supabaseClient.auth.getUser();
-
-    if (
-      error ||
-      !user
-    ) {
-
-      window.location.href =
-        'teacher-login.html';
-
-      return false;
-
-    }
-
-    if (
-      String(
-        user.email || ''
-      ).toLowerCase() !==
-      TEACHER_EMAIL.toLowerCase()
-    ) {
-
-      alert(
-        'هذا القسم مخصص للمعلم فقط.'
-      );
-
-      await supabaseClient
-        .auth
-        .signOut();
-
-      window.location.href =
-        'teacher-login.html';
-
-      return false;
-
-    }
-
-    return true;
-
-  } catch (
-    error
-  ) {
-
-    console.error(
-      error
-    );
-
-    window.location.href =
-      'teacher-login.html';
-
-    return false;
-
-  }
-
-}
-
-
-/* =========================================================
    تحميل الطالب
 ========================================================= */
 
@@ -6460,49 +6387,63 @@ async function loadStudent() {
 
   try {
 
-    if (
-      !(await checkTeacher())
-    ) {
-
-      return;
-
-    }
+    /*
+      أولاً نحاول أخذ الطالب من رابط الصفحة،
+      وإن لم يوجد نأخذه من جلسة الطالب المحفوظة.
+    */
 
     const params =
       new URLSearchParams(
         window.location.search
       );
 
+    let studentSession =
+      null;
+
+    try {
+
+      studentSession =
+        JSON.parse(
+          sessionStorage.getItem(
+            'studentSession'
+          ) || 'null'
+        );
+
+    } catch (
+      sessionError
+    ) {
+
+      console.warn(
+        'STUDENT SESSION PARSE ERROR:',
+        sessionError
+      );
+
+      studentSession =
+        null;
+
+    }
+
+
     studentId =
-      params.get('id');
+      params.get('id') ||
+      studentSession?.id ||
+      null;
+
+
+    /*
+      إذا لم توجد جلسة طالب ولا رقم طالب،
+      نعيده إلى صفحة دخول الطالب.
+    */
 
     if (!studentId) {
 
-      document.getElementById(
-        'app'
-      ).innerHTML = `
-
-        <div class="loading">
-
-          <div class="loading-icon">
-            ⚠️
-          </div>
-
-          <div class="loading-title">
-            لم يتم تحديد الطالب
-          </div>
-
-          <div class="loading-sub">
-            افتح ملف الطالب من لوحة المعلم.
-          </div>
-
-        </div>
-
-      `;
+      window.location.href =
+        'student-login.html';
 
       return;
 
     }
+
 
     const {
       data,
@@ -6517,8 +6458,10 @@ async function loadStudent() {
         )
         .maybeSingle();
 
+
     if (error)
       throw error;
+
 
     if (!data) {
 
@@ -6537,7 +6480,7 @@ async function loadStudent() {
           </div>
 
           <div class="loading-sub">
-            تأكد من فتح الملف من لوحة المعلم.
+            تأكد من صحة بيانات الدخول وحاول مرة أخرى.
           </div>
 
         </div>
@@ -6548,8 +6491,19 @@ async function loadStudent() {
 
     }
 
+
+    /*
+      نتأكد أن الطالب الذي تم تحميله
+      هو الطالب الذي دخل عبر البوابة.
+    */
+
     student =
       data;
+
+
+    /*
+      تحميل ملف الطالب من student_profiles
+    */
 
     const {
       data: profileRow,
@@ -6563,6 +6517,7 @@ async function loadStudent() {
           String(studentId)
         )
         .maybeSingle();
+
 
     if (profileError) {
 
@@ -6582,7 +6537,36 @@ async function loadStudent() {
 
     }
 
+
+    /*
+      تحديث الجلسة بآخر بيانات الطالب
+    */
+
+    sessionStorage.setItem(
+      'studentSession',
+      JSON.stringify({
+
+        id:
+          student.id,
+
+        name:
+          student.name,
+
+        section:
+          student.section,
+
+        memorization:
+          student.memorization,
+
+        status:
+          student.status
+
+      })
+    );
+
+
     render();
+
 
     document.body.classList.add(
       'ready'
@@ -10859,6 +10843,29 @@ async function saveProfile() {
     };
 
 
+    sessionStorage.setItem(
+      'studentSession',
+      JSON.stringify({
+
+        id:
+          student.id,
+
+        name:
+          student.name,
+
+        section:
+          student.section,
+
+        memorization:
+          student.memorization,
+
+        status:
+          student.status
+
+      })
+    );
+
+
     showMessage(
       'تم حفظ جميع البيانات وإعادة احتساب النسب والنقاط وحالة الخطة تلقائياً ✅',
       'success'
@@ -10927,4 +10934,3 @@ loadStudent();
 
 </body>
 </html>
-```
