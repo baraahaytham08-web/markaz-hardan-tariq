@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -131,6 +130,10 @@
       font-family: inherit;
     }
 
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
     /* =========================
        الحاوية الرئيسية
     ========================== */
@@ -236,11 +239,19 @@
        الشعار
     ========================== */
 
+    .logo-link {
+      display: inline-flex;
+      text-decoration: none;
+
+      margin-bottom: 25px;
+
+      position: relative;
+      z-index: 3;
+    }
+
     .logo-holder {
       width: 112px;
       height: 112px;
-
-      margin-bottom: 25px;
 
       border-radius: 28px;
 
@@ -254,6 +265,17 @@
 
       box-shadow:
         0 18px 35px rgba(0,0,0,0.18);
+
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+    }
+
+    .logo-link:hover .logo-holder {
+      transform: translateY(-4px) scale(1.02);
+
+      box-shadow:
+        0 24px 42px rgba(0,0,0,0.24);
     }
 
     .logo-holder img {
@@ -381,6 +403,8 @@
 
     .mobile-logo {
       display: none;
+
+      text-decoration: none;
     }
 
     .login-heading {
@@ -720,6 +744,83 @@
       font-size: 10px;
     }
 
+    /* =========================
+       زر الرئيسية
+    ========================== */
+
+    .home-button {
+      width: 100%;
+      height: 46px;
+
+      margin-top: 14px;
+
+      border: 1px solid rgba(178,139,24,0.32);
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          180deg,
+          #fffdf7 0%,
+          #fffaf0 100%
+        );
+
+      color: var(--green);
+
+      font-size: 11px;
+
+      font-weight: bold;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 8px;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 7px 18px rgba(178,139,24,0.07);
+
+      transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        background .22s ease,
+        border-color .22s ease,
+        color .22s ease;
+    }
+
+    .home-button i {
+      color: var(--gold);
+      font-size: 12px;
+
+      transition:
+        transform .22s ease;
+    }
+
+    .home-button:hover {
+      transform: translateY(-2px);
+
+      background:
+        linear-gradient(
+          135deg,
+          #fffdf8,
+          #fff7df
+        );
+
+      border-color:
+        rgba(178,139,24,0.52);
+
+      color: var(--green-dark);
+
+      box-shadow:
+        0 11px 25px rgba(178,139,24,0.13);
+    }
+
+    .home-button:hover i {
+      transform: translateX(2px);
+    }
+
     .footer-note {
       text-align: center;
 
@@ -775,6 +876,17 @@
 
         box-shadow:
           0 12px 28px rgba(23,77,58,0.10);
+
+        transition:
+          transform .22s ease,
+          box-shadow .22s ease;
+      }
+
+      .mobile-logo:hover {
+        transform: translateY(-3px);
+
+        box-shadow:
+          0 16px 32px rgba(23,77,58,0.15);
       }
 
       .mobile-logo img {
@@ -837,6 +949,10 @@
       .submit {
         height: 53px;
       }
+
+      .home-button {
+        height: 44px;
+      }
     }
 
     @media (max-height: 700px) {
@@ -879,12 +995,19 @@
 
         <div class="brand-content">
 
-          <div class="logo-holder">
-            <img
-              src="logo.png"
-              alt="شعار مركز حردان طارق القرآني"
-            >
-          </div>
+          <!-- الشعار يرجع للرئيسية -->
+          <a
+            href="index.html"
+            class="logo-link"
+            title="العودة إلى الصفحة الرئيسية"
+          >
+            <div class="logo-holder">
+              <img
+                src="logo.png"
+                alt="شعار مركز حردان طارق القرآني"
+              >
+            </div>
+          </a>
 
           <div class="eyebrow">
             <i class="fa-solid fa-mosque"></i>
@@ -956,12 +1079,17 @@
 
         <div class="form-inner">
 
-          <div class="mobile-logo">
+          <!-- الشعار في الموبايل يرجع للرئيسية -->
+          <a
+            href="index.html"
+            class="mobile-logo"
+            title="العودة إلى الصفحة الرئيسية"
+          >
             <img
               src="logo.png"
               alt="شعار مركز حردان طارق القرآني"
             >
-          </div>
+          </a>
 
 
           <div class="login-heading">
@@ -1074,6 +1202,20 @@
             </div>
 
           </div>
+
+
+          <!-- زر فاخر للعودة إلى الرئيسية -->
+          <a
+            href="index.html"
+            class="home-button"
+            title="العودة إلى الصفحة الرئيسية"
+          >
+
+            <i class="fa-solid fa-house"></i>
+
+            العودة إلى الصفحة الرئيسية
+
+          </a>
 
 
           <div class="footer-note">
