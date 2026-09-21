@@ -629,6 +629,16 @@
       color: white;
     }
 
+    .expel-btn {
+      background: #fff3e6;
+      color: #b86b1f;
+    }
+
+    .expel-btn:hover {
+      background: #b86b1f;
+      color: white;
+    }
+
     .approve-btn {
       width: auto;
       padding: 0 11px;
@@ -1052,6 +1062,16 @@
         <i class="fa-solid fa-users"></i>
 
         الطلاب
+
+      </button>
+
+      <button
+        class="side-link"
+        id="expelledNav">
+
+        <i class="fa-solid fa-user-slash"></i>
+
+        الطلاب المفصولين
 
       </button>
 
@@ -1538,6 +1558,98 @@
 
         </section>
 
+        <section
+          class="panel"
+          id="expelledPanel">
+
+          <div class="panel-top">
+
+            <div class="panel-title">
+
+              <div class="panel-title-icon">
+
+                <i class="fa-solid fa-user-slash"></i>
+
+              </div>
+
+              <div>
+
+                <h2>
+                  الطلاب المفصولين
+                </h2>
+
+                <span>
+                  الطلاب الذين تم فصلهم مع الاحتفاظ ببياناتهم
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+
+                <tr>
+
+                  <th>
+                    الطالب
+                  </th>
+
+                  <th>
+                    الشعبة
+                  </th>
+
+                  <th>
+                    مستوى الحفظ
+                  </th>
+
+                  <th>
+                    الحالة
+                  </th>
+
+                  <th>
+                    الإجراءات
+                  </th>
+
+                </tr>
+
+              </thead>
+
+              <tbody
+                id="expelledStudentsTable">
+              </tbody>
+
+            </table>
+
+          </div>
+
+          <div
+            id="expelledEmptyMessage"
+            class="empty">
+
+            <div class="empty-icon">
+
+              <i class="fa-solid fa-user-slash"></i>
+
+            </div>
+
+            <strong>
+              لا يوجد طلاب مفصولون
+            </strong>
+
+            <p>
+              ستظهر هنا أسماء الطلاب الذين تم فصلهم.
+            </p>
+
+          </div>
+
+        </section>
+
       </main>
 
     </div>
@@ -1658,6 +1770,10 @@
 
             <option value="rejected">
               مرفوض
+            </option>
+
+            <option value="expelled">
+              مفصول
             </option>
 
           </select>
@@ -1852,6 +1968,16 @@
         'requestDetailsContent'
       );
 
+    const expelledStudentsTable =
+      document.getElementById(
+        'expelledStudentsTable'
+      );
+
+    const expelledEmptyMessage =
+      document.getElementById(
+        'expelledEmptyMessage'
+      );
+
     let students = [];
 
     let profileMap = {};
@@ -1996,6 +2122,8 @@
       renderRegistrationRequests();
 
       renderStudents();
+
+      renderExpelledStudents();
 
       updateStats();
 
@@ -2235,6 +2363,8 @@
 
         renderStudents();
 
+        renderExpelledStudents();
+
         updateStats();
 
         showToast(
@@ -2300,6 +2430,8 @@
 
         renderStudents();
 
+        renderExpelledStudents();
+
         updateStats();
 
         showToast(
@@ -2347,7 +2479,8 @@
             selectedSection;
 
           const isStudentRecord =
-            student.status !== 'pending';
+            student.status !== 'pending' &&
+            student.status !== 'expelled';
 
           const matchesStatus =
             !selectedStatus ||
@@ -2509,15 +2642,176 @@
 
               </button>
 
+              ${
+                student.status === 'rejected'
+                  ? `
+                    <button
+                      class="action-btn delete-btn"
+                      title="حذف نهائي"
+                      type="button"
+                      onclick="deleteStudent('${student.id}')">
+
+                      <i
+                        class="fa-solid fa-trash"
+                      ></i>
+
+                    </button>
+                  `
+                  : `
+                    <button
+                      class="action-btn expel-btn"
+                      title="فصل الطالب"
+                      type="button"
+                      onclick="expelStudent('${student.id}')">
+
+                      <i
+                        class="fa-solid fa-user-slash"
+                      ></i>
+
+                    </button>
+                  `
+              }
+
+            </div>
+
+          </td>
+
+        `;
+
+        tableBody.appendChild(row);
+
+      });
+
+    }
+
+    function renderExpelledStudents() {
+
+      const expelledStudents =
+        students.filter(
+          student =>
+            student.status === 'expelled'
+        );
+
+      expelledStudentsTable.innerHTML = '';
+
+      if (!expelledStudents.length) {
+
+        expelledEmptyMessage.style.display =
+          'block';
+
+        return;
+
+      }
+
+      expelledEmptyMessage.style.display =
+        'none';
+
+      expelledStudents.forEach(student => {
+
+        const row =
+          document.createElement('tr');
+
+        const firstLetter =
+          (student.name || '?')
+            .trim()
+            .charAt(0);
+
+        const studentProfile =
+          profileMap[String(student.id)] || {};
+
+        const studentPhoto =
+          studentProfile.photoUrl ||
+          studentProfile.photo ||
+          '';
+
+        row.innerHTML = `
+
+          <td
+            class="student-info-clickable"
+            onclick="openStudentPage('${encodeURIComponent(student.id)}')"
+            title="فتح ملف الطالب">
+
+            <div class="student-name">
+
+              <div class="student-avatar">
+
+                ${
+                  studentPhoto
+                    ? `
+                      <img
+                        src="${escapeHtml(studentPhoto)}"
+                        alt="صورة ${escapeHtml(student.name || 'الطالب')}"
+                        onerror="this.style.display='none';this.parentElement.textContent='${escapeHtml(firstLetter)}';"
+                      >
+                    `
+                    : escapeHtml(firstLetter)
+                }
+
+              </div>
+
+              <span>
+                ${escapeHtml(student.name || '-')}
+              </span>
+
+            </div>
+
+          </td>
+
+          <td>
+
+            <span class="section-badge">
+              ${escapeHtml(student.section || '-')}
+            </span>
+
+          </td>
+
+          <td>
+
+            ${
+              student.memorization
+                ? `
+                  <span class="memorization">
+                    ${escapeHtml(student.memorization)}
+                  </span>
+                `
+                : `
+                  <span class="no-data">
+                    لم يحدد
+                  </span>
+                `
+            }
+
+          </td>
+
+          <td>
+
+            <span class="status rejected">
+              مفصول
+            </span>
+
+          </td>
+
+          <td>
+
+            <div class="actions">
+
+              <button
+                class="action-btn edit-btn"
+                title="تعديل"
+                type="button"
+                onclick="editStudent('${student.id}')">
+
+                <i class="fa-solid fa-pen"></i>
+
+              </button>
+
               <button
                 class="action-btn delete-btn"
-                title="حذف"
+                title="حذف نهائي"
                 type="button"
                 onclick="deleteStudent('${student.id}')">
 
-                <i
-                  class="fa-solid fa-trash"
-                ></i>
+                <i class="fa-solid fa-trash"></i>
 
               </button>
 
@@ -2527,7 +2821,7 @@
 
         `;
 
-        tableBody.appendChild(row);
+        expelledStudentsTable.appendChild(row);
 
       });
 
@@ -2786,6 +3080,8 @@
 
         renderStudents();
 
+        renderExpelledStudents();
+
         renderRegistrationRequests();
 
         updateStats();
@@ -2795,7 +3091,7 @@
       }
     );
 
-    window.deleteStudent =
+    window.expelStudent =
       async function(id) {
 
         const student =
@@ -2809,161 +3105,9 @@
           return;
         }
 
-        /*
-          الطالب المرفوض أو المفصول:
-          حذف نهائي من قاعدة البيانات.
-        */
-
-        const isPermanentDelete =
-          student.status === 'rejected' ||
-          student.status === 'expelled';
-
-        if (isPermanentDelete) {
-
-          const confirmed =
-            confirm(
-              `سيتم حذف الطالب "${student.name}" نهائيًا من قاعدة البيانات، مع حذف ملفه المرتبط أيضًا. لا يمكن التراجع عن هذه العملية. هل تريد المتابعة؟`
-            );
-
-          if (!confirmed) {
-            return;
-          }
-
-          try {
-
-            /*
-              أولًا: حذف ملف الطالب المرتبط
-              من جدول student_profiles
-            */
-
-            const {
-              error: profileDeleteError
-            } =
-              await supabaseClient
-                .from('student_profiles')
-                .delete()
-                .eq(
-                  'student_id',
-                  String(id)
-                );
-
-            if (profileDeleteError) {
-
-              console.warn(
-                'تعذر حذف ملف الطالب المرتبط:',
-                profileDeleteError
-              );
-
-            }
-
-            /*
-              ثانيًا: حذف الطالب نهائيًا
-              من جدول students
-            */
-
-            const {
-              data: deletedStudent,
-              error: studentDeleteError
-            } =
-              await supabaseClient
-                .from('students')
-                .delete()
-                .eq(
-                  'id',
-                  id
-                )
-                .select('id')
-                .maybeSingle();
-
-            if (studentDeleteError) {
-
-              console.error(
-                'STUDENT DELETE ERROR:',
-                studentDeleteError
-              );
-
-              showToast(
-                'تعذر الحذف النهائي. تأكد من صلاحيات DELETE في Supabase.',
-                'error'
-              );
-
-              return;
-
-            }
-
-            /*
-              إذا لم يرجع Supabase أي سجل محذوف،
-              فهذا يعني أن الحذف لم يتم فعلًا.
-            */
-
-            if (!deletedStudent) {
-
-              console.error(
-                'لم يتم حذف أي سجل من جدول students.'
-              );
-
-              showToast(
-                'لم يتم حذف الطالب من قاعدة البيانات. راجع صلاحيات DELETE في Supabase.',
-                'error'
-              );
-
-              await loadStudents();
-
-              return;
-
-            }
-
-            /*
-              تحديث البيانات المحلية
-              بعد نجاح الحذف الفعلي
-            */
-
-            students =
-              students.filter(
-                item =>
-                  String(item.id) !==
-                  String(id)
-              );
-
-            delete profileMap[
-              String(id)
-            ];
-
-            renderRegistrationRequests();
-
-            renderStudents();
-
-            updateStats();
-
-            showToast(
-              'تم حذف الطالب نهائيًا من قاعدة البيانات.'
-            );
-
-          } catch (error) {
-
-            console.error(
-              'PERMANENT DELETE ERROR:',
-              error
-            );
-
-            showToast(
-              'حدث خطأ غير متوقع أثناء الحذف النهائي.',
-              'error'
-            );
-
-          }
-
-          return;
-        }
-
-        /*
-          الطالب المستمر:
-          لا نحذفه، بل ننقله إلى متوقف.
-        */
-
         const confirmed =
           confirm(
-            `هل تريد إيقاف الطالب "${student.name}"؟`
+            `هل تريد فصل الطالب "${student.name}"؟ سيتم نقله إلى قائمة الطلاب المفصولين مع الاحتفاظ بجميع بياناته.`
           );
 
         if (!confirmed) {
@@ -2978,7 +3122,7 @@
             .from('students')
             .update({
               status:
-                'inactive'
+                'expelled'
             })
             .eq(
               'id',
@@ -2992,7 +3136,7 @@
           console.error(error);
 
           showToast(
-            'حدث خطأ أثناء إيقاف الطالب.',
+            'حدث خطأ أثناء فصل الطالب.',
             'error'
           );
 
@@ -3009,15 +3153,161 @@
                 : item
           );
 
-        renderRegistrationRequests();
-
         renderStudents();
+
+        renderExpelledStudents();
 
         updateStats();
 
         showToast(
-          'تم إيقاف الطالب بنجاح.'
+          'تم فصل الطالب ونقله إلى قائمة الطلاب المفصولين.'
         );
+
+      };
+
+    window.deleteStudent =
+      async function(id) {
+
+        const student =
+          students.find(
+            item =>
+              String(item.id) ===
+              String(id)
+          );
+
+        if (!student) {
+          return;
+        }
+
+        const isPermanentDelete =
+          student.status === 'rejected' ||
+          student.status === 'expelled';
+
+        if (!isPermanentDelete) {
+
+          showToast(
+            'استخدم زر الفصل لنقل الطالب إلى قائمة الطلاب المفصولين.',
+            'error'
+          );
+
+          return;
+
+        }
+
+        const confirmed =
+          confirm(
+            `سيتم حذف الطالب "${student.name}" نهائيًا من قاعدة البيانات، مع حذف ملفه المرتبط أيضًا. لا يمكن التراجع عن هذه العملية. هل تريد المتابعة؟`
+          );
+
+        if (!confirmed) {
+          return;
+        }
+
+        try {
+
+          const {
+            error: profileDeleteError
+          } =
+            await supabaseClient
+              .from('student_profiles')
+              .delete()
+              .eq(
+                'student_id',
+                String(id)
+              );
+
+          if (profileDeleteError) {
+
+            console.warn(
+              'تعذر حذف ملف الطالب المرتبط:',
+              profileDeleteError
+            );
+
+          }
+
+          const {
+            data: deletedStudent,
+            error: studentDeleteError
+          } =
+            await supabaseClient
+              .from('students')
+              .delete()
+              .eq(
+                'id',
+                id
+              )
+              .select('id')
+              .maybeSingle();
+
+          if (studentDeleteError) {
+
+            console.error(
+              'STUDENT DELETE ERROR:',
+              studentDeleteError
+            );
+
+            showToast(
+              'تعذر الحذف النهائي. تأكد من صلاحيات DELETE في Supabase.',
+              'error'
+            );
+
+            return;
+
+          }
+
+          if (!deletedStudent) {
+
+            console.error(
+              'لم يتم حذف أي سجل من جدول students.'
+            );
+
+            showToast(
+              'لم يتم حذف الطالب من قاعدة البيانات. راجع صلاحيات DELETE في Supabase.',
+              'error'
+            );
+
+            await loadStudents();
+
+            return;
+
+          }
+
+          students =
+            students.filter(
+              item =>
+                String(item.id) !==
+                String(id)
+            );
+
+          delete profileMap[
+            String(id)
+          ];
+
+          renderRegistrationRequests();
+
+          renderStudents();
+
+          renderExpelledStudents();
+
+          updateStats();
+
+          showToast(
+            'تم حذف الطالب نهائيًا من قاعدة البيانات.'
+          );
+
+        } catch (error) {
+
+          console.error(
+            'PERMANENT DELETE ERROR:',
+            error
+          );
+
+          showToast(
+            'حدث خطأ غير متوقع أثناء الحذف النهائي.',
+            'error'
+          );
+
+        }
 
       };
 
@@ -3142,6 +3432,27 @@
           document
             .getElementById(
               'studentsPanel'
+            )
+            .scrollIntoView({
+              behavior: 'smooth'
+            });
+
+          sidebar.classList.remove(
+            'open'
+          );
+
+        }
+      );
+
+    document
+      .getElementById('expelledNav')
+      .addEventListener(
+        'click',
+        function() {
+
+          document
+            .getElementById(
+              'expelledPanel'
             )
             .scrollIntoView({
               behavior: 'smooth'
