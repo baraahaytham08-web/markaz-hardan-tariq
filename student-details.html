@@ -5785,77 +5785,78 @@
       }
 
     }
-```js
-/* ==================================================
-   IDENTITY
-================================================== */
-
-function fillIdentity(){
-
-  const name =
-    valueOrEmpty(
-      student.name
-    ) ||
-    'بدون اسم';
 
 
-  document.getElementById(
-    'headerStudentName'
-  ).textContent =
-    name;
+    /* ==================================================
+       IDENTITY
+    ================================================== */
+
+    function fillIdentity(){
+
+      const name =
+        valueOrEmpty(
+          student.name
+        ) ||
+        'بدون اسم';
 
 
-  document.getElementById(
-    'studentLetter'
-  ).textContent =
-    name.charAt(0) ||
-    'ط';
+      document.getElementById(
+        'headerStudentName'
+      ).textContent =
+        name;
 
 
-  const code =
-    String(
-      profileData.student_code || ''
-    );
+      document.getElementById(
+        'studentLetter'
+      ).textContent =
+        name.charAt(0) ||
+        'ط';
 
 
-  document.getElementById(
-    'studentCodeDisplay'
-  ).textContent =
-    code || '---';
+      const code =
+        String(
+          profileData.studentCode
+        );
 
 
-  document.getElementById(
-    'studentCode'
-  ).value =
-    code;
+      document.getElementById(
+        'studentCodeDisplay'
+      ).textContent =
+        code;
 
 
-  const photoUrl =
-    firstValue(
-      profileData,
-      [
-        'photoUrl',
-        'photo_url',
-        'photo',
-        'imageUrl',
-        'image_url',
-        'image',
-        'avatar'
-      ],
-      ''
-    );
+      document.getElementById(
+        'studentCode'
+      ).value =
+        code;
 
 
-  if(photoUrl){
+      const photoUrl =
+        firstValue(
+          profileData,
+          [
+            'photoUrl',
+            'photo_url',
+            'photo',
+            'imageUrl',
+            'image_url',
+            'image',
+            'avatar'
+          ],
+          ''
+        );
 
-    showStudentPhoto(
-      photoUrl
-    );
 
-  }
+      if(photoUrl){
 
-}
-```
+        showStudentPhoto(
+          photoUrl
+        );
+
+      }
+
+    }
+
 
     /* ==================================================
        BASIC
