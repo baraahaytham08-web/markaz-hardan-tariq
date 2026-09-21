@@ -10,8 +10,9 @@
     content="width=device-width, initial-scale=1.0">
 
   <title>لوحة المعلم | مركز حردان طارق القرآني</title>
-<link rel="icon" type="image/png" href="logo.png">
-  
+
+  <link rel="icon" type="image/png" href="logo.png">
+
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -509,6 +510,23 @@
       background: var(--green-light);
       color: var(--green);
       font-size: 14px;
+      overflow: hidden;
+    }
+
+    .student-avatar img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .student-info-clickable {
+      cursor: pointer;
+    }
+
+    .student-info-clickable:hover {
+      background: #fcfdfc;
     }
 
     .section-badge {
@@ -999,10 +1017,6 @@
 
   <div class="layout">
 
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
     <aside
       class="sidebar"
       id="sidebar">
@@ -1031,7 +1045,6 @@
 
       </div>
 
-
       <button
         class="side-link active"
         id="studentsNav">
@@ -1042,7 +1055,6 @@
 
       </button>
 
-
       <button class="side-link">
 
         <i class="fa-solid fa-book-open"></i>
@@ -1050,7 +1062,6 @@
         متابعة الحفظ
 
       </button>
-
 
       <a
         href="index.html"
@@ -1062,7 +1073,6 @@
         الرئيسية
 
       </a>
-
 
       <div class="sidebar-bottom">
 
@@ -1082,15 +1092,7 @@
 
     </aside>
 
-
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
     <div class="main">
-
-
-      <!-- TOPBAR -->
 
       <header class="topbar">
 
@@ -1105,7 +1107,6 @@
 
           </button>
 
-
           <div class="page-title">
 
             <h1>
@@ -1119,7 +1120,6 @@
           </div>
 
         </div>
-
 
         <div class="teacher-info">
 
@@ -1148,7 +1148,6 @@
 
           </div>
 
-
           <div class="teacher-avatar">
 
             <i class="fa-solid fa-user"></i>
@@ -1159,13 +1158,7 @@
 
       </header>
 
-
-      <!-- CONTENT -->
-
       <main class="content">
-
-
-        <!-- WELCOME -->
 
         <section class="welcome-card">
 
@@ -1188,11 +1181,7 @@
 
         </section>
 
-
-        <!-- STATS -->
-
         <section class="stats">
-
 
           <div class="stat-card">
 
@@ -1218,7 +1207,6 @@
 
           </div>
 
-
           <div class="stat-card">
 
             <div class="stat-icon">
@@ -1242,7 +1230,6 @@
             </div>
 
           </div>
-
 
           <div class="stat-card">
 
@@ -1268,13 +1255,7 @@
 
           </div>
 
-
         </section>
-
-
-        <!-- =====================================================
-             REGISTRATION REQUESTS
-        ====================================================== -->
 
         <section
           class="panel"
@@ -1293,9 +1274,7 @@
               <div>
 
                 <h2>
-
                   طلبات التسجيل
-
                 </h2>
 
                 <span>
@@ -1318,7 +1297,6 @@
             </div>
 
           </div>
-
 
           <div class="table-wrapper">
 
@@ -1364,7 +1342,6 @@
 
               </thead>
 
-
               <tbody
                 id="registrationRequestsTable">
               </tbody>
@@ -1372,7 +1349,6 @@
             </table>
 
           </div>
-
 
           <div
             id="registrationRequestsEmpty"
@@ -1385,33 +1361,22 @@
             </div>
 
             <strong>
-
               لا توجد طلبات تسجيل جديدة
-
             </strong>
 
             <p>
-
               ستظهر هنا الطلبات التي يرسلها الزوار من صفحة التسجيل.
-
             </p>
 
           </div>
 
         </section>
 
-
-        <!-- =====================================================
-             STUDENTS PANEL
-        ====================================================== -->
-
         <section
           class="panel"
           id="studentsPanel">
 
-
           <div class="panel-top">
-
 
             <div class="panel-title">
 
@@ -1435,7 +1400,6 @@
 
             </div>
 
-
             <button
               class="add-btn"
               id="openModal">
@@ -1446,14 +1410,9 @@
 
             </button>
 
-
           </div>
 
-
-          <!-- FILTERS -->
-
           <div class="filters">
-
 
             <div class="search-box">
 
@@ -1466,7 +1425,6 @@
                 placeholder="ابحث باسم الطالب...">
 
             </div>
-
 
             <select
               id="sectionFilter"
@@ -1494,7 +1452,6 @@
 
             </select>
 
-
             <select
               id="statusFilter"
               class="filter-select">
@@ -1517,11 +1474,7 @@
 
             </select>
 
-
           </div>
-
-
-          <!-- TABLE -->
 
           <div class="table-wrapper">
 
@@ -1555,7 +1508,6 @@
 
               </thead>
 
-
               <tbody
                 id="studentsTable">
               </tbody>
@@ -1563,9 +1515,6 @@
             </table>
 
           </div>
-
-
-          <!-- EMPTY -->
 
           <div
             id="emptyMessage"
@@ -1587,9 +1536,7 @@
 
           </div>
 
-
         </section>
-
 
       </main>
 
@@ -1597,18 +1544,11 @@
 
   </div>
 
-
-  <!-- =====================================================
-       STUDENT MODAL
-  ====================================================== -->
-
   <div
     class="modal"
     id="studentModal">
 
-
     <div class="modal-box">
-
 
       <div class="modal-header">
 
@@ -1624,7 +1564,6 @@
 
         </div>
 
-
         <button
           class="close-modal"
           id="closeModal">
@@ -1635,11 +1574,9 @@
 
       </div>
 
-
       <form
         id="studentForm"
         class="form">
-
 
         <div class="form-group">
 
@@ -1654,7 +1591,6 @@
             placeholder="مثال: أحمد محمد">
 
         </div>
-
 
         <div class="form-group">
 
@@ -1690,7 +1626,6 @@
 
         </div>
 
-
         <div class="form-group">
 
           <label for="memorization">
@@ -1703,7 +1638,6 @@
             placeholder="مثال: سورة البقرة">
 
         </div>
-
 
         <div class="form-group">
 
@@ -1730,7 +1664,6 @@
 
         </div>
 
-
         <div class="modal-buttons">
 
           <button
@@ -1744,7 +1677,6 @@
 
           </button>
 
-
           <button
             type="button"
             class="cancel-btn"
@@ -1756,20 +1688,13 @@
 
         </div>
 
-
         <div id="message"></div>
-
 
       </form>
 
     </div>
 
   </div>
-
-
-  <!-- =====================================================
-       REQUEST DETAILS MODAL
-  ====================================================== -->
 
   <div
     class="modal"
@@ -1804,17 +1729,11 @@
       <div
         id="requestDetailsContent"
         style="padding:20px;">
-
       </div>
 
     </div>
 
   </div>
-
-
-  <!-- =====================================================
-       TOAST
-  ====================================================== -->
 
   <div
     class="toast"
@@ -1826,30 +1745,19 @@
 
   </div>
 
-
   <div class="badge">
     النسخة التجريبية
   </div>
 
-
-  <!-- SUPABASE -->
-
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
   <script>
-
-    /* =====================================================
-       SUPABASE
-    ====================================================== */
 
     const SUPABASE_URL =
       'https://lsbbcybpiulusdgfhepf.supabase.co';
 
-
     const SUPABASE_PUBLISHABLE_KEY =
       'sb_publishable_qECf_PrJFSGgMJJr4yJLew_MCeslUF0';
-
 
     const supabaseClient =
       window.supabase.createClient(
@@ -1857,139 +1765,98 @@
         SUPABASE_PUBLISHABLE_KEY
       );
 
-
-    /* =====================================================
-       ELEMENTS
-    ====================================================== */
-
     const tableBody =
       document.getElementById('studentsTable');
-
 
     const emptyMessage =
       document.getElementById('emptyMessage');
 
-
     const totalStudents =
       document.getElementById('totalStudents');
-
 
     const activeStudents =
       document.getElementById('activeStudents');
 
-
     const memorizedStudents =
       document.getElementById('memorizedStudents');
-
 
     const searchInput =
       document.getElementById('searchInput');
 
-
     const sectionFilter =
       document.getElementById('sectionFilter');
-
 
     const statusFilter =
       document.getElementById('statusFilter');
 
-
     const modal =
       document.getElementById('studentModal');
-
 
     const openModal =
       document.getElementById('openModal');
 
-
     const closeModal =
       document.getElementById('closeModal');
-
 
     const cancelButton =
       document.getElementById('cancelButton');
 
-
     const studentForm =
       document.getElementById('studentForm');
-
 
     const message =
       document.getElementById('message');
 
-
     const modalTitle =
       document.getElementById('modalTitle');
-
 
     const saveButton =
       document.getElementById('saveButton');
 
-
     const toast =
       document.getElementById('toast');
-
 
     const toastText =
       document.getElementById('toastText');
 
-
     const toastIcon =
       document.getElementById('toastIcon');
-
-
-    const registrationRequestsPanel =
-      document.getElementById(
-        'registrationRequestsPanel'
-      );
-
 
     const registrationRequestsTable =
       document.getElementById(
         'registrationRequestsTable'
       );
 
-
     const registrationRequestsEmpty =
       document.getElementById(
         'registrationRequestsEmpty'
       );
-
 
     const pendingRequestsCount =
       document.getElementById(
         'pendingRequestsCount'
       );
 
-
     const requestModal =
       document.getElementById(
         'requestModal'
       );
-
 
     const closeRequestModal =
       document.getElementById(
         'closeRequestModal'
       );
 
-
     const requestDetailsContent =
       document.getElementById(
         'requestDetailsContent'
       );
 
-
     let students = [];
 
+    let profileMap = {};
+
     let editingStudentId = null;
-
-    let currentRequestId = null;
-
-
-    /* =====================================================
-       TOAST
-    ====================================================== */
 
     function showToast(
       text,
@@ -2002,12 +1869,10 @@
       toast.className =
         'toast show ' + type;
 
-
       toastIcon.className =
         type === 'success'
           ? 'fa-solid fa-circle-check'
           : 'fa-solid fa-circle-exclamation';
-
 
       setTimeout(() => {
 
@@ -2017,17 +1882,10 @@
 
     }
 
-
-    /* =====================================================
-       CHECK TEACHER ACCESS
-       الدخول أصبح بكود موحّد لجميع المعلمين
-    ====================================================== */
-
     function checkUser() {
 
       const accessGranted =
         localStorage.getItem('teacherAccess') === 'granted';
-
 
       if (!accessGranted) {
 
@@ -2038,18 +1896,15 @@
 
       }
 
-
       document.getElementById(
         'teacherName'
       ).textContent =
         'المعلم';
 
-
       const teacherEmail =
         document.getElementById(
           'teacherEmail'
         );
-
 
       if (teacherEmail) {
 
@@ -2058,15 +1913,45 @@
 
       }
 
-
       return true;
 
     }
 
+    async function loadProfiles() {
 
-    /* =====================================================
-       LOAD STUDENTS
-    ====================================================== */
+      const {
+        data,
+        error
+      } =
+        await supabaseClient
+          .from('student_profiles')
+          .select('student_id, data');
+
+      if (error) {
+
+        console.warn(
+          'تعذر تحميل صور ملفات الطلاب:',
+          error
+        );
+
+        profileMap = {};
+
+        return;
+
+      }
+
+      profileMap = {};
+
+      (data || []).forEach(profile => {
+
+        profileMap[
+          String(profile.student_id)
+        ] =
+          profile.data || {};
+
+      });
+
+    }
 
     async function loadStudents() {
 
@@ -2084,7 +1969,6 @@
             }
           );
 
-
       if (error) {
 
         console.error(error);
@@ -2092,85 +1976,54 @@
         emptyMessage.style.display =
           'block';
 
-        emptyMessage.querySelector(
-          'strong'
-        ).textContent =
+        emptyMessage.querySelector('strong')
+          .textContent =
           'تعذر تحميل البيانات';
 
-        emptyMessage.querySelector(
-          'p'
-        ).textContent =
+        emptyMessage.querySelector('p')
+          .textContent =
           'تأكد من إعداد قاعدة البيانات والصلاحيات.';
 
         return;
 
       }
 
-
       students =
         data || [];
 
+      await loadProfiles();
+
+      renderRegistrationRequests();
 
       renderStudents();
 
       updateStats();
 
-      renderRegistrationRequests();
-
     }
-
-
-    /* =====================================================
-       REGISTRATION REQUESTS
-    ====================================================== */
-
-    function getPendingRequests() {
-
-      return students.filter(
-        student =>
-          student.status === 'pending'
-      );
-
-    }
-
-
-    function formatDateTime(value) {
-
-      if (!value) {
-        return '-';
-      }
-
-
-      try {
-
-        return new Date(value)
-          .toLocaleString(
-            'ar-JO',
-            {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-              hour: '2-digit',
-              minute: '2-digit'
-            }
-          );
-
-      }
-
-      catch (error) {
-
-        return String(value);
-
-      }
-
-    }
-
 
     function renderRegistrationRequests() {
 
       const pendingRequests =
-        getPendingRequests();
+        students
+          .filter(
+            student =>
+              student.status === 'pending'
+          )
+          .sort((a, b) => {
 
+            const aDate =
+              a.created_at
+                ? new Date(a.created_at).getTime()
+                : 0;
+
+            const bDate =
+              b.created_at
+                ? new Date(b.created_at).getTime()
+                : 0;
+
+            return bDate - aDate;
+
+          });
 
       if (pendingRequestsCount) {
 
@@ -2179,10 +2032,7 @@
 
       }
 
-
-      registrationRequestsTable.innerHTML =
-        '';
-
+      registrationRequestsTable.innerHTML = '';
 
       if (!pendingRequests.length) {
 
@@ -2193,181 +2043,128 @@
 
       }
 
-
       registrationRequestsEmpty.style.display =
         'none';
-
 
       pendingRequests.forEach(student => {
 
         const row =
           document.createElement('tr');
 
-
-        const createdAt =
-          student.created_at ||
-          student.createdAt ||
-          '';
-
-
         row.innerHTML = `
 
           <td>
 
-            <div class="request-info">
+            <div class="student-name">
 
-              <strong>
+              <div class="student-avatar">
 
                 ${escapeHtml(
-                  student.name || '-'
+                  (student.name || '?').trim().charAt(0)
                 )}
 
-              </strong>
+              </div>
 
               <span>
-
-                طلب انضمام جديد
-
+                ${escapeHtml(student.name || '-')}
               </span>
 
             </div>
 
           </td>
 
-
           <td>
 
             <span class="section-badge">
-
-              ${escapeHtml(
-                student.section || '-'
-              )}
-
+              ${escapeHtml(student.section || '-')}
             </span>
 
           </td>
 
+          <td>
+
+            <a
+              href="tel:${escapeHtml(student.guardian_phone || '')}"
+              style="color:var(--green);font-weight:bold;text-decoration:none;">
+              ${escapeHtml(student.guardian_phone || 'غير محدد')}
+            </a>
+
+          </td>
 
           <td>
 
-            <span>
+            ${
+              student.memorization
+                ? `
+                  <span class="memorization">
+                    ${escapeHtml(student.memorization)}
+                  </span>
+                `
+                : `
+                  <span class="no-data">
+                    غير محددة
+                  </span>
+                `
+            }
 
-              ${escapeHtml(
-                student.guardian_phone || '-'
-              )}
+          </td>
 
+          <td>
+
+            <span
+              style="
+                color:#59645f;
+                white-space:normal;
+                line-height:1.7;
+              ">
+              ${escapeHtml(student.residence || 'غير محدد')}
             </span>
 
           </td>
 
-
           <td>
 
-            <span class="memorization">
-
-              ${
-                student.memorization
-                  ? escapeHtml(
-                      student.memorization
-                    )
-                  : 'غير محددة'
-              }
-
+            <span
+              style="
+                display:block;
+                max-width:240px;
+                color:#59645f;
+                white-space:normal;
+                line-height:1.7;
+              ">
+              ${escapeHtml(student.notes || 'لا يوجد')}
             </span>
 
           </td>
 
-
           <td>
 
-            <span class="request-note">
-
-              ${
-                student.residence
-                  ? escapeHtml(
-                      student.residence
-                    )
-                  : 'غير محدد'
-              }
-
-            </span>
-
-          </td>
-
-
-          <td>
-
-            <span class="request-note">
-
-              ${
-                student.notes
-                  ? escapeHtml(
-                      student.notes
-                    )
-                  : 'لا يوجد'
-              }
-
-            </span>
-
-          </td>
-
-
-          <td>
-
-            <span class="request-meta">
-
-              ${escapeHtml(
-                formatDateTime(createdAt)
-              )}
-
-            </span>
-
-          </td>
-
-
-          <td>
-
-            <div class="actions">
-
+            <div
+              class="actions"
+              style="gap:7px;">
 
               <button
-                class="action-btn view-btn"
-                title="عرض التفاصيل"
+                class="action-btn"
                 type="button"
-                onclick="viewRegistrationRequest('${student.id}')">
-
-                <i class="fa-solid fa-eye"></i>
-
-                عرض
-
-              </button>
-
-
-              <button
-                class="action-btn approve-btn"
                 title="قبول الطلب"
-                type="button"
-                onclick="approveStudent('${student.id}')">
+                aria-label="قبول الطلب"
+                style="background:var(--success-light);color:var(--success);"
+                onclick="approveRegistration('${student.id}')">
 
                 <i class="fa-solid fa-check"></i>
 
-                قبول
-
               </button>
 
-
               <button
-                class="action-btn reject-btn"
-                title="رفض الطلب"
+                class="action-btn delete-btn"
                 type="button"
-                onclick="rejectStudent('${student.id}')">
+                title="رفض الطلب"
+                aria-label="رفض الطلب"
+                onclick="rejectRegistration('${student.id}')">
 
                 <i class="fa-solid fa-xmark"></i>
 
-                رفض
-
               </button>
-
 
             </div>
 
@@ -2375,406 +2172,30 @@
 
         `;
 
-
-        registrationRequestsTable.appendChild(
-          row
-        );
+        registrationRequestsTable.appendChild(row);
 
       });
 
     }
 
-
-    /* =====================================================
-       VIEW REQUEST
-    ====================================================== */
-
-    window.viewRegistrationRequest =
-      function(id) {
-
-        const student =
-          students.find(
-            item =>
-              String(item.id) ===
-              String(id)
-          );
-
-
-        if (!student) {
-
-          showToast(
-            'تعذر العثور على الطلب.',
-            'error'
-          );
-
-          return;
-
-        }
-
-
-        currentRequestId =
-          student.id;
-
-
-        requestDetailsContent.innerHTML = `
-
-          <div
-            style="
-              display:grid;
-              gap:14px;
-            "
-          >
-
-            <div
-              style="
-                padding:15px;
-                border-radius:12px;
-                background:var(--green-light);
-              "
-            >
-
-              <strong
-                style="
-                  display:block;
-                  color:var(--green);
-                  font-size:16px;
-                  margin-bottom:5px;
-                "
-              >
-
-                ${escapeHtml(
-                  student.name || '-'
-                )}
-
-              </strong>
-
-              <span
-                style="
-                  color:var(--muted);
-                  font-size:11px;
-                "
-              >
-
-                طلب تسجيل جديد
-
-              </span>
-
-            </div>
-
-
-            <div
-              style="
-                display:grid;
-                grid-template-columns:1fr 1fr;
-                gap:10px;
-              "
-            >
-
-              <div
-                style="
-                  border:1px solid var(--border);
-                  border-radius:11px;
-                  padding:12px;
-                "
-              >
-
-                <div
-                  style="
-                    color:var(--muted);
-                    font-size:10px;
-                    margin-bottom:4px;
-                  "
-                >
-                  الصف
-                </div>
-
-                <strong>
-
-                  ${escapeHtml(
-                    student.section || '-'
-                  )}
-
-                </strong>
-
-              </div>
-
-
-              <div
-                style="
-                  border:1px solid var(--border);
-                  border-radius:11px;
-                  padding:12px;
-                "
-              >
-
-                <div
-                  style="
-                    color:var(--muted);
-                    font-size:10px;
-                    margin-bottom:4px;
-                  "
-                >
-                  رقم الهاتف
-                </div>
-
-                <strong>
-
-                  ${escapeHtml(
-                    student.guardian_phone || '-'
-                  )}
-
-                </strong>
-
-              </div>
-
-
-              <div
-                style="
-                  border:1px solid var(--border);
-                  border-radius:11px;
-                  padding:12px;
-                "
-              >
-
-                <div
-                  style="
-                    color:var(--muted);
-                    font-size:10px;
-                    margin-bottom:4px;
-                  "
-                >
-                  نسبة الحفظ
-                </div>
-
-                <strong>
-
-                  ${escapeHtml(
-                    student.memorization || 'غير محددة'
-                  )}
-
-                </strong>
-
-              </div>
-
-
-              <div
-                style="
-                  border:1px solid var(--border);
-                  border-radius:11px;
-                  padding:12px;
-                "
-              >
-
-                <div
-                  style="
-                    color:var(--muted);
-                    font-size:10px;
-                    margin-bottom:4px;
-                  "
-                >
-                  موقع السكن
-                </div>
-
-                <strong>
-
-                  ${escapeHtml(
-                    student.residence || 'غير محدد'
-                  )}
-
-                </strong>
-
-              </div>
-
-            </div>
-
-
-            <div
-              style="
-                border:1px solid var(--border);
-                border-radius:11px;
-                padding:12px;
-              "
-            >
-
-              <div
-                style="
-                  color:var(--muted);
-                  font-size:10px;
-                  margin-bottom:6px;
-                "
-              >
-                الملاحظات الإضافية
-              </div>
-
-              <div
-                style="
-                  color:var(--text);
-                  line-height:1.8;
-                  font-size:12px;
-                "
-              >
-
-                ${
-                  student.notes
-                    ? escapeHtml(
-                        student.notes
-                      )
-                    : 'لا يوجد'
-                }
-
-              </div>
-
-            </div>
-
-
-            <div
-              style="
-                color:var(--muted);
-                font-size:10px;
-              "
-            >
-
-              تاريخ إرسال الطلب:
-
-              ${escapeHtml(
-                formatDateTime(
-                  student.created_at ||
-                  student.createdAt
-                )
-              )}
-
-            </div>
-
-
-            <div
-              style="
-                display:flex;
-                gap:8px;
-                margin-top:3px;
-              "
-            >
-
-              <button
-                type="button"
-                class="save-btn"
-                style="flex:1;"
-                onclick="approveStudent('${student.id}');"
-              >
-
-                <i class="fa-solid fa-check"></i>
-
-                قبول الطلب
-
-              </button>
-
-
-              <button
-                type="button"
-                class="cancel-btn"
-                style="
-                  flex:1;
-                  background:var(--danger-light);
-                  color:var(--danger);
-                "
-                onclick="rejectStudent('${student.id}');"
-              >
-
-                <i class="fa-solid fa-xmark"></i>
-
-                رفض الطلب
-
-              </button>
-
-            </div>
-
-          </div>
-
-        `;
-
-
-        requestModal.classList.add(
-          'show'
-        );
-
-      };
-
-
-    /* =====================================================
-       CLOSE REQUEST MODAL
-    ====================================================== */
-
-    function closeRegistrationRequestModal() {
-
-      requestModal.classList.remove(
-        'show'
-      );
-
-      currentRequestId =
-        null;
-
-    }
-
-
-    closeRequestModal.addEventListener(
-      'click',
-      closeRegistrationRequestModal
-    );
-
-
-    requestModal.addEventListener(
-      'click',
-      function(event) {
-
-        if (
-          event.target ===
-          requestModal
-        ) {
-
-          closeRegistrationRequestModal();
-
-        }
-
-      }
-    );
-
-
-    /* =====================================================
-       APPROVE REQUEST
-    ====================================================== */
-
-    window.approveStudent =
+    window.approveRegistration =
       async function(id) {
 
         const student =
           students.find(
             item =>
-              String(item.id) ===
-              String(id)
+              item.id === id &&
+              item.status === 'pending'
           );
 
-
-        if (!student) {
-
-          showToast(
-            'تعذر العثور على الطلب.',
-            'error'
-          );
-
-          return;
-
-        }
-
+        if (!student) return;
 
         const confirmed =
-          window.confirm(
-            `هل تريد قبول طلب "${student.name}" وإضافته إلى الطلاب؟`
+          confirm(
+            `هل تريد قبول طلب تسجيل الطالب "${student.name}"؟`
           );
 
-
-        if (!confirmed) {
-          return;
-        }
-
+        if (!confirmed) return;
 
         const {
           data,
@@ -2785,17 +2206,10 @@
             .update({
               status: 'active'
             })
-            .eq(
-              'id',
-              id
-            )
-            .eq(
-              'status',
-              'pending'
-            )
+            .eq('id', id)
+            .eq('status', 'pending')
             .select()
             .single();
-
 
         if (error) {
 
@@ -2810,18 +2224,12 @@
 
         }
 
-
         students =
-          students.map(
-            item =>
-              String(item.id) ===
-              String(id)
-                ? data
-                : item
+          students.map(item =>
+            item.id === id
+              ? data
+              : item
           );
-
-
-        closeRegistrationRequestModal();
 
         renderRegistrationRequests();
 
@@ -2829,73 +2237,30 @@
 
         updateStats();
 
-
         showToast(
-          'تم قبول الطلب وإضافة الطالب بنجاح.'
+          'تم قبول الطلب وإضافة الطالب إلى الطلاب المستمرين.'
         );
-
-        try {
-
-          if (
-            typeof window.refreshPerformance ===
-            'function'
-          ) {
-
-            await window.refreshPerformance();
-
-          }
-
-        }
-
-        catch (error) {
-
-          console.warn(
-            'refreshPerformance after approve failed',
-            error
-          );
-
-        }
 
       };
 
-
-    /* =====================================================
-       REJECT REQUEST
-    ====================================================== */
-
-    window.rejectStudent =
+    window.rejectRegistration =
       async function(id) {
 
         const student =
           students.find(
             item =>
-              String(item.id) ===
-              String(id)
+              item.id === id &&
+              item.status === 'pending'
           );
 
-
-        if (!student) {
-
-          showToast(
-            'تعذر العثور على الطلب.',
-            'error'
-          );
-
-          return;
-
-        }
-
+        if (!student) return;
 
         const confirmed =
-          window.confirm(
-            `هل تريد رفض طلب "${student.name}"؟`
+          confirm(
+            `هل تريد رفض طلب تسجيل الطالب "${student.name}"؟`
           );
 
-
-        if (!confirmed) {
-          return;
-        }
-
+        if (!confirmed) return;
 
         const {
           data,
@@ -2906,17 +2271,10 @@
             .update({
               status: 'rejected'
             })
-            .eq(
-              'id',
-              id
-            )
-            .eq(
-              'status',
-              'pending'
-            )
+            .eq('id', id)
+            .eq('status', 'pending')
             .select()
             .single();
-
 
         if (error) {
 
@@ -2931,18 +2289,12 @@
 
         }
 
-
         students =
-          students.map(
-            item =>
-              String(item.id) ===
-              String(id)
-                ? data
-                : item
+          students.map(item =>
+            item.id === id
+              ? data
+              : item
           );
-
-
-        closeRegistrationRequestModal();
 
         renderRegistrationRequests();
 
@@ -2950,17 +2302,23 @@
 
         updateStats();
 
-
         showToast(
-          'تم رفض الطلب وحفظه في السجلات.'
+          'تم رفض الطلب وحفظه في السجلات.',
+          'success'
         );
 
       };
 
+    window.openStudentPage =
+      function(id) {
 
-    /* =====================================================
-       RENDER STUDENTS
-    ====================================================== */
+        if (!id) return;
+
+        window.location.href =
+          'student-details.html?id=' +
+          encodeURIComponent(id);
+
+      };
 
     function renderStudents() {
 
@@ -2969,68 +2327,45 @@
           .trim()
           .toLowerCase();
 
-
       const selectedSection =
         sectionFilter.value;
-
 
       const selectedStatus =
         statusFilter.value;
 
-
       const filtered =
-        students.filter(
-          student => {
+        students.filter(student => {
 
-            if (
-              student.status ===
-              'pending'
-            ) {
+          const matchesSearch =
+            (student.name || '')
+              .toLowerCase()
+              .includes(search);
 
-              return false;
+          const matchesSection =
+            !selectedSection ||
+            student.section ===
+            selectedSection;
 
-            }
+          const isStudentRecord =
+            student.status !== 'pending';
 
+          const matchesStatus =
+            !selectedStatus ||
+            student.status ===
+            selectedStatus;
 
-            const matchesSearch =
-              (
-                student.name ||
-                ''
-              )
-                .toLowerCase()
-                .includes(search);
+          return (
+            matchesSearch &&
+            matchesSection &&
+            isStudentRecord &&
+            matchesStatus
+          );
 
+        });
 
-            const matchesSection =
-              !selectedSection ||
-              student.section ===
-              selectedSection;
+      tableBody.innerHTML = '';
 
-
-            const matchesStatus =
-              !selectedStatus ||
-              student.status ===
-              selectedStatus;
-
-
-            return (
-              matchesSearch &&
-              matchesSection &&
-              matchesStatus
-            );
-
-          }
-        );
-
-
-      tableBody.innerHTML =
-        '';
-
-
-      if (
-        filtered.length ===
-        0
-      ) {
+      if (filtered.length === 0) {
 
         emptyMessage.style.display =
           'block';
@@ -3039,315 +2374,214 @@
 
       }
 
-
       emptyMessage.style.display =
         'none';
 
+      filtered.forEach(student => {
 
-      filtered.forEach(
-        student => {
+        const row =
+          document.createElement('tr');
 
-          const row =
-            document.createElement(
-              'tr'
-            );
+        const statusText =
+          student.status === 'active'
+            ? 'مستمر'
+            : student.status === 'rejected'
+              ? 'مرفوض'
+              : 'متوقف';
 
+        const statusClass =
+          student.status === 'active'
+            ? 'active'
+            : student.status === 'rejected'
+              ? 'rejected'
+              : 'inactive';
 
-          let statusText =
-            'متوقف';
+        const firstLetter =
+          (student.name || '?')
+            .trim()
+            .charAt(0);
 
-          let statusClass =
-            'inactive';
+        const studentProfile =
+          profileMap[String(student.id)] || {};
 
+        const studentPhoto =
+          studentProfile.photoUrl ||
+          studentProfile.photo ||
+          '';
 
-          if (
-            student.status ===
-            'active'
-          ) {
+        row.innerHTML = `
 
-            statusText =
-              'مستمر';
+          <td
+            class="student-info-clickable"
+            onclick="openStudentPage('${encodeURIComponent(student.id)}')"
+            title="فتح ملف الطالب"
+          >
 
-            statusClass =
-              'active';
+            <div class="student-name">
 
-          }
+              <div class="student-avatar">
 
-          else if (
-            student.status ===
-            'rejected'
-          ) {
+                ${
+                  studentPhoto
+                    ? `
+                      <img
+                        src="${escapeHtml(studentPhoto)}"
+                        alt="صورة ${escapeHtml(student.name || 'الطالب')}"
+                        onerror="this.style.display='none';this.parentElement.textContent='${escapeHtml(firstLetter)}';"
+                      >
+                    `
+                    : escapeHtml(firstLetter)
+                }
 
-            statusText =
-              'مرفوض';
+              </div>
 
-            statusClass =
-              'rejected';
+              <span>
+                ${escapeHtml(student.name)}
+              </span>
 
-          }
+            </div>
 
+          </td>
 
-          const firstLetter =
-            (
-              student.name ||
-              '?'
-            )
-              .trim()
-              .charAt(0);
+          <td>
 
+            <span class="section-badge">
 
-          row.innerHTML = `
+              ${escapeHtml(
+                student.section || '-'
+              )}
 
-            <td>
+            </span>
 
-              <a
-                href="student-details.html?id=${encodeURIComponent(student.id)}"
-                style="
-                  text-decoration:none;
-                  color:inherit;
-                  display:block;
-                "
-              >
+          </td>
 
-                <div class="student-name">
+          <td>
 
-                  <div
-                    class="student-avatar"
-                  >
+            ${
+              student.memorization
+                ? `
+
+                  <span class="memorization">
 
                     ${escapeHtml(
-                      firstLetter
-                    )}
-
-                  </div>
-
-                  <span>
-
-                    ${escapeHtml(
-                      student.name ||
-                      ''
+                      student.memorization
                     )}
 
                   </span>
 
-                </div>
+                `
+                : `
 
-              </a>
+                  <span class="no-data">
+                    لم يحدد
+                  </span>
 
-            </td>
+                `
+            }
 
+          </td>
 
-            <td>
+          <td>
 
-              <span
-                class="section-badge"
-              >
+            <span
+              class="status ${statusClass}"
+            >
 
-                ${escapeHtml(
-                  student.section ||
-                  '-'
-                )}
+              ${statusText}
 
-              </span>
+            </span>
 
-            </td>
+          </td>
 
+          <td>
 
-            <td>
+            <div class="actions">
 
-              ${
-                student.memorization
-                  ? `
+              <button
+                class="action-btn edit-btn"
+                title="تعديل"
+                type="button"
+                onclick="editStudent('${student.id}')">
 
-                    <span
-                      class="memorization"
-                    >
+                <i
+                  class="fa-solid fa-pen"
+                ></i>
 
-                      ${escapeHtml(
-                        student.memorization
-                      )}
+              </button>
 
-                    </span>
+              <button
+                class="action-btn delete-btn"
+                title="حذف"
+                type="button"
+                onclick="deleteStudent('${student.id}')">
 
-                  `
-                  : `
+                <i
+                  class="fa-solid fa-trash"
+                ></i>
 
-                    <span
-                      class="no-data"
-                    >
-                      لم يحدد
-                    </span>
+              </button>
 
-                  `
-              }
+            </div>
 
-            </td>
+          </td>
 
+        `;
 
-            <td>
+        tableBody.appendChild(row);
 
-              <span
-                class="status ${statusClass}"
-              >
-
-                ${statusText}
-
-              </span>
-
-            </td>
-
-
-            <td>
-
-              <div class="actions">
-
-
-                <button
-                  class="action-btn edit-btn"
-                  title="تعديل"
-                  type="button"
-                  onclick="editStudent('${student.id}')"
-                >
-
-                  <i
-                    class="fa-solid fa-pen"
-                  ></i>
-
-                </button>
-
-
-                ${
-                  (
-                    student.status ===
-                    'rejected'
-                  )
-                    ? `
-
-                      <button
-                        class="action-btn delete-btn"
-                        title="حذف نهائي"
-                        type="button"
-                        onclick="deleteStudent('${student.id}')"
-                      >
-
-                        <i
-                          class="fa-solid fa-trash"
-                        ></i>
-
-                      </button>
-
-                    `
-                    : `
-
-                      <button
-                        class="action-btn delete-btn"
-                        title="فصل الطالب"
-                        type="button"
-                        onclick="deleteStudent('${student.id}')"
-                      >
-
-                        <i
-                          class="fa-solid fa-user-slash"
-                        ></i>
-
-                      </button>
-
-                    `
-                }
-
-
-              </div>
-
-            </td>
-
-          `;
-
-
-          tableBody.appendChild(
-            row
-          );
-
-        }
-      );
+      });
 
     }
 
-
-    /* =====================================================
-       STATS
-    ====================================================== */
-
     function updateStats() {
 
-      const visibleStudents =
+      const studentRecords =
         students.filter(
           student =>
-            student.status !==
-            'pending'
+            student.status !== 'pending'
         );
 
-
       totalStudents.textContent =
-        visibleStudents.length;
-
+        studentRecords.length;
 
       activeStudents.textContent =
-        students.filter(
+        studentRecords.filter(
           student =>
             student.status ===
             'active'
         ).length;
 
-
       memorizedStudents.textContent =
-        students.filter(
+        studentRecords.filter(
           student =>
-            student.status !==
-            'pending' &&
-            String(
-              student.memorization ||
-              ''
-            ).trim()
+            student.memorization &&
+            student.memorization.trim() !== ''
         ).length;
 
     }
 
+    function openAddModal() {
 
-    /* =====================================================
-       OPEN MODAL
-    ====================================================== */
+      editingStudentId = null;
+
+      modalTitle.textContent =
+        'إضافة طالب جديد';
+
+      saveButton.innerHTML =
+        '<i class="fa-solid fa-check"></i> حفظ الطالب';
+
+      studentForm.reset();
+
+      message.textContent = '';
+
+      modal.classList.add('show');
+
+    }
 
     openModal.addEventListener(
       'click',
-      function() {
-
-        editingStudentId =
-          null;
-
-        modalTitle.textContent =
-          'إضافة طالب جديد';
-
-        studentForm.reset();
-
-        document.getElementById(
-          'studentStatus'
-        ).value =
-          'active';
-
-        message.textContent =
-          '';
-
-        modal.classList.add(
-          'show'
-        );
-
-      }
+      openAddModal
     );
-
-
-    /* =====================================================
-       EDIT STUDENT
-    ====================================================== */
 
     window.editStudent =
       function(id) {
@@ -3355,94 +2589,46 @@
         const student =
           students.find(
             item =>
-              String(item.id) ===
-              String(id)
+              item.id === id
           );
 
-
-        if (!student) {
-          return;
-        }
-
-
-        if (
-          student.status ===
-          'pending'
-        ) {
-
-          window.viewRegistrationRequest(
-            student.id
-          );
-
-          return;
-
-        }
-
+        if (!student) return;
 
         editingStudentId =
-          student.id;
-
+          id;
 
         modalTitle.textContent =
           'تعديل بيانات الطالب';
 
+        saveButton.innerHTML =
+          '<i class="fa-solid fa-check"></i> حفظ التعديلات';
 
         document.getElementById(
           'studentName'
         ).value =
           student.name || '';
 
-
         document.getElementById(
           'studentSection'
         ).value =
           student.section || '';
-
 
         document.getElementById(
           'memorization'
         ).value =
           student.memorization || '';
 
-
-        const statusSelect =
-          document.getElementById(
-            'studentStatus'
-          );
-
-
-        if (
-          statusSelect.querySelector(
-            `option[value="${student.status}"]`
-          )
-        ) {
-
-          statusSelect.value =
-            student.status;
-
-        }
-
-        else {
-
-          statusSelect.value =
-            'active';
-
-        }
-
+        document.getElementById(
+          'studentStatus'
+        ).value =
+          student.status || 'active';
 
         message.textContent =
           '';
 
-        modal.classList.add(
-          'show'
-        );
+        modal.classList.add('show');
 
       };
-
-
-    /* =====================================================
-       SAVE STUDENT
-    ====================================================== */
 
     studentForm.addEventListener(
       'submit',
@@ -3450,19 +2636,16 @@
 
         event.preventDefault();
 
-
         const name =
           document
             .getElementById('studentName')
             .value
             .trim();
 
-
         const section =
           document
             .getElementById('studentSection')
             .value;
-
 
         const memorization =
           document
@@ -3470,12 +2653,10 @@
             .value
             .trim();
 
-
         const status =
           document
             .getElementById('studentStatus')
             .value;
-
 
         if (
           !name ||
@@ -3492,14 +2673,11 @@
 
         }
 
-
         saveButton.disabled =
           true;
 
-
         saveButton.innerHTML =
           '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الحفظ...';
-
 
         if (editingStudentId) {
 
@@ -3522,7 +2700,6 @@
               .select()
               .single();
 
-
           if (error) {
 
             console.error(error);
@@ -3543,7 +2720,6 @@
 
           }
 
-
           students =
             students.map(
               student =>
@@ -3552,7 +2728,6 @@
                   ? data
                   : student
             );
-
 
           showToast(
             'تم تعديل بيانات الطالب بنجاح.'
@@ -3579,7 +2754,6 @@
               .select()
               .single();
 
-
           if (error) {
 
             console.error(error);
@@ -3600,18 +2774,15 @@
 
           }
 
-
           students.unshift(
             data
           );
-
 
           showToast(
             'تمت إضافة الطالب بنجاح.'
           );
 
         }
-
 
         renderStudents();
 
@@ -3624,11 +2795,6 @@
       }
     );
 
-
-    /* =====================================================
-       DELETE
-    ====================================================== */
-
     window.deleteStudent =
       async function(id) {
 
@@ -3639,16 +2805,13 @@
               String(id)
           );
 
-
         if (!student) {
           return;
         }
 
-
         const isRejected =
           student.status ===
           'rejected';
-
 
         const confirmed =
           confirm(
@@ -3657,11 +2820,9 @@
               : `هل تريد فصل الطالب "${student.name}"؟`
           );
 
-
         if (!confirmed) {
           return;
         }
-
 
         if (
           !isRejected &&
@@ -3686,7 +2847,6 @@
               .select()
               .single();
 
-
           if (error) {
 
             console.error(error);
@@ -3700,7 +2860,6 @@
 
           }
 
-
           students =
             students.map(
               item =>
@@ -3710,11 +2869,9 @@
                   : item
             );
 
-
           renderStudents();
 
           updateStats();
-
 
           showToast(
             'تم فصل الطالب بنجاح.'
@@ -3723,7 +2880,6 @@
           return;
 
         }
-
 
         const {
           error
@@ -3736,20 +2892,18 @@
               id
             );
 
-
         if (error) {
 
           console.error(error);
 
           showToast(
-            'حدث خطأ أثناء حذف الطالب.',
+            'حدث خطأ أثناء حذف الطلب.',
             'error'
           );
 
           return;
 
         }
-
 
         students =
           students.filter(
@@ -3758,13 +2912,11 @@
               String(id)
           );
 
-
         renderRegistrationRequests();
 
         renderStudents();
 
         updateStats();
-
 
         showToast(
           'تم حذف الطلب المرفوض نهائيًا.'
@@ -3772,17 +2924,11 @@
 
       };
 
-
-    /* =====================================================
-       CLOSE MODAL
-    ====================================================== */
-
     function closeStudentModal() {
 
       modal.classList.remove(
         'show'
       );
-
 
       studentForm.reset();
 
@@ -3800,18 +2946,15 @@
 
     }
 
-
     closeModal.addEventListener(
       'click',
       closeStudentModal
     );
 
-
     cancelButton.addEventListener(
       'click',
       closeStudentModal
     );
-
 
     modal.addEventListener(
       'click',
@@ -3829,32 +2972,20 @@
       }
     );
 
-
-    /* =====================================================
-       FILTERS
-    ====================================================== */
-
     searchInput.addEventListener(
       'input',
       renderStudents
     );
-
 
     sectionFilter.addEventListener(
       'change',
       renderStudents
     );
 
-
     statusFilter.addEventListener(
       'change',
       renderStudents
     );
-
-
-    /* =====================================================
-       LOGOUT
-    ====================================================== */
 
     document
       .getElementById('logoutButton')
@@ -3863,29 +2994,21 @@
         logout
       );
 
-
     function logout() {
 
       localStorage.removeItem(
         'teacherAccess'
       );
 
-
       window.location.href =
         'teacher-login.html';
 
     }
 
-
-    /* =====================================================
-       MOBILE SIDEBAR
-    ====================================================== */
-
     const sidebar =
       document.getElementById(
         'sidebar'
       );
-
 
     document
       .getElementById('mobileMenu')
@@ -3900,21 +3023,6 @@
         }
       );
 
-
-    document
-      .getElementById('closeSidebar')
-      ?.addEventListener(
-        'click',
-        function() {
-
-          sidebar.classList.remove(
-            'open'
-          );
-
-        }
-      );
-
-
     document
       .querySelector('.home-link')
       .addEventListener(
@@ -3927,7 +3035,6 @@
 
         }
       );
-
 
     document
       .getElementById('studentsNav')
@@ -3943,18 +3050,12 @@
               behavior: 'smooth'
             });
 
-
           sidebar.classList.remove(
             'open'
           );
 
         }
       );
-
-
-    /* =====================================================
-       ESCAPE
-    ====================================================== */
 
     function escapeHtml(text) {
 
@@ -3987,16 +3088,10 @@
 
     }
 
-
-    /* =====================================================
-       INITIAL LOAD
-    ====================================================== */
-
     (async function() {
 
       const loggedIn =
         checkUser();
-
 
       if (loggedIn) {
 
@@ -4005,7 +3100,6 @@
       }
 
     })();
-
 
   </script>
 
