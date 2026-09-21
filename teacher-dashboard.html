@@ -2809,95 +2809,190 @@
           return;
         }
 
-        const isRejected =
-          student.status ===
-          'rejected';
+        /*
+          الطالب المرفوض أو المفصول:
+          حذف نهائي من قاعدة البيانات.
+        */
+
+        const isPermanentDelete =
+          student.status === 'rejected' ||
+          student.status === 'expelled';
+
+        if (isPermanentDelete) {
+
+          const confirmed =
+            confirm(
+              `سيتم حذف الطالب "${student.name}" نهائيًا من قاعدة البيانات، مع حذف ملفه المرتبط أيضًا. لا يمكن التراجع عن هذه العملية. هل تريد المتابعة؟`
+            );
+
+          if (!confirmed) {
+            return;
+          }
+
+          try {
+
+            /*
+              أولًا: حذف ملف الطالب المرتبط
+              من جدول student_profiles
+            */
+
+            const {
+              error: profileDeleteError
+            } =
+              await supabaseClient
+                .from('student_profiles')
+                .delete()
+                .eq(
+                  'student_id',
+                  String(id)
+                );
+
+            if (profileDeleteError) {
+
+              console.warn(
+                'تعذر حذف ملف الطالب المرتبط:',
+                profileDeleteError
+              );
+
+            }
+
+            /*
+              ثانيًا: حذف الطالب نهائيًا
+              من جدول students
+            */
+
+            const {
+              data: deletedStudent,
+              error: studentDeleteError
+            } =
+              await supabaseClient
+                .from('students')
+                .delete()
+                .eq(
+                  'id',
+                  id
+                )
+                .select('id')
+                .maybeSingle();
+
+            if (studentDeleteError) {
+
+              console.error(
+                'STUDENT DELETE ERROR:',
+                studentDeleteError
+              );
+
+              showToast(
+                'تعذر الحذف النهائي. تأكد من صلاحيات DELETE في Supabase.',
+                'error'
+              );
+
+              return;
+
+            }
+
+            /*
+              إذا لم يرجع Supabase أي سجل محذوف،
+              فهذا يعني أن الحذف لم يتم فعلًا.
+            */
+
+            if (!deletedStudent) {
+
+              console.error(
+                'لم يتم حذف أي سجل من جدول students.'
+              );
+
+              showToast(
+                'لم يتم حذف الطالب من قاعدة البيانات. راجع صلاحيات DELETE في Supabase.',
+                'error'
+              );
+
+              await loadStudents();
+
+              return;
+
+            }
+
+            /*
+              تحديث البيانات المحلية
+              بعد نجاح الحذف الفعلي
+            */
+
+            students =
+              students.filter(
+                item =>
+                  String(item.id) !==
+                  String(id)
+              );
+
+            delete profileMap[
+              String(id)
+            ];
+
+            renderRegistrationRequests();
+
+            renderStudents();
+
+            updateStats();
+
+            showToast(
+              'تم حذف الطالب نهائيًا من قاعدة البيانات.'
+            );
+
+          } catch (error) {
+
+            console.error(
+              'PERMANENT DELETE ERROR:',
+              error
+            );
+
+            showToast(
+              'حدث خطأ غير متوقع أثناء الحذف النهائي.',
+              'error'
+            );
+
+          }
+
+          return;
+        }
+
+        /*
+          الطالب المستمر:
+          لا نحذفه، بل ننقله إلى متوقف.
+        */
 
         const confirmed =
           confirm(
-            isRejected
-              ? `هل أنت متأكد من حذف الطلب المرفوض "${student.name}" نهائيًا؟`
-              : `هل تريد فصل الطالب "${student.name}"؟`
+            `هل تريد إيقاف الطالب "${student.name}"؟`
           );
 
         if (!confirmed) {
           return;
         }
 
-        if (
-          !isRejected &&
-          student.status !==
-          'rejected'
-        ) {
-
-          const {
-            data,
-            error
-          } =
-            await supabaseClient
-              .from('students')
-              .update({
-                status:
-                  'inactive'
-              })
-              .eq(
-                'id',
-                id
-              )
-              .select()
-              .single();
-
-          if (error) {
-
-            console.error(error);
-
-            showToast(
-              'حدث خطأ أثناء فصل الطالب.',
-              'error'
-            );
-
-            return;
-
-          }
-
-          students =
-            students.map(
-              item =>
-                String(item.id) ===
-                String(id)
-                  ? data
-                  : item
-            );
-
-          renderStudents();
-
-          updateStats();
-
-          showToast(
-            'تم فصل الطالب بنجاح.'
-          );
-
-          return;
-
-        }
-
         const {
+          data,
           error
         } =
           await supabaseClient
             .from('students')
-            .delete()
+            .update({
+              status:
+                'inactive'
+            })
             .eq(
               'id',
               id
-            );
+            )
+            .select()
+            .single();
 
         if (error) {
 
           console.error(error);
 
           showToast(
-            'حدث خطأ أثناء حذف الطلب.',
+            'حدث خطأ أثناء إيقاف الطالب.',
             'error'
           );
 
@@ -2906,10 +3001,12 @@
         }
 
         students =
-          students.filter(
-            student =>
-              String(student.id) !==
+          students.map(
+            item =>
+              String(item.id) ===
               String(id)
+                ? data
+                : item
           );
 
         renderRegistrationRequests();
@@ -2919,7 +3016,7 @@
         updateStats();
 
         showToast(
-          'تم حذف الطلب المرفوض نهائيًا.'
+          'تم إيقاف الطالب بنجاح.'
         );
 
       };
