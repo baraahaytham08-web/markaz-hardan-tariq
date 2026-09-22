@@ -9521,32 +9521,67 @@ function renderBadges(){
     /* =========================
        FEES
     ========================= */
-    function getFeeRecords(){
+function getFeeRecords(){
 
-      return toArray(
-        firstValue(
-          profileData,
-          [
-            'fees',
-            'monthlyFees',
-            'monthly_fees',
-            'feeClaims',
-            'fee_claims',
-            'feesHistory',
-            'fees_history'
-          ],
-          []
-        )
-      )
-      .filter(
-        fee =>
-          fee &&
-          typeof fee === 'object'
-      );
+  const raw =
+    firstValue(
+      profileData,
+      [
+        'fees',
+        'monthlyFees',
+        'monthly_fees',
+        'feeClaims',
+        'fee_claims',
+        'feesHistory',
+        'fees_history'
+      ],
+      []
+    );
+
+
+  return toArray(
+    raw
+  )
+  .map(
+    fee => {
+
+      if(
+        fee &&
+        typeof fee.value === 'object' &&
+        fee.value !== null
+      ){
+
+        return {
+          ...fee.value,
+
+          month:
+            fee.value.month ||
+            fee.value.monthKey ||
+            fee.key ||
+            fee.value.date ||
+            '',
+
+          id:
+            fee.value.id ||
+            fee.id ||
+            ''
+        };
+
+      }
+
+
+      return fee;
 
     }
+  )
+  .filter(
+    fee =>
+      fee &&
+      typeof fee === 'object'
+  );
 
-
+}
+    
     function getFeeMonth(
       fee
     ){
