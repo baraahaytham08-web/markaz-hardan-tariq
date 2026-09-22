@@ -4082,9 +4082,21 @@
           <div class="fee-summary-card">
 
             <small>
-              المتبقي المطلوب
+              المتبقي هذا الشهر
             </small>
 
+            <strong id="feeRemainingCurrent">
+              0 د.أ
+            </strong>
+
+          </div>
+
+          <div class="fee-summary-card">
+
+            <small>
+              المتبقي المطلوب
+            </small>
+            
             <strong id="feeRemainingTotal">
               0 د.أ
             </strong>
@@ -6531,8 +6543,6 @@
 
         await ensureQuarterlyFeesForAllStudents();
 
-        await finalizePreviousMonthChampion();
-
         normalizeDataStructures();
 
         fillIdentity();
@@ -7944,6 +7954,35 @@
       );
 
     }
+    function formatNextRecitationAmount(
+      value
+    ){
+
+      const text =
+        String(
+          value ?? ''
+        ).trim();
+
+      if(!text){
+
+        return '';
+
+      }
+
+      const pageMatch =
+        text.match(
+          /^(?:صفحة\s*)?(\d+)\s*صفحات?$/
+        );
+
+      if(pageMatch){
+
+        return `صفحة رقم ${pageMatch[1]}`;
+
+      }
+
+      return text;
+
+    }
 
     function getNextRecitationForMonth(
       monthKey
@@ -8762,10 +8801,12 @@
                                 "
                               >
                                 ${escapeHtml(
-                                  nextRecitation.amount ||
+                                  formatNextRecitationAmount(
+                                    nextRecitation.amount
+                                  ) ||
                                   'غير محدد'
                                 )}
-                              </strong>
+                                </strong>
 
                             </div>
 
@@ -13054,6 +13095,12 @@
 
       let remainingTotal = 0;
 
+      let remainingCurrent =
+        FIXED_MONTHLY_FEE;
+
+      const currentMonth =
+        getCurrentMonthKey();
+
       items.forEach(
         item => {
 
@@ -13067,9 +13114,36 @@
               item
             );
 
+          if(
+            String(
+              item?.month || ''
+            ) ===
+            String(
+              currentMonth
+            )
+          ){
+
+            remainingCurrent =
+              getFeeRemainingAmount(
+                item
+              );
+
+          }
+
         }
       );
 
+      return {
+
+        paidTotal,
+
+        remainingTotal,
+
+        remainingCurrent
+
+      };
+
+      
       return {
 
         paidTotal,
@@ -13106,13 +13180,29 @@
           'feePaidTotal'
         );
 
-      if(
+          if(
         paidElement
       ){
 
         paidElement.textContent =
           `${formatPoints(
             summary.paidTotal
+          )} د.أ`;
+
+      }
+
+      const currentRemainingElement =
+        document.getElementById(
+          'feeRemainingCurrent'
+        );
+
+      if(
+        currentRemainingElement
+      ){
+
+        currentRemainingElement.textContent =
+          `${formatPoints(
+            summary.remainingCurrent
           )} د.أ`;
 
       }
@@ -14013,13 +14103,17 @@
       );
 
     }
-
+  
     /* ==================================================
        WARNING SYSTEM
     ================================================== */
 
-    function syncWarningCount(){
+    /* كل إنذار يخصم 5% من التقييم العام */
+    const WARNING_DEDUCTION_PER_WARNING =
+      5;
 
+    function syncWarningCount(){
+      
       if(
         !Array.isArray(
           profileData.warningRecords
@@ -14793,19 +14887,6 @@
         condition:
           metrics =>
             metrics.totalPoints >= 500
-      },
-
-      {
-        id:'monthly-champion',
-        icon:'🥇',
-        name:'بطل الشهر',
-        points:0,
-        type:'monthly',
-        description:
-          'يُحسم في نهاية كل شهر للطالب صاحب أعلى تقييم شهري، ويبقى في سجله ويمكن الحصول عليه أكثر من مرة.',
-        condition:
-          () => false
-      }
 
     ];
 
@@ -15905,14 +15986,28 @@
           0.25
         );
 
+      const warningCount =
+        isMonthly
+          ? 0
+          : getWarningRecords().length;
+
+      const warningDeduction =
+        warningCount *
+        WARNING_DEDUCTION_PER_WARNING;
+
       const finalPercentage =
-        Math.min(
-          100,
-          basePercentage +
-          bonusPercentage
+        Math.max(
+          0,
+          Math.min(
+            100,
+            basePercentage +
+            bonusPercentage -
+            warningDeduction
+          )
         );
 
       const rawPoints =
+        
         components.recEarned +
         components.testEarned +
         components.attendanceEarned +
@@ -16864,8 +16959,6 @@
           };
 
         await ensureQuarterlyFeesForAllStudents();
-
-        await finalizePreviousMonthChampion();
 
         selectedPhotoFile =
           null;
