@@ -6,10 +6,9 @@
 
   <title>ملف الطالب | مركز حردان طارق القرآني</title>
 
- <!-- شعار الموقع -->
+  <!-- شعار الموقع -->
   <link rel="icon" type="image/png" href="logo.png">
 
-  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -1149,6 +1148,130 @@
       color:#ead19b;
 
       background:rgba(217,184,108,.06);
+    }
+
+    /* =========================
+       MONTHLY FOLLOW UP
+    ========================= */
+
+    .monthly-followup-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .monthly-followup-card{
+      padding:13px;
+      border-radius:17px;
+      background:rgba(255,255,255,.018);
+      border:1px solid rgba(255,255,255,.055);
+    }
+
+    .monthly-followup-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+      padding-bottom:9px;
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+
+    .monthly-followup-title{
+      color:var(--gold2);
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .monthly-followup-percent{
+      color:var(--gold2);
+      font-size:11px;
+      font-weight:700;
+      padding:5px 9px;
+      border-radius:999px;
+      background:rgba(217,184,108,.07);
+      border:1px solid rgba(217,184,108,.12);
+    }
+
+    .monthly-followup-summary{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:7px;
+      margin-bottom:10px;
+    }
+
+    .monthly-followup-stat{
+      padding:9px;
+      border-radius:12px;
+      background:rgba(255,255,255,.018);
+      border:1px solid rgba(255,255,255,.045);
+    }
+
+    .monthly-followup-stat small{
+      display:block;
+      color:var(--muted2);
+      font-size:8px;
+      margin-bottom:4px;
+    }
+
+    .monthly-followup-stat strong{
+      color:var(--gold2);
+      font-size:14px;
+    }
+
+    .monthly-followup-block{
+      padding:10px;
+      border-radius:13px;
+      background:rgba(217,184,108,.025);
+      border:1px solid rgba(217,184,108,.07);
+      margin-top:8px;
+    }
+
+    .monthly-followup-block-title{
+      color:var(--gold2);
+      font-size:10px;
+      font-weight:700;
+      margin-bottom:7px;
+    }
+
+    .mini-table-wrap{
+      overflow:auto;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.05);
+    }
+
+    .mini-table{
+      width:100%;
+      min-width:480px;
+      border-collapse:collapse;
+    }
+
+    .mini-table th,
+    .mini-table td{
+      padding:7px;
+      border-bottom:1px solid rgba(255,255,255,.045);
+      text-align:right;
+      font-size:8px;
+    }
+
+    .mini-table th{
+      color:var(--gold2);
+      background:rgba(217,184,108,.028);
+    }
+
+    .mini-table td{
+      color:var(--muted);
+    }
+
+    .mini-table tr:last-child td{
+      border-bottom:none;
+    }
+
+    .next-recitation-box{
+      padding:11px;
+      border-radius:13px;
+      background:rgba(47,159,114,.025);
+      border:1px solid rgba(47,159,114,.09);
     }
 
     /* =========================
@@ -2435,6 +2558,11 @@
         grid-template-columns:1fr;
       }
 
+      .monthly-followup-summary{
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
+      }
+
     }
 
     @media(max-width:820px){
@@ -2557,6 +2685,10 @@
         width:100%;
       }
 
+      .monthly-followup-summary{
+        grid-template-columns:1fr;
+      }
+
     }
   </style>
 </head>
@@ -2571,7 +2703,6 @@
     </div>
   </div>
 
-
   <!-- MAIN -->
   <main
     id="mainPage"
@@ -2579,9 +2710,7 @@
     style="display:none;"
   >
 
-    <!-- =====================================
-         TOP BAR
-    ====================================== -->
+    <!-- TOPBAR -->
 
     <div class="topbar">
 
@@ -2617,7 +2746,6 @@
 
       </a>
 
-
       <div class="top-actions">
 
         <a
@@ -2647,18 +2775,13 @@
 
     </div>
 
-
-    <!-- =====================================
-         ID CARD
-    ====================================== -->
+    <!-- ID CARD -->
 
     <section class="id-card">
 
       <div class="id-main">
 
         <div class="id-top">
-
-          <!-- IDENTITY -->
 
           <div class="identity">
 
@@ -2677,7 +2800,6 @@
               </div>
 
             </div>
-
 
             <div class="identity-text">
 
@@ -2705,9 +2827,6 @@
 
           </div>
 
-
-          <!-- METRICS -->
-
           <div class="metrics">
 
             <div class="metric">
@@ -2725,7 +2844,6 @@
 
             </div>
 
-
             <div class="metric">
 
               <div class="metric-label">
@@ -2740,7 +2858,6 @@
               </div>
 
             </div>
-
 
             <div class="metric">
 
@@ -2764,7 +2881,6 @@
 
             </div>
 
-
             <div class="metric">
 
               <div class="metric-label">
@@ -2784,7 +2900,6 @@
 
         </div>
 
-
         <!-- BASIC DETAILS -->
 
         <div class="id-details">
@@ -2801,7 +2916,6 @@
             />
 
           </div>
-
 
           <div class="detail-field">
 
@@ -2831,7 +2945,6 @@
 
           </div>
 
-
           <div class="detail-field">
 
             <label>
@@ -2844,7 +2957,6 @@
             />
 
           </div>
-
 
           <div class="detail-field">
 
@@ -2874,7 +2986,6 @@
 
           </div>
 
-
           <div class="detail-field">
 
             <label>
@@ -2890,7 +3001,6 @@
 
           </div>
 
-
           <div class="detail-field">
 
             <label>
@@ -2903,7 +3013,6 @@
             />
 
           </div>
-
 
           <div class="detail-field">
 
@@ -2918,7 +3027,6 @@
 
           </div>
 
-
           <div class="detail-field">
 
             <label>
@@ -2932,7 +3040,6 @@
 
           </div>
 
-
           <div class="detail-field">
 
             <label>
@@ -2945,7 +3052,6 @@
             />
 
           </div>
-
 
           <div class="detail-field">
 
@@ -2961,7 +3067,6 @@
             />
 
           </div>
-
 
           <!-- PHOTO -->
 
@@ -2986,7 +3091,6 @@
 
             </div>
 
-
             <label class="photo-button">
 
               اختيار صورة
@@ -3007,10 +3111,7 @@
 
     </section>
 
-
-    <!-- =====================================
-         TABS
-    ====================================== -->
+    <!-- TABS -->
 
     <div class="tabs">
 
@@ -3056,10 +3157,7 @@
 
     </div>
 
-
-    <!-- =====================================
-         RECITATION
-    ====================================== -->
+    <!-- RECITATION -->
 
     <section
       class="tab-panel active"
@@ -3083,7 +3181,6 @@
 
         </div>
 
-
         <div class="rules">
 
           <div class="rule">
@@ -3100,7 +3197,6 @@
 
           </div>
 
-
           <div class="rule">
 
             <div class="rule-title">
@@ -3114,7 +3210,6 @@
             </div>
 
           </div>
-
 
           <div class="rule">
 
@@ -3130,7 +3225,6 @@
 
           </div>
 
-
           <div class="rule">
 
             <div class="rule-title">
@@ -3144,7 +3238,6 @@
 
           </div>
 
-
           <div class="rule">
 
             <div class="rule-title">
@@ -3157,7 +3250,6 @@
             </div>
 
           </div>
-
 
           <div class="rule">
 
@@ -3175,7 +3267,6 @@
         </div>
 
       </section>
-
 
       <!-- PLAN -->
 
@@ -3203,7 +3294,6 @@
 
         </div>
 
-
         <div class="map-intro">
 
           يحدد المعلم المطلوب للطالب ومتى يجب إنجازه.
@@ -3211,7 +3301,6 @@
           وعند حلول موعدها، يقارن النظام المطلوب بالمنجز تلقائيًا.
 
         </div>
-
 
         <div class="plan-switch">
 
@@ -3233,12 +3322,10 @@
 
         </div>
 
-
         <div
           class="plan-summary"
           id="planSummary"
         ></div>
-
 
         <div
           id="planEditor"
@@ -3246,7 +3333,6 @@
         ></div>
 
       </section>
-
 
       <!-- TESTS -->
 
@@ -3274,13 +3360,12 @@
 
         </div>
 
-
         <div class="rules">
 
           <div class="rule">
 
             <div class="rule-title">
-              90–100
+              98–100
             </div>
 
             <div class="rule-text">
@@ -3289,11 +3374,10 @@
 
           </div>
 
-
           <div class="rule">
 
             <div class="rule-title">
-              80–89
+              96–97
             </div>
 
             <div class="rule-text">
@@ -3302,24 +3386,22 @@
 
           </div>
 
-
           <div class="rule">
 
             <div class="rule-title">
-              70–79
+              93–95
             </div>
 
             <div class="rule-text">
-              جيد — <strong>4 نقاط</strong>
+              مقبول — <strong>4 نقاط</strong>
             </div>
 
           </div>
 
-
           <div class="rule">
 
             <div class="rule-title">
-              أقل من 70
+              أقل من 93
             </div>
 
             <div class="rule-text">
@@ -3330,14 +3412,12 @@
 
         </div>
 
-
         <div
           id="testsEditor"
           class="editor-list"
         ></div>
 
       </section>
-
 
       <!-- RECITATION REGISTER -->
 
@@ -3365,7 +3445,6 @@
 
         </div>
 
-
         <div class="summary-cards">
 
           <div class="summary-card">
@@ -3392,32 +3471,30 @@
 
           </div>
 
-
           <div class="summary-card">
 
             <div class="summary-label">
-              صفحات لها سجل
+              متوسط الالتزام الشهري بالخطط
             </div>
 
             <div
               class="summary-value"
-              id="recordedPageCount"
+              id="monthlyPlanAdherenceAverage"
             >
-              0
+              0%
             </div>
 
           </div>
 
-
           <div class="summary-card">
 
             <div class="summary-label">
-              صفحات حفظ جديد
+              عدد الأجزاء المحفوظة
             </div>
 
             <div
               class="summary-value"
-              id="newPageCount"
+              id="memorizedJuzCount"
             >
               0
             </div>
@@ -3425,7 +3502,6 @@
           </div>
 
         </div>
-
 
         <div class="view-switch">
 
@@ -3447,7 +3523,6 @@
 
         </div>
 
-
         <!-- MAP -->
 
         <div
@@ -3463,7 +3538,6 @@
 
           </div>
 
-
           <div class="legend">
 
             <div class="legend-item">
@@ -3476,7 +3550,6 @@
 
             </div>
 
-
             <div class="legend-item">
 
               <span
@@ -3486,7 +3559,6 @@
               مراجعة
 
             </div>
-
 
             <div class="legend-item">
 
@@ -3500,14 +3572,12 @@
 
           </div>
 
-
           <div
             class="juz-grid"
             id="juzGrid"
           ></div>
 
         </div>
-
 
         <!-- TABLE -->
 
@@ -3550,10 +3620,7 @@
 
     </section>
 
-
-    <!-- =====================================
-         GENERAL
-    ====================================== -->
+    <!-- GENERAL -->
 
     <section
       class="tab-panel"
@@ -3586,7 +3653,6 @@
 
         </div>
 
-
         <div class="rules">
 
           <div class="rule">
@@ -3601,7 +3667,6 @@
 
           </div>
 
-
           <div class="rule">
 
             <div class="rule-title">
@@ -3613,7 +3678,6 @@
             </div>
 
           </div>
-
 
           <div class="rule">
 
@@ -3629,7 +3693,6 @@
 
         </div>
 
-
         <div
           id="attendanceEditor"
           class="editor-list"
@@ -3637,6 +3700,42 @@
 
       </section>
 
+      <!-- MONTHLY FOLLOW UP -->
+
+      <section class="section">
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              🗓️
+            </div>
+
+            المتابعة العامة الشهرية
+
+          </div>
+
+          <div class="section-note">
+            تبدأ من شهر التحاق الطالب ويتجدد شهر جديد تلقائيًا
+          </div>
+
+        </div>
+
+        <div class="map-intro">
+
+          لكل شهر سجل مستقل للتسميع والاختبارات والحضور والغياب،
+          مع خانة خاصة للتسميع القادم تشمل المطلوب تسميعه ومقدار التسميع.
+          يبدأ السجل من شهر التحاق الطالب، ويُضاف شهر جديد تلقائيًا عند بدء شهر جديد.
+
+        </div>
+
+        <div
+          id="monthlyFollowupEditor"
+          class="monthly-followup-list"
+        ></div>
+
+      </section>
 
       <!-- PROGRESS -->
 
@@ -3656,7 +3755,6 @@
 
         </div>
 
-
         <div class="editor-grid">
 
           <div class="field">
@@ -3673,7 +3771,6 @@
 
           </div>
 
-
           <div class="field">
 
             <label>
@@ -3687,7 +3784,6 @@
             />
 
           </div>
-
 
           <div class="field full">
 
@@ -3707,10 +3803,7 @@
 
     </section>
 
-
-    <!-- =====================================
-         FEES
-    ====================================== -->
+    <!-- FEES -->
 
     <section
       class="tab-panel"
@@ -3732,26 +3825,24 @@
           </div>
 
           <div class="section-note">
-            المطالبة الشهرية تنشأ تلقائيًا لكل طالب
+            المطالبة الفصلية تنشأ تلقائيًا لكل طالب
           </div>
 
         </div>
-
 
         <div class="fee-summary">
 
           <div class="fee-summary-card">
 
             <small>
-              الاشتراك الشهري المعتمد
+              الاشتراك الفصلي المعتمد
             </small>
 
-            <strong id="feeApprovedMonthly">
-              5 د.أ
+            <strong id="feeApprovedQuarterly">
+              25 د.أ
             </strong>
 
           </div>
-
 
           <div class="fee-summary-card">
 
@@ -3764,7 +3855,6 @@
             </strong>
 
           </div>
-
 
           <div class="fee-summary-card">
 
@@ -3780,29 +3870,26 @@
 
         </div>
 
-
         <div class="fee-form">
 
           <div class="fee-form-title">
-            💳 المطالبة الشهرية
+            💳 المطالبة الفصلية
           </div>
-
 
           <div
             class="map-intro"
             style="margin-bottom:0;"
           >
 
-            قيمة الاشتراك الشهري المعتمد ثابتة على
-            <strong>5 دنانير أردنية</strong>.
-            ينشئ النظام مطالبة جديدة تلقائيًا في بداية كل شهر
-            لكل طالب بقيمة 5 د.أ، وتظهر في سجل المدفوعات
+            قيمة الاشتراك الفصلي المعتمد ثابتة على
+            <strong>25 دينارًا أردنيًا</strong>.
+            ينشئ النظام مطالبة جديدة تلقائيًا في بداية كل فصل
+            لكل طالب بقيمة 25 د.أ، وتظهر في سجل المدفوعات
             حتى يتم تحديث حالتها.
 
           </div>
 
         </div>
-
 
         <div class="section-head">
 
@@ -3818,7 +3905,6 @@
 
         </div>
 
-
         <div
           id="feesEditor"
           class="fee-archive"
@@ -3828,10 +3914,7 @@
 
     </section>
 
-
-    <!-- =====================================
-         EXTRA
-    ====================================== -->
+    <!-- EXTRA -->
 
     <section
       class="tab-panel"
@@ -3854,7 +3937,6 @@
 
         </div>
 
-
         <div class="extra-summary">
 
           <div class="extra-summary-card">
@@ -3869,7 +3951,6 @@
 
           </div>
 
-
           <div class="extra-summary-card">
 
             <small>
@@ -3881,7 +3962,6 @@
             </strong>
 
           </div>
-
 
           <div class="extra-summary-card">
 
@@ -3897,14 +3977,12 @@
 
         </div>
 
-
         <div class="map-intro">
 
           يمكنك منح الطالب نقاط تفوق إضافية لأسباب سلوكية،
           تشجيعية، حضور مبكر، أو أي تميز آخر غير التسميع اليومي.
 
         </div>
-
 
         <div
           class="fee-form"
@@ -3914,7 +3992,6 @@
           <div class="fee-form-title">
             منح الطالب نقاط إضافية / تحفيزية
           </div>
-
 
           <div
             style="
@@ -3929,7 +4006,6 @@
 
           </div>
 
-
           <div class="extra-reasons">
 
             <button
@@ -3940,7 +4016,6 @@
               الأدب والأخلاق العالية في الحلقة ✨
             </button>
 
-
             <button
               type="button"
               class="extra-reason-btn"
@@ -3948,7 +4023,6 @@
             >
               المواظبة والحضور المبكر المتميز ⏰
             </button>
-
 
             <button
               type="button"
@@ -3958,7 +4032,6 @@
               المساعدة والتعاون مع زملائه في الحلقة 🤝
             </button>
 
-
             <button
               type="button"
               class="extra-reason-btn"
@@ -3967,7 +4040,6 @@
               تحقيق تميز خاص في الحفظ الأسبوعي 🌟
             </button>
 
-
             <button
               type="button"
               class="extra-reason-btn"
@@ -3975,7 +4047,6 @@
             >
               المشاركة الفعالة والتفوق في الأنشطة والمسابقات 🏆
             </button>
-
 
             <button
               type="button"
@@ -3986,7 +4057,6 @@
             </button>
 
           </div>
-
 
           <div
             class="editor-grid"
@@ -4008,7 +4078,6 @@
 
             </div>
 
-
             <div class="field">
 
               <label>
@@ -4024,7 +4093,6 @@
                 placeholder="مثال: 5"
               />
 
-
               <div class="extra-points-shortcuts">
 
                 <button
@@ -4035,7 +4103,6 @@
                   +1
                 </button>
 
-
                 <button
                   type="button"
                   class="extra-points-btn"
@@ -4044,7 +4111,6 @@
                   +2
                 </button>
 
-
                 <button
                   type="button"
                   class="extra-points-btn"
@@ -4052,7 +4118,6 @@
                 >
                   +5
                 </button>
-
 
                 <button
                   type="button"
@@ -4065,7 +4130,6 @@
               </div>
 
             </div>
-
 
             <div class="field">
 
@@ -4080,7 +4144,6 @@
               />
 
             </div>
-
 
             <div class="field">
 
@@ -4098,7 +4161,6 @@
             </div>
 
           </div>
-
 
           <div
             style="
@@ -4120,7 +4182,6 @@
 
         </div>
 
-
         <div class="section-head">
 
           <div class="section-title">
@@ -4135,7 +4196,6 @@
 
         </div>
 
-
         <div
           id="extraPointsEditor"
           class="extra-archive"
@@ -4145,10 +4205,7 @@
 
     </section>
 
-
-    <!-- =====================================
-         BADGES
-    ====================================== -->
+    <!-- BADGES -->
 
     <section
       class="tab-panel"
@@ -4175,7 +4232,6 @@
 
         </div>
 
-
         <div class="map-intro">
 
           الأوسمة الأساسية تعتمد على نقاط الطالب فقط،
@@ -4185,7 +4241,6 @@
 
         </div>
 
-
         <div
           class="badge-grid"
           id="badgeGrid"
@@ -4194,7 +4249,6 @@
       </section>
 
     </section>
-
 
     <!-- SAVE -->
 
@@ -4212,7 +4266,6 @@
 
       </div>
 
-
       <button
         type="button"
         class="save-btn"
@@ -4225,7 +4278,6 @@
     </div>
 
   </main>
-
 
   <!-- ERROR -->
 
@@ -4255,7 +4307,6 @@
 
   </div>
 
-
   <!-- PAGE MODAL -->
 
   <div
@@ -4281,7 +4332,6 @@
 
       </div>
 
-
       <div class="editor-grid">
 
         <div class="field">
@@ -4299,7 +4349,6 @@
           />
 
         </div>
-
 
         <div class="field">
 
@@ -4324,7 +4373,6 @@
 
         </div>
 
-
         <div class="field">
 
           <label>
@@ -4342,7 +4390,6 @@
 
         </div>
 
-
         <div class="field">
 
           <label>
@@ -4357,7 +4404,6 @@
 
         </div>
 
-
         <div class="field full">
 
           <label>
@@ -4371,7 +4417,6 @@
         </div>
 
       </div>
-
 
       <div class="modal-preview">
 
@@ -4389,7 +4434,6 @@
 
         </div>
 
-
         <div class="preview-box">
 
           <small>
@@ -4406,12 +4450,10 @@
 
       </div>
 
-
       <div
         class="page-history"
         id="modalHistory"
       ></div>
-
 
       <div
         class="plan-switch"
@@ -4440,11 +4482,9 @@
 
   </div>
 
-
   <!-- TOAST -->
 
   <div id="toast"></div>
-
 
   <script>
 
@@ -4464,16 +4504,14 @@
     const PHOTO_BUCKET =
       'student-photos';
 
-    const FIXED_MONTHLY_FEE =
-      5;
-
+    const FIXED_QUARTERLY_FEE =
+      25;
 
     const supabaseClient =
       window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_PUBLISHABLE_KEY
       );
-
 
     /* ==================================================
        JUZ RANGES
@@ -4514,7 +4552,6 @@
 
     ];
 
-
     /* ==================================================
        STATE
     ================================================== */
@@ -4535,7 +4572,6 @@
 
     const openJuz = new Set();
 
-
     /* ==================================================
        HELPERS
     ================================================== */
@@ -4551,7 +4587,6 @@
 
     }
 
-
     function escapeJs(value){
 
       return String(value ?? '')
@@ -4559,7 +4594,6 @@
         .replace(/'/g,"\\'");
 
     }
-
 
     function valueOrEmpty(value){
 
@@ -4576,7 +4610,6 @@
 
     }
 
-
     function firstValue(
       object,
       keys,
@@ -4591,7 +4624,6 @@
         return fallback;
 
       }
-
 
       for(
         const key of keys
@@ -4609,11 +4641,9 @@
 
       }
 
-
       return fallback;
 
     }
-
 
     function arrayValue(value){
 
@@ -4623,7 +4653,6 @@
 
       }
 
-
       if(
         value &&
         typeof value === 'object'
@@ -4632,7 +4661,6 @@
         return Object.values(value);
 
       }
-
 
       if(
         typeof value === 'string' &&
@@ -4649,11 +4677,9 @@
 
       }
 
-
       return [];
 
     }
-
 
     function roundNumber(
       value,
@@ -4666,14 +4692,12 @@
           digits
         );
 
-
       return Math.round(
         Number(value || 0) *
         factor
       ) / factor;
 
     }
-
 
     function normalizeText(value){
 
@@ -4683,7 +4707,6 @@
 
     }
 
-
     function getDateInputValue(value){
 
       if(!value){
@@ -4692,10 +4715,8 @@
 
       }
 
-
       const str =
         String(value);
-
 
       if(
         /^\d{4}-\d{2}-\d{2}$/.test(
@@ -4707,10 +4728,8 @@
 
       }
 
-
       const date =
         new Date(value);
-
 
       if(
         Number.isNaN(
@@ -4722,13 +4741,11 @@
 
       }
 
-
       return date
         .toISOString()
         .slice(0,10);
 
     }
-
 
     function todayString(){
 
@@ -4738,7 +4755,6 @@
 
     }
 
-
     function getMonthKey(value){
 
       if(!value){
@@ -4747,10 +4763,8 @@
 
       }
 
-
       const str =
         String(value);
-
 
       if(
         /^\d{4}-\d{2}$/.test(
@@ -4762,10 +4776,8 @@
 
       }
 
-
       const date =
         new Date(value);
-
 
       if(
         Number.isNaN(
@@ -4777,13 +4789,11 @@
 
       }
 
-
       return `${date.getFullYear()}-${String(
         date.getMonth() + 1
       ).padStart(2,'0')}`;
 
     }
-
 
     function getCurrentMonthKey(){
 
@@ -4793,12 +4803,10 @@
 
     }
 
-
     function getPreviousMonthKey(){
 
       const now =
         new Date();
-
 
       return getMonthKey(
         new Date(
@@ -4810,7 +4818,6 @@
 
     }
 
-
     function getLastDayOfMonth(
       monthKey
     ){
@@ -4819,13 +4826,11 @@
         String(monthKey || '')
           .split('-');
 
-
       const year =
         Number(parts[0]);
 
       const month =
         Number(parts[1]);
-
 
       return new Date(
         year,
@@ -4836,7 +4841,6 @@
         .slice(0,10);
 
     }
-
 
     function isInMonth(
       value,
@@ -4850,7 +4854,6 @@
 
     }
 
-
     function isCurrentMonth(
       dateValue
     ){
@@ -4861,7 +4864,6 @@
       );
 
     }
-
 
     function isSameDate(
       a,
@@ -4875,7 +4877,6 @@
 
     }
 
-
     function makeId(){
 
       if(
@@ -4887,7 +4888,6 @@
 
       }
 
-
       return (
         Date.now().toString(36) +
         Math.random()
@@ -4896,7 +4896,6 @@
       );
 
     }
-
 
     function formatPoints(
       value
@@ -4910,7 +4909,6 @@
       );
 
     }
-
 
     function currentMonthLabel(){
 
@@ -4926,7 +4924,6 @@
 
     }
 
-
     function formatMonthLabel(
       monthKey
     ){
@@ -4936,13 +4933,11 @@
           monthKey || ''
         ).split('-');
 
-
       const year =
         Number(parts[0]);
 
       const month =
         Number(parts[1]);
-
 
       if(
         !year ||
@@ -4952,7 +4947,6 @@
         return monthKey || '';
 
       }
-
 
       return new Intl.DateTimeFormat(
         'ar-JO',
@@ -4970,6 +4964,339 @@
 
     }
 
+    /* ==================================================
+       QUARTERLY FEES
+    ================================================== */
+
+    function getQuarterKey(value){
+
+      if(!value){
+
+        return '';
+
+      }
+
+      const str =
+        String(value)
+          .trim();
+
+      if(
+        /^\d{4}-Q[1-4]$/i.test(
+          str
+        )
+      ){
+
+        return str
+          .toUpperCase();
+
+      }
+
+      const monthKey =
+        getMonthKey(value);
+
+      if(!monthKey){
+
+        return '';
+
+      }
+
+      const parts =
+        monthKey.split('-');
+
+      const year =
+        Number(parts[0]);
+
+      const month =
+        Number(parts[1]);
+
+      if(
+        !year ||
+        !month
+      ){
+
+        return '';
+
+      }
+
+      const quarter =
+        Math.ceil(month / 3);
+
+      return `${year}-Q${quarter}`;
+
+    }
+
+    function getCurrentQuarterKey(){
+
+      return getQuarterKey(
+        new Date()
+      );
+
+    }
+
+    function getPreviousQuarterKey(){
+
+      const now =
+        new Date();
+
+      const currentQuarter =
+        Math.ceil(
+          (now.getMonth() + 1) / 3
+        );
+
+      let year =
+        now.getFullYear();
+
+      let quarter =
+        currentQuarter - 1;
+
+      if(quarter < 1){
+
+        quarter = 4;
+        year -= 1;
+
+      }
+
+      return `${year}-Q${quarter}`;
+
+    }
+
+    function getQuarterLabel(
+      quarterKey
+    ){
+
+      const match =
+        String(
+          quarterKey || ''
+        ).match(
+          /^(\d{4})-Q([1-4])$/i
+        );
+
+      if(!match){
+
+        return quarterKey || '';
+
+      }
+
+      const year =
+        Number(match[1]);
+
+      const quarter =
+        Number(match[2]);
+
+      const names = [
+        'الفصل الأول',
+        'الفصل الثاني',
+        'الفصل الثالث',
+        'الفصل الرابع'
+      ];
+
+      return `${names[quarter - 1]} ${year}`;
+
+    }
+
+    function getExplicitFeeQuarterValue(
+      item
+    ){
+
+      if(!item){
+
+        return '';
+
+      }
+
+      const values = [
+        item.quarter,
+        item.period
+      ];
+
+      for(
+        const value of values
+      ){
+
+        if(
+          /^\d{4}-Q[1-4]$/i.test(
+            String(value || '')
+          )
+        ){
+
+          return String(value)
+            .toUpperCase();
+
+        }
+
+      }
+
+      return '';
+
+    }
+
+    function getFeePeriodValue(
+      item
+    ){
+
+      if(!item){
+
+        return '';
+
+      }
+
+      const explicit =
+        getExplicitFeeQuarterValue(
+          item
+        );
+
+      if(explicit){
+
+        return explicit;
+
+      }
+
+      const legacy =
+        firstValue(
+          item,
+          [
+            'month',
+            'date'
+          ],
+          ''
+        );
+
+      return getQuarterKey(
+        legacy
+      );
+
+    }
+
+    function getJoiningDate(){
+
+      return getDateInputValue(
+        firstValue(
+          profileData,
+          [
+            'joiningDate',
+            'joining_date',
+            'joinDate',
+            'join_date'
+          ],
+          ''
+        )
+      );
+
+    }
+
+    function shiftMonthKey(
+      monthKey,
+      offset
+    ){
+
+      const parts =
+        String(monthKey || '')
+          .split('-');
+
+      const year =
+        Number(parts[0]);
+
+      const month =
+        Number(parts[1]);
+
+      if(
+        !year ||
+        !month
+      ){
+
+        return '';
+
+      }
+
+      const date =
+        new Date(
+          year,
+          month - 1 + offset,
+          1
+        );
+
+      return `${date.getFullYear()}-${String(
+        date.getMonth() + 1
+      ).padStart(2,'0')}`;
+
+    }
+
+    function getMonthKeysFromJoiningToCurrent(){
+
+      const joiningDate =
+        getJoiningDate();
+
+      let startKey =
+        getMonthKey(
+          joiningDate
+        );
+
+      const currentKey =
+        getCurrentMonthKey();
+
+      if(!startKey){
+
+        startKey =
+          currentKey;
+
+      }
+
+      const startDate =
+        new Date(
+          Number(startKey.split('-')[0]),
+          Number(startKey.split('-')[1]) - 1,
+          1
+        );
+
+      const currentDate =
+        new Date(
+          Number(currentKey.split('-')[0]),
+          Number(currentKey.split('-')[1]) - 1,
+          1
+        );
+
+      if(startDate > currentDate){
+
+        return [
+          currentKey
+        ];
+
+      }
+
+      const keys = [];
+
+      let cursor =
+        startKey;
+
+      while(cursor){
+
+        keys.push(
+          cursor
+        );
+
+        if(cursor === currentKey){
+
+          break;
+
+        }
+
+        cursor =
+          shiftMonthKey(
+            cursor,
+            1
+          );
+
+        if(keys.length > 240){
+
+          break;
+
+        }
+
+      }
+
+      return keys;
+
+    }
 
     /* ==================================================
        ACCESS
@@ -4990,11 +5317,9 @@
 
       }
 
-
       return true;
 
     }
-
 
     function logoutTeacher(){
 
@@ -5002,19 +5327,16 @@
         'teacherAccess'
       );
 
-
       window.location.href =
         'teacher-login.html';
 
     }
-
 
     /* ==================================================
        TOAST
     ================================================== */
 
     let toastTimer = null;
-
 
     function showToast(
       message,
@@ -5026,21 +5348,17 @@
           'toast'
         );
 
-
       toast.textContent =
         message;
-
 
       toast.className =
         error
           ? 'show error'
           : 'show';
 
-
       clearTimeout(
         toastTimer
       );
-
 
       toastTimer =
         setTimeout(
@@ -5053,7 +5371,6 @@
         );
 
     }
-
 
     /* ==================================================
        LOGO
@@ -5071,10 +5388,8 @@
           '.brand-fallback'
         );
 
-
       logo.src =
         CENTER_LOGO_SRC;
-
 
       logo.onerror =
         function(){
@@ -5089,7 +5404,6 @@
 
     }
 
-
     /* ==================================================
        PHOTO
     ================================================== */
@@ -5101,7 +5415,6 @@
           'photoFile'
         );
 
-
       input.addEventListener(
         'change',
         function(){
@@ -5109,7 +5422,6 @@
           const file =
             this.files &&
             this.files[0];
-
 
           if(!file){
 
@@ -5119,7 +5431,6 @@
             return;
 
           }
-
 
           if(
             !file.type.startsWith('image/')
@@ -5139,7 +5450,6 @@
             return;
 
           }
-
 
           if(
             file.size >
@@ -5161,22 +5471,18 @@
 
           }
 
-
           selectedPhotoFile =
             file;
-
 
           document.getElementById(
             'photoName'
           ).textContent =
             file.name;
 
-
           const preview =
             URL.createObjectURL(
               file
             );
-
 
           showStudentPhoto(
             preview
@@ -5186,7 +5492,6 @@
       );
 
     }
-
 
     function showStudentPhoto(url){
 
@@ -5200,18 +5505,14 @@
           'studentLetter'
         );
 
-
       image.src =
         String(url);
-
 
       image.style.display =
         'block';
 
-
       letter.style.display =
         'none';
-
 
       image.onerror =
         function(){
@@ -5225,7 +5526,6 @@
         };
 
     }
-
 
     /* ==================================================
        STUDENT CODE
@@ -5243,7 +5543,6 @@
             .from('student_profiles')
             .select('data');
 
-
         if(error){
 
           console.error(error);
@@ -5257,10 +5556,8 @@
 
         }
 
-
         const used =
           new Set();
-
 
         (data || [])
           .forEach(
@@ -5268,7 +5565,6 @@
 
               const code =
                 row?.data?.studentCode;
-
 
               if(
                 /^\d{3}$/.test(
@@ -5285,7 +5581,6 @@
             }
           );
 
-
         for(
           let attempts=0;
           attempts<900;
@@ -5300,7 +5595,6 @@
               )
             );
 
-
           if(
             !used.has(code)
           ){
@@ -5311,13 +5605,11 @@
 
         }
 
-
       }catch(error){
 
         console.error(error);
 
       }
-
 
       return String(
         Math.floor(
@@ -5327,7 +5619,6 @@
       );
 
     }
-
 
     /* ==================================================
        LOAD STUDENT
@@ -5343,16 +5634,13 @@
 
       }
 
-
       const params =
         new URLSearchParams(
           window.location.search
         );
 
-
       studentId =
         params.get('id');
-
 
       if(!studentId){
 
@@ -5363,7 +5651,6 @@
         return;
 
       }
-
 
       try{
 
@@ -5380,7 +5667,6 @@
             )
             .maybeSingle();
 
-
         if(studentError){
 
           throw new Error(
@@ -5388,7 +5674,6 @@
           );
 
         }
-
 
         if(!studentData){
 
@@ -5398,10 +5683,8 @@
 
         }
 
-
         student =
           studentData;
-
 
         const {
           data: profileRow,
@@ -5416,7 +5699,6 @@
             )
             .maybeSingle();
 
-
         if(profileError){
 
           throw new Error(
@@ -5425,10 +5707,8 @@
 
         }
 
-
         profile =
           profileRow || {};
-
 
         profileData =
           profile?.data &&
@@ -5437,7 +5717,6 @@
                 ...profile.data
               }
             : {};
-
 
         if(
           !/^\d{3}$/.test(
@@ -5452,12 +5731,11 @@
 
         }
 
-
         normalizeDataStructures();
 
-        ensureCurrentStudentMonthlyFee();
+        ensureCurrentStudentQuarterlyFee();
 
-        await ensureMonthlyFeesForAllStudents();
+        await ensureQuarterlyFeesForAllStudents();
 
         await finalizePreviousMonthChampion();
 
@@ -5493,18 +5771,17 @@
 
         setupPageModalInputs();
 
+        setupJoiningDateWatcher();
 
         document.getElementById(
           'loading'
         ).style.display =
           'none';
 
-
         document.getElementById(
           'mainPage'
         ).style.display =
           'block';
-
 
       }catch(error){
 
@@ -5521,7 +5798,6 @@
 
     }
 
-
     function normalizeDataStructures(){
 
       if(
@@ -5529,11 +5805,6 @@
           profileData.recitationPages
         )
       ){
-
-        /*
-          تحويل البيانات القديمة من recitations
-          إن أمكن، حتى لا تضيع السجلات.
-        */
 
         const old =
           arrayValue(
@@ -5545,7 +5816,6 @@
               []
             )
           );
-
 
         profileData.recitationPages =
           old
@@ -5617,7 +5887,6 @@
 
       }
 
-
       if(
         !Array.isArray(
           profileData.attendance
@@ -5629,7 +5898,6 @@
 
       }
 
-
       if(
         !Array.isArray(
           profileData.tests
@@ -5640,7 +5908,6 @@
           [];
 
       }
-
 
       if(
         !Array.isArray(
@@ -5659,6 +5926,22 @@
                     id:
                       item.id ||
                       makeId(),
+
+                    createdDate:
+                      firstValue(
+                        item,
+                        [
+                          'createdDate',
+                          'created_date',
+                          'todayDate',
+                          'today_date'
+                        ],
+                        firstValue(
+                          item,
+                          ['date'],
+                          todayString()
+                        )
+                      ),
 
                     date:
                       firstValue(
@@ -5727,6 +6010,42 @@
 
       }
 
+      /* إضافة تاريخ الإنشاء للمهام الجديدة/القديمة */
+
+      profileData.planTasks =
+        arrayValue(
+          profileData.planTasks
+        )
+          .map(
+            task => ({
+
+              ...task,
+
+              createdDate:
+                firstValue(
+                  task,
+                  [
+                    'createdDate',
+                    'created_date',
+                    'todayDate',
+                    'today_date'
+                  ],
+                  firstValue(
+                    task,
+                    ['date'],
+                    todayString()
+                  )
+                ),
+
+              date:
+                firstValue(
+                  task,
+                  ['date'],
+                  todayString()
+                )
+
+            })
+          );
 
       if(
         !Array.isArray(
@@ -5739,7 +6058,6 @@
 
       }
 
-
       if(
         !Array.isArray(
           profileData.badges
@@ -5751,16 +6069,7 @@
 
       }
 
-
-      /*
-        تنظيف الأوسمة القديمة:
-        - يسمح فقط بالأوسمة المعتمدة في النظام.
-        - أوسمة الأقسام القديمة يتم تجاهلها وإزالتها.
-        - نقاط جميع الأوسمة تصير 0 دائمًا.
-      */
-
       normalizeBadgeRecords();
-
 
       if(
         !profileData.juzCompletion ||
@@ -5771,7 +6080,6 @@
           {};
 
       }
-
 
       if(
         !Array.isArray(
@@ -5784,8 +6092,20 @@
 
       }
 
-    }
+      if(
+        !Array.isArray(
+          profileData.monthlyFollowups
+        )
+      ){
 
+        profileData.monthlyFollowups =
+          [];
+
+      }
+
+      normalizeMonthlyFollowups();
+
+    }
 
     /* ==================================================
        IDENTITY
@@ -5799,12 +6119,10 @@
         ) ||
         'بدون اسم';
 
-
       document.getElementById(
         'headerStudentName'
       ).textContent =
         name;
-
 
       document.getElementById(
         'studentLetter'
@@ -5812,24 +6130,20 @@
         name.charAt(0) ||
         'ط';
 
-
       const code =
         String(
           profileData.studentCode
         );
-
 
       document.getElementById(
         'studentCodeDisplay'
       ).textContent =
         code;
 
-
       document.getElementById(
         'studentCode'
       ).value =
         code;
-
 
       const photoUrl =
         firstValue(
@@ -5846,7 +6160,6 @@
           ''
         );
 
-
       if(photoUrl){
 
         showStudentPhoto(
@@ -5856,7 +6169,6 @@
       }
 
     }
-
 
     /* ==================================================
        BASIC
@@ -5871,7 +6183,6 @@
           student.name
         );
 
-
       document.getElementById(
         'section'
       ).value =
@@ -5880,14 +6191,12 @@
         ) ||
         'الحفاظ';
 
-
       document.getElementById(
         'memorization'
       ).value =
         valueOrEmpty(
           student.memorization
         );
-
 
       document.getElementById(
         'status'
@@ -5896,7 +6205,6 @@
           student.status
         ) ||
         'active';
-
 
       document.getElementById(
         'warnings'
@@ -5910,7 +6218,6 @@
           ],
           0
         );
-
 
       document.getElementById(
         'guardianPhone'
@@ -5926,7 +6233,6 @@
           ],
           ''
         );
-
 
       document.getElementById(
         'joiningDate'
@@ -5944,7 +6250,6 @@
           )
         );
 
-
       document.getElementById(
         'residence'
       ).value =
@@ -5958,7 +6263,6 @@
           ],
           ''
         );
-
 
       document.getElementById(
         'bus'
@@ -5975,6 +6279,1026 @@
 
     }
 
+    /* ==================================================
+       MONTHLY FOLLOW UP DATA
+    ================================================== */
+
+    function normalizeMonthlyFollowups(){
+
+      if(
+        !Array.isArray(
+          profileData.monthlyFollowups
+        )
+      ){
+
+        profileData.monthlyFollowups =
+          [];
+
+      }
+
+      profileData.monthlyFollowups =
+        profileData.monthlyFollowups
+          .filter(
+            item =>
+              item &&
+              typeof item === 'object'
+          )
+          .map(
+            item => ({
+
+              id:
+                item.id ||
+                makeId(),
+
+              monthKey:
+                getMonthKey(
+                  firstValue(
+                    item,
+                    [
+                      'monthKey',
+                      'month',
+                      'date'
+                    ],
+                    ''
+                  )
+                ),
+
+              nextRecitationTitle:
+                firstValue(
+                  item,
+                  [
+                    'nextRecitationTitle',
+                    'next_recitation_title',
+                    'upcomingTitle'
+                  ],
+                  ''
+                ),
+
+              nextRecitationAmount:
+                firstValue(
+                  item,
+                  [
+                    'nextRecitationAmount',
+                    'next_recitation_amount',
+                    'upcomingAmount'
+                  ],
+                  ''
+                )
+
+            })
+          )
+          .filter(
+            item =>
+              Boolean(
+                item.monthKey
+              )
+          );
+
+    }
+
+    function ensureMonthlyFollowupMonths(){
+
+      normalizeMonthlyFollowups();
+
+      const monthKeys =
+        getMonthKeysFromJoiningToCurrent();
+
+      monthKeys.forEach(
+        monthKey => {
+
+          const exists =
+            profileData.monthlyFollowups
+              .some(
+                item =>
+                  String(
+                    item.monthKey
+                  ) ===
+                  String(
+                    monthKey
+                  )
+              );
+
+          if(!exists){
+
+            profileData.monthlyFollowups.push({
+
+              id:
+                makeId(),
+
+              monthKey,
+
+              nextRecitationTitle:
+                '',
+
+              nextRecitationAmount:
+                ''
+
+            });
+
+          }
+
+        }
+      );
+
+      profileData.monthlyFollowups
+        .sort(
+          (a,b) =>
+            String(a.monthKey)
+              .localeCompare(
+                String(b.monthKey)
+              )
+        );
+
+    }
+
+    function getMonthlyFollowupItem(
+      monthKey
+    ){
+
+      return profileData
+        .monthlyFollowups
+        .find(
+          item =>
+            String(
+              item.monthKey
+            ) ===
+            String(
+              monthKey
+            )
+        ) || null;
+
+    }
+
+    function recordDateAfterJoining(
+      dateValue
+    ){
+
+      const joiningDate =
+        getJoiningDate();
+
+      const recordDate =
+        getDateInputValue(
+          dateValue
+        );
+
+      if(
+        !joiningDate ||
+        !recordDate
+      ){
+
+        return true;
+
+      }
+
+      return recordDate >= joiningDate;
+
+    }
+
+    function getMonthlyRecitations(
+      monthKey
+    ){
+
+      return getPageRecords()
+        .filter(
+          record =>
+            isInMonth(
+              record.date,
+              monthKey
+            ) &&
+            recordDateAfterJoining(
+              record.date
+            )
+        )
+        .sort(
+          (a,b) =>
+            new Date(
+              a.date || 0
+            ).getTime()
+            -
+            new Date(
+              b.date || 0
+            ).getTime()
+        );
+
+    }
+
+    function getMonthlyTests(
+      monthKey
+    ){
+
+      return arrayValue(
+        profileData.tests
+      )
+        .filter(
+          item =>
+            isInMonth(
+              item.date,
+              monthKey
+            ) &&
+            recordDateAfterJoining(
+              item.date
+            )
+        )
+        .sort(
+          (a,b) =>
+            new Date(
+              a.date || 0
+            ).getTime()
+            -
+            new Date(
+              b.date || 0
+            ).getTime()
+        );
+
+    }
+
+    function getMonthlyAttendance(
+      monthKey
+    ){
+
+      return arrayValue(
+        profileData.attendance
+      )
+        .filter(
+          item =>
+            isInMonth(
+              firstValue(
+                item,
+                [
+                  'date',
+                  'dayDate'
+                ],
+                ''
+              ),
+              monthKey
+            ) &&
+            recordDateAfterJoining(
+              firstValue(
+                item,
+                [
+                  'date',
+                  'dayDate'
+                ],
+                ''
+              )
+            )
+        )
+        .sort(
+          (a,b) =>
+            new Date(
+              firstValue(
+                a,
+                ['date','dayDate'],
+                ''
+              ) || 0
+            ).getTime()
+            -
+            new Date(
+              firstValue(
+                b,
+                ['date','dayDate'],
+                ''
+              ) || 0
+            ).getTime()
+        );
+
+    }
+
+    function renderMonthlyFollowups(){
+
+      ensureMonthlyFollowupMonths();
+
+      const container =
+        document.getElementById(
+          'monthlyFollowupEditor'
+        );
+
+      if(!container){
+
+        return;
+
+      }
+
+      const monthKeys =
+        getMonthKeysFromJoiningToCurrent()
+          .slice()
+          .reverse();
+
+      if(!monthKeys.length){
+
+        container.innerHTML =
+          `
+            <div class="empty">
+              لا توجد أشهر متابعة متاحة حتى الآن.
+            </div>
+          `;
+
+        return;
+
+      }
+
+      container.innerHTML =
+        monthKeys
+          .map(
+            monthKey => {
+
+              const followup =
+                getMonthlyFollowupItem(
+                  monthKey
+                ) || {
+
+                  monthKey,
+
+                  nextRecitationTitle:
+                    '',
+
+                  nextRecitationAmount:
+                    ''
+
+                };
+
+              const recitations =
+                getMonthlyRecitations(
+                  monthKey
+                );
+
+              const tests =
+                getMonthlyTests(
+                  monthKey
+                );
+
+              const attendance =
+                getMonthlyAttendance(
+                  monthKey
+                );
+
+              const monthlyEvaluation =
+                calculateEvaluation(
+                  'monthly',
+                  {
+                    monthKey
+                  }
+                );
+
+              const attendancePresent =
+                attendance
+                  .filter(
+                    item =>
+                      normalizeText(
+                        firstValue(
+                          item,
+                          [
+                            'status',
+                            'attendance'
+                          ],
+                          ''
+                        )
+                      ).includes('حاضر')
+                  )
+                  .length;
+
+              const attendanceLate =
+                attendance
+                  .filter(
+                    item =>
+                      normalizeText(
+                        firstValue(
+                          item,
+                          [
+                            'status',
+                            'attendance'
+                          ],
+                          ''
+                        )
+                      ).includes('متأخر')
+                  )
+                  .length;
+
+              const attendanceAbsent =
+                attendance
+                  .filter(
+                    item =>
+                      normalizeText(
+                        firstValue(
+                          item,
+                          [
+                            'status',
+                            'attendance'
+                          ],
+                          ''
+                        )
+                      ).includes('غائب')
+                  )
+                  .length;
+
+              return `
+
+                <div
+                  class="monthly-followup-card"
+                  data-month-followup="${escapeHtml(
+                    monthKey
+                  )}"
+                >
+
+                  <div class="monthly-followup-head">
+
+                    <div class="monthly-followup-title">
+
+                      📅 ${escapeHtml(
+                        formatMonthLabel(
+                          monthKey
+                        )
+                      )}
+
+                    </div>
+
+                    <div class="monthly-followup-percent">
+
+                      التقييم الشهري:
+                      ${formatPoints(
+                        monthlyEvaluation.finalPercentage
+                      )}%
+
+                    </div>
+
+                  </div>
+
+                  <div class="monthly-followup-summary">
+
+                    <div class="monthly-followup-stat">
+
+                      <small>
+                        سجلات التسميع
+                      </small>
+
+                      <strong>
+                        ${recitations.length}
+                      </strong>
+
+                    </div>
+
+                    <div class="monthly-followup-stat">
+
+                      <small>
+                        الاختبارات
+                      </small>
+
+                      <strong>
+                        ${tests.length}
+                      </strong>
+
+                    </div>
+
+                    <div class="monthly-followup-stat">
+
+                      <small>
+                        الحضور
+                      </small>
+
+                      <strong>
+                        ${attendancePresent}
+                      </strong>
+
+                    </div>
+
+                    <div class="monthly-followup-stat">
+
+                      <small>
+                        الغياب / التأخير
+                      </small>
+
+                      <strong>
+                        ${attendanceAbsent} / ${attendanceLate}
+                      </strong>
+
+                    </div>
+
+                  </div>
+
+                  <div class="monthly-followup-block">
+
+                    <div class="monthly-followup-block-title">
+                      📖 سجل التسميع لهذا الشهر
+                    </div>
+
+                    ${
+                      recitations.length
+                        ? `
+
+                          <div class="mini-table-wrap">
+
+                            <table class="mini-table">
+
+                              <thead>
+
+                                <tr>
+                                  <th>التاريخ</th>
+                                  <th>الصفحة</th>
+                                  <th>النوع</th>
+                                  <th>العلامة</th>
+                                  <th>التقدير</th>
+                                </tr>
+
+                              </thead>
+
+                              <tbody>
+
+                                ${
+                                  recitations
+                                    .map(
+                                      record => {
+
+                                        const evaluation =
+                                          getRecitationEvaluation(
+                                            record.score
+                                          );
+
+                                        return `
+
+                                          <tr>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                record.date || '—'
+                                              )}
+                                            </td>
+
+                                            <td>
+                                              ${Number(
+                                                record.page
+                                              )}
+                                            </td>
+
+                                            <td>
+                                              ${
+                                                record.type === 'review'
+                                                  ? 'مراجعة'
+                                                  : 'حفظ جديد'
+                                              }
+                                            </td>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                record.score
+                                              )}%
+                                            </td>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                evaluation.grade
+                                              )}
+                                            </td>
+
+                                          </tr>
+
+                                        `;
+
+                                      }
+                                    )
+                                    .join('')
+                                }
+
+                              </tbody>
+
+                            </table>
+
+                          </div>
+
+                        `
+                        : `
+                          <div class="empty">
+                            لا توجد سجلات تسميع لهذا الشهر حتى الآن.
+                          </div>
+                        `
+                    }
+
+                  </div>
+
+                  <div class="monthly-followup-block">
+
+                    <div class="monthly-followup-block-title">
+                      📝 سجل الاختبارات لهذا الشهر
+                    </div>
+
+                    ${
+                      tests.length
+                        ? `
+
+                          <div class="mini-table-wrap">
+
+                            <table class="mini-table">
+
+                              <thead>
+
+                                <tr>
+                                  <th>التاريخ</th>
+                                  <th>الاختبار</th>
+                                  <th>العلامة</th>
+                                  <th>التقدير</th>
+                                  <th>النقاط</th>
+                                </tr>
+
+                              </thead>
+
+                              <tbody>
+
+                                ${
+                                  tests
+                                    .map(
+                                      test => {
+
+                                        const evaluation =
+                                          getTestEvaluation(
+                                            test.score
+                                          );
+
+                                        return `
+
+                                          <tr>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                test.date || '—'
+                                              )}
+                                            </td>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                firstValue(
+                                                  test,
+                                                  [
+                                                    'name',
+                                                    'title',
+                                                    'test',
+                                                    'subject'
+                                                  ],
+                                                  'بدون اسم'
+                                                )
+                                              )}
+                                            </td>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                test.score
+                                              )}%
+                                            </td>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                evaluation.grade
+                                              )}
+                                            </td>
+
+                                            <td>
+                                              ${formatPoints(
+                                                evaluation.points
+                                              )}
+                                            </td>
+
+                                          </tr>
+
+                                        `;
+
+                                      }
+                                    )
+                                    .join('')
+                                }
+
+                              </tbody>
+
+                            </table>
+
+                          </div>
+
+                        `
+                        : `
+                          <div class="empty">
+                            لا توجد اختبارات مسجلة لهذا الشهر حتى الآن.
+                          </div>
+                        `
+                    }
+
+                  </div>
+
+                  <div class="monthly-followup-block">
+
+                    <div class="monthly-followup-block-title">
+                      📅 سجل الحضور والغياب لهذا الشهر
+                    </div>
+
+                    ${
+                      attendance.length
+                        ? `
+
+                          <div class="mini-table-wrap">
+
+                            <table class="mini-table">
+
+                              <thead>
+
+                                <tr>
+                                  <th>التاريخ</th>
+                                  <th>اليوم</th>
+                                  <th>الحالة</th>
+                                  <th>النقاط</th>
+                                  <th>الملاحظة</th>
+                                </tr>
+
+                              </thead>
+
+                              <tbody>
+
+                                ${
+                                  attendance
+                                    .map(
+                                      item => {
+
+                                        const status =
+                                          firstValue(
+                                            item,
+                                            [
+                                              'status',
+                                              'attendance'
+                                            ],
+                                            ''
+                                          );
+
+                                        return `
+
+                                          <tr>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                firstValue(
+                                                  item,
+                                                  [
+                                                    'date',
+                                                    'dayDate'
+                                                  ],
+                                                  '—'
+                                                )
+                                              )}
+                                            </td>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                firstValue(
+                                                  item,
+                                                  [
+                                                    'day',
+                                                    'weekday'
+                                                  ],
+                                                  '—'
+                                                )
+                                              )}
+                                            </td>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                status
+                                              )}
+                                            </td>
+
+                                            <td>
+                                              ${formatPoints(
+                                                getAttendancePoints(
+                                                  status
+                                                )
+                                              )}
+                                            </td>
+
+                                            <td>
+                                              ${escapeHtml(
+                                                firstValue(
+                                                  item,
+                                                  [
+                                                    'note',
+                                                    'notes',
+                                                    'reason'
+                                                  ],
+                                                  ''
+                                                )
+                                              )}
+                                            </td>
+
+                                          </tr>
+
+                                        `;
+
+                                      }
+                                    )
+                                    .join('')
+                                }
+
+                              </tbody>
+
+                            </table>
+
+                          </div>
+
+                        `
+                        : `
+                          <div class="empty">
+                            لا توجد سجلات حضور أو غياب لهذا الشهر حتى الآن.
+                          </div>
+                        `
+                    }
+
+                  </div>
+
+                  <div class="next-recitation-box">
+
+                    <div class="monthly-followup-block-title">
+                      🎯 التسميع القادم
+                    </div>
+
+                    <div class="editor-grid">
+
+                      <div class="field">
+
+                        <label>
+                          المطلوب تسميعه
+                        </label>
+
+                        <input
+                          class="normal-input"
+                          data-month-next-title
+                          type="text"
+                          value="${escapeHtml(
+                            followup.nextRecitationTitle || ''
+                          )}"
+                          placeholder="مثال: سورة الملك"
+                        />
+
+                      </div>
+
+                      <div class="field">
+
+                        <label>
+                          مقدار التسميع
+                        </label>
+
+                        <input
+                          class="normal-input"
+                          data-month-next-amount
+                          type="text"
+                          value="${escapeHtml(
+                            followup.nextRecitationAmount || ''
+                          )}"
+                          placeholder="مثال: 5 صفحات"
+                        />
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('');
+
+      container
+        .querySelectorAll(
+          'input'
+        )
+        .forEach(
+          input => {
+
+            input.addEventListener(
+              'input',
+              syncMonthlyFollowups
+            );
+
+            input.addEventListener(
+              'change',
+              syncMonthlyFollowups
+            );
+
+          }
+        );
+
+    }
+
+    function syncMonthlyFollowups(){
+
+      const cards =
+        document.querySelectorAll(
+          '#monthlyFollowupEditor .monthly-followup-card'
+        );
+
+      const existing =
+        arrayValue(
+          profileData.monthlyFollowups
+        );
+
+      Array.from(cards)
+        .forEach(
+          card => {
+
+            const monthKey =
+              card.dataset.monthFollowup;
+
+            if(!monthKey){
+
+              return;
+
+            }
+
+            let item =
+              existing.find(
+                entry =>
+                  String(
+                    entry.monthKey
+                  ) ===
+                  String(
+                    monthKey
+                  )
+              );
+
+            if(!item){
+
+              item = {
+
+                id:
+                  makeId(),
+
+                monthKey,
+
+                nextRecitationTitle:
+                  '',
+
+                nextRecitationAmount:
+                  ''
+
+              };
+
+              existing.push(
+                item
+              );
+
+            }
+
+            item.nextRecitationTitle =
+              card.querySelector(
+                '[data-month-next-title]'
+              )?.value.trim() ||
+              '';
+
+            item.nextRecitationAmount =
+              card.querySelector(
+                '[data-month-next-amount]'
+              )?.value.trim() ||
+              '';
+
+          }
+        );
+
+      profileData.monthlyFollowups =
+        existing.sort(
+          (a,b) =>
+            String(a.monthKey)
+              .localeCompare(
+                String(b.monthKey)
+              )
+        );
+
+    }
+
+    function setupJoiningDateWatcher(){
+
+      const input =
+        document.getElementById(
+          'joiningDate'
+        );
+
+      if(!input){
+
+        return;
+
+      }
+
+      input.addEventListener(
+        'change',
+        () => {
+
+          profileData.joiningDate =
+            input.value;
+
+          ensureMonthlyFollowupMonths();
+
+          renderMonthlyFollowups();
+
+          renderScores();
+
+        }
+      );
+
+    }
 
     /* ==================================================
        TABS
@@ -5996,7 +7320,6 @@
                 const name =
                   tab.dataset.tab;
 
-
                 document
                   .querySelectorAll(
                     '.tab'
@@ -6007,7 +7330,6 @@
                         'active'
                       )
                   );
-
 
                 document
                   .querySelectorAll(
@@ -6020,11 +7342,9 @@
                       )
                   );
 
-
                 tab.classList.add(
                   'active'
                 );
-
 
                 document
                   .getElementById(
@@ -6041,7 +7361,6 @@
         );
 
     }
-
 
     /* ==================================================
        VIEW SWITCH
@@ -6063,7 +7382,6 @@
                 const view =
                   button.dataset.view;
 
-
                 document
                   .querySelectorAll(
                     '.view-btn'
@@ -6074,7 +7392,6 @@
                         'active'
                       )
                   );
-
 
                 document
                   .querySelectorAll(
@@ -6087,11 +7404,9 @@
                       )
                   );
 
-
                 button.classList.add(
                   'active'
                 );
-
 
                 document
                   .getElementById(
@@ -6108,7 +7423,6 @@
         );
 
     }
-
 
     /* ==================================================
        PLAN SWITCH
@@ -6130,7 +7444,6 @@
                 currentPlanView =
                   button.dataset.planView;
 
-
                 document
                   .querySelectorAll(
                     '.plan-view-btn'
@@ -6142,11 +7455,9 @@
                       )
                   );
 
-
                 button.classList.add(
                   'active'
                 );
-
 
                 renderPlan();
 
@@ -6158,7 +7469,6 @@
 
     }
 
-
     /* ==================================================
        RECITATION GRADES
     ================================================== */
@@ -6169,7 +7479,6 @@
 
       const value =
         Number(score);
-
 
       if(
         !Number.isFinite(value)
@@ -6183,7 +7492,6 @@
 
       }
 
-
       if(value >= 98){
 
         return {
@@ -6193,7 +7501,6 @@
         };
 
       }
-
 
       if(value >= 96){
 
@@ -6205,7 +7512,6 @@
 
       }
 
-
       if(value >= 94){
 
         return {
@@ -6215,7 +7521,6 @@
         };
 
       }
-
 
       if(value >= 90){
 
@@ -6227,7 +7532,6 @@
 
       }
 
-
       return {
         grade:'يحتاج مراجعة',
         description:'يحتاج إعادة تثبيت',
@@ -6235,7 +7539,6 @@
       };
 
     }
-
 
     function getRecitationPoints(
       score,
@@ -6246,7 +7549,6 @@
         getRecitationEvaluation(
           score
         );
-
 
       if(
         type === 'review'
@@ -6259,11 +7561,9 @@
 
       }
 
-
       return evaluation.points;
 
     }
-
 
     /* ==================================================
        TEST GRADES
@@ -6276,7 +7576,6 @@
       const value =
         Number(score);
 
-
       if(
         !Number.isFinite(value)
       ){
@@ -6288,8 +7587,7 @@
 
       }
 
-
-      if(value >= 90){
+      if(value >= 98){
 
         return {
           grade:'ممتاز',
@@ -6298,8 +7596,7 @@
 
       }
 
-
-      if(value >= 80){
+      if(value >= 96){
 
         return {
           grade:'جيد جدًا',
@@ -6308,16 +7605,14 @@
 
       }
 
-
-      if(value >= 70){
+      if(value >= 93){
 
         return {
-          grade:'جيد',
+          grade:'مقبول',
           points:4
         };
 
       }
-
 
       return {
         grade:'يحتاج مراجعة',
@@ -6325,7 +7620,6 @@
       };
 
     }
-
 
     /* ==================================================
        ATTENDANCE
@@ -6340,7 +7634,6 @@
           status
         );
 
-
       if(
         value.includes('حاضر') ||
         value.includes('present')
@@ -6349,7 +7642,6 @@
         return 10;
 
       }
-
 
       if(
         value.includes('متأخر') ||
@@ -6360,11 +7652,9 @@
 
       }
 
-
       return 0;
 
     }
-
 
     /* ==================================================
        RECITATION PAGE RECORDS
@@ -6384,7 +7674,6 @@
 
     }
 
-
     function getPageState(
       pageNumber
     ){
@@ -6397,13 +7686,11 @@
               Number(pageNumber)
           );
 
-
       if(!records.length){
 
         return '';
 
       }
-
 
       records.sort(
         (a,b) =>
@@ -6416,17 +7703,14 @@
           ).getTime()
       );
 
-
       const latest =
         records[0];
-
 
       return latest.type === 'review'
         ? 'review'
         : 'new';
 
     }
-
 
     /* ==================================================
        RECITATION MAP
@@ -6439,7 +7723,6 @@
           'juzGrid'
         );
 
-
       container.innerHTML =
         JUZ_RANGES
           .map(
@@ -6450,9 +7733,7 @@
                 juz.start +
                 1;
 
-
               const pageNumbers = [];
-
 
               for(
                 let page=juz.start;
@@ -6466,7 +7747,6 @@
 
               }
 
-
               const records =
                 getPageRecords()
                   .filter(
@@ -6478,7 +7758,6 @@
                         juz.end
                   );
 
-
               const uniquePages =
                 new Set(
                   records.map(
@@ -6487,16 +7766,13 @@
                   )
                 );
 
-
               const percentage =
                 (
                   uniquePages.size /
                   count
                 ) * 100;
 
-
               let cells = '';
-
 
               pageNumbers.forEach(
                 page => {
@@ -6505,7 +7781,6 @@
                     getPageState(
                       page
                     );
-
 
                   cells += `
                     <button
@@ -6521,13 +7796,11 @@
                 }
               );
 
-
               const saved =
                 profileData
                   .juzCompletion[
                     String(juz.number)
                   ] || {};
-
 
               return `
 
@@ -6579,7 +7852,6 @@
 
                   </button>
 
-
                   <div class="juz-body">
 
                     <div class="juz-progress">
@@ -6594,11 +7866,9 @@
 
                     </div>
 
-
                     <div class="page-grid">
                       ${cells}
                     </div>
-
 
                     <div class="juz-actions">
 
@@ -6614,7 +7884,6 @@
                         🎯 تم الحفظ
                       </button>
 
-
                       <button
                         type="button"
                         class="juz-completion-btn ${
@@ -6626,7 +7895,6 @@
                       >
                         🗣️ تم السرد
                       </button>
-
 
                       <button
                         type="button"
@@ -6643,7 +7911,6 @@
                     </div>
 
                   </div>
-
 
                   <div class="juz-card-progress">
 
@@ -6667,7 +7934,6 @@
 
     }
 
-
     function toggleJuz(
       number
     ){
@@ -6684,11 +7950,9 @@
 
       }
 
-
       renderMap();
 
     }
-
 
     function toggleJuzStatus(
       juzNumber,
@@ -6700,7 +7964,6 @@
           juzNumber
         );
 
-
       if(
         !profileData.juzCompletion[key]
       ){
@@ -6709,28 +7972,25 @@
 
       }
 
-
       const current =
         Boolean(
           profileData
             .juzCompletion[key][status]
         );
 
-
       profileData
         .juzCompletion[key][status] =
         !current;
 
-
       renderMap();
 
+      renderScores();
 
       showToast(
         'تم تغيير حالة الجزء. اضغط حفظ لتثبيتها.'
       );
 
     }
-
 
     /* ==================================================
        PAGE MODAL
@@ -6749,12 +8009,10 @@
               id
             );
 
-
           input.addEventListener(
             'input',
             updatePagePreview
           );
-
 
           input.addEventListener(
             'change',
@@ -6766,7 +8024,6 @@
 
     }
 
-
     function openPageModal(
       pageNumber='',
       recordId=null
@@ -6774,7 +8031,6 @@
 
       editingPageRecordId =
         recordId;
-
 
       const record =
         recordId
@@ -6786,14 +8042,12 @@
               )
           : null;
 
-
       document.getElementById(
         'pageModalTitle'
       ).textContent =
         record
           ? `تعديل تسميع الصفحة ${record.page}`
           : 'تسجيل تسميع صفحة';
-
 
       document.getElementById(
         'modalPageNumber'
@@ -6802,20 +8056,17 @@
           ? record.page
           : pageNumber || '';
 
-
       document.getElementById(
         'modalPageType'
       ).value =
         record?.type ||
         'new';
 
-
       document.getElementById(
         'modalPageScore'
       ).value =
         record?.score ??
         '';
-
 
       document.getElementById(
         'modalPageDate'
@@ -6825,13 +8076,11 @@
           todayString()
         );
 
-
       document.getElementById(
         'modalPageNotes'
       ).value =
         record?.notes ||
         '';
-
 
       renderPageHistory(
         Number(
@@ -6840,9 +8089,7 @@
         )
       );
 
-
       updatePagePreview();
-
 
       document
         .getElementById(
@@ -6854,7 +8101,6 @@
 
     }
 
-
     function closePageModal(){
 
       document
@@ -6865,12 +8111,10 @@
           'show'
         );
 
-
       editingPageRecordId =
         null;
 
     }
-
 
     function updatePagePreview(){
 
@@ -6881,12 +8125,10 @@
           ).value
         );
 
-
       const type =
         document.getElementById(
           'modalPageType'
         ).value;
-
 
       if(
         !Number.isFinite(score)
@@ -6897,23 +8139,19 @@
         ).textContent =
           'أدخل العلامة';
 
-
         document.getElementById(
           'modalPointsPreview'
         ).textContent =
           '—';
 
-
         return;
 
       }
-
 
       const evaluation =
         getRecitationEvaluation(
           score
         );
-
 
       const points =
         getRecitationPoints(
@@ -6921,12 +8159,10 @@
           type
         );
 
-
       document.getElementById(
         'modalGradePreview'
       ).textContent =
         `${evaluation.grade} — ${evaluation.description}`;
-
 
       document.getElementById(
         'modalPointsPreview'
@@ -6934,7 +8170,6 @@
         `${formatPoints(points)} نقطة`;
 
     }
-
 
     function renderPageHistory(
       pageNumber
@@ -6944,7 +8179,6 @@
         document.getElementById(
           'modalHistory'
         );
-
 
       if(
         !pageNumber
@@ -6956,7 +8190,6 @@
         return;
 
       }
-
 
       const records =
         getPageRecords()
@@ -6976,7 +8209,6 @@
               ).getTime()
           );
 
-
       if(!records.length){
 
         container.innerHTML =
@@ -6989,7 +8221,6 @@
         return;
 
       }
-
 
       container.innerHTML =
         `
@@ -7004,7 +8235,6 @@
             سجل الصفحة ${pageNumber}
           </div>
 
-
           <button
             type="button"
             class="action-btn btn-delete"
@@ -7017,7 +8247,6 @@
             🗑️ حذف تسميع الصفحة بالكامل
           </button>
 
-
           ${
             records
               .map(
@@ -7028,13 +8257,11 @@
                       record.score
                     );
 
-
                   const points =
                     getRecitationPoints(
                       record.score,
                       record.type
                     );
-
 
                   return `
 
@@ -7112,7 +8339,6 @@
 
     }
 
-
     function deletePageRecitations(
       pageNumber
     ){
@@ -7121,7 +8347,6 @@
         Number(
           pageNumber
         );
-
 
       if(
         !Number.isInteger(page) ||
@@ -7138,7 +8363,6 @@
 
       }
 
-
       const records =
         getPageRecords()
           .filter(
@@ -7146,7 +8370,6 @@
               Number(record.page) ===
               page
           );
-
 
       if(!records.length){
 
@@ -7159,19 +8382,16 @@
 
       }
 
-
       const confirmed =
         window.confirm(
           `هل تريد حذف جميع سجلات تسميع الصفحة ${page}؟\n\nبعد الحذف ستظهر الصفحة كأن الطالب لم يسمّعها.`
         );
-
 
       if(!confirmed){
 
         return;
 
       }
-
 
       profileData.recitationPages =
         arrayValue(
@@ -7183,9 +8403,7 @@
               page
           );
 
-
       closePageModal();
-
 
       renderMap();
 
@@ -7199,13 +8417,13 @@
 
       renderExtraPoints();
 
+      renderMonthlyFollowups();
 
       showToast(
         `تم حذف جميع سجلات تسميع الصفحة ${page}. اضغط حفظ لإثبات الحذف في قاعدة البيانات.`
       );
 
     }
-
 
     function savePageRecord(){
 
@@ -7216,12 +8434,10 @@
           ).value
         );
 
-
       const type =
         document.getElementById(
           'modalPageType'
         ).value;
-
 
       const score =
         Number(
@@ -7230,18 +8446,15 @@
           ).value
         );
 
-
       const date =
         document.getElementById(
           'modalPageDate'
         ).value;
 
-
       const notes =
         document.getElementById(
           'modalPageNotes'
         ).value.trim();
-
 
       if(
         !Number.isInteger(page) ||
@@ -7258,7 +8471,6 @@
 
       }
 
-
       if(
         !Number.isFinite(score) ||
         score < 0 ||
@@ -7274,7 +8486,6 @@
 
       }
 
-
       if(!date){
 
         showToast(
@@ -7286,12 +8497,10 @@
 
       }
 
-
       const evaluation =
         getRecitationEvaluation(
           score
         );
-
 
       const record = {
 
@@ -7323,7 +8532,6 @@
 
       };
 
-
       if(
         editingPageRecordId
       ){
@@ -7336,7 +8544,6 @@
                 String(item.id) ===
                 String(editingPageRecordId)
             );
-
 
         if(index !== -1){
 
@@ -7362,7 +8569,6 @@
 
       }
 
-
       closePageModal();
 
       renderMap();
@@ -7377,13 +8583,13 @@
 
       renderExtraPoints();
 
+      renderMonthlyFollowups();
 
       showToast(
         'تم تسجيل التسميع. اضغط حفظ لإثباته في قاعدة البيانات.'
       );
 
     }
-
 
     /* ==================================================
        RECITATION TABLE
@@ -7395,7 +8601,6 @@
         document.getElementById(
           'recitationTableBody'
         );
-
 
       const records =
         getPageRecords()
@@ -7410,7 +8615,6 @@
                 a.date || 0
               ).getTime()
           );
-
 
       if(!records.length){
 
@@ -7429,7 +8633,6 @@
 
       }
 
-
       body.innerHTML =
         records
           .map(
@@ -7440,13 +8643,11 @@
                   record.score
                 );
 
-
               const points =
                 getRecitationPoints(
                   record.score,
                   record.type
                 );
-
 
               return `
 
@@ -7525,7 +8726,6 @@
 
     }
 
-
     /* ==================================================
        PLAN PAGE NUMBERS
     ================================================== */
@@ -7543,7 +8743,6 @@
 
       }
 
-
       const text =
         String(value)
           .trim()
@@ -7551,13 +8750,11 @@
           .replace(/؛/g,',')
           .replace(/\s+/g,' ');
 
-
       if(!text){
 
         return [];
 
       }
-
 
       const tokens =
         text
@@ -7573,9 +8770,7 @@
                 .filter(Boolean)
           );
 
-
       const pages = [];
-
 
       tokens.forEach(
         token => {
@@ -7584,7 +8779,6 @@
             token.match(
               /^(\d+)\s*[-–]\s*(\d+)$/
             );
-
 
           if(rangeMatch){
 
@@ -7597,7 +8791,6 @@
               Number(
                 rangeMatch[2]
               );
-
 
             if(
               Number.isInteger(start) &&
@@ -7620,7 +8813,6 @@
                   end
                 );
 
-
               for(
                 let page=from;
                 page<=to;
@@ -7639,12 +8831,10 @@
 
           }
 
-
           const page =
             Number(
               token
             );
-
 
           if(
             Number.isInteger(page) &&
@@ -7661,7 +8851,6 @@
         }
       );
 
-
       return Array.from(
         new Set(
           pages
@@ -7672,7 +8861,6 @@
       );
 
     }
-
 
     function getPlanPageInputValue(
       task
@@ -7693,7 +8881,6 @@
 
       }
 
-
       if(
         task &&
         typeof task.requiredPages === 'string'
@@ -7703,11 +8890,9 @@
 
       }
 
-
       return '';
 
     }
-
 
     /* ==================================================
        PLAN
@@ -7718,40 +8903,32 @@
       const now =
         new Date();
 
-
       const day =
         now.getDay();
 
-
       const start =
         new Date(now);
-
 
       start.setDate(
         now.getDate() -
         day
       );
 
-
       start.setHours(
         0,0,0,0
       );
 
-
       const end =
         new Date(start);
-
 
       end.setDate(
         start.getDate() +
         6
       );
 
-
       end.setHours(
         23,59,59,999
       );
-
 
       return {
         start,
@@ -7759,7 +8936,6 @@
       };
 
     }
-
 
     function isDateInCurrentWeek(
       dateValue
@@ -7771,12 +8947,10 @@
 
       }
 
-
       const date =
         new Date(
           dateValue
         );
-
 
       if(
         Number.isNaN(
@@ -7788,13 +8962,11 @@
 
       }
 
-
       const {
         start,
         end
       } =
         getWeekRange();
-
 
       return (
         date >= start &&
@@ -7802,7 +8974,6 @@
       );
 
     }
-
 
     function isPastOrToday(
       dateValue
@@ -7813,22 +8984,18 @@
           dateValue
         );
 
-
       const today =
         new Date();
-
 
       today.setHours(
         23,59,59,999
       );
-
 
       return (
         date <= today
       );
 
     }
-
 
     function getPlanCompletion(
       task
@@ -7838,7 +9005,6 @@
         getDateInputValue(
           task.date
         );
-
 
       if(
         !isPastOrToday(
@@ -7852,7 +9018,6 @@
               task
             )
           );
-
 
         return {
 
@@ -7875,7 +9040,6 @@
 
       }
 
-
       if(
         task.type === 'test'
       ){
@@ -7885,7 +9049,6 @@
             profileData.tests
           );
 
-
         const completed =
           tests.some(
             test =>
@@ -7894,7 +9057,6 @@
                 taskDate
               )
           );
-
 
         return {
 
@@ -7926,14 +9088,12 @@
 
       }
 
-
       const requiredPages =
         parsePlanPageNumbers(
           getPlanPageInputValue(
             task
           )
         );
-
 
       if(!requiredPages.length){
 
@@ -7954,7 +9114,6 @@
         };
 
       }
-
 
       const completedPages =
         getPageRecords()
@@ -7980,12 +9139,10 @@
               )
           );
 
-
       const completedSet =
         new Set(
           completedPages
         );
-
 
       const done =
         requiredPages
@@ -7997,14 +9154,12 @@
           )
           .length;
 
-
       const ratio =
         Math.min(
           1,
           done /
           requiredPages.length
         );
-
 
       return {
 
@@ -8033,14 +9188,12 @@
 
     }
 
-
     function getPlanTasksForView(){
 
       const tasks =
         arrayValue(
           profileData.planTasks
         );
-
 
       if(
         currentPlanView === 'month'
@@ -8061,7 +9214,6 @@
 
       }
 
-
       return tasks
         .filter(
           task =>
@@ -8077,7 +9229,6 @@
 
     }
 
-
     function renderPlan(){
 
       const container =
@@ -8085,10 +9236,8 @@
           'planEditor'
         );
 
-
       const tasks =
         getPlanTasksForView();
-
 
       if(!tasks.length){
 
@@ -8104,21 +9253,17 @@
             </div>
           `;
 
-
         renderPlanSummary(
           []
         );
-
 
         return;
 
       }
 
-
       renderPlanSummary(
         tasks
       );
-
 
       container.innerHTML =
         tasks
@@ -8130,9 +9275,7 @@
                   task
                 );
 
-
               let resultText = 'قادم';
-
 
               if(
                 completion.status !==
@@ -8157,7 +9300,6 @@
 
               }
 
-
               return `
 
                 <div
@@ -8172,7 +9314,27 @@
                     <div class="field">
 
                       <label>
-                        التاريخ
+                        تاريخ اليوم
+                      </label>
+
+                      <input
+                        class="normal-input"
+                        data-plan-created-date
+                        type="date"
+                        value="${escapeHtml(
+                          getDateInputValue(
+                            task.createdDate ||
+                            todayString()
+                          )
+                        )}"
+                      />
+
+                    </div>
+
+                    <div class="field">
+
+                      <label>
+                        تاريخ التسميع القادم
                       </label>
 
                       <input
@@ -8187,7 +9349,6 @@
                       />
 
                     </div>
-
 
                     <div class="field">
 
@@ -8237,7 +9398,6 @@
 
                     </div>
 
-
                     <div class="field">
 
                       <label>
@@ -8258,7 +9418,6 @@
                       />
 
                     </div>
-
 
                     <div class="field">
 
@@ -8312,7 +9471,6 @@
 
                   </div>
 
-
                   <div
                     class="editor-grid"
                     style="margin-top:8px;"
@@ -8334,7 +9492,6 @@
                       />
 
                     </div>
-
 
                     <div class="field">
 
@@ -8374,7 +9531,6 @@
                           }
                         </span>
 
-
                         ${
                           completion.maxPoints > 0
                             ? `
@@ -8400,7 +9556,6 @@
                       </div>
 
                     </div>
-
 
                     <div
                       class="field"
@@ -8431,11 +9586,6 @@
           )
           .join('');
 
-
-      /*
-        تغيير البيانات أثناء الكتابة يعيد الحساب مباشرة.
-      */
-
       container
         .querySelectorAll(
           'input,select'
@@ -8458,7 +9608,6 @@
               }
             );
 
-
             input.addEventListener(
               'change',
               () => {
@@ -8477,7 +9626,6 @@
 
     }
 
-
     function renderPlanSummary(
       tasks
     ){
@@ -8486,7 +9634,6 @@
         document.getElementById(
           'planSummary'
         );
-
 
       const dueTasks =
         tasks.filter(
@@ -8497,13 +9644,11 @@
             'upcoming'
         );
 
-
       let earned = 0;
 
       let possible = 0;
 
       let completed = 0;
-
 
       dueTasks.forEach(
         task => {
@@ -8513,14 +9658,11 @@
               task
             );
 
-
           earned +=
             result.points;
 
-
           possible +=
             result.maxPoints;
-
 
           if(
             result.ratio === 1
@@ -8533,7 +9675,6 @@
         }
       );
 
-
       const percentage =
         possible > 0
           ? (
@@ -8541,7 +9682,6 @@
               possible
             ) * 100
           : 0;
-
 
       summary.innerHTML = `
 
@@ -8557,7 +9697,6 @@
 
         </div>
 
-
         <div class="plan-summary-card">
 
           <small>
@@ -8569,7 +9708,6 @@
           </strong>
 
         </div>
-
 
         <div class="plan-summary-card">
 
@@ -8590,7 +9728,6 @@
 
     }
 
-
     function syncPlanEditorToState(){
 
       const rows =
@@ -8598,26 +9735,22 @@
           '#planEditor .editor-row'
         );
 
-
       if(!rows.length){
 
         return;
 
       }
 
-
       const allTasks =
         arrayValue(
           profileData.planTasks
         );
-
 
       rows.forEach(
         row => {
 
           const id =
             row.dataset.planId;
-
 
           const index =
             allTasks.findIndex(
@@ -8626,17 +9759,21 @@
                 String(id)
             );
 
-
           if(index === -1){
 
             return;
 
           }
 
-
           const task =
             allTasks[index];
 
+          task.createdDate =
+            row.querySelector(
+              '[data-plan-created-date]'
+            )?.value ||
+            task.createdDate ||
+            todayString();
 
           task.date =
             row.querySelector(
@@ -8644,13 +9781,11 @@
             )?.value ||
             task.date;
 
-
           task.type =
             row.querySelector(
               '[data-plan-type]'
             )?.value ||
             task.type;
-
 
           task.title =
             row.querySelector(
@@ -8658,12 +9793,10 @@
             )?.value ||
             '';
 
-
           const pagesInput =
             row.querySelector(
               '[data-plan-pages]'
             );
-
 
           if(pagesInput){
 
@@ -8675,7 +9808,6 @@
 
           }
 
-
           task.notes =
             row.querySelector(
               '[data-plan-notes]'
@@ -8685,22 +9817,22 @@
         }
       );
 
-
       profileData.planTasks =
         allTasks;
 
     }
 
-
     function addPlanTask(){
 
       syncPlanEditorToState();
-
 
       profileData.planTasks.push({
 
         id:
           makeId(),
+
+        createdDate:
+          todayString(),
 
         date:
           todayString(),
@@ -8722,11 +9854,9 @@
 
       });
 
-
       renderPlan();
 
       renderScores();
-
 
       showToast(
         'تمت إضافة مهمة جديدة للخطة.'
@@ -8734,13 +9864,11 @@
 
     }
 
-
     function removePlanTask(
       id
     ){
 
       syncPlanEditorToState();
-
 
       profileData.planTasks =
         profileData
@@ -8751,13 +9879,11 @@
               String(id)
           );
 
-
       renderPlan();
 
       renderScores();
 
     }
-
 
     /* ==================================================
        ATTENDANCE
@@ -8770,12 +9896,10 @@
           'attendanceEditor'
         );
 
-
       const items =
         arrayValue(
           profileData.attendance
         );
-
 
       if(!items.length){
 
@@ -8789,7 +9913,6 @@
         return;
 
       }
-
 
       container.innerHTML =
         items
@@ -8825,7 +9948,6 @@
 
                     </div>
 
-
                     <div class="field">
 
                       <label>
@@ -8848,7 +9970,6 @@
                       />
 
                     </div>
-
 
                     <div class="field">
 
@@ -8919,7 +10040,6 @@
 
                     </div>
 
-
                     <div class="field">
 
                       <label>
@@ -8952,7 +10072,6 @@
 
                   </div>
 
-
                   <div
                     class="field"
                     style="margin-top:8px;"
@@ -8980,7 +10099,6 @@
 
                   </div>
 
-
                   <div
                     style="
                       margin-top:8px;
@@ -9005,7 +10123,6 @@
           )
           .join('');
 
-
       container
         .querySelectorAll(
           'input,select'
@@ -9021,9 +10138,10 @@
 
                 renderScores();
 
+                renderMonthlyFollowups();
+
               }
             );
-
 
             element.addEventListener(
               'change',
@@ -9035,6 +10153,8 @@
 
                 renderScores();
 
+                renderMonthlyFollowups();
+
               }
             );
 
@@ -9043,14 +10163,12 @@
 
     }
 
-
     function syncAttendance(){
 
       const rows =
         document.querySelectorAll(
           '#attendanceEditor .editor-row'
         );
-
 
       profileData.attendance =
         Array.from(rows)
@@ -9090,11 +10208,9 @@
 
     }
 
-
     function addAttendance(){
 
       syncAttendance();
-
 
       profileData.attendance
         .push({
@@ -9111,13 +10227,13 @@
 
         });
 
-
       renderAttendance();
 
       renderScores();
 
-    }
+      renderMonthlyFollowups();
 
+    }
 
     function removeAttendance(
       index
@@ -9125,20 +10241,19 @@
 
       syncAttendance();
 
-
       profileData.attendance
         .splice(
           index,
           1
         );
 
-
       renderAttendance();
 
       renderScores();
 
-    }
+      renderMonthlyFollowups();
 
+    }
 
     /* ==================================================
        TESTS
@@ -9151,12 +10266,10 @@
           'testsEditor'
         );
 
-
       const items =
         arrayValue(
           profileData.tests
         );
-
 
       if(!items.length){
 
@@ -9171,7 +10284,6 @@
 
       }
 
-
       container.innerHTML =
         items
           .map(
@@ -9181,7 +10293,6 @@
                 getTestEvaluation(
                   item.score
                 );
-
 
               return `
 
@@ -9217,7 +10328,6 @@
 
                     </div>
 
-
                     <div class="field">
 
                       <label>
@@ -9239,7 +10349,6 @@
 
                     </div>
 
-
                     <div class="field">
 
                       <label>
@@ -9258,7 +10367,6 @@
                       />
 
                     </div>
-
 
                     <div class="field">
 
@@ -9281,7 +10389,6 @@
                           evaluation.grade
                             ? `${evaluation.grade} — ${evaluation.points} نقطة`
                             : 'اكتب العلامة'
-
                         }
 
                       </div>
@@ -9289,7 +10396,6 @@
                     </div>
 
                   </div>
-
 
                   <div
                     style="margin-top:8px;"
@@ -9313,7 +10419,6 @@
           )
           .join('');
 
-
       container
         .querySelectorAll(
           'input'
@@ -9331,9 +10436,10 @@
 
                 renderScores();
 
+                renderMonthlyFollowups();
+
               }
             );
-
 
             input.addEventListener(
               'change',
@@ -9345,6 +10451,8 @@
 
                 renderScores();
 
+                renderMonthlyFollowups();
+
               }
             );
 
@@ -9353,7 +10461,6 @@
 
     }
 
-
     function syncTests(){
 
       const rows =
@@ -9361,12 +10468,10 @@
           '#testsEditor .editor-row'
         );
 
-
       const existing =
         arrayValue(
           profileData.tests
         );
-
 
       profileData.tests =
         Array.from(rows)
@@ -9379,7 +10484,6 @@
               const old =
                 existing[index] ||
                 {};
-
 
               return {
 
@@ -9414,7 +10518,6 @@
 
     }
 
-
     function updateTestPreviews(){
 
       document
@@ -9432,18 +10535,15 @@
                 0
               );
 
-
             const evaluation =
               getTestEvaluation(
                 score
               );
 
-
             const preview =
               row.querySelector(
                 '[data-test-preview]'
               );
-
 
             if(preview){
 
@@ -9459,11 +10559,9 @@
 
     }
 
-
     function addTest(){
 
       syncTests();
-
 
       profileData.tests
         .push({
@@ -9482,13 +10580,13 @@
 
         });
 
-
       renderTests();
 
       renderScores();
 
-    }
+      renderMonthlyFollowups();
 
+    }
 
     function removeTest(
       index
@@ -9496,20 +10594,19 @@
 
       syncTests();
 
-
       profileData.tests
         .splice(
           index,
           1
         );
 
-
       renderTests();
 
       renderScores();
 
-    }
+      renderMonthlyFollowups();
 
+    }
 
     /* ==================================================
        PROGRESS
@@ -9519,6 +10616,9 @@
 
       renderAttendance();
 
+      ensureMonthlyFollowupMonths();
+
+      renderMonthlyFollowups();
 
       document.getElementById(
         'weeklyProgress'
@@ -9532,7 +10632,6 @@
           ''
         );
 
-
       document.getElementById(
         'overallProgress'
       ).value =
@@ -9544,7 +10643,6 @@
           ],
           ''
         );
-
 
       document.getElementById(
         'notes'
@@ -9562,7 +10660,6 @@
 
     }
 
-
     /* ==================================================
        FEES
     ================================================== */
@@ -9576,7 +10673,6 @@
           status || ''
         ).trim();
 
-
       if(
         value === 'مدفوع' ||
         value === 'مدفوع بالكامل'
@@ -9586,7 +10682,6 @@
 
       }
 
-
       if(
         value === 'قيد الانتظار'
       ){
@@ -9594,7 +10689,6 @@
         return 'قيد الانتظار';
 
       }
-
 
       if(
         value === 'غير مدفوع'
@@ -9604,42 +10698,10 @@
 
       }
 
-
       return value ||
         'متبقي';
 
     }
-
-
-    function getFeeMonthValue(
-      item
-    ){
-
-      const value =
-        firstValue(
-          item,
-          [
-            'month',
-            'period',
-            'date'
-          ],
-          ''
-        );
-
-
-      if(!value){
-
-        return '';
-
-      }
-
-
-      return getMonthKey(
-        value
-      );
-
-    }
-
 
     function getFeeStatusClass(
       status
@@ -9650,7 +10712,6 @@
           status
         );
 
-
       if(
         value === 'مدفوع'
       ){
@@ -9658,7 +10719,6 @@
         return 'paid';
 
       }
-
 
       if(
         value === 'قيد الانتظار'
@@ -9668,13 +10728,11 @@
 
       }
 
-
       return 'pending';
 
     }
 
-
-    function ensureCurrentStudentMonthlyFee(){
+    function ensureCurrentStudentQuarterlyFee(){
 
       if(
         !Array.isArray(
@@ -9687,23 +10745,20 @@
 
       }
 
+      profileData.quarterlyFee =
+        FIXED_QUARTERLY_FEE;
 
-      profileData.monthlyFee =
-        FIXED_MONTHLY_FEE;
-
-
-      const month =
-        getCurrentMonthKey();
-
+      const quarter =
+        getCurrentQuarterKey();
 
       const exists =
         profileData.fees.some(
           fee =>
-            getFeeMonthValue(
+            getExplicitFeeQuarterValue(
               fee
-            ) === month
+            ) ===
+            quarter
         );
-
 
       if(!exists){
 
@@ -9712,22 +10767,22 @@
           id:
             makeId(),
 
-          month,
+          quarter,
 
           period:
-            month,
+            quarter,
 
           amount:
-            FIXED_MONTHLY_FEE,
+            FIXED_QUARTERLY_FEE,
 
           date:
-            month,
+            quarter,
 
           status:
             'متبقي',
 
           notes:
-            'تسجيل تلقائي للنظام (5 د.أ)',
+            'تسجيل تلقائي للنظام (25 د.أ)',
 
           autoGenerated:
             true,
@@ -9741,12 +10796,10 @@
 
     }
 
+    async function ensureQuarterlyFeesForAllStudents(){
 
-    async function ensureMonthlyFeesForAllStudents(){
-
-      const month =
-        getCurrentMonthKey();
-
+      const quarter =
+        getCurrentQuarterKey();
 
       try{
 
@@ -9758,7 +10811,6 @@
             .from('students')
             .select('id,status');
 
-
         if(studentsError){
 
           console.error(
@@ -9769,7 +10821,6 @@
 
         }
 
-
         const {
           data:profilesData,
           error:profilesError
@@ -9777,7 +10828,6 @@
           await supabaseClient
             .from('student_profiles')
             .select('student_id,data');
-
 
         if(profilesError){
 
@@ -9789,10 +10839,8 @@
 
         }
 
-
         const profileMap =
           new Map();
-
 
         (profilesData || [])
           .forEach(
@@ -9813,7 +10861,6 @@
             }
           );
 
-
         for(
           const currentStudent of
           (studentsData || [])
@@ -9826,7 +10873,6 @@
               )
             ) || {};
 
-
           if(
             !Array.isArray(
               data.fees
@@ -9837,19 +10883,17 @@
 
           }
 
-
-          data.monthlyFee =
-            FIXED_MONTHLY_FEE;
-
+          data.quarterlyFee =
+            FIXED_QUARTERLY_FEE;
 
           const exists =
             data.fees.some(
               fee =>
-                getFeeMonthValue(
+                getExplicitFeeQuarterValue(
                   fee
-                ) === month
+                ) ===
+                quarter
             );
-
 
           if(!exists){
 
@@ -9858,22 +10902,22 @@
               id:
                 makeId(),
 
-              month,
+              quarter,
 
               period:
-                month,
+                quarter,
 
               amount:
-                FIXED_MONTHLY_FEE,
+                FIXED_QUARTERLY_FEE,
 
               date:
-                month,
+                quarter,
 
               status:
                 'متبقي',
 
               notes:
-                'تسجيل تلقائي للنظام (5 د.أ)',
+                'تسجيل تلقائي للنظام (25 د.أ)',
 
               autoGenerated:
                 true,
@@ -9882,7 +10926,6 @@
                 new Date().toISOString()
 
             });
-
 
             const {
               error:upsertError
@@ -9912,7 +10955,6 @@
                   }
                 );
 
-
             if(upsertError){
 
               console.error(
@@ -9935,7 +10977,6 @@
 
     }
 
-
     function calculateFeeSummary(){
 
       const items =
@@ -9943,11 +10984,9 @@
           profileData.fees
         );
 
-
       let paidTotal = 0;
 
       let remainingTotal = 0;
-
 
       items.forEach(
         item => {
@@ -9964,7 +11003,6 @@
               )
             ) || 0;
 
-
           const status =
             normalizeFeeStatus(
               firstValue(
@@ -9973,7 +11011,6 @@
                 'متبقي'
               )
             );
-
 
           if(
             status === 'مدفوع'
@@ -9992,7 +11029,6 @@
         }
       );
 
-
       return {
 
         paidTotal,
@@ -10003,20 +11039,17 @@
 
     }
 
-
     function renderFeeSummary(){
 
       const summary =
         calculateFeeSummary();
 
-
       document.getElementById(
-        'feeApprovedMonthly'
+        'feeApprovedQuarterly'
       ).textContent =
         `${formatPoints(
-          FIXED_MONTHLY_FEE
+          FIXED_QUARTERLY_FEE
         )} د.أ`;
-
 
       document.getElementById(
         'feePaidTotal'
@@ -10024,7 +11057,6 @@
         `${formatPoints(
           summary.paidTotal
         )} د.أ`;
-
 
       document.getElementById(
         'feeRemainingTotal'
@@ -10035,19 +11067,16 @@
 
     }
 
-
     function renderFees(){
 
-      ensureCurrentStudentMonthlyFee();
+      ensureCurrentStudentQuarterlyFee();
 
       renderFeeSummary();
-
 
       const container =
         document.getElementById(
           'feesEditor'
         );
-
 
       const items =
         arrayValue(
@@ -10057,14 +11086,13 @@
           .sort(
             (a,b) =>
               String(
-                getFeeMonthValue(b)
+                getFeePeriodValue(b)
               ).localeCompare(
                 String(
-                  getFeeMonthValue(a)
+                  getFeePeriodValue(a)
                 )
               )
           );
-
 
       if(!items.length){
 
@@ -10079,7 +11107,6 @@
 
       }
 
-
       container.innerHTML =
         items
           .map(
@@ -10093,12 +11120,10 @@
                       String(item.id || '')
                   );
 
-
-              const month =
-                getFeeMonthValue(
+              const period =
+                getFeePeriodValue(
                   item
                 );
-
 
               const amount =
                 Number(
@@ -10108,10 +11133,9 @@
                       'amount',
                       'value'
                     ],
-                    0
+                    FIXED_QUARTERLY_FEE
                   )
                 ) || 0;
-
 
               const status =
                 normalizeFeeStatus(
@@ -10121,7 +11145,6 @@
                     'متبقي'
                   )
                 );
-
 
               const notes =
                 firstValue(
@@ -10133,12 +11156,10 @@
                   ''
                 );
 
-
               const autoGenerated =
                 Boolean(
                   item.autoGenerated
                 );
-
 
               return `
 
@@ -10153,8 +11174,10 @@
 
                       <strong>
 
-                        📅 شهر ${escapeHtml(
-                          month || 'غير محدد'
+                        📅 ${escapeHtml(
+                          getQuarterLabel(
+                            period
+                          ) || 'غير محدد'
                         )}
 
                         — المبلغ:
@@ -10164,7 +11187,6 @@
 
                       </strong>
 
-
                       <span>
 
                         ${
@@ -10172,7 +11194,6 @@
                             ? `ملاحظات: ${escapeHtml(notes)}`
                             : 'لا توجد ملاحظات إضافية.'
                         }
-
 
                         ${
                           autoGenerated
@@ -10183,7 +11204,6 @@
                       </span>
 
                     </div>
-
 
                     <div
                       class="
@@ -10206,7 +11226,6 @@
 
                   </div>
 
-
                   <div
                     class="editor-grid"
                     style="margin-top:8px;"
@@ -10215,40 +11234,46 @@
                     <div class="field">
 
                       <label>
-                        الشهر
+                        الفصل
                       </label>
 
-                      <input
-                        class="normal-input"
-                        data-fee-month
-                        type="month"
-                        value="${escapeHtml(
-                          month
-                        )}"
-                      />
+                      <select
+                        class="normal-select"
+                        data-fee-quarter
+                      >
+
+                        <option
+                          value="${escapeHtml(
+                            period
+                          )}"
+                        >
+                          ${escapeHtml(
+                            getQuarterLabel(
+                              period
+                            ) || period || 'غير محدد'
+                          )}
+                        </option>
+
+                      </select>
 
                     </div>
-
 
                     <div class="field">
 
                       <label>
-                        المبلغ
+                        المبلغ الثابت
                       </label>
 
                       <input
                         class="normal-input"
-                        data-fee-amount
                         type="number"
-                        min="0"
-                        step="0.01"
                         value="${escapeHtml(
                           amount
                         )}"
+                        readonly
                       />
 
                     </div>
-
 
                     <div class="field">
 
@@ -10298,7 +11323,6 @@
 
                     </div>
 
-
                     <div class="field">
 
                       <label>
@@ -10316,7 +11340,6 @@
                     </div>
 
                   </div>
-
 
                   <div
                     style="margin-top:8px;"
@@ -10340,7 +11363,6 @@
           )
           .join('');
 
-
       container
         .querySelectorAll(
           'input,select'
@@ -10359,7 +11381,6 @@
               }
             );
 
-
             element.addEventListener(
               'change',
               () => {
@@ -10376,7 +11397,6 @@
 
     }
 
-
     function syncFees(){
 
       const rows =
@@ -10384,12 +11404,10 @@
           '#feesEditor .fee-archive-item'
         );
 
-
       const oldItems =
         arrayValue(
           profileData.fees
         );
-
 
       Array.from(rows)
         .forEach(
@@ -10400,7 +11418,6 @@
                 row.dataset.feeIndex
               );
 
-
             if(
               !Number.isInteger(index) ||
               !oldItems[index]
@@ -10410,34 +11427,35 @@
 
             }
 
-
             const old =
               oldItems[index];
 
-
-            const month =
+            const selectedQuarter =
               row.querySelector(
-                '[data-fee-month]'
+                '[data-fee-quarter]'
               )?.value ||
-              '';
+              getFeePeriodValue(
+                old
+              );
 
-
-            old.month =
-              month;
+            old.quarter =
+              getQuarterKey(
+                selectedQuarter
+              ) ||
+              selectedQuarter;
 
             old.period =
-              month;
+              old.quarter;
 
             old.date =
-              month;
+              old.quarter;
+
+            /*
+              الرسوم الفصلية ثابتة 25 د.أ.
+            */
 
             old.amount =
-              Number(
-                row.querySelector(
-                  '[data-fee-amount]'
-                )?.value ||
-                0
-              );
+              FIXED_QUARTERLY_FEE;
 
             old.status =
               normalizeFeeStatus(
@@ -10456,12 +11474,13 @@
           }
         );
 
+      profileData.quarterlyFee =
+        FIXED_QUARTERLY_FEE;
 
       profileData.fees =
         oldItems;
 
     }
-
 
     function removeFee(
       index
@@ -10469,23 +11488,19 @@
 
       syncFees();
 
-
       profileData.fees
         .splice(
           index,
           1
         );
 
-
       renderFees();
-
 
       showToast(
         'تم حذف سجل الرسوم من النسخة الحالية.'
       );
 
     }
-
 
     /* ==================================================
        EXTRA POINTS
@@ -10502,7 +11517,6 @@
 
     }
 
-
     function setExtraPoints(
       points
     ){
@@ -10514,14 +11528,12 @@
 
     }
 
-
     function initializeExtraPointForm(){
 
       const dateInput =
         document.getElementById(
           'newExtraDate'
         );
-
 
       if(
         dateInput &&
@@ -10535,23 +11547,19 @@
 
     }
 
-
     function renderExtraPoints(){
 
       initializeExtraPointForm();
-
 
       const container =
         document.getElementById(
           'extraPointsEditor'
         );
 
-
       const items =
         arrayValue(
           profileData.extraPoints
         );
-
 
       const extraTotal =
         items.reduce(
@@ -10575,7 +11583,6 @@
           0
         );
 
-
       const academicRecitationPoints =
         getPageRecords()
           .reduce(
@@ -10595,12 +11602,10 @@
             0
           );
 
-
       const overall =
         calculateEvaluation(
           'overall'
         );
-
 
       document.getElementById(
         'extraPointsTotalDisplay'
@@ -10609,7 +11614,6 @@
           extraTotal
         )} نقطة`;
 
-
       document.getElementById(
         'recitationAcademicPointsDisplay'
       ).textContent =
@@ -10617,14 +11621,12 @@
           academicRecitationPoints
         )} نقطة`;
 
-
       document.getElementById(
         'overallPointsDisplay'
       ).textContent =
         `🏆 ${formatPoints(
           overall.totalPoints
         )} نقطة`;
-
 
       if(!items.length){
 
@@ -10638,7 +11640,6 @@
         return;
 
       }
-
 
       container.innerHTML =
         items
@@ -10655,7 +11656,6 @@
                 1 -
                 reverseIndex;
 
-
               const reason =
                 firstValue(
                   item,
@@ -10666,7 +11666,6 @@
                   ],
                   'بدون سبب'
                 );
-
 
               const points =
                 Number(
@@ -10680,14 +11679,12 @@
                   )
                 ) || 0;
 
-
               const date =
                 firstValue(
                   item,
                   ['date'],
                   ''
                 );
-
 
               const note =
                 firstValue(
@@ -10698,7 +11695,6 @@
                   ],
                   ''
                 );
-
 
               return `
 
@@ -10759,7 +11755,6 @@
 
                     </div>
 
-
                     <button
                       type="button"
                       class="action-btn btn-delete"
@@ -10780,7 +11775,6 @@
 
     }
 
-
     function syncExtraPoints(){
 
       if(
@@ -10796,17 +11790,14 @@
 
     }
 
-
     function addExtraPoint(){
 
       syncExtraPoints();
-
 
       const reason =
         document.getElementById(
           'newExtraReason'
         ).value.trim();
-
 
       const points =
         Number(
@@ -10815,18 +11806,15 @@
           ).value
         );
 
-
       const date =
         document.getElementById(
           'newExtraDate'
         ).value;
 
-
       const note =
         document.getElementById(
           'newExtraNote'
         ).value.trim();
-
 
       if(!reason){
 
@@ -10838,7 +11826,6 @@
         return;
 
       }
-
 
       if(
         !Number.isFinite(points) ||
@@ -10854,7 +11841,6 @@
 
       }
 
-
       if(!date){
 
         showToast(
@@ -10865,7 +11851,6 @@
         return;
 
       }
-
 
       profileData.extraPoints
         .push({
@@ -10886,37 +11871,31 @@
 
         });
 
-
       document.getElementById(
         'newExtraReason'
       ).value =
         '';
-
 
       document.getElementById(
         'newExtraPoints'
       ).value =
         '';
 
-
       document.getElementById(
         'newExtraDate'
       ).value =
         todayString();
-
 
       document.getElementById(
         'newExtraNote'
       ).value =
         '';
 
-
       renderExtraPoints();
 
       renderScores();
 
       renderBadges();
-
 
       showToast(
         'تم منح الطالب النقاط الإضافية بنجاح.'
@@ -10924,20 +11903,17 @@
 
     }
 
-
     function removeExtraPoint(
       index
     ){
 
       syncExtraPoints();
 
-
       profileData.extraPoints
         .splice(
           index,
           1
         );
-
 
       renderExtraPoints();
 
@@ -10946,7 +11922,6 @@
       renderBadges();
 
     }
-
 
     /* ==================================================
        BADGES
@@ -10968,7 +11943,6 @@
             metrics.totalPoints >= 50
       },
 
-
       {
         id:'persevering',
         icon:'🌟',
@@ -10982,7 +11956,6 @@
           metrics =>
             metrics.totalPoints >= 100
       },
-
 
       {
         id:'excellence',
@@ -10998,7 +11971,6 @@
             metrics.totalPoints >= 200
       },
 
-
       {
         id:'golden-hafiz',
         icon:'🏆',
@@ -11012,7 +11984,6 @@
           metrics =>
             metrics.totalPoints >= 300
       },
-
 
       {
         id:'crown-of-dignity',
@@ -11028,7 +11999,6 @@
             metrics.totalPoints >= 500
       },
 
-
       {
         id:'monthly-champion',
         icon:'🥇',
@@ -11043,7 +12013,6 @@
 
     ];
 
-
     function normalizeBadgeRecords(){
 
       const allowedIds =
@@ -11057,12 +12026,10 @@
             )
         );
 
-
       const badges =
         arrayValue(
           profileData.badges
         );
-
 
       profileData.badges =
         badges
@@ -11075,7 +12042,6 @@
                   badge?.id ||
                   ''
                 );
-
 
               return allowedIds.has(
                 badgeId
@@ -11095,7 +12061,6 @@
 
     }
 
-
     function getEarnedBadgeIds(){
 
       return new Set(
@@ -11112,7 +12077,6 @@
       );
 
     }
-
 
     function getBadgeHistory(
       badgeId
@@ -11132,23 +12096,19 @@
 
     }
 
-
     function renderBadges(){
 
       normalizeBadgeRecords();
-
 
       const container =
         document.getElementById(
           'badgeGrid'
         );
 
-
       const overall =
         calculateEvaluation(
           'overall'
         );
-
 
       container.innerHTML =
         BADGE_DEFINITIONS
@@ -11160,14 +12120,11 @@
                   definition.id
                 );
 
-
               const earned =
                 history.length > 0;
 
-
               let statusText =
                 '🔒 مقفل';
-
 
               if(
                 definition.type ===
@@ -11187,7 +12144,6 @@
                       definition.threshold -
                       overall.totalPoints
                     );
-
 
                   statusText =
                     `🔒 مقفل — متبقي: ${formatPoints(
@@ -11214,14 +12170,12 @@
                       )
                       .filter(Boolean);
 
-
                   const uniqueMonths =
                     Array.from(
                       new Set(
                         months
                       )
                     );
-
 
                   const monthText =
                     uniqueMonths.length
@@ -11234,7 +12188,6 @@
                           )
                           .join(' • ')
                       : 'سجل تاريخي';
-
 
                   statusText =
                     `✅ حصل عليه ${history.length} مرة — ${escapeHtml(
@@ -11250,7 +12203,6 @@
 
               }
 
-
               return `
 
                 <div
@@ -11265,20 +12217,17 @@
                     ${definition.icon}
                   </div>
 
-
                   <div class="badge-name">
                     ${escapeHtml(
                       definition.name
                     )}
                   </div>
 
-
                   <div class="badge-description">
                     ${escapeHtml(
                       definition.description
                     )}
                   </div>
-
 
                   <div class="badge-lock">
                     ${statusText}
@@ -11294,17 +12243,14 @@
 
     }
 
-
     function awardAutomaticBadges(){
 
       normalizeBadgeRecords();
-
 
       const overall =
         calculateEvaluation(
           'overall'
         );
-
 
       const milestoneDefinitions =
         BADGE_DEFINITIONS
@@ -11314,10 +12260,8 @@
               'milestone'
           );
 
-
       const earnedIds =
         getEarnedBadgeIds();
-
 
       milestoneDefinitions
         .forEach(
@@ -11365,7 +12309,6 @@
 
     }
 
-
     /* ==================================================
        MONTHLY CHAMPION
     ================================================== */
@@ -11375,13 +12318,11 @@
       const monthKey =
         getPreviousMonthKey();
 
-
       if(!monthKey){
 
         return;
 
       }
-
 
       try{
 
@@ -11395,7 +12336,6 @@
               'id,name,section,status'
             );
 
-
         if(studentsError){
 
           console.error(
@@ -11405,7 +12345,6 @@
           return;
 
         }
-
 
         const {
           data:profilesData,
@@ -11417,7 +12356,6 @@
               'student_id,data'
             );
 
-
         if(profilesError){
 
           console.error(
@@ -11428,9 +12366,7 @@
 
         }
 
-
         const candidates = [];
-
 
         (studentsData || [])
           .forEach(
@@ -11448,7 +12384,6 @@
 
               }
 
-
               const row =
                 (profilesData || [])
                   .find(
@@ -11461,7 +12396,6 @@
                       )
                   );
 
-
               const data =
                 row?.data &&
                 typeof row.data === 'object'
@@ -11469,7 +12403,6 @@
                       ...row.data
                     }
                   : {};
-
 
               const monthly =
                 calculateEvaluationForProfileData(
@@ -11479,7 +12412,6 @@
                     monthKey
                   }
                 );
-
 
               const hasData =
                 [
@@ -11493,13 +12425,11 @@
                       value !== null
                   );
 
-
               if(!hasData){
 
                 return;
 
               }
-
 
               candidates.push({
 
@@ -11517,13 +12447,11 @@
             }
           );
 
-
         if(!candidates.length){
 
           return;
 
         }
-
 
         candidates.sort(
           (a,b) => {
@@ -11540,7 +12468,6 @@
 
             }
 
-
             return (
               b.monthly.totalPoints -
               a.monthly.totalPoints
@@ -11549,17 +12476,14 @@
           }
         );
 
-
         const winner =
           candidates[0];
-
 
         if(!winner){
 
           return;
 
         }
-
 
         const alreadyAwarded =
           arrayValue(
@@ -11579,7 +12503,6 @@
               monthKey
           );
 
-
         if(
           !alreadyAwarded
         ){
@@ -11594,7 +12517,6 @@
               [];
 
           }
-
 
           winner.data.badges.push({
 
@@ -11630,11 +12552,9 @@
 
           });
 
-
           normalizeBadgeRecordsForExternalData(
             winner.data
           );
-
 
           const {
             error:upsertError
@@ -11665,7 +12585,6 @@
                 }
               );
 
-
           if(upsertError){
 
             console.error(
@@ -11673,7 +12592,6 @@
             );
 
           }
-
 
           if(
             String(
@@ -11698,7 +12616,6 @@
             winner.data
           );
 
-
           profileData.badges =
             winner.data.badges;
 
@@ -11714,7 +12631,6 @@
 
     }
 
-
     function normalizeBadgeRecordsForExternalData(
       data
     ){
@@ -11728,7 +12644,6 @@
 
       }
 
-
       const allowedIds =
         new Set(
           BADGE_DEFINITIONS
@@ -11739,7 +12654,6 @@
                 )
             )
         );
-
 
       data.badges =
         arrayValue(
@@ -11754,7 +12668,6 @@
                   badge?.id ||
                   ''
                 );
-
 
               return allowedIds.has(
                 badgeId
@@ -11774,7 +12687,6 @@
 
     }
 
-
     /* ==================================================
        SCORE CALCULATION
     ================================================== */
@@ -11787,11 +12699,9 @@
       const monthly =
         period === 'monthly';
 
-
       const targetMonth =
         monthKey ||
         getCurrentMonthKey();
-
 
       const recitations =
         getPageRecords()
@@ -11803,7 +12713,6 @@
                 targetMonth
               )
           );
-
 
       const tests =
         arrayValue(
@@ -11818,7 +12727,6 @@
               )
           );
 
-
       const attendance =
         arrayValue(
           profileData.attendance
@@ -11831,7 +12739,6 @@
                 targetMonth
               )
           );
-
 
       const plans =
         arrayValue(
@@ -11851,15 +12758,11 @@
               )
           );
 
-
-      /* =====================
-         RECITATION
-      ===================== */
+      /* RECITATION */
 
       let recEarned = 0;
 
       let recPossible = 0;
-
 
       recitations.forEach(
         record => {
@@ -11869,20 +12772,17 @@
               ? 10 / 3
               : 10;
 
-
           recEarned +=
             getRecitationPoints(
               record.score,
               record.type
             );
 
-
           recPossible +=
             max;
 
         }
       );
-
 
       const recPercent =
         recPossible > 0
@@ -11892,15 +12792,11 @@
             ) * 100
           : null;
 
-
-      /* =====================
-         TESTS
-      ===================== */
+      /* TESTS */
 
       let testEarned = 0;
 
       let testPossible = 0;
-
 
       tests.forEach(
         test => {
@@ -11910,17 +12806,14 @@
               test.score
             );
 
-
           testEarned +=
             evaluation.points;
-
 
           testPossible +=
             12;
 
         }
       );
-
 
       const testPercent =
         testPossible > 0
@@ -11930,15 +12823,11 @@
             ) * 100
           : null;
 
-
-      /* =====================
-         ATTENDANCE
-      ===================== */
+      /* ATTENDANCE */
 
       let attendanceEarned = 0;
 
       let attendancePossible = 0;
-
 
       attendance.forEach(
         item => {
@@ -11955,13 +12844,11 @@
               )
             );
 
-
           attendancePossible +=
             10;
 
         }
       );
-
 
       const attendancePercent =
         attendancePossible > 0
@@ -11971,17 +12858,13 @@
             ) * 100
           : null;
 
-
-      /* =====================
-         PLAN
-      ===================== */
+      /* PLAN */
 
       let planEarned = 0;
 
       let planPossible = 0;
 
       let planCompleted = 0;
-
 
       plans.forEach(
         task => {
@@ -11991,14 +12874,11 @@
               task
             );
 
-
           planEarned +=
             result.points;
 
-
           planPossible +=
             result.maxPoints;
-
 
           if(
             result.ratio === 1
@@ -12011,7 +12891,6 @@
         }
       );
 
-
       const planPercent =
         planPossible > 0
           ? (
@@ -12019,7 +12898,6 @@
               planPossible
             ) * 100
           : null;
-
 
       return {
 
@@ -12057,7 +12935,6 @@
 
     }
 
-
     function getBonusPoints(
       period,
       monthKey=null
@@ -12066,11 +12943,9 @@
       const monthly =
         period === 'monthly';
 
-
       const targetMonth =
         monthKey ||
         getCurrentMonthKey();
-
 
       const extra =
         arrayValue(
@@ -12096,14 +12971,8 @@
             0
           );
 
-
-      /*
-        الأوسمة لا تضيف أي نقاط نهائيًا.
-      */
-
       const badges =
         0;
-
 
       return {
 
@@ -12118,7 +12987,6 @@
 
     }
 
-
     function calculateEvaluation(
       period='overall',
       options={}
@@ -12126,7 +12994,6 @@
 
       const isMonthly =
         period === 'monthly';
-
 
       const components =
         getBaseComponentScores(
@@ -12136,7 +13003,6 @@
           options.monthKey ||
           null
         );
-
 
       const weightMap = {
 
@@ -12153,7 +13019,6 @@
           20
 
       };
-
 
       const componentValues = [
 
@@ -12195,11 +13060,9 @@
 
       ];
 
-
       let weightedSum = 0;
 
       let activeWeight = 0;
-
 
       componentValues.forEach(
         item => {
@@ -12212,7 +13075,6 @@
               item.percent *
               item.weight;
 
-
             activeWeight +=
               item.weight;
 
@@ -12221,18 +13083,11 @@
         }
       );
 
-
-      /*
-        إذا كانت هناك بيانات في أي معيار،
-        نعيد توزيع الأوزان على المعايير المتاحة.
-      */
-
       const basePercentage =
         activeWeight > 0
           ? weightedSum /
             activeWeight
           : 0;
-
 
       const bonus =
         options.ignoreBonuses
@@ -12249,20 +13104,12 @@
               null
             );
 
-
-      /*
-        كل 4 نقاط إضافية ≈ 1%
-        بحد أقصى +10%.
-        نقاط الأوسمة لا تدخل نهائيًا.
-      */
-
       const bonusPercentage =
         Math.min(
           10,
           bonus.total *
           0.25
         );
-
 
       const finalPercentage =
         Math.min(
@@ -12271,18 +13118,15 @@
           bonusPercentage
         );
 
-
       const rawPoints =
         components.recEarned +
         components.testEarned +
         components.attendanceEarned +
         components.planEarned;
 
-
       const totalPoints =
         rawPoints +
         bonus.total;
-
 
       return {
 
@@ -12386,7 +13230,6 @@
 
     }
 
-
     function calculateEvaluationForProfileData(
       data,
       period='overall',
@@ -12396,16 +13239,13 @@
       const previousProfileData =
         profileData;
 
-
       profileData =
         data &&
         typeof data === 'object'
           ? data
           : {};
 
-
       normalizeDataStructures();
-
 
       const result =
         calculateEvaluation(
@@ -12413,15 +13253,75 @@
           options
         );
 
-
       profileData =
         previousProfileData;
-
 
       return result;
 
     }
 
+    function getMonthlyPlanAdherenceAverage(){
+
+      ensureMonthlyFollowupMonths();
+
+      const monthKeys =
+        getMonthKeysFromJoiningToCurrent();
+
+      let total = 0;
+
+      let count = 0;
+
+      monthKeys.forEach(
+        monthKey => {
+
+          const evaluation =
+            calculateEvaluation(
+              'monthly',
+              {
+                monthKey
+              }
+            );
+
+          if(
+            evaluation.components &&
+            evaluation.components.planPercent !== null
+          ){
+
+            total +=
+              evaluation.components.planPercent;
+
+            count++;
+
+          }
+
+        }
+      );
+
+      return count > 0
+        ? roundNumber(
+            total /
+            count,
+            1
+          )
+        : 0;
+
+    }
+
+    function getMemorizedJuzCount(){
+
+      return JUZ_RANGES
+        .filter(
+          juz =>
+            Boolean(
+              profileData
+                .juzCompletion[
+                  String(juz.number)
+                ]?.memorized
+            )
+        )
+        .length;
+
+    }
 
     function renderScores(){
 
@@ -12430,12 +13330,10 @@
           'overall'
         );
 
-
       const monthly =
         calculateEvaluation(
           'monthly'
         );
-
 
       document.getElementById(
         'metricTotalPoints'
@@ -12444,18 +13342,15 @@
           overall.totalPoints
         );
 
-
       document.getElementById(
         'metricOverallPercent'
       ).textContent =
         `${overall.finalPercentage}%`;
 
-
       document.getElementById(
         'metricMonthlyPercent'
       ).textContent =
         `${monthly.finalPercentage}%`;
-
 
       document.getElementById(
         'metricMonthlyPoints'
@@ -12464,12 +13359,10 @@
           monthly.totalPoints
         );
 
-
       document.getElementById(
         'metricMonthLabel'
       ).textContent =
         currentMonthLabel();
-
 
       const uniquePages =
         new Set(
@@ -12480,7 +13373,6 @@
             )
         ).size;
 
-
       const newPages =
         getPageRecords()
           .filter(
@@ -12489,25 +13381,27 @@
           )
           .length;
 
-
       const progress =
         (
           uniquePages /
           604
         ) * 100;
 
+      const monthlyPlanAverage =
+        getMonthlyPlanAdherenceAverage();
+
+      const memorizedJuzCount =
+        getMemorizedJuzCount();
 
       document.getElementById(
         'recordedPageCount'
       ).textContent =
         uniquePages;
 
-
       document.getElementById(
         'newPageCount'
       ).textContent =
         newPages;
-
 
       document.getElementById(
         'recitationProgressPercent'
@@ -12517,7 +13411,6 @@
           1
         )}%`;
 
-
       document.getElementById(
         'recitationProgressFill'
       ).style.width =
@@ -12526,8 +13419,19 @@
           progress
         )}%`;
 
-    }
+      document.getElementById(
+        'monthlyPlanAdherenceAverage'
+      ).textContent =
+        `${formatPoints(
+          monthlyPlanAverage
+        )}%`;
 
+      document.getElementById(
+        'memorizedJuzCount'
+      ).textContent =
+        memorizedJuzCount;
+
+    }
 
     /* ==================================================
        SAVE PROFILE
@@ -12545,56 +13449,44 @@
 
       syncExtraPoints();
 
-      /*
-        تنظيف الأوسمة قبل الحفظ:
-        الأوسمة غير المعتمدة تختفي،
-        وجميع الأوسمة تُحفظ دائمًا بدون نقاط.
-      */
+      syncMonthlyFollowups();
 
       normalizeBadgeRecords();
-
 
       profileData.weeklyProgress =
         document.getElementById(
           'weeklyProgress'
         ).value.trim();
 
-
       profileData.overallProgress =
         document.getElementById(
           'overallProgress'
         ).value.trim();
-
 
       profileData.notes =
         document.getElementById(
           'notes'
         ).value.trim();
 
-
       profileData.guardianPhone =
         document.getElementById(
           'guardianPhone'
         ).value.trim();
-
 
       profileData.joiningDate =
         document.getElementById(
           'joiningDate'
         ).value;
 
-
       profileData.residence =
         document.getElementById(
           'residence'
         ).value.trim();
 
-
       profileData.bus =
         document.getElementById(
           'bus'
         ).value.trim();
-
 
       profileData.warnings =
         Number(
@@ -12603,25 +13495,19 @@
           ).value
         ) || 0;
 
-
       profileData.studentCode =
         document.getElementById(
           'studentCode'
         ).value.trim();
 
+      profileData.quarterlyFee =
+        FIXED_QUARTERLY_FEE;
 
-      /*
-        الاشتراك الشهري ثابت على 5 دنانير.
-      */
+      ensureCurrentStudentQuarterlyFee();
 
-      profileData.monthlyFee =
-        FIXED_MONTHLY_FEE;
-
-
-      ensureCurrentStudentMonthlyFee();
+      ensureMonthlyFollowupMonths();
 
     }
-
 
     async function uploadStudentPhoto(){
 
@@ -12643,13 +13529,11 @@
 
       }
 
-
       const extension =
         selectedPhotoFile.name
           .split('.')
           .pop()
           .toLowerCase();
-
 
       const safeExtension =
         /^[a-z0-9]+$/.test(
@@ -12658,10 +13542,8 @@
           ? extension
           : 'jpg';
 
-
       const filePath =
         `${studentId}/${Date.now()}.${safeExtension}`;
-
 
       const {
         error
@@ -12679,7 +13561,6 @@
             }
           );
 
-
       if(error){
 
         console.error(
@@ -12692,7 +13573,6 @@
 
       }
 
-
       const {
         data
       } =
@@ -12704,7 +13584,6 @@
             filePath
           );
 
-
       if(
         !data?.publicUrl
       ){
@@ -12715,11 +13594,9 @@
 
       }
 
-
       return data.publicUrl;
 
     }
-
 
     async function saveStudent(){
 
@@ -12734,34 +13611,27 @@
 
       }
 
-
       const button =
         document.getElementById(
           'saveButton'
         );
-
 
       const saveText =
         document.getElementById(
           'saveText'
         );
 
-
       const oldText =
         button.textContent;
-
 
       button.disabled =
         true;
 
-
       button.textContent =
         '⏳ جاري الحفظ...';
 
-
       saveText.textContent =
         'جاري حساب التقييم والنقاط وحفظ البيانات...';
-
 
       try{
 
@@ -12770,24 +13640,20 @@
             'name'
           ).value.trim();
 
-
         const section =
           document.getElementById(
             'section'
           ).value;
-
 
         const memorization =
           document.getElementById(
             'memorization'
           ).value.trim();
 
-
         const status =
           document.getElementById(
             'status'
           ).value;
-
 
         if(!name){
 
@@ -12797,10 +13663,8 @@
 
         }
 
-
         const photoUrl =
           await uploadStudentPhoto();
-
 
         if(photoUrl){
 
@@ -12809,13 +13673,7 @@
 
         }
 
-
         collectEverythingBeforeSave();
-
-
-        /*
-          الكود إذا كان موجودًا يبقى نفسه دائمًا.
-        */
 
         if(
           !/^\d{3}$/.test(
@@ -12830,11 +13688,6 @@
 
         }
 
-
-        /*
-          أولًا نحدّث البيانات الأساسية.
-        */
-
         const studentUpdate = {
 
           name,
@@ -12846,7 +13699,6 @@
           status
 
         };
-
 
         const {
           error: studentError
@@ -12861,7 +13713,6 @@
               studentId
             );
 
-
         if(studentError){
 
           console.error(
@@ -12874,28 +13725,19 @@
 
         }
 
-
-        /*
-          الأوسمة لا تضيف أي نقاط.
-        */
-
         awardAutomaticBadges();
 
-
         normalizeBadgeRecords();
-
 
         const overall =
           calculateEvaluation(
             'overall'
           );
 
-
         const monthly =
           calculateEvaluation(
             'monthly'
           );
-
 
         profileData.scoreSummary = {
 
@@ -12929,7 +13771,6 @@
 
         };
 
-
         const {
           error: profileError
         } =
@@ -12954,7 +13795,6 @@
               }
             );
 
-
         if(profileError){
 
           console.error(
@@ -12967,34 +13807,28 @@
 
         }
 
-
         student =
           {
             ...student,
             ...studentUpdate
           };
 
-
-        await ensureMonthlyFeesForAllStudents();
+        await ensureQuarterlyFeesForAllStudents();
 
         await finalizePreviousMonthChampion();
 
-
         selectedPhotoFile =
           null;
-
 
         document.getElementById(
           'photoFile'
         ).value =
           '';
 
-
         document.getElementById(
           'photoName'
         ).textContent =
           'تم حفظ الصورة الحالية';
-
 
         fillIdentity();
 
@@ -13018,15 +13852,12 @@
 
         renderScores();
 
-
         saveText.textContent =
           'تم الحفظ بنجاح ✓';
-
 
         showToast(
           'تم حفظ الملف وحساب النقاط والتقييم بنجاح ✅'
         );
-
 
       }catch(error){
 
@@ -13034,10 +13865,8 @@
           error
         );
 
-
         saveText.textContent =
           'حدث خطأ أثناء الحفظ';
-
 
         showToast(
           error.message ||
@@ -13050,14 +13879,12 @@
         button.disabled =
           false;
 
-
         button.textContent =
           oldText;
 
       }
 
     }
-
 
     /* ==================================================
        STUDENT PREVIEW
@@ -13070,7 +13897,6 @@
         return;
 
       }
-
 
       sessionStorage.setItem(
         'studentSession',
@@ -13094,12 +13920,10 @@
         })
       );
 
-
       window.location.href =
         'student-profile.html';
 
     }
-
 
     /* ==================================================
        ERROR
@@ -13114,18 +13938,15 @@
       ).style.display =
         'none';
 
-
       document.getElementById(
         'mainPage'
       ).style.display =
         'none';
 
-
       document.getElementById(
         'errorCard'
       ).style.display =
         'block';
-
 
       document.getElementById(
         'errorMessage'
@@ -13133,7 +13954,6 @@
         message;
 
     }
-
 
     /* ==================================================
        START
