@@ -3664,57 +3664,23 @@
 
 
       <button
-        type="button"
-        class="section-switch"
-        data-section="tests"
-        onclick="showProfileSection('tests')"
-      >
+  type="button"
+  class="section-switch"
+  data-section="followup"
+  onclick="showProfileSection('followup')"
+>
 
-        <div class="switch-icon">
-          📝
-        </div>
+  <div class="switch-icon">
+    📋
+  </div>
 
-        <div class="switch-title">
-          الاختبارات
-        </div>
+  <div class="switch-title">
+    المتابعة العامة
+  </div>
 
-      </button>
+</button>
 
-
-      <button
-        type="button"
-        class="section-switch"
-        data-section="attendance"
-        onclick="showProfileSection('attendance')"
-      >
-
-        <div class="switch-icon">
-          📅
-        </div>
-
-        <div class="switch-title">
-          الحضور
-        </div>
-
-      </button>
-
-            <button
-        type="button"
-        class="section-switch"
-        data-section="warnings"
-        onclick="showProfileSection('warnings')"
-      >
-
-        <div class="switch-icon">
-          ⚠️
-        </div>
-
-        <div class="switch-title">
-          الإنذارات
-        </div>
-
-      </button>
-
+      
       <button
         type="button"
         class="section-switch"
@@ -4109,147 +4075,357 @@
 
     </section>
 
-
     <!-- =========================
-         TESTS
-    ========================= -->
+       GENERAL FOLLOWUP
+========================= -->
 
-    <section
-      class="profile-section"
-      data-content="tests"
-    >
+<section
+  class="content-section"
+  data-content="followup"
+>
+
+  <div class="section-head">
+
+    <div>
+      <h2>المتابعة العامة</h2>
+
+      <p>
+        متابعة الحضور والتسميع والاختبارات والإنذارات
+      </p>
+    </div>
+
+  </div>
 
 
-      <div class="section-head">
+  <div class="followup-block">
 
-        <div class="section-title">
+    <div class="section-head">
 
-          <div class="section-icon">
-            📝
-          </div>
-
-          الاختبارات
-
-        </div>
-
-
-        <div
-          class="section-note"
-          id="testsSummary"
-        >
-          —
-        </div>
-
+      <div>
+        <h3>الحضور والغياب</h3>
       </div>
-
 
       <div
-        id="testsList"
-        class="list"
+        id="generalAttendanceSummary"
+        class="pill"
       >
-
-        <div class="empty">
-          لا توجد اختبارات مسجلة.
-        </div>
-
+        لا توجد بيانات
       </div>
 
+    </div>
 
-    </section>
+    <div
+      id="generalAttendanceList"
+      class="list"
+    ></div>
+
+  </div>
 
 
-    <!-- =========================
-         ATTENDANCE
-    ========================= -->
+  <div class="followup-block">
 
-    <section
-      class="profile-section"
-      data-content="attendance"
+    <div class="section-head">
+
+      <div>
+        <h3>التسميع اليومي</h3>
+      </div>
+
+    </div>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>التاريخ</th>
+            <th>الصفحة</th>
+            <th>الدرجة</th>
+            <th>النقاط</th>
+          </tr>
+
+        </thead>
+
+        <tbody id="generalRecitationTableBody">
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+
+  <div class="followup-block">
+
+    <div class="section-head">
+
+      <div>
+        <h3>التسميع القادم</h3>
+      </div>
+
+    </div>
+
+    <div
+      id="generalNextRecitationBox"
+      class="item"
     >
 
-
-      <div class="section-head">
-
-        <div class="section-title">
-
-          <div class="section-icon">
-            📅
-          </div>
-
-          الحضور والغياب
-
-        </div>
-
+      <div class="item-main">
 
         <div
-          class="section-note"
-          id="attendanceSummary"
+          id="generalNextRecitationText"
+          class="item-title"
         >
-          —
+          لا يوجد تسميع قادم
         </div>
 
       </div>
 
+    </div>
+
+  </div>
+
+
+  <div class="followup-block">
+
+    <div class="section-head">
+
+      <div>
+        <h3>الاختبارات</h3>
+      </div>
 
       <div
-        id="attendanceList"
-        class="list"
+        id="generalTestsSummary"
+        class="pill"
       >
-
-        <div class="empty">
-          لا توجد سجلات حضور.
-        </div>
-
+        0 اختبار
       </div>
 
+    </div>
 
-    </section>
+    <div
+      id="generalTestsList"
+      class="list"
+    ></div>
+
+  </div>
+
+
+  <div class="followup-block">
+
+    <div class="section-head">
+
+      <div>
+        <h3>الإنذارات</h3>
+      </div>
+
+      <div
+        id="generalWarningsSummary"
+        class="pill"
+      >
+        0 إنذار
+      </div>
+
+    </div>
+
+    <div
+      id="generalWarningsList"
+      class="list"
+    ></div>
+
+  </div>
+
+</section>
 
     <!-- =========================
-         WARNINGS
-    ========================= -->
+     GENERAL FOLLOWUP
+========================= -->
 
-    <section
-      class="profile-section"
-      data-content="warnings"
-    >
+<section
+  class="profile-section"
+  data-content="followup"
+>
 
-      <div class="section-head">
+  <div class="section-head">
 
-        <div class="section-title">
+    <div class="section-title">
 
-          <div class="section-icon">
-            ⚠️
-          </div>
-
-          الإنذارات
-
-        </div>
-
-
-        <div
-          class="section-note"
-          id="warningsSummary"
-        >
-          —
-        </div>
-
+      <div class="section-icon">
+        📋
       </div>
 
+      المتابعة العامة
+
+    </div>
+
+  </div>
+
+
+  <div class="followup-block">
+
+    <div class="section-head">
+
+      <div class="section-title">
+        📅 الحضور والغياب
+      </div>
 
       <div
-        id="warningsList"
-        class="list"
+        class="section-note"
+        id="generalAttendanceSummary"
       >
+        لا توجد بيانات
+      </div>
 
-        <div class="empty">
-          لا توجد إنذارات مسجلة.
+    </div>
+
+
+    <div
+      id="generalAttendanceList"
+      class="list"
+    ></div>
+
+  </div>
+
+
+  <div class="followup-block">
+
+    <div class="section-head">
+
+      <div class="section-title">
+        📖 التسميع اليومي
+      </div>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              التاريخ
+            </th>
+
+            <th>
+              الصفحة
+            </th>
+
+            <th>
+              الدرجة
+            </th>
+
+            <th>
+              النقاط
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody
+          id="generalRecitationTableBody"
+        ></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+
+  <div class="followup-block">
+
+    <div class="section-head">
+
+      <div class="section-title">
+        📚 التسميع القادم
+      </div>
+
+    </div>
+
+
+    <div
+      id="generalNextRecitationBox"
+      class="item"
+    >
+
+      <div class="item-main">
+
+        <div
+          id="generalNextRecitationText"
+          class="item-title"
+        >
+          لا يوجد تسميع قادم حاليًا
         </div>
 
       </div>
 
+    </div>
 
-    </section>
+  </div>
+
+
+  <div class="followup-block">
+
+    <div class="section-head">
+
+      <div class="section-title">
+        📝 الاختبارات
+      </div>
+
+      <div
+        class="section-note"
+        id="generalTestsSummary"
+      >
+        0 اختبار
+      </div>
+
+    </div>
+
+
+    <div
+      id="generalTestsList"
+      class="list"
+    ></div>
+
+  </div>
+
+
+  <div class="followup-block">
+
+    <div class="section-head">
+
+      <div class="section-title">
+        ⚠️ الإنذارات
+      </div>
+
+      <div
+        class="section-note"
+        id="generalWarningsSummary"
+      >
+        0 إنذار
+      </div>
+
+    </div>
+
+
+    <div
+      id="generalWarningsList"
+      class="list"
+    ></div>
+
+  </div>
+
+
+</section>
+
     
     <!-- =========================
          POINTS
@@ -7048,129 +7224,146 @@
     }
 
 
-    function renderNextRecitation(){
+function renderNextRecitation(){
 
-      const element =
-        document.getElementById(
-          'nextRecitationText'
-        );
-
-
-      if(
-        !element
-      ){
-
-        return;
-
-      }
+  const element =
+    document.getElementById(
+      'generalNextRecitationText'
+    );
 
 
-      const followups =
-        toArray(
-          firstValue(
-            profileData,
-            [
-              'monthlyFollowups',
-              'monthly_followups'
-            ],
-            []
-          )
-        );
+  if(
+    !element
+  ){
+
+    return;
+
+  }
 
 
-      const month =
-        currentMonthKey();
+  const tasks =
+    getPlanTasks();
 
 
-      const followup =
-        followups.find(
-          item =>
-            String(
-              firstValue(
-                item,
-                [
-                  'monthKey',
-                  'month',
-                  'date'
-                ],
-                ''
-              )
-            ) ===
-            month
-        );
+  const today =
+    new Date();
 
 
-      if(
-        !followup
-      ){
-
-        element.textContent =
-          'لا توجد مهمة تسميع قادمة لهذا الشهر.';
-
-        return;
-
-      }
+  today.setHours(
+    0,
+    0,
+    0,
+    0
+  );
 
 
-      const title =
-        firstValue(
-          followup,
-          [
-            'nextRecitationTitle',
-            'next_recitation_title',
-            'upcomingTitle',
-            'nextRecitation',
-            'next_recitation'
-          ],
-          ''
-        );
+  const upcoming =
+    tasks
+      .map(
+        task => {
+
+          const rawDate =
+            firstValue(
+              task,
+              [
+                'date',
+                'startDate',
+                'start_date',
+                'dueDate',
+                'due_date'
+              ],
+              ''
+            );
 
 
-      const amount =
-        formatNextRecitationAmount(
-          firstValue(
-            followup,
-            [
-              'nextRecitationAmount',
-              'next_recitation_amount',
-              'upcomingAmount'
-            ],
-            ''
-          )
-        );
+          if(
+            !rawDate
+          ){
+
+            return null;
+
+          }
 
 
-      const parts = [];
+          const date =
+            new Date(
+              rawDate
+            );
 
 
-      if(
-        title
-      ){
+          if(
+            Number.isNaN(
+              date.getTime()
+            )
+          ){
 
-        parts.push(
-          `المطلوب: ${escapeHtml(title)}`
-        );
+            return null;
 
-      }
-
-
-      if(
-        amount
-      ){
-
-        parts.push(
-          `مقدار التسميع: ${escapeHtml(amount)}`
-        );
-
-      }
+          }
 
 
-      element.innerHTML =
-        parts.length
-          ? parts.join(' • ')
-          : 'لا توجد مهمة تسميع قادمة لهذا الشهر.';
+          date.setHours(
+            0,
+            0,
+            0,
+            0
+          );
 
-    }
+
+          return {
+            task,
+            date
+          };
+
+        }
+      )
+      .filter(
+        item =>
+          item &&
+          item.date >= today
+      )
+      .sort(
+        (
+          a,
+          b
+        ) =>
+          a.date -
+          b.date
+      );
+
+
+  if(
+    !upcoming.length
+  ){
+
+    element.textContent =
+      'لا يوجد تسميع قادم حاليًا';
+
+    return;
+
+  }
+
+
+  const next =
+    upcoming[0];
+
+
+  const pages =
+    extractPlanTaskPages(
+      next.task
+    );
+
+
+  const pageText =
+    pages.length
+      ? ` • الصفحات: ${pages.join('، ')}`
+      : '';
+
+
+  element.textContent =
+    `📖 التسميع بتاريخ ${formatDate(next.date)}${pageText}`;
+
+}
     
     function renderPlan(){
 
@@ -10040,13 +10233,7 @@
         renderTests();
 
 
-        renderAttendance();  
-
-        
-        renderNextRecitation();
-
-        
-        renderWarnings();
+        renderGeneralFollowup();
 
         
         renderPoints();
