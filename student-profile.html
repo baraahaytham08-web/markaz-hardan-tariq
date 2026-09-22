@@ -3512,7 +3512,7 @@
               </div>
 
               <div class="personal-value payment-value">
-                5 د.أ
+                25 د.أ
               </div>
 
             </div>
@@ -3698,6 +3698,22 @@
 
       </button>
 
+            <button
+        type="button"
+        class="section-switch"
+        data-section="warnings"
+        onclick="showProfileSection('warnings')"
+      >
+
+        <div class="switch-icon">
+          ⚠️
+        </div>
+
+        <div class="switch-title">
+          الإنذارات
+        </div>
+
+      </button>
 
       <button
         type="button"
@@ -4050,7 +4066,35 @@
 
       </div>
 
+      <div
+        class="item"
+        id="nextRecitationBox"
+        style="margin-bottom:14px;"
+      >
 
+        <div class="item-main">
+
+          <div class="item-title">
+            🎯 التسميع القادم
+          </div>
+
+          <div
+            class="item-sub"
+            id="nextRecitationText"
+          >
+            لا توجد مهمة تسميع قادمة لهذا الشهر.
+          </div>
+
+        </div>
+
+
+        <div class="item-badge">
+          للعرض فقط
+        </div>
+
+      </div>
+
+      
       <div
         id="weeklyPlanList"
         class="list"
@@ -4161,7 +4205,52 @@
 
     </section>
 
+    <!-- =========================
+         WARNINGS
+    ========================= -->
 
+    <section
+      class="profile-section"
+      data-content="warnings"
+    >
+
+      <div class="section-head">
+
+        <div class="section-title">
+
+          <div class="section-icon">
+            ⚠️
+          </div>
+
+          الإنذارات
+
+        </div>
+
+
+        <div
+          class="section-note"
+          id="warningsSummary"
+        >
+          —
+        </div>
+
+      </div>
+
+
+      <div
+        id="warningsList"
+        class="list"
+      >
+
+        <div class="empty">
+          لا توجد إنذارات مسجلة.
+        </div>
+
+      </div>
+
+
+    </section>
+    
     <!-- =========================
          POINTS
     ========================= -->
@@ -4341,38 +4430,6 @@
               👑
             </div>
 
-            سجل البطل الشهري
-
-          </div>
-
-
-          <div
-            class="section-note"
-            id="championSummary"
-          >
-            —
-          </div>
-
-        </div>
-
-
-        <div
-          id="championList"
-          class="list"
-        >
-
-          <div class="empty">
-            لم يحصل الطالب على لقب البطل الشهري بعد.
-          </div>
-
-        </div>
-
-
-      </div>
-
-
-    </section>
-
 
     <!-- =========================
          FEES
@@ -4410,66 +4467,71 @@
       <div class="stats">
 
 
-        <div class="stat">
-
-          <div class="stat-label">
-            الرسوم الشهرية
-          </div>
-
-          <div class="stat-value">
-            5 د.أ
-          </div>
-
-        </div>
+<div class="stats">
 
 
-        <div class="stat">
+  <div class="stat">
 
-          <div class="stat-label">
-            الشهر الحالي
-          </div>
+    <div class="stat-label">
+      الرسوم الشهرية
+    </div>
 
-          <div
-            class="stat-value"
-            id="currentFeeMonth"
-          >
-            —
-          </div>
+    <div class="stat-value">
+      25 د.أ
+    </div>
 
-        </div>
+  </div>
 
 
-        <div class="stat">
+  <div class="stat">
 
-          <div class="stat-label">
-            حالة الدفع
-          </div>
+    <div class="stat-label">
+      المدفوع إجمالاً
+    </div>
 
-          <div
-            class="stat-value"
-            id="currentFeeStatus"
-          >
-            —
-          </div>
+    <div
+      class="stat-value"
+      id="feePaidTotal"
+    >
+      0 د.أ
+    </div>
 
-        </div>
+  </div>
 
 
-        <div class="stat">
+  <div class="stat">
 
-          <div class="stat-label">
-            آخر دفعة
-          </div>
+    <div class="stat-label">
+      المتبقي هذا الشهر
+    </div>
 
-          <div
-            class="stat-value"
-            id="lastFeePayment"
-          >
-            —
-          </div>
+    <div
+      class="stat-value"
+      id="feeRemainingCurrent"
+    >
+      25 د.أ
+    </div>
 
-        </div>
+  </div>
 
+
+  <div class="stat">
+
+    <div class="stat-label">
+      المتبقي إجمالاً
+    </div>
+
+    <div
+      class="stat-value"
+      id="feeRemainingTotal"
+    >
+      0 د.أ
+    </div>
+
+  </div>
+
+
+</div>
 
       </div>
 
@@ -4739,10 +4801,10 @@
 
     const BADGE_DEFINITIONS = {
 
-      beginner:{
+      'beginner-reader':{
 
         id:
-          'beginner',
+          'beginner-reader',
 
         icon:
           '📖',
@@ -4753,10 +4815,10 @@
       },
 
 
-      persistent:{
+      'persevering':{
 
         id:
-          'persistent',
+          'persevering',
 
         icon:
           '🌟',
@@ -4767,7 +4829,7 @@
       },
 
 
-      excellence:{
+      'excellence':{
 
         id:
           'excellence',
@@ -4781,10 +4843,10 @@
       },
 
 
-      golden:{
+      'golden-hafiz':{
 
         id:
-          'golden',
+          'golden-hafiz',
 
         icon:
           '🏆',
@@ -4795,10 +4857,10 @@
       },
 
 
-      crown:{
+      'crown-of-dignity':{
 
         id:
-          'crown',
+          'crown-of-dignity',
 
         icon:
           '👑',
@@ -4806,38 +4868,9 @@
         title:
           'تاج الوقار'
 
-      },
-
-
-      monthlyChampion:{
-
-        id:
-          'monthlyChampion',
-
-        icon:
-          '🥇',
-
-        title:
-          'بطل الشهر'
-
-      },
-
-
-      monthly_champion:{
-
-        id:
-          'monthly_champion',
-
-        icon:
-          '🥇',
-
-        title:
-          'بطل الشهر'
-
       }
 
     };
-
 
     /* =========================
        JUZ
@@ -6985,6 +7018,160 @@
        PLAN RENDER
     ========================= */
 
+        function formatNextRecitationAmount(
+      value
+    ){
+
+      const textValue =
+        String(
+          value ?? ''
+        ).trim();
+
+
+      const pageMatch =
+        textValue.match(
+          /^(?:صفحة\s*)?(\d+)\s*صفحات?$/
+        );
+
+
+      if(
+        pageMatch
+      ){
+
+        return `صفحة رقم ${pageMatch[1]}`;
+
+      }
+
+
+      return textValue;
+
+    }
+
+
+    function renderNextRecitation(){
+
+      const element =
+        document.getElementById(
+          'nextRecitationText'
+        );
+
+
+      if(
+        !element
+      ){
+
+        return;
+
+      }
+
+
+      const followups =
+        toArray(
+          firstValue(
+            profileData,
+            [
+              'monthlyFollowups',
+              'monthly_followups'
+            ],
+            []
+          )
+        );
+
+
+      const month =
+        currentMonthKey();
+
+
+      const followup =
+        followups.find(
+          item =>
+            String(
+              firstValue(
+                item,
+                [
+                  'monthKey',
+                  'month',
+                  'date'
+                ],
+                ''
+              )
+            ) ===
+            month
+        );
+
+
+      if(
+        !followup
+      ){
+
+        element.textContent =
+          'لا توجد مهمة تسميع قادمة لهذا الشهر.';
+
+        return;
+
+      }
+
+
+      const title =
+        firstValue(
+          followup,
+          [
+            'nextRecitationTitle',
+            'next_recitation_title',
+            'upcomingTitle',
+            'nextRecitation',
+            'next_recitation'
+          ],
+          ''
+        );
+
+
+      const amount =
+        formatNextRecitationAmount(
+          firstValue(
+            followup,
+            [
+              'nextRecitationAmount',
+              'next_recitation_amount',
+              'upcomingAmount'
+            ],
+            ''
+          )
+        );
+
+
+      const parts = [];
+
+
+      if(
+        title
+      ){
+
+        parts.push(
+          `المطلوب: ${escapeHtml(title)}`
+        );
+
+      }
+
+
+      if(
+        amount
+      ){
+
+        parts.push(
+          `مقدار التسميع: ${escapeHtml(amount)}`
+        );
+
+      }
+
+
+      element.innerHTML =
+        parts.length
+          ? parts.join(' • ')
+          : 'لا توجد مهمة تسميع قادمة لهذا الشهر.';
+
+    }
+    
     function renderPlan(){
 
       const container =
@@ -7233,9 +7420,9 @@
 
 
       if(
-        s >= 90
+        s >= 98
       ){
-
+        
         return {
 
           label:
@@ -7250,9 +7437,9 @@
 
 
       if(
-        s >= 80
+        s >= 96
       ){
-
+        
         return {
 
           label:
@@ -7267,14 +7454,14 @@
 
 
       if(
-        s >= 70
+        s >= 93
       ){
-
+        
         return {
 
           label:
-            'جيد',
-
+            'مقبول',
+          
           points:
             4
 
@@ -8070,6 +8257,8 @@
         firstValue(
           summary,
           [
+            'overallPercentage',
+            'overall_percentage',
             'overallFinal'
           ],
           null
@@ -8112,6 +8301,8 @@
         firstValue(
           summary,
           [
+            'monthlyPercentage',
+            'monthly_percentage',
             'monthlyFinal'
           ],
           null
@@ -8143,7 +8334,157 @@
 
     }
 
+    function getWarningRecords(){
 
+      return toArray(
+        firstValue(
+          profileData,
+          [
+            'warningRecords',
+            'warning_records'
+          ],
+          []
+        )
+      )
+      .filter(
+        warning =>
+          warning &&
+          typeof warning === 'object'
+      );
+
+    }
+
+
+    function renderWarnings(){
+
+      const container =
+        document.getElementById(
+          'warningsList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'warningsSummary'
+        );
+
+
+      if(
+        !container
+      ){
+
+        return;
+
+      }
+
+
+      const warnings =
+        getWarningRecords();
+
+
+      if(
+        !warnings.length
+      ){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد إنذارات مسجلة.</div>';
+
+        if(summary){
+
+          summary.textContent =
+            '0 إنذار';
+
+        }
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        warnings
+          .map(
+            (
+              warning,
+              index
+            ) => {
+
+              const reason =
+                firstValue(
+                  warning,
+                  [
+                    'reason',
+                    'cause',
+                    'title'
+                  ],
+                  'إنذار'
+                );
+
+
+              const date =
+                firstValue(
+                  warning,
+                  [
+                    'date',
+                    'warningDate',
+                    'warning_date'
+                  ],
+                  ''
+                );
+
+
+              return `
+
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+                      ⚠️ ${escapeHtml(
+                        reason
+                      )}
+                    </div>
+
+
+                    <div class="item-sub">
+
+                      ${
+                        date
+                          ? `تاريخ الإنذار: ${escapeHtml(
+                              formatDate(
+                                date
+                              )
+                            )}`
+                          : 'تاريخ الإنذار غير محدد'
+                      }
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="item-badge">
+                    إنذار ${index + 1}
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('');
+
+
+      if(summary){
+
+        summary.textContent =
+          `${warnings.length} إنذار`;
+
+      }
+
+    }
+    
     function renderPoints(){
 
       const academic =
@@ -8497,61 +8838,8 @@
           `${basic.length} وسام`;
 
       }
-
-
-      renderChampions();
-
+      
     }
-
-
-    function renderChampions(){
-
-      const container =
-        document.getElementById(
-          'championList'
-        );
-
-
-      const summary =
-        document.getElementById(
-          'championSummary'
-        );
-
-
-      const champions =
-        getBadges()
-          .filter(
-            badge => {
-
-              const id =
-                getBadgeId(
-                  badge
-                );
-
-
-              return (
-
-                id ===
-                  'monthlyChampion' ||
-
-                id ===
-                  'monthly_champion'
-
-              );
-
-            }
-          );
-
-
-      if(
-        !champions.length
-      ){
-
-        container.innerHTML =
-          '<div class="empty">لم يحصل الطالب على لقب البطل الشهري بعد.</div>';
-
-        summary.textContent =
-          '0 مرة';
 
         return;
 
@@ -8777,9 +9065,27 @@
     }
 
 
-    function feeIsPaid(
+    function getFeePaidAmount(
       fee
     ){
+
+      if(
+        fee?.paidAmount !== undefined &&
+        fee?.paidAmount !== null
+      ){
+
+        return Math.max(
+          0,
+          Math.min(
+            25,
+            numberValue(
+              fee.paidAmount
+            )
+          )
+        );
+
+      }
+
 
       const status =
         String(
@@ -8798,50 +9104,48 @@
 
 
       if(
-
         status === 'paid' ||
-
         status === 'مدفوع' ||
-
         status === 'مدفوعة'
-
       ){
 
-        return true;
+        return 25;
 
       }
 
 
-      const explicit =
-        firstValue(
-          fee,
-          [
-            'paid',
-            'isPaid',
-            'is_paid'
-          ],
-          null
-        );
+      return 0;
+
+    }
 
 
-      if(
-        explicit !== null
-      ){
+    function getFeeRemainingAmount(
+      fee
+    ){
 
-        return (
+      return Math.max(
+        0,
+        25 -
+        getFeePaidAmount(
+          fee
+        )
+      );
 
-          explicit === true ||
+    }
 
-          explicit === 'true' ||
 
-          explicit === 1 ||
+    function feeIsPaid(
+      fee
+    ){
 
-          explicit === '1'
+      return (
+        getFeePaidAmount(
+          fee
+        ) >=
+        25
+      );
 
-        );
-
-      }
-
+    }
 
       return false;
 
@@ -8868,14 +9172,23 @@
         );
 
 
+      const paid =
+        currentFee
+          ? getFeePaidAmount(
+              currentFee
+            )
+          : 0;
+
+
       setText(
         'infoPaymentStatus',
-        currentFee &&
-        feeIsPaid(
-          currentFee
-        )
-          ? 'مدفوع'
-          : 'غير مدفوع'
+        paid >= 25
+          ? 'مدفوع بالكامل'
+          : paid > 0
+            ? `مدفوع جزئيًا — المتبقي ${decimalNumber(
+                25 - paid
+              )} د.أ`
+            : 'غير مدفوع'
       );
 
     }
@@ -8901,64 +9214,64 @@
         );
 
 
+      const paidTotal =
+        records.reduce(
+          (
+            total,
+            fee
+          ) =>
+            total +
+            getFeePaidAmount(
+              fee
+            ),
+          0
+        );
+
+
+      const remainingTotal =
+        records.reduce(
+          (
+            total,
+            fee
+          ) =>
+            total +
+            getFeeRemainingAmount(
+              fee
+            ),
+          0
+        );
+
+
+      const remainingCurrent =
+        currentFee
+          ? getFeeRemainingAmount(
+              currentFee
+            )
+          : 25;
+
+
       setText(
-        'currentFeeMonth',
-        formatMonth(
-          currentMonth
-        )
+        'feePaidTotal',
+        `${decimalNumber(
+          paidTotal
+        )} د.أ`
       );
 
 
-      if(
-        currentFee
-      ){
-
-        setText(
-          'currentFeeStatus',
-          feeIsPaid(
-            currentFee
-          )
-            ? 'مدفوع'
-            : 'غير مدفوع'
-        );
+      setText(
+        'feeRemainingCurrent',
+        `${decimalNumber(
+          remainingCurrent
+        )} د.أ`
+      );
 
 
-        const paidAt =
-          firstValue(
-            currentFee,
-            [
-              'paidAt',
-              'paid_at',
-              'paymentDate',
-              'payment_date'
-            ],
-            ''
-          );
-
-
-        setText(
-          'lastFeePayment',
-          paidAt
-            ? formatDateTime(
-                paidAt
-              )
-            : '—'
-        );
-
-      }else{
-
-        setText(
-          'currentFeeStatus',
-          'غير مدفوع'
-        );
-
-
-        setText(
-          'lastFeePayment',
-          '—'
-        );
-
-      }
+      setText(
+        'feeRemainingTotal',
+        `${decimalNumber(
+          remainingTotal
+        )} د.أ`
+      );
 
 
       const container =
@@ -8981,7 +9294,9 @@
           '<div class="empty">لا توجد بيانات رسوم مسجلة.</div>';
 
         summary.textContent =
-          '5 د.أ شهريًا';
+          '25 د.أ شهريًا';
+
+        renderPaymentStatus();
 
         return;
 
@@ -9014,7 +9329,13 @@
 
 
               const paid =
-                feeIsPaid(
+                getFeePaidAmount(
+                  fee
+                );
+
+
+              const remaining =
+                getFeeRemainingAmount(
                   fee
                 );
 
@@ -9027,6 +9348,17 @@
                     'paid_at',
                     'paymentDate',
                     'payment_date'
+                  ],
+                  ''
+                );
+
+
+              const notes =
+                firstValue(
+                  fee,
+                  [
+                    'notes',
+                    'note'
                   ],
                   ''
                 );
@@ -9049,11 +9381,33 @@
 
                     <div class="item-sub">
 
-                      5 د.أ
+                      الرسوم: 25 د.أ
+
+                      • المدفوع:
+                      ${decimalNumber(
+                        paid
+                      )} د.أ
+
+                      • المتبقي:
+                      ${decimalNumber(
+                        remaining
+                      )} د.أ
 
                       ${
                         paidAt
-                          ? ` • تاريخ الدفع: ${escapeHtml(formatDateTime(paidAt))}`
+                          ? ` • تاريخ الدفع: ${escapeHtml(
+                              formatDateTime(
+                                paidAt
+                              )
+                            )}`
+                          : ''
+                      }
+
+                      ${
+                        notes
+                          ? ` • ${escapeHtml(
+                              notes
+                            )}`
                           : ''
                       }
 
@@ -9063,11 +9417,15 @@
 
 
                   <div class="item-badge">
+
                     ${
-                      paid
-                        ? 'مدفوع'
-                        : 'غير مدفوع'
+                      paid >= 25
+                        ? 'مدفوع بالكامل'
+                        : paid > 0
+                          ? 'مدفوع جزئيًا'
+                          : 'متبقي'
                     }
+
                   </div>
 
                 </div>
@@ -9079,22 +9437,30 @@
           .join('');
 
 
-      const paidCount =
+      const paidMonths =
         sorted
           .filter(
             fee =>
-              feeIsPaid(
+              getFeePaidAmount(
                 fee
-              )
+              ) >=
+              25
           )
           .length;
 
 
       summary.textContent =
-        `${paidCount} مدفوعة من ${sorted.length}`;
+        `${paidMonths} مكتملة من ${sorted.length} شهرًا • المدفوع ${decimalNumber(
+          paidTotal
+        )} د.أ • المتبقي ${decimalNumber(
+          remainingTotal
+        )} د.أ`;
+
+
+      renderPaymentStatus();
 
     }
-
+    
 
     /* =========================
        PROGRESS
@@ -9833,9 +10199,15 @@
         renderTests();
 
 
-        renderAttendance();
+        renderAttendance();  
 
+        
+        renderNextRecitation();
 
+        
+        renderWarnings();
+
+        
         renderPoints();
 
 
