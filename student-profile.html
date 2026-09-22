@@ -8731,28 +8731,7 @@
 
 
       const basic =
-        badges.filter(
-          badge => {
-
-            const id =
-              getBadgeId(
-                badge
-              );
-
-
-            return (
-
-              id !==
-                'monthlyChampion' &&
-
-              id !==
-                'monthly_champion'
-
-            );
-
-          }
-        );
-
+        badges;
 
       if(
         !basic.length
@@ -8838,11 +8817,14 @@
           `${basic.length} وسام`;
 
       }
-      
+
+
+    }
+
+
     /* =========================
        FEES
     ========================= */
-
     function getFeeRecords(){
 
       return toArray(
