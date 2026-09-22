@@ -9880,7 +9880,9 @@ function getFeeRemainingAmount(
           ? 'مدفوع بالكامل'
           : paid > 0
             ? `مدفوع جزئيًا — المتبقي ${decimalNumber(
-                25 - paid
+                getFeeRemainingAmount(
+  currentFee
+)
               )} د.أ`
             : 'غير مدفوع'
       );
