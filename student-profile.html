@@ -1,24 +1,40 @@
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>ملف الطالب | مركز حردان طارق القرآني</title>
+  <meta charset="UTF-8">
 
- <!-- شعار الموقع -->
-  <link rel="icon" type="image/png" href="logo.png">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    ملف الطالب | مركز حردان طارق القرآني
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
-  />
+  >
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
+
 
   <style>
 
     :root{
+
       --bg:#07130f;
       --bg2:#0b1f18;
 
@@ -47,9 +63,15 @@
 
 
     *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
+
+      box-sizing:
+        border-box;
+
+      margin:
+        0;
+
+      padding:
+        0;
     }
 
 
@@ -101,9 +123,11 @@
 
     body::before{
 
-      content:"";
+      content:
+        "";
 
-      position:fixed;
+      position:
+        fixed;
 
       width:
         420px;
@@ -133,9 +157,11 @@
 
     body::after{
 
-      content:"";
+      content:
+        "";
 
-      position:fixed;
+      position:
+        fixed;
 
       width:
         350px;
@@ -199,13 +225,10 @@
     }
 
 
-    /* =========================
-       HEADER
-    ========================= */
-
     .topbar{
 
-      display:flex;
+      display:
+        flex;
 
       justify-content:
         space-between;
@@ -247,7 +270,8 @@
       text-align:
         right;
 
-      display:flex;
+      display:
+        flex;
 
       align-items:
         center;
@@ -288,7 +312,8 @@
       object-fit:
         cover;
 
-      flex:none;
+      flex:
+        none;
 
       background:
         #fff;
@@ -312,7 +337,8 @@
 
     .brand-text strong{
 
-      display:block;
+      display:
+        block;
 
       font-size:
         16px;
@@ -340,7 +366,8 @@
 
     .top-actions{
 
-      display:flex;
+      display:
+        flex;
 
       gap:
         10px;
@@ -435,7 +462,8 @@
 
     .personal-card::before{
 
-      content:"";
+      content:
+        "";
 
       position:
         absolute;
@@ -480,8 +508,6 @@
     }
 
 
-    /* ===== RIGHT SIDE ===== */
-
     .personal-main{
 
       min-width:
@@ -500,7 +526,8 @@
 
     .personal-top{
 
-      display:flex;
+      display:
+        flex;
 
       align-items:
         center;
@@ -638,7 +665,8 @@
 
     .personal-label::before{
 
-      content:"";
+      content:
+        "";
 
       width:
         7px;
@@ -661,11 +689,7 @@
     .student-name{
 
       font-size:
-        clamp(
-          27px,
-          4vw,
-          40px
-        );
+        clamp(27px,4vw,40px);
 
       line-height:
         1.2;
@@ -677,8 +701,6 @@
         break-word;
     }
 
-
-    /* ===== CODE ===== */
 
     .student-code-box{
 
@@ -790,7 +812,7 @@
 
 
     /* =========================
-       FOUR METRICS - LEFT SIDE
+       METRICS
     ========================= */
 
     .metrics{
@@ -799,10 +821,7 @@
         grid;
 
       grid-template-columns:
-        repeat(
-          2,
-          minmax(0,1fr)
-        );
+        repeat(2,minmax(0,1fr));
 
       gap:
         10px;
@@ -819,12 +838,7 @@
 
       border:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .055
-        );
+        rgba(255,255,255,.055);
 
       border-radius:
         14px;
@@ -833,12 +847,7 @@
         15px 13px;
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .025
-        );
+        rgba(255,255,255,.025);
 
       min-width:
         0;
@@ -914,48 +923,28 @@
     .metric:nth-child(1){
 
       background:
-        rgba(
-          217,
-          184,
-          108,
-          .045
-        );
+        rgba(217,184,108,.045);
     }
 
 
     .metric:nth-child(2){
 
       background:
-        rgba(
-          47,
-          159,
-          114,
-          .045
-        );
+        rgba(47,159,114,.045);
     }
 
 
     .metric:nth-child(3){
 
       background:
-        rgba(
-          217,
-          184,
-          108,
-          .045
-        );
+        rgba(217,184,108,.045);
     }
 
 
     .metric:nth-child(4){
 
       background:
-        rgba(
-          100,
-          160,
-          190,
-          .045
-        );
+        rgba(100,160,190,.045);
     }
 
 
@@ -975,10 +964,7 @@
         grid;
 
       grid-template-columns:
-        repeat(
-          4,
-          minmax(0,1fr)
-        );
+        repeat(4,minmax(0,1fr));
 
       gap:
         10px;
@@ -988,21 +974,11 @@
     .personal-item{
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .028
-        );
+        rgba(255,255,255,.028);
 
       border:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .055
-        );
+        rgba(255,255,255,.055);
 
       border-radius:
         17px;
@@ -1071,10 +1047,7 @@
         grid;
 
       grid-template-columns:
-        repeat(
-          4,
-          minmax(0,1fr)
-        );
+        repeat(4,minmax(0,1fr));
 
       gap:
         12px;
@@ -1325,6 +1298,9 @@
 
       font-size:
         11px;
+
+      text-align:
+        left;
     }
 
 
@@ -1338,10 +1314,7 @@
         grid;
 
       grid-template-columns:
-        repeat(
-          4,
-          minmax(0,1fr)
-        );
+        repeat(4,minmax(0,1fr));
 
       gap:
         12px;
@@ -1351,21 +1324,11 @@
     .stat{
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .025
-        );
+        rgba(255,255,255,.025);
 
       border:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .05
-        );
+        rgba(255,255,255,.05);
 
       border-radius:
         18px;
@@ -1405,8 +1368,8 @@
 
 
     /* =========================
-       PLAN PROGRESS
-    ========================= */
+       PROGRESS INSIDE RECITATION
+       ========================= */
 
     .progress-grid{
 
@@ -1414,10 +1377,7 @@
         grid;
 
       grid-template-columns:
-        repeat(
-          2,
-          minmax(0,1fr)
-        );
+        repeat(2,minmax(0,1fr));
 
       gap:
         12px;
@@ -1430,21 +1390,11 @@
     .progress-box{
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .025
-        );
+        rgba(255,255,255,.025);
 
       border:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .05
-        );
+        rgba(255,255,255,.05);
 
       border-radius:
         18px;
@@ -1521,12 +1471,7 @@
         8px;
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .06
-        );
+        rgba(255,255,255,.06);
 
       border-radius:
         999px;
@@ -1560,7 +1505,7 @@
 
 
     /* =========================
-       INFO GRID
+       INFO
     ========================= */
 
     .info-grid{
@@ -1569,10 +1514,7 @@
         grid;
 
       grid-template-columns:
-        repeat(
-          2,
-          minmax(0,1fr)
-        );
+        repeat(2,minmax(0,1fr));
 
       gap:
         12px;
@@ -1582,21 +1524,11 @@
     .info-item{
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .025
-        );
+        rgba(255,255,255,.025);
 
       border:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .05
-        );
+        rgba(255,255,255,.05);
 
       border-radius:
         17px;
@@ -1664,21 +1596,11 @@
         15px;
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .025
-        );
+        rgba(255,255,255,.025);
 
       border:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .05
-        );
+        rgba(255,255,255,.05);
 
       border-radius:
         16px;
@@ -1692,6 +1614,9 @@
 
       min-width:
         0;
+
+      flex:
+        1;
     }
 
 
@@ -1760,7 +1685,7 @@
 
 
     /* =========================
-       RECITATION SWITCH
+       SWITCH ROW
     ========================= */
 
     .switch-row{
@@ -1851,12 +1776,7 @@
 
       border:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .055
-        );
+        rgba(255,255,255,.055);
 
       border-radius:
         16px;
@@ -1922,12 +1842,7 @@
 
       border-bottom:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .045
-        );
+        rgba(255,255,255,.045);
 
       vertical-align:
         middle;
@@ -2063,12 +1978,7 @@
 
       border:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .05
-        );
+        rgba(255,255,255,.05);
 
       border-radius:
         17px;
@@ -2077,12 +1987,7 @@
         hidden;
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .02
-        );
+        rgba(255,255,255,.02);
     }
 
 
@@ -2102,12 +2007,7 @@
     .juz-header:hover{
 
       background:
-        rgba(
-          217,
-          184,
-          108,
-          .03
-        );
+        rgba(217,184,108,.03);
     }
 
 
@@ -2175,12 +2075,7 @@
         7px;
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .06
-        );
+        rgba(255,255,255,.06);
 
       border-radius:
         999px;
@@ -2236,10 +2131,7 @@
         grid;
 
       grid-template-columns:
-        repeat(
-          8,
-          minmax(0,1fr)
-        );
+        repeat(8,minmax(0,1fr));
 
       gap:
         7px;
@@ -2250,20 +2142,10 @@
 
       border:
         1px solid
-        rgba(
-          255,
-          255,
-          255,
-          .06
-        );
+        rgba(255,255,255,.06);
 
       background:
-        rgba(
-          255,
-          255,
-          255,
-          .025
-        );
+        rgba(255,255,255,.025);
 
       color:
         var(--muted);
@@ -2301,20 +2183,10 @@
     .page-btn.new{
 
       background:
-        rgba(
-          47,
-          159,
-          114,
-          .12
-        );
+        rgba(47,159,114,.12);
 
       border-color:
-        rgba(
-          47,
-          159,
-          114,
-          .22
-        );
+        rgba(47,159,114,.22);
 
       color:
         #cdebdc;
@@ -2324,20 +2196,10 @@
     .page-btn.review{
 
       background:
-        rgba(
-          217,
-          184,
-          108,
-          .10
-        );
+        rgba(217,184,108,.10);
 
       border-color:
-        rgba(
-          217,
-          184,
-          108,
-          .20
-        );
+        rgba(217,184,108,.20);
 
       color:
         var(--gold2);
@@ -2354,12 +2216,7 @@
         );
 
       border-color:
-        rgba(
-          217,
-          184,
-          108,
-          .22
-        );
+        rgba(217,184,108,.22);
 
       color:
         var(--gold2);
@@ -2367,7 +2224,525 @@
 
 
     /* =========================
-       PAGE DETAIL MODAL
+       GENERAL FOLLOWUP
+    ========================= */
+
+    .followup-block{
+
+      margin-bottom:
+        24px;
+    }
+
+
+    .followup-block:last-child{
+
+      margin-bottom:
+        0;
+    }
+
+
+    .followup-record-grid{
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+      gap:
+        10px;
+    }
+
+
+    .followup-card{
+
+      min-width:
+        0;
+
+      min-height:
+        135px;
+
+      padding:
+        13px;
+
+      border-radius:
+        16px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      border:
+        1px solid
+        rgba(255,255,255,.05);
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      text-align:
+        center;
+
+      gap:
+        5px;
+
+      transition:
+        .22s ease;
+    }
+
+
+    .followup-card:hover{
+
+      transform:
+        translateY(-2px);
+
+      border-color:
+        rgba(217,184,108,.20);
+    }
+
+
+    .followup-card-icon{
+
+      font-size:
+        22px;
+
+      margin-bottom:
+        1px;
+    }
+
+
+    .followup-card-title{
+
+      color:
+        var(--gold2);
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+
+      line-height:
+        1.5;
+    }
+
+
+    .followup-card-date{
+
+      color:
+        var(--muted2);
+
+      font-size:
+        10px;
+
+      line-height:
+        1.6;
+    }
+
+
+    .followup-card-status{
+
+      color:
+        var(--white);
+
+      font-size:
+        12px;
+
+      font-weight:
+        800;
+    }
+
+
+    .followup-card-points{
+
+      color:
+        var(--gold2);
+
+      font-size:
+        11px;
+
+      font-weight:
+        800;
+    }
+
+
+    /* =========================
+       BADGES
+    ========================= */
+
+    .badge-grid{
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+      gap:
+        14px;
+    }
+
+
+    .student-badge-card{
+
+      min-width:
+        0;
+
+      min-height:
+        190px;
+
+      aspect-ratio:
+        1 / 1;
+
+      padding:
+        18px;
+
+      border-radius:
+        20px;
+
+      text-align:
+        center;
+
+      background:
+        rgba(255,255,255,.04);
+
+      border:
+        1px solid
+        rgba(255,255,255,.08);
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      transition:
+        .25s ease;
+    }
+
+
+    .student-badge-card:hover{
+
+      transform:
+        translateY(-3px);
+
+      border-color:
+        rgba(217,184,108,.20);
+    }
+
+
+    .student-badge-card.locked{
+
+      opacity:
+        .38;
+
+      filter:
+        grayscale(1);
+    }
+
+
+    .student-badge-card.earned{
+
+      opacity:
+        1;
+
+      filter:
+        none;
+    }
+
+
+    .student-badge-icon{
+
+      font-size:
+        44px;
+
+      margin-bottom:
+        10px;
+    }
+
+
+    .student-badge-title{
+
+      font-size:
+        16px;
+
+      font-weight:
+        800;
+
+      margin-bottom:
+        7px;
+
+      color:
+        var(--white);
+    }
+
+
+    .student-badge-description{
+
+      font-size:
+        11px;
+
+      line-height:
+        1.7;
+
+      color:
+        var(--muted);
+    }
+
+
+    .earned .student-badge-description{
+
+      color:
+        var(--gold2);
+
+      font-weight:
+        700;
+    }
+
+
+    /* =========================
+       FEE CARDS
+    ========================= */
+
+    .fee-card{
+
+      padding:
+        16px;
+
+      border-radius:
+        18px;
+
+      background:
+        rgba(255,255,255,.025);
+
+      border:
+        1px solid
+        rgba(255,255,255,.055);
+    }
+
+
+    .fee-card-head{
+
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      align-items:
+        center;
+
+      gap:
+        10px;
+
+      margin-bottom:
+        13px;
+
+      padding-bottom:
+        11px;
+
+      border-bottom:
+        1px solid
+        rgba(217,184,108,.10);
+    }
+
+
+    .fee-month-title{
+
+      color:
+        var(--gold2);
+
+      font-size:
+        15px;
+
+      font-weight:
+        800;
+    }
+
+
+    .fee-status{
+
+      border-radius:
+        999px;
+
+      padding:
+        6px 10px;
+
+      font-size:
+        10px;
+
+      white-space:
+        nowrap;
+    }
+
+
+    .fee-status.paid{
+
+      color:
+        #cdebdc;
+
+      background:
+        rgba(47,159,114,.13);
+
+      border:
+        1px solid
+        rgba(47,159,114,.22);
+    }
+
+
+    .fee-status.partial{
+
+      color:
+        var(--gold2);
+
+      background:
+        rgba(217,184,108,.10);
+
+      border:
+        1px solid
+        rgba(217,184,108,.20);
+    }
+
+
+    .fee-status.unpaid{
+
+      color:
+        #f0b7b0;
+
+      background:
+        rgba(175,70,61,.10);
+
+      border:
+        1px solid
+        rgba(175,70,61,.18);
+    }
+
+
+    .fee-detail-grid{
+
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
+      gap:
+        9px;
+    }
+
+
+    .fee-detail{
+
+      padding:
+        11px;
+
+      border-radius:
+        13px;
+
+      background:
+        rgba(255,255,255,.02);
+
+      border:
+        1px solid
+        rgba(255,255,255,.04);
+    }
+
+
+    .fee-detail-label{
+
+      color:
+        var(--muted2);
+
+      font-size:
+        10px;
+
+      margin-bottom:
+        4px;
+    }
+
+
+    .fee-detail-value{
+
+      color:
+        var(--white);
+
+      font-size:
+        12px;
+
+      font-weight:
+        700;
+
+      line-height:
+        1.7;
+
+      word-break:
+        break-word;
+    }
+
+
+    .fee-detail.full{
+
+      grid-column:
+        1 / -1;
+    }
+
+
+    /* =========================
+       NOTES
+    ========================= */
+
+    .notes{
+
+      background:
+
+        linear-gradient(
+          145deg,
+          rgba(217,184,108,.07),
+          rgba(27,108,77,.05)
+        );
+
+      border:
+        1px solid
+        rgba(217,184,108,.12);
+
+      padding:
+        18px;
+
+      border-radius:
+        18px;
+
+      color:
+        #ddd8ca;
+
+      line-height:
+        2;
+
+      font-size:
+        14px;
+
+      white-space:
+        pre-wrap;
+
+      word-break:
+        break-word;
+    }
+
+
+    /* =========================
+       MODAL
     ========================= */
 
     .modal{
@@ -2394,12 +2769,7 @@
         20px;
 
       background:
-        rgba(
-          2,
-          9,
-          6,
-          .72
-        );
+        rgba(2,9,6,.72);
 
       backdrop-filter:
         blur(8px);
@@ -2416,10 +2786,7 @@
     .modal-box{
 
       width:
-        min(
-          620px,
-          100%
-        );
+        min(620px,100%);
 
       max-height:
         88vh;
@@ -2515,46 +2882,6 @@
 
 
     /* =========================
-       NOTES
-    ========================= */
-
-    .notes{
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(217,184,108,.07),
-          rgba(27,108,77,.05)
-        );
-
-      border:
-        1px solid
-        rgba(217,184,108,.12);
-
-      padding:
-        18px;
-
-      border-radius:
-        18px;
-
-      color:
-        #ddd8ca;
-
-      line-height:
-        2;
-
-      font-size:
-        14px;
-
-      white-space:
-        pre-wrap;
-
-      word-break:
-        break-word;
-    }
-
-
-    /* =========================
        COPY NOTICE
     ========================= */
 
@@ -2570,18 +2897,10 @@
         24px;
 
       transform:
-        translate(
-          50%,
-          15px
-        );
+        translate(50%,15px);
 
       background:
-        rgba(
-          9,
-          27,
-          20,
-          .96
-        );
+        rgba(9,27,20,.96);
 
       border:
         1px solid
@@ -2619,16 +2938,9 @@
         1;
 
       transform:
-        translate(
-          50%,
-          0
-        );
+        translate(50%,0);
     }
 
-
-    /* =========================
-       EMPTY
-    ========================= */
 
     .empty{
 
@@ -2643,6 +2955,9 @@
 
       font-size:
         13px;
+
+      grid-column:
+        1 / -1;
     }
 
 
@@ -2735,7 +3050,6 @@
         transform:
           rotate(360deg);
       }
-
     }
 
 
@@ -2828,10 +3142,6 @@
     }
 
 
-    /* =========================
-       FOOTER
-    ========================= */
-
     footer{
 
       text-align:
@@ -2849,7 +3159,7 @@
 
 
     /* =========================
-       MOBILE
+       RESPONSIVE
     ========================= */
 
     @media(max-width:1050px){
@@ -2885,10 +3195,28 @@
       .personal-info-grid{
 
         grid-template-columns:
-          repeat(
-            2,
-            minmax(0,1fr)
-          );
+          repeat(2,minmax(0,1fr));
+      }
+
+
+      .badge-grid{
+
+        grid-template-columns:
+          repeat(4,minmax(0,1fr));
+      }
+
+
+      .followup-record-grid{
+
+        grid-template-columns:
+          repeat(3,minmax(0,1fr));
+      }
+
+
+      .fee-detail-grid{
+
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
       }
 
     }
@@ -2899,10 +3227,7 @@
       .section-buttons{
 
         grid-template-columns:
-          repeat(
-            2,
-            minmax(0,1fr)
-          );
+          repeat(2,minmax(0,1fr));
       }
 
 
@@ -2916,10 +3241,21 @@
       .page-grid{
 
         grid-template-columns:
-          repeat(
-            6,
-            minmax(0,1fr)
-          );
+          repeat(6,minmax(0,1fr));
+      }
+
+
+      .badge-grid{
+
+        grid-template-columns:
+          repeat(3,minmax(0,1fr));
+      }
+
+
+      .followup-record-grid{
+
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
       }
 
     }
@@ -2930,10 +3266,7 @@
       .page{
 
         width:
-          min(
-            94%,
-            570px
-          );
+          min(94%,570px);
 
         padding-top:
           18px;
@@ -2997,10 +3330,7 @@
       .metrics{
 
         grid-template-columns:
-          repeat(
-            2,
-            minmax(0,1fr)
-          );
+          repeat(2,minmax(0,1fr));
 
         min-height:
           0;
@@ -3017,10 +3347,7 @@
       .stats{
 
         grid-template-columns:
-          repeat(
-            2,
-            minmax(0,1fr)
-          );
+          repeat(2,minmax(0,1fr));
       }
 
 
@@ -3065,10 +3392,28 @@
       .page-grid{
 
         grid-template-columns:
-          repeat(
-            5,
-            minmax(0,1fr)
-          );
+          repeat(5,minmax(0,1fr));
+      }
+
+
+      .badge-grid{
+
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
+      }
+
+
+      .followup-record-grid{
+
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
+      }
+
+
+      .fee-detail-grid{
+
+        grid-template-columns:
+          1fr;
       }
 
     }
@@ -3161,119 +3506,27 @@
       .page-grid{
 
         grid-template-columns:
-          repeat(
-            4,
-            minmax(0,1fr)
-          );
+          repeat(4,minmax(0,1fr));
+      }
+
+
+      .badge-grid{
+
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
+      }
+
+
+      .followup-record-grid{
+
+        grid-template-columns:
+          1fr;
       }
 
     }
 
-
-    .student-badge-card{
-
-  padding:
-    20px;
-
-  border-radius:
-    20px;
-
-  text-align:
-    center;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      .04
-    );
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      .08
-    );
-
-  transition:
-    .25s ease;
-
-}
-
-
-.student-badge-card.locked{
-
-  opacity:
-    .38;
-
-  filter:
-    grayscale(
-      1
-    );
-
-}
-
-
-.student-badge-card.earned{
-
-  opacity:
-    1;
-
-  filter:
-    none;
-
-}
-
-
-.student-badge-icon{
-
-  font-size:
-    42px;
-
-  margin-bottom:
-    10px;
-
-}
-
-
-.student-badge-card.locked
-.student-badge-icon{
-
-  font-size:
-    38px;
-
-}
-
-
-.student-badge-title{
-
-  font-size:
-    17px;
-
-  font-weight:
-    800;
-
-  margin-bottom:
-    8px;
-
-}
-
-
-.student-badge-description{
-
-  font-size:
-    13px;
-
-  opacity:
-    .8;
-
-}
-
-    
   </style>
+
 </head>
 
 
@@ -3303,7 +3556,7 @@
 
 
   <!-- =========================
-       MAIN PAGE
+       MAIN
   ========================= -->
 
   <main
@@ -3319,7 +3572,6 @@
 
     <div class="topbar">
 
-
       <button
         type="button"
         class="brand-button"
@@ -3331,7 +3583,7 @@
           class="brand-logo"
           src="logo.png"
           alt="شعار مركز حردان طارق القرآني"
-        />
+        >
 
 
         <div class="brand-text">
@@ -3378,17 +3630,12 @@
 
     <section class="personal-card">
 
-
       <div class="personal-layout">
 
 
-        <!-- RIGHT SIDE -->
-
         <div class="personal-main">
 
-
           <div class="personal-top">
-
 
             <div class="avatar-wrap">
 
@@ -3397,8 +3644,7 @@
                 <img
                   id="studentPhoto"
                   alt="صورة الطالب"
-                />
-
+                >
 
                 <div
                   class="avatar-letter"
@@ -3413,7 +3659,6 @@
 
 
             <div class="personal-copy">
-
 
               <div class="personal-label">
                 البطاقة الشخصية
@@ -3453,14 +3698,10 @@
 
               </div>
 
-
             </div>
-
 
           </div>
 
-
-          <!-- PERSONAL INFO -->
 
           <div class="personal-info-grid">
 
@@ -3621,14 +3862,10 @@
 
             </div>
 
-
           </div>
-
 
         </div>
 
-
-        <!-- LEFT SIDE -->
 
         <div class="metrics">
 
@@ -3714,9 +3951,7 @@
 
         </div>
 
-
       </div>
-
 
     </section>
 
@@ -3733,7 +3968,7 @@
 
       <button
         type="button"
-        class="section-switch active"
+        class="section-switch"
         data-section="recitation"
         onclick="showProfileSection('recitation')"
       >
@@ -3768,23 +4003,23 @@
 
 
       <button
-  type="button"
-  class="section-switch"
-  data-section="followup"
-  onclick="showProfileSection('followup')"
->
+        type="button"
+        class="section-switch active"
+        data-section="followup"
+        onclick="showProfileSection('followup')"
+      >
 
-  <div class="switch-icon">
-    📋
-  </div>
+        <div class="switch-icon">
+          📋
+        </div>
 
-  <div class="switch-title">
-    المتابعة العامة
-  </div>
+        <div class="switch-title">
+          المتابعة العامة
+        </div>
 
-</button>
+      </button>
 
-      
+
       <button
         type="button"
         class="section-switch"
@@ -3846,10 +4081,9 @@
     ========================= -->
 
     <section
-      class="profile-section active"
+      class="profile-section"
       data-content="recitation"
     >
-
 
       <div class="section-head">
 
@@ -3863,7 +4097,6 @@
 
         </div>
 
-
         <div
           class="section-note"
           id="recitationSummary"
@@ -3873,8 +4106,6 @@
 
       </div>
 
-
-      <!-- TWO SEPARATE PROGRESS STATISTICS -->
 
       <div class="progress-grid">
 
@@ -3886,7 +4117,7 @@
           </div>
 
           <div class="progress-box-sub">
-            يحسب من جميع صفحات القرآن التي تم تسجيل تسميعها، من الصفحة 1 إلى 604، بدون حذف أو استبدال هذه الإحصائية.
+            يحسب من جميع صفحات القرآن التي تم تسجيل تسميعها، من الصفحة 1 إلى 604.
           </div>
 
 
@@ -3925,7 +4156,7 @@
           </div>
 
           <div class="progress-box-sub">
-            يقارن الصفحات المطلوبة في الخطة مع الصفحات التي تم تسميعها للطالب.
+            يقارن الصفحات المطلوبة في الخطة مع الصفحات التي تم تسميعها.
           </div>
 
 
@@ -3956,11 +4187,8 @@
 
         </div>
 
-
       </div>
 
-
-      <!-- DAILY RECITATION LOG -->
 
       <div
         class="section-head"
@@ -4014,11 +4242,7 @@
       </div>
 
 
-      <!-- TABLE IS DEFAULT -->
-
-      <div
-        id="recitationTableView"
-      >
+      <div id="recitationTableView">
 
         <div class="table-wrap">
 
@@ -4072,15 +4296,10 @@
       </div>
 
 
-      <!-- MAP IS SECONDARY -->
-
       <div
         id="juzMapView"
         style="display:none;"
-      >
-
-      </div>
-
+      ></div>
 
     </section>
 
@@ -4093,7 +4312,6 @@
       class="profile-section"
       data-content="plan"
     >
-
 
       <div class="section-head">
 
@@ -4116,6 +4334,7 @@
         </div>
 
       </div>
+
 
       <div
         class="item"
@@ -4145,7 +4364,7 @@
 
       </div>
 
-      
+
       <div
         id="weeklyPlanList"
         class="list"
@@ -4157,198 +4376,175 @@
 
       </div>
 
-
     </section>
 
 
     <!-- =========================
-     GENERAL FOLLOWUP
-========================= -->
+         GENERAL FOLLOWUP
+    ========================= -->
 
-<section
-  class="profile-section"
-  data-content="followup"
->
-
-  <div class="section-head">
-
-    <div class="section-title">
-
-      <div class="section-icon">
-        📋
-      </div>
-
-      المتابعة العامة
-
-    </div>
-
-  </div>
-
-
-  <div class="followup-block">
-
-    <div class="section-head">
-
-      <div class="section-title">
-        📅 الحضور والغياب
-      </div>
-
-      <div
-        class="section-note"
-        id="generalAttendanceSummary"
-      >
-        لا توجد بيانات
-      </div>
-
-    </div>
-
-
-    <div
-      id="generalAttendanceList"
-      class="list"
-    ></div>
-
-  </div>
-
-
-  <div class="followup-block">
-
-    <div class="section-head">
-
-      <div class="section-title">
-        📖 التسميع اليومي
-      </div>
-
-    </div>
-
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>
-              التاريخ
-            </th>
-
-            <th>
-              الصفحة
-            </th>
-
-            <th>
-              الدرجة
-            </th>
-
-            <th>
-              النقاط
-            </th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody
-          id="generalRecitationTableBody"
-        ></tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-
-  <div class="followup-block">
-
-    <div class="section-head">
-
-      <div class="section-title">
-        📚 التسميع القادم
-      </div>
-
-    </div>
-
-
-    <div
-      id="generalNextRecitationBox"
-      class="item"
+    <section
+      class="profile-section active"
+      data-content="followup"
     >
 
-      <div class="item-main">
+      <div class="section-head">
 
-        <div
-          id="generalNextRecitationText"
-          class="item-title"
-        >
-          لا يوجد تسميع قادم حاليًا
+        <div class="section-title">
+
+          <div class="section-icon">
+            📋
+          </div>
+
+          المتابعة العامة
+
+        </div>
+
+        <div class="section-note">
+          المتابعة اليومية والسجلات
         </div>
 
       </div>
 
-    </div>
 
-  </div>
+      <div class="followup-block">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            📅 الحضور والغياب
+          </div>
+
+          <div
+            class="section-note"
+            id="generalAttendanceSummary"
+          >
+            لا توجد بيانات
+          </div>
+
+        </div>
 
 
-  <div class="followup-block">
+        <div
+          id="generalAttendanceList"
+          class="followup-record-grid"
+        ></div>
 
-    <div class="section-head">
-
-      <div class="section-title">
-        📝 الاختبارات
       </div>
 
-      <div
-        class="section-note"
-        id="generalTestsSummary"
-      >
-        0 اختبار
+
+      <div class="followup-block">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            📖 التسميع اليومي
+          </div>
+
+          <div
+            class="section-note"
+            id="generalRecitationSummary"
+          >
+            0 سجل
+          </div>
+
+        </div>
+
+
+        <div
+          id="generalRecitationList"
+          class="followup-record-grid"
+        ></div>
+
       </div>
 
-    </div>
+
+      <div class="followup-block">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            📚 التسميع القادم
+          </div>
+
+        </div>
 
 
-    <div
-      id="generalTestsList"
-      class="list"
-    ></div>
+        <div
+          id="generalNextRecitationBox"
+          class="item"
+        >
 
-  </div>
+          <div class="item-main">
 
+            <div
+              id="generalNextRecitationText"
+              class="item-title"
+            >
+              لا يوجد تسميع قادم حاليًا
+            </div>
 
-  <div class="followup-block">
+          </div>
 
-    <div class="section-head">
+        </div>
 
-      <div class="section-title">
-        ⚠️ الإنذارات
       </div>
 
-      <div
-        class="section-note"
-        id="generalWarningsSummary"
-      >
-        0 إنذار
+
+      <div class="followup-block">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            📝 الاختبارات
+          </div>
+
+          <div
+            class="section-note"
+            id="generalTestsSummary"
+          >
+            0 اختبار
+          </div>
+
+        </div>
+
+
+        <div
+          id="generalTestsList"
+          class="followup-record-grid"
+        ></div>
+
       </div>
 
-    </div>
+
+      <div class="followup-block">
+
+        <div class="section-head">
+
+          <div class="section-title">
+            ⚠️ الإنذارات
+          </div>
+
+          <div
+            class="section-note"
+            id="generalWarningsSummary"
+          >
+            0 إنذار
+          </div>
+
+        </div>
 
 
-    <div
-      id="generalWarningsList"
-      class="list"
-    ></div>
+        <div
+          id="generalWarningsList"
+          class="followup-record-grid"
+        ></div>
 
-  </div>
+      </div>
+
+    </section>
 
 
-</section>
-
-    
     <!-- =========================
          POINTS
     ========================= -->
@@ -4357,7 +4553,6 @@
       class="profile-section"
       data-content="points"
     >
-
 
       <div class="section-head">
 
@@ -4379,75 +4574,28 @@
           —
         </div>
 
-<div class="stats">
+      </div>
 
 
-  <div class="stat">
-
-    <div class="stat-label">
-      نقاط التسميع
-    </div>
-
-    <div
-      class="stat-value"
-      id="academicPoints"
-    >
-      0
-    </div>
-
-  </div>
+      <div class="stats">
 
 
-  <div class="stat">
+        <div class="stat">
 
-    <div class="stat-label">
-      النقاط الإضافية
-    </div>
+          <div class="stat-label">
+            نقاط التسميع
+          </div>
 
-    <div
-      class="stat-value"
-      id="bonusPoints"
-    >
-      0
-    </div>
+          <div
+            class="stat-value"
+            id="academicPoints"
+          >
+            0
+          </div>
 
-  </div>
-
-
-  <div class="stat">
-
-    <div class="stat-label">
-      مجموع النقاط
-    </div>
-
-    <div
-      class="stat-value"
-      id="totalPoints"
-    >
-      0
-    </div>
-
-  </div>
+        </div>
 
 
-  <div class="stat">
-
-    <div class="stat-label">
-      التقييم العام
-    </div>
-
-    <div
-      class="stat-value"
-      id="evaluation"
-    >
-      0%
-    </div>
-
-  </div>
-
-
-</div>
-        
         <div class="stat">
 
           <div class="stat-label">
@@ -4499,964 +4647,64 @@
       </div>
 
 
-      <div
-   <div
-  style="
-    margin-top:18px;
-  "
->
+      <div style="margin-top:18px;">
 
-  <div class="section-head">
+        <div class="section-head">
 
-    <div class="section-title">
+          <div class="section-title">
 
-      <div class="section-icon">
-        📊
-      </div>
-
-      تفاصيل احتساب النقاط
-
-    </div>
-
-  </div>
-
-
-  <div
-    id="pointsBreakdownList"
-    class="list"
-  >
-
-    <div class="empty">
-      لا توجد تفاصيل نقاط.
-    </div>
-
-  </div>
-
-</div>
-
-      function renderPointBreakdown(){
-
-  const container =
-    document.getElementById(
-      'pointsBreakdownList'
-    );
-
-
-  if(
-    !container
-  ){
-
-    return;
-
-  }
-
-
-  const sections = [];
-
-
-  const recitations =
-    getRecitationRecords();
-
-
-  const recitationRows =
-    recitations.map(
-      (
-        record,
-        index
-      ) => {
-
-        const points =
-          recitationPoints(
-            record
-          );
-
-
-        const page =
-          numberValue(
-            firstValue(
-              record,
-              [
-                'page',
-                'pageNumber',
-                'page_number'
-              ],
-              0
-            )
-          );
-
-
-        const score =
-          firstValue(
-            record,
-            [
-              'score',
-              'grade',
-              'percentage'
-            ],
-            0
-          );
-
-
-        const type =
-          normalizeType(
-            record.type
-          ) === 'review'
-            ? 'مراجعة'
-            : 'حفظ جديد';
-
-
-        return `
-
-          <div class="item">
-
-            <div class="item-main">
-
-              <div class="item-title">
-
-                📖 ${page
-                  ? `صفحة ${page}`
-                  : `تسميع ${index + 1}`
-                }
-
-              </div>
-
-
-              <div class="item-sub">
-
-                ${
-                  record.date
-                    ? escapeHtml(
-                        formatDate(
-                          record.date
-                        )
-                      )
-                    : ''
-                }
-
-                • ${type}
-
-                • الدرجة:
-                ${escapeHtml(score)}
-
-              </div>
-
+            <div class="section-icon">
+              📊
             </div>
 
+            تفاصيل احتساب النقاط
 
-            <div class="item-badge">
+          </div>
 
-              +${decimalNumber(
-                points
-              )}
+        </div>
 
+
+        <div
+          id="pointsBreakdownList"
+          class="list"
+        >
+
+          <div class="empty">
+            لا توجد تفاصيل نقاط.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div style="margin-top:18px;">
+
+        <div class="section-head">
+
+          <div class="section-title">
+
+            <div class="section-icon">
+              ⭐
             </div>
 
-          </div>
+            سجل النقاط الإضافية
 
-        `;
-
-      }
-    );
-
-
-  const recitationTotal =
-    recitations.reduce(
-      (
-        total,
-        record
-      ) =>
-        total +
-        recitationPoints(
-          record
-        ),
-      0
-    );
-
-
-  if(
-    recitationRows.length
-  ){
-
-    sections.push(`
-
-      <div class="item">
-
-        <div class="item-main">
-
-          <div class="item-title">
-            📖 نقاط التسميع
-          </div>
-
-          <div class="item-sub">
-            مجموع نقاط التسميع
           </div>
 
         </div>
 
-        <div class="item-badge">
-          +${decimalNumber(
-            recitationTotal
-          )}
 
-        </div>
+        <div
+          id="extraPointsList"
+          class="list"
+        ></div>
 
       </div>
 
-      ${recitationRows.join('')}
+    </section>
 
-    `);
 
-  }
-
-
-  const tests =
-    toArray(
-      firstValue(
-        profileData,
-        [
-          'tests',
-          'exams',
-          'examResults',
-          'exam_results'
-        ],
-        []
-      )
-    );
-
-
-  const testTotal =
-    tests.reduce(
-      (
-        total,
-        test
-      ) =>
-        total +
-        testGrade(
-          test.score
-        ).points,
-      0
-    );
-
-
-  if(
-    tests.length
-  ){
-
-    sections.push(`
-
-      <div class="item">
-
-        <div class="item-main">
-
-          <div class="item-title">
-            📝 نقاط الاختبارات
-          </div>
-
-          <div class="item-sub">
-            مجموع نقاط الاختبارات
-          </div>
-
-        </div>
-
-        <div class="item-badge">
-          +${decimalNumber(
-            testTotal
-          )}
-
-        </div>
-
-      </div>
-
-
-      ${
-        tests
-          .map(
-            (
-              test,
-              index
-            ) => {
-
-              const grade =
-                testGrade(
-                  test.score
-                );
-
-
-              return `
-
-                <div class="item">
-
-                  <div class="item-main">
-
-                    <div class="item-title">
-
-                      📝 ${
-                        escapeHtml(
-                          test.title ||
-                          test.name ||
-                          `اختبار ${index + 1}`
-                        )
-                      }
-
-                    </div>
-
-
-                    <div class="item-sub">
-
-                      الدرجة:
-                      ${escapeHtml(
-                        test.score
-                      )}
-
-                      •
-                      ${escapeHtml(
-                        grade.label
-                      )}
-
-                    </div>
-
-                  </div>
-
-
-                  <div class="item-badge">
-
-                    +${decimalNumber(
-                      grade.points
-                    )}
-
-                  </div>
-
-                </div>
-
-              `;
-
-            }
-          )
-          .join('')
-      }
-
-    `);
-
-  }
-
-
-  const attendance =
-    toArray(
-      firstValue(
-        profileData,
-        [
-          'attendance',
-          'attendances'
-        ],
-        []
-      )
-    );
-
-
-  const attendanceTotal =
-    attendance.reduce(
-      (
-        total,
-        record
-      ) =>
-        total +
-        attendancePoints(
-          firstValue(
-            record,
-            [
-              'status',
-              'attendance'
-            ],
-            ''
-          )
-        ),
-      0
-    );
-
-
-  if(
-    attendance.length
-  ){
-
-    sections.push(`
-
-      <div class="item">
-
-        <div class="item-main">
-
-          <div class="item-title">
-            📅 نقاط الحضور
-          </div>
-
-          <div class="item-sub">
-            مجموع نقاط الحضور
-          </div>
-
-        </div>
-
-        <div class="item-badge">
-          +${decimalNumber(
-            attendanceTotal
-          )}
-
-        </div>
-
-      </div>
-
-
-      ${
-        attendance
-          .map(
-            (
-              record,
-              index
-            ) => {
-
-              const status =
-                firstValue(
-                  record,
-                  [
-                    'status',
-                    'attendance'
-                  ],
-                  '—'
-                );
-
-
-              const points =
-                attendancePoints(
-                  status
-                );
-
-
-              return `
-
-                <div class="item">
-
-                  <div class="item-main">
-
-                    <div class="item-title">
-
-                      📅 ${
-                        escapeHtml(
-                          record.day ||
-                          `سجل ${index + 1}`
-                        )
-                      }
-
-                    </div>
-
-
-                    <div class="item-sub">
-
-                      ${escapeHtml(
-                        status
-                      )}
-
-                      ${
-                        record.date
-                          ? ` • ${escapeHtml(
-                              formatDate(
-                                record.date
-                              )
-                            )}`
-                          : ''
-                      }
-
-                    </div>
-
-                  </div>
-
-
-                  <div class="item-badge">
-
-                    +${decimalNumber(
-                      points
-                    )}
-
-                  </div>
-
-                </div>
-
-              `;
-
-            }
-          )
-          .join('')
-      }
-
-    `);
-
-  }
-
-
-  const extra =
-    getExtraPointRecords();
-
-
-  const extraTotal =
-    getBonusPoints();
-
-
-  if(
-    extra.length
-  ){
-
-    sections.push(`
-
-      <div class="item">
-
-        <div class="item-main">
-
-          <div class="item-title">
-            ⭐ النقاط الإضافية
-          </div>
-
-          <div class="item-sub">
-            مجموع النقاط الإضافية
-          </div>
-
-        </div>
-
-        <div class="item-badge">
-          +${decimalNumber(
-            extraTotal
-          )}
-
-        </div>
-
-      </div>
-
-
-      ${
-        extra
-          .map(
-            (
-              record,
-              index
-            ) => {
-
-              const reason =
-                firstValue(
-                  record,
-                  [
-                    'reason',
-                    'description',
-                    'title',
-                    'note'
-                  ],
-                  `نقطة إضافية ${index + 1}`
-                );
-
-
-              const points =
-                numberValue(
-                  firstValue(
-                    record,
-                    [
-                      'points',
-                      'value',
-                      'amount'
-                    ],
-                    0
-                  )
-                );
-
-
-              return `
-
-                <div class="item">
-
-                  <div class="item-main">
-
-                    <div class="item-title">
-
-                      ⭐ ${escapeHtml(
-                        reason
-                      )}
-
-                    </div>
-
-                  </div>
-
-
-                  <div class="item-badge">
-
-                    +${decimalNumber(
-                      points
-                    )}
-
-                  </div>
-
-                </div>
-
-              `;
-
-            }
-          )
-          .join('')
-      }
-
-    `);
-
-  }
-
-
-  const planTasks =
-    getPlanTasks();
-
-
-  const today =
-    new Date();
-
-
-  today.setHours(
-    0,
-    0,
-    0,
-    0
-  );
-
-
-  let planTotal =
-    0;
-
-
-  const planRows = [];
-
-
-  planTasks.forEach(
-    (
-      task,
-      index
-    ) => {
-
-      const rawDate =
-        firstValue(
-          task,
-          [
-            'date',
-            'startDate',
-            'start_date',
-            'dueDate',
-            'due_date'
-          ],
-          ''
-        );
-
-
-      if(
-        !rawDate
-      ){
-
-        return;
-
-      }
-
-
-      const date =
-        new Date(
-          rawDate
-        );
-
-
-      if(
-        Number.isNaN(
-          date.getTime()
-        )
-      ){
-
-        return;
-
-      }
-
-
-      date.setHours(
-        0,
-        0,
-        0,
-        0
-      );
-
-
-      if(
-        date > today
-      ){
-
-        return;
-
-      }
-
-
-      if(
-        String(
-          task.type ||
-          ''
-        ).toLowerCase() ===
-        'test'
-      ){
-
-        const completed =
-          tests.some(
-            test =>
-              String(
-                test.date ||
-                ''
-              ).slice(
-                0,
-                10
-              ) ===
-              String(
-                rawDate
-              ).slice(
-                0,
-                10
-              )
-          );
-
-
-        const points =
-          completed
-            ? 5
-            : 0;
-
-
-        planTotal +=
-          points;
-
-
-        planRows.push(`
-
-          <div class="item">
-
-            <div class="item-main">
-
-              <div class="item-title">
-
-                🗓️ خطة اختبار
-
-              </div>
-
-              <div class="item-sub">
-
-                ${
-                  escapeHtml(
-                    formatDate(
-                      rawDate
-                    )
-                  )
-                }
-
-                • ${
-                  completed
-                    ? 'تم الإنجاز'
-                    : 'لم يتم الإنجاز'
-                }
-
-              </div>
-
-            </div>
-
-            <div class="item-badge">
-
-              +${decimalNumber(
-                points
-              )}
-
-            </div>
-
-          </div>
-
-        `);
-
-
-        return;
-
-      }
-
-
-      const pages =
-        extractPlanTaskPages(
-          task
-        );
-
-
-      if(
-        !pages.length
-      ){
-
-        return;
-
-      }
-
-
-      const completed =
-        pages.filter(
-          page =>
-            getRecitationRecords()
-              .some(
-                record =>
-                  Number(
-                    firstValue(
-                      record,
-                      [
-                        'page',
-                        'pageNumber',
-                        'page_number'
-                      ],
-                      0
-                    )
-                  ) ===
-                  Number(page)
-              )
-        ).length;
-
-
-      const ratio =
-        Math.min(
-          1,
-          completed /
-          pages.length
-        );
-
-
-      const points =
-        5 *
-        ratio;
-
-
-      planTotal +=
-        points;
-
-
-      planRows.push(`
-
-        <div class="item">
-
-          <div class="item-main">
-
-            <div class="item-title">
-
-              🗓️ ${
-                escapeHtml(
-                  task.title ||
-                  task.day ||
-                  `مهمة ${index + 1}`
-                )
-              }
-
-            </div>
-
-            <div class="item-sub">
-
-              ${
-                escapeHtml(
-                  formatDate(
-                    rawDate
-                  )
-                )
-              }
-
-              • الإنجاز:
-              ${completed}/${pages.length}
-
-            </div>
-
-          </div>
-
-          <div class="item-badge">
-
-            +${decimalNumber(
-              points
-            )}
-
-          </div>
-
-        </div>
-
-      `);
-
-    }
-  );
-
-
-  if(
-    planRows.length
-  ){
-
-    sections.push(`
-
-      <div class="item">
-
-        <div class="item-main">
-
-          <div class="item-title">
-            🗓️ نقاط الخطة
-          </div>
-
-          <div class="item-sub">
-            مجموع نقاط الخطة
-          </div>
-
-        </div>
-
-        <div class="item-badge">
-          +${decimalNumber(
-            planTotal
-          )}
-        </div>
-
-      </div>
-
-
-      ${planRows.join('')}
-
-    `);
-
-  }
-
-
-  const rawPoints =
-    recitationTotal +
-    testTotal +
-    attendanceTotal +
-    planTotal +
-    extraTotal;
-
-
-  sections.unshift(`
-
-    <div class="item">
-
-      <div class="item-main">
-
-        <div class="item-title">
-          🧮 إجمالي النقاط المحسوبة
-        </div>
-
-        <div class="item-sub">
-          التسميع + الاختبارات + الحضور + الخطة + الإضافية
-        </div>
-
-      </div>
-
-      <div class="item-badge">
-        ${decimalNumber(
-          rawPoints
-        )} نقطة
-      </div>
-
-    </div>
-
-  `);
-
-
-  container.innerHTML =
-    sections.join('');
-
-}
-
-      
     <!-- =========================
          BADGES
     ========================= -->
@@ -5465,7 +4713,6 @@
       class="profile-section"
       data-content="badges"
     >
-
 
       <div class="section-head">
 
@@ -5492,30 +4739,10 @@
 
       <div
         id="badgesList"
-        class="list"
-      >
+        class="badge-grid"
+      ></div>
 
-        <div class="empty">
-          لا توجد أوسمة بعد.
-        </div>
-
-      </div>
-
-
-      <div
-        style="
-          margin-top:18px;
-        "
-      >
-
-
-        <div class="section-head">
-
-          <div class="section-title">
-
-            <div class="section-icon">
-              👑
-            </div>
+    </section>
 
 
     <!-- =========================
@@ -5526,7 +4753,6 @@
       class="profile-section"
       data-content="fees"
     >
-
 
       <div class="section-head">
 
@@ -5554,68 +4780,66 @@
       <div class="stats">
 
 
-  <div class="stat">
+        <div class="stat">
 
-    <div class="stat-label">
-      الرسوم الشهرية
-    </div>
+          <div class="stat-label">
+            الرسوم الشهرية
+          </div>
 
-    <div class="stat-value">
-      25 د.أ
-    </div>
+          <div class="stat-value">
+            25 د.أ
+          </div>
 
-  </div>
-
-
-  <div class="stat">
-
-    <div class="stat-label">
-      المدفوع إجمالاً
-    </div>
-
-    <div
-      class="stat-value"
-      id="feePaidTotal"
-    >
-      0 د.أ
-    </div>
-
-  </div>
+        </div>
 
 
-  <div class="stat">
+        <div class="stat">
 
-    <div class="stat-label">
-      المتبقي هذا الشهر
-    </div>
+          <div class="stat-label">
+            المدفوع إجمالاً
+          </div>
 
-    <div
-      class="stat-value"
-      id="feeRemainingCurrent"
-    >
-      25 د.أ
-    </div>
+          <div
+            class="stat-value"
+            id="feePaidTotal"
+          >
+            0 د.أ
+          </div>
 
-  </div>
-
-
-  <div class="stat">
-
-    <div class="stat-label">
-      المتبقي إجمالاً
-    </div>
-
-    <div
-      class="stat-value"
-      id="feeRemainingTotal"
-    >
-      0 د.أ
-    </div>
-
-  </div>
+        </div>
 
 
-</div>
+        <div class="stat">
+
+          <div class="stat-label">
+            المتبقي هذا الشهر
+          </div>
+
+          <div
+            class="stat-value"
+            id="feeRemainingCurrent"
+          >
+            25 د.أ
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-label">
+            المتبقي إجمالاً
+          </div>
+
+          <div
+            class="stat-value"
+            id="feeRemainingTotal"
+          >
+            0 د.أ
+          </div>
+
+        </div>
+
 
       </div>
 
@@ -5624,75 +4848,75 @@
         id="feesList"
         class="list"
         style="margin-top:14px;"
-      >
-
-        <div class="empty">
-          لا توجد بيانات رسوم.
-        </div>
-
-      </div>
-
+      ></div>
 
     </section>
 
 
-  <!-- =========================
-       PAGE DETAIL MODAL
-  ========================= -->
-
-  <div
-    class="modal"
-    id="pageDetailModal"
-    onclick="closePageDetail(event)"
-  >
+    <!-- =========================
+         PAGE DETAIL MODAL
+    ========================= -->
 
     <div
-      class="modal-box"
-      onclick="event.stopPropagation()"
+      class="modal"
+      id="pageDetailModal"
+      onclick="closePageDetail(event)"
     >
 
-      <div class="modal-head">
+      <div
+        class="modal-box"
+        onclick="event.stopPropagation()"
+      >
 
-        <div
-          class="modal-title"
-          id="pageDetailTitle"
-        >
-          تفاصيل الصفحة
+        <div class="modal-head">
+
+          <div
+            class="modal-title"
+            id="pageDetailTitle"
+          >
+            تفاصيل الصفحة
+          </div>
+
+
+          <button
+            type="button"
+            class="modal-close"
+            onclick="closePageDetail()"
+          >
+            ×
+          </button>
+
         </div>
 
 
-        <button
-          type="button"
-          class="modal-close"
-          onclick="closePageDetail()"
-        >
-          ×
-        </button>
+        <div
+          id="pageDetailContent"
+          class="list"
+        ></div>
 
       </div>
 
-
-      <div
-        id="pageDetailContent"
-        class="list"
-      ></div>
-
     </div>
 
-  </div>
+
+    <div
+      class="copy-notice"
+      id="copyNotice"
+    >
+      ✅ تم نسخ كود الطالب
+    </div>
 
 
-  <div
-    class="copy-notice"
-    id="copyNotice"
-  >
-    ✅ تم نسخ كود الطالب
-  </div>
+    <div
+      id="errorContainer"
+    ></div>
 
 
-  <div
-    id="errorContainer"
-  ></div>
+    <footer>
+      مركز حردان طارق القرآني
+    </footer>
+
+  </main>
 
 
   <script>
@@ -5717,11 +4941,16 @@
       );
 
 
-    let student = null;
+    let student =
+      null;
 
-    let profile = null;
 
-    let profileData = {};
+    let profile =
+      null;
+
+
+    let profileData =
+      {};
 
 
     let recitationDisplay =
@@ -5733,112 +4962,113 @@
 
 
     /* =========================
-       BADGES
+       BADGE DEFINITIONS
     ========================= */
 
-const BADGE_DEFINITIONS = {
+    const BADGE_DEFINITIONS = {
 
-  'beginner-reader':{
+      'beginner-reader':{
 
-    id:
-      'beginner-reader',
+        id:
+          'beginner-reader',
 
-    icon:
-      '📖',
+        icon:
+          '📖',
 
-    title:
-      'القارئ المبتدئ',
+        title:
+          'القارئ المبتدئ',
 
-    threshold:
-      50,
+        threshold:
+          50,
 
-    description:
-      'يُمنح عند الوصول إلى 50 نقطة'
+        description:
+          'يُمنح عند الوصول إلى 50 نقطة'
 
-  },
-
-
-  'persevering':{
-
-    id:
-      'persevering',
-
-    icon:
-      '🌟',
-
-    title:
-      'المثابر',
-
-    threshold:
-      100,
-
-    description:
-      'يُمنح عند الوصول إلى 100 نقطة'
-
-  },
+      },
 
 
-  'excellence':{
+      'persevering':{
 
-    id:
-      'excellence',
+        id:
+          'persevering',
 
-    icon:
-      '💎',
+        icon:
+          '🌟',
 
-    title:
-      'التميز',
+        title:
+          'المثابر',
 
-    threshold:
-      200,
+        threshold:
+          100,
 
-    description:
-      'يُمنح عند الوصول إلى 200 نقطة'
+        description:
+          'يُمنح عند الوصول إلى 100 نقطة'
 
-  },
-
-
-  'golden-hafiz':{
-
-    id:
-      'golden-hafiz',
-
-    icon:
-      '🏆',
-
-    title:
-      'الحافظ الذهبي',
-
-    threshold:
-      300,
-
-    description:
-      'يُمنح عند الوصول إلى 300 نقطة'
-
-  },
+      },
 
 
-  'crown-of-dignity':{
+      'excellence':{
 
-    id:
-      'crown-of-dignity',
+        id:
+          'excellence',
 
-    icon:
-      '👑',
+        icon:
+          '💎',
 
-    title:
-      'تاج الوقار',
+        title:
+          'التميز',
 
-    threshold:
-      500,
+        threshold:
+          200,
 
-    description:
-      'يُمنح عند الوصول إلى 500 نقطة'
+        description:
+          'يُمنح عند الوصول إلى 200 نقطة'
 
-  }
+      },
 
-};
-    
+
+      'golden-hafiz':{
+
+        id:
+          'golden-hafiz',
+
+        icon:
+          '🏆',
+
+        title:
+          'الحافظ الذهبي',
+
+        threshold:
+          300,
+
+        description:
+          'يُمنح عند الوصول إلى 300 نقطة'
+
+      },
+
+
+      'crown-of-dignity':{
+
+        id:
+          'crown-of-dignity',
+
+        icon:
+          '👑',
+
+        title:
+          'تاج الوقار',
+
+        threshold:
+          500,
+
+        description:
+          'يُمنح عند الوصول إلى 500 نقطة'
+
+      }
+
+    };
+
+
     /* =========================
        JUZ
     ========================= */
@@ -6044,7 +5274,6 @@ const BADGE_DEFINITIONS = {
         return Object.entries(
           value
         )
-
         .map(
           ([key,val]) => ({
             key,
@@ -6064,14 +5293,11 @@ const BADGE_DEFINITIONS = {
       ){
 
         return value
-
           .split('\n')
-
           .map(
             item =>
               item.trim()
           )
-
           .filter(Boolean);
 
       }
@@ -6106,16 +5332,8 @@ const BADGE_DEFINITIONS = {
 
         const cleaned =
           value
-
-            .replace(
-              /,/g,
-              ''
-            )
-
-            .replace(
-              /[^\d.-]/g,
-              ''
-            );
+            .replace(/,/g,'')
+            .replace(/[^\d.-]/g,'');
 
 
         const parsed =
@@ -6160,9 +5378,7 @@ const BADGE_DEFINITIONS = {
 
 
       return num
-
         .toFixed(1)
-
         .replace(
           /\.0$/,
           ''
@@ -6175,7 +5391,9 @@ const BADGE_DEFINITIONS = {
       value
     ){
 
-      if(!value){
+      if(
+        !value
+      ){
 
         return '—';
 
@@ -6220,7 +5438,9 @@ const BADGE_DEFINITIONS = {
       value
     ){
 
-      if(!value){
+      if(
+        !value
+      ){
 
         return '—';
 
@@ -6267,7 +5487,9 @@ const BADGE_DEFINITIONS = {
       monthKey
     ){
 
-      if(!monthKey){
+      if(
+        !monthKey
+      ){
 
         return '—';
 
@@ -6373,7 +5595,9 @@ const BADGE_DEFINITIONS = {
         ).trim();
 
 
-      if(!value){
+      if(
+        !value
+      ){
 
         return 'ط';
 
@@ -6396,7 +5620,9 @@ const BADGE_DEFINITIONS = {
         );
 
 
-      if(!element){
+      if(
+        !element
+      ){
 
         return;
 
@@ -6431,6 +5657,111 @@ const BADGE_DEFINITIONS = {
 
 
       return {};
+
+    }
+
+
+    function toDateKey(
+      value
+    ){
+
+      if(
+        !value
+      ){
+
+        return '';
+
+      }
+
+
+      const raw =
+        String(
+          value
+        );
+
+
+      if(
+        /^\d{4}-\d{2}-\d{2}/.test(
+          raw
+        )
+      ){
+
+        return raw.slice(
+          0,
+          10
+        );
+
+      }
+
+
+      const date =
+        new Date(
+          value
+        );
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
+        )
+      ){
+
+        return '';
+
+      }
+
+
+      return (
+
+        date.getFullYear() +
+
+        '-' +
+
+        String(
+          date.getMonth()+1
+        )
+        .padStart(
+          2,
+          '0'
+        ) +
+
+        '-' +
+
+        String(
+          date.getDate()
+        )
+        .padStart(
+          2,
+          '0'
+        )
+
+      );
+
+    }
+
+
+    function sameDate(
+      a,
+      b
+    ){
+
+      const aa =
+        toDateKey(
+          a
+        );
+
+
+      const bb =
+        toDateKey(
+          b
+        );
+
+
+      return (
+        aa !== '' &&
+        bb !== '' &&
+        aa === bb
+      );
 
     }
 
@@ -6493,7 +5824,9 @@ const BADGE_DEFINITIONS = {
           );
 
 
-        if(!raw){
+        if(
+          !raw
+        ){
 
           return null;
 
@@ -6520,7 +5853,7 @@ const BADGE_DEFINITIONS = {
 
 
     /* =========================
-       RECITATION RECORDS
+       RECITATION
     ========================= */
 
     function getRecitationRecords(){
@@ -6535,7 +5868,6 @@ const BADGE_DEFINITIONS = {
           []
         )
       )
-
       .filter(
         record =>
           record &&
@@ -6558,8 +5890,11 @@ const BADGE_DEFINITIONS = {
 
 
       if(
+
         value === 'review' ||
+
         value === 'مراجعة'
+
       ){
 
         return 'review';
@@ -6593,13 +5928,8 @@ const BADGE_DEFINITIONS = {
       ){
 
         return {
-
-          label:
-            'ممتاز (متقن)',
-
-          points:
-            10
-
+          label:'ممتاز (متقن)',
+          points:10
         };
 
       }
@@ -6610,13 +5940,8 @@ const BADGE_DEFINITIONS = {
       ){
 
         return {
-
-          label:
-            'جيد جدًا (أخطاء قليلة)',
-
-          points:
-            7
-
+          label:'جيد جدًا (أخطاء قليلة)',
+          points:7
         };
 
       }
@@ -6627,13 +5952,8 @@ const BADGE_DEFINITIONS = {
       ){
 
         return {
-
-          label:
-            'جيد (أخطاء متعددة)',
-
-          points:
-            5
-
+          label:'جيد (أخطاء متعددة)',
+          points:5
         };
 
       }
@@ -6644,26 +5964,16 @@ const BADGE_DEFINITIONS = {
       ){
 
         return {
-
-          label:
-            'مقبول (يحتاج تثبيت)',
-
-          points:
-            3
-
+          label:'مقبول (يحتاج تثبيت)',
+          points:3
         };
 
       }
 
 
       return {
-
-        label:
-          'يحتاج مراجعة',
-
-        points:
-          0
-
+        label:'يحتاج مراجعة',
+        points:0
       };
 
     }
@@ -6698,7 +6008,6 @@ const BADGE_DEFINITIONS = {
         ...new Set(
 
           getRecitationRecords()
-
             .map(
               record =>
                 numberValue(
@@ -6713,7 +6022,6 @@ const BADGE_DEFINITIONS = {
                   )
                 )
             )
-
             .filter(
               page =>
                 Number.isInteger(page) &&
@@ -6747,7 +6055,9 @@ const BADGE_DEFINITIONS = {
                   0
                 )
               ) ===
-              Number(page)
+              Number(
+                page
+              )
           );
 
 
@@ -6756,8 +6066,7 @@ const BADGE_DEFINITIONS = {
           row =>
             normalizeType(
               row.type
-            ) ===
-            'new'
+            ) === 'new'
         );
 
 
@@ -6766,8 +6075,7 @@ const BADGE_DEFINITIONS = {
           row =>
             normalizeType(
               row.type
-            ) ===
-            'review'
+            ) === 'review'
         );
 
 
@@ -6781,14 +6089,18 @@ const BADGE_DEFINITIONS = {
       }
 
 
-      if(hasNew){
+      if(
+        hasNew
+      ){
 
         return 'new';
 
       }
 
 
-      if(hasReview){
+      if(
+        hasReview
+      ){
 
         return 'review';
 
@@ -6801,7 +6113,7 @@ const BADGE_DEFINITIONS = {
 
 
     /* =========================
-       PLAN PAGE EXTRACTION
+       PLAN PAGES
     ========================= */
 
     function parsePages(
@@ -6832,7 +6144,9 @@ const BADGE_DEFINITIONS = {
 
         ){
 
-          result.add(num);
+          result.add(
+            num
+          );
 
         }
 
@@ -6923,7 +6237,9 @@ const BADGE_DEFINITIONS = {
               );
 
 
-            if(range){
+            if(
+              range
+            ){
 
               let start =
                 Number(
@@ -6991,7 +6307,7 @@ const BADGE_DEFINITIONS = {
           a,
           b
         ) =>
-          a-b
+          a - b
       );
 
     }
@@ -7074,7 +6390,9 @@ const BADGE_DEFINITIONS = {
           )
           .forEach(
             page =>
-              pages.add(page)
+              pages.add(
+                page
+              )
           );
 
         }
@@ -7113,7 +6431,9 @@ const BADGE_DEFINITIONS = {
       const completed =
         requiredPages.filter(
           page =>
-            recited.has(page)
+            recited.has(
+              page
+            )
         );
 
 
@@ -7155,7 +6475,9 @@ const BADGE_DEFINITIONS = {
         );
 
 
-      if(fill){
+      if(
+        fill
+      ){
 
         fill.style.width =
           `${percent}%`;
@@ -7164,10 +6486,6 @@ const BADGE_DEFINITIONS = {
 
     }
 
-
-    /* =========================
-       RECITATION SUMMARY
-    ========================= */
 
     function renderRecitationSummary(){
 
@@ -7185,68 +6503,55 @@ const BADGE_DEFINITIONS = {
         );
 
 
-      const requiredPages =
-        getPlanRequiredPages();
-
-
-      const recited =
-        new Set(
-          pages
-        );
-
-
-      const completedRequired =
-        requiredPages.filter(
-          page =>
-            recited.has(
-              page
-            )
-        );
-
-
       setText(
         'recitedPages',
         pages.length
       );
 
 
-      document.getElementById(
-        'quranOverallPercent'
-      ).textContent =
-        `${percent}%`;
+      setText(
+        'quranOverallPercent',
+        `${percent}%`
+      );
 
 
-      document.getElementById(
-        'quranOverallCount'
-      ).textContent =
-        `${pages.length} من 604 صفحات`;
+      setText(
+        'quranOverallCount',
+        `${pages.length} من 604 صفحات`
+      );
 
 
-      document.getElementById(
-        'quranOverallFill'
-      ).style.width =
-        `${percent}%`;
+      const fill =
+        document.getElementById(
+          'quranOverallFill'
+        );
 
 
-      document.getElementById(
-        'recitationSummary'
-      ).textContent =
-        `${pages.length} صفحة مسمّعة • ${percent}%`;
+      if(
+        fill
+      ){
+
+        fill.style.width =
+          `${percent}%`;
+
+      }
 
 
-      document.getElementById(
-        'recitationDisplaySummary'
-      ).textContent =
+      setText(
+        'recitationSummary',
+        `${pages.length} صفحة مسمّعة • ${percent}%`
+      );
+
+
+      setText(
+        'recitationDisplaySummary',
         recitationDisplay === 'table'
           ? 'الجدول التفصيلي'
-          : 'خريطة الصفحات';
+          : 'خريطة الصفحات'
+      );
 
     }
 
-
-    /* =========================
-       TABLE RENDER
-    ========================= */
 
     function renderRecitationTable(){
 
@@ -7254,6 +6559,15 @@ const BADGE_DEFINITIONS = {
         document.getElementById(
           'recitationTableBody'
         );
+
+
+      if(
+        !body
+      ){
+
+        return;
+
+      }
 
 
       const rows =
@@ -7278,6 +6592,7 @@ const BADGE_DEFINITIONS = {
               numberValue(
                 b.page
               ) -
+
               numberValue(
                 a.page
               )
@@ -7323,8 +6638,7 @@ const BADGE_DEFINITIONS = {
               const type =
                 normalizeType(
                   record.type
-                ) ===
-                'review'
+                ) === 'review'
                   ? 'مراجعة'
                   : 'حفظ جديد';
 
@@ -7366,20 +6680,17 @@ const BADGE_DEFINITIONS = {
                     )}
                   </td>
 
-
                   <td>
                     ${escapeHtml(
                       type
                     )}
                   </td>
 
-
                   <td>
                     ${escapeHtml(
                       record.score
                     )}
                   </td>
-
 
                   <td>
 
@@ -7393,22 +6704,17 @@ const BADGE_DEFINITIONS = {
 
                   </td>
 
-
                   <td>
-                    ${escapeHtml(
-                      decimalNumber(
-                        points
-                      )
+                    ${decimalNumber(
+                      points
                     )}
                   </td>
-
 
                   <td>
                     ${escapeHtml(
                       record.date || '-'
                     )}
                   </td>
-
 
                   <td>
                     ${escapeHtml(
@@ -7430,7 +6736,7 @@ const BADGE_DEFINITIONS = {
 
 
     /* =========================
-       MAP RENDER
+       JUZ MAP
     ========================= */
 
     function juzProgress(
@@ -7477,8 +6783,7 @@ const BADGE_DEFINITIONS = {
             ? (
                 done /
                 total
-              ) *
-              100
+              ) * 100
             : 0
 
       };
@@ -7494,6 +6799,15 @@ const BADGE_DEFINITIONS = {
         );
 
 
+      if(
+        !host
+      ){
+
+        return;
+
+      }
+
+
       host.innerHTML = `
 
         <div class="juz-list">
@@ -7506,8 +6820,10 @@ const BADGE_DEFINITIONS = {
                   const juz =
                     range[0];
 
+
                   const start =
                     range[1];
+
 
                   const end =
                     range[2];
@@ -7586,7 +6902,7 @@ const BADGE_DEFINITIONS = {
                           <div class="juz-percent">
                             ${progress.done}/${progress.total}
                             •
-                            ${progress.pct.toFixed(1).replace(/\\.0$/,'')}%
+                            ${progress.pct.toFixed(1).replace(/\.0$/,'')}%
                           </div>
 
                         </div>
@@ -7608,9 +6924,7 @@ const BADGE_DEFINITIONS = {
 
                         <div class="page-grid">
 
-                          ${
-                            pageButtons.join('')
-                          }
+                          ${pageButtons.join('')}
 
                         </div>
 
@@ -7660,16 +6974,14 @@ const BADGE_DEFINITIONS = {
     }
 
 
-    /* =========================
-       PAGE DETAILS
-    ========================= */
-
     function openPageDetail(
       page,
       event
     ){
 
-      if(event){
+      if(
+        event
+      ){
 
         event.stopPropagation();
 
@@ -7715,10 +7027,10 @@ const BADGE_DEFINITIONS = {
           );
 
 
-      document.getElementById(
-        'pageDetailTitle'
-      ).textContent =
-        `تفاصيل تسميع الصفحة ${pageNumber}`;
+      setText(
+        'pageDetailTitle',
+        `تفاصيل تسميع الصفحة ${pageNumber}`
+      );
 
 
       const container =
@@ -7728,15 +7040,25 @@ const BADGE_DEFINITIONS = {
 
 
       if(
+        !container
+      ){
+
+        return;
+
+      }
+
+
+      if(
         !records.length
       ){
 
-        container.innerHTML =
-          `
-            <div class="empty">
-              لا توجد سجلات لهذه الصفحة.
-            </div>
-          `;
+        container.innerHTML = `
+
+          <div class="empty">
+            لا توجد سجلات لهذه الصفحة.
+          </div>
+
+        `;
 
       }else{
 
@@ -7754,52 +7076,15 @@ const BADGE_DEFINITIONS = {
                 const type =
                   normalizeType(
                     record.type
-                  ) ===
-                  'review'
+                  ) === 'review'
                     ? 'مراجعة'
                     : 'حفظ جديد';
 
 
                 const points =
-                  decimalNumber(
-                    recitationPoints(
-                      record
-                    )
+                  recitationPoints(
+                    record
                   );
-
-
-                const details = [];
-
-
-                details.push(
-                  `النوع: ${type}`
-                );
-
-
-                details.push(
-                  `العلامة: ${record.score}`
-                );
-
-
-                details.push(
-                  `التقدير: ${grade.label}`
-                );
-
-
-                details.push(
-                  `النقاط: ${points}`
-                );
-
-
-                if(
-                  record.date
-                ){
-
-                  details.push(
-                    `التاريخ: ${formatDateTime(record.date)}`
-                  );
-
-                }
 
 
                 return `
@@ -7814,12 +7099,23 @@ const BADGE_DEFINITIONS = {
 
                       <div class="item-sub">
 
-                        ${details
-                          .map(
-                            item =>
-                              escapeHtml(item)
-                          )
-                          .join(' • ')}
+                        النوع:
+                        ${escapeHtml(type)}
+
+                        • الدرجة:
+                        ${escapeHtml(record.score)}
+
+                        • التقدير:
+                        ${escapeHtml(grade.label)}
+
+                        • النقاط:
+                        ${decimalNumber(points)}
+
+                        ${
+                          record.date
+                            ? ` • التاريخ: ${escapeHtml(formatDateTime(record.date))}`
+                            : ''
+                        }
 
                       </div>
 
@@ -7857,11 +7153,13 @@ const BADGE_DEFINITIONS = {
       }
 
 
-      document.getElementById(
-        'pageDetailModal'
-      ).classList.add(
-        'open'
-      );
+      document
+        .getElementById(
+          'pageDetailModal'
+        )
+        .classList.add(
+          'open'
+        );
 
     }
 
@@ -7871,8 +7169,12 @@ const BADGE_DEFINITIONS = {
     ){
 
       if(
+
         event &&
-        event.target !== event.currentTarget
+
+        event.target !==
+        event.currentTarget
+
       ){
 
         return;
@@ -7880,18 +7182,16 @@ const BADGE_DEFINITIONS = {
       }
 
 
-      document.getElementById(
-        'pageDetailModal'
-      ).classList.remove(
-        'open'
-      );
+      document
+        .getElementById(
+          'pageDetailModal'
+        )
+        .classList.remove(
+          'open'
+        );
 
     }
 
-
-    /* =========================
-       DISPLAY MODE
-    ========================= */
 
     function setRecitationDisplay(
       mode
@@ -7971,214 +7271,193 @@ const BADGE_DEFINITIONS = {
       }
 
 
-      document.getElementById(
-        'recitationDisplaySummary'
-      ).textContent =
+      setText(
+        'recitationDisplaySummary',
         mode === 'table'
           ? 'الجدول التفصيلي'
-          : 'خريطة الصفحات';
+          : 'خريطة الصفحات'
+      );
 
     }
 
 
     /* =========================
-       PLAN RENDER
+       NEXT RECITATION
     ========================= */
 
-        function formatNextRecitationAmount(
-      value
-    ){
+    function renderNextRecitation(){
 
-      const textValue =
-        String(
-          value ?? ''
-        ).trim();
+      const elements = [
 
+        document.getElementById(
+          'nextRecitationText'
+        ),
 
-      const pageMatch =
-        textValue.match(
-          /^(?:صفحة\s*)?(\d+)\s*صفحات?$/
-        );
+        document.getElementById(
+          'generalNextRecitationText'
+        )
 
-
-      if(
-        pageMatch
-      ){
-
-        return `صفحة رقم ${pageMatch[1]}`;
-
-      }
-
-
-      return textValue;
-
-    }
-
-
-function renderNextRecitation(){
-
-  const elements = [
-    document.getElementById(
-      'nextRecitationText'
-    ),
-    document.getElementById(
-      'generalNextRecitationText'
-    )
-  ]
-  .filter(
-    element => element
-  );
-
-
-  if(
-    !elements.length
-  ){
-
-    return;
-
-  }
-
-
-  const tasks =
-    getPlanTasks();
-
-
-  const today =
-    new Date();
-
-
-  today.setHours(
-    0,
-    0,
-    0,
-    0
-  );
-
-
-  const upcoming =
-    tasks
-      .map(
-        task => {
-
-          const rawDate =
-            firstValue(
-              task,
-              [
-                'date',
-                'startDate',
-                'start_date',
-                'dueDate',
-                'due_date'
-              ],
-              ''
-            );
-
-
-          if(
-            !rawDate
-          ){
-
-            return null;
-
-          }
-
-
-          const date =
-            new Date(
-              rawDate
-            );
-
-
-          if(
-            Number.isNaN(
-              date.getTime()
-            )
-          ){
-
-            return null;
-
-          }
-
-
-          date.setHours(
-            0,
-            0,
-            0,
-            0
-          );
-
-
-          return {
-            task,
-            date
-          };
-
-        }
-      )
+      ]
       .filter(
-        item =>
-          item &&
-          item.date >= today
-      )
-      .sort(
-        (
-          a,
-          b
-        ) =>
-          a.date -
-          b.date
+        element =>
+          element
       );
 
 
-  if(
-    !upcoming.length
-  ){
+      if(
+        !elements.length
+      ){
 
-    elements.forEach(
-      element => {
-
-        element.textContent =
-          'لا يوجد تسميع قادم حاليًا';
+        return;
 
       }
-    );
-
-    return;
-
-  }
 
 
-  const next =
-    upcoming[0];
+      const tasks =
+        getPlanTasks();
 
 
-  const pages =
-    extractPlanTaskPages(
-      next.task
-    );
+      const today =
+        new Date();
 
 
-  const pageText =
-    pages.length
-      ? ` • الصفحات: ${pages.join('، ')}`
-      : '';
+      today.setHours(
+        0,
+        0,
+        0,
+        0
+      );
 
 
-  const text =
-    `📖 التسميع بتاريخ ${formatDate(next.date)}${pageText}`;
+      const upcoming =
+        tasks
+          .map(
+            task => {
+
+              const rawDate =
+                firstValue(
+                  task,
+                  [
+                    'date',
+                    'startDate',
+                    'start_date',
+                    'dueDate',
+                    'due_date'
+                  ],
+                  ''
+                );
 
 
-  elements.forEach(
-    element => {
+              if(
+                !rawDate
+              ){
 
-      element.textContent =
-        text;
+                return null;
+
+              }
+
+
+              const date =
+                new Date(
+                  rawDate
+                );
+
+
+              if(
+                Number.isNaN(
+                  date.getTime()
+                )
+              ){
+
+                return null;
+
+              }
+
+
+              date.setHours(
+                0,
+                0,
+                0,
+                0
+              );
+
+
+              return {
+                task,
+                date
+              };
+
+            }
+          )
+          .filter(
+            item =>
+              item &&
+              item.date >= today
+          )
+          .sort(
+            (
+              a,
+              b
+            ) =>
+              a.date -
+              b.date
+          );
+
+
+      if(
+        !upcoming.length
+      ){
+
+        elements.forEach(
+          element => {
+
+            element.textContent =
+              'لا يوجد تسميع قادم حاليًا';
+
+          }
+        );
+
+        return;
+
+      }
+
+
+      const next =
+        upcoming[0];
+
+
+      const pages =
+        extractPlanTaskPages(
+          next.task
+        );
+
+
+      const pageText =
+        pages.length
+          ? ` • الصفحات: ${pages.join('، ')}`
+          : '';
+
+
+      const nextText =
+        `📖 التسميع بتاريخ ${formatDate(next.date)}${pageText}`;
+
+
+      elements.forEach(
+        element => {
+
+          element.textContent =
+            nextText;
+
+        }
+      );
 
     }
-  );
 
-}
-    
+
+    /* =========================
+       PLAN
+    ========================= */
+
     function renderPlan(){
 
       const container =
@@ -8259,8 +7538,7 @@ function renderNextRecitation(){
 
               const typeValue =
                 String(
-                  task.type ||
-                  ''
+                  task.type || ''
                 )
                 .toLowerCase();
 
@@ -8283,7 +7561,7 @@ function renderNextRecitation(){
               ){
 
                 details.push(
-                  `التاريخ: ${task.date}`
+                  `التاريخ: ${formatDate(task.date)}`
                 );
 
               }
@@ -8336,11 +7614,13 @@ function renderNextRecitation(){
                   <div class="item-main">
 
                     <div class="item-title">
-                      ${
+
+                      ${escapeHtml(
                         task.day ||
                         task.weekday ||
                         `المهمة ${index+1}`
-                      }
+                      )}
+
                     </div>
 
 
@@ -8392,8 +7672,7 @@ function renderNextRecitation(){
               (
                 totalCompleted /
                 totalRequired
-              ) *
-              100
+              ) * 100
             )
           : 0;
 
@@ -8409,6 +7688,29 @@ function renderNextRecitation(){
     /* =========================
        TESTS
     ========================= */
+
+    function getTests(){
+
+      return toArray(
+        firstValue(
+          profileData,
+          [
+            'tests',
+            'exams',
+            'examResults',
+            'exam_results'
+          ],
+          []
+        )
+      )
+      .filter(
+        test =>
+          test &&
+          typeof test === 'object'
+      );
+
+    }
+
 
     function testGrade(
       score
@@ -8429,15 +7731,10 @@ function renderNextRecitation(){
       if(
         s >= 98
       ){
-        
+
         return {
-
-          label:
-            'ممتاز',
-
-          points:
-            12
-
+          label:'ممتاز',
+          points:12
         };
 
       }
@@ -8446,15 +7743,10 @@ function renderNextRecitation(){
       if(
         s >= 96
       ){
-        
+
         return {
-
-          label:
-            'جيد جدًا',
-
-          points:
-            8
-
+          label:'جيد جدًا',
+          points:8
         };
 
       }
@@ -8463,180 +7755,19 @@ function renderNextRecitation(){
       if(
         s >= 93
       ){
-        
+
         return {
-
-          label:
-            'مقبول',
-          
-          points:
-            4
-
+          label:'مقبول',
+          points:4
         };
 
       }
 
 
       return {
-
-        label:
-          'يحتاج مراجعة',
-
-        points:
-          0
-
+        label:'يحتاج مراجعة',
+        points:0
       };
-
-    }
-
-
-    function renderTests(){
-
-      const container =
-        document.getElementById(
-          'testsList'
-        );
-
-
-      const summary =
-        document.getElementById(
-          'testsSummary'
-        );
-
-
-      const rows =
-        toArray(
-          firstValue(
-            profileData,
-            [
-              'tests',
-              'exams',
-              'examResults',
-              'exam_results'
-            ],
-            []
-          )
-        );
-
-
-      if(
-        !rows.length
-      ){
-
-        container.innerHTML =
-          '<div class="empty">لا توجد اختبارات مسجلة.</div>';
-
-        summary.textContent =
-          '0 اختبار';
-
-        return;
-
-      }
-
-
-      container.innerHTML =
-        rows
-          .map(
-            (
-              test,
-              index
-            ) => {
-
-              const grade =
-                testGrade(
-                  test.score
-                );
-
-
-              let pillClass =
-                'pill-red';
-
-
-              if(
-                grade.points >= 8
-              ){
-
-                pillClass =
-                  'pill-green';
-
-              }else if(
-                grade.points >= 4
-              ){
-
-                pillClass =
-                  'pill-gold';
-
-              }
-
-
-              return `
-
-                <div class="item">
-
-                  <div class="item-main">
-
-                    <div class="item-title">
-                      ${escapeHtml(
-                        test.title ||
-                        test.name ||
-                        `اختبار ${index+1}`
-                      )}
-                    </div>
-
-
-                    <div class="item-sub">
-
-                      ${
-                        test.date
-                          ? escapeHtml(
-                              formatDate(
-                                test.date
-                              )
-                            )
-                          : ''
-                      }
-
-                      ${
-                        test.note
-                          ? ` • ${escapeHtml(test.note)}`
-                          : ''
-                      }
-
-                    </div>
-
-                  </div>
-
-
-                  <div class="item-badge">
-
-                    ${escapeHtml(
-                      test.score
-                    )}
-
-                    /100
-
-                    <span
-                      class="pill ${pillClass}"
-                      style="margin-right:6px;"
-                    >
-                      ${escapeHtml(
-                        grade.label
-                      )}
-                    </span>
-
-                  </div>
-
-                </div>
-
-              `;
-
-            }
-          )
-          .join('');
-
-
-      summary.textContent =
-        `${rows.length} اختبار`;
 
     }
 
@@ -8644,6 +7775,27 @@ function renderNextRecitation(){
     /* =========================
        ATTENDANCE
     ========================= */
+
+    function getAttendance(){
+
+      return toArray(
+        firstValue(
+          profileData,
+          [
+            'attendance',
+            'attendances'
+          ],
+          []
+        )
+      )
+      .filter(
+        record =>
+          record &&
+          typeof record === 'object'
+      );
+
+    }
+
 
     function attendancePoints(
       status
@@ -8658,8 +7810,10 @@ function renderNextRecitation(){
 
 
       if(
+
         value === 'حاضر' ||
         value === 'present'
+
       ){
 
         return 10;
@@ -8668,8 +7822,10 @@ function renderNextRecitation(){
 
 
       if(
+
         value === 'متأخر' ||
         value === 'late'
+
       ){
 
         return 5;
@@ -8682,169 +7838,27 @@ function renderNextRecitation(){
     }
 
 
-    function renderAttendance(){
+    /* =========================
+       WARNINGS
+    ========================= */
 
-      const container =
-        document.getElementById(
-          'attendanceList'
-        );
+    function getWarningRecords(){
 
-
-      const summary =
-        document.getElementById(
-          'attendanceSummary'
-        );
-
-
-      const rows =
-        toArray(
-          firstValue(
-            profileData,
-            [
-              'attendance',
-              'attendances'
-            ],
-            []
-          )
-        );
-
-
-      if(
-        !rows.length
-      ){
-
-        container.innerHTML =
-          '<div class="empty">لا توجد سجلات حضور.</div>';
-
-        summary.textContent =
-          'لا توجد بيانات';
-
-        return;
-
-      }
-
-
-      let present =
-        0;
-
-
-      let absent =
-        0;
-
-
-      let late =
-        0;
-
-
-      container.innerHTML =
-        rows
-          .map(
-            (
-              record,
-              index
-            ) => {
-
-              const status =
-                firstValue(
-                  record,
-                  [
-                    'status',
-                    'attendance'
-                  ],
-                  '—'
-                );
-
-
-              const normalized =
-                String(
-                  status
-                )
-                .toLowerCase();
-
-
-              if(
-                normalized.includes('حاضر') ||
-                normalized.includes('present')
-              ){
-
-                present++;
-
-              }
-
-
-              if(
-                normalized.includes('غائب') ||
-                normalized.includes('absent')
-              ){
-
-                absent++;
-
-              }
-
-
-              if(
-                normalized.includes('متأخر') ||
-                normalized.includes('late')
-              ){
-
-                late++;
-
-              }
-
-
-              return `
-
-                <div class="item">
-
-                  <div class="item-main">
-
-                    <div class="item-title">
-                      ${escapeHtml(
-                        record.day ||
-                        `سجل ${index+1}`
-                      )}
-                    </div>
-
-                    <div class="item-sub">
-
-                      ${
-                        record.date
-                          ? escapeHtml(
-                              formatDate(
-                                record.date
-                              )
-                            )
-                          : ''
-                      }
-
-                      ${
-                        record.note
-                          ? ` • ${escapeHtml(record.note)}`
-                          : ''
-                      }
-
-                    </div>
-
-                  </div>
-
-
-                  <div class="item-badge">
-                    ${escapeHtml(
-                      status
-                    )}
-                  </div>
-
-                </div>
-
-              `;
-
-            }
-          )
-          .join('');
-
-
-      summary.textContent =
-        `حاضر: ${present} • غياب: ${absent} • تأخير: ${late}`;
+      return toArray(
+        firstValue(
+          profileData,
+          [
+            'warningRecords',
+            'warning_records'
+          ],
+          []
+        )
+      )
+      .filter(
+        warning =>
+          warning &&
+          typeof warning === 'object'
+      );
 
     }
 
@@ -8867,8 +7881,10 @@ function renderNextRecitation(){
 
 
       if(
+
         summary &&
         typeof summary === 'object'
+
       ){
 
         return summary;
@@ -8898,8 +7914,10 @@ function renderNextRecitation(){
 
 
       if(
+
         stored !== null &&
         stored !== '—'
+
       ){
 
         return numberValue(
@@ -8914,16 +7932,11 @@ function renderNextRecitation(){
           (
             total,
             record
-          ) => {
-
-            return (
-              total +
-              recitationPoints(
-                record
-              )
-            );
-
-          },
+          ) =>
+            total +
+            recitationPoints(
+              record
+            ),
           0
         );
 
@@ -8942,6 +7955,32 @@ function renderNextRecitation(){
           []
         )
       )
+      .map(
+        item => {
+
+          if(
+
+            item &&
+            typeof item.value === 'object' &&
+            item.value !== null
+
+          ){
+
+            return {
+              ...item.value,
+              id:
+                item.value.id ||
+                item.id ||
+                ''
+            };
+
+          }
+
+
+          return item;
+
+        }
+      )
       .filter(
         item =>
           item &&
@@ -8958,26 +7997,80 @@ function renderNextRecitation(){
           (
             total,
             record
-          ) => {
+          ) =>
 
-            return (
-              total +
-              numberValue(
-                firstValue(
-                  record,
-                  [
-                    'points',
-                    'value',
-                    'amount'
-                  ],
-                  0
-                )
+            total +
+
+            numberValue(
+              firstValue(
+                record,
+                [
+                  'points',
+                  'value',
+                  'amount'
+                ],
+                0
               )
-            );
+            ),
 
-          },
           0
         );
+
+    }
+
+
+    function getOtherAcademicPoints(){
+
+      const tests =
+        getTests();
+
+
+      const attendance =
+        getAttendance();
+
+
+      return (
+
+        tests.reduce(
+          (
+            total,
+            test
+          ) =>
+
+            total +
+
+            testGrade(
+              test.score
+            ).points,
+
+          0
+        )
+
+        +
+
+        attendance.reduce(
+          (
+            total,
+            item
+          ) =>
+
+            total +
+
+            attendancePoints(
+              firstValue(
+                item,
+                [
+                  'status',
+                  'attendance'
+                ],
+                ''
+              )
+            ),
+
+          0
+        )
+
+      );
 
     }
 
@@ -8999,8 +8092,10 @@ function renderNextRecitation(){
 
 
       if(
+
         stored !== null &&
         stored !== '—'
+
       ){
 
         return numberValue(
@@ -9011,67 +8106,12 @@ function renderNextRecitation(){
 
 
       return (
+
         getAcademicPoints() +
-        getBonusPoints() +
-        getOtherAcademicPoints()
-      );
 
-    }
+        getOtherAcademicPoints() +
 
-
-    function getOtherAcademicPoints(){
-
-      const tests =
-        toArray(
-          firstValue(
-            profileData,
-            [
-              'tests'
-            ],
-            []
-          )
-        );
-
-
-      const attendance =
-        toArray(
-          firstValue(
-            profileData,
-            [
-              'attendance'
-            ],
-            []
-          )
-        );
-
-
-      return (
-
-        tests.reduce(
-          (
-            total,
-            test
-          ) =>
-            total +
-            testGrade(
-              test.score
-            ).points,
-          0
-        )
-
-        +
-
-        attendance.reduce(
-          (
-            total,
-            item
-          ) =>
-            total +
-            attendancePoints(
-              item.status
-            ),
-          0
-        )
+        getBonusPoints()
 
       );
 
@@ -9095,8 +8135,10 @@ function renderNextRecitation(){
 
 
       if(
+
         stored !== null &&
         stored !== '—'
+
       ){
 
         return numberValue(
@@ -9118,19 +8160,9 @@ function renderNextRecitation(){
         .forEach(
           record => {
 
-            const date =
-              firstValue(
-                record,
-                [
-                  'date'
-                ],
-                ''
-              );
-
-
             if(
               getMonthKey(
-                date
+                record.date
               ) ===
               month
             ){
@@ -9146,23 +8178,72 @@ function renderNextRecitation(){
         );
 
 
+      getTests()
+        .forEach(
+          test => {
+
+            if(
+              getMonthKey(
+                test.date
+              ) ===
+              month
+            ){
+
+              points +=
+                testGrade(
+                  test.score
+                ).points;
+
+            }
+
+          }
+        );
+
+
+      getAttendance()
+        .forEach(
+          record => {
+
+            if(
+              getMonthKey(
+                record.date
+              ) ===
+              month
+            ){
+
+              points +=
+                attendancePoints(
+                  firstValue(
+                    record,
+                    [
+                      'status',
+                      'attendance'
+                    ],
+                    ''
+                  )
+                );
+
+            }
+
+          }
+        );
+
+
       getExtraPointRecords()
         .forEach(
           record => {
 
-            const date =
-              firstValue(
-                record,
-                [
-                  'date'
-                ],
-                ''
-              );
-
-
             if(
               getMonthKey(
-                date
+                firstValue(
+                  record,
+                  [
+                    'date',
+                    'createdAt',
+                    'created_at'
+                  ],
+                  ''
+                )
               ) ===
               month
             ){
@@ -9173,7 +8254,8 @@ function renderNextRecitation(){
                     record,
                     [
                       'points',
-                      'value'
+                      'value',
+                      'amount'
                     ],
                     0
                   )
@@ -9194,7 +8276,9 @@ function renderNextRecitation(){
       value
     ){
 
-      if(!value){
+      if(
+        !value
+      ){
 
         return '';
 
@@ -9273,8 +8357,10 @@ function renderNextRecitation(){
 
 
       if(
+
         saved !== null &&
         saved !== '—'
+
       ){
 
         return numberValue(
@@ -9317,8 +8403,10 @@ function renderNextRecitation(){
 
 
       if(
+
         saved !== null &&
         saved !== '—'
+
       ){
 
         return numberValue(
@@ -9341,38 +8429,221 @@ function renderNextRecitation(){
 
     }
 
-    function getWarningRecords(){
 
-      return toArray(
+    /* =========================
+       POINT BREAKDOWN
+    ========================= */
+
+    function getPlanTaskPointDetail(
+      task,
+      index
+    ){
+
+      const rawDate =
         firstValue(
-          profileData,
+          task,
           [
-            'warningRecords',
-            'warning_records'
+            'date',
+            'startDate',
+            'start_date',
+            'dueDate',
+            'due_date'
           ],
-          []
+          ''
+        );
+
+
+      if(
+        !rawDate
+      ){
+
+        return null;
+
+      }
+
+
+      const dateKey =
+        toDateKey(
+          rawDate
+        );
+
+
+      if(
+        !dateKey
+      ){
+
+        return null;
+
+      }
+
+
+      const todayKey =
+        toDateKey(
+          new Date()
+        );
+
+
+      if(
+        dateKey >
+        todayKey
+      ){
+
+        return null;
+
+      }
+
+
+      const type =
+        String(
+          task.type ||
+          ''
         )
-      )
-      .filter(
-        warning =>
-          warning &&
-          typeof warning === 'object'
-      );
+        .toLowerCase()
+        .trim();
+
+
+      if(
+        type === 'test'
+      ){
+
+        const completed =
+          getTests().some(
+            test =>
+              sameDate(
+                test.date,
+                rawDate
+              )
+          );
+
+
+        return {
+
+          title:
+            task.title ||
+            task.day ||
+            `خطة اختبار ${index+1}`,
+
+          date:
+            rawDate,
+
+          kind:
+            'اختبار',
+
+          detail:
+            completed
+              ? 'تم تنفيذ الاختبار في نفس التاريخ'
+              : 'لم يتم تنفيذ اختبار في نفس التاريخ',
+
+          points:
+            completed
+              ? 5
+              : 0
+
+        };
+
+      }
+
+
+      const pages =
+        extractPlanTaskPages(
+          task
+        );
+
+
+      if(
+        !pages.length
+      ){
+
+        return null;
+
+      }
+
+
+      const requiredType =
+        normalizeType(
+          task.type
+        );
+
+
+      const completedPages =
+        pages.filter(
+          page =>
+
+            getRecitationRecords()
+              .some(
+                record =>
+
+                  sameDate(
+                    record.date,
+                    rawDate
+                  )
+
+                  &&
+
+                  normalizeType(
+                    record.type
+                  ) ===
+                  requiredType
+
+                  &&
+
+                  numberValue(
+                    firstValue(
+                      record,
+                      [
+                        'page',
+                        'pageNumber',
+                        'page_number'
+                      ],
+                      0
+                    )
+                  ) ===
+                  Number(
+                    page
+                  )
+              )
+        );
+
+
+      const ratio =
+        Math.min(
+          1,
+          completedPages.length /
+          pages.length
+        );
+
+
+      return {
+
+        title:
+          task.title ||
+          task.day ||
+          `مهمة ${index+1}`,
+
+        date:
+          rawDate,
+
+        kind:
+          requiredType === 'review'
+            ? 'مراجعة'
+            : 'حفظ جديد',
+
+        detail:
+          `الصفحات المطلوبة: ${pages.join('، ')} • تم إنجاز: ${completedPages.join('، ') || 'لا يوجد'} • الإنجاز ${completedPages.length}/${pages.length}`,
+
+        points:
+          5 * ratio
+
+      };
 
     }
 
 
-    function renderWarnings(){
+    function renderPointBreakdown(){
 
       const container =
         document.getElementById(
-          'warningsList'
-        );
-
-
-      const summary =
-        document.getElementById(
-          'warningsSummary'
+          'pointsBreakdownList'
         );
 
 
@@ -9385,239 +8656,544 @@ function renderNextRecitation(){
       }
 
 
-      const warnings =
-        getWarningRecords();
+      const recitations =
+        getRecitationRecords();
 
 
-      if(
-        !warnings.length
-      ){
-
-        container.innerHTML =
-          '<div class="empty">لا توجد إنذارات مسجلة.</div>';
-
-        if(summary){
-
-          summary.textContent =
-            '0 إنذار';
-
-        }
-
-        return;
-
-      }
+      const tests =
+        getTests();
 
 
-      container.innerHTML =
-        warnings
-          .map(
-            (
-              warning,
-              index
-            ) => {
+      const attendance =
+        getAttendance();
 
-              const reason =
+
+      const extra =
+        getExtraPointRecords();
+
+
+      const planTasks =
+        getPlanTasks();
+
+
+      const sections = [];
+
+
+      let calculatedTotal =
+        0;
+
+
+      /* =========================
+         RECITATION DETAILS
+      ========================= */
+
+      const recitationRows =
+        recitations.map(
+          (
+            record,
+            index
+          ) => {
+
+            const page =
+              numberValue(
                 firstValue(
-                  warning,
+                  record,
                   [
-                    'reason',
-                    'cause',
-                    'title'
+                    'page',
+                    'pageNumber',
+                    'page_number'
                   ],
-                  'إنذار'
-                );
+                  0
+                )
+              );
 
 
-              const date =
-                firstValue(
-                  warning,
-                  [
-                    'date',
-                    'warningDate',
-                    'warning_date'
-                  ],
-                  ''
-                );
+            const type =
+              normalizeType(
+                record.type
+              ) === 'review'
+                ? 'مراجعة'
+                : 'حفظ جديد';
 
 
-              return `
-
-                <div class="item">
-
-                  <div class="item-main">
-
-                    <div class="item-title">
-                      ⚠️ ${escapeHtml(
-                        reason
-                      )}
-                    </div>
+            const grade =
+              recitationGrade(
+                record.score
+              );
 
 
-                    <div class="item-sub">
+            const points =
+              recitationPoints(
+                record
+              );
 
-                      ${
-                        date
-                          ? `تاريخ الإنذار: ${escapeHtml(
-                              formatDate(
-                                date
-                              )
-                            )}`
-                          : 'تاريخ الإنذار غير محدد'
-                      }
 
-                    </div>
+            calculatedTotal +=
+              points;
+
+
+            return `
+
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+
+                    📖 ${
+                      page
+                        ? `صفحة ${page}`
+                        : `تسميع ${index+1}`
+                    }
 
                   </div>
 
 
-                  <div class="item-badge">
-                    إنذار ${index + 1}
+                  <div class="item-sub">
+
+                    ${
+                      record.date
+                        ? `التاريخ: ${escapeHtml(formatDate(record.date))}`
+                        : 'التاريخ: غير محدد'
+                    }
+
+                    • النوع: ${escapeHtml(type)}
+
+                    • الدرجة:
+                    ${escapeHtml(record.score ?? 0)}
+
+                    • التقدير:
+                    ${escapeHtml(grade.label)}
+
+                    ${
+                      record.note ||
+                      record.notes
+                        ? ` • الملاحظة: ${escapeHtml(record.note || record.notes)}`
+                        : ''
+                    }
+
                   </div>
 
                 </div>
 
-              `;
 
-            }
-          )
-          .join('');
+                <div class="item-badge">
+
+                  +${decimalNumber(points)}
+
+                </div>
+
+              </div>
+
+            `;
+
+          }
+        );
 
 
-      if(summary){
+      if(
+        recitationRows.length
+      ){
 
-        summary.textContent =
-          `${warnings.length} إنذار`;
+        const recitationTotal =
+          recitations.reduce(
+            (
+              total,
+              record
+            ) =>
+              total +
+              recitationPoints(
+                record
+              ),
+            0
+          );
+
+
+        sections.push(`
+
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+                📖 نقاط التسميع
+              </div>
+
+              <div class="item-sub">
+                كل سجل تسميع موضح معه الصفحة والنوع والدرجة والتقدير والنقاط.
+              </div>
+
+            </div>
+
+            <div class="item-badge">
+              +${decimalNumber(recitationTotal)}
+            </div>
+
+          </div>
+
+          ${recitationRows.join('')}
+
+        `);
+
+      }else{
+
+        sections.push(`
+
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+                📖 نقاط التسميع
+              </div>
+
+              <div class="item-sub">
+                لا توجد سجلات تسميع.
+              </div>
+
+            </div>
+
+            <div class="item-badge">
+              +0
+            </div>
+
+          </div>
+
+        `);
 
       }
 
-    }
 
-    function renderGeneralAttendance(){
+      /* =========================
+         TEST DETAILS
+      ========================= */
 
-  const container =
-    document.getElementById(
-      'generalAttendanceList'
-    );
+      const testRows =
+        tests.map(
+          (
+            test,
+            index
+          ) => {
 
-
-  const summary =
-    document.getElementById(
-      'generalAttendanceSummary'
-    );
-
-
-  if(
-    !container
-  ){
-
-    return;
-
-  }
+            const grade =
+              testGrade(
+                test.score
+              );
 
 
-  const rows =
-    toArray(
-      firstValue(
-        profileData,
-        [
-          'attendance',
-          'attendances'
-        ],
-        []
-      )
-    );
+            calculatedTotal +=
+              grade.points;
 
 
-  if(
-    !rows.length
-  ){
+            return `
 
-    container.innerHTML =
-      '<div class="empty">لا توجد سجلات حضور.</div>';
+              <div class="item">
 
-    if(
-      summary
-    ){
+                <div class="item-main">
 
-      summary.textContent =
-        'لا توجد بيانات';
+                  <div class="item-title">
 
-    }
+                    📝 ${
+                      escapeHtml(
+                        test.title ||
+                        test.name ||
+                        `اختبار ${index+1}`
+                      )
+                    }
 
-    return;
-
-  }
+                  </div>
 
 
-  let present =
-    0;
+                  <div class="item-sub">
+
+                    ${
+                      test.date
+                        ? `التاريخ: ${escapeHtml(formatDate(test.date))}`
+                        : 'التاريخ: غير محدد'
+                    }
+
+                    • الدرجة:
+                    ${escapeHtml(test.score ?? 0)}/100
+
+                    • التقدير:
+                    ${escapeHtml(grade.label)}
+
+                  </div>
+
+                </div>
 
 
-  let absent =
-    0;
+                <div class="item-badge">
+
+                  +${decimalNumber(
+                    grade.points
+                  )}
+
+                </div>
+
+              </div>
+
+            `;
+
+          }
+        );
 
 
-  let late =
-    0;
+      const testTotal =
+        tests.reduce(
+          (
+            total,
+            test
+          ) =>
+            total +
+            testGrade(
+              test.score
+            ).points,
+          0
+        );
 
 
-  container.innerHTML =
-    rows
-      .map(
+      sections.push(`
+
+        <div class="item">
+
+          <div class="item-main">
+
+            <div class="item-title">
+              📝 نقاط الاختبارات
+            </div>
+
+            <div class="item-sub">
+              كل اختبار يضيف النقاط حسب درجته.
+            </div>
+
+          </div>
+
+          <div class="item-badge">
+            +${decimalNumber(testTotal)}
+          </div>
+
+        </div>
+
+        ${
+          testRows.length
+            ? testRows.join('')
+            : `
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+                    لا توجد اختبارات.
+                  </div>
+
+                </div>
+
+                <div class="item-badge">
+                  +0
+                </div>
+
+              </div>
+            `
+        }
+
+      `);
+
+
+      /* =========================
+         ATTENDANCE DETAILS
+      ========================= */
+
+      const attendanceRows =
+        attendance.map(
+          (
+            record,
+            index
+          ) => {
+
+            const status =
+              firstValue(
+                record,
+                [
+                  'status',
+                  'attendance'
+                ],
+                '—'
+              );
+
+
+            const points =
+              attendancePoints(
+                status
+              );
+
+
+            calculatedTotal +=
+              points;
+
+
+            return `
+
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+
+                    📅 ${
+                      escapeHtml(
+                        record.day ||
+                        record.weekday ||
+                        `سجل ${index+1}`
+                      )
+                    }
+
+                  </div>
+
+
+                  <div class="item-sub">
+
+                    ${
+                      record.date
+                        ? `التاريخ: ${escapeHtml(formatDate(record.date))}`
+                        : 'التاريخ: غير محدد'
+                    }
+
+                    • الحالة:
+                    ${escapeHtml(status)}
+
+                  </div>
+
+                </div>
+
+
+                <div class="item-badge">
+
+                  +${decimalNumber(points)}
+
+                </div>
+
+              </div>
+
+            `;
+
+          }
+        );
+
+
+      const attendanceTotal =
+        attendance.reduce(
+          (
+            total,
+            record
+          ) =>
+
+            total +
+
+            attendancePoints(
+              firstValue(
+                record,
+                [
+                  'status',
+                  'attendance'
+                ],
+                ''
+              )
+            ),
+
+          0
+        );
+
+
+      sections.push(`
+
+        <div class="item">
+
+          <div class="item-main">
+
+            <div class="item-title">
+              📅 نقاط الحضور
+            </div>
+
+            <div class="item-sub">
+              حاضر = 10 نقاط، متأخر = 5 نقاط، والغياب = 0.
+            </div>
+
+          </div>
+
+          <div class="item-badge">
+            +${decimalNumber(attendanceTotal)}
+          </div>
+
+        </div>
+
+        ${
+          attendanceRows.length
+            ? attendanceRows.join('')
+            : `
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+                    لا توجد سجلات حضور.
+                  </div>
+
+                </div>
+
+                <div class="item-badge">
+                  +0
+                </div>
+
+              </div>
+            `
+        }
+
+      `);
+
+
+      /* =========================
+         PLAN DETAILS
+      ========================= */
+
+      const planRows = [];
+
+
+      let planTotal =
+        0;
+
+
+      planTasks.forEach(
         (
-          record,
+          task,
           index
         ) => {
 
-          const status =
-            firstValue(
-              record,
-              [
-                'status',
-                'attendance'
-              ],
-              '—'
+          const detail =
+            getPlanTaskPointDetail(
+              task,
+              index
             );
 
 
-          const normalized =
-            String(
-              status
-            )
-            .toLowerCase();
-
-
           if(
-            normalized.includes('حاضر') ||
-            normalized.includes('present')
+            !detail
           ){
 
-            present++;
+            return;
 
           }
 
 
-          if(
-            normalized.includes('غائب') ||
-            normalized.includes('absent')
-          ){
-
-            absent++;
-
-          }
+          planTotal +=
+            detail.points;
 
 
-          if(
-            normalized.includes('متأخر') ||
-            normalized.includes('late')
-          ){
-
-            late++;
-
-          }
+          calculatedTotal +=
+            detail.points;
 
 
-          return `
+          planRows.push(`
 
             <div class="item">
 
@@ -9625,9 +9201,8 @@ function renderNextRecitation(){
 
                 <div class="item-title">
 
-                  ${escapeHtml(
-                    record.day ||
-                    `سجل ${index + 1}`
+                  🗓️ ${escapeHtml(
+                    detail.title
                   )}
 
                 </div>
@@ -9635,21 +9210,19 @@ function renderNextRecitation(){
 
                 <div class="item-sub">
 
-                  ${
-                    record.date
-                      ? escapeHtml(
-                          formatDate(
-                            record.date
-                          )
-                        )
-                      : ''
-                  }
+                  التاريخ:
+                  ${escapeHtml(
+                    formatDate(detail.date)
+                  )}
 
-                  ${
-                    record.note
-                      ? ` • ${escapeHtml(record.note)}`
-                      : ''
-                  }
+                  • النوع:
+                  ${escapeHtml(
+                    detail.kind
+                  )}
+
+                  • ${escapeHtml(
+                    detail.detail
+                  )}
 
                 </div>
 
@@ -9658,497 +9231,300 @@ function renderNextRecitation(){
 
               <div class="item-badge">
 
-                ${escapeHtml(
-                  status
+                +${decimalNumber(
+                  detail.points
                 )}
 
               </div>
 
             </div>
 
-          `;
+          `);
 
         }
-      )
-      .join('');
+      );
 
 
-  if(
-    summary
-  ){
+      sections.push(`
 
-    summary.textContent =
-      `حاضر: ${present} • غياب: ${absent} • تأخير: ${late}`;
+        <div class="item">
 
-  }
+          <div class="item-main">
 
-}
+            <div class="item-title">
+              🗓️ نقاط الخطة
+            </div>
 
+            <div class="item-sub">
+              الاختبارات المخططة = 5 نقاط عند الإنجاز، والمهام العادية تصل إلى 5 نقاط حسب نسبة الإنجاز.
+            </div>
 
-function renderGeneralRecitation(){
+          </div>
 
-  const container =
-    document.getElementById(
-      'generalRecitationTableBody'
-    );
+          <div class="item-badge">
+            +${decimalNumber(planTotal)}
+          </div>
 
+        </div>
 
-  if(
-    !container
-  ){
+        ${
+          planRows.length
+            ? planRows.join('')
+            : `
+              <div class="item">
 
-    return;
+                <div class="item-main">
 
-  }
+                  <div class="item-title">
+                    لا توجد مهام خطة منجزة أو مكتملة بياناتها حتى الآن.
+                  </div>
 
+                </div>
 
-  const rows =
-    [
-      ...getRecitationRecords()
-    ]
-    .sort(
-      (
-        a,
-        b
-      ) =>
-        String(
-          b.date ||
-          ''
-        )
-        .localeCompare(
-          String(
-            a.date ||
-            ''
-          )
-        )
-    );
+                <div class="item-badge">
+                  +0
+                </div>
+
+              </div>
+            `
+        }
+
+      `);
 
 
-  if(
-    !rows.length
-  ){
+      /* =========================
+         EXTRA POINTS
+      ========================= */
 
-    container.innerHTML = `
-
-      <tr>
-
-        <td
-          colspan="4"
-          class="table-empty"
-        >
-
-          لا توجد سجلات تسميع حتى الآن.
-
-        </td>
-
-      </tr>
-
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    rows
-      .map(
-        record => {
-
-          const page =
+      const extraTotal =
+        extra.reduce(
+          (
+            total,
+            record
+          ) =>
+            total +
             numberValue(
               firstValue(
                 record,
                 [
-                  'page',
-                  'pageNumber',
-                  'page_number'
+                  'points',
+                  'value',
+                  'amount'
                 ],
                 0
               )
-            );
+            ),
+          0
+        );
 
 
-          const score =
-            firstValue(
-              record,
-              [
-                'score',
-                'grade',
-                'percentage'
-              ],
-              0
-            );
+      calculatedTotal +=
+        extraTotal;
 
 
-          return `
+      const extraRows =
+        extra.map(
+          (
+            record,
+            index
+          ) => {
 
-            <tr>
-
-              <td>
-
-                ${
-                  record.date
-                    ? escapeHtml(
-                        formatDate(
-                          record.date
-                        )
-                      )
-                    : '—'
-                }
-
-              </td>
-
-
-              <td>
-
-                ${
-                  page
-                    ? `صفحة ${page}`
-                    : '—'
-                }
-
-              </td>
+            const reason =
+              firstValue(
+                record,
+                [
+                  'reason',
+                  'description',
+                  'title',
+                  'note'
+                ],
+                `نقطة إضافية ${index+1}`
+              );
 
 
-              <td>
+            const points =
+              numberValue(
+                firstValue(
+                  record,
+                  [
+                    'points',
+                    'value',
+                    'amount'
+                  ],
+                  0
+                )
+              );
 
-                ${escapeHtml(
-                  score
-                )}
 
-              </td>
+            const date =
+              firstValue(
+                record,
+                [
+                  'date',
+                  'createdAt',
+                  'created_at'
+                ],
+                ''
+              );
 
 
-              <td>
+            return `
 
-                ${escapeHtml(
-                  recitationPoints(
-                    record
-                  )
-                )}
+              <div class="item">
 
-              </td>
+                <div class="item-main">
 
-            </tr>
+                  <div class="item-title">
 
-          `;
+                    ⭐ ${escapeHtml(
+                      reason
+                    )}
 
+                  </div>
+
+
+                  <div class="item-sub">
+
+                    ${
+                      date
+                        ? `التاريخ: ${escapeHtml(formatDateTime(date))}`
+                        : 'التاريخ: غير محدد'
+                    }
+
+                  </div>
+
+                </div>
+
+
+                <div class="item-badge">
+
+                  +${decimalNumber(points)}
+
+                </div>
+
+              </div>
+
+            `;
+
+          }
+        );
+
+
+      sections.push(`
+
+        <div class="item">
+
+          <div class="item-main">
+
+            <div class="item-title">
+              ⭐ النقاط الإضافية
+            </div>
+
+            <div class="item-sub">
+              أي نقاط إضافية أعطاها المعلم تظهر هنا مع السبب والتاريخ.
+            </div>
+
+          </div>
+
+          <div class="item-badge">
+            +${decimalNumber(extraTotal)}
+          </div>
+
+        </div>
+
+        ${
+          extraRows.length
+            ? extraRows.join('')
+            : `
+              <div class="item">
+
+                <div class="item-main">
+
+                  <div class="item-title">
+                    لا توجد نقاط إضافية.
+                  </div>
+
+                </div>
+
+                <div class="item-badge">
+                  +0
+                </div>
+
+              </div>
+            `
         }
-      )
-      .join('');
 
-}
+      `);
 
 
-function renderGeneralTests(){
+      /* =========================
+         FINAL TOTAL
+      ========================= */
 
-  const container =
-    document.getElementById(
-      'generalTestsList'
-    );
-
-
-  const summary =
-    document.getElementById(
-      'generalTestsSummary'
-    );
+      const storedTotal =
+        getTotalPoints();
 
 
-  if(
-    !container
-  ){
+      sections.unshift(`
 
-    return;
+        <div class="item">
 
-  }
+          <div class="item-main">
+
+            <div class="item-title">
+              🧮 مجموع النقاط من التفاصيل
+            </div>
+
+            <div class="item-sub">
+              التسميع + الاختبارات + الحضور + الخطة + النقاط الإضافية
+            </div>
+
+          </div>
+
+          <div class="item-badge">
+
+            ${decimalNumber(
+              calculatedTotal
+            )}
+
+          </div>
+
+        </div>
 
 
-  const rows =
-    toArray(
-      firstValue(
-        profileData,
-        [
-          'tests',
-          'exams',
-          'examResults',
-          'exam_results'
-        ],
-        []
-      )
-    );
+        <div class="item">
+
+          <div class="item-main">
+
+            <div class="item-title">
+              ✅ المجموع المعتمد في ملف الطالب
+            </div>
+
+            <div class="item-sub">
+              هذا هو المجموع المحفوظ في بيانات المعلم ويظهر في البطاقة الشخصية.
+            </div>
+
+          </div>
+
+          <div class="item-badge">
+
+            ${decimalNumber(
+              storedTotal
+            )}
+
+          </div>
+
+        </div>
+
+      `);
 
 
-  if(
-    !rows.length
-  ){
-
-    container.innerHTML =
-      '<div class="empty">لا توجد اختبارات مسجلة.</div>';
-
-    if(
-      summary
-    ){
-
-      summary.textContent =
-        '0 اختبار';
+      container.innerHTML =
+        sections.join('');
 
     }
 
-    return;
 
-  }
-
-
-  container.innerHTML =
-    rows
-      .map(
-        (
-          test,
-          index
-        ) => {
-
-          const grade =
-            testGrade(
-              test.score
-            );
-
-
-          return `
-
-            <div class="item">
-
-              <div class="item-main">
-
-                <div class="item-title">
-
-                  ${escapeHtml(
-                    test.title ||
-                    test.name ||
-                    `اختبار ${index + 1}`
-                  )}
-
-                </div>
-
-
-                <div class="item-sub">
-
-                  ${
-                    test.date
-                      ? escapeHtml(
-                          formatDate(
-                            test.date
-                          )
-                        )
-                      : ''
-                  }
-
-                  ${
-                    test.note
-                      ? ` • ${escapeHtml(test.note)}`
-                      : ''
-                  }
-
-                </div>
-
-              </div>
-
-
-              <div class="item-badge">
-
-                ${escapeHtml(
-                  test.score
-                )}
-
-                /100
-
-                <span
-                  class="pill"
-                  style="margin-right:6px;"
-                >
-
-                  ${escapeHtml(
-                    grade.label
-                  )}
-
-                </span>
-
-              </div>
-
-            </div>
-
-          `;
-
-        }
-      )
-      .join('');
-
-
-  if(
-    summary
-  ){
-
-    summary.textContent =
-      `${rows.length} اختبار`;
-
-  }
-
-}
-
-
-function renderGeneralWarnings(){
-
-  const container =
-    document.getElementById(
-      'generalWarningsList'
-    );
-
-
-  const summary =
-    document.getElementById(
-      'generalWarningsSummary'
-    );
-
-
-  if(
-    !container
-  ){
-
-    return;
-
-  }
-
-
-  const warnings =
-    getWarningRecords();
-
-
-  if(
-    !warnings.length
-  ){
-
-    container.innerHTML =
-      '<div class="empty">لا توجد إنذارات مسجلة.</div>';
-
-    if(
-      summary
-    ){
-
-      summary.textContent =
-        '0 إنذار';
-
-    }
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    warnings
-      .map(
-        (
-          warning,
-          index
-        ) => {
-
-          const reason =
-            firstValue(
-              warning,
-              [
-                'reason',
-                'cause',
-                'title'
-              ],
-              'إنذار'
-            );
-
-
-          const date =
-            firstValue(
-              warning,
-              [
-                'date',
-                'warningDate',
-                'warning_date'
-              ],
-              ''
-            );
-
-
-          return `
-
-            <div class="item">
-
-              <div class="item-main">
-
-                <div class="item-title">
-
-                  ⚠️ ${escapeHtml(
-                    reason
-                  )}
-
-                </div>
-
-
-                <div class="item-sub">
-
-                  ${
-                    date
-                      ? `تاريخ الإنذار: ${escapeHtml(
-                          formatDate(
-                            date
-                          )
-                        )}`
-                      : 'تاريخ الإنذار غير محدد'
-                  }
-
-                </div>
-
-              </div>
-
-
-              <div class="item-badge">
-
-                إنذار ${index + 1}
-
-              </div>
-
-            </div>
-
-          `;
-
-        }
-      )
-      .join('');
-
-
-  if(
-    summary
-  ){
-
-    summary.textContent =
-      `${warnings.length} إنذار`;
-
-  }
-
-}
-
-
-function renderGeneralFollowup(){
-
-  renderGeneralAttendance();
-
-  renderGeneralRecitation();
-
-  renderNextRecitation();
-
-  renderGeneralTests();
-
-  renderGeneralWarnings();
-
-}
-    
     function renderPoints(){
 
       const academic =
@@ -10197,10 +9573,10 @@ function renderGeneralFollowup(){
       );
 
 
-      document.getElementById(
-        'pointsSummary'
-      ).textContent =
-        `${decimalNumber(total)} نقطة`;
+      setText(
+        'pointsSummary',
+        `${decimalNumber(total)} نقطة`
+      );
 
 
       const records =
@@ -10214,99 +9590,295 @@ function renderGeneralFollowup(){
 
 
       if(
-        !records.length
+        !container
       ){
-
-        container.innerHTML =
-          '<div class="empty">لا توجد نقاط إضافية مسجلة.</div>';
 
         return;
 
       }
 
 
+      if(
+        !records.length
+      ){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد نقاط إضافية مسجلة.</div>';
+
+      }else{
+
+        container.innerHTML =
+          [...records]
+            .reverse()
+            .map(
+              (
+                record,
+                index
+              ) => {
+
+                const reason =
+                  firstValue(
+                    record,
+                    [
+                      'reason',
+                      'description',
+                      'title',
+                      'note'
+                    ],
+                    `نقطة إضافية ${index+1}`
+                  );
+
+
+                const points =
+                  numberValue(
+                    firstValue(
+                      record,
+                      [
+                        'points',
+                        'value',
+                        'amount'
+                      ],
+                      0
+                    )
+                  );
+
+
+                const date =
+                  firstValue(
+                    record,
+                    [
+                      'date',
+                      'createdAt',
+                      'created_at'
+                    ],
+                    ''
+                  );
+
+
+                return `
+
+                  <div class="item">
+
+                    <div class="item-main">
+
+                      <div class="item-title">
+
+                        ⭐ ${escapeHtml(
+                          reason
+                        )}
+
+                      </div>
+
+                      <div class="item-sub">
+
+                        ${
+                          date
+                            ? escapeHtml(
+                                formatDateTime(date)
+                              )
+                            : 'تاريخ غير محدد'
+                        }
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="item-badge">
+
+                      +${decimalNumber(
+                        points
+                      )}
+
+                    </div>
+
+                  </div>
+
+                `;
+
+              }
+            )
+            .join('');
+
+      }
+
+
+      renderPointBreakdown();
+
+    }
+
+
+    /* =========================
+       GENERAL FOLLOWUP
+    ========================= */
+
+    function renderGeneralAttendance(){
+
+      const container =
+        document.getElementById(
+          'generalAttendanceList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'generalAttendanceSummary'
+        );
+
+
+      const rows =
+        getAttendance();
+
+
+      if(
+        !rows.length
+      ){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد سجلات حضور.</div>';
+
+
+        if(
+          summary
+        ){
+
+          summary.textContent =
+            'لا توجد بيانات';
+
+        }
+
+
+        return;
+
+      }
+
+
+      let present =
+        0;
+
+
+      let absent =
+        0;
+
+
+      let late =
+        0;
+
+
       container.innerHTML =
-        [...records]
-          .reverse()
+        rows
           .map(
             (
               record,
               index
             ) => {
 
-              const reason =
+              const status =
                 firstValue(
                   record,
                   [
-                    'reason',
-                    'description',
-                    'title',
-                    'note'
+                    'status',
+                    'attendance'
                   ],
-                  `نقطة إضافية ${index+1}`
+                  '—'
                 );
+
+
+              const normalized =
+                String(
+                  status
+                )
+                .toLowerCase();
+
+
+              if(
+
+                normalized.includes('حاضر') ||
+                normalized.includes('present')
+
+              ){
+
+                present++;
+
+              }
+
+
+              if(
+
+                normalized.includes('غائب') ||
+                normalized.includes('absent')
+
+              ){
+
+                absent++;
+
+              }
+
+
+              if(
+
+                normalized.includes('متأخر') ||
+                normalized.includes('late')
+
+              ){
+
+                late++;
+
+              }
 
 
               const points =
-                numberValue(
-                  firstValue(
-                    record,
-                    [
-                      'points',
-                      'value',
-                      'amount'
-                    ],
-                    0
-                  )
-                );
-
-
-              const date =
-                firstValue(
-                  record,
-                  [
-                    'date',
-                    'createdAt',
-                    'created_at'
-                  ],
-                  ''
+                attendancePoints(
+                  status
                 );
 
 
               return `
 
-                <div class="item">
+                <div class="followup-card">
 
-                  <div class="item-main">
-
-                    <div class="item-title">
-                      ${escapeHtml(
-                        reason
-                      )}
-                    </div>
+                  <div class="followup-card-icon">
+                    📅
+                  </div>
 
 
-                    <div class="item-sub">
+                  <div class="followup-card-title">
 
-                      ${
-                        date
-                          ? escapeHtml(
-                              formatDateTime(
-                                date
-                              )
-                            )
-                          : ''
-                      }
-
-                    </div>
+                    ${escapeHtml(
+                      record.day ||
+                      record.weekday ||
+                      `سجل ${index+1}`
+                    )}
 
                   </div>
 
 
-                  <div class="item-badge">
+                  <div class="followup-card-date">
+
+                    ${
+                      record.date
+                        ? escapeHtml(formatDate(record.date))
+                        : 'تاريخ غير محدد'
+                    }
+
+                  </div>
+
+
+                  <div class="followup-card-status">
+
+                    ${escapeHtml(
+                      status
+                    )}
+
+                  </div>
+
+
+                  <div class="followup-card-points">
+
                     +${decimalNumber(
                       points
-                    )}
+                    )} نقطة
+
                   </div>
 
                 </div>
@@ -10316,6 +9888,456 @@ function renderGeneralFollowup(){
             }
           )
           .join('');
+
+
+      if(
+        summary
+      ){
+
+        summary.textContent =
+          `حاضر: ${present} • غياب: ${absent} • تأخير: ${late}`;
+
+      }
+
+    }
+
+
+    function renderGeneralRecitation(){
+
+      const container =
+        document.getElementById(
+          'generalRecitationList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'generalRecitationSummary'
+        );
+
+
+      const rows =
+        [...getRecitationRecords()]
+          .sort(
+            (
+              a,
+              b
+            ) =>
+              String(
+                b.date || ''
+              )
+              .localeCompare(
+                String(
+                  a.date || ''
+                )
+              )
+          );
+
+
+      if(
+        !rows.length
+      ){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد سجلات تسميع حتى الآن.</div>';
+
+
+        if(
+          summary
+        ){
+
+          summary.textContent =
+            '0 سجل';
+
+        }
+
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        rows
+          .map(
+            record => {
+
+              const page =
+                numberValue(
+                  firstValue(
+                    record,
+                    [
+                      'page',
+                      'pageNumber',
+                      'page_number'
+                    ],
+                    0
+                  )
+                );
+
+
+              const type =
+                normalizeType(
+                  record.type
+                ) === 'review'
+                  ? 'مراجعة'
+                  : 'حفظ جديد';
+
+
+              const points =
+                recitationPoints(
+                  record
+                );
+
+
+              return `
+
+                <div class="followup-card">
+
+                  <div class="followup-card-icon">
+                    📖
+                  </div>
+
+
+                  <div class="followup-card-title">
+
+                    ${
+                      page
+                        ? `صفحة ${page}`
+                        : 'تسميع'
+                    }
+
+                  </div>
+
+
+                  <div class="followup-card-date">
+
+                    ${
+                      record.date
+                        ? escapeHtml(formatDate(record.date))
+                        : 'تاريخ غير محدد'
+                    }
+
+                  </div>
+
+
+                  <div class="followup-card-status">
+
+                    ${escapeHtml(type)}
+
+                  </div>
+
+
+                  <div class="followup-card-date">
+
+                    الدرجة:
+                    ${escapeHtml(record.score ?? 0)}
+
+                  </div>
+
+
+                  <div class="followup-card-points">
+
+                    +${decimalNumber(
+                      points
+                    )} نقطة
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('');
+
+
+      if(
+        summary
+      ){
+
+        summary.textContent =
+          `${rows.length} سجل`;
+
+      }
+
+    }
+
+
+    function renderGeneralTests(){
+
+      const container =
+        document.getElementById(
+          'generalTestsList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'generalTestsSummary'
+        );
+
+
+      const rows =
+        getTests();
+
+
+      if(
+        !rows.length
+      ){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد اختبارات مسجلة.</div>';
+
+
+        if(
+          summary
+        ){
+
+          summary.textContent =
+            '0 اختبار';
+
+        }
+
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        rows
+          .map(
+            (
+              test,
+              index
+            ) => {
+
+              const grade =
+                testGrade(
+                  test.score
+                );
+
+
+              return `
+
+                <div class="followup-card">
+
+                  <div class="followup-card-icon">
+                    📝
+                  </div>
+
+
+                  <div class="followup-card-title">
+
+                    ${escapeHtml(
+                      test.title ||
+                      test.name ||
+                      `اختبار ${index+1}`
+                    )}
+
+                  </div>
+
+
+                  <div class="followup-card-date">
+
+                    ${
+                      test.date
+                        ? escapeHtml(formatDate(test.date))
+                        : 'تاريخ غير محدد'
+                    }
+
+                  </div>
+
+
+                  <div class="followup-card-status">
+
+                    ${escapeHtml(
+                      test.score ?? 0
+                    )}/100
+
+                  </div>
+
+
+                  <div class="followup-card-date">
+
+                    ${escapeHtml(
+                      grade.label
+                    )}
+
+                  </div>
+
+
+                  <div class="followup-card-points">
+
+                    +${decimalNumber(
+                      grade.points
+                    )} نقطة
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('');
+
+
+      if(
+        summary
+      ){
+
+        summary.textContent =
+          `${rows.length} اختبار`;
+
+      }
+
+    }
+
+
+    function renderGeneralWarnings(){
+
+      const container =
+        document.getElementById(
+          'generalWarningsList'
+        );
+
+
+      const summary =
+        document.getElementById(
+          'generalWarningsSummary'
+        );
+
+
+      const warnings =
+        getWarningRecords();
+
+
+      if(
+        !warnings.length
+      ){
+
+        container.innerHTML =
+          '<div class="empty">لا توجد إنذارات مسجلة.</div>';
+
+
+        if(
+          summary
+        ){
+
+          summary.textContent =
+            '0 إنذار';
+
+        }
+
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        warnings
+          .map(
+            (
+              warning,
+              index
+            ) => {
+
+              const reason =
+                firstValue(
+                  warning,
+                  [
+                    'reason',
+                    'cause',
+                    'title'
+                  ],
+                  'إنذار'
+                );
+
+
+              const date =
+                firstValue(
+                  warning,
+                  [
+                    'date',
+                    'warningDate',
+                    'warning_date'
+                  ],
+                  ''
+                );
+
+
+              return `
+
+                <div class="followup-card">
+
+                  <div class="followup-card-icon">
+                    ⚠️
+                  </div>
+
+
+                  <div class="followup-card-title">
+
+                    ${escapeHtml(
+                      reason
+                    )}
+
+                  </div>
+
+
+                  <div class="followup-card-date">
+
+                    ${
+                      date
+                        ? `تاريخ الإنذار: ${escapeHtml(formatDate(date))}`
+                        : 'تاريخ غير محدد'
+                    }
+
+                  </div>
+
+
+                  <div class="followup-card-status">
+
+                    إنذار ${index+1}
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('');
+
+
+      if(
+        summary
+      ){
+
+        summary.textContent =
+          `${warnings.length} إنذار`;
+
+      }
+
+    }
+
+
+    function renderGeneralFollowup(){
+
+      renderGeneralAttendance();
+
+      renderGeneralRecitation();
+
+      renderNextRecitation();
+
+      renderGeneralTests();
+
+      renderGeneralWarnings();
 
     }
 
@@ -10337,18 +10359,36 @@ function renderGeneralFollowup(){
           []
         )
       )
+      .map(
+        badge => {
+
+          if(
+
+            badge &&
+            typeof badge.value === 'object' &&
+            badge.value !== null
+
+          ){
+
+            return {
+              ...badge.value,
+              id:
+                badge.value.id ||
+                badge.id ||
+                ''
+            };
+
+          }
+
+
+          return badge;
+
+        }
+      )
       .filter(
         badge =>
           badge &&
           typeof badge === 'object'
-      )
-      .filter(
-        badge =>
-          BADGE_DEFINITIONS[
-            getBadgeId(
-              badge
-            )
-          ]
       );
 
     }
@@ -10376,204 +10416,207 @@ function renderGeneralFollowup(){
     }
 
 
-function renderBadges(){
+    function renderBadges(){
 
-  const container =
-    document.getElementById(
-      'badgesList'
-    );
-
-
-  const summary =
-    document.getElementById(
-      'badgesSummary'
-    );
+      const container =
+        document.getElementById(
+          'badgesList'
+        );
 
 
-  if(
-    !container
-  ){
-
-    return;
-
-  }
+      const summary =
+        document.getElementById(
+          'badgesSummary'
+        );
 
 
-  const totalPoints =
-    getTotalPoints();
+      const totalPoints =
+        getTotalPoints();
 
 
-  const earnedBadges =
-    getBadges();
+      const earnedBadges =
+        getBadges();
 
 
-  const earnedIds =
-    new Set(
-      earnedBadges.map(
-        badge =>
-          getBadgeId(
-            badge
+      const earnedIds =
+        new Set(
+          earnedBadges.map(
+            badge =>
+              getBadgeId(
+                badge
+              )
           )
-      )
-    );
+        );
 
 
-  const definitions =
-    Object.values(
-      BADGE_DEFINITIONS
-    );
+      const definitions =
+        Object.values(
+          BADGE_DEFINITIONS
+        );
 
 
-  container.innerHTML =
-    definitions
-      .map(
-        definition => {
+      container.innerHTML =
+        definitions
+          .map(
+            definition => {
 
-          const earned =
+              const earned =
+                earnedIds.has(
+                  definition.id
+                ) ||
+
+                totalPoints >=
+                definition.threshold;
+
+
+              return `
+
+                <div
+                  class="student-badge-card ${
+                    earned
+                      ? 'earned'
+                      : 'locked'
+                  }"
+                >
+
+                  <div class="student-badge-icon">
+
+                    ${
+                      earned
+                        ? definition.icon
+                        : '🔒'
+                    }
+
+                  </div>
+
+
+                  <div class="student-badge-title">
+
+                    ${escapeHtml(
+                      definition.title
+                    )}
+
+                  </div>
+
+
+                  <div class="student-badge-description">
+
+                    ${
+                      earned
+                        ? 'تم الحصول على الوسام'
+                        : escapeHtml(
+                            definition.description
+                          )
+                    }
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('');
+
+
+      const earnedCount =
+        definitions.filter(
+          definition =>
+
             earnedIds.has(
               definition.id
             ) ||
+
             totalPoints >=
-            definition.threshold;
+            definition.threshold
+        ).length;
 
-
-          return `
-
-            <div
-              class="student-badge-card ${
-                earned
-                  ? 'earned'
-                  : 'locked'
-              }"
-            >
-
-              <div class="student-badge-icon">
-
-                ${
-                  earned
-                    ? definition.icon
-                    : '🔒'
-                }
-
-              </div>
-
-
-              <div class="student-badge-title">
-
-                ${escapeHtml(
-                  definition.title
-                )}
-
-              </div>
-
-
-              <div class="student-badge-description">
-
-                ${
-                  earned
-                    ? 'تم الحصول على الوسام'
-                    : escapeHtml(
-                        definition.description
-                      )
-                }
-
-              </div>
-
-            </div>
-
-          `;
-
-        }
-      )
-      .join('');
-
-
-  const earnedCount =
-    definitions.filter(
-      definition =>
-        earnedIds.has(
-          definition.id
-        ) ||
-        totalPoints >=
-        definition.threshold
-    ).length;
-
-
-  if(
-    summary
-  ){
-
-    summary.textContent =
-      `${earnedCount} من ${definitions.length} أوسمة`;
-
-  }
-
-}
-    
-    /* =========================
-       FEES
-    ========================= */
-function getFeeRecords(){
-
-  const raw =
-    firstValue(
-      profileData,
-      [
-        'fees',
-        'monthlyFees',
-        'monthly_fees',
-        'feeClaims',
-        'fee_claims',
-        'feesHistory',
-        'fees_history'
-      ],
-      []
-    );
-
-
-  return toArray(
-    raw
-  )
-  .map(
-    fee => {
 
       if(
-        fee &&
-        typeof fee.value === 'object' &&
-        fee.value !== null
+        summary
       ){
 
-        return {
-          ...fee.value,
-
-          month:
-            fee.value.month ||
-            fee.value.monthKey ||
-            fee.key ||
-            fee.value.date ||
-            '',
-
-          id:
-            fee.value.id ||
-            fee.id ||
-            ''
-        };
+        summary.textContent =
+          `${earnedCount} من ${definitions.length} أوسمة`;
 
       }
 
+    }
 
-      return fee;
+
+    /* =========================
+       FEES
+    ========================= */
+
+    function getFeeRecords(){
+
+      const raw =
+        firstValue(
+          profileData,
+          [
+            'fees',
+            'monthlyFees',
+            'monthly_fees',
+            'feeClaims',
+            'fee_claims',
+            'feesHistory',
+            'fees_history'
+          ],
+          []
+        );
+
+
+      return toArray(
+        raw
+      )
+      .map(
+        fee => {
+
+          if(
+
+            fee &&
+
+            typeof fee.value === 'object' &&
+
+            fee.value !== null
+
+          ){
+
+            return {
+
+              ...fee.value,
+
+              month:
+                fee.value.month ||
+                fee.value.monthKey ||
+                fee.key ||
+                fee.value.date ||
+                '',
+
+              id:
+                fee.value.id ||
+                fee.id ||
+                ''
+
+            };
+
+          }
+
+
+          return fee;
+
+        }
+      )
+      .filter(
+        fee =>
+          fee &&
+          typeof fee === 'object'
+      );
 
     }
-  )
-  .filter(
-    fee =>
-      fee &&
-      typeof fee === 'object'
-  );
 
-}
-    
+
     function getFeeMonth(
       fee
     ){
@@ -10592,7 +10635,9 @@ function getFeeRecords(){
         );
 
 
-      if(direct){
+      if(
+        direct
+      ){
 
         const raw =
           String(
@@ -10638,8 +10683,11 @@ function getFeeRecords(){
     ){
 
       if(
+
         fee?.paidAmount !== undefined &&
+
         fee?.paidAmount !== null
+
       ){
 
         return Math.max(
@@ -10648,6 +10696,35 @@ function getFeeRecords(){
             25,
             numberValue(
               fee.paidAmount
+            )
+          )
+        );
+
+      }
+
+
+      const explicit =
+        firstValue(
+          fee,
+          [
+            'amount',
+            'paid',
+            'paid_amount'
+          ],
+          null
+        );
+
+
+      if(
+        explicit !== null
+      ){
+
+        return Math.max(
+          0,
+          Math.min(
+            25,
+            numberValue(
+              explicit
             )
           )
         );
@@ -10672,9 +10749,11 @@ function getFeeRecords(){
 
 
       if(
+
         status === 'paid' ||
         status === 'مدفوع' ||
         status === 'مدفوعة'
+
       ){
 
         return 25;
@@ -10686,45 +10765,35 @@ function getFeeRecords(){
 
     }
 
-function getFeeRemainingAmount(
-  fee
-){
 
-  if(
-    fee?.remainingAmount !== undefined &&
-    fee?.remainingAmount !== null
-  ){
-
-    return Math.max(
-      0,
-      numberValue(
-        fee.remainingAmount
-      )
-    );
-
-  }
-
-
-  return Math.max(
-    0,
-    25 -
-    getFeePaidAmount(
-      fee
-    )
-  );
-
-}
-
-    
-    function feeIsPaid(
+    function getFeeRemainingAmount(
       fee
     ){
 
-      return (
+      if(
+
+        fee?.remainingAmount !== undefined &&
+
+        fee?.remainingAmount !== null
+
+      ){
+
+        return Math.max(
+          0,
+          numberValue(
+            fee.remainingAmount
+          )
+        );
+
+      }
+
+
+      return Math.max(
+        0,
+        25 -
         getFeePaidAmount(
           fee
-        ) >=
-        25
+        )
       );
 
     }
@@ -10761,13 +10830,17 @@ function getFeeRemainingAmount(
       setText(
         'infoPaymentStatus',
         paid >= 25
+
           ? 'مدفوع بالكامل'
+
           : paid > 0
+
             ? `مدفوع جزئيًا — المتبقي ${decimalNumber(
                 getFeeRemainingAmount(
-  currentFee
-)
+                  currentFee
+                )
               )} د.أ`
+
             : 'غير مدفوع'
       );
 
@@ -10800,10 +10873,13 @@ function getFeeRemainingAmount(
             total,
             fee
           ) =>
+
             total +
+
             getFeePaidAmount(
               fee
             ),
+
           0
         );
 
@@ -10814,10 +10890,13 @@ function getFeeRemainingAmount(
             total,
             fee
           ) =>
+
             total +
+
             getFeeRemainingAmount(
               fee
             ),
+
           0
         );
 
@@ -10832,25 +10911,19 @@ function getFeeRemainingAmount(
 
       setText(
         'feePaidTotal',
-        `${decimalNumber(
-          paidTotal
-        )} د.أ`
+        `${decimalNumber(paidTotal)} د.أ`
       );
 
 
       setText(
         'feeRemainingCurrent',
-        `${decimalNumber(
-          remainingCurrent
-        )} د.أ`
+        `${decimalNumber(remainingCurrent)} د.أ`
       );
 
 
       setText(
         'feeRemainingTotal',
-        `${decimalNumber(
-          remainingTotal
-        )} د.أ`
+        `${decimalNumber(remainingTotal)} د.أ`
       );
 
 
@@ -10870,13 +10943,23 @@ function getFeeRemainingAmount(
         !records.length
       ){
 
-        container.innerHTML =
-          '<div class="empty">لا توجد بيانات رسوم مسجلة.</div>';
+        container.innerHTML = `
+
+          <div class="empty">
+
+            لا توجد بيانات رسوم مسجلة حاليًا.
+
+          </div>
+
+        `;
+
 
         summary.textContent =
           '25 د.أ شهريًا';
 
+
         renderPaymentStatus();
+
 
         return;
 
@@ -10927,7 +11010,9 @@ function getFeeRemainingAmount(
                     'paidAt',
                     'paid_at',
                     'paymentDate',
-                    'payment_date'
+                    'payment_date',
+                    'datePaid',
+                    'date_paid'
                   ],
                   ''
                 );
@@ -10938,73 +11023,154 @@ function getFeeRemainingAmount(
                   fee,
                   [
                     'notes',
-                    'note'
+                    'note',
+                    'remarks',
+                    'description'
                   ],
                   ''
                 );
 
 
+              const status =
+                paid >= 25
+                  ? 'paid'
+                  : paid > 0
+                    ? 'partial'
+                    : 'unpaid';
+
+
+              const statusText =
+                paid >= 25
+                  ? 'مدفوع بالكامل'
+                  : paid > 0
+                    ? 'مدفوع جزئيًا'
+                    : 'غير مدفوع';
+
+
               return `
 
-                <div class="item">
+                <div class="fee-card">
 
-                  <div class="item-main">
+                  <div class="fee-card-head">
 
-                    <div class="item-title">
-                      ${escapeHtml(
+                    <div class="fee-month-title">
+
+                      💳 ${escapeHtml(
                         formatMonth(
                           month
                         )
                       )}
+
                     </div>
 
 
-                    <div class="item-sub">
+                    <div
+                      class="fee-status ${status}"
+                    >
 
-                      الرسوم: 25 د.أ
-
-                      • المدفوع:
-                      ${decimalNumber(
-                        paid
-                      )} د.أ
-
-                      • المتبقي:
-                      ${decimalNumber(
-                        remaining
-                      )} د.أ
-
-                      ${
-                        paidAt
-                          ? ` • تاريخ الدفع: ${escapeHtml(
-                              formatDateTime(
-                                paidAt
-                              )
-                            )}`
-                          : ''
-                      }
-
-                      ${
-                        notes
-                          ? ` • ${escapeHtml(
-                              notes
-                            )}`
-                          : ''
-                      }
+                      ${statusText}
 
                     </div>
 
                   </div>
 
 
-                  <div class="item-badge">
+                  <div class="fee-detail-grid">
 
-                    ${
-                      paid >= 25
-                        ? 'مدفوع بالكامل'
-                        : paid > 0
-                          ? 'مدفوع جزئيًا'
-                          : 'متبقي'
-                    }
+
+                    <div class="fee-detail">
+
+                      <div class="fee-detail-label">
+                        الرسوم الشهرية
+                      </div>
+
+                      <div class="fee-detail-value">
+                        25 د.أ
+                      </div>
+
+                    </div>
+
+
+                    <div class="fee-detail">
+
+                      <div class="fee-detail-label">
+                        المدفوع
+                      </div>
+
+                      <div class="fee-detail-value">
+                        ${decimalNumber(paid)} د.أ
+                      </div>
+
+                    </div>
+
+
+                    <div class="fee-detail">
+
+                      <div class="fee-detail-label">
+                        المتبقي
+                      </div>
+
+                      <div class="fee-detail-value">
+                        ${decimalNumber(remaining)} د.أ
+                      </div>
+
+                    </div>
+
+
+                    <div class="fee-detail">
+
+                      <div class="fee-detail-label">
+                        الحالة
+                      </div>
+
+                      <div class="fee-detail-value">
+                        ${statusText}
+                      </div>
+
+                    </div>
+
+
+                    <div class="fee-detail">
+
+                      <div class="fee-detail-label">
+                        تاريخ الدفع
+                      </div>
+
+                      <div class="fee-detail-value">
+
+                        ${
+                          paidAt
+                            ? escapeHtml(
+                                formatDateTime(
+                                  paidAt
+                                )
+                              )
+                            : 'غير مسجل'
+                        }
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="fee-detail full">
+
+                      <div class="fee-detail-label">
+                        الملاحظات
+                      </div>
+
+                      <div class="fee-detail-value">
+
+                        ${
+                          notes
+                            ? escapeHtml(notes)
+                            : 'لا توجد ملاحظات'
+                        }
+
+                      </div>
+
+                    </div>
+
 
                   </div>
 
@@ -11023,8 +11189,7 @@ function getFeeRemainingAmount(
             fee =>
               getFeePaidAmount(
                 fee
-              ) >=
-              25
+              ) >= 25
           )
           .length;
 
@@ -11040,109 +11205,10 @@ function getFeeRemainingAmount(
       renderPaymentStatus();
 
     }
-    
-
-    /* =========================
-       PROGRESS
-    ========================= */
-
-    function renderProgress(){
-
-      const pages =
-        getRecitationPageNumbers()
-          .length;
-
-
-      const weekly =
-        firstValue(
-          profileData,
-          [
-            'weeklyProgress',
-            'weekly_progress'
-          ],
-          ''
-        );
-
-
-      const overall =
-        firstValue(
-          profileData,
-          [
-            'overallProgress',
-            'overall_progress'
-          ],
-          ''
-        );
-
-
-      const updatedAt =
-        profile?.updated_at ||
-        firstValue(
-          profileData,
-          [
-            'updatedAt',
-            'updated_at'
-          ],
-          ''
-        );
-
-
-      setText(
-        'progressWeekly',
-        weekly !== ''
-          ? `${decimalNumber(weekly)}%`
-          : 'يتم احتساب الإنجاز من الخطة الأسبوعية'
-      );
-
-
-      setText(
-        'progressOverall',
-        overall !== ''
-          ? `${decimalNumber(overall)}%`
-          : `${Math.round((pages/604)*100)}% من صفحات المصحف`
-      );
-
-
-      setText(
-        'progressPages',
-        pages
-      );
-
-
-      setText(
-        'progressUpdated',
-        updatedAt
-          ? formatDateTime(
-              updatedAt
-            )
-          : '—'
-      );
-
-
-      const notes =
-        firstValue(
-          profileData,
-          [
-            'notes',
-            'teacherNotes',
-            'teacher_notes',
-            'note'
-          ],
-          ''
-        );
-
-
-      document.getElementById(
-        'teacherNotes'
-      ).textContent =
-        notes ||
-        'لا توجد ملاحظات حاليًا.';
-
-    }
 
 
     /* =========================
-       PERSONAL CARD RENDER
+       PERSONAL CARD
     ========================= */
 
     function renderPersonalCard(){
@@ -11338,8 +11404,10 @@ function getFeeRemainingAmount(
 
 
       if(
+
         photoUrl &&
         photoUrl !== '—'
+
       ){
 
         const photo =
@@ -11489,7 +11557,7 @@ function getFeeRemainingAmount(
 
 
     /* =========================
-       COPY CODE
+       COPY
     ========================= */
 
     async function copyStudentCode(){
@@ -11505,9 +11573,11 @@ function getFeeRemainingAmount(
 
 
       if(
+
         !code ||
         code === '—' ||
         code === '---'
+
       ){
 
         showCopyNotice(
@@ -11564,9 +11634,7 @@ function getFeeRemainingAmount(
 
           temporary.focus();
 
-
           temporary.select();
-
 
           document.execCommand(
             'copy'
@@ -11637,10 +11705,6 @@ function getFeeRemainingAmount(
     }
 
 
-    /* =========================
-       RELOAD
-    ========================= */
-
     function reloadPage(){
 
       window.location.reload();
@@ -11649,7 +11713,7 @@ function getFeeRemainingAmount(
 
 
     /* =========================
-       LOAD STUDENT
+       LOAD
     ========================= */
 
     async function loadStudent(){
@@ -11659,8 +11723,10 @@ function getFeeRemainingAmount(
 
 
       if(
+
         !session ||
         !session.id
+
       ){
 
         window.location.href =
@@ -11778,7 +11844,7 @@ function getFeeRemainingAmount(
 
         renderGeneralFollowup();
 
-        
+
         renderPoints();
 
 
@@ -11790,6 +11856,15 @@ function getFeeRemainingAmount(
 
         setRecitationDisplay(
           'table'
+        );
+
+
+        /* =========================
+           OPEN FOLLOWUP BY DEFAULT
+        ========================= */
+
+        showProfileSection(
+          'followup'
         );
 
 
@@ -11897,7 +11972,7 @@ function getFeeRemainingAmount(
 
 
     /* =========================
-       ESCAPE KEY
+       ESCAPE
     ========================= */
 
     window.addEventListener(
@@ -11929,4 +12004,6 @@ function getFeeRemainingAmount(
   </script>
 
 </body>
+
 </html>
+```
