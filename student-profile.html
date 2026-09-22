@@ -3169,6 +3169,110 @@
 
     }
 
+
+    .student-badge-card{
+
+  padding:
+    20px;
+
+  border-radius:
+    20px;
+
+  text-align:
+    center;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      .04
+    );
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      .08
+    );
+
+  transition:
+    .25s ease;
+
+}
+
+
+.student-badge-card.locked{
+
+  opacity:
+    .38;
+
+  filter:
+    grayscale(
+      1
+    );
+
+}
+
+
+.student-badge-card.earned{
+
+  opacity:
+    1;
+
+  filter:
+    none;
+
+}
+
+
+.student-badge-icon{
+
+  font-size:
+    42px;
+
+  margin-bottom:
+    10px;
+
+}
+
+
+.student-badge-card.locked
+.student-badge-icon{
+
+  font-size:
+    38px;
+
+}
+
+
+.student-badge-title{
+
+  font-size:
+    17px;
+
+  font-weight:
+    800;
+
+  margin-bottom:
+    8px;
+
+}
+
+
+.student-badge-description{
+
+  font-size:
+    13px;
+
+  opacity:
+    .8;
+
+}
+
+    
   </style>
 </head>
 
@@ -4812,79 +4916,109 @@
        BADGES
     ========================= */
 
-    const BADGE_DEFINITIONS = {
+const BADGE_DEFINITIONS = {
 
-      'beginner-reader':{
+  'beginner-reader':{
 
-        id:
-          'beginner-reader',
+    id:
+      'beginner-reader',
 
-        icon:
-          '📖',
+    icon:
+      '📖',
 
-        title:
-          'القارئ المبتدئ'
+    title:
+      'القارئ المبتدئ',
 
-      },
+    threshold:
+      50,
 
+    description:
+      'يُمنح عند الوصول إلى 50 نقطة'
 
-      'persevering':{
-
-        id:
-          'persevering',
-
-        icon:
-          '🌟',
-
-        title:
-          'المثابر'
-
-      },
+  },
 
 
-      'excellence':{
+  'persevering':{
 
-        id:
-          'excellence',
+    id:
+      'persevering',
 
-        icon:
-          '💎',
+    icon:
+      '🌟',
 
-        title:
-          'التميز'
+    title:
+      'المثابر',
 
-      },
+    threshold:
+      100,
 
+    description:
+      'يُمنح عند الوصول إلى 100 نقطة'
 
-      'golden-hafiz':{
-
-        id:
-          'golden-hafiz',
-
-        icon:
-          '🏆',
-
-        title:
-          'الحافظ الذهبي'
-
-      },
+  },
 
 
-      'crown-of-dignity':{
+  'excellence':{
 
-        id:
-          'crown-of-dignity',
+    id:
+      'excellence',
 
-        icon:
-          '👑',
+    icon:
+      '💎',
 
-        title:
-          'تاج الوقار'
+    title:
+      'التميز',
 
-      }
+    threshold:
+      200,
 
-    };
+    description:
+      'يُمنح عند الوصول إلى 200 نقطة'
 
+  },
+
+
+  'golden-hafiz':{
+
+    id:
+      'golden-hafiz',
+
+    icon:
+      '🏆',
+
+    title:
+      'الحافظ الذهبي',
+
+    threshold:
+      300,
+
+    description:
+      'يُمنح عند الوصول إلى 300 نقطة'
+
+  },
+
+
+  'crown-of-dignity':{
+
+    id:
+      'crown-of-dignity',
+
+    icon:
+      '👑',
+
+    title:
+      'تاج الوقار',
+
+    threshold:
+      500,
+
+    description:
+      'يُمنح عند الوصول إلى 500 نقطة'
+
+  }
+
+};
+    
     /* =========================
        JUZ
     ========================= */
@@ -9399,116 +9533,140 @@ function renderGeneralFollowup(){
     }
 
 
-    function renderBadges(){
+function renderBadges(){
 
-      const container =
-        document.getElementById(
-          'badgesList'
-        );
-
-
-      const summary =
-        document.getElementById(
-          'badgesSummary'
-        );
+  const container =
+    document.getElementById(
+      'badgesList'
+    );
 
 
-      const badges =
-        getBadges();
+  const summary =
+    document.getElementById(
+      'badgesSummary'
+    );
 
 
-      const basic =
-        badges;
+  if(
+    !container
+  ){
 
-      if(
-        !basic.length
-      ){
+    return;
 
-        container.innerHTML =
-          '<div class="empty">لا توجد أوسمة بعد.</div>';
-
-        summary.textContent =
-          '0 وسام';
-
-      }else{
-
-        container.innerHTML =
-          basic
-            .map(
-              badge => {
-
-                const definition =
-                  BADGE_DEFINITIONS[
-                    getBadgeId(
-                      badge
-                    )
-                  ];
+  }
 
 
-                const earnedAt =
-                  firstValue(
-                    badge,
-                    [
-                      'earnedAt',
-                      'earned_at',
-                      'awardedAt',
-                      'awarded_at',
-                      'date'
-                    ],
-                    ''
-                  );
+  const totalPoints =
+    getTotalPoints();
 
 
-                return `
-
-                  <div class="item">
-
-                    <div class="item-main">
-
-                      <div class="item-title">
-                        ${definition.icon}
-                        ${escapeHtml(
-                          definition.title
-                        )}
-                      </div>
-
-                      <div class="item-sub">
-
-                        تم الحصول على الوسام تلقائيًا
-
-                        ${
-                          earnedAt
-                            ? ` • ${escapeHtml(formatDate(earnedAt))}`
-                            : ''
-                        }
-
-                      </div>
-
-                    </div>
+  const earnedBadges =
+    getBadges();
 
 
-                    <div class="item-badge">
-                      مستحق
-                    </div>
-
-                  </div>
-
-                `;
-
-              }
-            )
-            .join('');
+  const earnedIds =
+    new Set(
+      earnedBadges.map(
+        badge =>
+          getBadgeId(
+            badge
+          )
+      )
+    );
 
 
-        summary.textContent =
-          `${basic.length} وسام`;
-
-      }
-
-
-    }
+  const definitions =
+    Object.values(
+      BADGE_DEFINITIONS
+    );
 
 
+  container.innerHTML =
+    definitions
+      .map(
+        definition => {
+
+          const earned =
+            earnedIds.has(
+              definition.id
+            ) ||
+            totalPoints >=
+            definition.threshold;
+
+
+          return `
+
+            <div
+              class="student-badge-card ${
+                earned
+                  ? 'earned'
+                  : 'locked'
+              }"
+            >
+
+              <div class="student-badge-icon">
+
+                ${
+                  earned
+                    ? definition.icon
+                    : '🔒'
+                }
+
+              </div>
+
+
+              <div class="student-badge-title">
+
+                ${escapeHtml(
+                  definition.title
+                )}
+
+              </div>
+
+
+              <div class="student-badge-description">
+
+                ${
+                  earned
+                    ? 'تم الحصول على الوسام'
+                    : escapeHtml(
+                        definition.description
+                      )
+                }
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      )
+      .join('');
+
+
+  const earnedCount =
+    definitions.filter(
+      definition =>
+        earnedIds.has(
+          definition.id
+        ) ||
+        totalPoints >=
+        definition.threshold
+    ).length;
+
+
+  if(
+    summary
+  ){
+
+    summary.textContent =
+      `${earnedCount} من ${definitions.length} أوسمة`;
+
+  }
+
+}
+    
     /* =========================
        FEES
     ========================= */
