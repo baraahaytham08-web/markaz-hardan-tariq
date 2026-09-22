@@ -4075,169 +4075,6 @@
 
     </section>
 
-    <!-- =========================
-       GENERAL FOLLOWUP
-========================= -->
-
-<section
-  class="content-section"
-  data-content="followup"
->
-
-  <div class="section-head">
-
-    <div>
-      <h2>المتابعة العامة</h2>
-
-      <p>
-        متابعة الحضور والتسميع والاختبارات والإنذارات
-      </p>
-    </div>
-
-  </div>
-
-
-  <div class="followup-block">
-
-    <div class="section-head">
-
-      <div>
-        <h3>الحضور والغياب</h3>
-      </div>
-
-      <div
-        id="generalAttendanceSummary"
-        class="pill"
-      >
-        لا توجد بيانات
-      </div>
-
-    </div>
-
-    <div
-      id="generalAttendanceList"
-      class="list"
-    ></div>
-
-  </div>
-
-
-  <div class="followup-block">
-
-    <div class="section-head">
-
-      <div>
-        <h3>التسميع اليومي</h3>
-      </div>
-
-    </div>
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>التاريخ</th>
-            <th>الصفحة</th>
-            <th>الدرجة</th>
-            <th>النقاط</th>
-          </tr>
-
-        </thead>
-
-        <tbody id="generalRecitationTableBody">
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-
-  <div class="followup-block">
-
-    <div class="section-head">
-
-      <div>
-        <h3>التسميع القادم</h3>
-      </div>
-
-    </div>
-
-    <div
-      id="generalNextRecitationBox"
-      class="item"
-    >
-
-      <div class="item-main">
-
-        <div
-          id="generalNextRecitationText"
-          class="item-title"
-        >
-          لا يوجد تسميع قادم
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="followup-block">
-
-    <div class="section-head">
-
-      <div>
-        <h3>الاختبارات</h3>
-      </div>
-
-      <div
-        id="generalTestsSummary"
-        class="pill"
-      >
-        0 اختبار
-      </div>
-
-    </div>
-
-    <div
-      id="generalTestsList"
-      class="list"
-    ></div>
-
-  </div>
-
-
-  <div class="followup-block">
-
-    <div class="section-head">
-
-      <div>
-        <h3>الإنذارات</h3>
-      </div>
-
-      <div
-        id="generalWarningsSummary"
-        class="pill"
-      >
-        0 إنذار
-      </div>
-
-    </div>
-
-    <div
-      id="generalWarningsList"
-      class="list"
-    ></div>
-
-  </div>
-
-</section>
 
     <!-- =========================
      GENERAL FOLLOWUP
@@ -8677,6 +8514,663 @@ function renderNextRecitation(){
       }
 
     }
+
+    function renderGeneralAttendance(){
+
+  const container =
+    document.getElementById(
+      'generalAttendanceList'
+    );
+
+
+  const summary =
+    document.getElementById(
+      'generalAttendanceSummary'
+    );
+
+
+  if(
+    !container
+  ){
+
+    return;
+
+  }
+
+
+  const rows =
+    toArray(
+      firstValue(
+        profileData,
+        [
+          'attendance',
+          'attendances'
+        ],
+        []
+      )
+    );
+
+
+  if(
+    !rows.length
+  ){
+
+    container.innerHTML =
+      '<div class="empty">لا توجد سجلات حضور.</div>';
+
+    if(
+      summary
+    ){
+
+      summary.textContent =
+        'لا توجد بيانات';
+
+    }
+
+    return;
+
+  }
+
+
+  let present =
+    0;
+
+
+  let absent =
+    0;
+
+
+  let late =
+    0;
+
+
+  container.innerHTML =
+    rows
+      .map(
+        (
+          record,
+          index
+        ) => {
+
+          const status =
+            firstValue(
+              record,
+              [
+                'status',
+                'attendance'
+              ],
+              '—'
+            );
+
+
+          const normalized =
+            String(
+              status
+            )
+            .toLowerCase();
+
+
+          if(
+            normalized.includes('حاضر') ||
+            normalized.includes('present')
+          ){
+
+            present++;
+
+          }
+
+
+          if(
+            normalized.includes('غائب') ||
+            normalized.includes('absent')
+          ){
+
+            absent++;
+
+          }
+
+
+          if(
+            normalized.includes('متأخر') ||
+            normalized.includes('late')
+          ){
+
+            late++;
+
+          }
+
+
+          return `
+
+            <div class="item">
+
+              <div class="item-main">
+
+                <div class="item-title">
+
+                  ${escapeHtml(
+                    record.day ||
+                    `سجل ${index + 1}`
+                  )}
+
+                </div>
+
+
+                <div class="item-sub">
+
+                  ${
+                    record.date
+                      ? escapeHtml(
+                          formatDate(
+                            record.date
+                          )
+                        )
+                      : ''
+                  }
+
+                  ${
+                    record.note
+                      ? ` • ${escapeHtml(record.note)}`
+                      : ''
+                  }
+
+                </div>
+
+              </div>
+
+
+              <div class="item-badge">
+
+                ${escapeHtml(
+                  status
+                )}
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      )
+      .join('');
+
+
+  if(
+    summary
+  ){
+
+    summary.textContent =
+      `حاضر: ${present} • غياب: ${absent} • تأخير: ${late}`;
+
+  }
+
+}
+
+
+function renderGeneralRecitation(){
+
+  const container =
+    document.getElementById(
+      'generalRecitationTableBody'
+    );
+
+
+  if(
+    !container
+  ){
+
+    return;
+
+  }
+
+
+  const rows =
+    [
+      ...getRecitationRecords()
+    ]
+    .sort(
+      (
+        a,
+        b
+      ) =>
+        String(
+          b.date ||
+          ''
+        )
+        .localeCompare(
+          String(
+            a.date ||
+            ''
+          )
+        )
+    );
+
+
+  if(
+    !rows.length
+  ){
+
+    container.innerHTML = `
+
+      <tr>
+
+        <td
+          colspan="4"
+          class="table-empty"
+        >
+
+          لا توجد سجلات تسميع حتى الآن.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    rows
+      .map(
+        record => {
+
+          const page =
+            numberValue(
+              firstValue(
+                record,
+                [
+                  'page',
+                  'pageNumber',
+                  'page_number'
+                ],
+                0
+              )
+            );
+
+
+          const score =
+            firstValue(
+              record,
+              [
+                'score',
+                'grade',
+                'percentage'
+              ],
+              0
+            );
+
+
+          return `
+
+            <tr>
+
+              <td>
+
+                ${
+                  record.date
+                    ? escapeHtml(
+                        formatDate(
+                          record.date
+                        )
+                      )
+                    : '—'
+                }
+
+              </td>
+
+
+              <td>
+
+                ${
+                  page
+                    ? `صفحة ${page}`
+                    : '—'
+                }
+
+              </td>
+
+
+              <td>
+
+                ${escapeHtml(
+                  score
+                )}
+
+              </td>
+
+
+              <td>
+
+                ${escapeHtml(
+                  recitationPoints(
+                    record
+                  )
+                )}
+
+              </td>
+
+            </tr>
+
+          `;
+
+        }
+      )
+      .join('');
+
+}
+
+
+function renderGeneralTests(){
+
+  const container =
+    document.getElementById(
+      'generalTestsList'
+    );
+
+
+  const summary =
+    document.getElementById(
+      'generalTestsSummary'
+    );
+
+
+  if(
+    !container
+  ){
+
+    return;
+
+  }
+
+
+  const rows =
+    toArray(
+      firstValue(
+        profileData,
+        [
+          'tests',
+          'exams',
+          'examResults',
+          'exam_results'
+        ],
+        []
+      )
+    );
+
+
+  if(
+    !rows.length
+  ){
+
+    container.innerHTML =
+      '<div class="empty">لا توجد اختبارات مسجلة.</div>';
+
+    if(
+      summary
+    ){
+
+      summary.textContent =
+        '0 اختبار';
+
+    }
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    rows
+      .map(
+        (
+          test,
+          index
+        ) => {
+
+          const grade =
+            testGrade(
+              test.score
+            );
+
+
+          return `
+
+            <div class="item">
+
+              <div class="item-main">
+
+                <div class="item-title">
+
+                  ${escapeHtml(
+                    test.title ||
+                    test.name ||
+                    `اختبار ${index + 1}`
+                  )}
+
+                </div>
+
+
+                <div class="item-sub">
+
+                  ${
+                    test.date
+                      ? escapeHtml(
+                          formatDate(
+                            test.date
+                          )
+                        )
+                      : ''
+                  }
+
+                  ${
+                    test.note
+                      ? ` • ${escapeHtml(test.note)}`
+                      : ''
+                  }
+
+                </div>
+
+              </div>
+
+
+              <div class="item-badge">
+
+                ${escapeHtml(
+                  test.score
+                )}
+
+                /100
+
+                <span
+                  class="pill"
+                  style="margin-right:6px;"
+                >
+
+                  ${escapeHtml(
+                    grade.label
+                  )}
+
+                </span>
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      )
+      .join('');
+
+
+  if(
+    summary
+  ){
+
+    summary.textContent =
+      `${rows.length} اختبار`;
+
+  }
+
+}
+
+
+function renderGeneralWarnings(){
+
+  const container =
+    document.getElementById(
+      'generalWarningsList'
+    );
+
+
+  const summary =
+    document.getElementById(
+      'generalWarningsSummary'
+    );
+
+
+  if(
+    !container
+  ){
+
+    return;
+
+  }
+
+
+  const warnings =
+    getWarningRecords();
+
+
+  if(
+    !warnings.length
+  ){
+
+    container.innerHTML =
+      '<div class="empty">لا توجد إنذارات مسجلة.</div>';
+
+    if(
+      summary
+    ){
+
+      summary.textContent =
+        '0 إنذار';
+
+    }
+
+    return;
+
+  }
+
+
+  container.innerHTML =
+    warnings
+      .map(
+        (
+          warning,
+          index
+        ) => {
+
+          const reason =
+            firstValue(
+              warning,
+              [
+                'reason',
+                'cause',
+                'title'
+              ],
+              'إنذار'
+            );
+
+
+          const date =
+            firstValue(
+              warning,
+              [
+                'date',
+                'warningDate',
+                'warning_date'
+              ],
+              ''
+            );
+
+
+          return `
+
+            <div class="item">
+
+              <div class="item-main">
+
+                <div class="item-title">
+
+                  ⚠️ ${escapeHtml(
+                    reason
+                  )}
+
+                </div>
+
+
+                <div class="item-sub">
+
+                  ${
+                    date
+                      ? `تاريخ الإنذار: ${escapeHtml(
+                          formatDate(
+                            date
+                          )
+                        )}`
+                      : 'تاريخ الإنذار غير محدد'
+                  }
+
+                </div>
+
+              </div>
+
+
+              <div class="item-badge">
+
+                إنذار ${index + 1}
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      )
+      .join('');
+
+
+  if(
+    summary
+  ){
+
+    summary.textContent =
+      `${warnings.length} إنذار`;
+
+  }
+
+}
+
+
+function renderGeneralFollowup(){
+
+  renderGeneralAttendance();
+
+  renderGeneralRecitation();
+
+  renderNextRecitation();
+
+  renderGeneralTests();
+
+  renderGeneralWarnings();
+
+}
     
     function renderPoints(){
 
