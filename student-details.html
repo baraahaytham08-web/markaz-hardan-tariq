@@ -1151,7 +1151,7 @@
     }
 
     /* =========================
-       MONTHLY FOLLOW UP
+       MONTHLY FOLLOWUP
     ========================= */
 
     .monthly-followup-list{
@@ -1161,102 +1161,143 @@
 
     .monthly-followup-card{
       padding:13px;
-      border-radius:17px;
-      background:rgba(255,255,255,.018);
+
+      border-radius:16px;
+
+      background:rgba(255,255,255,.02);
+
       border:1px solid rgba(255,255,255,.055);
     }
 
     .monthly-followup-head{
       display:flex;
-      align-items:center;
+
       justify-content:space-between;
+      align-items:center;
+
       gap:10px;
+
       flex-wrap:wrap;
+
       margin-bottom:10px;
+
       padding-bottom:9px;
+
       border-bottom:1px solid rgba(255,255,255,.05);
     }
 
     .monthly-followup-title{
       color:var(--gold2);
+
       font-size:14px;
+
       font-weight:800;
     }
 
     .monthly-followup-percent{
       color:var(--gold2);
-      font-size:11px;
-      font-weight:700;
-      padding:5px 9px;
+
+      font-size:10px;
+
+      padding:5px 8px;
+
       border-radius:999px;
+
       background:rgba(217,184,108,.07);
+
       border:1px solid rgba(217,184,108,.12);
     }
 
-    .monthly-followup-summary{
+    .monthly-followup-stats{
       display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
+
+      grid-template-columns:
+        repeat(4,minmax(0,1fr));
+
       gap:7px;
+
       margin-bottom:10px;
     }
 
     .monthly-followup-stat{
       padding:9px;
+
       border-radius:12px;
+
       background:rgba(255,255,255,.018);
+
       border:1px solid rgba(255,255,255,.045);
     }
 
     .monthly-followup-stat small{
       display:block;
+
       color:var(--muted2);
+
       font-size:8px;
+
       margin-bottom:4px;
     }
 
     .monthly-followup-stat strong{
       color:var(--gold2);
+
       font-size:14px;
     }
 
     .monthly-followup-block{
-      padding:10px;
-      border-radius:13px;
-      background:rgba(217,184,108,.025);
-      border:1px solid rgba(217,184,108,.07);
       margin-top:8px;
+
+      padding:10px;
+
+      border-radius:13px;
+
+      background:rgba(217,184,108,.025);
+
+      border:1px solid rgba(217,184,108,.07);
     }
 
     .monthly-followup-block-title{
       color:var(--gold2);
+
       font-size:10px;
+
       font-weight:700;
+
       margin-bottom:7px;
     }
 
     .mini-table-wrap{
       overflow:auto;
+
       border-radius:10px;
+
       border:1px solid rgba(255,255,255,.05);
     }
 
     .mini-table{
       width:100%;
-      min-width:480px;
+
+      min-width:560px;
+
       border-collapse:collapse;
     }
 
     .mini-table th,
     .mini-table td{
-      padding:7px;
-      border-bottom:1px solid rgba(255,255,255,.045);
+      padding:8px 7px;
+
+      border-bottom:1px solid rgba(255,255,255,.05);
+
       text-align:right;
+
       font-size:8px;
     }
 
     .mini-table th{
       color:var(--gold2);
-      background:rgba(217,184,108,.028);
+
+      background:rgba(217,184,108,.035);
     }
 
     .mini-table td{
@@ -1268,9 +1309,14 @@
     }
 
     .next-recitation-box{
+      margin-top:10px;
+
       padding:11px;
+
       border-radius:13px;
+
       background:rgba(47,159,114,.025);
+
       border:1px solid rgba(47,159,114,.09);
     }
 
@@ -2558,7 +2604,7 @@
         grid-template-columns:1fr;
       }
 
-      .monthly-followup-summary{
+      .monthly-followup-stats{
         grid-template-columns:
           repeat(2,minmax(0,1fr));
       }
@@ -2671,6 +2717,10 @@
         grid-template-columns:1fr;
       }
 
+      .monthly-followup-stats{
+        grid-template-columns:1fr;
+      }
+
       .page-grid{
         grid-template-columns:
           repeat(8,1fr);
@@ -2685,10 +2735,6 @@
         width:100%;
       }
 
-      .monthly-followup-summary{
-        grid-template-columns:1fr;
-      }
-
     }
   </style>
 </head>
@@ -2697,10 +2743,17 @@
 
   <!-- LOADING -->
   <div id="loading">
+
     <div class="loader-box">
+
       <div class="spinner"></div>
-      <span>جاري فتح ملف الطالب...</span>
+
+      <span>
+        جاري فتح ملف الطالب...
+      </span>
+
     </div>
+
   </div>
 
   <!-- MAIN -->
@@ -3068,8 +3121,6 @@
 
           </div>
 
-          <!-- PHOTO -->
-
           <div class="photo-control">
 
             <div class="photo-control-text">
@@ -3297,8 +3348,8 @@
         <div class="map-intro">
 
           يحدد المعلم المطلوب للطالب ومتى يجب إنجازه.
-          المهام المستقبلية لا تدخل في التقييم حتى يحين موعدها.
-          وعند حلول موعدها، يقارن النظام المطلوب بالمنجز تلقائيًا.
+          تاريخ اليوم يوضح متى تم إنشاء الخطة، وتاريخ التسميع القادم
+          يحدد الموعد المستهدف للتسميع.
 
         </div>
 
@@ -3523,8 +3574,6 @@
 
         </div>
 
-        <!-- MAP -->
-
         <div
           class="view-content active"
           id="view-map"
@@ -3578,8 +3627,6 @@
           ></div>
 
         </div>
-
-        <!-- TABLE -->
 
         <div
           class="view-content"
@@ -3700,7 +3747,7 @@
 
       </section>
 
-      <!-- MONTHLY FOLLOW UP -->
+      <!-- MONTHLY FOLLOWUP -->
 
       <section class="section">
 
@@ -3717,16 +3764,16 @@
           </div>
 
           <div class="section-note">
-            تبدأ من شهر التحاق الطالب ويتجدد شهر جديد تلقائيًا
+            من شهر التحاق الطالب حتى الشهر الحالي
           </div>
 
         </div>
 
         <div class="map-intro">
 
-          لكل شهر سجل مستقل للتسميع والاختبارات والحضور والغياب،
-          مع خانة خاصة للتسميع القادم تشمل المطلوب تسميعه ومقدار التسميع.
-          يبدأ السجل من شهر التحاق الطالب، ويُضاف شهر جديد تلقائيًا عند بدء شهر جديد.
+          لكل شهر خانة مستقلة تعرض سجلات التسميع والاختبارات والحضور والغياب،
+          إضافةً إلى التسميع القادم المطلوب ومقدار التسميع.
+          يبدأ السجل من شهر التحاق الطالب، ويُضاف الشهر الجديد تلقائيًا عند بدايته.
 
         </div>
 
@@ -3825,7 +3872,7 @@
           </div>
 
           <div class="section-note">
-            المطالبة الفصلية تنشأ تلقائيًا لكل طالب
+            الرسوم الفصلية
           </div>
 
         </div>
@@ -3838,7 +3885,7 @@
               الاشتراك الفصلي المعتمد
             </small>
 
-            <strong id="feeApprovedQuarterly">
+            <strong id="feeApprovedMonthly">
               25 د.أ
             </strong>
 
@@ -4504,6 +4551,8 @@
     const PHOTO_BUCKET =
       'student-photos';
 
+    /* التعديل: الرسوم الفصلية 25 د.أ */
+
     const FIXED_QUARTERLY_FEE =
       25;
 
@@ -4986,8 +5035,7 @@
         )
       ){
 
-        return str
-          .toUpperCase();
+        return str.toUpperCase();
 
       }
 
@@ -5033,33 +5081,6 @@
 
     }
 
-    function getPreviousQuarterKey(){
-
-      const now =
-        new Date();
-
-      const currentQuarter =
-        Math.ceil(
-          (now.getMonth() + 1) / 3
-        );
-
-      let year =
-        now.getFullYear();
-
-      let quarter =
-        currentQuarter - 1;
-
-      if(quarter < 1){
-
-        quarter = 4;
-        year -= 1;
-
-      }
-
-      return `${year}-Q${quarter}`;
-
-    }
-
     function getQuarterLabel(
       quarterKey
     ){
@@ -5084,49 +5105,18 @@
         Number(match[2]);
 
       const names = [
+
         'الفصل الأول',
+
         'الفصل الثاني',
+
         'الفصل الثالث',
+
         'الفصل الرابع'
+
       ];
 
       return `${names[quarter - 1]} ${year}`;
-
-    }
-
-    function getExplicitFeeQuarterValue(
-      item
-    ){
-
-      if(!item){
-
-        return '';
-
-      }
-
-      const values = [
-        item.quarter,
-        item.period
-      ];
-
-      for(
-        const value of values
-      ){
-
-        if(
-          /^\d{4}-Q[1-4]$/i.test(
-            String(value || '')
-          )
-        ){
-
-          return String(value)
-            .toUpperCase();
-
-        }
-
-      }
-
-      return '';
 
     }
 
@@ -5140,18 +5130,31 @@
 
       }
 
-      const explicit =
-        getExplicitFeeQuarterValue(
-          item
+      const quarterValue =
+        firstValue(
+          item,
+          [
+            'quarter',
+            'period'
+          ],
+          ''
         );
 
-      if(explicit){
+      if(
+        /^\d{4}-Q[1-4]$/i.test(
+          String(
+            quarterValue || ''
+          )
+        )
+      ){
 
-        return explicit;
+        return String(
+          quarterValue
+        ).toUpperCase();
 
       }
 
-      const legacy =
+      return getQuarterKey(
         firstValue(
           item,
           [
@@ -5159,142 +5162,8 @@
             'date'
           ],
           ''
-        );
-
-      return getQuarterKey(
-        legacy
-      );
-
-    }
-
-    function getJoiningDate(){
-
-      return getDateInputValue(
-        firstValue(
-          profileData,
-          [
-            'joiningDate',
-            'joining_date',
-            'joinDate',
-            'join_date'
-          ],
-          ''
         )
       );
-
-    }
-
-    function shiftMonthKey(
-      monthKey,
-      offset
-    ){
-
-      const parts =
-        String(monthKey || '')
-          .split('-');
-
-      const year =
-        Number(parts[0]);
-
-      const month =
-        Number(parts[1]);
-
-      if(
-        !year ||
-        !month
-      ){
-
-        return '';
-
-      }
-
-      const date =
-        new Date(
-          year,
-          month - 1 + offset,
-          1
-        );
-
-      return `${date.getFullYear()}-${String(
-        date.getMonth() + 1
-      ).padStart(2,'0')}`;
-
-    }
-
-    function getMonthKeysFromJoiningToCurrent(){
-
-      const joiningDate =
-        getJoiningDate();
-
-      let startKey =
-        getMonthKey(
-          joiningDate
-        );
-
-      const currentKey =
-        getCurrentMonthKey();
-
-      if(!startKey){
-
-        startKey =
-          currentKey;
-
-      }
-
-      const startDate =
-        new Date(
-          Number(startKey.split('-')[0]),
-          Number(startKey.split('-')[1]) - 1,
-          1
-        );
-
-      const currentDate =
-        new Date(
-          Number(currentKey.split('-')[0]),
-          Number(currentKey.split('-')[1]) - 1,
-          1
-        );
-
-      if(startDate > currentDate){
-
-        return [
-          currentKey
-        ];
-
-      }
-
-      const keys = [];
-
-      let cursor =
-        startKey;
-
-      while(cursor){
-
-        keys.push(
-          cursor
-        );
-
-        if(cursor === currentKey){
-
-          break;
-
-        }
-
-        cursor =
-          shiftMonthKey(
-            cursor,
-            1
-          );
-
-        if(keys.length > 240){
-
-          break;
-
-        }
-
-      }
-
-      return keys;
 
     }
 
@@ -5946,18 +5815,14 @@
                     date:
                       firstValue(
                         item,
-                        [
-                          'date'
-                        ],
+                        ['date'],
                         todayString()
                       ),
 
                     type:
                       firstValue(
                         item,
-                        [
-                          'type'
-                        ],
+                        ['type'],
                         'new'
                       ),
 
@@ -6004,13 +5869,12 @@
                         ],
                         ''
                       )
+
                   })
                 )
             : [];
 
       }
-
-      /* إضافة تاريخ الإنشاء للمهام الجديدة/القديمة */
 
       profileData.planTasks =
         arrayValue(
@@ -6280,8 +6144,106 @@
     }
 
     /* ==================================================
-       MONTHLY FOLLOW UP DATA
+       MONTHLY FOLLOWUP
     ================================================== */
+
+    function getJoiningMonthKey(){
+
+      const joiningDate =
+        getDateInputValue(
+          firstValue(
+            profileData,
+            [
+              'joiningDate',
+              'joining_date',
+              'joinDate',
+              'join_date'
+            ],
+            ''
+          )
+        );
+
+      return joiningDate
+        ? getMonthKey(joiningDate)
+        : getCurrentMonthKey();
+
+    }
+
+    function getMonthlyFollowupMonthKeys(){
+
+      const start =
+        getJoiningMonthKey();
+
+      const current =
+        getCurrentMonthKey();
+
+      if(!start){
+
+        return [current];
+
+      }
+
+      const keys = [];
+
+      let cursor =
+        start;
+
+      let guard = 0;
+
+      while(
+        cursor &&
+        cursor <= current &&
+        guard < 240
+      ){
+
+        keys.push(
+          cursor
+        );
+
+        if(
+          cursor === current
+        ){
+
+          break;
+
+        }
+
+        const parts =
+          cursor.split('-');
+
+        const year =
+          Number(parts[0]);
+
+        const month =
+          Number(parts[1]);
+
+        const next =
+          new Date(
+            year,
+            month,
+            1
+          );
+
+        cursor =
+          `${next.getFullYear()}-${String(
+            next.getMonth() + 1
+          ).padStart(2,'0')}`;
+
+        guard++;
+
+      }
+
+      if(!keys.length){
+
+        keys.push(
+          current
+        );
+
+      }
+
+      return keys;
+
+    }
 
     function normalizeMonthlyFollowups(){
 
@@ -6323,6 +6285,16 @@
                   )
                 ),
 
+              nextRecitation:
+                firstValue(
+                  item,
+                  [
+                    'nextRecitation',
+                    'next_recitation'
+                  ],
+                  ''
+                ),
+
               nextRecitationTitle:
                 firstValue(
                   item,
@@ -6361,7 +6333,7 @@
       normalizeMonthlyFollowups();
 
       const monthKeys =
-        getMonthKeysFromJoiningToCurrent();
+        getMonthlyFollowupMonthKeys();
 
       monthKeys.forEach(
         monthKey => {
@@ -6387,6 +6359,9 @@
 
               monthKey,
 
+              nextRecitation:
+                '',
+
               nextRecitationTitle:
                 '',
 
@@ -6400,14 +6375,23 @@
         }
       );
 
-      profileData.monthlyFollowups
-        .sort(
-          (a,b) =>
-            String(a.monthKey)
-              .localeCompare(
-                String(b.monthKey)
+      profileData.monthlyFollowups =
+        profileData.monthlyFollowups
+          .filter(
+            item =>
+              monthKeys.includes(
+                String(
+                  item.monthKey
+                )
               )
-        );
+          )
+          .sort(
+            (a,b) =>
+              String(a.monthKey)
+                .localeCompare(
+                  String(b.monthKey)
+                )
+          );
 
     }
 
@@ -6429,31 +6413,6 @@
 
     }
 
-    function recordDateAfterJoining(
-      dateValue
-    ){
-
-      const joiningDate =
-        getJoiningDate();
-
-      const recordDate =
-        getDateInputValue(
-          dateValue
-        );
-
-      if(
-        !joiningDate ||
-        !recordDate
-      ){
-
-        return true;
-
-      }
-
-      return recordDate >= joiningDate;
-
-    }
-
     function getMonthlyRecitations(
       monthKey
     ){
@@ -6464,9 +6423,6 @@
             isInMonth(
               record.date,
               monthKey
-            ) &&
-            recordDateAfterJoining(
-              record.date
             )
         )
         .sort(
@@ -6494,9 +6450,6 @@
             isInMonth(
               item.date,
               monthKey
-            ) &&
-            recordDateAfterJoining(
-              item.date
             )
         )
         .sort(
@@ -6531,16 +6484,6 @@
                 ''
               ),
               monthKey
-            ) &&
-            recordDateAfterJoining(
-              firstValue(
-                item,
-                [
-                  'date',
-                  'dayDate'
-                ],
-                ''
-              )
             )
         )
         .sort(
@@ -6548,7 +6491,10 @@
             new Date(
               firstValue(
                 a,
-                ['date','dayDate'],
+                [
+                  'date',
+                  'dayDate'
+                ],
                 ''
               ) || 0
             ).getTime()
@@ -6556,7 +6502,10 @@
             new Date(
               firstValue(
                 b,
-                ['date','dayDate'],
+                [
+                  'date',
+                  'dayDate'
+                ],
                 ''
               ) || 0
             ).getTime()
@@ -6580,7 +6529,7 @@
       }
 
       const monthKeys =
-        getMonthKeysFromJoiningToCurrent()
+        getMonthlyFollowupMonthKeys()
           .slice()
           .reverse();
 
@@ -6608,6 +6557,9 @@
                 ) || {
 
                   monthKey,
+
+                  nextRecitation:
+                    '',
 
                   nextRecitationTitle:
                     '',
@@ -6641,61 +6593,61 @@
                 );
 
               const attendancePresent =
-                attendance
-                  .filter(
-                    item =>
-                      normalizeText(
-                        firstValue(
-                          item,
-                          [
-                            'status',
-                            'attendance'
-                          ],
-                          ''
-                        )
-                      ).includes('حاضر')
-                  )
-                  .length;
+                attendance.filter(
+                  item =>
+                    normalizeText(
+                      firstValue(
+                        item,
+                        [
+                          'status',
+                          'attendance'
+                        ],
+                        ''
+                      )
+                    ).includes(
+                      'حاضر'
+                    )
+                ).length;
 
               const attendanceLate =
-                attendance
-                  .filter(
-                    item =>
-                      normalizeText(
-                        firstValue(
-                          item,
-                          [
-                            'status',
-                            'attendance'
-                          ],
-                          ''
-                        )
-                      ).includes('متأخر')
-                  )
-                  .length;
+                attendance.filter(
+                  item =>
+                    normalizeText(
+                      firstValue(
+                        item,
+                        [
+                          'status',
+                          'attendance'
+                        ],
+                        ''
+                      )
+                    ).includes(
+                      'متأخر'
+                    )
+                ).length;
 
               const attendanceAbsent =
-                attendance
-                  .filter(
-                    item =>
-                      normalizeText(
-                        firstValue(
-                          item,
-                          [
-                            'status',
-                            'attendance'
-                          ],
-                          ''
-                        )
-                      ).includes('غائب')
-                  )
-                  .length;
+                attendance.filter(
+                  item =>
+                    normalizeText(
+                      firstValue(
+                        item,
+                        [
+                          'status',
+                          'attendance'
+                        ],
+                        ''
+                      )
+                    ).includes(
+                      'غائب'
+                    )
+                ).length;
 
               return `
 
                 <div
                   class="monthly-followup-card"
-                  data-month-followup="${escapeHtml(
+                  data-month-key="${escapeHtml(
                     monthKey
                   )}"
                 >
@@ -6714,7 +6666,7 @@
 
                     <div class="monthly-followup-percent">
 
-                      التقييم الشهري:
+                      التقييم:
                       ${formatPoints(
                         monthlyEvaluation.finalPercentage
                       )}%
@@ -6723,7 +6675,7 @@
 
                   </div>
 
-                  <div class="monthly-followup-summary">
+                  <div class="monthly-followup-stats">
 
                     <div class="monthly-followup-stat">
 
@@ -6764,7 +6716,7 @@
                     <div class="monthly-followup-stat">
 
                       <small>
-                        الغياب / التأخير
+                        غياب / تأخير
                       </small>
 
                       <strong>
@@ -6778,7 +6730,7 @@
                   <div class="monthly-followup-block">
 
                     <div class="monthly-followup-block-title">
-                      📖 سجل التسميع لهذا الشهر
+                      📖 سجلات التسميع
                     </div>
 
                     ${
@@ -6792,11 +6744,14 @@
                               <thead>
 
                                 <tr>
+
                                   <th>التاريخ</th>
                                   <th>الصفحة</th>
                                   <th>النوع</th>
                                   <th>العلامة</th>
                                   <th>التقدير</th>
+                                  <th>النقاط</th>
+
                                 </tr>
 
                               </thead>
@@ -6811,6 +6766,12 @@
                                         const evaluation =
                                           getRecitationEvaluation(
                                             record.score
+                                          );
+
+                                        const points =
+                                          getRecitationPoints(
+                                            record.score,
+                                            record.type
                                           );
 
                                         return `
@@ -6849,6 +6810,12 @@
                                               )}
                                             </td>
 
+                                            <td>
+                                              ${formatPoints(
+                                                points
+                                              )}
+                                            </td>
+
                                           </tr>
 
                                         `;
@@ -6867,7 +6834,7 @@
                         `
                         : `
                           <div class="empty">
-                            لا توجد سجلات تسميع لهذا الشهر حتى الآن.
+                            لا توجد سجلات تسميع لهذا الشهر.
                           </div>
                         `
                     }
@@ -6877,7 +6844,7 @@
                   <div class="monthly-followup-block">
 
                     <div class="monthly-followup-block-title">
-                      📝 سجل الاختبارات لهذا الشهر
+                      📝 سجلات الاختبارات
                     </div>
 
                     ${
@@ -6891,11 +6858,13 @@
                               <thead>
 
                                 <tr>
+
                                   <th>التاريخ</th>
                                   <th>الاختبار</th>
                                   <th>العلامة</th>
                                   <th>التقدير</th>
                                   <th>النقاط</th>
+
                                 </tr>
 
                               </thead>
@@ -6973,7 +6942,7 @@
                         `
                         : `
                           <div class="empty">
-                            لا توجد اختبارات مسجلة لهذا الشهر حتى الآن.
+                            لا توجد اختبارات مسجلة لهذا الشهر.
                           </div>
                         `
                     }
@@ -6983,7 +6952,7 @@
                   <div class="monthly-followup-block">
 
                     <div class="monthly-followup-block-title">
-                      📅 سجل الحضور والغياب لهذا الشهر
+                      📅 الحضور والغياب
                     </div>
 
                     ${
@@ -6997,11 +6966,13 @@
                               <thead>
 
                                 <tr>
+
                                   <th>التاريخ</th>
                                   <th>اليوم</th>
                                   <th>الحالة</th>
                                   <th>النقاط</th>
                                   <th>الملاحظة</th>
+
                                 </tr>
 
                               </thead>
@@ -7099,7 +7070,7 @@
                         `
                         : `
                           <div class="empty">
-                            لا توجد سجلات حضور أو غياب لهذا الشهر حتى الآن.
+                            لا توجد سجلات حضور أو غياب لهذا الشهر.
                           </div>
                         `
                     }
@@ -7125,7 +7096,9 @@
                           data-month-next-title
                           type="text"
                           value="${escapeHtml(
-                            followup.nextRecitationTitle || ''
+                            followup.nextRecitationTitle ||
+                            followup.nextRecitation ||
+                            ''
                           )}"
                           placeholder="مثال: سورة الملك"
                         />
@@ -7196,76 +7169,75 @@
           profileData.monthlyFollowups
         );
 
-      Array.from(cards)
-        .forEach(
-          card => {
+      cards.forEach(
+        card => {
 
-            const monthKey =
-              card.dataset.monthFollowup;
+          const monthKey =
+            card.dataset.monthKey;
 
-            if(!monthKey){
+          if(!monthKey){
 
-              return;
-
-            }
-
-            let item =
-              existing.find(
-                entry =>
-                  String(
-                    entry.monthKey
-                  ) ===
-                  String(
-                    monthKey
-                  )
-              );
-
-            if(!item){
-
-              item = {
-
-                id:
-                  makeId(),
-
-                monthKey,
-
-                nextRecitationTitle:
-                  '',
-
-                nextRecitationAmount:
-                  ''
-
-              };
-
-              existing.push(
-                item
-              );
-
-            }
-
-            item.nextRecitationTitle =
-              card.querySelector(
-                '[data-month-next-title]'
-              )?.value.trim() ||
-              '';
-
-            item.nextRecitationAmount =
-              card.querySelector(
-                '[data-month-next-amount]'
-              )?.value.trim() ||
-              '';
+            return;
 
           }
-        );
+
+          let item =
+            existing.find(
+              entry =>
+                String(
+                  entry.monthKey
+                ) ===
+                String(
+                  monthKey
+                )
+            );
+
+          if(!item){
+
+            item = {
+
+              id:
+                makeId(),
+
+              monthKey,
+
+              nextRecitation:
+                '',
+
+              nextRecitationTitle:
+                '',
+
+              nextRecitationAmount:
+                ''
+
+            };
+
+            existing.push(
+              item
+            );
+
+          }
+
+          item.nextRecitationTitle =
+            card.querySelector(
+              '[data-month-next-title]'
+            )?.value.trim() ||
+            '';
+
+          item.nextRecitation =
+            item.nextRecitationTitle;
+
+          item.nextRecitationAmount =
+            card.querySelector(
+              '[data-month-next-amount]'
+            )?.value.trim() ||
+            '';
+
+        }
+      );
 
       profileData.monthlyFollowups =
-        existing.sort(
-          (a,b) =>
-            String(a.monthKey)
-              .localeCompare(
-                String(b.monthKey)
-              )
-        );
+        existing;
 
     }
 
@@ -7586,6 +7558,13 @@
         };
 
       }
+
+      /* التعديل:
+         98–100 ممتاز
+         96–97 جيد جدًا
+         93–95 مقبول
+         أقل من 93 مراجعة
+      */
 
       if(value >= 98){
 
@@ -8322,8 +8301,10 @@
                           font-size:9px;
                         "
                       >
+
                         ${formatPoints(points)}
                         نقطة
+
                       </div>
 
                     </div>
@@ -8621,11 +8602,15 @@
         body.innerHTML =
           `
             <tr>
+
               <td colspan="7">
+
                 <div class="empty">
                   لا توجد سجلات تسميع لهذا الطالب حتى الآن.
                 </div>
+
               </td>
+
             </tr>
           `;
 
@@ -8668,11 +8653,13 @@
                           : 'tag-new'
                       }"
                     >
+
                       ${
                         record.type === 'review'
                           ? 'مراجعة'
                           : 'حفظ جديد'
                       }
+
                     </span>
 
                   </td>
@@ -9244,12 +9231,15 @@
         container.innerHTML =
           `
             <div class="empty">
+
               لا توجد مهام في ${
                 currentPlanView === 'week'
                   ? 'هذا الأسبوع'
                   : 'هذا الشهر'
               }.
+
               اضغط «إضافة مهمة» لإنشاء الخطة.
+
             </div>
           `;
 
@@ -9523,12 +9513,14 @@
                                   : 'pending'
                           }"
                         >
+
                           ${
                             completion.status ===
                               'upcoming'
                               ? 'قادم'
                               : resultText
                           }
+
                         </span>
 
                         ${
@@ -9540,14 +9532,19 @@
                                   font-size:9px;
                                 "
                               >
+
                                 ${formatPoints(
                                   completion.points
                                 )}
+
                                 /
+
                                 ${formatPoints(
                                   completion.maxPoints
                                 )}
+
                                 نقطة خطة
+
                               </span>
                             `
                             : ''
@@ -10055,6 +10052,7 @@
                           font-size:11px;
                         "
                       >
+
                         ${getAttendancePoints(
                           firstValue(
                             item,
@@ -10065,7 +10063,9 @@
                             ''
                           )
                         )}
+
                         نقطة
+
                       </div>
 
                     </div>
@@ -10754,7 +10754,7 @@
       const exists =
         profileData.fees.some(
           fee =>
-            getExplicitFeeQuarterValue(
+            getFeePeriodValue(
               fee
             ) ===
             quarter
@@ -10886,16 +10886,34 @@
           data.quarterlyFee =
             FIXED_QUARTERLY_FEE;
 
-          const exists =
-            data.fees.some(
+          const existingFee =
+            data.fees.find(
               fee =>
-                getExplicitFeeQuarterValue(
+                getFeePeriodValue(
                   fee
                 ) ===
                 quarter
             );
 
-          if(!exists){
+          if(
+            existingFee
+          ){
+
+            /*
+              إذا كانت المطالبة الحالية موجودة من النظام،
+              يبقى مبلغها 25 د.أ.
+            */
+
+            if(
+              existingFee.autoGenerated
+            ){
+
+              existingFee.amount =
+                FIXED_QUARTERLY_FEE;
+
+            }
+
+          }else{
 
             data.fees.push({
 
@@ -10927,41 +10945,58 @@
 
             });
 
-            const {
-              error:upsertError
-            } =
-              await supabaseClient
-                .from('student_profiles')
-                .upsert(
-                  {
+          }
 
-                    student_id:
-                      String(
-                        currentStudent.id
-                      ),
+          /*
+            نحفظ الملف حتى لو كانت المطالبة موجودة،
+            لضمان تثبيت قيمة النظام الجديدة.
+          */
 
-                    data,
+          const {
+            error:upsertError
+          } =
+            await supabaseClient
+              .from('student_profiles')
+              .upsert(
+                {
 
-                    updated_at:
-                      new Date()
-                        .toISOString()
+                  student_id:
+                    String(
+                      currentStudent.id
+                    ),
 
-                  },
-                  {
+                  data,
 
-                    onConflict:
-                      'student_id'
+                  updated_at:
+                    new Date()
+                      .toISOString()
 
-                  }
-                );
+                },
+                {
 
-            if(upsertError){
+                  onConflict:
+                    'student_id'
 
-              console.error(
-                upsertError
+                }
               );
 
-            }
+          if(upsertError){
+
+            console.error(
+              upsertError
+            );
+
+          }
+
+          if(
+            String(
+              currentStudent.id
+            ) ===
+            String(studentId)
+          ){
+
+            profileData.fees =
+              data.fees;
 
           }
 
@@ -11044,26 +11079,58 @@
       const summary =
         calculateFeeSummary();
 
-      document.getElementById(
-        'feeApprovedQuarterly'
-      ).textContent =
-        `${formatPoints(
-          FIXED_QUARTERLY_FEE
-        )} د.أ`;
+      /*
+        أبقيت ID الأصلي feeApprovedMonthly
+        حتى لا يحصل خطأ null.
+      */
 
-      document.getElementById(
-        'feePaidTotal'
-      ).textContent =
-        `${formatPoints(
-          summary.paidTotal
-        )} د.أ`;
+      const approvedMonthlyElement =
+        document.getElementById(
+          'feeApprovedMonthly'
+        );
 
-      document.getElementById(
-        'feeRemainingTotal'
-      ).textContent =
-        `${formatPoints(
-          summary.remainingTotal
-        )} د.أ`;
+      if(
+        approvedMonthlyElement
+      ){
+
+        approvedMonthlyElement.textContent =
+          `${formatPoints(
+            FIXED_QUARTERLY_FEE
+          )} د.أ`;
+
+      }
+
+      const paidElement =
+        document.getElementById(
+          'feePaidTotal'
+        );
+
+      if(
+        paidElement
+      ){
+
+        paidElement.textContent =
+          `${formatPoints(
+            summary.paidTotal
+          )} د.أ`;
+
+      }
+
+      const remainingElement =
+        document.getElementById(
+          'feeRemainingTotal'
+        );
+
+      if(
+        remainingElement
+      ){
+
+        remainingElement.textContent =
+          `${formatPoints(
+            summary.remainingTotal
+          )} د.أ`;
+
+      }
 
     }
 
@@ -11133,7 +11200,7 @@
                       'amount',
                       'value'
                     ],
-                    FIXED_QUARTERLY_FEE
+                    0
                   )
                 ) || 0;
 
@@ -11237,31 +11304,22 @@
                         الفصل
                       </label>
 
-                      <select
-                        class="normal-select"
+                      <input
+                        class="normal-input"
                         data-fee-quarter
-                      >
-
-                        <option
-                          value="${escapeHtml(
-                            period
-                          )}"
-                        >
-                          ${escapeHtml(
-                            getQuarterLabel(
-                              period
-                            ) || period || 'غير محدد'
-                          )}
-                        </option>
-
-                      </select>
+                        type="text"
+                        value="${escapeHtml(
+                          period
+                        )}"
+                        readonly
+                      />
 
                     </div>
 
                     <div class="field">
 
                       <label>
-                        المبلغ الثابت
+                        المبلغ
                       </label>
 
                       <input
@@ -11430,46 +11488,42 @@
             const old =
               oldItems[index];
 
-            const selectedQuarter =
-              row.querySelector(
-                '[data-fee-quarter]'
-              )?.value ||
-              getFeePeriodValue(
-                old
-              );
-
-            old.quarter =
-              getQuarterKey(
-                selectedQuarter
-              ) ||
-              selectedQuarter;
-
-            old.period =
-              old.quarter;
-
-            old.date =
-              old.quarter;
-
-            /*
-              الرسوم الفصلية ثابتة 25 د.أ.
-            */
-
-            old.amount =
-              FIXED_QUARTERLY_FEE;
-
-            old.status =
+            const status =
               normalizeFeeStatus(
                 row.querySelector(
                   '[data-fee-status]'
                 )?.value ||
+                old.status ||
                 'متبقي'
               );
+
+            old.status =
+              status;
 
             old.notes =
               row.querySelector(
                 '[data-fee-notes]'
               )?.value ||
               '';
+
+            old.amount =
+              Number(
+                old.amount
+              ) || 0;
+
+            /*
+              المطالبات المنشأة تلقائيًا للنظام الجديد
+              قيمتها 25 د.أ.
+            */
+
+            if(
+              old.autoGenerated
+            ){
+
+              old.amount =
+                FIXED_QUARTERLY_FEE;
+
+            }
 
           }
         );
@@ -13260,21 +13314,25 @@
 
     }
 
+    /* ==================================================
+       MONTHLY PLAN AVERAGE
+    ================================================== */
+
     function getMonthlyPlanAdherenceAverage(){
 
-      ensureMonthlyFollowupMonths();
-
       const monthKeys =
-        getMonthKeysFromJoiningToCurrent();
+        getMonthlyFollowupMonthKeys();
 
-      let total = 0;
+      let total =
+        0;
 
-      let count = 0;
+      let count =
+        0;
 
       monthKeys.forEach(
         monthKey => {
 
-          const evaluation =
+          const result =
             calculateEvaluation(
               'monthly',
               {
@@ -13283,12 +13341,12 @@
             );
 
           if(
-            evaluation.components &&
-            evaluation.components.planPercent !== null
+            result.components &&
+            result.components.planPercent !== null
           ){
 
             total +=
-              evaluation.components.planPercent;
+              result.components.planPercent;
 
             count++;
 
@@ -13307,6 +13365,10 @@
 
     }
 
+    /* ==================================================
+       MEMORIZED JUZ COUNT
+    ================================================== */
+
     function getMemorizedJuzCount(){
 
       return JUZ_RANGES
@@ -13315,7 +13377,9 @@
             Boolean(
               profileData
                 .juzCompletion[
-                  String(juz.number)
+                  String(
+                    juz.number
+                  )
                 ]?.memorized
             )
         )
@@ -13373,14 +13437,6 @@
             )
         ).size;
 
-      const newPages =
-        getPageRecords()
-          .filter(
-            record =>
-              record.type === 'new'
-          )
-          .length;
-
       const progress =
         (
           uniquePages /
@@ -13392,16 +13448,6 @@
 
       const memorizedJuzCount =
         getMemorizedJuzCount();
-
-      document.getElementById(
-        'recordedPageCount'
-      ).textContent =
-        uniquePages;
-
-      document.getElementById(
-        'newPageCount'
-      ).textContent =
-        newPages;
 
       document.getElementById(
         'recitationProgressPercent'
@@ -13778,6 +13824,7 @@
             .from('student_profiles')
             .upsert(
               {
+
                 student_id:
                   String(studentId),
 
@@ -13790,8 +13837,10 @@
 
               },
               {
+
                 onConflict:
                   'student_id'
+
               }
             );
 
