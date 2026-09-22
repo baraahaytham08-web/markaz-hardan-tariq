@@ -7191,14 +7191,21 @@ const BADGE_DEFINITIONS = {
 
 function renderNextRecitation(){
 
-  const element =
+  const elements = [
+    document.getElementById(
+      'nextRecitationText'
+    ),
     document.getElementById(
       'generalNextRecitationText'
-    );
+    )
+  ]
+  .filter(
+    element => element
+  );
 
 
   if(
-    !element
+    !elements.length
   ){
 
     return;
@@ -7301,8 +7308,14 @@ function renderNextRecitation(){
     !upcoming.length
   ){
 
-    element.textContent =
-      'لا يوجد تسميع قادم حاليًا';
+    elements.forEach(
+      element => {
+
+        element.textContent =
+          'لا يوجد تسميع قادم حاليًا';
+
+      }
+    );
 
     return;
 
@@ -7325,8 +7338,18 @@ function renderNextRecitation(){
       : '';
 
 
-  element.textContent =
+  const text =
     `📖 التسميع بتاريخ ${formatDate(next.date)}${pageText}`;
+
+
+  elements.forEach(
+    element => {
+
+      element.textContent =
+        text;
+
+    }
+  );
 
 }
     
