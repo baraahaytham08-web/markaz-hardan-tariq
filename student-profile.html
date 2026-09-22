@@ -4379,25 +4379,75 @@
           —
         </div>
 
-      </div>
+<div class="stats">
 
 
-        <div class="stat">
+  <div class="stat">
 
-          <div class="stat-label">
-            نقاط التسميع
-          </div>
+    <div class="stat-label">
+      نقاط التسميع
+    </div>
 
-          <div
-            class="stat-value"
-            id="academicPoints"
-          >
-            0
-          </div>
+    <div
+      class="stat-value"
+      id="academicPoints"
+    >
+      0
+    </div>
 
-        </div>
+  </div>
 
 
+  <div class="stat">
+
+    <div class="stat-label">
+      النقاط الإضافية
+    </div>
+
+    <div
+      class="stat-value"
+      id="bonusPoints"
+    >
+      0
+    </div>
+
+  </div>
+
+
+  <div class="stat">
+
+    <div class="stat-label">
+      مجموع النقاط
+    </div>
+
+    <div
+      class="stat-value"
+      id="totalPoints"
+    >
+      0
+    </div>
+
+  </div>
+
+
+  <div class="stat">
+
+    <div class="stat-label">
+      التقييم العام
+    </div>
+
+    <div
+      class="stat-value"
+      id="evaluation"
+    >
+      0%
+    </div>
+
+  </div>
+
+
+</div>
+        
         <div class="stat">
 
           <div class="stat-label">
@@ -4450,21 +4500,963 @@
 
 
       <div
-        id="extraPointsList"
-        class="list"
-        style="margin-top:14px;"
-      >
+   <div
+  style="
+    margin-top:18px;
+  "
+>
 
-        <div class="empty">
-          لا توجد نقاط إضافية مسجلة.
+  <div class="section-head">
+
+    <div class="section-title">
+
+      <div class="section-icon">
+        📊
+      </div>
+
+      تفاصيل احتساب النقاط
+
+    </div>
+
+  </div>
+
+
+  <div
+    id="pointsBreakdownList"
+    class="list"
+  >
+
+    <div class="empty">
+      لا توجد تفاصيل نقاط.
+    </div>
+
+  </div>
+
+</div>
+
+      function renderPointBreakdown(){
+
+  const container =
+    document.getElementById(
+      'pointsBreakdownList'
+    );
+
+
+  if(
+    !container
+  ){
+
+    return;
+
+  }
+
+
+  const sections = [];
+
+
+  const recitations =
+    getRecitationRecords();
+
+
+  const recitationRows =
+    recitations.map(
+      (
+        record,
+        index
+      ) => {
+
+        const points =
+          recitationPoints(
+            record
+          );
+
+
+        const page =
+          numberValue(
+            firstValue(
+              record,
+              [
+                'page',
+                'pageNumber',
+                'page_number'
+              ],
+              0
+            )
+          );
+
+
+        const score =
+          firstValue(
+            record,
+            [
+              'score',
+              'grade',
+              'percentage'
+            ],
+            0
+          );
+
+
+        const type =
+          normalizeType(
+            record.type
+          ) === 'review'
+            ? 'مراجعة'
+            : 'حفظ جديد';
+
+
+        return `
+
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+
+                📖 ${page
+                  ? `صفحة ${page}`
+                  : `تسميع ${index + 1}`
+                }
+
+              </div>
+
+
+              <div class="item-sub">
+
+                ${
+                  record.date
+                    ? escapeHtml(
+                        formatDate(
+                          record.date
+                        )
+                      )
+                    : ''
+                }
+
+                • ${type}
+
+                • الدرجة:
+                ${escapeHtml(score)}
+
+              </div>
+
+            </div>
+
+
+            <div class="item-badge">
+
+              +${decimalNumber(
+                points
+              )}
+
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    );
+
+
+  const recitationTotal =
+    recitations.reduce(
+      (
+        total,
+        record
+      ) =>
+        total +
+        recitationPoints(
+          record
+        ),
+      0
+    );
+
+
+  if(
+    recitationRows.length
+  ){
+
+    sections.push(`
+
+      <div class="item">
+
+        <div class="item-main">
+
+          <div class="item-title">
+            📖 نقاط التسميع
+          </div>
+
+          <div class="item-sub">
+            مجموع نقاط التسميع
+          </div>
+
+        </div>
+
+        <div class="item-badge">
+          +${decimalNumber(
+            recitationTotal
+          )}
+
+        </div>
+
+      </div>
+
+      ${recitationRows.join('')}
+
+    `);
+
+  }
+
+
+  const tests =
+    toArray(
+      firstValue(
+        profileData,
+        [
+          'tests',
+          'exams',
+          'examResults',
+          'exam_results'
+        ],
+        []
+      )
+    );
+
+
+  const testTotal =
+    tests.reduce(
+      (
+        total,
+        test
+      ) =>
+        total +
+        testGrade(
+          test.score
+        ).points,
+      0
+    );
+
+
+  if(
+    tests.length
+  ){
+
+    sections.push(`
+
+      <div class="item">
+
+        <div class="item-main">
+
+          <div class="item-title">
+            📝 نقاط الاختبارات
+          </div>
+
+          <div class="item-sub">
+            مجموع نقاط الاختبارات
+          </div>
+
+        </div>
+
+        <div class="item-badge">
+          +${decimalNumber(
+            testTotal
+          )}
+
         </div>
 
       </div>
 
 
-    </section>
+      ${
+        tests
+          .map(
+            (
+              test,
+              index
+            ) => {
+
+              const grade =
+                testGrade(
+                  test.score
+                );
 
 
+              return `
+
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+
+                      📝 ${
+                        escapeHtml(
+                          test.title ||
+                          test.name ||
+                          `اختبار ${index + 1}`
+                        )
+                      }
+
+                    </div>
+
+
+                    <div class="item-sub">
+
+                      الدرجة:
+                      ${escapeHtml(
+                        test.score
+                      )}
+
+                      •
+                      ${escapeHtml(
+                        grade.label
+                      )}
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="item-badge">
+
+                    +${decimalNumber(
+                      grade.points
+                    )}
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('')
+      }
+
+    `);
+
+  }
+
+
+  const attendance =
+    toArray(
+      firstValue(
+        profileData,
+        [
+          'attendance',
+          'attendances'
+        ],
+        []
+      )
+    );
+
+
+  const attendanceTotal =
+    attendance.reduce(
+      (
+        total,
+        record
+      ) =>
+        total +
+        attendancePoints(
+          firstValue(
+            record,
+            [
+              'status',
+              'attendance'
+            ],
+            ''
+          )
+        ),
+      0
+    );
+
+
+  if(
+    attendance.length
+  ){
+
+    sections.push(`
+
+      <div class="item">
+
+        <div class="item-main">
+
+          <div class="item-title">
+            📅 نقاط الحضور
+          </div>
+
+          <div class="item-sub">
+            مجموع نقاط الحضور
+          </div>
+
+        </div>
+
+        <div class="item-badge">
+          +${decimalNumber(
+            attendanceTotal
+          )}
+
+        </div>
+
+      </div>
+
+
+      ${
+        attendance
+          .map(
+            (
+              record,
+              index
+            ) => {
+
+              const status =
+                firstValue(
+                  record,
+                  [
+                    'status',
+                    'attendance'
+                  ],
+                  '—'
+                );
+
+
+              const points =
+                attendancePoints(
+                  status
+                );
+
+
+              return `
+
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+
+                      📅 ${
+                        escapeHtml(
+                          record.day ||
+                          `سجل ${index + 1}`
+                        )
+                      }
+
+                    </div>
+
+
+                    <div class="item-sub">
+
+                      ${escapeHtml(
+                        status
+                      )}
+
+                      ${
+                        record.date
+                          ? ` • ${escapeHtml(
+                              formatDate(
+                                record.date
+                              )
+                            )}`
+                          : ''
+                      }
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="item-badge">
+
+                    +${decimalNumber(
+                      points
+                    )}
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('')
+      }
+
+    `);
+
+  }
+
+
+  const extra =
+    getExtraPointRecords();
+
+
+  const extraTotal =
+    getBonusPoints();
+
+
+  if(
+    extra.length
+  ){
+
+    sections.push(`
+
+      <div class="item">
+
+        <div class="item-main">
+
+          <div class="item-title">
+            ⭐ النقاط الإضافية
+          </div>
+
+          <div class="item-sub">
+            مجموع النقاط الإضافية
+          </div>
+
+        </div>
+
+        <div class="item-badge">
+          +${decimalNumber(
+            extraTotal
+          )}
+
+        </div>
+
+      </div>
+
+
+      ${
+        extra
+          .map(
+            (
+              record,
+              index
+            ) => {
+
+              const reason =
+                firstValue(
+                  record,
+                  [
+                    'reason',
+                    'description',
+                    'title',
+                    'note'
+                  ],
+                  `نقطة إضافية ${index + 1}`
+                );
+
+
+              const points =
+                numberValue(
+                  firstValue(
+                    record,
+                    [
+                      'points',
+                      'value',
+                      'amount'
+                    ],
+                    0
+                  )
+                );
+
+
+              return `
+
+                <div class="item">
+
+                  <div class="item-main">
+
+                    <div class="item-title">
+
+                      ⭐ ${escapeHtml(
+                        reason
+                      )}
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="item-badge">
+
+                    +${decimalNumber(
+                      points
+                    )}
+
+                  </div>
+
+                </div>
+
+              `;
+
+            }
+          )
+          .join('')
+      }
+
+    `);
+
+  }
+
+
+  const planTasks =
+    getPlanTasks();
+
+
+  const today =
+    new Date();
+
+
+  today.setHours(
+    0,
+    0,
+    0,
+    0
+  );
+
+
+  let planTotal =
+    0;
+
+
+  const planRows = [];
+
+
+  planTasks.forEach(
+    (
+      task,
+      index
+    ) => {
+
+      const rawDate =
+        firstValue(
+          task,
+          [
+            'date',
+            'startDate',
+            'start_date',
+            'dueDate',
+            'due_date'
+          ],
+          ''
+        );
+
+
+      if(
+        !rawDate
+      ){
+
+        return;
+
+      }
+
+
+      const date =
+        new Date(
+          rawDate
+        );
+
+
+      if(
+        Number.isNaN(
+          date.getTime()
+        )
+      ){
+
+        return;
+
+      }
+
+
+      date.setHours(
+        0,
+        0,
+        0,
+        0
+      );
+
+
+      if(
+        date > today
+      ){
+
+        return;
+
+      }
+
+
+      if(
+        String(
+          task.type ||
+          ''
+        ).toLowerCase() ===
+        'test'
+      ){
+
+        const completed =
+          tests.some(
+            test =>
+              String(
+                test.date ||
+                ''
+              ).slice(
+                0,
+                10
+              ) ===
+              String(
+                rawDate
+              ).slice(
+                0,
+                10
+              )
+          );
+
+
+        const points =
+          completed
+            ? 5
+            : 0;
+
+
+        planTotal +=
+          points;
+
+
+        planRows.push(`
+
+          <div class="item">
+
+            <div class="item-main">
+
+              <div class="item-title">
+
+                🗓️ خطة اختبار
+
+              </div>
+
+              <div class="item-sub">
+
+                ${
+                  escapeHtml(
+                    formatDate(
+                      rawDate
+                    )
+                  )
+                }
+
+                • ${
+                  completed
+                    ? 'تم الإنجاز'
+                    : 'لم يتم الإنجاز'
+                }
+
+              </div>
+
+            </div>
+
+            <div class="item-badge">
+
+              +${decimalNumber(
+                points
+              )}
+
+            </div>
+
+          </div>
+
+        `);
+
+
+        return;
+
+      }
+
+
+      const pages =
+        extractPlanTaskPages(
+          task
+        );
+
+
+      if(
+        !pages.length
+      ){
+
+        return;
+
+      }
+
+
+      const completed =
+        pages.filter(
+          page =>
+            getRecitationRecords()
+              .some(
+                record =>
+                  Number(
+                    firstValue(
+                      record,
+                      [
+                        'page',
+                        'pageNumber',
+                        'page_number'
+                      ],
+                      0
+                    )
+                  ) ===
+                  Number(page)
+              )
+        ).length;
+
+
+      const ratio =
+        Math.min(
+          1,
+          completed /
+          pages.length
+        );
+
+
+      const points =
+        5 *
+        ratio;
+
+
+      planTotal +=
+        points;
+
+
+      planRows.push(`
+
+        <div class="item">
+
+          <div class="item-main">
+
+            <div class="item-title">
+
+              🗓️ ${
+                escapeHtml(
+                  task.title ||
+                  task.day ||
+                  `مهمة ${index + 1}`
+                )
+              }
+
+            </div>
+
+            <div class="item-sub">
+
+              ${
+                escapeHtml(
+                  formatDate(
+                    rawDate
+                  )
+                )
+              }
+
+              • الإنجاز:
+              ${completed}/${pages.length}
+
+            </div>
+
+          </div>
+
+          <div class="item-badge">
+
+            +${decimalNumber(
+              points
+            )}
+
+          </div>
+
+        </div>
+
+      `);
+
+    }
+  );
+
+
+  if(
+    planRows.length
+  ){
+
+    sections.push(`
+
+      <div class="item">
+
+        <div class="item-main">
+
+          <div class="item-title">
+            🗓️ نقاط الخطة
+          </div>
+
+          <div class="item-sub">
+            مجموع نقاط الخطة
+          </div>
+
+        </div>
+
+        <div class="item-badge">
+          +${decimalNumber(
+            planTotal
+          )}
+        </div>
+
+      </div>
+
+
+      ${planRows.join('')}
+
+    `);
+
+  }
+
+
+  const rawPoints =
+    recitationTotal +
+    testTotal +
+    attendanceTotal +
+    planTotal +
+    extraTotal;
+
+
+  sections.unshift(`
+
+    <div class="item">
+
+      <div class="item-main">
+
+        <div class="item-title">
+          🧮 إجمالي النقاط المحسوبة
+        </div>
+
+        <div class="item-sub">
+          التسميع + الاختبارات + الحضور + الخطة + الإضافية
+        </div>
+
+      </div>
+
+      <div class="item-badge">
+        ${decimalNumber(
+          rawPoints
+        )} نقطة
+      </div>
+
+    </div>
+
+  `);
+
+
+  container.innerHTML =
+    sections.join('');
+
+}
+
+      
     <!-- =========================
          BADGES
     ========================= -->
