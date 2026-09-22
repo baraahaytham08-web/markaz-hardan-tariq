@@ -583,6 +583,11 @@
       box-shadow:0 0 0 3px rgba(217,184,108,.045);
     }
 
+    .detail-field input[readonly]{
+      cursor:default;
+      opacity:.88;
+    }
+
     .photo-control{
       grid-column:span 2;
 
@@ -892,6 +897,91 @@
       border:1px solid rgba(213,109,109,.15);
     }
 
+    .btn-secondary{
+      color:var(--text);
+
+      background:rgba(255,255,255,.025);
+
+      border:1px solid rgba(255,255,255,.07);
+    }
+
+    /* =========================
+       COMPACT ARCHIVES
+    ========================= */
+
+    .compact-archive{
+      display:grid;
+      gap:8px;
+    }
+
+    .compact-record{
+      padding:11px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.018);
+      border:1px solid rgba(255,255,255,.055);
+    }
+
+    .compact-record-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .compact-record-main{
+      min-width:0;
+    }
+
+    .compact-record-main strong{
+      display:block;
+      color:var(--text);
+      font-size:11px;
+      margin-bottom:4px;
+      line-height:1.7;
+    }
+
+    .compact-record-main span{
+      display:block;
+      color:var(--muted2);
+      font-size:9px;
+      line-height:1.8;
+    }
+
+    .compact-record-side{
+      flex-shrink:0;
+      display:flex;
+      align-items:center;
+      gap:5px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .record-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 8px;
+      border-radius:999px;
+      font-size:8px;
+      white-space:nowrap;
+      color:var(--gold2);
+      background:rgba(217,184,108,.07);
+      border:1px solid rgba(217,184,108,.11);
+    }
+
+    .compact-actions{
+      display:flex;
+      gap:5px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+
+    .compact-actions .action-btn{
+      min-height:31px;
+      padding:6px 9px;
+      font-size:9px;
+    }
+
     /* =========================
        PROGRESS
     ========================= */
@@ -1195,7 +1285,7 @@
     }
 
     .monthly-followup-percent{
-      color:var(--gold2);
+      color:#efb3b3;
 
       font-size:10px;
 
@@ -1203,9 +1293,9 @@
 
       border-radius:999px;
 
-      background:rgba(217,184,108,.07);
+      background:rgba(213,109,109,.07);
 
-      border:1px solid rgba(217,184,108,.12);
+      border:1px solid rgba(213,109,109,.12);
     }
 
     .monthly-followup-stats{
@@ -1318,6 +1408,36 @@
       background:rgba(47,159,114,.025);
 
       border:1px solid rgba(47,159,114,.09);
+    }
+
+    .warning-month-item{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:9px;
+      padding:9px;
+      margin-top:6px;
+      border-radius:11px;
+      background:rgba(213,109,109,.045);
+      border:1px solid rgba(213,109,109,.08);
+    }
+
+    .warning-month-main{
+      min-width:0;
+    }
+
+    .warning-month-main strong{
+      display:block;
+      color:#f0b5b5;
+      font-size:10px;
+      margin-bottom:3px;
+    }
+
+    .warning-month-main span{
+      display:block;
+      color:var(--muted2);
+      font-size:8px;
+      line-height:1.7;
     }
 
     /* =========================
@@ -2086,6 +2206,29 @@
       margin-bottom:10px;
     }
 
+    .fee-live-calculation{
+      margin-top:10px;
+      padding:9px 10px;
+      border-radius:11px;
+      color:var(--gold2);
+      background:rgba(217,184,108,.045);
+      border:1px solid rgba(217,184,108,.08);
+      font-size:10px;
+      line-height:1.8;
+    }
+
+    .fee-editing-note{
+      display:none;
+      margin-top:8px;
+      color:#ead19b;
+      font-size:9px;
+      line-height:1.8;
+    }
+
+    .fee-editing-note.show{
+      display:block;
+    }
+
     .fee-status{
       display:inline-flex;
 
@@ -2735,6 +2878,18 @@
         width:100%;
       }
 
+      .compact-record-top{
+        flex-direction:column;
+      }
+
+      .compact-record-side{
+        justify-content:flex-start;
+      }
+
+      .modal-preview{
+        grid-template-columns:1fr;
+      }
+
     }
   </style>
 </head>
@@ -2978,20 +3133,20 @@
 
             <select id="section">
 
+              <option value="البراعم">
+                البراعم
+              </option>
+
+              <option value="الفتيان">
+                الفتيان
+              </option>
+
+              <option value="السواعد">
+                السواعد
+              </option>
+
               <option value="الحفاظ">
                 الحفاظ
-              </option>
-
-              <option value="الفرسان">
-                الفرسان
-              </option>
-
-              <option value="إجازة">
-                إجازة
-              </option>
-
-              <option value="تجويد">
-                تجويد
               </option>
 
             </select>
@@ -3042,7 +3197,7 @@
           <div class="detail-field">
 
             <label>
-              الإنذارات
+              عدد الإنذارات
             </label>
 
             <input
@@ -3050,6 +3205,7 @@
               type="number"
               min="0"
               step="1"
+              readonly
             />
 
           </div>
@@ -3338,7 +3494,7 @@
           <button
             type="button"
             class="action-btn btn-add"
-            onclick="addPlanTask()"
+            onclick="openPlanModal()"
           >
             + إضافة مهمة
           </button>
@@ -3348,8 +3504,8 @@
         <div class="map-intro">
 
           يحدد المعلم المطلوب للطالب ومتى يجب إنجازه.
-          تاريخ اليوم يوضح متى تم إنشاء الخطة، وتاريخ التسميع القادم
-          يحدد الموعد المستهدف للتسميع.
+          بعد الحفظ تظهر المهمة في سجل مختصر، وتنتقل بياناتها تلقائيًا
+          إلى خانة <strong>التسميع القادم</strong> في المتابعة العامة.
 
         </div>
 
@@ -3404,7 +3560,7 @@
           <button
             type="button"
             class="action-btn btn-add"
-            onclick="addTest()"
+            onclick="openTestModal()"
           >
             + إضافة اختبار
           </button>
@@ -3465,7 +3621,7 @@
 
         <div
           id="testsEditor"
-          class="editor-list"
+          class="compact-archive"
         ></div>
 
       </section>
@@ -3693,7 +3849,7 @@
           <button
             type="button"
             class="action-btn btn-add"
-            onclick="addAttendance()"
+            onclick="openAttendanceModal()"
           >
             + تسجيل حضور
           </button>
@@ -3742,7 +3898,7 @@
 
         <div
           id="attendanceEditor"
-          class="editor-list"
+          class="compact-archive"
         ></div>
 
       </section>
@@ -3763,8 +3919,28 @@
 
           </div>
 
-          <div class="section-note">
-            من شهر التحاق الطالب حتى الشهر الحالي
+          <div
+            style="
+              display:flex;
+              align-items:center;
+              gap:6px;
+              flex-wrap:wrap;
+              justify-content:flex-end;
+            "
+          >
+
+            <div class="section-note">
+              من شهر التحاق الطالب حتى الشهر الحالي
+            </div>
+
+            <button
+              type="button"
+              class="action-btn btn-add"
+              onclick="openWarningModal()"
+            >
+              + إضافة إنذار
+            </button>
+
           </div>
 
         </div>
@@ -3772,8 +3948,8 @@
         <div class="map-intro">
 
           لكل شهر خانة مستقلة تعرض سجلات التسميع والاختبارات والحضور والغياب،
-          إضافةً إلى التسميع القادم المطلوب ومقدار التسميع.
-          يبدأ السجل من شهر التحاق الطالب، ويُضاف الشهر الجديد تلقائيًا عند بدايته.
+          إضافةً إلى التسميع القادم المستخرج تلقائيًا من خطة الطالب.
+          والإنذارات تُكتب يدويًا من المعلم وتُحفظ في سجل الطالب.
 
         </div>
 
@@ -3872,7 +4048,7 @@
           </div>
 
           <div class="section-note">
-            الرسوم الفصلية
+            الاشتراك الشهري المعتمد
           </div>
 
         </div>
@@ -3882,7 +4058,7 @@
           <div class="fee-summary-card">
 
             <small>
-              الاشتراك الفصلي المعتمد
+              الاشتراك الشهري المعتمد
             </small>
 
             <strong id="feeApprovedMonthly">
@@ -3919,20 +4095,130 @@
 
         <div class="fee-form">
 
-          <div class="fee-form-title">
-            💳 المطالبة الفصلية
+          <div class="fee-form-title" id="feeFormTitle">
+            💳 تسجيل دفعة شهرية
           </div>
 
           <div
             class="map-intro"
-            style="margin-bottom:0;"
+            style="margin-bottom:10px;"
           >
 
-            قيمة الاشتراك الفصلي المعتمد ثابتة على
+            الرسم الشهري المعتمد ثابت على
             <strong>25 دينارًا أردنيًا</strong>.
-            ينشئ النظام مطالبة جديدة تلقائيًا في بداية كل فصل
-            لكل طالب بقيمة 25 د.أ، وتظهر في سجل المدفوعات
-            حتى يتم تحديث حالتها.
+            المبلغ الذي يمكن تعديله هنا هو
+            <strong>المبلغ الذي دفعه الطالب فعليًا</strong> فقط،
+            ويحسب النظام المتبقي تلقائيًا.
+
+          </div>
+
+          <div class="editor-grid">
+
+            <div class="field">
+
+              <label>
+                📅 الشهر
+              </label>
+
+              <input
+                class="normal-input"
+                id="feeMonth"
+                type="month"
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                💳 الرسم المعتمد
+              </label>
+
+              <input
+                class="normal-input"
+                type="number"
+                value="25"
+                readonly
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                💵 المبلغ المدفوع
+              </label>
+
+              <input
+                class="normal-input"
+                id="feePaid"
+                type="number"
+                min="0"
+                max="25"
+                step="0.01"
+                placeholder="مثال: 10"
+              />
+
+            </div>
+
+            <div class="field">
+
+              <label>
+                📝 ملاحظات
+              </label>
+
+              <input
+                class="normal-input"
+                id="feeNotes"
+                type="text"
+                placeholder="اختياري"
+              />
+
+            </div>
+
+          </div>
+
+          <div
+            class="fee-live-calculation"
+            id="feeLiveCalculation"
+          >
+            المبلغ المستحق: 25 د.أ · المدفوع: 0 د.أ · المتبقي: 25 د.أ
+          </div>
+
+          <div
+            class="fee-editing-note"
+            id="feeEditingNote"
+          >
+            ✏️ أنت تعدّل سجلًا محفوظًا. تعديل هذا الشهر لا يغيّر بقية الأشهر.
+          </div>
+
+          <div
+            style="
+              margin-top:10px;
+              display:flex;
+              gap:6px;
+              flex-wrap:wrap;
+            "
+          >
+
+            <button
+              type="button"
+              class="action-btn btn-add"
+              id="addFeeBtn"
+              onclick="saveFeeRecord()"
+            >
+              💾 حفظ سجل الرسوم
+            </button>
+
+            <button
+              type="button"
+              class="action-btn btn-delete"
+              id="cancelFeeEditBtn"
+              style="display:none;"
+              onclick="cancelFeeEdit()"
+            >
+              إلغاء التعديل
+            </button>
 
           </div>
 
@@ -4529,6 +4815,537 @@
 
   </div>
 
+  <!-- ATTENDANCE MODAL -->
+
+  <div
+    class="modal"
+    id="attendanceModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h3 id="attendanceModalTitle">
+          تسجيل حضور
+        </h3>
+
+        <button
+          type="button"
+          class="close-btn"
+          onclick="closeAttendanceModal()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div class="editor-grid">
+
+        <div class="field">
+
+          <label>
+            اليوم
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalAttDay"
+            type="text"
+            placeholder="مثال: الأحد"
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            التاريخ
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalAttDate"
+            type="date"
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            الحالة
+          </label>
+
+          <select
+            class="normal-select"
+            id="modalAttStatus"
+          >
+
+            <option value="حاضر">
+              حاضر
+            </option>
+
+            <option value="متأخر">
+              متأخر
+            </option>
+
+            <option value="غائب">
+              غائب
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            النقاط
+          </label>
+
+          <div
+            class="normal-input"
+            id="modalAttPoints"
+            style="
+              display:flex;
+              align-items:center;
+              color:var(--gold2);
+            "
+          >
+            10 نقطة
+          </div>
+
+        </div>
+
+        <div class="field full">
+
+          <label>
+            ملاحظة
+          </label>
+
+          <textarea
+            id="modalAttNote"
+            style="min-height:75px;"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+      <div
+        class="plan-switch"
+        style="margin-top:13px;"
+      >
+
+        <button
+          type="button"
+          class="action-btn btn-add"
+          onclick="saveAttendanceRecord()"
+        >
+          💾 حفظ الحضور
+        </button>
+
+        <button
+          type="button"
+          class="action-btn btn-delete"
+          onclick="closeAttendanceModal()"
+        >
+          إلغاء
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TEST MODAL -->
+
+  <div
+    class="modal"
+    id="testModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h3 id="testModalTitle">
+          تسجيل اختبار
+        </h3>
+
+        <button
+          type="button"
+          class="close-btn"
+          onclick="closeTestModal()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div class="editor-grid">
+
+        <div class="field">
+
+          <label>
+            اسم الاختبار
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalTestName"
+            type="text"
+            placeholder="مثال: اختبار الجزء الأول"
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            العلامة
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalTestScore"
+            type="number"
+            min="0"
+            max="100"
+            step="1"
+            placeholder="0 - 100"
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            التاريخ
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalTestDate"
+            type="date"
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            التقدير والنقاط
+          </label>
+
+          <div
+            class="normal-input"
+            id="modalTestPreview"
+            style="
+              display:flex;
+              align-items:center;
+              color:var(--gold2);
+            "
+          >
+            اكتب العلامة
+          </div>
+
+        </div>
+
+        <div class="field full">
+
+          <label>
+            ملاحظة
+          </label>
+
+          <textarea
+            id="modalTestNote"
+            style="min-height:75px;"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+      <div
+        class="plan-switch"
+        style="margin-top:13px;"
+      >
+
+        <button
+          type="button"
+          class="action-btn btn-add"
+          onclick="saveTestRecord()"
+        >
+          💾 حفظ الاختبار
+        </button>
+
+        <button
+          type="button"
+          class="action-btn btn-delete"
+          onclick="closeTestModal()"
+        >
+          إلغاء
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- PLAN MODAL -->
+
+  <div
+    class="modal"
+    id="planModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h3 id="planModalTitle">
+          إضافة مهمة للخطة
+        </h3>
+
+        <button
+          type="button"
+          class="close-btn"
+          onclick="closePlanModal()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div class="editor-grid">
+
+        <div class="field">
+
+          <label>
+            تاريخ إنشاء الخطة
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalPlanCreatedDate"
+            type="date"
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            تاريخ التسميع القادم
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalPlanDate"
+            type="date"
+          />
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            المطلوب
+          </label>
+
+          <select
+            class="normal-select"
+            id="modalPlanType"
+          >
+
+            <option value="new">
+              حفظ جديد
+            </option>
+
+            <option value="review">
+              مراجعة
+            </option>
+
+            <option value="test">
+              اختبار
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="field">
+
+          <label>
+            وصف المطلوب
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalPlanTitle"
+            type="text"
+            placeholder="مثال: حفظ سورة الملك"
+          />
+
+        </div>
+
+        <div class="field full">
+
+          <label>
+            رقم الصفحات
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalPlanPages"
+            type="text"
+            inputmode="numeric"
+            placeholder="مثال: 15، 16، 17 أو 15-20"
+          />
+
+        </div>
+
+        <div class="field full">
+
+          <label>
+            ملاحظات
+          </label>
+
+          <textarea
+            id="modalPlanNotes"
+            style="min-height:75px;"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+      <div
+        class="plan-switch"
+        style="margin-top:13px;"
+      >
+
+        <button
+          type="button"
+          class="action-btn btn-add"
+          onclick="savePlanTask()"
+        >
+          💾 حفظ الخطة
+        </button>
+
+        <button
+          type="button"
+          class="action-btn btn-delete"
+          onclick="closePlanModal()"
+        >
+          إلغاء
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- WARNING MODAL -->
+
+  <div
+    class="modal"
+    id="warningModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <h3 id="warningModalTitle">
+          إضافة إنذار
+        </h3>
+
+        <button
+          type="button"
+          class="close-btn"
+          onclick="closeWarningModal()"
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div class="editor-grid">
+
+        <div class="field">
+
+          <label>
+            📅 تاريخ الإنذار
+          </label>
+
+          <input
+            class="normal-input"
+            id="modalWarningDate"
+            type="date"
+          />
+
+        </div>
+
+        <div class="field full">
+
+          <label>
+            ⚠️ سبب الإنذار
+          </label>
+
+          <textarea
+            id="modalWarningReason"
+            placeholder="اكتب سبب الإنذار بنفسك..."
+            style="min-height:110px;"
+          ></textarea>
+
+        </div>
+
+      </div>
+
+      <div
+        style="
+          margin-top:9px;
+          color:var(--muted2);
+          font-size:9px;
+          line-height:1.8;
+        "
+      >
+        سبب الإنذار لا يتم توليده تلقائيًا؛ المعلم هو من يكتبه.
+      </div>
+
+      <div
+        class="plan-switch"
+        style="margin-top:13px;"
+      >
+
+        <button
+          type="button"
+          class="action-btn btn-add"
+          onclick="saveWarningRecord()"
+        >
+          💾 حفظ الإنذار
+        </button>
+
+        <button
+          type="button"
+          class="action-btn btn-delete"
+          onclick="closeWarningModal()"
+        >
+          إلغاء
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
   <!-- TOAST -->
 
   <div id="toast"></div>
@@ -4551,10 +5368,13 @@
     const PHOTO_BUCKET =
       'student-photos';
 
-    /* التعديل: الرسوم الفصلية 25 د.أ */
+    /* الرسم الشهري المعتمد ثابت = 25 د.أ */
 
     const FIXED_QUARTERLY_FEE =
       25;
+
+    const FIXED_MONTHLY_FEE =
+      FIXED_QUARTERLY_FEE;
 
     const supabaseClient =
       window.supabase.createClient(
@@ -4616,6 +5436,16 @@
     let selectedPhotoFile = null;
 
     let editingPageRecordId = null;
+
+    let editingAttendanceId = null;
+
+    let editingTestId = null;
+
+    let editingPlanTaskId = null;
+
+    let editingWarningId = null;
+
+    let feeEditId = null;
 
     let currentPlanView = 'week';
 
@@ -5014,7 +5844,8 @@
     }
 
     /* ==================================================
-       QUARTERLY FEES
+       LEGACY FEE HELPERS
+       يحتفظ بها للتوافق مع البيانات القديمة
     ================================================== */
 
     function getQuarterKey(value){
@@ -5130,6 +5961,28 @@
 
       }
 
+      const monthValue =
+        firstValue(
+          item,
+          [
+            'month',
+            'monthKey'
+          ],
+          ''
+        );
+
+      if(
+        /^\d{4}-\d{2}$/.test(
+          String(monthValue || '')
+        )
+      ){
+
+        return String(
+          monthValue
+        );
+
+      }
+
       const quarterValue =
         firstValue(
           item,
@@ -5154,16 +6007,52 @@
 
       }
 
-      return getQuarterKey(
+      return getMonthKey(
         firstValue(
           item,
           [
-            'month',
             'date'
           ],
           ''
         )
       );
+
+    }
+
+    function getFeeLabel(
+      item
+    ){
+
+      const period =
+        getFeePeriodValue(
+          item
+        );
+
+      if(
+        /^\d{4}-\d{2}$/.test(
+          String(period || '')
+        )
+      ){
+
+        return formatMonthLabel(
+          period
+        );
+
+      }
+
+      if(
+        /^\d{4}-Q[1-4]$/i.test(
+          String(period || '')
+        )
+      ){
+
+        return getQuarterLabel(
+          period
+        );
+
+      }
+
+      return 'غير محدد';
 
     }
 
@@ -5217,6 +6106,12 @@
           'toast'
         );
 
+      if(!toast){
+
+        return;
+
+      }
+
       toast.textContent =
         message;
 
@@ -5257,6 +6152,12 @@
           '.brand-fallback'
         );
 
+      if(!logo){
+
+        return;
+
+      }
+
       logo.src =
         CENTER_LOGO_SRC;
 
@@ -5266,8 +6167,12 @@
           logo.style.display =
             'none';
 
-          fallback.style.display =
-            'block';
+          if(fallback){
+
+            fallback.style.display =
+              'block';
+
+          }
 
         };
 
@@ -5283,6 +6188,12 @@
         document.getElementById(
           'photoFile'
         );
+
+      if(!input){
+
+        return;
+
+      }
 
       input.addEventListener(
         'change',
@@ -5374,14 +6285,24 @@
           'studentLetter'
         );
 
+      if(!image){
+
+        return;
+
+      }
+
       image.src =
         String(url);
 
       image.style.display =
         'block';
 
-      letter.style.display =
-        'none';
+      if(letter){
+
+        letter.style.display =
+          'none';
+
+      }
 
       image.onerror =
         function(){
@@ -5389,8 +6310,12 @@
           image.style.display =
             'none';
 
-          letter.style.display =
-            'block';
+          if(letter){
+
+            letter.style.display =
+              'block';
+
+          }
 
         };
 
@@ -5640,6 +6565,16 @@
 
         setupPageModalInputs();
 
+        setupAttendanceModalInputs();
+
+        setupTestModalInputs();
+
+        setupPlanModalInputs();
+
+        setupWarningModalInputs();
+
+        setupFeeFormInputs();
+
         setupJoiningDateWatcher();
 
         document.getElementById(
@@ -5666,6 +6601,10 @@
       }
 
     }
+
+    /* ==================================================
+       NORMALIZE STRUCTURES
+    ================================================== */
 
     function normalizeDataStructures(){
 
@@ -5756,6 +6695,21 @@
 
       }
 
+      profileData.recitationPages =
+        arrayValue(
+          profileData.recitationPages
+        ).map(
+          item => ({
+
+            ...item,
+
+            id:
+              item.id ||
+              makeId()
+
+          })
+        );
+
       if(
         !Array.isArray(
           profileData.attendance
@@ -5767,6 +6721,68 @@
 
       }
 
+      profileData.attendance =
+        arrayValue(
+          profileData.attendance
+        )
+          .filter(
+            item =>
+              item &&
+              typeof item === 'object'
+          )
+          .map(
+            item => ({
+
+              ...item,
+
+              id:
+                item.id ||
+                makeId(),
+
+              day:
+                firstValue(
+                  item,
+                  [
+                    'day',
+                    'weekday'
+                  ],
+                  ''
+                ),
+
+              date:
+                firstValue(
+                  item,
+                  [
+                    'date',
+                    'dayDate'
+                  ],
+                  todayString()
+                ),
+
+              status:
+                firstValue(
+                  item,
+                  [
+                    'status',
+                    'attendance'
+                  ],
+                  'حاضر'
+                ),
+
+              note:
+                firstValue(
+                  item,
+                  [
+                    'note',
+                    'notes',
+                    'reason'
+                  ],
+                  ''
+                )
+
+            })
+          );
+
       if(
         !Array.isArray(
           profileData.tests
@@ -5777,6 +6793,71 @@
           [];
 
       }
+
+      profileData.tests =
+        arrayValue(
+          profileData.tests
+        )
+          .filter(
+            item =>
+              item &&
+              typeof item === 'object'
+          )
+          .map(
+            item => ({
+
+              ...item,
+
+              id:
+                item.id ||
+                makeId(),
+
+              name:
+                firstValue(
+                  item,
+                  [
+                    'name',
+                    'title',
+                    'test',
+                    'subject'
+                  ],
+                  ''
+                ),
+
+              score:
+                Number(
+                  firstValue(
+                    item,
+                    [
+                      'score',
+                      'mark',
+                      'grade'
+                    ],
+                    0
+                  )
+                ) || 0,
+
+              date:
+                firstValue(
+                  item,
+                  [
+                    'date'
+                  ],
+                  todayString()
+                ),
+
+              note:
+                firstValue(
+                  item,
+                  [
+                    'note',
+                    'notes'
+                  ],
+                  ''
+                )
+
+            })
+          );
 
       if(
         !Array.isArray(
@@ -5885,6 +6966,10 @@
 
               ...task,
 
+              id:
+                task.id ||
+                makeId(),
+
               createdDate:
                 firstValue(
                   task,
@@ -5906,6 +6991,57 @@
                   task,
                   ['date'],
                   todayString()
+                ),
+
+              type:
+                firstValue(
+                  task,
+                  ['type'],
+                  'new'
+                ),
+
+              title:
+                firstValue(
+                  task,
+                  [
+                    'title',
+                    'task',
+                    'content'
+                  ],
+                  ''
+                ),
+
+              requiredPages:
+                firstValue(
+                  task,
+                  [
+                    'requiredPages',
+                    'pages',
+                    'amount'
+                  ],
+                  ''
+                ),
+
+              requiredPageNumbers:
+                firstValue(
+                  task,
+                  [
+                    'requiredPageNumbers',
+                    'pageNumbers',
+                    'pagesNumbers',
+                    'required_pages_numbers'
+                  ],
+                  ''
+                ),
+
+              notes:
+                firstValue(
+                  task,
+                  [
+                    'notes',
+                    'note'
+                  ],
+                  ''
                 )
 
             })
@@ -5956,6 +7092,219 @@
 
       }
 
+      profileData.fees =
+        arrayValue(
+          profileData.fees
+        )
+          .filter(
+            fee =>
+              fee &&
+              typeof fee === 'object'
+          )
+          .map(
+            fee => {
+
+              const due =
+                Number(
+                  firstValue(
+                    fee,
+                    [
+                      'dueAmount',
+                      'amount',
+                      'value'
+                    ],
+                    FIXED_MONTHLY_FEE
+                  )
+                ) || FIXED_MONTHLY_FEE;
+
+              let paid = 0;
+
+              if(
+                fee.paidAmount !== undefined &&
+                fee.paidAmount !== null
+              ){
+
+                paid =
+                  Number(
+                    fee.paidAmount
+                  ) || 0;
+
+              }else if(
+                normalizeFeeStatus(
+                  fee.status
+                ) === 'مدفوع'
+              ){
+
+                paid =
+                  due;
+
+              }
+
+              paid =
+                Math.max(
+                  0,
+                  Math.min(
+                    due,
+                    paid
+                  )
+                );
+
+              const month =
+                /^\d{4}-\d{2}$/.test(
+                  String(
+                    fee.month || ''
+                  )
+                )
+                  ? String(fee.month)
+                  : (
+                      /^\d{4}-\d{2}$/.test(
+                        String(
+                          fee.monthKey || ''
+                        )
+                      )
+                        ? String(
+                            fee.monthKey
+                          )
+                        : getMonthKey(
+                            fee.date
+                          )
+                    );
+
+              return {
+
+                ...fee,
+
+                id:
+                  fee.id ||
+                  makeId(),
+
+                month,
+
+                dueAmount:
+                  FIXED_MONTHLY_FEE,
+
+                amount:
+                  FIXED_MONTHLY_FEE,
+
+                value:
+                  FIXED_MONTHLY_FEE,
+
+                paidAmount:
+                  paid,
+
+                remainingAmount:
+                  Math.max(
+                    0,
+                    FIXED_MONTHLY_FEE -
+                    paid
+                  ),
+
+                status:
+                  paid >= FIXED_MONTHLY_FEE
+                    ? 'مدفوع'
+                    : paid > 0
+                      ? 'قيد الانتظار'
+                      : 'متبقي'
+
+              };
+
+            }
+          );
+
+      if(
+        !Array.isArray(
+          profileData.warningRecords
+        )
+      ){
+
+        profileData.warningRecords =
+          [];
+
+      }
+
+      profileData.warningRecords =
+        arrayValue(
+          profileData.warningRecords
+        )
+          .filter(
+            item =>
+              item &&
+              typeof item === 'object'
+          )
+          .map(
+            item => ({
+
+              ...item,
+
+              id:
+                item.id ||
+                makeId(),
+
+              date:
+                getDateInputValue(
+                  firstValue(
+                    item,
+                    [
+                      'date',
+                      'warningDate'
+                    ],
+                    todayString()
+                  )
+                ) ||
+                todayString(),
+
+              reason:
+                firstValue(
+                  item,
+                  [
+                    'reason',
+                    'cause',
+                    'title'
+                  ],
+                  ''
+                ),
+
+              createdAt:
+                firstValue(
+                  item,
+                  [
+                    'createdAt',
+                    'created_at'
+                  ],
+                  new Date().toISOString()
+                )
+
+            })
+          )
+          .filter(
+            item =>
+              item.reason.trim()
+          );
+
+      if(
+        profileData.warningRecords.length
+      ){
+
+        profileData.warnings =
+          profileData.warningRecords.length;
+
+      }else{
+
+        profileData.warnings =
+          Number(
+            firstValue(
+              profileData,
+              [
+                'warnings',
+                'warningCount',
+                'warning_count'
+              ],
+              0
+            )
+          ) || 0;
+
+      }
+
       if(
         !Array.isArray(
           profileData.monthlyFollowups
@@ -5974,6 +7323,68 @@
     /* ==================================================
        IDENTITY
     ================================================== */
+
+    function normalizeSectionValue(
+      value
+    ){
+
+      const current =
+        normalizeText(
+          value
+        );
+
+      const aliases = {
+
+        'براعم':
+          'البراعم',
+
+        'البراعم':
+          'البراعم',
+
+        'فتيان':
+          'الفتيان',
+
+        'الفتيان':
+          'الفتيان',
+
+        'سواعد':
+          'السواعد',
+
+        'السواعد':
+          'السواعد',
+
+        'حفاظ':
+          'الحفاظ',
+
+        'الحفاظ':
+          'الحفاظ',
+
+        /* أسماء النظام القديم */
+        'الفرسان':
+          'السواعد',
+
+        'فرسان':
+          'السواعد',
+
+        'إجازة':
+          'الفتيان',
+
+        'اجازة':
+          'الفتيان',
+
+        'التجويد':
+          'البراعم',
+
+        'تجويد':
+          'البراعم'
+
+      };
+
+      return aliases[current] ||
+        valueOrEmpty(value) ||
+        'الحفاظ';
+
+    }
 
     function fillIdentity(){
 
@@ -6047,13 +7458,15 @@
           student.name
         );
 
+      const normalizedSection =
+        normalizeSectionValue(
+          student.section
+        );
+
       document.getElementById(
         'section'
       ).value =
-        valueOrEmpty(
-          student.section
-        ) ||
-        'الحفاظ';
+        normalizedSection;
 
       document.getElementById(
         'memorization'
@@ -6073,15 +7486,9 @@
       document.getElementById(
         'warnings'
       ).value =
-        firstValue(
-          profileData,
-          [
-            'warnings',
-            'warningCount',
-            'warning_count'
-          ],
-          0
-        );
+        Number(
+          profileData.warnings
+        ) || 0;
 
       document.getElementById(
         'guardianPhone'
@@ -6513,6 +7920,201 @@
 
     }
 
+    function getWarningRecords(
+      monthKey=null
+    ){
+
+      const records =
+        arrayValue(
+          profileData.warningRecords
+        );
+
+      if(!monthKey){
+
+        return records;
+
+      }
+
+      return records.filter(
+        item =>
+          isInMonth(
+            item.date,
+            monthKey
+          )
+      );
+
+    }
+
+    function getNextRecitationForMonth(
+      monthKey
+    ){
+
+      const tasks =
+        arrayValue(
+          profileData.planTasks
+        )
+          .filter(
+            task =>
+              isInMonth(
+                task.date,
+                monthKey
+              )
+          )
+          .sort(
+            (a,b) =>
+              String(
+                a.date || ''
+              ).localeCompare(
+                String(
+                  b.date || ''
+                )
+              )
+          );
+
+      if(!tasks.length){
+
+        return {
+          title:'',
+          amount:'',
+          type:''
+        };
+
+      }
+
+      const task =
+        tasks[0];
+
+      const type =
+        task.type === 'review'
+          ? 'مراجعة'
+          : task.type === 'test'
+            ? 'اختبار'
+            : 'حفظ جديد';
+
+      const title =
+        task.title ||
+        (
+          task.type === 'test'
+            ? 'اختبار'
+            : type
+        );
+
+      let amount = '';
+
+      if(
+        task.type === 'test'
+      ){
+
+        amount =
+          'اختبار مقرر';
+
+      }else{
+
+        const pages =
+          getPlanPageInputValue(
+            task
+          );
+
+        amount =
+          pages
+            ? `${pages} صفحات`
+            : '';
+
+      }
+
+      return {
+
+        title,
+
+        amount,
+
+        type
+
+      };
+
+    }
+
+    function renderWarningsForMonth(
+      monthKey
+    ){
+
+      const warnings =
+        getWarningRecords(
+          monthKey
+        )
+          .slice()
+          .sort(
+            (a,b) =>
+              String(
+                b.date || ''
+              ).localeCompare(
+                String(
+                  a.date || ''
+                )
+              )
+          );
+
+      if(!warnings.length){
+
+        return `
+          <div
+            class="empty"
+            style="
+              padding:12px;
+            "
+          >
+            لا توجد إنذارات لهذا الشهر.
+          </div>
+        `;
+
+      }
+
+      return warnings
+        .map(
+          warning => `
+
+            <div class="warning-month-item">
+
+              <div class="warning-month-main">
+
+                <strong>
+                  ⚠️ ${escapeHtml(
+                    warning.reason
+                  )}
+                </strong>
+
+                <span>
+                  📅 ${escapeHtml(
+                    warning.date ||
+                    'بدون تاريخ'
+                  )}
+                </span>
+
+              </div>
+
+              <button
+                type="button"
+                class="action-btn btn-delete"
+                style="
+                  min-height:30px;
+                  padding:6px 8px;
+                  font-size:8px;
+                "
+                onclick="deleteWarningRecord('${escapeJs(
+                  warning.id
+                )}')"
+              >
+                حذف
+              </button>
+
+            </div>
+
+          `
+        )
+        .join('');
+
+    }
+
     function renderMonthlyFollowups(){
 
       ensureMonthlyFollowupMonths();
@@ -6584,12 +8186,14 @@
                   monthKey
                 );
 
-              const monthlyEvaluation =
-                calculateEvaluation(
-                  'monthly',
-                  {
-                    monthKey
-                  }
+              const warningRecords =
+                getWarningRecords(
+                  monthKey
+                );
+
+              const nextRecitation =
+                getNextRecitationForMonth(
+                  monthKey
                 );
 
               const attendancePresent =
@@ -6666,10 +8270,8 @@
 
                     <div class="monthly-followup-percent">
 
-                      التقييم:
-                      ${formatPoints(
-                        monthlyEvaluation.finalPercentage
-                      )}%
+                      ⚠️ الإنذارات:
+                      ${warningRecords.length}
 
                     </div>
 
@@ -6833,9 +8435,11 @@
 
                         `
                         : `
+
                           <div class="empty">
                             لا توجد سجلات تسميع لهذا الشهر.
                           </div>
+
                         `
                     }
 
@@ -6941,9 +8545,11 @@
 
                         `
                         : `
+
                           <div class="empty">
-                            لا توجد اختبارات مسجلة لهذا الشهر.
+                            لا توجد اختبارات لهذا الشهر.
                           </div>
+
                         `
                     }
 
@@ -7069,10 +8675,26 @@
 
                         `
                         : `
+
                           <div class="empty">
                             لا توجد سجلات حضور أو غياب لهذا الشهر.
                           </div>
+
                         `
+                    }
+
+                  </div>
+
+                  <div class="monthly-followup-block">
+
+                    <div class="monthly-followup-block-title">
+                      ⚠️ الإنذارات
+                    </div>
+
+                    ${
+                      renderWarningsForMonth(
+                        monthKey
+                      )
                     }
 
                   </div>
@@ -7083,47 +8705,98 @@
                       🎯 التسميع القادم
                     </div>
 
-                    <div class="editor-grid">
+                    ${
+                      nextRecitation.title
+                        ? `
 
-                      <div class="field">
+                          <div
+                            style="
+                              display:grid;
+                              gap:6px;
+                            "
+                          >
 
-                        <label>
-                          المطلوب تسميعه
-                        </label>
+                            <div>
 
-                        <input
-                          class="normal-input"
-                          data-month-next-title
-                          type="text"
-                          value="${escapeHtml(
-                            followup.nextRecitationTitle ||
-                            followup.nextRecitation ||
-                            ''
-                          )}"
-                          placeholder="مثال: سورة الملك"
-                        />
+                              <small
+                                style="
+                                  color:var(--muted2);
+                                  font-size:8px;
+                                  display:block;
+                                  margin-bottom:3px;
+                                "
+                              >
+                                المطلوب تسميعه
+                              </small>
 
-                      </div>
+                              <strong
+                                style="
+                                  color:var(--gold2);
+                                  font-size:11px;
+                                "
+                              >
+                                ${escapeHtml(
+                                  nextRecitation.title
+                                )}
+                              </strong>
 
-                      <div class="field">
+                            </div>
 
-                        <label>
-                          مقدار التسميع
-                        </label>
+                            <div>
 
-                        <input
-                          class="normal-input"
-                          data-month-next-amount
-                          type="text"
-                          value="${escapeHtml(
-                            followup.nextRecitationAmount || ''
-                          )}"
-                          placeholder="مثال: 5 صفحات"
-                        />
+                              <small
+                                style="
+                                  color:var(--muted2);
+                                  font-size:8px;
+                                  display:block;
+                                  margin-bottom:3px;
+                                "
+                              >
+                                مقدار التسميع
+                              </small>
 
-                      </div>
+                              <strong
+                                style="
+                                  color:var(--gold2);
+                                  font-size:11px;
+                                "
+                              >
+                                ${escapeHtml(
+                                  nextRecitation.amount ||
+                                  'غير محدد'
+                                )}
+                              </strong>
 
-                    </div>
+                            </div>
+
+                            <div>
+
+                              <small
+                                style="
+                                  color:var(--muted2);
+                                  font-size:8px;
+                                "
+                              >
+                                نوع المهمة:
+                                ${escapeHtml(
+                                  nextRecitation.type ||
+                                  '—'
+                                )}
+                              </small>
+
+                            </div>
+
+                          </div>
+
+                        `
+                        : `
+
+                          <div class="empty">
+                            لا توجد مهمة تسميع قادمة لهذا الشهر.
+                          </div>
+
+                        `
+                    }
 
                   </div>
 
@@ -7135,22 +8808,29 @@
           )
           .join('');
 
-      container
-        .querySelectorAll(
-          'input'
-        )
-        .forEach(
-          input => {
+      profileData.monthlyFollowups =
+        profileData.monthlyFollowups.map(
+          item => {
 
-            input.addEventListener(
-              'input',
-              syncMonthlyFollowups
-            );
+            const derived =
+              getNextRecitationForMonth(
+                item.monthKey
+              );
 
-            input.addEventListener(
-              'change',
-              syncMonthlyFollowups
-            );
+            return {
+
+              ...item,
+
+              nextRecitationTitle:
+                derived.title || '',
+
+              nextRecitation:
+                derived.title || '',
+
+              nextRecitationAmount:
+                derived.amount || ''
+
+            };
 
           }
         );
@@ -7159,85 +8839,34 @@
 
     function syncMonthlyFollowups(){
 
-      const cards =
-        document.querySelectorAll(
-          '#monthlyFollowupEditor .monthly-followup-card'
-        );
+      ensureMonthlyFollowupMonths();
 
-      const existing =
-        arrayValue(
-          profileData.monthlyFollowups
-        );
+      profileData.monthlyFollowups =
+        profileData.monthlyFollowups.map(
+          item => {
 
-      cards.forEach(
-        card => {
+            const derived =
+              getNextRecitationForMonth(
+                item.monthKey
+              );
 
-          const monthKey =
-            card.dataset.monthKey;
+            return {
 
-          if(!monthKey){
-
-            return;
-
-          }
-
-          let item =
-            existing.find(
-              entry =>
-                String(
-                  entry.monthKey
-                ) ===
-                String(
-                  monthKey
-                )
-            );
-
-          if(!item){
-
-            item = {
-
-              id:
-                makeId(),
-
-              monthKey,
-
-              nextRecitation:
-                '',
+              ...item,
 
               nextRecitationTitle:
-                '',
+                derived.title || '',
+
+              nextRecitation:
+                derived.title || '',
 
               nextRecitationAmount:
-                ''
+                derived.amount || ''
 
             };
 
-            existing.push(
-              item
-            );
-
           }
-
-          item.nextRecitationTitle =
-            card.querySelector(
-              '[data-month-next-title]'
-            )?.value.trim() ||
-            '';
-
-          item.nextRecitation =
-            item.nextRecitationTitle;
-
-          item.nextRecitationAmount =
-            card.querySelector(
-              '[data-month-next-amount]'
-            )?.value.trim() ||
-            '';
-
-        }
-      );
-
-      profileData.monthlyFollowups =
-        existing;
+        );
 
     }
 
@@ -7318,13 +8947,18 @@
                   'active'
                 );
 
-                document
-                  .getElementById(
+                const panel =
+                  document.getElementById(
                     `panel-${name}`
-                  )
-                  .classList.add(
+                  );
+
+                if(panel){
+
+                  panel.classList.add(
                     'active'
                   );
+
+                }
 
               }
             );
@@ -7380,13 +9014,18 @@
                   'active'
                 );
 
-                document
-                  .getElementById(
+                const target =
+                  document.getElementById(
                     `view-${view}`
-                  )
-                  .classList.add(
+                  );
+
+                if(target){
+
+                  target.classList.add(
                     'active'
                   );
+
+                }
 
               }
             );
@@ -7559,13 +9198,6 @@
 
       }
 
-      /* التعديل:
-         98–100 ممتاز
-         96–97 جيد جدًا
-         93–95 مقبول
-         أقل من 93 مراجعة
-      */
-
       if(value >= 98){
 
         return {
@@ -7685,6 +9317,27 @@
       const latest =
         records[0];
 
+      const hasNew =
+        records.some(
+          item =>
+            item.type === 'new'
+        );
+
+      const hasReview =
+        records.some(
+          item =>
+            item.type === 'review'
+        );
+
+      if(
+        hasNew &&
+        hasReview
+      ){
+
+        return 'both';
+
+      }
+
       return latest.type === 'review'
         ? 'review'
         : 'new';
@@ -7701,6 +9354,12 @@
         document.getElementById(
           'juzGrid'
         );
+
+      if(!container){
+
+        return;
+
+      }
 
       container.innerHTML =
         JUZ_RANGES
@@ -7987,6 +9646,12 @@
             document.getElementById(
               id
             );
+
+          if(!input){
+
+            return;
+
+          }
 
           input.addEventListener(
             'input',
@@ -8582,6 +10247,12 @@
         document.getElementById(
           'recitationTableBody'
         );
+
+      if(!body){
+
+        return;
+
+      }
 
       const records =
         getPageRecords()
@@ -9223,6 +10894,12 @@
           'planEditor'
         );
 
+      if(!container){
+
+        return;
+
+      }
+
       const tasks =
         getPlanTasksForView();
 
@@ -9265,7 +10942,8 @@
                   task
                 );
 
-              let resultText = 'قادم';
+              let resultText =
+                'قادم';
 
               if(
                 completion.status !==
@@ -9290,288 +10968,109 @@
 
               }
 
+              const typeText =
+                task.type === 'review'
+                  ? 'مراجعة'
+                  : task.type === 'test'
+                    ? 'اختبار'
+                    : 'حفظ جديد';
+
+              const title =
+                task.title ||
+                (
+                  task.type === 'test'
+                    ? 'اختبار'
+                    : 'مهمة تسميع'
+                );
+
               return `
 
-                <div
-                  class="editor-row"
-                  data-plan-id="${escapeHtml(
-                    task.id
-                  )}"
-                >
+                <div class="compact-record">
 
-                  <div class="editor-grid">
+                  <div class="compact-record-top">
 
-                    <div class="field">
+                    <div class="compact-record-main">
 
-                      <label>
-                        تاريخ اليوم
-                      </label>
+                      <strong>
+                        ${escapeHtml(
+                          title
+                        )}
+                      </strong>
 
-                      <input
-                        class="normal-input"
-                        data-plan-created-date
-                        type="date"
-                        value="${escapeHtml(
-                          getDateInputValue(
-                            task.createdDate ||
-                            todayString()
-                          )
-                        )}"
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        تاريخ التسميع القادم
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        data-plan-date
-                        type="date"
-                        value="${escapeHtml(
+                      <span>
+                        📅 ${escapeHtml(
                           getDateInputValue(
                             task.date
-                          )
-                        )}"
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        المطلوب
-                      </label>
-
-                      <select
-                        class="normal-select"
-                        data-plan-type
-                      >
-
-                        <option
-                          value="new"
-                          ${
-                            task.type === 'new'
-                              ? 'selected'
-                              : ''
-                          }
-                        >
-                          حفظ جديد
-                        </option>
-
-                        <option
-                          value="review"
-                          ${
-                            task.type === 'review'
-                              ? 'selected'
-                              : ''
-                          }
-                        >
-                          مراجعة
-                        </option>
-
-                        <option
-                          value="test"
-                          ${
-                            task.type === 'test'
-                              ? 'selected'
-                              : ''
-                          }
-                        >
-                          اختبار
-                        </option>
-
-                      </select>
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        وصف المطلوب
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        data-plan-title
-                        value="${escapeHtml(
-                          task.title || ''
-                        )}"
-                        placeholder="${
-                          task.type === 'test'
-                            ? 'مثال: اختبار الجزء الأول'
-                            : 'مثال: حفظ سورة الملك'
-                        }"
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
+                          ) || 'بدون تاريخ'
+                        )}
+                        •
+                        ${escapeHtml(
+                          typeText
+                        )}
+                        •
                         ${
                           task.type === 'test'
-                            ? 'الحالة'
-                            : 'رقم الصفحات'
+                            ? escapeHtml(
+                                resultText
+                              )
+                            : escapeHtml(
+                                resultText
+                              )
                         }
-                      </label>
+                      </span>
 
                       ${
-                        task.type === 'test'
+                        task.type !== 'test'
                           ? `
-                            <div
-                              style="
-                                height:39px;
-                                display:flex;
-                                align-items:center;
-                              "
-                            >
-                              <span
-                                class="plan-status ${
-                                  completion.status ===
-                                  'done'
-                                    ? 'done'
-                                    : 'pending'
-                                }"
-                              >
-                                ${resultText}
-                              </span>
-                            </div>
-                          `
-                          : `
-                            <input
-                              class="normal-input"
-                              data-plan-pages
-                              type="text"
-                              inputmode="numeric"
-                              value="${escapeHtml(
+                            <span>
+                              📖 الصفحات:
+                              ${escapeHtml(
                                 getPlanPageInputValue(
                                   task
-                                )
-                              )}"
-                              placeholder="مثال: 15، 16، 17 أو 15-20"
-                            />
+                                ) || 'غير محددة'
+                              )}
+                            </span>
                           `
+                          : ''
                       }
+
+                    </div>
+
+                    <div class="compact-record-side">
+
+                      <span class="record-badge">
+                        ${
+                          completion.status === 'done'
+                            ? '✅ منجز'
+                            : completion.status === 'partial'
+                              ? '🟡 جزئي'
+                              : completion.status === 'upcoming'
+                                ? '⏳ قادم'
+                                : '⚠️ غير منجز'
+                        }
+                      </span>
 
                     </div>
 
                   </div>
 
-                  <div
-                    class="editor-grid"
-                    style="margin-top:8px;"
-                  >
+                  <div class="compact-actions">
 
-                    <div class="field">
-
-                      <label>
-                        ملاحظات
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        data-plan-notes
-                        value="${escapeHtml(
-                          task.notes || ''
-                        )}"
-                        placeholder="ملاحظات المعلم"
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        نتيجة الخطة
-                      </label>
-
-                      <div
-                        style="
-                          height:39px;
-                          display:flex;
-                          align-items:center;
-                          gap:6px;
-                          flex-wrap:wrap;
-                        "
-                      >
-
-                        <span
-                          class="plan-status ${
-                            completion.status ===
-                              'done'
-                              ? 'done'
-                              : completion.status ===
-                                  'partial'
-                                ? 'partial'
-                                : completion.status ===
-                                    'upcoming'
-                                  ? 'pending'
-                                  : 'pending'
-                          }"
-                        >
-
-                          ${
-                            completion.status ===
-                              'upcoming'
-                              ? 'قادم'
-                              : resultText
-                          }
-
-                        </span>
-
-                        ${
-                          completion.maxPoints > 0
-                            ? `
-                              <span
-                                style="
-                                  color:var(--gold2);
-                                  font-size:9px;
-                                "
-                              >
-
-                                ${formatPoints(
-                                  completion.points
-                                )}
-
-                                /
-
-                                ${formatPoints(
-                                  completion.maxPoints
-                                )}
-
-                                نقطة خطة
-
-                              </span>
-                            `
-                            : ''
-                        }
-
-                      </div>
-
-                    </div>
-
-                    <div
-                      class="field"
-                      style="display:flex;align-items:end;"
+                    <button
+                      type="button"
+                      class="action-btn btn-add"
+                      onclick="openPlanModal('${escapeJs(task.id)}')"
                     >
+                      عرض التفاصيل
+                    </button>
 
-                      <button
-                        type="button"
-                        class="action-btn btn-delete"
-                        onclick="
-                          removePlanTask(
-                            '${escapeJs(task.id)}'
-                          )
-                        "
-                      >
-                        حذف المهمة
-                      </button>
-
-                    </div>
+                    <button
+                      type="button"
+                      class="action-btn btn-delete"
+                      onclick="removePlanTask('${escapeJs(task.id)}')"
+                    >
+                      حذف
+                    </button>
 
                   </div>
 
@@ -9583,44 +11082,6 @@
           )
           .join('');
 
-      container
-        .querySelectorAll(
-          'input,select'
-        )
-        .forEach(
-          input => {
-
-            input.addEventListener(
-              'input',
-              () => {
-
-                syncPlanEditorToState();
-
-                renderPlanSummary(
-                  getPlanTasksForView()
-                );
-
-                renderScores();
-
-              }
-            );
-
-            input.addEventListener(
-              'change',
-              () => {
-
-                syncPlanEditorToState();
-
-                renderPlan();
-
-                renderScores();
-
-              }
-            );
-
-          }
-        );
-
     }
 
     function renderPlanSummary(
@@ -9631,6 +11092,12 @@
         document.getElementById(
           'planSummary'
         );
+
+      if(!summary){
+
+        return;
+
+      }
 
       const dueTasks =
         tasks.filter(
@@ -9727,137 +11194,252 @@
 
     function syncPlanEditorToState(){
 
-      const rows =
-        document.querySelectorAll(
-          '#planEditor .editor-row'
+      /* لم تعد المدخلات تظهر في الصفحة.
+         التعديل والحفظ يتمان من خلال المودال. */
+
+      return;
+
+    }
+
+    function openPlanModal(
+      taskId=null
+    ){
+
+      editingPlanTaskId =
+        taskId;
+
+      const task =
+        taskId
+          ? profileData.planTasks
+              .find(
+                item =>
+                  String(item.id) ===
+                  String(taskId)
+              )
+          : null;
+
+      document.getElementById(
+        'planModalTitle'
+      ).textContent =
+        task
+          ? 'تعديل مهمة الخطة'
+          : 'إضافة مهمة للخطة';
+
+      document.getElementById(
+        'modalPlanCreatedDate'
+      ).value =
+        getDateInputValue(
+          task?.createdDate ||
+          todayString()
         );
 
-      if(!rows.length){
+      document.getElementById(
+        'modalPlanDate'
+      ).value =
+        getDateInputValue(
+          task?.date ||
+          todayString()
+        );
+
+      document.getElementById(
+        'modalPlanType'
+      ).value =
+        task?.type ||
+        'new';
+
+      document.getElementById(
+        'modalPlanTitle'
+      ).value =
+        task?.title ||
+        '';
+
+      document.getElementById(
+        'modalPlanPages'
+      ).value =
+        getPlanPageInputValue(
+          task
+        );
+
+      document.getElementById(
+        'modalPlanNotes'
+      ).value =
+        task?.notes ||
+        '';
+
+      document.getElementById(
+        'planModal'
+      ).classList.add(
+        'show'
+      );
+
+    }
+
+    function closePlanModal(){
+
+      document.getElementById(
+        'planModal'
+      ).classList.remove(
+        'show'
+      );
+
+      editingPlanTaskId =
+        null;
+
+    }
+
+    function savePlanTask(){
+
+      const createdDate =
+        document.getElementById(
+          'modalPlanCreatedDate'
+        ).value;
+
+      const date =
+        document.getElementById(
+          'modalPlanDate'
+        ).value;
+
+      const type =
+        document.getElementById(
+          'modalPlanType'
+        ).value;
+
+      const title =
+        document.getElementById(
+          'modalPlanTitle'
+        ).value.trim();
+
+      const pages =
+        document.getElementById(
+          'modalPlanPages'
+        ).value.trim();
+
+      const notes =
+        document.getElementById(
+          'modalPlanNotes'
+        ).value.trim();
+
+      if(!createdDate){
+
+        showToast(
+          'اختر تاريخ إنشاء الخطة.',
+          true
+        );
 
         return;
 
       }
 
-      const allTasks =
-        arrayValue(
-          profileData.planTasks
+      if(!date){
+
+        showToast(
+          'اختر تاريخ التسميع القادم.',
+          true
         );
 
-      rows.forEach(
-        row => {
+        return;
 
-          const id =
-            row.dataset.planId;
+      }
 
-          const index =
-            allTasks.findIndex(
-              item =>
-                String(item.id) ===
-                String(id)
-            );
+      if(
+        type !== 'test' &&
+        pages
+      ){
 
-          if(index === -1){
+        const parsed =
+          parsePlanPageNumbers(
+            pages
+          );
 
-            return;
+        if(
+          !parsed.length
+        ){
 
-          }
+          showToast(
+            'أدخل أرقام صفحات صحيحة من 1 إلى 604.',
+            true
+          );
 
-          const task =
-            allTasks[index];
-
-          task.createdDate =
-            row.querySelector(
-              '[data-plan-created-date]'
-            )?.value ||
-            task.createdDate ||
-            todayString();
-
-          task.date =
-            row.querySelector(
-              '[data-plan-date]'
-            )?.value ||
-            task.date;
-
-          task.type =
-            row.querySelector(
-              '[data-plan-type]'
-            )?.value ||
-            task.type;
-
-          task.title =
-            row.querySelector(
-              '[data-plan-title]'
-            )?.value ||
-            '';
-
-          const pagesInput =
-            row.querySelector(
-              '[data-plan-pages]'
-            );
-
-          if(pagesInput){
-
-            task.requiredPageNumbers =
-              pagesInput.value.trim();
-
-            task.requiredPages =
-              task.requiredPageNumbers;
-
-          }
-
-          task.notes =
-            row.querySelector(
-              '[data-plan-notes]'
-            )?.value ||
-            '';
+          return;
 
         }
-      );
 
-      profileData.planTasks =
-        allTasks;
+      }
+
+      const task = {
+
+        id:
+          editingPlanTaskId ||
+          makeId(),
+
+        createdDate,
+
+        date,
+
+        type,
+
+        title,
+
+        requiredPages:
+          pages,
+
+        requiredPageNumbers:
+          pages,
+
+        notes
+
+      };
+
+      if(
+        editingPlanTaskId
+      ){
+
+        const index =
+          profileData.planTasks
+            .findIndex(
+              item =>
+                String(item.id) ===
+                String(editingPlanTaskId)
+            );
+
+        if(index !== -1){
+
+          profileData.planTasks[index] =
+            {
+
+              ...profileData.planTasks[index],
+
+              ...task
+
+            };
+
+        }
+
+      }else{
+
+        profileData.planTasks.push(
+          task
+        );
+
+      }
+
+      closePlanModal();
+
+      renderPlan();
+
+      renderMonthlyFollowups();
+
+      renderScores();
+
+      showToast(
+        'تم حفظ الخطة. ستظهر الآن في التسميع القادم للمتابعة العامة.'
+      );
 
     }
 
     function addPlanTask(){
 
-      syncPlanEditorToState();
-
-      profileData.planTasks.push({
-
-        id:
-          makeId(),
-
-        createdDate:
-          todayString(),
-
-        date:
-          todayString(),
-
-        type:
-          'new',
-
-        title:
-          '',
-
-        requiredPages:
-          '',
-
-        requiredPageNumbers:
-          '',
-
-        notes:
-          ''
-
-      });
-
-      renderPlan();
-
-      renderScores();
-
-      showToast(
-        'تمت إضافة مهمة جديدة للخطة.'
-      );
+      openPlanModal();
 
     }
 
@@ -9865,26 +11447,101 @@
       id
     ){
 
-      syncPlanEditorToState();
-
-      profileData.planTasks =
-        profileData
-          .planTasks
-          .filter(
+      const taskIndex =
+        profileData.planTasks
+          .findIndex(
             task =>
-              String(task.id) !==
+              String(task.id) ===
               String(id)
           );
 
+      if(taskIndex === -1){
+
+        return;
+
+      }
+
+      const confirmed =
+        window.confirm(
+          'هل تريد حذف مهمة الخطة؟'
+        );
+
+      if(!confirmed){
+
+        return;
+
+      }
+
+      profileData.planTasks.splice(
+        taskIndex,
+        1
+      );
+
       renderPlan();
 
+      renderMonthlyFollowups();
+
       renderScores();
+
+      showToast(
+        'تم حذف مهمة الخطة من السجل الحالي.'
+      );
 
     }
 
     /* ==================================================
        ATTENDANCE
     ================================================== */
+
+    function setupAttendanceModalInputs(){
+
+      const status =
+        document.getElementById(
+          'modalAttStatus'
+        );
+
+      if(status){
+
+        status.addEventListener(
+          'input',
+          updateAttendancePreview
+        );
+
+        status.addEventListener(
+          'change',
+          updateAttendancePreview
+        );
+
+      }
+
+    }
+
+    function updateAttendancePreview(){
+
+      const status =
+        document.getElementById(
+          'modalAttStatus'
+        )?.value ||
+        '';
+
+      const points =
+        getAttendancePoints(
+          status
+        );
+
+      const preview =
+        document.getElementById(
+          'modalAttPoints'
+        );
+
+      if(preview){
+
+        preview.textContent =
+          `${points} نقطة`;
+
+      }
+
+    }
 
     function renderAttendance(){
 
@@ -9893,10 +11550,41 @@
           'attendanceEditor'
         );
 
+      if(!container){
+
+        return;
+
+      }
+
       const items =
         arrayValue(
           profileData.attendance
-        );
+        )
+          .slice()
+          .sort(
+            (a,b) =>
+              new Date(
+                firstValue(
+                  b,
+                  [
+                    'date',
+                    'dayDate'
+                  ],
+                  ''
+                ) || 0
+              ).getTime()
+              -
+              new Date(
+                firstValue(
+                  a,
+                  [
+                    'date',
+                    'dayDate'
+                  ],
+                  ''
+                ) || 0
+              ).getTime()
+          );
 
       if(!items.length){
 
@@ -9914,201 +11602,112 @@
       container.innerHTML =
         items
           .map(
-            (item,index) => {
+            item => {
+
+              const status =
+                firstValue(
+                  item,
+                  [
+                    'status',
+                    'attendance'
+                  ],
+                  ''
+                );
+
+              const day =
+                firstValue(
+                  item,
+                  [
+                    'day',
+                    'weekday'
+                  ],
+                  ''
+                );
+
+              const date =
+                firstValue(
+                  item,
+                  [
+                    'date',
+                    'dayDate'
+                  ],
+                  ''
+                );
+
+              const note =
+                firstValue(
+                  item,
+                  [
+                    'note',
+                    'notes',
+                    'reason'
+                  ],
+                  ''
+                );
 
               return `
 
-                <div
-                  class="editor-row"
-                  data-att-index="${index}"
-                >
+                <div class="compact-record">
 
-                  <div class="editor-grid">
+                  <div class="compact-record-top">
 
-                    <div class="field">
+                    <div class="compact-record-main">
 
-                      <label>
-                        اليوم
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        data-att-day
-                        value="${escapeHtml(
-                          firstValue(
-                            item,
-                            ['day','weekday'],
-                            ''
-                          )
-                        )}"
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        التاريخ
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        data-att-date
-                        type="date"
-                        value="${escapeHtml(
-                          getDateInputValue(
-                            firstValue(
-                              item,
-                              ['date','dayDate'],
-                              ''
-                            )
-                          )
-                        )}"
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        الحالة
-                      </label>
-
-                      <select
-                        class="normal-select"
-                        data-att-status
-                      >
-
-                        <option
-                          value="حاضر"
-                          ${
-                            firstValue(
-                              item,
-                              [
-                                'status',
-                                'attendance'
-                              ],
-                              ''
-                            ) === 'حاضر'
-                              ? 'selected'
-                              : ''
-                          }
-                        >
-                          حاضر
-                        </option>
-
-                        <option
-                          value="متأخر"
-                          ${
-                            firstValue(
-                              item,
-                              [
-                                'status',
-                                'attendance'
-                              ],
-                              ''
-                            ) === 'متأخر'
-                              ? 'selected'
-                              : ''
-                          }
-                        >
-                          متأخر
-                        </option>
-
-                        <option
-                          value="غائب"
-                          ${
-                            firstValue(
-                              item,
-                              [
-                                'status',
-                                'attendance'
-                              ],
-                              ''
-                            ) === 'غائب'
-                              ? 'selected'
-                              : ''
-                          }
-                        >
-                          غائب
-                        </option>
-
-                      </select>
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        النقاط
-                      </label>
-
-                      <div
-                        style="
-                          height:39px;
-                          display:flex;
-                          align-items:center;
-                          color:var(--gold2);
-                          font-size:11px;
-                        "
-                      >
-
-                        ${getAttendancePoints(
-                          firstValue(
-                            item,
-                            [
-                              'status',
-                              'attendance'
-                            ],
-                            ''
-                          )
+                      <strong>
+                        ${escapeHtml(
+                          day || 'حضور مسجل'
                         )}
+                      </strong>
 
-                        نقطة
+                      <span>
+                        📅 ${escapeHtml(
+                          date || 'بدون تاريخ'
+                        )}
+                        ${
+                          note
+                            ? ` • ${escapeHtml(note)}`
+                            : ''
+                        }
+                      </span>
 
-                      </div>
+                    </div>
+
+                    <div class="compact-record-side">
+
+                      <span class="record-badge">
+                        ${escapeHtml(
+                          status
+                        )}
+                      </span>
+
+                      <span class="record-badge">
+                        ${getAttendancePoints(
+                          status
+                        )} نقطة
+                      </span>
 
                     </div>
 
                   </div>
 
-                  <div
-                    class="field"
-                    style="margin-top:8px;"
-                  >
+                  <div class="compact-actions">
 
-                    <label>
-                      ملاحظة
-                    </label>
-
-                    <input
-                      class="normal-input"
-                      data-att-note
-                      value="${escapeHtml(
-                        firstValue(
-                          item,
-                          [
-                            'note',
-                            'notes',
-                            'reason'
-                          ],
-                          ''
-                        )
-                      )}"
-                    />
-
-                  </div>
-
-                  <div
-                    style="
-                      margin-top:8px;
-                    "
-                  >
+                    <button
+                      type="button"
+                      class="action-btn btn-add"
+                      onclick="openAttendanceModal('${escapeJs(
+                        item.id
+                      )}')"
+                    >
+                      عرض التفاصيل
+                    </button>
 
                     <button
                       type="button"
                       class="action-btn btn-delete"
-                      onclick="removeAttendance(${index})"
+                      onclick="removeAttendanceById('${escapeJs(
+                        item.id
+                      )}')"
                     >
                       حذف
                     </button>
@@ -10123,115 +11722,248 @@
           )
           .join('');
 
-      container
-        .querySelectorAll(
-          'input,select'
-        )
-        .forEach(
-          element => {
+    }
 
-            element.addEventListener(
-              'input',
-              () => {
+    function openAttendanceModal(
+      id=null
+    ){
 
-                syncAttendance();
+      editingAttendanceId =
+        id;
 
-                renderScores();
+      const item =
+        id
+          ? profileData.attendance
+              .find(
+                record =>
+                  String(record.id) ===
+                  String(id)
+              )
+          : null;
 
-                renderMonthlyFollowups();
+      document.getElementById(
+        'attendanceModalTitle'
+      ).textContent =
+        item
+          ? 'تعديل سجل الحضور'
+          : 'تسجيل حضور';
 
-              }
-            );
+      document.getElementById(
+        'modalAttDay'
+      ).value =
+        item
+          ? firstValue(
+              item,
+              [
+                'day',
+                'weekday'
+              ],
+              ''
+            )
+          : '';
 
-            element.addEventListener(
-              'change',
-              () => {
-
-                syncAttendance();
-
-                renderAttendance();
-
-                renderScores();
-
-                renderMonthlyFollowups();
-
-              }
-            );
-
-          }
+      document.getElementById(
+        'modalAttDate'
+      ).value =
+        getDateInputValue(
+          item
+            ? firstValue(
+                item,
+                [
+                  'date',
+                  'dayDate'
+                ],
+                todayString()
+              )
+            : todayString()
         );
+
+      document.getElementById(
+        'modalAttStatus'
+      ).value =
+        item
+          ? firstValue(
+              item,
+              [
+                'status',
+                'attendance'
+              ],
+              'حاضر'
+            )
+          : 'حاضر';
+
+      document.getElementById(
+        'modalAttNote'
+      ).value =
+        item
+          ? firstValue(
+              item,
+              [
+                'note',
+                'notes',
+                'reason'
+              ],
+              ''
+            )
+          : '';
+
+      updateAttendancePreview();
+
+      document.getElementById(
+        'attendanceModal'
+      ).classList.add(
+        'show'
+      );
 
     }
 
-    function syncAttendance(){
+    function closeAttendanceModal(){
 
-      const rows =
-        document.querySelectorAll(
-          '#attendanceEditor .editor-row'
-        );
+      document.getElementById(
+        'attendanceModal'
+      ).classList.remove(
+        'show'
+      );
 
-      profileData.attendance =
-        Array.from(rows)
-          .map(
-            row => {
-
-              return {
-
-                day:
-                  row.querySelector(
-                    '[data-att-day]'
-                  )?.value ||
-                  '',
-
-                date:
-                  row.querySelector(
-                    '[data-att-date]'
-                  )?.value ||
-                  '',
-
-                status:
-                  row.querySelector(
-                    '[data-att-status]'
-                  )?.value ||
-                  '',
-
-                note:
-                  row.querySelector(
-                    '[data-att-note]'
-                  )?.value ||
-                  ''
-
-              };
-
-            }
-          );
+      editingAttendanceId =
+        null;
 
     }
 
-    function addAttendance(){
+    function saveAttendanceRecord(){
 
-      syncAttendance();
+      const day =
+        document.getElementById(
+          'modalAttDay'
+        ).value.trim();
 
-      profileData.attendance
-        .push({
+      const date =
+        document.getElementById(
+          'modalAttDate'
+        ).value;
 
-          day:'',
+      const status =
+        document.getElementById(
+          'modalAttStatus'
+        ).value;
 
-          date:
-            todayString(),
+      const note =
+        document.getElementById(
+          'modalAttNote'
+        ).value.trim();
 
-          status:
-            'حاضر',
+      if(!date){
 
-          note:''
+        showToast(
+          'اختر تاريخ الحضور.',
+          true
+        );
 
-        });
+        return;
+
+      }
+
+      const record = {
+
+        id:
+          editingAttendanceId ||
+          makeId(),
+
+        day,
+
+        date,
+
+        status,
+
+        note
+
+      };
+
+      if(
+        editingAttendanceId
+      ){
+
+        const index =
+          profileData.attendance
+            .findIndex(
+              item =>
+                String(item.id) ===
+                String(editingAttendanceId)
+            );
+
+        if(index !== -1){
+
+          profileData.attendance[index] =
+            {
+
+              ...profileData.attendance[index],
+
+              ...record
+
+            };
+
+        }
+
+      }else{
+
+        profileData.attendance.push(
+          record
+        );
+
+      }
+
+      closeAttendanceModal();
 
       renderAttendance();
 
       renderScores();
 
       renderMonthlyFollowups();
+
+      showToast(
+        'تم حفظ سجل الحضور.'
+      );
+
+    }
+
+    function addAttendance(){
+
+      openAttendanceModal();
+
+    }
+
+    function removeAttendanceById(
+      id
+    ){
+
+      const confirmed =
+        window.confirm(
+          'هل تريد حذف سجل الحضور هذا؟'
+        );
+
+      if(!confirmed){
+
+        return;
+
+      }
+
+      profileData.attendance =
+        profileData.attendance
+          .filter(
+            item =>
+              String(item.id) !==
+              String(id)
+          );
+
+      renderAttendance();
+
+      renderScores();
+
+      renderMonthlyFollowups();
+
+      showToast(
+        'تم حذف سجل الحضور.'
+      );
 
     }
 
@@ -10239,25 +11971,93 @@
       index
     ){
 
-      syncAttendance();
-
-      profileData.attendance
-        .splice(
-          index,
-          1
+      const items =
+        arrayValue(
+          profileData.attendance
         );
 
-      renderAttendance();
+      const target =
+        items[index];
 
-      renderScores();
+      if(target){
 
-      renderMonthlyFollowups();
+        removeAttendanceById(
+          target.id
+        );
+
+      }
 
     }
 
     /* ==================================================
        TESTS
     ================================================== */
+
+    function setupTestModalInputs(){
+
+      const score =
+        document.getElementById(
+          'modalTestScore'
+        );
+
+      if(score){
+
+        score.addEventListener(
+          'input',
+          updateTestModalPreview
+        );
+
+        score.addEventListener(
+          'change',
+          updateTestModalPreview
+        );
+
+      }
+
+    }
+
+    function updateTestModalPreview(){
+
+      const score =
+        Number(
+          document.getElementById(
+            'modalTestScore'
+          )?.value
+        );
+
+      const preview =
+        document.getElementById(
+          'modalTestPreview'
+        );
+
+      if(!preview){
+
+        return;
+
+      }
+
+      if(
+        !Number.isFinite(score)
+      ){
+
+        preview.textContent =
+          'اكتب العلامة';
+
+        return;
+
+      }
+
+      const evaluation =
+        getTestEvaluation(
+          score
+        );
+
+      preview.textContent =
+        evaluation.grade
+          ? `${evaluation.grade} — ${evaluation.points} نقطة`
+          : 'اكتب العلامة';
+
+    }
 
     function renderTests(){
 
@@ -10266,10 +12066,27 @@
           'testsEditor'
         );
 
+      if(!container){
+
+        return;
+
+      }
+
       const items =
         arrayValue(
           profileData.tests
-        );
+        )
+          .slice()
+          .sort(
+            (a,b) =>
+              new Date(
+                b.date || 0
+              ).getTime()
+              -
+              new Date(
+                a.date || 0
+              ).getTime()
+          );
 
       if(!items.length){
 
@@ -10287,7 +12104,7 @@
       container.innerHTML =
         items
           .map(
-            (item,index) => {
+            item => {
 
               const evaluation =
                 getTestEvaluation(
@@ -10296,115 +12113,75 @@
 
               return `
 
-                <div
-                  class="editor-row"
-                  data-test-index="${index}"
-                >
+                <div class="compact-record">
 
-                  <div class="editor-grid">
+                  <div class="compact-record-top">
 
-                    <div class="field">
+                    <div class="compact-record-main">
 
-                      <label>
-                        اسم الاختبار
-                      </label>
+                      <strong>
+                        ${escapeHtml(
+                          item.name ||
+                          'بدون اسم'
+                        )}
+                      </strong>
 
-                      <input
-                        class="normal-input"
-                        data-test-name
-                        value="${escapeHtml(
-                          firstValue(
-                            item,
-                            [
-                              'name',
-                              'title',
-                              'test',
-                              'subject'
-                            ],
-                            ''
-                          )
-                        )}"
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        العلامة
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        data-test-score
-                        type="number"
-                        min="0"
-                        max="100"
-                        value="${escapeHtml(
-                          valueOrEmpty(
-                            item.score
-                          )
-                        )}"
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        التاريخ
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        data-test-date
-                        type="date"
-                        value="${escapeHtml(
-                          getDateInputValue(
-                            item.date
-                          )
-                        )}"
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        التقدير والنقاط
-                      </label>
-
-                      <div
-                        style="
-                          height:39px;
-                          display:flex;
-                          align-items:center;
-                          color:var(--gold2);
-                          font-size:10px;
-                        "
-                        data-test-preview
-                      >
-
+                      <span>
+                        📅 ${escapeHtml(
+                          item.date ||
+                          'بدون تاريخ'
+                        )}
+                        •
+                        العلامة:
+                        ${escapeHtml(
+                          item.score
+                        )}%
                         ${
-                          evaluation.grade
-                            ? `${evaluation.grade} — ${evaluation.points} نقطة`
-                            : 'اكتب العلامة'
+                          item.note
+                            ? ` • ${escapeHtml(item.note)}`
+                            : ''
                         }
+                      </span>
 
-                      </div>
+                    </div>
+
+                    <div class="compact-record-side">
+
+                      <span class="record-badge">
+                        ${escapeHtml(
+                          evaluation.grade ||
+                          '—'
+                        )}
+                      </span>
+
+                      <span class="record-badge">
+                        ${formatPoints(
+                          evaluation.points
+                        )} نقطة
+                      </span>
 
                     </div>
 
                   </div>
 
-                  <div
-                    style="margin-top:8px;"
-                  >
+                  <div class="compact-actions">
+
+                    <button
+                      type="button"
+                      class="action-btn btn-add"
+                      onclick="openTestModal('${escapeJs(
+                        item.id
+                      )}')"
+                    >
+                      عرض التفاصيل
+                    </button>
 
                     <button
                       type="button"
                       class="action-btn btn-delete"
-                      onclick="removeTest(${index})"
+                      onclick="removeTestById('${escapeJs(
+                        item.id
+                      )}')"
                     >
                       حذف
                     </button>
@@ -10419,172 +12196,249 @@
           )
           .join('');
 
-      container
-        .querySelectorAll(
-          'input'
-        )
-        .forEach(
-          input => {
+    }
 
-            input.addEventListener(
-              'input',
-              () => {
+    function openTestModal(
+      id=null
+    ){
 
-                syncTests();
+      editingTestId =
+        id;
 
-                updateTestPreviews();
+      const item =
+        id
+          ? profileData.tests
+              .find(
+                test =>
+                  String(test.id) ===
+                  String(id)
+              )
+          : null;
 
-                renderScores();
+      document.getElementById(
+        'testModalTitle'
+      ).textContent =
+        item
+          ? 'تعديل سجل الاختبار'
+          : 'تسجيل اختبار';
 
-                renderMonthlyFollowups();
+      document.getElementById(
+        'modalTestName'
+      ).value =
+        item
+          ? item.name ||
+            ''
+          : '';
 
-              }
-            );
+      document.getElementById(
+        'modalTestScore'
+      ).value =
+        item?.score ??
+        '';
 
-            input.addEventListener(
-              'change',
-              () => {
-
-                syncTests();
-
-                updateTestPreviews();
-
-                renderScores();
-
-                renderMonthlyFollowups();
-
-              }
-            );
-
-          }
+      document.getElementById(
+        'modalTestDate'
+      ).value =
+        getDateInputValue(
+          item?.date ||
+          todayString()
         );
+
+      document.getElementById(
+        'modalTestNote'
+      ).value =
+        item?.note ||
+        '';
+
+      updateTestModalPreview();
+
+      document.getElementById(
+        'testModal'
+      ).classList.add(
+        'show'
+      );
 
     }
 
-    function syncTests(){
+    function closeTestModal(){
 
-      const rows =
-        document.querySelectorAll(
-          '#testsEditor .editor-row'
+      document.getElementById(
+        'testModal'
+      ).classList.remove(
+        'show'
+      );
+
+      editingTestId =
+        null;
+
+    }
+
+    function saveTestRecord(){
+
+      const name =
+        document.getElementById(
+          'modalTestName'
+        ).value.trim();
+
+      const score =
+        Number(
+          document.getElementById(
+            'modalTestScore'
+          ).value
         );
 
-      const existing =
-        arrayValue(
+      const date =
+        document.getElementById(
+          'modalTestDate'
+        ).value;
+
+      const note =
+        document.getElementById(
+          'modalTestNote'
+        ).value.trim();
+
+      if(!name){
+
+        showToast(
+          'اكتب اسم الاختبار.',
+          true
+        );
+
+        return;
+
+      }
+
+      if(
+        !Number.isFinite(score) ||
+        score < 0 ||
+        score > 100
+      ){
+
+        showToast(
+          'أدخل علامة من 0 إلى 100.',
+          true
+        );
+
+        return;
+
+      }
+
+      if(!date){
+
+        showToast(
+          'اختر تاريخ الاختبار.',
+          true
+        );
+
+        return;
+
+      }
+
+      const record = {
+
+        id:
+          editingTestId ||
+          makeId(),
+
+        name,
+
+        score,
+
+        date,
+
+        note
+
+      };
+
+      if(
+        editingTestId
+      ){
+
+        const index =
           profileData.tests
+            .findIndex(
+              item =>
+                String(item.id) ===
+                String(editingTestId)
+            );
+
+        if(index !== -1){
+
+          profileData.tests[index] =
+            {
+
+              ...profileData.tests[index],
+
+              ...record
+
+            };
+
+        }
+
+      }else{
+
+        profileData.tests.push(
+          record
         );
 
-      profileData.tests =
-        Array.from(rows)
-          .map(
-            (
-              row,
-              index
-            ) => {
+      }
 
-              const old =
-                existing[index] ||
-                {};
+      closeTestModal();
 
-              return {
+      renderTests();
 
-                id:
-                  old.id ||
-                  makeId(),
+      renderPlan();
 
-                name:
-                  row.querySelector(
-                    '[data-test-name]'
-                  )?.value ||
-                  '',
+      renderScores();
 
-                score:
-                  Number(
-                    row.querySelector(
-                      '[data-test-score]'
-                    )?.value ||
-                    0
-                  ),
+      renderMonthlyFollowups();
 
-                date:
-                  row.querySelector(
-                    '[data-test-date]'
-                  )?.value ||
-                  ''
-
-              };
-
-            }
-          );
-
-    }
-
-    function updateTestPreviews(){
-
-      document
-        .querySelectorAll(
-          '#testsEditor .editor-row'
-        )
-        .forEach(
-          row => {
-
-            const score =
-              Number(
-                row.querySelector(
-                  '[data-test-score]'
-                )?.value ||
-                0
-              );
-
-            const evaluation =
-              getTestEvaluation(
-                score
-              );
-
-            const preview =
-              row.querySelector(
-                '[data-test-preview]'
-              );
-
-            if(preview){
-
-              preview.textContent =
-                evaluation.grade
-                  ? `${evaluation.grade} — ${evaluation.points} نقطة`
-                  : 'اكتب العلامة';
-
-            }
-
-          }
-        );
+      showToast(
+        'تم حفظ الاختبار.'
+      );
 
     }
 
     function addTest(){
 
-      syncTests();
+      openTestModal();
 
-      profileData.tests
-        .push({
+    }
 
-          id:
-            makeId(),
+    function removeTestById(
+      id
+    ){
 
-          name:
-            '',
+      const confirmed =
+        window.confirm(
+          'هل تريد حذف هذا الاختبار؟'
+        );
 
-          score:
-            0,
+      if(!confirmed){
 
-          date:
-            todayString()
+        return;
 
-        });
+      }
+
+      profileData.tests =
+        profileData.tests
+          .filter(
+            item =>
+              String(item.id) !==
+              String(id)
+          );
 
       renderTests();
+
+      renderPlan();
 
       renderScores();
 
       renderMonthlyFollowups();
+
+      showToast(
+        'تم حذف الاختبار.'
+      );
 
     }
 
@@ -10592,24 +12446,26 @@
       index
     ){
 
-      syncTests();
-
-      profileData.tests
-        .splice(
-          index,
-          1
+      const items =
+        arrayValue(
+          profileData.tests
         );
 
-      renderTests();
+      const target =
+        items[index];
 
-      renderScores();
+      if(target){
 
-      renderMonthlyFollowups();
+        removeTestById(
+          target.id
+        );
+
+      }
 
     }
 
     /* ==================================================
-       PROGRESS
+       GENERAL EDITORS
     ================================================== */
 
     function renderGeneralEditors(){
@@ -10620,43 +12476,64 @@
 
       renderMonthlyFollowups();
 
-      document.getElementById(
-        'weeklyProgress'
-      ).value =
-        firstValue(
-          profileData,
-          [
-            'weeklyProgress',
-            'weekly_progress'
-          ],
-          ''
+      const weekly =
+        document.getElementById(
+          'weeklyProgress'
         );
 
-      document.getElementById(
-        'overallProgress'
-      ).value =
-        firstValue(
-          profileData,
-          [
-            'overallProgress',
-            'overall_progress'
-          ],
-          ''
+      if(weekly){
+
+        weekly.value =
+          firstValue(
+            profileData,
+            [
+              'weeklyProgress',
+              'weekly_progress'
+            ],
+            ''
+          );
+
+      }
+
+      const overall =
+        document.getElementById(
+          'overallProgress'
         );
 
-      document.getElementById(
-        'notes'
-      ).value =
-        firstValue(
-          profileData,
-          [
-            'notes',
-            'teacherNotes',
-            'teacher_notes',
-            'note'
-          ],
-          ''
+      if(overall){
+
+        overall.value =
+          firstValue(
+            profileData,
+            [
+              'overallProgress',
+              'overall_progress'
+            ],
+            ''
+          );
+
+      }
+
+      const notes =
+        document.getElementById(
+          'notes'
         );
+
+      if(notes){
+
+        notes.value =
+          firstValue(
+            profileData,
+            [
+              'notes',
+              'teacherNotes',
+              'teacher_notes',
+              'note'
+            ],
+            ''
+          );
+
+      }
 
     }
 
@@ -10675,7 +12552,8 @@
 
       if(
         value === 'مدفوع' ||
-        value === 'مدفوع بالكامل'
+        value === 'مدفوع بالكامل' ||
+        value === 'paid'
       ){
 
         return 'مدفوع';
@@ -10683,7 +12561,9 @@
       }
 
       if(
-        value === 'قيد الانتظار'
+        value === 'قيد الانتظار' ||
+        value === 'pending' ||
+        value === 'waiting'
       ){
 
         return 'قيد الانتظار';
@@ -10691,7 +12571,8 @@
       }
 
       if(
-        value === 'غير مدفوع'
+        value === 'غير مدفوع' ||
+        value === 'unpaid'
       ){
 
         return 'متبقي';
@@ -10732,6 +12613,97 @@
 
     }
 
+    function getFeeDueAmount(
+      item
+    ){
+
+      return FIXED_MONTHLY_FEE;
+
+    }
+
+    function getFeePaidAmount(
+      item
+    ){
+
+      if(
+        item?.paidAmount !== undefined &&
+        item?.paidAmount !== null
+      ){
+
+        return Math.max(
+          0,
+          Math.min(
+            FIXED_MONTHLY_FEE,
+            Number(
+              item.paidAmount
+            ) || 0
+          )
+        );
+
+      }
+
+      if(
+        normalizeFeeStatus(
+          item?.status
+        ) === 'مدفوع'
+      ){
+
+        return FIXED_MONTHLY_FEE;
+
+      }
+
+      return 0;
+
+    }
+
+    function getFeeRemainingAmount(
+      item
+    ){
+
+      return Math.max(
+        0,
+        FIXED_MONTHLY_FEE -
+        getFeePaidAmount(
+          item
+        )
+      );
+
+    }
+
+    function getFeeStatusFromAmount(
+      paid
+    ){
+
+      const safePaid =
+        Math.max(
+          0,
+          Math.min(
+            FIXED_MONTHLY_FEE,
+            Number(paid) || 0
+          )
+        );
+
+      if(
+        safePaid >=
+        FIXED_MONTHLY_FEE
+      ){
+
+        return 'مدفوع';
+
+      }
+
+      if(
+        safePaid > 0
+      ){
+
+        return 'قيد الانتظار';
+
+      }
+
+      return 'متبقي';
+
+    }
+
     function ensureCurrentStudentQuarterlyFee(){
 
       if(
@@ -10745,19 +12717,18 @@
 
       }
 
-      profileData.quarterlyFee =
-        FIXED_QUARTERLY_FEE;
-
-      const quarter =
-        getCurrentQuarterKey();
+      const month =
+        getCurrentMonthKey();
 
       const exists =
         profileData.fees.some(
           fee =>
-            getFeePeriodValue(
-              fee
+            String(
+              fee.month || ''
             ) ===
-            quarter
+            String(
+              month
+            )
         );
 
       if(!exists){
@@ -10767,22 +12738,28 @@
           id:
             makeId(),
 
-          quarter,
+          month,
 
-          period:
-            quarter,
+          dueAmount:
+            FIXED_MONTHLY_FEE,
 
           amount:
-            FIXED_QUARTERLY_FEE,
+            FIXED_MONTHLY_FEE,
 
-          date:
-            quarter,
+          value:
+            FIXED_MONTHLY_FEE,
+
+          paidAmount:
+            0,
+
+          remainingAmount:
+            FIXED_MONTHLY_FEE,
 
           status:
             'متبقي',
 
           notes:
-            'تسجيل تلقائي للنظام (25 د.أ)',
+            'مطالبة شهرية تلقائية (25 د.أ)',
 
           autoGenerated:
             true,
@@ -10794,12 +12771,15 @@
 
       }
 
+      profileData.quarterlyFee =
+        FIXED_MONTHLY_FEE;
+
     }
 
     async function ensureQuarterlyFeesForAllStudents(){
 
-      const quarter =
-        getCurrentQuarterKey();
+      const month =
+        getCurrentMonthKey();
 
       try{
 
@@ -10879,63 +12859,116 @@
             )
           ){
 
-            data.fees = [];
+            data.fees =
+              [];
 
           }
 
-          data.quarterlyFee =
-            FIXED_QUARTERLY_FEE;
+          data.fees =
+            arrayValue(
+              data.fees
+            )
+              .map(
+                fee => {
+
+                  const paid =
+                    fee?.paidAmount !== undefined
+                      ? Math.max(
+                          0,
+                          Math.min(
+                            FIXED_MONTHLY_FEE,
+                            Number(
+                              fee.paidAmount
+                            ) || 0
+                          )
+                        )
+                      : (
+                          normalizeFeeStatus(
+                            fee?.status
+                          ) === 'مدفوع'
+                            ? FIXED_MONTHLY_FEE
+                            : 0
+                        );
+
+                  return {
+
+                    ...fee,
+
+                    id:
+                      fee?.id ||
+                      makeId(),
+
+                    dueAmount:
+                      FIXED_MONTHLY_FEE,
+
+                    amount:
+                      FIXED_MONTHLY_FEE,
+
+                    value:
+                      FIXED_MONTHLY_FEE,
+
+                    paidAmount:
+                      paid,
+
+                    remainingAmount:
+                      Math.max(
+                        0,
+                        FIXED_MONTHLY_FEE -
+                        paid
+                      ),
+
+                    status:
+                      getFeeStatusFromAmount(
+                        paid
+                      )
+
+                  };
+
+                }
+              );
 
           const existingFee =
             data.fees.find(
               fee =>
-                getFeePeriodValue(
-                  fee
+                String(
+                  fee.month || ''
                 ) ===
-                quarter
+                String(
+                  month
+                )
             );
 
           if(
-            existingFee
+            !existingFee
           ){
-
-            /*
-              إذا كانت المطالبة الحالية موجودة من النظام،
-              يبقى مبلغها 25 د.أ.
-            */
-
-            if(
-              existingFee.autoGenerated
-            ){
-
-              existingFee.amount =
-                FIXED_QUARTERLY_FEE;
-
-            }
-
-          }else{
 
             data.fees.push({
 
               id:
                 makeId(),
 
-              quarter,
+              month,
 
-              period:
-                quarter,
+              dueAmount:
+                FIXED_MONTHLY_FEE,
 
               amount:
-                FIXED_QUARTERLY_FEE,
+                FIXED_MONTHLY_FEE,
 
-              date:
-                quarter,
+              value:
+                FIXED_MONTHLY_FEE,
+
+              paidAmount:
+                0,
+
+              remainingAmount:
+                FIXED_MONTHLY_FEE,
 
               status:
                 'متبقي',
 
               notes:
-                'تسجيل تلقائي للنظام (25 د.أ)',
+                'مطالبة شهرية تلقائية (25 د.أ)',
 
               autoGenerated:
                 true,
@@ -10947,10 +12980,8 @@
 
           }
 
-          /*
-            نحفظ الملف حتى لو كانت المطالبة موجودة،
-            لضمان تثبيت قيمة النظام الجديدة.
-          */
+          data.quarterlyFee =
+            FIXED_MONTHLY_FEE;
 
           const {
             error:upsertError
@@ -11026,40 +13057,15 @@
       items.forEach(
         item => {
 
-          const amount =
-            Number(
-              firstValue(
-                item,
-                [
-                  'amount',
-                  'value'
-                ],
-                0
-              )
-            ) || 0;
-
-          const status =
-            normalizeFeeStatus(
-              firstValue(
-                item,
-                ['status'],
-                'متبقي'
-              )
+          paidTotal +=
+            getFeePaidAmount(
+              item
             );
 
-          if(
-            status === 'مدفوع'
-          ){
-
-            paidTotal +=
-              amount;
-
-          }else{
-
-            remainingTotal +=
-              amount;
-
-          }
+          remainingTotal +=
+            getFeeRemainingAmount(
+              item
+            );
 
         }
       );
@@ -11079,11 +13085,6 @@
       const summary =
         calculateFeeSummary();
 
-      /*
-        أبقيت ID الأصلي feeApprovedMonthly
-        حتى لا يحصل خطأ null.
-      */
-
       const approvedMonthlyElement =
         document.getElementById(
           'feeApprovedMonthly'
@@ -11095,7 +13096,7 @@
 
         approvedMonthlyElement.textContent =
           `${formatPoints(
-            FIXED_QUARTERLY_FEE
+            FIXED_MONTHLY_FEE
           )} د.أ`;
 
       }
@@ -11134,16 +13135,175 @@
 
     }
 
+    function initializeFeeForm(){
+
+      const monthInput =
+        document.getElementById(
+          'feeMonth'
+        );
+
+      const paidInput =
+        document.getElementById(
+          'feePaid'
+        );
+
+      const notesInput =
+        document.getElementById(
+          'feeNotes'
+        );
+
+      if(
+        monthInput &&
+        !monthInput.value
+      ){
+
+        monthInput.value =
+          getCurrentMonthKey();
+
+      }
+
+      if(
+        paidInput &&
+        !paidInput.value
+      ){
+
+        paidInput.value =
+          '0';
+
+      }
+
+      if(
+        notesInput &&
+        feeEditId === null &&
+        !notesInput.value
+      ){
+
+        notesInput.value =
+          '';
+
+      }
+
+      updateFeeLiveCalculation();
+
+    }
+
+    function setupFeeFormInputs(){
+
+      const monthInput =
+        document.getElementById(
+          'feeMonth'
+        );
+
+      const paidInput =
+        document.getElementById(
+          'feePaid'
+        );
+
+      if(monthInput){
+
+        monthInput.addEventListener(
+          'change',
+          updateFeeLiveCalculation
+        );
+
+      }
+
+      if(paidInput){
+
+        paidInput.addEventListener(
+          'input',
+          updateFeeLiveCalculation
+        );
+
+        paidInput.addEventListener(
+          'change',
+          updateFeeLiveCalculation
+        );
+
+      }
+
+      initializeFeeForm();
+
+    }
+
+    function formatMoney(
+      value
+    ){
+
+      const number =
+        Number(value) || 0;
+
+      return String(
+        roundNumber(
+          number,
+          2
+        )
+      );
+
+    }
+
+    function updateFeeLiveCalculation(){
+
+      const box =
+        document.getElementById(
+          'feeLiveCalculation'
+        );
+
+      if(!box){
+
+        return;
+
+      }
+
+      const paid =
+        Math.max(
+          0,
+          Math.min(
+            FIXED_MONTHLY_FEE,
+            Number(
+              document.getElementById(
+                'feePaid'
+              )?.value
+            ) || 0
+          )
+        );
+
+      const remaining =
+        Math.max(
+          0,
+          FIXED_MONTHLY_FEE -
+          paid
+        );
+
+      box.textContent =
+        `المبلغ المستحق: ${formatMoney(
+          FIXED_MONTHLY_FEE
+        )} د.أ · المدفوع: ${formatMoney(
+          paid
+        )} د.أ · المتبقي: ${formatMoney(
+          remaining
+        )} د.أ`;
+
+    }
+
     function renderFees(){
 
       ensureCurrentStudentQuarterlyFee();
 
       renderFeeSummary();
 
+      initializeFeeForm();
+
       const container =
         document.getElementById(
           'feesEditor'
         );
+
+      if(!container){
+
+        return;
+
+      }
 
       const items =
         arrayValue(
@@ -11151,14 +13311,32 @@
         )
           .slice()
           .sort(
-            (a,b) =>
-              String(
-                getFeePeriodValue(b)
-              ).localeCompare(
-                String(
-                  getFeePeriodValue(a)
+            (a,b) => {
+
+              const aKey =
+                /^\d{4}-\d{2}$/.test(
+                  String(
+                    a.month || ''
+                  )
                 )
-              )
+                  ? a.month
+                  : getFeePeriodValue(a);
+
+              const bKey =
+                /^\d{4}-\d{2}$/.test(
+                  String(
+                    b.month || ''
+                  )
+                )
+                  ? b.month
+                  : getFeePeriodValue(b);
+
+              return String(bKey)
+                .localeCompare(
+                  String(aKey)
+                );
+
+            }
           );
 
       if(!items.length){
@@ -11187,30 +13365,22 @@
                       String(item.id || '')
                   );
 
-              const period =
-                getFeePeriodValue(
+              const paid =
+                getFeePaidAmount(
                   item
                 );
 
-              const amount =
-                Number(
-                  firstValue(
-                    item,
-                    [
-                      'amount',
-                      'value'
-                    ],
-                    0
-                  )
-                ) || 0;
+              const remaining =
+                getFeeRemainingAmount(
+                  item
+                );
+
+              const due =
+                FIXED_MONTHLY_FEE;
 
               const status =
-                normalizeFeeStatus(
-                  firstValue(
-                    item,
-                    ['status'],
-                    'متبقي'
-                  )
+                getFeeStatusFromAmount(
+                  paid
                 );
 
               const notes =
@@ -11242,29 +13412,40 @@
                       <strong>
 
                         📅 ${escapeHtml(
-                          getQuarterLabel(
-                            period
-                          ) || 'غير محدد'
+                          item.month
+                            ? formatMonthLabel(
+                                item.month
+                              )
+                            : getFeeLabel(
+                                item
+                              )
                         )}
 
-                        — المبلغ:
-                        ${formatPoints(
-                          amount
-                        )} د.أ
+                        — 25 د.أ
 
                       </strong>
 
                       <span>
 
+                        المدفوع:
+                        ${formatPoints(
+                          paid
+                        )} د.أ
+
+                        • المتبقي:
+                        ${formatPoints(
+                          remaining
+                        )} د.أ
+
                         ${
                           notes
-                            ? `ملاحظات: ${escapeHtml(notes)}`
-                            : 'لا توجد ملاحظات إضافية.'
+                            ? ` • ${escapeHtml(notes)}`
+                            : ''
                         }
 
                         ${
                           autoGenerated
-                            ? ' • تسجيل تلقائي'
+                            ? ' • مطالبة تلقائية'
                             : ''
                         }
 
@@ -11283,9 +13464,9 @@
 
                       ${
                         status === 'مدفوع'
-                          ? '✅ مدفوع'
+                          ? '✅ مدفوع بالكامل'
                           : status === 'قيد الانتظار'
-                            ? '⏳ قيد الانتظار'
+                            ? '🟡 مدفوع جزئيًا'
                             : '💳 متبقي'
                       }
 
@@ -11293,120 +13474,24 @@
 
                   </div>
 
-                  <div
-                    class="editor-grid"
-                    style="margin-top:8px;"
-                  >
+                  <div class="compact-actions">
 
-                    <div class="field">
-
-                      <label>
-                        الفصل
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        data-fee-quarter
-                        type="text"
-                        value="${escapeHtml(
-                          period
-                        )}"
-                        readonly
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        المبلغ
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        type="number"
-                        value="${escapeHtml(
-                          amount
-                        )}"
-                        readonly
-                      />
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        الحالة
-                      </label>
-
-                      <select
-                        class="normal-select"
-                        data-fee-status
-                      >
-
-                        <option
-                          value="متبقي"
-                          ${
-                            status === 'متبقي'
-                              ? 'selected'
-                              : ''
-                          }
-                        >
-                          متبقي
-                        </option>
-
-                        <option
-                          value="قيد الانتظار"
-                          ${
-                            status === 'قيد الانتظار'
-                              ? 'selected'
-                              : ''
-                          }
-                        >
-                          قيد الانتظار ⏳
-                        </option>
-
-                        <option
-                          value="مدفوع"
-                          ${
-                            status === 'مدفوع'
-                              ? 'selected'
-                              : ''
-                          }
-                        >
-                          مدفوع بالكامل ✅
-                        </option>
-
-                      </select>
-
-                    </div>
-
-                    <div class="field">
-
-                      <label>
-                        ملاحظات
-                      </label>
-
-                      <input
-                        class="normal-input"
-                        data-fee-notes
-                        value="${escapeHtml(
-                          notes
-                        )}"
-                      />
-
-                    </div>
-
-                  </div>
-
-                  <div
-                    style="margin-top:8px;"
-                  >
+                    <button
+                      type="button"
+                      class="action-btn btn-add"
+                      onclick="editFee('${escapeJs(
+                        item.id
+                      )}')"
+                    >
+                      ✏️ تعديل الشهر / المدفوع
+                    </button>
 
                     <button
                       type="button"
                       class="action-btn btn-delete"
-                      onclick="removeFee(${originalIndex})"
+                      onclick="removeFee('${escapeJs(
+                        item.id
+                      )}')"
                     >
                       حذف
                     </button>
@@ -11421,137 +13506,774 @@
           )
           .join('');
 
-      container
-        .querySelectorAll(
-          'input,select'
-        )
-        .forEach(
-          element => {
+    }
 
-            element.addEventListener(
-              'input',
-              () => {
+    function saveFeeRecord(){
 
-                syncFees();
+      const month =
+        document.getElementById(
+          'feeMonth'
+        ).value;
 
-                renderFeeSummary();
-
-              }
-            );
-
-            element.addEventListener(
-              'change',
-              () => {
-
-                syncFees();
-
-                renderFees();
-
-              }
-            );
-
-          }
+      const paid =
+        Number(
+          document.getElementById(
+            'feePaid'
+          ).value
         );
+
+      const notes =
+        document.getElementById(
+          'feeNotes'
+        ).value.trim();
+
+      if(!month){
+
+        showToast(
+          'اختر الشهر.',
+          true
+        );
+
+        return;
+
+      }
+
+      if(
+        !Number.isFinite(paid) ||
+        paid < 0 ||
+        paid > FIXED_MONTHLY_FEE
+      ){
+
+        showToast(
+          'المبلغ المدفوع يجب أن يكون بين 0 و25 دينارًا.',
+          true
+        );
+
+        return;
+
+      }
+
+      const safePaid =
+        roundNumber(
+          paid,
+          2
+        );
+
+      const status =
+        getFeeStatusFromAmount(
+          safePaid
+        );
+
+      if(
+        feeEditId
+      ){
+
+        const index =
+          profileData.fees
+            .findIndex(
+              fee =>
+                String(
+                  fee.id
+                ) ===
+                String(
+                  feeEditId
+                )
+            );
+
+        if(index === -1){
+
+          showToast(
+            'لم يتم العثور على سجل الرسوم.',
+            true
+          );
+
+          return;
+
+        }
+
+        const old =
+          profileData.fees[index];
+
+        profileData.fees[index] =
+          {
+
+            ...old,
+
+            month,
+
+            dueAmount:
+              FIXED_MONTHLY_FEE,
+
+            amount:
+              FIXED_MONTHLY_FEE,
+
+            value:
+              FIXED_MONTHLY_FEE,
+
+            paidAmount:
+              safePaid,
+
+            remainingAmount:
+              Math.max(
+                0,
+                FIXED_MONTHLY_FEE -
+                safePaid
+              ),
+
+            status,
+
+            notes
+
+          };
+
+        feeEditId =
+          null;
+
+        resetFeeForm();
+
+        renderFees();
+
+        showToast(
+          'تم تعديل سجل الرسوم.'
+        );
+
+        return;
+
+      }
+
+      const duplicate =
+        profileData.fees.some(
+          fee =>
+            String(
+              fee.month || ''
+            ) ===
+            String(
+              month
+            )
+        );
+
+      if(duplicate){
+
+        showToast(
+          'هذا الشهر موجود أصلًا. اضغط تعديل لتغيير المبلغ المدفوع.',
+          true
+        );
+
+        return;
+
+      }
+
+      profileData.fees.push({
+
+        id:
+          makeId(),
+
+        month,
+
+        dueAmount:
+          FIXED_MONTHLY_FEE,
+
+        amount:
+          FIXED_MONTHLY_FEE,
+
+        value:
+          FIXED_MONTHLY_FEE,
+
+        paidAmount:
+          safePaid,
+
+        remainingAmount:
+          Math.max(
+            0,
+            FIXED_MONTHLY_FEE -
+            safePaid
+          ),
+
+        status,
+
+        notes,
+
+        autoGenerated:
+          false,
+
+        createdAt:
+          new Date().toISOString()
+
+      });
+
+      resetFeeForm();
+
+      renderFees();
+
+      showToast(
+        'تم حفظ دفعة الرسوم للشهر.'
+      );
+
+    }
+
+    function editFee(
+      id
+    ){
+
+      const fee =
+        profileData.fees
+          .find(
+            item =>
+              String(
+                item.id
+              ) ===
+              String(
+                id
+              )
+          );
+
+      if(!fee){
+
+        showToast(
+          'لم يتم العثور على سجل الرسوم.',
+          true
+        );
+
+        return;
+
+      }
+
+      feeEditId =
+        String(
+          fee.id
+        );
+
+      const month =
+        /^\d{4}-\d{2}$/.test(
+          String(
+            fee.month || ''
+          )
+        )
+          ? String(
+              fee.month
+            )
+          : getMonthKey(
+              fee.date
+            );
+
+      document.getElementById(
+        'feeMonth'
+      ).value =
+        month;
+
+      document.getElementById(
+        'feePaid'
+      ).value =
+        getFeePaidAmount(
+          fee
+        );
+
+      document.getElementById(
+        'feeNotes'
+      ).value =
+        firstValue(
+          fee,
+          [
+            'notes',
+            'note'
+          ],
+          ''
+        );
+
+      document.getElementById(
+        'feeFormTitle'
+      ).textContent =
+        '✏️ تعديل سجل الرسوم';
+
+      document.getElementById(
+        'addFeeBtn'
+      ).textContent =
+        '💾 حفظ التعديل';
+
+      document.getElementById(
+        'cancelFeeEditBtn'
+      ).style.display =
+        'inline-flex';
+
+      document.getElementById(
+        'feeEditingNote'
+      ).classList.add(
+        'show'
+      );
+
+      updateFeeLiveCalculation();
+
+      document.getElementById(
+        'feeMonth'
+      ).scrollIntoView({
+        behavior:'smooth',
+        block:'center'
+      });
+
+    }
+
+    function resetFeeForm(){
+
+      feeEditId =
+        null;
+
+      const title =
+        document.getElementById(
+          'feeFormTitle'
+        );
+
+      if(title){
+
+        title.textContent =
+          '💳 تسجيل دفعة شهرية';
+
+      }
+
+      const button =
+        document.getElementById(
+          'addFeeBtn'
+        );
+
+      if(button){
+
+        button.textContent =
+          '💾 حفظ سجل الرسوم';
+
+      }
+
+      const cancel =
+        document.getElementById(
+          'cancelFeeEditBtn'
+        );
+
+      if(cancel){
+
+        cancel.style.display =
+          'none';
+
+      }
+
+      const note =
+        document.getElementById(
+          'feeEditingNote'
+        );
+
+      if(note){
+
+        note.classList.remove(
+          'show'
+        );
+
+      }
+
+      const month =
+        document.getElementById(
+          'feeMonth'
+        );
+
+      if(month){
+
+        month.value =
+          getCurrentMonthKey();
+
+      }
+
+      const paid =
+        document.getElementById(
+          'feePaid'
+        );
+
+      if(paid){
+
+        paid.value =
+          '0';
+
+      }
+
+      const notes =
+        document.getElementById(
+          'feeNotes'
+        );
+
+      if(notes){
+
+        notes.value =
+          '';
+
+      }
+
+      updateFeeLiveCalculation();
+
+    }
+
+    function cancelFeeEdit(){
+
+      resetFeeForm();
 
     }
 
     function syncFees(){
-
-      const rows =
-        document.querySelectorAll(
-          '#feesEditor .fee-archive-item'
-        );
 
       const oldItems =
         arrayValue(
           profileData.fees
         );
 
-      Array.from(rows)
-        .forEach(
-          row => {
+      profileData.fees =
+        oldItems.map(
+          fee => {
 
-            const index =
-              Number(
-                row.dataset.feeIndex
+            const paid =
+              getFeePaidAmount(
+                fee
               );
 
+            return {
+
+              ...fee,
+
+              dueAmount:
+                FIXED_MONTHLY_FEE,
+
+              amount:
+                FIXED_MONTHLY_FEE,
+
+              value:
+                FIXED_MONTHLY_FEE,
+
+              paidAmount:
+                paid,
+
+              remainingAmount:
+                Math.max(
+                  0,
+                  FIXED_MONTHLY_FEE -
+                  paid
+                ),
+
+              status:
+                getFeeStatusFromAmount(
+                  paid
+                )
+
+            };
+
+          }
+        );
+
+      profileData.quarterlyFee =
+        FIXED_MONTHLY_FEE;
+
+    }
+
+    function removeFee(
+      id
+    ){
+
+      const confirmed =
+        window.confirm(
+          'هل تريد حذف سجل الرسوم لهذا الشهر؟'
+        );
+
+      if(!confirmed){
+
+        return;
+
+      }
+
+      profileData.fees =
+        profileData.fees
+          .filter(
+            fee =>
+              String(
+                fee.id
+              ) !==
+              String(
+                id
+              )
+          );
+
+      if(
+        String(
+          feeEditId
+        ) ===
+        String(id)
+      ){
+
+        resetFeeForm();
+
+      }
+
+      renderFees();
+
+      renderFeeSummary();
+
+      showToast(
+        'تم حذف سجل الرسوم من النسخة الحالية.'
+      );
+
+    }
+
+    /* ==================================================
+       WARNING SYSTEM
+    ================================================== */
+
+    function syncWarningCount(){
+
+      if(
+        !Array.isArray(
+          profileData.warningRecords
+        )
+      ){
+
+        profileData.warningRecords =
+          [];
+
+      }
+
+      profileData.warnings =
+        profileData.warningRecords.length;
+
+      const input =
+        document.getElementById(
+          'warnings'
+        );
+
+      if(input){
+
+        input.value =
+          profileData.warnings;
+
+      }
+
+    }
+
+    function setupWarningModalInputs(){
+
+      const reason =
+        document.getElementById(
+          'modalWarningReason'
+        );
+
+      if(reason){
+
+        reason.addEventListener(
+          'keydown',
+          event => {
+
             if(
-              !Number.isInteger(index) ||
-              !oldItems[index]
+              event.key === 'Enter' &&
+              !event.shiftKey
             ){
 
-              return;
-
-            }
-
-            const old =
-              oldItems[index];
-
-            const status =
-              normalizeFeeStatus(
-                row.querySelector(
-                  '[data-fee-status]'
-                )?.value ||
-                old.status ||
-                'متبقي'
-              );
-
-            old.status =
-              status;
-
-            old.notes =
-              row.querySelector(
-                '[data-fee-notes]'
-              )?.value ||
-              '';
-
-            old.amount =
-              Number(
-                old.amount
-              ) || 0;
-
-            /*
-              المطالبات المنشأة تلقائيًا للنظام الجديد
-              قيمتها 25 د.أ.
-            */
-
-            if(
-              old.autoGenerated
-            ){
-
-              old.amount =
-                FIXED_QUARTERLY_FEE;
+              event.preventDefault();
 
             }
 
           }
         );
 
-      profileData.quarterlyFee =
-        FIXED_QUARTERLY_FEE;
-
-      profileData.fees =
-        oldItems;
+      }
 
     }
 
-    function removeFee(
-      index
+    function openWarningModal(
+      id=null,
+      defaultMonthKey=null
     ){
 
-      syncFees();
+      editingWarningId =
+        id;
 
-      profileData.fees
-        .splice(
-          index,
-          1
+      const warning =
+        id
+          ? profileData.warningRecords
+              .find(
+                item =>
+                  String(
+                    item.id
+                  ) ===
+                  String(
+                    id
+                  )
+              )
+          : null;
+
+      document.getElementById(
+        'warningModalTitle'
+      ).textContent =
+        warning
+          ? 'تعديل الإنذار'
+          : 'إضافة إنذار';
+
+      document.getElementById(
+        'modalWarningDate'
+      ).value =
+        warning
+          ? getDateInputValue(
+              warning.date
+            )
+          : (
+              defaultMonthKey
+                ? `${defaultMonthKey}-01`
+                : todayString()
+            );
+
+      document.getElementById(
+        'modalWarningReason'
+      ).value =
+        warning?.reason ||
+        '';
+
+      document.getElementById(
+        'warningModal'
+      ).classList.add(
+        'show'
+      );
+
+    }
+
+    function closeWarningModal(){
+
+      document.getElementById(
+        'warningModal'
+      ).classList.remove(
+        'show'
+      );
+
+      editingWarningId =
+        null;
+
+    }
+
+    function saveWarningRecord(){
+
+      const date =
+        document.getElementById(
+          'modalWarningDate'
+        ).value;
+
+      const reason =
+        document.getElementById(
+          'modalWarningReason'
+        ).value.trim();
+
+      if(!date){
+
+        showToast(
+          'اختر تاريخ الإنذار.',
+          true
         );
 
-      renderFees();
+        return;
+
+      }
+
+      if(!reason){
+
+        showToast(
+          'اكتب سبب الإنذار بنفسك.',
+          true
+        );
+
+        return;
+
+      }
+
+      const record = {
+
+        id:
+          editingWarningId ||
+          makeId(),
+
+        date,
+
+        reason,
+
+        createdAt:
+          new Date()
+            .toISOString()
+
+      };
+
+      if(
+        editingWarningId
+      ){
+
+        const index =
+          profileData.warningRecords
+            .findIndex(
+              item =>
+                String(item.id) ===
+                String(editingWarningId)
+            );
+
+        if(index !== -1){
+
+          profileData.warningRecords[index] =
+            {
+
+              ...profileData.warningRecords[index],
+
+              ...record
+
+            };
+
+        }
+
+      }else{
+
+        profileData.warningRecords.push(
+          record
+        );
+
+      }
+
+      syncWarningCount();
+
+      closeWarningModal();
+
+      renderMonthlyFollowups();
+
+      fillBasicFields();
 
       showToast(
-        'تم حذف سجل الرسوم من النسخة الحالية.'
+        'تم حفظ الإنذار وتحديث عداد الإنذارات.'
+      );
+
+    }
+
+    function deleteWarningRecord(
+      id
+    ){
+
+      const confirmed =
+        window.confirm(
+          'هل تريد حذف هذا الإنذار؟'
+        );
+
+      if(!confirmed){
+
+        return;
+
+      }
+
+      profileData.warningRecords =
+        profileData.warningRecords
+          .filter(
+            item =>
+              String(item.id) !==
+              String(id)
+          );
+
+      syncWarningCount();
+
+      renderMonthlyFollowups();
+
+      fillBasicFields();
+
+      showToast(
+        'تم حذف الإنذار.'
       );
 
     }
@@ -11564,10 +14286,17 @@
       reason
     ){
 
-      document.getElementById(
-        'newExtraReason'
-      ).value =
-        reason;
+      const input =
+        document.getElementById(
+          'newExtraReason'
+        );
+
+      if(input){
+
+        input.value =
+          reason;
+
+      }
 
     }
 
@@ -11575,10 +14304,17 @@
       points
     ){
 
-      document.getElementById(
-        'newExtraPoints'
-      ).value =
-        points;
+      const input =
+        document.getElementById(
+          'newExtraPoints'
+        );
+
+      if(input){
+
+        input.value =
+          points;
+
+      }
 
     }
 
@@ -11609,6 +14345,12 @@
         document.getElementById(
           'extraPointsEditor'
         );
+
+      if(!container){
+
+        return;
+
+      }
 
       const items =
         arrayValue(
@@ -12158,6 +14900,12 @@
         document.getElementById(
           'badgeGrid'
         );
+
+      if(!container){
+
+        return;
+
+      }
 
       const overall =
         calculateEvaluation(
@@ -12812,8 +15560,6 @@
               )
           );
 
-      /* RECITATION */
-
       let recEarned = 0;
 
       let recPossible = 0;
@@ -12846,8 +15592,6 @@
             ) * 100
           : null;
 
-      /* TESTS */
-
       let testEarned = 0;
 
       let testPossible = 0;
@@ -12876,8 +15620,6 @@
               testPossible
             ) * 100
           : null;
-
-      /* ATTENDANCE */
 
       let attendanceEarned = 0;
 
@@ -12911,8 +15653,6 @@
               attendancePossible
             ) * 100
           : null;
-
-      /* PLAN */
 
       let planEarned = 0;
 
@@ -13399,34 +16139,69 @@
           'monthly'
         );
 
-      document.getElementById(
-        'metricTotalPoints'
-      ).textContent =
-        formatPoints(
-          overall.totalPoints
+      const totalPoints =
+        document.getElementById(
+          'metricTotalPoints'
         );
 
-      document.getElementById(
-        'metricOverallPercent'
-      ).textContent =
-        `${overall.finalPercentage}%`;
+      if(totalPoints){
 
-      document.getElementById(
-        'metricMonthlyPercent'
-      ).textContent =
-        `${monthly.finalPercentage}%`;
+        totalPoints.textContent =
+          formatPoints(
+            overall.totalPoints
+          );
 
-      document.getElementById(
-        'metricMonthlyPoints'
-      ).textContent =
-        formatPoints(
-          monthly.totalPoints
+      }
+
+      const overallPercent =
+        document.getElementById(
+          'metricOverallPercent'
         );
 
-      document.getElementById(
-        'metricMonthLabel'
-      ).textContent =
-        currentMonthLabel();
+      if(overallPercent){
+
+        overallPercent.textContent =
+          `${overall.finalPercentage}%`;
+
+      }
+
+      const monthlyPercent =
+        document.getElementById(
+          'metricMonthlyPercent'
+        );
+
+      if(monthlyPercent){
+
+        monthlyPercent.textContent =
+          `${monthly.finalPercentage}%`;
+
+      }
+
+      const monthlyPoints =
+        document.getElementById(
+          'metricMonthlyPoints'
+        );
+
+      if(monthlyPoints){
+
+        monthlyPoints.textContent =
+          formatPoints(
+            monthly.totalPoints
+          );
+
+      }
+
+      const monthLabel =
+        document.getElementById(
+          'metricMonthLabel'
+        );
+
+      if(monthLabel){
+
+        monthLabel.textContent =
+          currentMonthLabel();
+
+      }
 
       const uniquePages =
         new Set(
@@ -13449,33 +16224,61 @@
       const memorizedJuzCount =
         getMemorizedJuzCount();
 
-      document.getElementById(
-        'recitationProgressPercent'
-      ).textContent =
-        `${roundNumber(
-          progress,
-          1
-        )}%`;
+      const progressPercent =
+        document.getElementById(
+          'recitationProgressPercent'
+        );
 
-      document.getElementById(
-        'recitationProgressFill'
-      ).style.width =
-        `${Math.min(
-          100,
-          progress
-        )}%`;
+      if(progressPercent){
 
-      document.getElementById(
-        'monthlyPlanAdherenceAverage'
-      ).textContent =
-        `${formatPoints(
-          monthlyPlanAverage
-        )}%`;
+        progressPercent.textContent =
+          `${roundNumber(
+            progress,
+            1
+          )}%`;
 
-      document.getElementById(
-        'memorizedJuzCount'
-      ).textContent =
-        memorizedJuzCount;
+      }
+
+      const progressFill =
+        document.getElementById(
+          'recitationProgressFill'
+        );
+
+      if(progressFill){
+
+        progressFill.style.width =
+          `${Math.min(
+            100,
+            progress
+          )}%`;
+
+      }
+
+      const monthlyAverage =
+        document.getElementById(
+          'monthlyPlanAdherenceAverage'
+        );
+
+      if(monthlyAverage){
+
+        monthlyAverage.textContent =
+          `${formatPoints(
+            monthlyPlanAverage
+          )}%`;
+
+      }
+
+      const juzCount =
+        document.getElementById(
+          'memorizedJuzCount'
+        );
+
+      if(juzCount){
+
+        juzCount.textContent =
+          memorizedJuzCount;
+
+      }
 
     }
 
@@ -13497,49 +16300,105 @@
 
       syncMonthlyFollowups();
 
+      syncWarningCount();
+
       normalizeBadgeRecords();
 
-      profileData.weeklyProgress =
+      const weekly =
         document.getElementById(
           'weeklyProgress'
-        ).value.trim();
+        );
 
-      profileData.overallProgress =
+      if(weekly){
+
+        profileData.weeklyProgress =
+          weekly.value.trim();
+
+      }
+
+      const overallProgress =
         document.getElementById(
           'overallProgress'
-        ).value.trim();
+        );
 
-      profileData.notes =
+      if(overallProgress){
+
+        profileData.overallProgress =
+          overallProgress.value.trim();
+
+      }
+
+      const notes =
         document.getElementById(
           'notes'
-        ).value.trim();
+        );
 
-      profileData.guardianPhone =
+      if(notes){
+
+        profileData.notes =
+          notes.value.trim();
+
+      }
+
+      const guardianPhone =
         document.getElementById(
           'guardianPhone'
-        ).value.trim();
+        );
 
-      profileData.joiningDate =
+      if(guardianPhone){
+
+        profileData.guardianPhone =
+          guardianPhone.value.trim();
+
+      }
+
+      const joiningDate =
         document.getElementById(
           'joiningDate'
-        ).value;
+        );
 
-      profileData.residence =
+      if(joiningDate){
+
+        profileData.joiningDate =
+          joiningDate.value;
+
+      }
+
+      const residence =
         document.getElementById(
           'residence'
-        ).value.trim();
+        );
 
-      profileData.bus =
+      if(residence){
+
+        profileData.residence =
+          residence.value.trim();
+
+      }
+
+      const bus =
         document.getElementById(
           'bus'
-        ).value.trim();
+        );
 
-      profileData.warnings =
-        Number(
-          document.getElementById(
-            'warnings'
-          ).value
-        ) || 0;
+      if(bus){
+
+        profileData.bus =
+          bus.value.trim();
+
+      }
+
+      const section =
+        document.getElementById(
+          'section'
+        );
+
+      if(section){
+
+        profileData.section =
+          section.value;
+
+      }
 
       profileData.studentCode =
         document.getElementById(
@@ -13547,11 +16406,136 @@
         ).value.trim();
 
       profileData.quarterlyFee =
-        FIXED_QUARTERLY_FEE;
+        FIXED_MONTHLY_FEE;
 
       ensureCurrentStudentQuarterlyFee();
 
+      syncWarningCount();
+
       ensureMonthlyFollowupMonths();
+
+    }
+
+    function syncAttendance(){
+
+      profileData.attendance =
+        arrayValue(
+          profileData.attendance
+        )
+          .map(
+            item => ({
+
+              ...item,
+
+              id:
+                item.id ||
+                makeId(),
+
+              day:
+                firstValue(
+                  item,
+                  [
+                    'day',
+                    'weekday'
+                  ],
+                  ''
+                ),
+
+              date:
+                getDateInputValue(
+                  firstValue(
+                    item,
+                    [
+                      'date',
+                      'dayDate'
+                    ],
+                    ''
+                  )
+                ),
+
+              status:
+                firstValue(
+                  item,
+                  [
+                    'status',
+                    'attendance'
+                  ],
+                  'حاضر'
+                ),
+
+              note:
+                firstValue(
+                  item,
+                  [
+                    'note',
+                    'notes',
+                    'reason'
+                  ],
+                  ''
+                )
+
+            })
+          );
+
+    }
+
+    function syncTests(){
+
+      profileData.tests =
+        arrayValue(
+          profileData.tests
+        )
+          .map(
+            item => ({
+
+              ...item,
+
+              id:
+                item.id ||
+                makeId(),
+
+              name:
+                firstValue(
+                  item,
+                  [
+                    'name',
+                    'title',
+                    'test',
+                    'subject'
+                  ],
+                  ''
+                ),
+
+              score:
+                Number(
+                  firstValue(
+                    item,
+                    [
+                      'score',
+                      'mark',
+                      'grade'
+                    ],
+                    0
+                  )
+                ) || 0,
+
+              date:
+                getDateInputValue(
+                  item.date
+                ),
+
+              note:
+                firstValue(
+                  item,
+                  [
+                    'note',
+                    'notes'
+                  ],
+                  ''
+                )
+
+            })
+          );
 
     }
 
@@ -13667,6 +16651,12 @@
           'saveText'
         );
 
+      if(!button || !saveText){
+
+        return;
+
+      }
+
       const oldText =
         button.textContent;
 
@@ -13687,9 +16677,11 @@
           ).value.trim();
 
         const section =
-          document.getElementById(
-            'section'
-          ).value;
+          normalizeSectionValue(
+            document.getElementById(
+              'section'
+            ).value
+          );
 
         const memorization =
           document.getElementById(
@@ -13733,6 +16725,15 @@
             await generateStudentCode();
 
         }
+
+        profileData.warnings =
+          Array.isArray(
+            profileData.warningRecords
+          )
+            ? profileData.warningRecords.length
+            : Number(
+                profileData.warnings
+              ) || 0;
 
         const studentUpdate = {
 
@@ -13958,7 +16959,9 @@
             student.name,
 
           section:
-            student.section,
+            normalizeSectionValue(
+              student.section
+            ),
 
           memorization:
             student.memorization,
@@ -13982,27 +16985,180 @@
       message
     ){
 
-      document.getElementById(
-        'loading'
-      ).style.display =
-        'none';
+      const loading =
+        document.getElementById(
+          'loading'
+        );
 
-      document.getElementById(
-        'mainPage'
-      ).style.display =
-        'none';
+      if(loading){
 
-      document.getElementById(
-        'errorCard'
-      ).style.display =
-        'block';
+        loading.style.display =
+          'none';
 
-      document.getElementById(
-        'errorMessage'
-      ).textContent =
-        message;
+      }
+
+      const main =
+        document.getElementById(
+          'mainPage'
+        );
+
+      if(main){
+
+        main.style.display =
+          'none';
+
+      }
+
+      const errorCard =
+        document.getElementById(
+          'errorCard'
+        );
+
+      if(errorCard){
+
+        errorCard.style.display =
+          'block';
+
+      }
+
+      const errorMessage =
+        document.getElementById(
+          'errorMessage'
+        );
+
+      if(errorMessage){
+
+        errorMessage.textContent =
+          message;
+
+      }
 
     }
+
+    /* ==================================================
+       MODAL INPUT SETUP
+    ================================================== */
+
+    function setupPlanModalInputs(){
+
+      const type =
+        document.getElementById(
+          'modalPlanType'
+        );
+
+      if(type){
+
+        type.addEventListener(
+          'change',
+          () => {
+
+            const pages =
+              document.getElementById(
+                'modalPlanPages'
+              );
+
+            if(!pages){
+
+              return;
+
+            }
+
+            pages.disabled =
+              type.value ===
+              'test';
+
+            pages.placeholder =
+              type.value === 'test'
+                ? 'غير مطلوب للاختبار'
+                : 'مثال: 15، 16، 17 أو 15-20';
+
+          }
+        );
+
+      }
+
+    }
+
+    /* ==================================================
+       MODAL CLOSE SAFETY
+    ================================================== */
+
+    document.addEventListener(
+      'click',
+      event => {
+
+        const targets = [
+
+          {
+            id:'pageModal',
+            close:closePageModal
+          },
+
+          {
+            id:'attendanceModal',
+            close:closeAttendanceModal
+          },
+
+          {
+            id:'testModal',
+            close:closeTestModal
+          },
+
+          {
+            id:'planModal',
+            close:closePlanModal
+          },
+
+          {
+            id:'warningModal',
+            close:closeWarningModal
+          }
+
+        ];
+
+        targets.forEach(
+          item => {
+
+            const modal =
+              document.getElementById(
+                item.id
+              );
+
+            if(
+              modal &&
+              event.target === modal
+            ){
+
+              item.close();
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+    document.addEventListener(
+      'keydown',
+      event => {
+
+        if(
+          event.key !== 'Escape'
+        ){
+
+          return;
+
+        }
+
+        closePageModal();
+        closeAttendanceModal();
+        closeTestModal();
+        closePlanModal();
+        closeWarningModal();
+
+      }
+    );
 
     /* ==================================================
        START
