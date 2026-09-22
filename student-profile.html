@@ -3525,6 +3525,320 @@
 
     }
 
+    /* =========================================================
+   PERSONAL CARD - COMPACT / MOBILE FRIENDLY
+   ========================================================= */
+
+.personal-card{
+  padding:18px 20px;
+  border-radius:26px;
+}
+
+.personal-layout{
+  display:grid;
+  grid-template-columns:
+    minmax(175px,.7fr)
+    minmax(0,1.8fr)
+    minmax(175px,.7fr);
+
+  grid-template-areas:
+    "percentages main points";
+
+  gap:14px;
+  align-items:center;
+  direction:ltr;
+}
+
+.personal-main{
+  grid-area:main;
+  min-width:0;
+  direction:rtl;
+}
+
+.score-column{
+  display:grid;
+  gap:7px;
+  align-content:center;
+  min-width:0;
+  direction:rtl;
+}
+
+.score-column.percentages{
+  grid-area:percentages;
+}
+
+.score-column.points{
+  grid-area:points;
+}
+
+.score-column .metric{
+  min-height:58px;
+  padding:7px 8px;
+  border-radius:12px;
+  text-align:center;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:0;
+}
+
+.score-column .metric small{
+  font-size:9px;
+  margin-bottom:3px;
+  line-height:1.35;
+  white-space:nowrap;
+}
+
+.score-column .metric strong{
+  font-size:18px;
+  line-height:1.05;
+}
+
+.score-column .metric-period{
+  font-size:9px;
+  margin-top:2px;
+  line-height:1.35;
+}
+
+.personal-top{
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+  margin-bottom:12px;
+  text-align:center;
+}
+
+.avatar-wrap{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+.avatar{
+  width:78px;
+  height:78px;
+
+  border-radius:50%;
+
+  border:
+    2px solid
+    rgba(217,184,108,.42);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.24),
+    inset 0 0 20px rgba(217,184,108,.05);
+}
+
+.avatar-letter{
+  font-size:28px;
+}
+
+.personal-copy{
+  width:100%;
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+}
+
+.student-name{
+  font-size:
+    clamp(20px,3vw,28px);
+
+  line-height:1.25;
+
+  margin-bottom:5px;
+
+  text-align:center;
+}
+
+.student-code-box{
+  justify-content:center;
+  align-items:center;
+
+  gap:6px;
+  width:100%;
+}
+
+.student-code-label{
+  font-size:10px;
+}
+
+.student-code{
+  padding:5px 9px;
+
+  border-radius:8px;
+
+  font-size:12px;
+
+  min-width:42px;
+}
+
+.copy-code-btn{
+  padding:5px 8px;
+
+  border-radius:8px;
+
+  font-size:9px;
+}
+
+.personal-info-grid{
+  grid-template-columns:
+    repeat(5,minmax(0,1fr));
+
+  gap:7px;
+
+  margin-top:2px;
+}
+
+.personal-item{
+  padding:8px 9px;
+
+  border-radius:11px;
+
+  min-width:0;
+}
+
+.personal-label-small{
+  font-size:9px;
+
+  margin-bottom:3px;
+
+  line-height:1.35;
+}
+
+.personal-value{
+  font-size:11px;
+
+  line-height:1.45;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:1050px){
+
+  .personal-layout{
+    grid-template-columns:
+      minmax(150px,.65fr)
+      minmax(0,1.7fr)
+      minmax(150px,.65fr);
+
+    gap:10px;
+  }
+
+  .personal-info-grid{
+    grid-template-columns:
+      repeat(4,minmax(0,1fr));
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+  .personal-layout{
+    grid-template-columns:
+      1fr 1fr;
+
+    grid-template-areas:
+      "main main"
+      "percentages points";
+
+    align-items:stretch;
+  }
+
+  .score-column{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
+    gap:7px;
+  }
+
+  .personal-info-grid{
+    grid-template-columns:
+      repeat(3,minmax(0,1fr));
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:560px){
+
+  .personal-card{
+    padding:15px 13px;
+    border-radius:22px;
+  }
+
+  .personal-layout{
+    grid-template-columns:1fr;
+
+    grid-template-areas:
+      "main"
+      "points"
+      "percentages";
+
+    gap:10px;
+  }
+
+  .score-column{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+  }
+
+  .personal-info-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
+    gap:6px;
+  }
+
+  .personal-item{
+    padding:7px 8px;
+  }
+
+  .avatar{
+    width:72px;
+    height:72px;
+  }
+
+  .avatar-letter{
+    font-size:25px;
+  }
+
+  .student-name{
+    font-size:21px;
+  }
+
+  .score-column .metric{
+    min-height:54px;
+  }
+
+  .score-column .metric strong{
+    font-size:16px;
+  }
+
+}
+    
   </style>
 
 </head>
@@ -3627,239 +3941,67 @@
     <!-- =========================
          PERSONAL CARD
     ========================= -->
+<!-- =========================
+     PERSONAL CARD
+========================= -->
 
-    <section class="personal-card">
+<section class="personal-card">
 
-      <div class="personal-layout">
+  <div class="personal-layout">
 
+    <!-- النسب على اليسار -->
+    <div class="score-column percentages">
 
-        <div class="personal-main">
+      <div class="metric">
+        <small>التقييم الكلي</small>
 
-          <div class="personal-top">
+        <strong id="metricOverall">
+          0%
+        </strong>
 
-            <div class="avatar-wrap">
+        <div class="metric-period">
+          التقييم العام
+        </div>
+      </div>
 
-              <div class="avatar">
 
-                <img
-                  id="studentPhoto"
-                  alt="صورة الطالب"
-                >
+      <div class="metric">
+        <small>التقييم الشهري</small>
 
-                <div
-                  class="avatar-letter"
-                  id="avatarLetter"
-                >
-                  ط
-                </div>
+        <strong id="metricMonthly">
+          0%
+        </strong>
 
-              </div>
+        <div
+          class="metric-period"
+          id="metricMonthlyMonth"
+        >
+          —
+        </div>
+      </div>
 
-            </div>
+    </div>
 
 
-            <div class="personal-copy">
+    <!-- بيانات الطالب في الوسط -->
+    <div class="personal-main">
 
-              <div class="personal-label">
-                البطاقة الشخصية
-              </div>
+      <div class="personal-top">
 
+        <div class="avatar-wrap">
 
-              <h1
-                class="student-name"
-                id="studentName"
-              >
-                جاري التحميل...
-              </h1>
+          <div class="avatar">
 
+            <img
+              id="studentPhoto"
+              alt="صورة الطالب"
+            >
 
-              <div class="student-code-box">
-
-                <span class="student-code-label">
-                  كود الطالب:
-                </span>
-
-
-                <span
-                  class="student-code"
-                  id="studentCode"
-                >
-                  ---
-                </span>
-
-
-                <button
-                  type="button"
-                  class="copy-code-btn"
-                  onclick="copyStudentCode()"
-                >
-                  📋 نسخ الكود
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div class="personal-info-grid">
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                اسم الطالب
-              </div>
-
-              <div
-                class="personal-value"
-                id="infoName"
-              >
-                —
-              </div>
-
-            </div>
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                الشعبة
-              </div>
-
-              <div
-                class="personal-value"
-                id="infoSection"
-              >
-                —
-              </div>
-
-            </div>
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                حالة الطالب
-              </div>
-
-              <div
-                class="personal-value"
-                id="infoStatus"
-              >
-                —
-              </div>
-
-            </div>
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                الإنذارات
-              </div>
-
-              <div
-                class="personal-value warning-value"
-                id="infoWarnings"
-              >
-                0
-              </div>
-
-            </div>
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                هاتف ولي الأمر
-              </div>
-
-              <div
-                class="personal-value"
-                id="infoGuardianPhone"
-              >
-                —
-              </div>
-
-            </div>
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                تاريخ الالتحاق
-              </div>
-
-              <div
-                class="personal-value"
-                id="infoJoiningDate"
-              >
-                —
-              </div>
-
-            </div>
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                مكان السكن
-              </div>
-
-              <div
-                class="personal-value"
-                id="infoResidence"
-              >
-                —
-              </div>
-
-            </div>
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                الباص
-              </div>
-
-              <div
-                class="personal-value"
-                id="infoBus"
-              >
-                —
-              </div>
-
-            </div>
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                حالة الدفع
-              </div>
-
-              <div
-                class="personal-value payment-value"
-                id="infoPaymentStatus"
-              >
-                —
-              </div>
-
-            </div>
-
-
-            <div class="personal-item">
-
-              <div class="personal-label-small">
-                الرسوم الشهرية
-              </div>
-
-              <div class="personal-value payment-value">
-                25 د.أ
-              </div>
-
+            <div
+              class="avatar-letter"
+              id="avatarLetter"
+            >
+              ط
             </div>
 
           </div>
@@ -3867,95 +4009,256 @@
         </div>
 
 
-        <div class="metrics">
+        <div class="personal-copy">
+
+          <h1
+            class="student-name"
+            id="studentName"
+          >
+            جاري التحميل...
+          </h1>
 
 
-          <div class="metric">
+          <div class="student-code-box">
 
-            <small>
-              النقاط الكلية
-            </small>
+            <span class="student-code-label">
+              كود الطالب:
+            </span>
 
-            <strong
-              id="metricTotalPoints"
+
+            <span
+              class="student-code"
+              id="studentCode"
             >
-              0
-            </strong>
+              ---
+            </span>
 
-            <div class="metric-period">
-              نقطة
-            </div>
+
+            <button
+              type="button"
+              class="copy-code-btn"
+              onclick="copyStudentCode()"
+            >
+              📋 نسخ
+            </button>
 
           </div>
-
-
-          <div class="metric">
-
-            <small>
-              تقييم الطالب المئوي الكلي
-            </small>
-
-            <strong
-              id="metricOverall"
-            >
-              0%
-            </strong>
-
-            <div class="metric-period">
-              التقييم العام
-            </div>
-
-          </div>
-
-
-          <div class="metric">
-
-            <small>
-              تقييم الطالب المئوي الشهري
-            </small>
-
-            <strong
-              id="metricMonthly"
-            >
-              0%
-            </strong>
-
-            <div
-              class="metric-period"
-              id="metricMonthlyMonth"
-            >
-              —
-            </div>
-
-          </div>
-
-
-          <div class="metric">
-
-            <small>
-              نقاط الطالب الشهرية
-            </small>
-
-            <strong
-              id="metricMonthlyPoints"
-            >
-              0
-            </strong>
-
-            <div class="metric-period">
-              نقطة
-            </div>
-
-          </div>
-
 
         </div>
 
       </div>
 
-    </section>
+
+      <!-- تفاصيل الطالب -->
+      <div class="personal-info-grid">
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            اسم الطالب
+          </div>
+
+          <div
+            class="personal-value"
+            id="infoName"
+          >
+            —
+          </div>
+
+        </div>
 
 
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            الشعبة
+          </div>
+
+          <div
+            class="personal-value"
+            id="infoSection"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            حالة الطالب
+          </div>
+
+          <div
+            class="personal-value"
+            id="infoStatus"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            الإنذارات
+          </div>
+
+          <div
+            class="personal-value warning-value"
+            id="infoWarnings"
+          >
+            0
+          </div>
+
+        </div>
+
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            هاتف ولي الأمر
+          </div>
+
+          <div
+            class="personal-value"
+            id="infoGuardianPhone"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            تاريخ الالتحاق
+          </div>
+
+          <div
+            class="personal-value"
+            id="infoJoiningDate"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            مكان السكن
+          </div>
+
+          <div
+            class="personal-value"
+            id="infoResidence"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            الباص
+          </div>
+
+          <div
+            class="personal-value"
+            id="infoBus"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            حالة الدفع
+          </div>
+
+          <div
+            class="personal-value payment-value"
+            id="infoPaymentStatus"
+          >
+            —
+          </div>
+
+        </div>
+
+
+        <div class="personal-item">
+
+          <div class="personal-label-small">
+            الرسوم الشهرية
+          </div>
+
+          <div class="personal-value payment-value">
+            25 د.أ
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- النقاط على اليمين -->
+    <div class="score-column points">
+
+      <div class="metric">
+
+        <small>
+          النقاط الكلية
+        </small>
+
+        <strong
+          id="metricTotalPoints"
+        >
+          0
+        </strong>
+
+        <div class="metric-period">
+          نقطة
+        </div>
+
+      </div>
+
+
+      <div class="metric">
+
+        <small>
+          النقاط الشهرية
+        </small>
+
+        <strong
+          id="metricMonthlyPoints"
+        >
+          0
+        </strong>
+
+        <div class="metric-period">
+          نقطة
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+    
     <!-- =========================
          SECTION BUTTONS
     ========================= -->
@@ -11260,15 +11563,22 @@
         );
 
 
-      const code =
-        firstValue(
-          profileData,
-          [
-            'studentCode'
-          ],
-          '---'
-        );
-
+const code =
+  firstValue(
+    student,
+    [
+      'student_code',
+      'studentCode'
+    ],
+    firstValue(
+      profileData,
+      [
+        'studentCode',
+        'student_code'
+      ],
+      '---'
+    )
+  );
 
       const warnings =
         numberValue(
@@ -11562,15 +11872,22 @@
 
     async function copyStudentCode(){
 
-      const code =
-        firstValue(
-          profileData,
-          [
-            'studentCode'
-          ],
-          ''
-        );
-
+const code =
+  firstValue(
+    student,
+    [
+      'student_code',
+      'studentCode'
+    ],
+    firstValue(
+      profileData,
+      [
+        'studentCode',
+        'student_code'
+      ],
+      ''
+    )
+  );
 
       if(
 
