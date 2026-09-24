@@ -7968,9 +7968,9 @@ async function saveStudentProfile(
       );
 
 
-    document.addEventListener(
+document.addEventListener(
       'change',
-      event => {
+      async event => {
 
         if(
           event.target.matches(
@@ -7978,7 +7978,166 @@ async function saveStudentProfile(
           )
         ){
 
-          updateAttendanceCounters();
+          const studentId =
+            String(
+              event.target.dataset.id || ''
+            );
+
+          const date =
+            $('attendanceDate')
+              .value ||
+            TODAY;
+
+          const statusElement =
+            document.querySelector(
+              `
+                .attendance-status[data-id="${CSS.escape(
+                  studentId
+                )}"]
+              `
+            );
+
+          const noteElement =
+            document.querySelector(
+              `
+                .attendance-note[data-id="${CSS.escape(
+                  studentId
+                )}"]
+              `
+            );
+
+          const note =
+            noteElement?.value
+              .trim() ||
+            '';
+
+          try{
+
+            const profile =
+              normalizeProfile(
+                currentProfile(
+                  studentId
+                )
+              );
+
+
+            profile.attendance =
+              profile.attendance.filter(
+                item =>
+                  String(
+                    item?.date || ''
+                  ) !==
+                  String(
+                    date
+                  )
+              );
+
+
+            if(
+              event.target.checked
+            ){
+
+              if(statusElement){
+
+                statusElement.value =
+                  'حاضر';
+
+              }
+
+
+              const weekday =
+                new Intl.DateTimeFormat(
+                  'ar-JO',
+                  {
+                    weekday:'long'
+                  }
+                ).format(
+                  new Date(
+                    date +
+                    'T00:00:00'
+                  )
+                );
+
+
+              profile.attendance.push({
+
+                id:
+                  uid(
+                    'attendance'
+                  ),
+
+                date:
+                  date,
+
+                day:
+                  weekday,
+
+                status:
+                  'حاضر',
+
+                note:
+                  note,
+
+                updatedAt:
+                  new Date()
+                    .toISOString()
+
+              });
+
+            }else{
+
+              if(statusElement){
+
+                statusElement.value =
+                  '';
+
+              }
+
+            }
+
+
+            await saveStudentProfile(
+              studentId,
+              profile
+            );
+
+
+            await loadProfiles();
+
+
+            renderAttendance();
+
+
+            updateAttendanceCounters();
+
+
+            showToast(
+              event.target.checked
+                ? 'تم تسجيل حضور الطالب وحفظه مباشرة ✅'
+                : 'تم إلغاء تسجيل الحضور.'
+            );
+
+          }catch(error){
+
+            console.error(
+              'DIRECT ATTENDANCE ERROR:',
+              error
+            );
+
+
+            event.target.checked =
+              !event.target.checked;
+
+
+            updateAttendanceCounters();
+
+
+            showToast(
+              'تعذر حفظ الحضور. حاول مرة أخرى.',
+              'error'
+            );
+
+          }
 
         }
 
@@ -7995,8 +8154,7 @@ async function saveStudentProfile(
 
       }
     );
-
-
+    
     /* ===================================================
        STUDENT FILTER EVENTS
     ==================================================== */
