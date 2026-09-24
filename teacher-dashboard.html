@@ -4553,63 +4553,152 @@
     }
 
 
-    async function saveStudentProfile(
-      studentId,
+async function saveStudentProfile(
+  studentId,
+  profileData
+){
+
+  const id =
+    String(
+      studentId
+    );
+
+  const incoming =
+    normalizeProfile(
       profileData
-    ){
+    );
 
-      const clean =
-        normalizeProfile(
-          profileData
-        );
+  const {
+    data: existingRow,
+    error: readError
+  } =
+    await supabaseClient
+      .from(
+        'student_profiles'
+      )
+      .select(
+        'data'
+      )
+      .eq(
+        'student_id',
+        id
+      )
+      .maybeSingle();
 
+  if(readError){
 
-      profileMap[
-        String(studentId)
-      ] =
-        clean;
+    throw readError;
 
+  }
 
-      const payload = {
+  const existing =
+    normalizeProfile(
+      existingRow?.data || {}
+    );
 
-        student_id:
-          String(studentId),
+  const merged = {
 
-        data:
-          clean,
+    ...existing,
 
-        updated_at:
-          new Date()
-            .toISOString()
+    ...incoming
 
-      };
+  };
 
+  merged.attendance =
+    Array.isArray(
+      incoming.attendance
+    )
+      ? incoming.attendance
+      : Array.isArray(
+          existing.attendance
+        )
+          ? existing.attendance
+          : [];
 
-      const {
-        error
-      } =
-        await supabaseClient
-          .from(
-            'student_profiles'
-          )
-          .upsert(
-            payload,
-            {
-              onConflict:
-                'student_id'
-            }
-          );
+  merged.attendance =
+    merged.attendance.map(
+      (item,index) => ({
 
+        ...item,
 
-      if(error){
+        id:
+          String(
+            item?.id ||
+            `attendance-${Date.now()}-${index}`
+          ),
 
-        throw error;
+        date:
+          String(
+            item?.date || ''
+          ),
 
-      }
+        day:
+          String(
+            item?.day || ''
+          ),
 
-    }
+        status:
+          String(
+            item?.status || ''
+          ),
 
+        note:
+          String(
+            item?.note || ''
+          ),
 
+        updatedAt:
+          item?.updatedAt ||
+          new Date().toISOString()
+
+      })
+    );
+
+  const payload = {
+
+    student_id:
+      id,
+
+    data:
+      merged,
+
+    updated_at:
+      new Date().toISOString()
+
+  };
+
+  const {
+    data: saved,
+    error
+  } =
+    await supabaseClient
+      .from(
+        'student_profiles'
+      )
+      .upsert(
+        payload,
+        {
+          onConflict:
+            'student_id'
+        }
+      )
+      .select(
+        'student_id,data'
+      )
+      .maybeSingle();
+
+  if(error){
+
+    throw error;
+
+  }
+
+  profileMap[id] =
+    saved?.data ||
+    merged;
+
+}
+    
     async function loadStudents(){
 
       const {
