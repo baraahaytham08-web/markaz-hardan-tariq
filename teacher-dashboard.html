@@ -5991,18 +5991,24 @@ async function saveStudentProfile(
 
             <td>
 
-              <input
-                type="checkbox"
-                class="
-                  row-check
-                  attendance-check
-                "
-                data-id="
-                  ${escapeHtml(
-                    student.id
-                  )}
-                ">
-
+<input
+  type="checkbox"
+  class="
+    row-check
+    attendance-check
+  "
+  data-id="
+    ${escapeHtml(
+      student.id
+    )}
+  "
+  ${
+    attendance?.status ===
+    'حاضر'
+      ? 'checked'
+      : ''
+  }>
+  
             </td>
 
 
