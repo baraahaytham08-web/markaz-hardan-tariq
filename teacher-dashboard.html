@@ -6352,10 +6352,21 @@ async function saveStudentProfile(
             );
 
 
-          const status =
-            statusElement?.value ||
-            '';
+const checkbox =
+  document.querySelector(
+    `.attendance-check[data-id="${CSS.escape(
+      String(student.id)
+    )}"]`
+  );
 
+
+const status =
+  checkbox?.checked
+    ? 'حاضر'
+    : (
+        statusElement?.value ||
+        ''
+      );
 
           const note =
             noteElement?.value
